@@ -38,7 +38,7 @@ Getting started
 
 Connect to Aviary with SSH, download and extract this package:
 
-    https://home.cs.umanitoba.ca/~fbristow/hello.tar.gz
+    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week08/hello.tar.gz
 
 This program has a `Makefile`, so you can compile it using the `make` command.
 
