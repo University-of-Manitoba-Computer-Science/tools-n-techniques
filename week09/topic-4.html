@@ -84,10 +84,24 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-AMS_CHTML-full"
-  type="text/javascript"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -294,14 +308,16 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <li>You don’t create extra files that you need to worry about deleting
 later.</li>
 <li>You only enter one line in your terminal instead of many lines.</li>
-<li>Pipes <em>can</em> be faster :rabbit:, the programs on either side
-of the pipe run at the same time, unlike with simple redirection where
-you run one program, then the other.</li>
+<li>Pipes <em>can</em> be faster <span class="emoji"
+data-emoji="rabbit">🐰</span>, the programs on either side of the pipe
+run at the same time, unlike with simple redirection where you run one
+program, then the other.</li>
 </ul>
 <p>A frequent use of pipes is to send the output of one command to a
 <em>pager</em> (not like <a
-href="https://en.wikipedia.org/wiki/Pager">:pager:</a>, but more like
-:book:) like <code>less</code>.</p>
+href="https://en.wikipedia.org/wiki/Pager"><span class="emoji"
+data-emoji="pager">📟</span></a>, but more like <span class="emoji"
+data-emoji="book">📖</span>) like <code>less</code>.</p>
 <div class="aside">
 <p>Pagers (or “<a
 href="https://en.wikipedia.org/wiki/Terminal_pager">Terminal
@@ -378,11 +394,11 @@ and the data is sent to <code>less</code>.</li>
 <p>Some commands you may frequently see in pipelines include:</p>
 <ul>
 <li><code>head</code>: Reads standard input (or a file) and prints the
-first <span class="math inline">\(n\)</span> lines it reads to standard
+first <span class="math inline">n</span> lines it reads to standard
 output.</li>
 <li><code>tail</code>: Reads standard input (or a file) and prints the
-last <span class="math inline">\(n\)</span> lines it reads at the end of
-the “file” to standard output.</li>
+last <span class="math inline">n</span> lines it reads at the end of the
+“file” to standard output.</li>
 <li><code>cat</code>: Reads standard input (or a file) and prints out
 the file in its entirety.</li>
 <li><code>yes</code>: Just constantly prints <code>y</code> (or a

@@ -20,10 +20,24 @@
     }
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-AMS_CHTML-full"
-  type="text/javascript"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -202,7 +216,7 @@ communicate with your peers and teammates (both in school and in the
 workplace).</p>
 <p>We’ll spend some time this week looking at <a
 href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> and <span
-class="math inline">\(\LaTeX\)</span> for writing structured text, and a
+class="math inline">\LaTeX</span> for writing structured text, and a
 tool called <a href="https://pandoc.org">Pandoc</a> for sharing and
 distributing that text in formats like PDF and Word.</p>
 <div class="outcomes">
@@ -211,7 +225,7 @@ distributing that text in formats like PDF and Word.</p>
 (e.g., <code>pandoc</code> and VS Code).</li>
 <li><input type="checkbox" />Write plain text documents (including code
 and formulas) using structured markup formats (Markdown and <span
-class="math inline">\(\LaTeX\)</span>).</li>
+class="math inline">\LaTeX</span>).</li>
 <li><input type="checkbox" />Convert plain text documents to different
 formats (e.g., <code>docx</code>).</li>
 <li><input type="checkbox" />Define your own strategy for organizing

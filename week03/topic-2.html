@@ -247,19 +247,19 @@ server</a></li>
 id="toc-creating-folders-and-finding-your-way-around">Creating folders
 and finding your way around</a>
 <ul>
-<li><a href="#eyes-looking-around" id="toc-eyes-looking-around">:eyes:
-Looking around</a></li>
-<li><a href="#hammer_and_wrench-making-a-directory"
-id="toc-hammer_and_wrench-making-a-directory">:hammer_and_wrench: Making
-a directory</a></li>
-<li><a href="#compass-navigating-directories"
-id="toc-compass-navigating-directories">:compass: Navigating
-directories</a></li>
-<li><a href="#pencil2-moving-and-renaming-directories"
-id="toc-pencil2-moving-and-renaming-directories">:pencil2: Moving and
-renaming directories</a></li>
-<li><a href="#wastebasket-removing-directories"
-id="toc-wastebasket-removing-directories">:wastebasket: Removing
+<li><a href="#looking-around" id="toc-looking-around"><span
+class="emoji" data-emoji="eyes">👀</span> Looking around</a></li>
+<li><a href="#making-a-directory" id="toc-making-a-directory"><span
+class="emoji" data-emoji="hammer_and_wrench">🛠️</span> Making a
+directory</a></li>
+<li><a href="#navigating-directories"
+id="toc-navigating-directories"><span class="emoji"
+data-emoji="compass">🧭</span> Navigating directories</a></li>
+<li><a href="#moving-and-renaming-directories"
+id="toc-moving-and-renaming-directories"><span class="emoji"
+data-emoji="pencil2">✏️</span> Moving and renaming directories</a></li>
+<li><a href="#removing-directories" id="toc-removing-directories"><span
+class="emoji" data-emoji="wastebasket">🗑️</span> Removing
 directories</a></li>
 </ul></li>
 </ul>
@@ -280,7 +280,8 @@ first thing we’re going to do is to re-do something that we did last
 week — we’re going to navigate around folder structures and create new
 folders, ultimately to re-create the folder structure you created last
 week.</p>
-<h2 id="eyes-looking-around">:eyes: Looking around</h2>
+<h2 id="looking-around"><span class="emoji" data-emoji="eyes">👀</span>
+Looking around</h2>
 <p>When you connect to a remote computer you’re interacting with a
 program called a “shell”. When you see something that looks like</p>
 <div class="sourceCode" id="cb1"><pre
@@ -304,8 +305,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 on the remote computer was created. What you see may not be
 <em>exactly</em> the same as what is shown here.</p>
 </div>
-<h2 id="hammer_and_wrench-making-a-directory">:hammer_and_wrench: Making
-a directory</h2>
+<h2 id="making-a-directory"><span class="emoji"
+data-emoji="hammer_and_wrench">🛠️</span> Making a directory</h2>
 <p>While <code>bin</code> and <code>Mail</code> are good directories to
 have, they don’t represent what we want to actually keep on our remote
 computer, so let’s start making some of our own folders.</p>
@@ -326,7 +327,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  hello  Mail</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
 </div>
-<p>You just made a new folder :tada:!</p>
+<p>You just made a new folder <span class="emoji"
+data-emoji="tada">🎉</span>!</p>
 <div class="aside">
 <p>One (minor) problem with making folders in our terminal is that we
 can’t use spaces <code>' '</code> in the same way that we could when
@@ -358,8 +360,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="
 <p>The issue with spaces is common to <strong>all</strong> commands on
 the command line, so my advice is to try avoiding their use.</p>
 </div>
-<h2 id="compass-navigating-directories">:compass: Navigating
-directories</h2>
+<h2 id="navigating-directories"><span class="emoji"
+data-emoji="compass">🧭</span> Navigating directories</h2>
 <p>Now that we’ve made a directory, we need to be able to “open” the
 directory. When we used visual file explorers, we “opened” the directory
 (either in a new window or in the same window) by double-clicking on the
@@ -423,8 +425,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href=
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/student/you/hello</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span></span></code></pre></div>
 </div>
-<h2 id="pencil2-moving-and-renaming-directories">:pencil2: Moving and
-renaming directories</h2>
+<h2 id="moving-and-renaming-directories"><span class="emoji"
+data-emoji="pencil2">✏️</span> Moving and renaming directories</h2>
 <p>Sometimes when making a directory you realize that you made the
 directory in the wrong place, or you gave it the wrong name (or
 misspelled the name).</p>
@@ -463,8 +465,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href=
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv ~/hello . <span class="co"># move hello back into *this* directory</span></span></code></pre></div>
 </div>
-<h2 id="wastebasket-removing-directories">:wastebasket: Removing
-directories</h2>
+<h2 id="removing-directories"><span class="emoji"
+data-emoji="wastebasket">🗑️</span> Removing directories</h2>
 <p>Sometimes you don’t need a directory anymore and you want to remove
 it. You can remove directories using two different commands:
 <code>rm</code> and <code>rmdir</code>.</p>

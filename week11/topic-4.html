@@ -84,10 +84,24 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-AMS_CHTML-full"
-  type="text/javascript"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -366,19 +380,20 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
 PS C:\Users\you&gt;</code></pre>
-<p>:tada: you just started and ran a container on your computer!</p>
+<p><span class="emoji" data-emoji="tada">🎉</span> you just started and
+ran a container on your computer!</p>
 <p>When you go back to Docker Desktop, you’ll be able to see that in the
 Containers tab is a container with the image
 <code>hello-world:latest</code> that has “Exited”. This is the container
 you just ran.</p>
-<p>You can technically run it again by pressing the play button
-:arrow_forward: on the right side of the window, but it’s not going to
-do anything because the <code>hello-world</code> image prints to
-standard output, and there is no standard output display in Docker
-Desktop.</p>
+<p>You can technically run it again by pressing the play button <span
+class="emoji" data-emoji="arrow_forward">▶️</span> on the right side of
+the window, but it’s not going to do anything because the
+<code>hello-world</code> image prints to standard output, and there is
+no standard output display in Docker Desktop.</p>
 <p>You can (and probably should) delete this container by clicking on
-the trash can :wastebasket: icon on the far right side of the
-window.</p>
+the trash can <span class="emoji" data-emoji="wastebasket">🗑️</span>
+icon on the far right side of the window.</p>
 </div>
 <p>Hello world is always our classic “let’s try this out for the first
 time” exercise, and while interesting, isn’t really giving us a good
@@ -427,7 +442,7 @@ container.</figcaption>
 this container. Click on it!</p>
 <p>Hey! Look at that! You’re running a web server in this container, and
 your web browser is interacting with the web server in the container.
-:tada:</p>
+<span class="emoji" data-emoji="tada">🎉</span></p>
 <p>This web server actually contains extensive documentation for using
 Docker, so if you’re looking for some further reading about Docker, this
 is one place you can find it.</p>
@@ -440,7 +455,7 @@ going to run <code>pandoc</code> in a container.</p>
 things in a container that has a bunch of stuff configured that you
 can’t do with the base <code>pandoc</code> install, including being able
 to produce PDFs on your Windows or macOS machine without installing
-<span class="math inline">\(\LaTeX\)</span>.</p>
+<span class="math inline">\LaTeX</span>.</p>
 <div class="example">
 <p>We’re going to use <a
 href="https://github.com/dalibo/pandocker">pandocker</a>. Let’s write
@@ -507,7 +522,8 @@ directory) is shared inside the container at <code>/pandoc</code>.</li>
 <p>That’s it for Docker options! The rest are options to
 <code>pandoc</code> that you can read about in the documentation for
 <code>pandoc</code>.</p>
-<p>:tada: You just ran <code>pandoc</code> in a container!</p>
+<p><span class="emoji" data-emoji="tada">🎉</span> You just ran
+<code>pandoc</code> in a container!</p>
 </div>
 <h2 id="further-reading">Further reading</h2>
 <p>You’ve seen two examples of how to use containers, but you might want

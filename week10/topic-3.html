@@ -84,10 +84,24 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-AMS_CHTML-full"
-  type="text/javascript"></script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -325,11 +339,11 @@ your program out at the end.</p>
 <div class="aside">
 <p><code>make</code> is going through the process of building a <a
 href="https://en.wikipedia.org/wiki/Dependency_graph">dependency
-graph</a>: a set of nodes and directed edges <span
-class="math inline">\(G = (V, E)\)</span>, where the nodes are the
-compiled outputs and the instructions for creating them, and the
-directed edges are the way that one compiled output depends on the
-existence of another compiled output.</p>
+graph</a>: a set of nodes and directed edges <span class="math inline">G
+= (V, E)</span>, where the nodes are the compiled outputs and the
+instructions for creating them, and the directed edges are the way that
+one compiled output depends on the existence of another compiled
+output.</p>
 <p>In the example we had above (<code>list.o</code>, <code>set.o</code>,
 and <code>my-app</code>), the dependency graph would look something like
 this:</p>
@@ -592,7 +606,7 @@ variables, the spaces between <code>hello.c</code> and <code>-o</code>
 are from the empty variables between <code>$^</code> and
 <code>-o</code>).</p></li>
 </ol>
-<p>Neat :camera:.</p>
+<p>Neat <span class="emoji" data-emoji="camera">📷</span>.</p>
 <h2 id="using-make-to-build-stuff">Using <code>make</code> to build…
 stuff</h2>
 <p><code>make</code> is great at building code, but <code>make</code>
@@ -648,13 +662,14 @@ class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb21-1">
 </ol>
 <p>Now run <code>make</code> in your directory, and <code>make</code>
 should transform <code>hello.md</code> into <code>hello.html</code>
-using <code>pandoc</code>. Nice :tada:!</p>
+using <code>pandoc</code>. Nice <span class="emoji"
+data-emoji="tada">🎉</span>!</p>
 <p>Now the important bit: make changes to <code>hello.md</code> and
 re-run <code>make</code>. <code>make</code> will detect changes in the
 file (the modified date in the dependency is newer than the created date
 on the target) and will automatically figure out which dependencies need
 to be rebuilt.</p>
-<p>Neat :camera:.</p>
+<p>Neat <span class="emoji" data-emoji="camera">📷</span>.</p>
 <p>Let’s use what we’ve learned to try and turn this into something that
 can do what we did with shell scripting:</p>
 <ol type="1">
