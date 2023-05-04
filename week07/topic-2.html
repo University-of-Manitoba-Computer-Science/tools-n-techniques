@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Getting help</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><strong>Getting help</strong></li>
+<li><a href="topic-3.html">Getting help — Examples</a></li>
+<li><a href="topic-4.html">Digital notebooks</a></li>
+<li><a href="topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Getting help</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#getting-help" id="toc-getting-help">Getting help</a>
+<ul>
+<li><a href="#getting-help-by-running-the-command"
+id="toc-getting-help-by-running-the-command">Getting help by running the
+command</a></li>
+<li><a href="#getting-help-by-reading-manual-pages"
+id="toc-getting-help-by-reading-manual-pages">Getting help by reading
+manual pages</a>
+<ul>
+<li><a href="#what-if-i-dont-know-the-name"
+id="toc-what-if-i-dont-know-the-name">What if I don’t know the
+name?</a></li>
+</ul></li>
+<li><a href="#find-and-assess-the-quality-of-help-online"
+id="toc-find-and-assess-the-quality-of-help-online">Find and assess the
+quality of help online</a>
+<ul>
+<li><a href="#how-to-ask-the-question"
+id="toc-how-to-ask-the-question">How to ask the question</a></li>
+<li><a href="#places-to-look" id="toc-places-to-look">Places to
+look</a></li>
+<li><a href="#assessing-what-you-find"
+id="toc-assessing-what-you-find">Assessing what you find</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="getting-help">Getting help</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Get help about a command by
+running the command.</li>
+<li><input type="checkbox" checked="" />Get help about a command by
+reading manual pages.</li>
+<li><input type="checkbox" checked="" />Find and assess the quality of
+help online.</li>
+</ul>
+</div>
+<p>We’ve all been here: I need to do something (something for an
+assignment, something for work, something for myself) and I just don’t
+know how. Even worse, sometimes we don’t even know what words to use to
+ask for help — how would I even know to ask for help with a tool called
+<code>grep</code>?!.</p>
+<p>We’re going to be primarily looking at getting help with command line
+tools, but we’re also going to take a look at how we can find and assess
+the quality of help online.</p>
+<h2 id="getting-help-by-running-the-command">Getting help by running the
+command</h2>
+<p>So far in this course you’ve been told the names of commands that you
+should run, you’ve been told how you should run those commands, and
+you’ve been told about some new options on the commands you knew that
+change how they behave.</p>
+<p>Getting told how to do those things when we’re getting started is
+important, especially when we’re working in an environment like the
+command line that isn’t inherently <em>discoverable</em>.</p>
+<div class="aside">
+<p>Try putting yourself back in your shoes the very first time you
+opened your terminal. If you hadn’t been told what to do, what would you
+even do? Type in “<code>help</code>”, press <kbd>Enter</kbd> and hope
+for the best?</p>
+<p>Well… try that.</p>
+<p>Depending on the shell you’re using, it <em>might</em> tell you some
+stuff, but it’s, uh, pretty cryptic or entirely not helpful:</p>
+<ul>
+<li><p>Your shell on Aviary (The <a
+href="https://en.wikipedia.org/wiki/Tcsh">TENEX C shell</a>, or
+<code>tcsh</code>) very unhelpfully tells you “You should have someone
+show you some things”. Thanks.</p></li>
+<li><p><a
+href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> (another
+shell) immediately tells you</p>
+<blockquote>
+<p><code>These shell commands are defined internally.</code></p>
+</blockquote>
+<p>What does that mean???</p></li>
+<li><p><a href="https://fishshell.com/">Fish</a> (yet another shell)
+somewhat helpfully opens your web browser (when it can) with readable
+documentation.</p></li>
+</ul>
+<p>Condescending, cryptic, or otherwise, asking your shell for help
+gives you a place to start by telling you about a bunch of commands you
+<em>could</em> run, even with some examples. Some of the commands have
+good names with an obvious meaning, others have names you recognize but
+don’t do what you think (I’m looking at you, <code>kill</code>), and
+others have inexplicable names like <code>compopt</code> or
+<code>stty</code>.</p>
+</div>
+<p>One way we can ask commands to help us out a little bit is by just
+running them. Let’s take a look at a command we’ve been working with for
+a little while now: <code>git</code>.</p>
+<div class="example">
+<p>Enter the <code>git</code> command in your terminal and press
+<kbd>Enter</kbd>:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git <span class="pp">[--</span><span class="ss">version</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">help</span><span class="pp">]</span> [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] <span class="pp">[--</span><span class="ss">html</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">man</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">info</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> <span class="pp">[--</span><span class="ss">no</span><span class="pp">-</span><span class="ss">replace</span><span class="pp">-</span><span class="ss">objects</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">bare</span><span class="pp">]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--git-dir=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>] [--work-tree=<span class="op">&lt;</span>path<span class="op">&gt;</span>] [--namespace=<span class="op">&lt;</span>name<span class="op">&gt;</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> <span class="ex">[</span><span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">These</span> are common Git commands used in various situations:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">start</span> a working area <span class="er">(</span><span class="ex">see</span> also: git help tutorial<span class="kw">)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   <span class="ex">clone</span>             Clone a repository into a new directory</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">init</span>              Create an empty Git repository or reinitialize an existing one</span></code></pre></div>
+<p>When you run <code>git</code> without any arguments or options, it
+doesn’t know what you want it to do, and the most helpful response when
+a command can’t do anything without options or arguments is to print out
+a list of the things that you <em>can</em> do with that command.</p>
+<p>Try this on your own: pick one of the commands that are printed out
+when you run <code>help</code> and see what it does when you don’t pass
+it any arguments or options.</p>
+<div class="aside">
+<p>You might pick a command that just doesn’t seem to do anything (like
+<code>cat</code>). When you’re in a state where a command doesn’t seem
+to be doing anything, you can stop that program from running by pressing
+<kbd>Control</kbd>+<kbd>C</kbd> on your keyboard.</p>
+</div>
+</div>
+<p>Some commands just do what they’re supposed to do what we run them,
+like <code>ls</code>:</p>
+<div class="example">
+<p>Enter the <code>ls</code> command in your terminal and press
+<kbd>Enter</kbd>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span></code></pre></div>
+<p>We knew about that!</p>
+<div class="aside">
+<p>Why is <code>ls</code> different from <code>git</code>? Why does it
+do something without any arguments?</p>
+<p><code>ls</code> <em>can</em> take arguments (not just options, but
+<em>arguments</em>). <code>ls</code> can take a file or directory name
+as an argument, and when you run <code>ls</code> without an argument,
+the file or directory name is implicitly <code>.</code> (the current
+directory):</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> . <span class="co"># is the same as just ls</span></span></code></pre></div>
+<p>We use <code>ls</code> <strong>so often in our current
+directory</strong> that not typing in the extra <kbd>Space</kbd> then
+<kbd>.</kbd> will actually save us time and frustration, so the current
+working directory is the “default” argument to <code>ls</code>.</p>
+</div>
+<p>Now add the options <code>-a</code> for “all” and <code>-l</code> for
+“long”:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">-al</span></span></code></pre></div>
+<p>We knew about that, too!</p>
+<p>Well… what else can <code>ls</code> do?</p>
+<p>Let’s try running <code>ls</code> with a new option:
+<code>--help</code>:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">--help</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> ls <span class="pp">[</span><span class="ss">OPTION</span><span class="pp">]</span>... <span class="pp">[</span><span class="ss">FILE</span><span class="pp">]</span>...                                            </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">List</span> information about the FILEs <span class="er">(</span><span class="ex">the</span> current directory by default<span class="kw">)</span><span class="bu">.</span>       </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Sort</span> entries alphabetically if none of <span class="at">-cftuvSUX</span> nor <span class="at">--sort</span> is specified.  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                                                           </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Mandatory</span> arguments to long options are mandatory for short options too.   </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-a,</span> <span class="at">--all</span>                  do not ignore entries starting with .         </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-A,</span> <span class="at">--almost-all</span>           do not list implied . and ..                  </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">--author</span>               with <span class="at">-l,</span> print the author of each file        </span></code></pre></div>
+<p>OK, cool! Overwhelming! But <em>cool</em>!</p>
+<p>We can see some of the options that we’ve been told about with an
+explanation of what they do, so:</p>
+<pre><code>-a --all            do not ignore entries starting with .</code></pre>
+<p>Remember: files with names starting with a period <code>.</code> are
+hidden when we just used <code>ls</code> by itself.</p>
+<p>Look through the options that are listed in the output from
+<code>ls --help</code> and find some options that could be helpful. One
+I’ll suggest you look at is the <code>--human-readable</code> option:
+when <code>ls</code> prints out file sizes by default in
+<code>ls -l</code>, it’s printing out the file size in <em>bytes</em>.
+The <code>--human-readable</code> option tells <code>ls</code> to print
+out file sizes using a more appropriate unit (like using MB instead of
+printing out millions of bytes).</p>
+</div>
+<p>We’ve seen several commands that run without requiring us to pass any
+options or arguments (file names) like <code>ls</code> and
+<code>find</code>, and some that require us to pass either options or
+“subcommands” like <code>git</code>.</p>
+<p>One program we saw last week was <code>find</code>. Try running
+<code>find</code> with a <code>--help</code> option right now, I’ll
+wait.</p>
+<p>…</p>
+<p>The output here isn’t <em>not</em> helpful. But it’s… not exactly
+super helpful, either. Let’s move on to finding a little bit better help
+for <code>find</code>.</p>
+<h2 id="getting-help-by-reading-manual-pages">Getting help by reading
+manual pages</h2>
+<p>Getting help from the command itself is useful, but a very common
+place to find additional help for programs on the command line are the
+“manual pages”. This is very often shortened to the “man pages” because
+the command that you run to get this information is
+<code>man</code>.</p>
+<div class="aside">
+<p>Documentation. API docs. Comments. What’s the difference between all
+of these things? It’s all information (<a
+href="https://en.wikipedia.org/wiki/Turtles_all_the_way_down">it’s
+information all the way down</a>).</p>
+<dl>
+<dt>Comments</dt>
+<dd>
+What you write to other people (including future you) that describe what
+your code does, explaining or justifying choices you’re making in
+design, or apologizing for the terrible state of your code.
+</dd>
+<dd>
+Comments are embedded within source code, but aren’t source code (you
+don’t run comments).
+</dd>
+<dt>API documentation</dt>
+<dd>
+What you write to other people (including future you) that describe how
+to use your <em>interface</em> in code; how someone should call your
+function or method, what your function or method expects as input, and
+what it will provide as output.
+</dd>
+<dd>
+Usually initially written within source code as specially formatted
+comments in special places (above functions or methods, using special
+syntax like <code>@param</code>).
+</dd>
+<dd>
+Can be turned into web pages (or other documents) using special tools
+(like <code>javadoc</code>). This is usually how you read API
+documentation.
+</dd>
+<dt>Documentation</dt>
+<dd>
+What you write to other people (including future you) the describe how
+to use your program; how someone should run your program, the options
+they can pass to it to change behaviour, the arguments they should pass
+as file names.
+</dd>
+<dd>
+Usually written <em>separately</em> from source code, in a file like
+<code>README.md</code>, with no required format.
+</dd>
+<dd>
+<em>Can</em> be formatted to live in special system places like manual
+pages.
+</dd>
+</dl>
+<p>Comments, API documentation, and more broadly “documentation” are all
+related to each other, telling people about code and programs.</p>
+</div>
+<p>The <code>--help</code> option on <code>find</code> was… fine. Let’s
+take a look at the manual page for <code>find</code>.</p>
+<div class="example">
+<p>Open the manual page for <code>find</code>:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> find</span></code></pre></div>
+<p>This opens documentation for <code>find</code> that is
+<strong>comprehensive</strong>.</p>
+<p>The manual page opens in something called a “pager”. You can use your
+regular navigation keys (<kbd>←</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>, or
+<kbd>→</kbd>), you can press the <kbd>Space</kbd> key to move forward
+one page at a time, or you can use the <kbd>Pg Up</kbd> or <kbd>Pg
+Dn</kbd> keys if your keyboard has them. You can quit the pager by
+pressing <kbd>q</kbd> on your keyboard.</p>
+</div>
+<p>Almost every command you can run on the command line has a
+comprehensive manual page that describes all the options and arguments
+you can pass to the program. Some of the manual pages also give examples
+about how to run the program.</p>
+<p>Let’s step through the manual page for <code>find</code> and take a
+look at the general structure of a manual page.</p>
+<div class="example">
+<p>If you quit the pager, open up the manual page for <code>find</code>
+again.</p>
+<p>Here’s the first line of the manual page:</p>
+<pre><code>FIND(1)                  General Commands Manual                 FIND(1)</code></pre>
+<p>This tells us the name of the command that we’re looking at
+(<code>FIND</code>) and that it’s in section 1 of the manual pages.</p>
+<div class="aside">
+<p>The manual pages have several sections:</p>
+<ol type="1">
+<li>Command line programs that you will use.</li>
+<li>An API for asking the operating system to do stuff (in C; e.g., you
+can do something like <code>man 2 read</code> to learn about how to read
+files at a low level).</li>
+<li>An API for “standard library” calls (in C, like Java JDK API; e.g.,
+you can do something like <code>man 3 fgets</code> to learn about how to
+read files line-by-line).</li>
+<li>Descriptions of special files in Linux (that represent
+<em>hardware</em>! e.g., you can do something like
+<code>man 4 random</code> to learn about how random numbers are
+generated on Linux).</li>
+<li>Descriptions and formats for system configuration files (e.g., you
+can do something like <code>man 5 fstab</code> to learn about how hard
+drives are represented as folders/“mounted”).</li>
+<li>Games.</li>
+<li>Meta descriptions, usually things like concepts or HOWTOs that don’t
+fit into other sections (like <code>man 7 signal</code>, telling you
+about how running programs can communicate with each other).</li>
+<li>System administration commands (usually only for administrative
+users)</li>
+<li>An API for asking the Linux kernel to do stuff (in C).</li>
+</ol>
+<p>You can learn more about this (and other stuff!) by looking at the
+manual page for <code>man</code>, run</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> man <span class="co"># ha ha</span></span></code></pre></div>
+</div>
+<p>Next is the <code>NAME</code> section:</p>
+<pre><code>NAME
+       find - search for files in a directory hierarchy</code></pre>
+<p>This repeats the name of the command that we’re asking about
+(<code>find</code>) and gives us a human-readable description of what
+the command does.</p>
+<p>Next is the <code>SYNOPSIS</code> section:</p>
+<pre><code>SYNOPSIS
+       find  [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...]
+       [expression]</code></pre>
+<p>This describes to us how we can run the command. Anything that’s
+between square brackets (<code>[]</code>) means that this thing is
+<em>optional</em>. Remember that we could run <code>find</code> without
+any arguments, so everything is optional.</p>
+<p>For <code>find</code> specifically, the
+<code>[starting-point...]</code> argument is a list of directories
+(hence the <code>...</code>), we’ve always specified <code>.</code>, but
+you can put any directory in here for <code>find</code> to start
+searching from. The <code>[expression]</code> part is the place where
+we’ve been putting our name pattern (<code>-name "*ananas.md"</code>),
+but can contain a number of other specifiers and tools for filtering
+files, not just by name!</p>
+<p>After the <code>SYNOPSIS</code> is the <code>DESRIPTION</code>. This
+is similar to the brief description in the <code>NAME</code> section,
+but is more detailed:</p>
+<pre><code>DESCRIPTION
+       This manual page documents the GNU version  of  find.   GNU  find
+       searches  the  directory tree rooted at each given starting-point
+       by evaluating the given expression from left to right,  according
+       to  the  rules  of  precedence (see section OPERATORS), until the
+       outcome is known (the left hand side is false for and operations,
+       true for or), at which point find moves on to the next file name.
+       If no starting-point is specified, `.&#39; is assumed.</code></pre>
+<p>Next is the <code>OPTIONS</code> section. This is a comprehensive
+listing of all options that the program accepts, and a description of
+what all of those options mean and do to the behaviour of the program.
+Most of these won’t make any sense (what’s a “symbolic link” and why
+does it seem to be so important???), and that’s OK.</p>
+<p>The part of this manual page that I consider to be the most important
+is the <code>EXPRESSION</code> section:</p>
+<pre><code>EXPRESSION
+       The part of the command line after the list of starting points is
+       the expression.  This is a kind of query specification describing
+       how we match files and what  we  do  with  the  files  that  were
+       matched.</code></pre>
+<p>The <code>EXPRESSION</code> section is
+<strong><em>comprehensive</em></strong> (we keep using that word, but
+its meaning keeps changing to be stuff that’s even bigger). This section
+makes up about half the contents of this manual page!</p>
+<p>This section is also the most important because it describes how you
+filter files and folders. We’re not just limited to names (we can filter
+files that have specific permissions with <code>-perm</code>), and we’re
+not just limited to files (we can specify if we’re looking for
+directories with <code>-type d</code>).</p>
+<p>This section is so long that it’s almost hard to find the next
+section, so we’re going to do a little trick and we’re going to search
+through the manual page!</p>
+<p>Press <kbd>/</kbd> on your keyboard, then type
+“<code>EXAMPLES</code>” and press <kbd>Enter</kbd>. This will search for
+the next appearance of the word “<code>EXAMPLES</code>”. The next
+appearance is <em>probably not</em> the one you’re looking for, so you
+can press <kbd>n</kbd> on your keyboard to get to the next one. Similar
+to the other sections (<code>SYNOPSIS</code>, <code>DESCRIPTION</code>,
+<code>EXPRESSION</code>), the <code>EXAMPLES</code> section starts when
+the word <code>EXAMPLES</code> is by itself on a line. If you go too
+far, you can press <kbd>Shift</kbd>+<kbd>n</kbd> on your keyboard to go
+to the previous appearance of the word you’re looking for.</p>
+<p>Not all manual pages have an <code>EXAMPLES</code> section, but the
+one in the <code>find</code> manual page is great because it shows you
+how you can use <code>find</code> to do specific tasks. They aren’t
+necessarily exactly what you want to do, but they’re detailed enough
+that you can adapt them to what you need.</p>
+</div>
+<p>The manual page for <code>find</code> is exceptionally good. I almost
+never need to search for how to do something with <code>find</code>
+online because of how good the manual page for <code>find</code> is.</p>
+<p>Try looking at the manual pages for some of the other commands that
+you’ve used (<code>ls</code>, <code>grep</code>). How do these manual
+pages compare to <code>find</code>?</p>
+<h3 id="what-if-i-dont-know-the-name">What if I don’t know the
+name?</h3>
+<p>Running the command with no arguments, with <code>--help</code>, or
+using the manual pages is great when you know the name of the command
+that you’re trying to get help with, but what if you don’t know the name
+of the command? Maybe you want to do something and you don’t know what
+command you can use to help you accomplish that. We can actually still
+use the manual pages to help us with this!</p>
+<div class="example">
+<p>The manual page command <code>man</code> has an option
+<code>-k</code> that we can pass to ask it to find manual pages for us
+that contain keywords. This can sometimes help us find commands.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> <span class="at">-k</span> search <span class="co"># I&#39;m looking for something</span></span></code></pre></div>
+<p>The <code>-k</code> option searches through all sections of the
+manual pages, and you can see which section the match is from in the
+parenthesis <code>()</code> immediately after the name of the
+command:</p>
+<pre><code>apropos (1)          - search the manual page names and descriptions
+apt-patterns (7)     - Syntax and semantics of apt search patterns
+badblocks (8)        - search a device for bad blocks
+bsearch (3)          - binary search of a sorted array
+bsearch (3avr)       - (unknown subject)
+bzegrep (1)          - search possibly bzip2 compressed files for a regular expression
+bzfgrep (1)          - search possibly bzip2 compressed files for a regular expression
+bzgrep (1)           - search possibly bzip2 compressed files for a regular expression
+find (1)             - search for files in a directory hierarchy</code></pre>
+<p><code>apropos</code> is in section 1, <code>apt-patterns</code> is in
+section 7, … <code>find</code> is in section 1.</p>
+</div>
+<h2 id="find-and-assess-the-quality-of-help-online">Find and assess the
+quality of help online</h2>
+<p>While we can find help using manual pages, not all manual pages are
+created equally. Not all commands even have manual pages. When the
+manual page isn’t great or doesn’t exist, we sometimes have to resort to
+finding help online.</p>
+<div class="warning">
+<p>Unless you’re given permission from your instructor, you should
+almost never just copy and paste something from online without taking
+the time to understand what it does.</p>
+<p>Not only would copying and pasting something from online without
+previous permission be a form of academic misconduct, depending on what
+you’re copying and pasting, it could also be <a
+href="http://www.h-online.com/security/news/item/Old-tricks-are-new-again-Dangerous-copy-paste-1842898.html">potentially
+dangerous</a> — what you see in your web browser might not actually be
+the same as what gets copied, then pasted.</p>
+</div>
+<h3 id="how-to-ask-the-question">How to ask the question</h3>
+<p>The first part of finding help online is knowing what question to
+ask, and sometimes that’s one of the hardest parts of getting help.</p>
+<p>Asking the right question depends heavily on context, but we’re going
+to focus on asking questions to get help with tasks on the command
+line.</p>
+<p>Here are some suggestions that you can use for coming up with or
+phrasing your question:</p>
+<ul>
+<li>State the end result of what you’re trying to accomplish (I want to
+undo the last commit in my Git repository; I want to be able to change
+into a directory; “I want to” or “I want to be able to” isn’t
+necessary).</li>
+<li>Add the context where you’re trying to accomplish that (on the
+command line; in Linux; on Ubuntu).</li>
+</ul>
+<h3 id="places-to-look">Places to look</h3>
+<p>Your main starting point is a search engine (<a
+href="https://google.com">Google</a>, <a
+href="https://bing.com">Bing</a>, <a
+href="https://duckduckgo.com">DuckDuckGo</a>).</p>
+<p>Sometimes specific websites have search features (<a
+href="https://github.com">GitHub</a>, <a
+href="https://stackoverflow.com">StackOverflow</a>).</p>
+<p>Sometimes the websites that you want to search through don’t have
+very good search features, but do have good resources (<a
+href="https://reddit.com">Reddit</a>). When you’re in this situation,
+you can use regular search engines and use filters to limit your results
+to a specific website.</p>
+<div class="example">
+<p>Open your favourite search engine, and search for some resources on
+how to change permissions on StackOverflow:</p>
+<blockquote>
+<p>remove the execute permission Linux command line
+site:stackoverflow.com</p>
+</blockquote>
+</div>
+<p>Sometimes the combination of keywords you’re using give you too many
+results, but the results aren’t the specific combination of words that
+you want. In situations like that, you can use quotes around words or
+phrases that must be included in the search results:</p>
+<div class="example">
+<p>Again, open your favourite search engine, and search for some
+resources on how to find directories based on when they were modified
+with <code>find</code>:</p>
+<blockquote>
+<p>find directory by name “modified time” linux</p>
+</blockquote>
+</div>
+<h3 id="assessing-what-you-find">Assessing what you find</h3>
+<p>Once you’ve got your question asked, you’re gonna find a bunch of
+stuff. Sometimes the resources you find are high quality (blog posts by
+real people who know their stuff), sometimes it’s good (user-generated
+content on websites like StackOverflow), sometimes it’s bad
+(user-generated content on websites like StackOverflow). Sometimes it’s
+all of the above. Sometimes you’re going to find things like the entire
+contents of manual pages copied and pasted onto a random “blog” that
+does little more than show ads.</p>
+<h4 id="general-approach">General approach</h4>
+<p>We of course can’t give comprehensive advice for every specific
+situation, but we can give some general advice.</p>
+<ol type="1">
+<li><p><strong>Read it!</strong></p>
+<p>You’ve found a resource that has an obvious code fragment or snippet
+in it, and it looks like it <em>could</em> solve the problem that you
+have right now. It’s really tempting to copy and paste that fragment
+right now, but there’s probably also some text around that fragment.
+Read it!</p></li>
+<li><p><strong>Can you understand it? Can you explain it in your own
+words?</strong></p>
+<p>Now that you’ve read it, were you able to understand both what the
+code contains, but also everything else around it? One way to show
+yourself that you understand what it’s saying or what the fragment or
+snippet does is by explaining it to yourself in your own words.</p></li>
+<li><p><strong>Does it work?</strong></p>
+<p>You’ve read it. You understand it (or at least you think you do), now
+let’s see if it actually works.</p>
+<p>One thing to keep in mind here is that you want to make sure it works
+in the specific context that you’re trying to use it in.</p></li>
+<li><p><strong>Where else can you get help?</strong></p>
+<p>OK, so it didn’t work. Or maybe it does work, but you can’t explain
+it to yourself, and can’t realistically write it yourself. Where else
+can you go to get help?</p>
+<p>Depending on the situation, you can go to a few different places:</p>
+<ul>
+<li>If you’re working on an assignment, you can go to your instructor or
+TA, either by visiting during their office hours or sending an e-mail,
+or communicating with them using the ways described in your course
+syllabus.</li>
+<li>If you’re working on your own project, ask in places like
+StackOverflow, student groups like <a
+href="https://umanitobacssa.ca/">CSSA</a>, <a
+href="https://devclub.ca/">.devClub</a> or <a
+href="https://umwics.vercel.app/">WICS</a>, or, if you have specific
+questions about a specific project or library that you’re using, ask the
+developer in places like GitHub.</li>
+<li>If you’re working in a workplace, ask your peers or your
+supervisor.</li>
+</ul></li>
+</ol>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-2.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

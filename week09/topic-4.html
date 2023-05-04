@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Piping</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-AMS_CHTML-full"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Input and output on the command line</a></li>
+<li><a href="topic-3.html">Redirecting input and output</a></li>
+<li><strong>Piping</strong></li>
+<li><a href="topic-5.html">Shell scripts</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Piping</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#piping" id="toc-piping">Piping</a></li>
+</ul>
+</nav>
+<h1 id="piping">Piping</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Send data between programs using
+a pipe.</li>
+</ul>
+</div>
+<figure>
+<img src="pipes.jpg"
+alt="“The Treachery of Images” by Rene Magritte; © C. Herscovici/Artists Rights Society (ARS), New York" />
+<figcaption aria-hidden="true">“The Treachery of Images” by Rene
+Magritte; © <a href="https://collections.lacma.org/node/239578">C.
+Herscovici/Artists Rights Society (ARS), New York</a></figcaption>
+</figure>
+<p>Sometimes we’re redirecting output from one program to a file, then
+redirecting the input of another program using that same file.</p>
+<div class="example">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./program1</span> <span class="op">&gt;</span> outputfrom1.txt <span class="co"># stdout goes to the file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./program2</span> <span class="op">&lt;</span> outputfrom1.txt <span class="co"># stdin comes from the file</span></span></code></pre></div>
+</div>
+<p>This is… fine, but there are two reasons why we want something
+better:</p>
+<ol type="1">
+<li>We do this frequently, so having to type fewer characters is
+helpful.</li>
+<li>We don’t want to waste space by creating all of these temporary
+files.</li>
+</ol>
+<p>We do this <em>so</em> frequently (sending the output from one
+program to be the input to another program) that there’s an operator for
+that: the “pipe”.</p>
+<div class="example">
+<p>We can send the output of one program to be the input of another
+program using pipes (<code>|</code>):</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./program1</span> <span class="kw">|</span> <span class="ex">./program2</span> <span class="co"># stdout from 1 is sent directly to stdin of 2</span></span></code></pre></div>
+</div>
+<p>When you can use pipes, pipes are almost always better:</p>
+<ul>
+<li>You don’t create extra files that you need to worry about deleting
+later.</li>
+<li>You only enter one line in your terminal instead of many lines.</li>
+<li>Pipes <em>can</em> be faster :rabbit:, the programs on either side
+of the pipe run at the same time, unlike with simple redirection where
+you run one program, then the other.</li>
+</ul>
+<p>A frequent use of pipes is to send the output of one command to a
+<em>pager</em> (not like <a
+href="https://en.wikipedia.org/wiki/Pager">:pager:</a>, but more like
+:book:) like <code>less</code>.</p>
+<div class="aside">
+<p>Pagers (or “<a
+href="https://en.wikipedia.org/wiki/Terminal_pager">Terminal
+pagers</a>”) are programs that will show you one “page” of text from a
+text file at a time. They allow you to scroll through a text file,
+either line by line or by page.</p>
+<p>An early pager is called <a
+href="https://en.wikipedia.org/wiki/More_(command)"><code>more</code></a>.
+<code>more</code> was originally released in 1978, and has limited
+paging functionality, you could only move forward one page at a time
+(modern versions of <code>more</code> let you go backwards and moving
+one line at a time, see the manual page for <code>more</code> to find
+out what else it can do).</p>
+<p>A newer pager (barely) is called <a
+href="https://en.wikipedia.org/wiki/Less_(Unix)"><code>less</code></a>.
+<code>less</code> was originally released in 1984 and has extensive
+improvements over <code>more</code>. <code>less</code> implements
+everything you can do in <code>more</code>, but adds <em>more</em>
+functionality like going backwards.</p>
+<p>As always, explained jokes are the funniest, and the joke here is
+that <code>less</code> <em>is</em> <code>more</code>.</p>
+</div>
+<p>You’ve used <code>less</code> before already: <code>less</code> is
+the default pager when you’re reading manual pages.</p>
+<p><code>less</code> and all pagers can be used to read the contents of
+a file:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> my.md <span class="co"># page through my.md</span></span></code></pre></div>
+<p>As a pager, <code>less</code> is read only, but if you do need to
+make changes to the file, you can ask <code>less</code> to start your
+editor by pressing <kbd>v</kbd> on your keyboard.</p>
+<p>Another common use of <code>less</code> and other pages is to page
+through output from another program.</p>
+<div class="example">
+<p>You can send the output of one program to the input of
+<code>less</code> and other pagers using pipes:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-R</span> /usr/share/dict/words <span class="kw">|</span> <span class="fu">less</span></span></code></pre></div>
+<p>This will sort (using the appropriately named <code>sort</code>
+command) randomly (<code>-R</code>) the list of words in
+<code>/usr/share/dict/words</code>. <code>sort</code> will write it’s
+output to standard output. <code>less</code> is on the other side of the
+pipe and will read from standard input. The pipe here will send the
+standard output from <code>sort</code> to be the standard input for
+<code>less</code>.</p>
+<p>Just like with manual pages, you can quit less by pressing
+<kbd>q</kbd> on your keyboard.</p>
+</div>
+<p>A single command in your shell is not limited to just one pipe. With
+redirections, you could only redirect one program’s standard output or
+standard input. We can actually chain more than two programs together
+using pipes to build complex “pipelines” of data.</p>
+<div class="example">
+<p>Here’s a still contrived, but slightly more complex pipeline
+consisting of four separate commands:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-R</span> /usr/share/dict/words <span class="kw">|</span> <span class="fu">head</span> <span class="at">-5</span> <span class="kw">|</span> <span class="fu">less</span></span></code></pre></div>
+<p>Here’s what this does:</p>
+<ul>
+<li><code>sort</code> reads the file <code>/usr/share/dict/words</code>,
+sorts the lines randomly (<code>-R</code>) and writes to standard
+output. Standard output is the pipe and the data is sent to
+<code>head</code>.</li>
+<li><code>head</code> reads standard input (which is the piped data from
+<code>sort</code>) and prints out the first 5 lines (<code>-5</code>) to
+standard output. <code>head</code>’s standard output is the second pipe
+and the data is sent to <code>less</code>.</li>
+<li><code>less</code> reads standard input (which is the piped data from
+<code>head</code>) and prints out (yes, prints out) to standard output
+(yes, to standard output) the interface you see when interacting with
+<code>less</code>.</li>
+</ul>
+</div>
+<p>Some commands you may frequently see in pipelines include:</p>
+<ul>
+<li><code>head</code>: Reads standard input (or a file) and prints the
+first <span class="math inline">\(n\)</span> lines it reads to standard
+output.</li>
+<li><code>tail</code>: Reads standard input (or a file) and prints the
+last <span class="math inline">\(n\)</span> lines it reads at the end of
+the “file” to standard output.</li>
+<li><code>cat</code>: Reads standard input (or a file) and prints out
+the file in its entirety.</li>
+<li><code>yes</code>: Just constantly prints <code>y</code> (or a
+different string you give to it) to standard output.</li>
+<li><code>sort</code>: Reads standard input (or a file) and prints the
+output in the sorted order you specify to standard output.</li>
+<li><code>grep</code>: Reads standard input (or a file, like you’ve
+seen) and prints out lines from the file that match a pattern to
+standard output</li>
+<li><code>uniq</code>: Reads standard input (or a file), and prints out
+only non-repeated adjacent lines to standard output.</li>
+<li><code>less</code>: A pager!</li>
+<li><code>wc</code>: “Word count”; Reads standard input (or a file), and
+prints out the number of lines, words, or bytes (characters) read to
+standard output.</li>
+<li><code>tee</code>: Reads standard input (and <strong>not</strong> a
+file), and prints output to both standard output and the file you
+specify by name.</li>
+</ul>
+<p>Any program you write that reads standard input and writes to
+standard output can be used in a pipeline, too!</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-4.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Filtering lines</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Finding files</a></li>
+<li><strong>Filtering lines</strong></li>
+<li><a href="topic-4.html">Reading and changing permissions</a></li>
+<li><a href="topic-5.html">Comparing plain text files</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Filtering lines</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#filter-lines-from-large-text-files"
+id="toc-filter-lines-from-large-text-files">Filter lines from large text
+files</a>
+<ul>
+<li><a href="#getting-some-data" id="toc-getting-some-data">Getting some
+data</a></li>
+<li><a href="#basic-use" id="toc-basic-use">Basic use</a></li>
+<li><a href="#counting-lines" id="toc-counting-lines">Counting
+lines</a></li>
+<li><a href="#showing-lines-around-the-matching-lines"
+id="toc-showing-lines-around-the-matching-lines">Showing lines around
+the matching lines</a></li>
+<li><a href="#filtering-recursively"
+id="toc-filtering-recursively">Filtering recursively</a></li>
+<li><a href="#printing-matching-line-numbers"
+id="toc-printing-matching-line-numbers">Printing matching line
+numbers</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="filter-lines-from-large-text-files">Filter lines from large text
+files</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Filter lines from large text
+files using patterns.</li>
+</ul>
+</div>
+<p>We’re going to switch away from <code>find</code>, but we’re going to
+stick with the general theme of using patterns. Another relatively
+common task is to find lines <em>within</em> a plain text file that
+match a certain pattern.</p>
+<p>Depending on which courses you’re taking or have taken, this might be
+a task where you would consider using a loop, but we’re going to take
+advantage of a tool that’s available on the command line:
+<code>grep</code>.</p>
+<div class="aside">
+<p>What on earth does <code>grep</code> mean?!</p>
+<p>Computer Scientists and programmers are bad at naming things (maybe
+because it’s a “<a
+href="https://www.martinfowler.com/bliki/TwoHardThings.html">hard
+thing</a>”). Maybe it is hard, but we’re still bad at naming things, and
+<a href="https://youtu.be/4mcD5jd-RAU?t=34">we should feel bad</a>.</p>
+<p>I’m digressing. The name <code>grep</code> <a
+href="https://en.wikipedia.org/wiki/Grep">comes from a command in the
+<code>ed</code> editor</a> that would “<strong>g</strong>lobally search
+for a <strong>r</strong>egular <strong>e</strong>pression and
+<strong>p</strong>rint matching lines”.</p>
+<p>An unfortunate theme among useful programs in Unix and Unix-like
+operating systems (like Linux) is that their names aren’t
+discoverable.</p>
+</div>
+<p>Just finding the lines that match a pattern in a file can be useful,
+but we’re going to look at a few options for <code>grep</code> that can
+help give some additional information or context about what we’re
+looking for:</p>
+<ul>
+<li>Basic use: printing out matching lines.</li>
+<li>An option to count the number of matching lines.</li>
+<li>An option to show lines around the line we’re looking for.</li>
+<li>An option to search files recursively.</li>
+<li>An option to print the line number that matches the pattern.</li>
+</ul>
+<h2 id="getting-some-data">Getting some data</h2>
+<p>Let’s start with a large text file.</p>
+<div class="aside">
+<p>The example we’re going to be using here is genetic sequence data.
+Similar to how Computer Scientists and programmers are bad at naming
+things, biologists and microbiologists are bad at storing things and
+they use plain text formats to store genetic sequence data. That’s
+actually really convenient for us because it gives a realistic data set
+to work with.</p>
+<p>Don’t worry: you don’t need to be a biologist or microbiologist to
+follow along.</p>
+</div>
+<p>Download this file from <a
+href="https://www.ncbi.nlm.nih.gov/">NCBI</a> to your user directory on
+Aviary (use <code>wget</code> or <code>curl</code>):</p>
+<pre><code>https://ftp.ncbi.nlm.nih.gov/genomes/Viruses/MonkeyPox.fn</code></pre>
+<p>Once you’ve downloaded the file, feel free to take a look at it using
+your preferred text editor on Aviary (e.g., <code>vim</code>,
+<code>nano</code>, <code>emacs</code>). This is a <a
+href="https://en.wikipedia.org/wiki/FASTA_format">FASTA-formatted
+file</a>. A FASTA-formatted file contains 1 or more “records”, where a
+record will have a unique identifier that’s meaningful to a biologist or
+microbiologist, and then the sequence data that corresponds to that
+identifier. Records look like this:</p>
+<pre><code>&gt;unique identifier
+CTCTTTCTCTCTTCGATGGGTCTCACAAAAATATTAAACCTCTTTCTGATGGAGTCGTAAAAAGTTTTTA
+TCCTTTCTCTCTTCGA</code></pre>
+<p>The file you just downloaded is about 15MB in size (there are about
+15 million characters in this file), so doing things like counting
+records is not something we want to do by hand.</p>
+<h2 id="basic-use">Basic use</h2>
+<p>Let’s start using <code>grep</code> to filter and print out lines
+that match a certain pattern.</p>
+<div class="example">
+<p>From our crash course on FASTA-formatted files, we know that records
+have unique identifiers, and the lines with unique identifiers contain
+or start with the <code>&gt;</code> character. Let’s use that as our
+filter:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;&gt;&#39;</span> MonkeyPox.fn <span class="co"># print all lines in MonkeyPox.fn that</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># contain the &gt; character</span></span></code></pre></div>
+<p>This will print out a bunch of lines (we’ll find out how many real
+soon!), and all the lines contain the pattern <code>&gt;</code>.</p>
+<p>We can actually be more precise with what we want by using an
+“anchor” for our pattern. Records start with lines where the
+<strong>first character</strong> on the line is <code>&gt;</code>. In
+most FASTA-formatted files, the only place where the <code>&gt;</code>
+character appears is on the unique identifier line, but it’s possible
+for it to appear in other places, too.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print all lines in MonkeyPox.fn that</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># **start with** the &gt; character</span></span></code></pre></div>
+<p>The <code>^</code> (caret, I prefer “hat”) is an “anchor”: “From the
+start of the line”.</p>
+</div>
+<h2 id="counting-lines">Counting lines</h2>
+<p>Seeing the lines that match the pattern is useful, but we may also
+want to know other stuff, like how many lines matched the pattern.
+Thankfully, <code>grep</code> has an option to help us with that:
+<code>-c</code>.</p>
+<div class="example">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># count the lines in MonkeyPox.fn that</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># start with the &gt; character</span></span></code></pre></div>
+<p>This prints out <em>only a number</em>, and the number represents how
+many lines matched the pattern.</p>
+<p>For <code>MonkeyPox.fn</code>, this tells us how many records are in
+this file.</p>
+</div>
+<h2 id="showing-lines-around-the-matching-lines">Showing lines around
+the matching lines</h2>
+<p>We can ask <code>grep</code> to find lines that match patterns, and
+we can also ask <code>grep</code> to show us the lines that are around
+(before and after) the line that matches the pattern. <code>grep</code>
+calls this “context”.</p>
+<div class="example">
+<p>We can print the lines that match the pattern, plus the lines
+immediately after those using the <code>-A</code> option (after):</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifier and</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines of sequence data after it.</span></span></code></pre></div>
+<p>Similarly, we can print the lines that match the pattern, plus the
+lines immediately <em>before</em> those using the <code>-B</code> option
+(before):</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifier and</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines of sequence data before it.</span></span></code></pre></div>
+<p>We can do both at the same time with the <code>-C</code> option (this
+is upper-case C, for “context”):</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-C</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifer and both</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines before and after it.</span></span></code></pre></div>
+</div>
+<h2 id="filtering-recursively">Filtering recursively</h2>
+<p>Sometimes you want to search many files in the same directory for a
+pattern, either because you don’t know which file contains the lines
+you’re looking for, or because your data is spread across many
+files.</p>
+<p>We’ve seen a “recursive” command before in week 3:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> hello <span class="co"># recursively remove hello and everything within it</span></span></code></pre></div>
+<p>The <code>grep</code> command also has a recursive option, and it’s
+also <code>-r</code>!</p>
+<div class="example">
+<p>Switch back to <code>crazy-directories</code>. We were able to use
+<code>find</code> to help us find files that have names matching a
+pattern. Now we want to use <code>grep</code> to find files that contain
+a specific pattern.</p>
+<p>Emoji short codes all follow the same pattern: A colon, followed by
+some characters, followed by another colon. Here are some emoji and
+their short codes:</p>
+<ul>
+<li><code>:banana:</code> :banana:</li>
+<li><code>:robot:</code> :robot:</li>
+<li><code>:sparkles:</code> :sparkles:</li>
+</ul>
+<p>We can use <code>grep</code> recursively to find all files that
+contain one or more lines matching the pattern <code>:*:</code> (a
+colon, followed by any number of characters, followed by another
+colon).</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="st">&quot;:*:&quot;</span> <span class="co"># note no filename!</span></span></code></pre></div>
+<p>Depending on the state you’re in, this is probably going to print out
+a few more files than you expected, including <code>.docx</code>
+files.</p>
+<div class="aside">
+<p>Let’s talk about what <code>.docx</code> files are: they’re secretly
+a <code>.zip</code> file. Remember how to <code>unzip</code>
+<code>.zip</code> files? That’s right! <code>unzip</code>!</p>
+<p>Go ahead, change into a directory containing one of the
+<code>.docx</code> files you created in <code>crazy-directories</code>
+and <code>unzip</code> it:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> robot.md.docx</span></code></pre></div>
+<p>There are going to be a bunch of new files in the directory that are
+mostly <code>.xml</code> files. XML is a “markup” language, sort of like
+Markdown.</p>
+<p>Try running <code>grep</code> again recursively on this again and
+you’ll see that we’re not just matching emoji short codes anymore, but a
+bunch of weird looking XML. Neat :camera:.</p>
+</div>
+</div>
+<h2 id="printing-matching-line-numbers">Printing matching line
+numbers</h2>
+<p>Knowing the name of the file containing the line that matches your
+pattern is often enough, but <code>grep</code> can help you out a little
+more by telling you exactly the line number that matched the pattern.
+You can ask <code>grep</code> to tell you this using the <code>-n</code>
+option.</p>
+<div class="example">
+<p>If you left the root of <code>crazy-directories</code>, change back
+to it.</p>
+<p>Let’s find all files that contain the pattern <code>:*:</code> again,
+but we’ll ask for <code>grep</code> to print out the line numbers:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;:*:&quot;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="at">-n</span> <span class="st">&quot;:*:&quot;</span></span></code></pre></div>
+<p><em>Some</em> command line tools will allow you to combine options
+after a single <code>-</code> (so <code>-r -n</code> turns into
+<code>-rn</code>).</p>
+</div>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

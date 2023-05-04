@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Getting help — Examples</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Getting help</a></li>
+<li><strong>Getting help — Examples</strong></li>
+<li><a href="topic-4.html">Digital notebooks</a></li>
+<li><a href="topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Getting help — Examples</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#example-using-find-to-match-multiple-patterns"
+id="toc-example-using-find-to-match-multiple-patterns">Example: using
+<code>find</code> to match multiple patterns</a></li>
+<li><a href="#example-find-the-length-of-an-array-in-c"
+id="toc-example-find-the-length-of-an-array-in-c">Example: find the
+length of an array in C</a></li>
+</ul>
+</nav>
+<p>These are contrived examples, but let’s step through how we might
+approach getting help on the command line through getting and assessing
+the quality of help online.</p>
+<h1 id="example-using-find-to-match-multiple-patterns">Example: using
+<code>find</code> to match multiple patterns</h1>
+<p>Last week we used <code>find</code> for a few different reasons: to
+help us find all files matching a pattern, to delete those files, and to
+run commands on those files.</p>
+<p>In one situation we wanted to delete both <code>docx</code> and
+<code>pdf</code> files from our repositories.</p>
+<p>Let’s ignore the first step: We know that running <code>find</code>
+by itself will just print out the names of all files in the current
+directory and below, so there’s no point trying with that.</p>
+<p>Can <code>find --help</code> help us?</p>
+<div class="output">
+<pre><code>Usage: find [-H] [-L] [-P] [-Olevel] [-D debugopts] [path...] [expression]
+
+default path is the current directory; default expression is -print                       
+expression may consist of: operators, options, tests, and actions:
+operators (decreasing precedence; -and is implicit where no others are given):            
+      ( EXPR )   ! EXPR   -not EXPR   EXPR1 -a EXPR2   EXPR1 -and EXPR2                   
+      EXPR1 -o EXPR2   EXPR1 -or EXPR2   EXPR1 , EXPR2                                    
+positional options (always true): -daystart -follow -regextype                            
+
+normal options (always true, specified before other expressions):                         
+      -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf                      
+      --version -xdev -ignore_readdir_race -noignore_readdir_race                         
+tests (N can be +N or -N or N): -amin N -anewer FILE -atime N -cmin N                     
+      -cnewer FILE -ctime N -empty -false -fstype TYPE -gid N -group NAME                 
+      -ilname PATTERN -iname PATTERN -inum N -iwholename PATTERN -iregex PATTERN          
+      -links N -lname PATTERN -mmin N -mtime N -name PATTERN -newer FILE                  
+      -nouser -nogroup -path PATTERN -perm [-/]MODE -regex PATTERN                        
+      -readable -writable -executable        
+      -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N                    
+      -used N -user NAME -xtype [bcdpfls]      -context CONTEXT                           
+
+actions: -delete -print0 -printf FORMAT -fprintf FILE FORMAT -print                       
+      -fprint0 FILE -fprint FILE -ls -fls FILE -prune -quit                               
+      -exec COMMAND ; -exec COMMAND {} + -ok COMMAND ;                                    
+      -execdir COMMAND ; -execdir COMMAND {} + -okdir COMMAND ;                           </code></pre>
+</div>
+<p>Actually yeah, maybe. It tells us one important thing: expressions
+aren’t just one “<code>-name</code>” and a pattern. Expressions are
+kinda closely related to something we’ve seen in programming: they’re
+Boolean expressions that can have groupings with parentheses
+<code>()</code>, negation with <code>!</code> or <code>-not</code>,
+AND-ing with <code>-a</code> or <code>-and</code>, OR-ing with
+<code>-o</code> or <code>-or</code>. We want to find files that have a
+name matching <code>.docx</code> or <code>.pdf</code>, so let’s try:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="st">&quot;*.pdf&quot;</span></span></code></pre></div>
+<p>… that didn’t work, and the message that <code>find</code> prints out
+isn’t exactly helpful.</p>
+<p>Right, let’s try the manual page, then:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> find <span class="co"># or man 1 find</span></span></code></pre></div>
+<p>I think I know I want to use the <code>-or</code> option, that’s
+literally what my question is, so I’ll search for it by typing
+<kbd>/</kbd>, typing <code>-or</code>, then pressing
+<kbd>Enter</kbd>.</p>
+<p>The thing that I immediately see when I do this is:</p>
+<pre><code>expr1 -or expr2
+       Same as expr1 -o expr2, but not POSIX compliant.</code></pre>
+<p>This… actually maybe isn’t not helpful: it’s telling me that
+<code>-or</code> requires <em>two</em> expressions around it. When I
+think back to <code>find . -name "*.docx"</code> and the
+<code>-name "*.docx"</code> being the expression part of the command,
+it’s a hint that maybe I can have <em>two</em> <code>-name</code>
+expressions, one on each side of the <code>-or</code>.</p>
+<p>Let’s keep looking through the manual page. I’m going to press
+<kbd>n</kbd> on my keyboard to find the next instance of
+<code>-or</code>. It’s in the examples section. Its hard to decipher,
+but it does seem helpful:</p>
+<pre><code>Given the following directory of projects and their associated  SCM  ad‐
+ministrative  directories, perform an efficient search for the projects&#39;
+roots:
+
+  $ find repo/ \
+      \( -exec test -d &#39;{}/.svn&#39; \; \
+      -or -exec test -d &#39;{}/.git&#39; \; \
+      -or -exec test -d &#39;{}/CVS&#39; \; \
+      \) -print -prune
+
+Sample output:
+
+  repo/project1/CVS
+  repo/gnu/project2/.svn
+  repo/gnu/project3/.svn
+  repo/gnu/project3/src/.svn
+  repo/project4/.git</code></pre>
+<p>This example does more than I want, but it confirms what I thought
+before: you can put multiple expressions (e.g., <code>-name</code>)
+around <code>-or</code>. Let’s try that:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="at">-name</span> <span class="st">&quot;*.pdf&quot;</span></span></code></pre></div>
+<p>It works! Or at least it doesn’t give us an error. We deleted all
+those files last time, so it’s hard to say if it works.</p>
+<p>Re-generate those files using what you learned last week
+(<code>-exec</code>), and confirm if this command does indeed find those
+files.</p>
+<p>Now let’s try delete those files using the same approach:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="at">-name</span> <span class="st">&quot;*.pdf&quot;</span> <span class="at">-delete</span></span></code></pre></div>
+<p>Uh, that sort of worked. Run that command again without
+<code>-delete</code>. Let’s check the manual page again for
+<code>-delete</code>. You can search for <code>-delete</code> with
+<kbd>/</kbd>, but you have to press <kbd>n</kbd> multiple times to get
+to the option’s documentation:</p>
+<pre><code>-delete
+      Delete files; true if removal succeeded.  If the removal failed, an  er‐
+      ror  message  is  issued.   If -delete fails, find&#39;s exit status will be
+      nonzero (when it eventually exits).  Use of -delete automatically  turns
+      on the `-depth&#39; option.
+
+      Warnings: Don&#39;t forget that the find command line is evaluated as an ex‐
+      pression, so putting -delete first will make find try to  delete  every‐
+      thing below the starting points you specified.  When testing a find com‐
+      mand line that you later intend to use with -delete, you should  explic‐
+      itly  specify -depth in order to avoid later surprises.  Because -delete
+      implies -depth, you cannot usefully use -prune and -delete together.</code></pre>
+<p>This is a lot, but it does tell us (implicitly) why this didn’t work:
+<code>the find command line is evaluated as an expression</code>. This
+tells me that <code>find</code> is only applying <code>-delete</code> to
+the right side of <code>-or</code>.</p>
+<p>Wow. This is really taking a long time. I’m going to give up with the
+manual page (<mark>Note</mark>: We could actually piece together what we
+need with the parts of the manual pages we’ve seen already, but it’s not
+immediately obvious).</p>
+<p>I’ll open my search engine and search:</p>
+<blockquote>
+<p>find delete with multiple extensions</p>
+</blockquote>
+<p>and my top result is on StackOverflow:</p>
+<p><a
+href="https://stackoverflow.com/questions/20617513/using-find-command-to-delete-multiple-extensions-older-than-certaint-time"
+class="uri">https://stackoverflow.com/questions/20617513/using-find-command-to-delete-multiple-extensions-older-than-certaint-time</a></p>
+<p>The question is “Using find command to delete multiple extensions
+older than certaint(sic) time”, and the question itself has an example
+command that <em>doesn’t include <code>-delete</code></em>.</p>
+<p>Looking at the accepted answer, even if it doesn’t include the
+<code>-delete</code> option, gives me a hint on something new to try:
+parenthesis.</p>
+<p>I remember this from basic Boolean expressions, we can combine or set
+precedence for an entire expression by wrapping it with parenthesis.
+Maybe that means that increasing precedence for the whole
+<code>-or</code> expression with <code>find</code> will have the
+<code>-delete</code> apply to the entire thing. The accepted answer also
+copies part of the manual page explaining why I need to put
+<code>\</code> in front of the parenthesis, nice!</p>
+<p>Let’s try this. Start by regenerating your <code>.docx</code> and
+<code>.pdf</code> files, then:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="dt">\(</span> <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="at">-name</span> <span class="st">&quot;*.pdf&quot;</span> <span class="dt">\)</span> <span class="at">-delete</span></span></code></pre></div>
+<p>:tada:, it works!</p>
+<h1 id="example-find-the-length-of-an-array-in-c">Example: find the
+length of an array in C</h1>
+<p>This isn’t a programming course, but let’s see what we can find about
+finding the length of an array in C.</p>
+<p>We uh, can’t run a command here, so we can immediately skip both
+steps of running the command by itself, and running the command with
+<code>--help</code>. We also have no idea what the command is
+(<code>.length</code> in Java is not even a method!).</p>
+<p>Let’s try using the search feature in the manual pages:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> <span class="at">-k</span> array length</span></code></pre></div>
+<p>We do actually find some <em>interesting</em> things, but they aren’t
+helpful:</p>
+<pre><code>bsearch (3)          - binary search of a sorted array                                                                                                                              
+cciss (4)            - HP Smart Array block driver                                                                                                                                  
+ftruncate (2)        - truncate a file to a specified length                                                                                                                        
+ftruncate64 (2)      - truncate a file to a specified length 
+...
+strcspn (3)          - get length of a prefix substring                                   
+strlen (3)           - calculate the length of a string                                   
+strnlen (3)          - determine the length of a fixed-size string                        
+strspn (3)           - get length of a prefix substring</code></pre>
+<p><code>strlen</code> or <code>strnlen</code> are actually <em>sort
+of</em> related to what we’re looking for, but I’m trying to calculate
+the length of an array of integers. Let’s forget about the manual
+pages.</p>
+<p>Here are two results that I get when I search for “find array length
+in C”:</p>
+<ul>
+<li><a
+href="https://www.knowprogram.com/c-programming/find-length-of-array-in-c/"
+class="uri">https://www.knowprogram.com/c-programming/find-length-of-array-in-c/</a></li>
+<li><a
+href="https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c"
+class="uri">https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c</a></li>
+</ul>
+<p>Let’s focus on the StackOverflow post. The most upvoted answer, with
+more than 1500 upvotes, and the one that’s marked as correct seems to
+have a very short and to the point example of how you find the length of
+an array in C. I’m itching to copy and paste that fragment into my code
+(modifying it to use the name of my array, of course), but I can see
+that there’s more text below. Let’s read. It seems to make sense! I even
+think I can explain this in my own words (<code>sizeof</code> tells me
+how many bytes an entire array has, and can also tell me how many bytes
+one element is, so I can divide the number of bytes in the array by the
+number of bytes of one element and get the size of the array. Neat
+:camera:.)</p>
+<p>Right, let’s copy it and see if it works.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> array<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> size <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>array<span class="op">)</span> <span class="op">/</span> <span class="kw">sizeof</span><span class="op">(</span>array<span class="op">[</span><span class="dv">0</span><span class="op">]);</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;array size is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>I compile and run my program
+(<code>clang array_size.c -o array_size</code>) and it works! Yes!</p>
+<p>But then I also remember that I need to do this in a function:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> do_stuff<span class="op">(</span><span class="dt">int</span> my_array<span class="op">[])</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> size <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>my_array<span class="op">)</span> <span class="op">/</span> <span class="kw">sizeof</span><span class="op">(</span>my_array<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;array size is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>I compile and run my program… and it doesn’t work? If you keep
+reading the StackOverflow thread, the very replies to this tell you to
+keep reading. When you read the next answer, it tells you more about why
+this won’t work, and how you should pass arrays and their size to
+functions in C.</p>
+<p>The second link is worse than the StackOverflow post because it
+doesn’t explain why this doesn’t work at all.</p>
+<p>This example is contrived, but is a common example of an issue you
+can run into when finding help online.</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Redirecting input and output</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Input and output on the command line</a></li>
+<li><strong>Redirecting input and output</strong></li>
+<li><a href="topic-4.html">Piping</a></li>
+<li><a href="topic-5.html">Shell scripts</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Redirecting input and output</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#redirecting-input-and-output"
+id="toc-redirecting-input-and-output">Redirecting input and output</a>
+<ul>
+<li><a href="#redirecting-standard-output"
+id="toc-redirecting-standard-output">Redirecting standard
+output</a></li>
+<li><a href="#redirecting-standard-error"
+id="toc-redirecting-standard-error">Redirecting standard error</a></li>
+<li><a href="#redirecting-standard-input"
+id="toc-redirecting-standard-input">Redirecting standard input</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="redirecting-input-and-output">Redirecting input and output</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Redirect the output from a
+program to a file.</li>
+<li><input type="checkbox" checked="" />Redirect a file to be the input
+for a program.</li>
+</ul>
+</div>
+<p>We can “redirect” input and output streams:</p>
+<ul>
+<li>Instead of standard input being our keyboard, we can have the input
+our program reads be the contents of a file.</li>
+<li>Instead of standard output and error being our terminal, we can have
+our program’s output be written to a file.</li>
+</ul>
+<p>We can do this using a little bit of help from our shell :shell:.</p>
+<h2 id="redirecting-standard-output">Redirecting standard output</h2>
+<p>Redirecting standard output can be useful when you need to save what
+a program prints for output and the program doesn’t support options for
+writing directly to a file. It’s also useful when you’ve got a program
+that produces <em>lots</em> of output and you want to be able to search
+through it later with programs like <code>grep</code>, or review the
+output with a pager like <code>less</code>.</p>
+<p>Almost all shells use the same operator for redirecting standard
+output from a process to a file: <code>&gt;</code></p>
+<div class="example">
+<p>You can redirect standard output from a program using the
+<code>&gt;</code> operator:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find supports writing to files with `-fprint`, but this is way easier</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="op">&gt;</span> all-mds.txt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pandoc supports writing to files with `-o`, but we can still redirect output</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> man my.md <span class="op">&gt;</span> my.man</span></code></pre></div>
+</div>
+<p>When you redirect to a file with <code>&gt;</code>, if the file
+previously existed, its contents will be overwritten with the contents
+of standard output. Sometimes this is what you want, but sometimes it’s
+not. Sometimes you want to append to the existing contents of the file,
+and you can do that with <em>two</em> greater-than signs:
+<code>&gt;&gt;</code></p>
+<div class="example">
+<p>You can redirect standard output from a program and append the output
+to an existing file using the <code>&gt;&gt;</code> operator:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># append new output to what&#39;s already in all-mds.txt</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="op">&gt;&gt;</span> all-mds.txt</span></code></pre></div>
+</div>
+<h2 id="redirecting-standard-error">Redirecting standard error</h2>
+<p>Redirecting standard error is… uncommon to want to do. The usefulness
+of redirecting standard error is similar to redirecting standard output:
+when you want to save what was written as errors or if the program
+produces lots of error output that you want to filter or review
+later.</p>
+<p>Different shells use different operators to redirect standard
+error:</p>
+<ul>
+<li><p>In <a href="https://www.gnu.org/software/bash/">Bash</a>, <a
+href="http://gondor.apana.org.au/~herbert/dash/">Dash</a>, <a
+href="https://www.zsh.org/">Zsh</a>, <a
+href="https://fishshell.com">fish</a>, and more, redirecting standard
+error uses the operator <code>2&gt;</code>.</p>
+<div class="example">
+<p>We use the <code>2&gt;</code> operator to redirect standard error in
+some shells:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./error-program</span> <span class="dv">2</span><span class="op">&gt;</span> errors.txt</span></code></pre></div>
+</div></li>
+<li><p>In <a href="https://www.tcsh.org/">Tcsh</a> and <a
+href="https://github.com/freebsd/freebsd-src/tree/main/bin/csh">csh</a>…
+well, you can’t <em>directly</em> redirect standard error. You can,
+however redirect standard output by itself in a “subshell”, then
+redirect what’s left (which is only standard error)<a href="#fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>:</p>
+<div class="example">
+<p>We use “subshells” and the <code>&gt;&amp;</code> operator to
+redirect standard error to a file:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">./error-program</span> <span class="op">&gt;</span> /dev/tty<span class="kw">)</span> <span class="op">&gt;&amp;</span> error.txt</span></code></pre></div>
+<div class="aside">
+<p>What on earth is going on here?</p>
+<p>The parenthesis <code>()</code> creates a “subshell”, but we can
+<em>sort of</em> conceptually like parenthesis in expressions in a
+programming language: when we run <code>./error-program</code> and put
+the <code>&gt;</code> operator in the parenthesis, it’s saying that the
+standard input from this program will be redirected to a special file
+named <code>/dev/tty</code>. That special file is a file that represents
+your terminal.</p>
+<p>(a <strong>file</strong>?! WHAT IS GOING ON?!)</p>
+<p>This is a longhand way of saying “I’d like you to print standard
+output to my terminal, please”.</p>
+<p>The <code>&gt;&amp;</code> operator in Tcsh and csh represents
+standard output and standard error combined, but since standard output
+was already redirected to <code>/dev/tty</code> in the parenthesis, all
+that’s left to redirect to the file is what’s getting printed on
+standard error.</p>
+</div>
+</div></li>
+</ul>
+<p>OK. Now we can do it, but <em>why</em>?</p>
+<p>“Saving errors for later” and “filtering errors later” are OK
+motivations for wanting to do this, but the real reason why we usually
+want to do this is that we want to <em>ignore</em> errors because we
+don’t care about them. Linux has a special file named
+<code>/dev/null</code>, and any writes to <code>/dev/null</code> are
+just discarded.</p>
+<div class="example">
+<p>A common use for redirecting standard error is to redirect that
+output to a special file called <code>/dev/null</code>:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./error-program</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR in tcsh or csh</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">./error-program</span> <span class="op">&gt;</span> /dev/tty<span class="kw">)</span> <span class="op">&gt;&amp;</span> /dev/null</span></code></pre></div>
+</div>
+<h2 id="redirecting-standard-input">Redirecting standard input</h2>
+<p>Both standard output and standard error are places where output is
+written. We can also replace where standard input gets its input from.
+This can be useful when we want to provide a lot of input to a program,
+but the program doesn’t or can’t read files directly. Or if we’re
+repeatedly re-running a program that’s asking for just a little bit of
+input, but typing that input in by hand is a <em>pain</em> after the
+millionth time running the program (we’ve all done this at some point,
+there’s no shame in denying it).</p>
+<p>Almost all shells use the same operator for redirecting a file to
+standard input: <code>&lt;</code></p>
+<div class="example">
+<p>We can redirect standard input to a process using the
+<code>&lt;</code> operator:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-o</span> my.pdf <span class="op">&lt;</span> my.md</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># redirect both stdin and stdout:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> html <span class="op">&lt;</span> my.md <span class="op">&gt;</span> my.html</span></code></pre></div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a
+href="https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells"
+class="uri">https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>
