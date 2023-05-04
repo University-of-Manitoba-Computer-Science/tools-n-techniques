@@ -57,13 +57,13 @@ address. Addresses of files on the internet look like
 Here's a link to a `.zip` file that contains many versions of a "hello world"
 program:
 
-    https://www.cs.umanitoba.ca/~fbristow/hello.zip
+    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/hello.zip
 
 Here's how you would download this file to a remote computer directly on the
 command line:
 
 ```bash
-[you@bird ~]> wget "https://www.cs.umanitoba.ca/~fbristow/hello.zip"
+[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/topic-2.zip"
 ```
 
 :::

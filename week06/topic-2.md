@@ -88,7 +88,7 @@ look anything like this!
 Start by downloading this file, but make sure that you **do not** download it into
 your repository:
 
-    https://www.cs.umanitoba.ca/~fbristow/crazy-directories.tar
+    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week06/crazy-directories.tar
 
 <mark>**Note**</mark>: There are over 7000 directories in this folder structure.
 It's not worth your time trying to find anything trying to use `cd` and `ls`.
