@@ -22,7 +22,7 @@ Word or PDF documents.
 We're going to use Pandoc to convert a plain text Markdown-formatted document
 into a Word-formatted document. We're going to have to do a *little bit* of work
 in our Terminal, so if you closed your terminal, you should open it up again
-like you did before when [verifying that Pandoc is installed].
+like you did before when verifying that Pandoc is installed.
 
 First: **Save** your plain text Markdown-formatted document *somewhere*. I'm
 going to recommend that (for now!) you save this file to your Desktop folder.
