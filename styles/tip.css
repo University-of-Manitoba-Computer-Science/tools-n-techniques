@@ -1,0 +1,9 @@
+.tip::before {
+    content: "\1f481\1f3fb  Tip";
+    font-weight: bold;
+}
+
+.tip {
+    border-style: dotted;
+    padding: 1em;
+}

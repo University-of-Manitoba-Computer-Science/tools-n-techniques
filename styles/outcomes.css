@@ -1,0 +1,9 @@
+.outcomes {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.outcomes::before {
+    content: "\2705  Learning outcomes";
+    font-weight: bold;
+}

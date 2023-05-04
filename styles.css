@@ -1,0 +1,270 @@
+body {
+    color: #222;
+    line-height: 1.5;
+    font-family: "Clear Sans", sans-serif;
+    background-color: #fff;
+}
+
+figure > img {
+    width: 100%
+}
+
+#main-outer-box {
+    /* Contains all other divs for the page. */
+}
+
+#my-header {
+    font-weight: bold;
+    font-size: large;
+    padding: 4px 10px 10px 10px;
+}
+
+#my-header a {
+    text-decoration: none;
+}
+
+#trunk-box {
+    /* ... */
+}
+
+#nav-box {
+    float: left;
+    width: 280px;
+    padding: 10px;
+    font-size: small;
+}
+
+#article-box {
+    margin-left: 320px;
+    width: 800px;
+}
+
+#header-nav-bar, #footer-nav-bar {
+    font-size: small;
+    display: flex;
+}
+
+.nav-bar-push {
+    margin-left: auto;
+}
+
+#header-nav-bar {
+    padding: 6px 6px 8px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#article-content {
+    /*padding: 20px;*/
+}
+
+/* Pandoc automatically puts title, subtitle, author, and date
+   into a header elem at the top of the page. */
+header .author { display: none; }
+header .date   { display: none; }
+
+/* Pandoc's doc-specific ToC. */
+nav#TOC {
+    background-color: #e5efdf;
+    border: 1px solid #cedec4;
+}
+
+#footer-nav-bar {
+    padding: 6px 6px 10px 10px;
+    border-top: 1px solid #ddd;
+}
+
+caption {
+    font-style: italic;
+    font-size: small;
+    color: #555;
+}
+
+a:link {
+    color: #3A4089;
+}
+
+a:visited {
+    color: #875098;
+}
+
+table {
+    background-color: #eee;
+    padding-left: 2px;
+    border: 2px solid #d4d4d4;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #d4d4d4;
+    padding-right: 4px;
+}
+
+tr, td, th {
+    border: 2px solid #d4d4d4;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+code {
+    background-color: #eee;
+}
+
+pre {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding-left: 6px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+blockquote {
+    background-color: #d8deea;
+    border: 1px solid #c6d1e7;
+    border-radius: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+blockquote code, blockquote pre {
+    background-color: #cad2e4;
+    border-style: none;
+}
+
+#my-footer {
+    clear: both;
+    padding: 10px;
+    font-style: italic;
+    font-size: x-small;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #567EB5;
+}
+
+h3, h5 {
+    font-style: italic;
+}
+.aside::before {
+    content: "\2B50\2002 Aside";
+    font-weight: bold;
+}
+
+.aside {
+    border-style: dotted;
+    padding: 1em;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dt::before {
+    content: "\1f4dd "; 
+}
+.challenge::before {
+    content: "\1F3C6  Challenge";
+    font-weight: bold;
+}
+
+.challenge {
+    border-style: dotted;
+    padding: 1em;
+}
+.checklist {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.checklist::before {
+    content: "\2705  Checklist";
+    font-weight: bold;
+}
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+.example {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.example::before {
+    content: "\1f680 Example";
+    font-weight: bold;
+}
+.input .output {
+    padding: 1em;
+    border-style: dashed;
+}
+
+.input::before {
+    content: "\2328\fe0f  Input";
+    font-weight: bold;
+}
+
+.output::before {
+    content: "\1f5a8\fe0f  Output";
+    font-weight: bold;
+    vertical-align: top;
+}
+kbd {
+    border: 2px solid #3a3a3a;
+    box-shadow: 2px 2px #3a3a3a;
+    font-size: 0.85em;
+    line-height: 0.85em;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px 5px;
+    white-space: nowrap;
+}
+.outcomes {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.outcomes::before {
+    content: "\2705  Learning outcomes";
+    font-weight: bold;
+}
+.solution {
+    display: none;
+}
+
+.answerspace {
+    padding: 1em;
+    border-style: solid;
+}
+
+.answerspace::before {
+    content: "\1f4dd Your response";
+    font-weight: bold;
+}
+tr.odd {
+    background-color: lightgray;
+}
+.tip::before {
+    content: "\1f481\1f3fb  Tip";
+    font-weight: bold;
+}
+
+.tip {
+    border-style: dotted;
+    padding: 1em;
+}
+.warning::before {
+    content: "\26a0\fe0f  Warning";
+    font-weight: bold;
+}
+
+.warning {
+    border-style: dotted;
+    padding: 1em;
+}

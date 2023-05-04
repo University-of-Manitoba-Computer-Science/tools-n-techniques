@@ -1,0 +1,9 @@
+.example {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.example::before {
+    content: "\1f680 Example";
+    font-weight: bold;
+}

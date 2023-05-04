@@ -1,0 +1,9 @@
+.warning::before {
+    content: "\26a0\fe0f  Warning";
+    font-weight: bold;
+}
+
+.warning {
+    border-style: dotted;
+    padding: 1em;
+}

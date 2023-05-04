@@ -1,0 +1,9 @@
+.aside::before {
+    content: "\2B50 Aside";
+    font-weight: bold;
+}
+
+.aside {
+    border-style: dotted;
+    padding: 1em;
+}

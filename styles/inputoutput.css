@@ -1,0 +1,15 @@
+.input .output {
+    padding: 1em;
+    border-style: dashed;
+}
+
+.input::before {
+    content: "\2328\fe0f  Input";
+    font-weight: bold;
+}
+
+.output::before {
+    content: "\1f5a8\fe0f  Output";
+    font-weight: bold;
+    vertical-align: top;
+}

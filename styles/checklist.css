@@ -1,0 +1,9 @@
+.checklist {
+    padding: 1em;
+    border-style: dotted;
+}
+
+.checklist::before {
+    content: "\2705  Checklist";
+    font-weight: bold;
+}

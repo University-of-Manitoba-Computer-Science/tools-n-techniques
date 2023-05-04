@@ -1,0 +1,13 @@
+.solution {
+    display: none;
+}
+
+.answerspace {
+    padding: 1em;
+    border-style: solid;
+}
+
+.answerspace::before {
+    content: "\1f4dd Your response";
+    font-weight: bold;
+}

@@ -1,0 +1,9 @@
+.challenge::before {
+    content: "\1F3C6  Challenge";
+    font-weight: bold;
+}
+
+.challenge {
+    border-style: dotted;
+    padding: 1em;
+}
