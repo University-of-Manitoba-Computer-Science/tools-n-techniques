@@ -63,7 +63,7 @@ Here's how you would download this file to a remote computer directly on the
 command line:
 
 ```bash
-[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/topic-2.zip"
+[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/hello.zip"
 ```
 
 :::
