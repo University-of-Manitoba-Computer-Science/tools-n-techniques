@@ -30,9 +30,25 @@ depends on the operating system that you're using. The following are
 *recommendations* for software that you can use, but there are many different
 programs you can use to transfer files between computers.
 
+::: tip
+
+You only need to install software (in Windows and macOS) if you are planning to
+use a GUI. You don't need to install anything at all if you are planning on
+[Using the command line] to transfer files.
+
+:::
+
 <details><summary>GUIs for Windows</summary>
 [MobaXterm] is a full software suite for working with remote computers on
 Windows, including a(nother) terminal emulator.
+
+::: aside
+
+If you're planning on using MobaXterm, you should download the "Installer
+edition" &mdash; this has a `.zip` file that contains a `.msi` file, and you
+can install the `.msi` file in the same way that you did with Pandoc.
+
+:::
 
 After you've installed MobaXterm, launch it. You can then connect to a remote
 computer by clicking the "Start local terminal" button that's right in the
@@ -126,7 +142,7 @@ notable difference that we care about right now is that Windows doesn't have the
 When you're navigating folders **on your own computer** (i.e., you're not
 connected to something like Aviary with `ssh`), you can also take a shortcut to
 avoid typing out very long folder paths: Open your terminal, type `cd ` (that's
-`cd` with a single space after it), then open your visual file explorer. Find
+`cd ` with a single space after it), then open your visual file explorer. Find
 the folder that you want to navigate *to*, click the folder, then drag it to
 your terminal window and drop it. The path to that folder *should* show up in
 your terminal and then you can press <kbd>Enter</kbd> in your terminal to get
@@ -141,9 +157,14 @@ When we're copying files or folders with `scp`, we need to tell `scp` what we
 want to copy (the **source**) and where we want to copy it to (the
 **destination**).
 
-Any time we want to use a remote computer as a source or a destination, we need
-to provide `scp` with our username, the address of the remote computer, and a
-destination on the remote computer.
+Just like [when using SSH], any time we want to use a remote computer as a source
+or a destination, we need to provide `scp` with our username and the address of
+the remote computer. But since we're trying to *send something*, we also need to
+tell `scp` where we want to put the file (a **destination** on the remote
+computer).
+
+[Open your terminal]: ../week02/topic-2.html#verifying-that-pandoc-is-installed
+[when using SSH]: ../week03/topic-1.html#connect-to-a-remote-computer
 
 ### Copying single files
 
