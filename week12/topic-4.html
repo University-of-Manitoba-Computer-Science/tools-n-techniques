@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -165,6 +168,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -202,12 +206,12 @@ href="https://en.wikipedia.org/wiki/Garbage">random bits and
 bytes</a>.</p>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Choose an appropriate back up
-strategy for protecting your files.</li>
-<li><input type="checkbox" checked="" />Install and configure software
-to back up your files to a remote server.</li>
-<li><input type="checkbox" checked="" />Restore and verify your back up
-from the remote server.</li>
+<li><label><input type="checkbox" checked="" />Choose an appropriate
+back up strategy for protecting your files.</label></li>
+<li><label><input type="checkbox" checked="" />Install and configure
+software to back up your files to a remote server.</label></li>
+<li><label><input type="checkbox" checked="" />Restore and verify your
+back up from the remote server.</label></li>
 </ul>
 </div>
 <p>You should now be ready to work on the assignment for this week!</p>

@@ -87,7 +87,7 @@ def main():
         """))
         sys.exit(0)
 
-    if os.path.exists("README.md"):
+    if os.path.exists("README.md") and not os.path.exists("index.md"):
         print(mlsl("""\
         [**] Odd. Found a README.md file in this doc directory. Maybe you
         [**] meant to place it in the directory above this one (your main

@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -244,6 +247,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -267,8 +271,9 @@ server</a></li>
 <h1 id="handin"><code>handin</code></h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Use the <code>handin</code>
-command in the U of M CS UNIX environment.</li>
+<li><label><input type="checkbox" checked="" />Use the
+<code>handin</code> command in the U of M CS UNIX
+environment.</label></li>
 </ul>
 </div>
 <p>Many courses require you to submit your work to assignment folders on
@@ -283,12 +288,12 @@ example, all computers in Aviary. You’re only required to use
 <p>Handing in work with <code>handin</code> is straightforward and you
 need to know a few things:</p>
 <ol type="1">
-<li><input type="checkbox" />The <strong>course number</strong> that
-you’re turning in the work for.</li>
-<li><input type="checkbox" />The <strong>name of the assignment or
-work</strong> that you’re turning in.</li>
-<li><input type="checkbox" />The <strong>folder containing the work you
-want to hand in</strong>.</li>
+<li><label><input type="checkbox" />The <strong>course number</strong>
+that you’re turning in the work for.</label></li>
+<li><label><input type="checkbox" />The <strong>name of the assignment
+or work</strong> that you’re turning in.</label></li>
+<li><label><input type="checkbox" />The <strong>folder containing the
+work you want to hand in</strong>.</label></li>
 </ol>
 </div>
 <p>The course number is always the numeric part of the course name in

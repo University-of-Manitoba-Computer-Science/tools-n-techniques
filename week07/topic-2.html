@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -229,6 +232,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -276,12 +280,12 @@ id="toc-assessing-what-you-find">Assessing what you find</a></li>
 <h1 id="getting-help">Getting help</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Get help about a command by
-running the command.</li>
-<li><input type="checkbox" checked="" />Get help about a command by
-reading manual pages.</li>
-<li><input type="checkbox" checked="" />Find and assess the quality of
-help online.</li>
+<li><label><input type="checkbox" checked="" />Get help about a command
+by running the command.</label></li>
+<li><label><input type="checkbox" checked="" />Get help about a command
+by reading manual pages.</label></li>
+<li><label><input type="checkbox" checked="" />Find and assess the
+quality of help online.</label></li>
 </ul>
 </div>
 <p>We’ve all been here: I need to do something (something for an

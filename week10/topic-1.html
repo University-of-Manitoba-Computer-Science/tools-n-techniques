@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -163,6 +166,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -205,15 +209,15 @@ language itself (I’m looking at you incredibly huge JDK!).</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" />Download and run a program that requires
-you to install dependencies.</li>
-<li><input type="checkbox" />Create a <code>Makefile</code> to
-accomplish a task (building software, running commands).</li>
-<li><input type="checkbox" />Create a new empty software project that
-includes a build and dependency management tool.
+<li><label><input type="checkbox" />Download and run a program that
+requires you to install dependencies.</label></li>
+<li><label><input type="checkbox" />Create a <code>Makefile</code> to
+accomplish a task (building software, running commands).</label></li>
+<li><label><input type="checkbox" />Create a new empty software project
+that includes a build and dependency management tool.</label>
 <ul class="task-list">
-<li><input type="checkbox" />Add and use a new dependency in a software
-project.</li>
+<li><label><input type="checkbox" />Add and use a new dependency in a
+software project.</label></li>
 </ul></li>
 </ul>
 </div>

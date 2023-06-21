@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -246,6 +249,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -294,15 +298,17 @@ reading</a></li>
 <h1 id="write-plain-text-documents">Write plain text documents</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Write plain text documents
-(including code and formulas) using structured markup formats (Markdown
-and <span class="math inline">\LaTeX</span>).</li>
+<li><label><input type="checkbox" checked="" />Write plain text
+documents (including code and formulas) using structured markup formats
+(Markdown and <span class="math inline">\LaTeX</span>).</label></li>
 </ul>
 </div>
-<p>[A lot] of the stuff that we create in computer science is formatted
-as <a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> —
-all the source code that we write in Java, Python, Processing, and C
-(for example) are plain text documents.</p>
+<p><a
+href="https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html">A
+lot</a> of the stuff that we create in computer science is formatted as
+<a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> — all
+the source code that we write in Java, Python, Processing, and C (for
+example) are plain text documents.</p>
 <p>Plain text documents (<code>.txt</code> files!) don’t really seem
 that useful at first glance, but really are very useful:</p>
 <ul>

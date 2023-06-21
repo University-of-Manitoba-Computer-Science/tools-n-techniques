@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -162,6 +165,7 @@ distribution</a></li>
 server</a></li>
 <li><a href=".././week13/topic-6.html">Summary</a></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -186,20 +190,20 @@ including sending files back and forth between that remote computer</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" />Connect to a remote computer using
-<code>ssh</code>.</li>
-<li><input type="checkbox" />Create, rename, delete, and inspect folder
-structures on the command-line.</li>
-<li><input type="checkbox" />Navigate folder structures on the
-command-line.</li>
-<li><input type="checkbox" />Use a command-line text editor to open,
-inspect, edit, and save a file.</li>
-<li><input type="checkbox" />Complete commands and filenames with tab
-completion.</li>
-<li><input type="checkbox" />Transfer files between your computer and a
-remote computer.</li>
-<li><input type="checkbox" />Use the <code>handin</code> command in the
-U of M CS UNIX environment.</li>
+<li><label><input type="checkbox" />Connect to a remote computer using
+<code>ssh</code>.</label></li>
+<li><label><input type="checkbox" />Create, rename, delete, and inspect
+folder structures on the command-line.</label></li>
+<li><label><input type="checkbox" />Navigate folder structures on the
+command-line.</label></li>
+<li><label><input type="checkbox" />Use a command-line text editor to
+open, inspect, edit, and save a file.</label></li>
+<li><label><input type="checkbox" />Complete commands and filenames with
+tab completion.</label></li>
+<li><label><input type="checkbox" />Transfer files between your computer
+and a remote computer.</label></li>
+<li><label><input type="checkbox" />Use the <code>handin</code> command
+in the U of M CS UNIX environment.</label></li>
 </ul>
 </div>
 

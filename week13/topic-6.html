@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -162,6 +165,7 @@ software</a></li>
 <li><a href="topic-5.html">Configure and run a web server</a></li>
 <li><strong>Summary</strong></li>
 </ul></li>
+<li><a href=".././README.html">None</a></li>
 </ul>
 
 </div>
@@ -169,7 +173,7 @@ software</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push">next→</div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href=".././README.html">next→</a></div>
 </div>
 
 <div id="article-content">
@@ -192,18 +196,18 @@ software on your Linux install, and get a web server up and running on
 your system.</p>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Choose a Linux
-distribution.</li>
-<li><input type="checkbox" checked="" />Install the Linux distribution
-either on your laptop or in a virtual machine.</li>
-<li><input type="checkbox" checked="" />Install packages using a package
-manager on the command line.
+<li><label><input type="checkbox" checked="" />Choose a Linux
+distribution.</label></li>
+<li><label><input type="checkbox" checked="" />Install the Linux
+distribution either on your laptop or in a virtual machine.</label></li>
+<li><label><input type="checkbox" checked="" />Install packages using a
+package manager on the command line.</label>
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Install packages using a GUI
-package manager.</li>
+<li><label><input type="checkbox" checked="" />Install packages using a
+GUI package manager.</label></li>
 </ul></li>
-<li><input type="checkbox" checked="" />Configure and run a web
-server.</li>
+<li><label><input type="checkbox" checked="" />Configure and run a web
+server.</label></li>
 </ul>
 </div>
 <p>You should now be able to start working on your assignment!</p>
@@ -211,7 +215,7 @@ server.</li>
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push">next→</div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href=".././README.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->
