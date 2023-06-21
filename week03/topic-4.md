@@ -13,7 +13,8 @@ Tab completion
 :::
 
 Interacting with the command line requires [a lot] of typing (you can keep
-clicking on the terminal window, but seriously, nothing's going to happen).
+clicking on the terminal window, but seriously, that clicking and tapping is
+going to get really annoying).
 
 Here's a little tip to save you (some) typing: You can use the <kbd>Tab</kbd>
 key on your keyboard to *complete* a command or filename when you are typing.
