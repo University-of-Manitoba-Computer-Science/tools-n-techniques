@@ -65,9 +65,11 @@ our own folders.
 
 We're going to start small, let's make a new folder. When we made folders with
 our visual file explorers we mostly used our mice, though you may have used a
-keyboard shortcut.. While you can literally click on your terminal window,
-clicking on the terminal window isn't actually going to do anything. Instead,
-we're going to need to use a new command to create a folder: `mkdir`.
+keyboard shortcut. While you can literally click on your terminal window,
+clicking on the terminal window isn't actually going to do anything other than
+making a fun clicking sound from your mouse (if you're literally using a mouse)
+or a faint tapping sound as you tap your touchpad. Instead, we're going to need
+to use a new command to create a folder: `mkdir`.
 
 ::: example
 
@@ -123,8 +125,10 @@ named `hello` and one named `world`. You've got a few options:
    mkdir hello\ world
    ```
 
-The issue with spaces is common to **all** commands on the command line, so my
-advice is to try avoiding their use.
+The issue with spaces is common to **all** commands on the command line. This is
+a good opportunity to choose a new personal preference: When you're working on
+the command line, do you want to always use dashes, underscores, or no spaces at
+all?
 
 :::
 
@@ -135,9 +139,10 @@ Now that we've made a directory, we need to be able to "open" the directory.
 When we used visual file explorers, we "opened" the directory (either in a new
 window or in the same window) by double-clicking on the icon.
 
-Again, while we can click on our terminal window, clicking isn't doing anything.
-To "open" a directory that we created, we need to "change" to that directory
-using a new command: `cd`
+Again, we *can* double-click on our terminal window, that double-clicking isn't
+doing anything other than making fun clicking or tapping sounds. To "open" a
+directory that we created, we need to "change" to that directory using a new
+command: `cd`
 
 ::: example
 
@@ -162,7 +167,8 @@ Now that you've changed *into* a directory, you also need to be able to change
 "down" a folder. You can move "up" a folder by changing to the "parent"
 directory using a special directory name `..` (two periods). You can also go
 back to your "home" directory (your user folder on this remote computer) by
-using a special directory name `~` (tilde).
+using a special directory name `~` ([tilde]; I say this as 'till-duh', but I've
+also heard 'till-dee').
 
 ::: example
 
@@ -213,6 +219,7 @@ Now try changing into `hello` and re-run `pwd` to see that the directory you're
 
 :::
 
+[tilde]: https://en.wikipedia.org/wiki/Tilde
 
 :pencil2: Moving and renaming directories
 -----------------------------------------
@@ -239,19 +246,23 @@ You can *move* a directory into another directory with `mv`, too.
 
 ```bash
 [you@bird ~]> mkdir hello world # intentionally making two directories
-[you@bird ~]> mv hello world/
-[you@bird ~]> cd world
-[you@bird world]> ls
+[you@bird ~]> ls
+bin Mail hello world
+[you@bird ~]> mv hello world/   # move hello *into* world/
+[you@bird ~]> cd world          # change into world
+[you@bird world]> ls            # now hello is *in* world/
 hello
-[you@bird world]>
+[you@bird world]> ls ..         # hello is *not* in ~
+bin Mail world
 ```
 
 :::
 
-Just like with `cd`, you can use the special directories `..` and `~` to move a
-file into the parent directory or into your user directory. You can also use
-another special directory name `.` (one period) to move something to or from the
-**current** directory.
+Just like with `cd`, you can use the special directories `..` and `~` to move
+(`mv`) a file into the parent directory, list (`ls`) files in the parent
+directory, or move (`mv`) files into your user directory (or list your user
+directory with `ls ~`). You can also use another special directory name `.` (one
+period) to move something to or from the **current** directory.
 
 ::: example
 
@@ -260,7 +271,7 @@ directory to move things into or from the current directory.
 
 ```bash
 [you@bird ~]> cd world
-[you@bird world]> mv hello ~ # move hello to your user directory
+[you@bird world]> mv hello ~   # move hello to your user directory
 [you@bird world]> ls
 [you@bird world]> mv ~/hello . # move hello back into *this* directory
 ```
@@ -314,9 +325,12 @@ rm: cannot remove 'hello': Is a directory
 The command line doesn't have a concept of a "temporary trash location" like
 Windows (the recycle bin) or macOS (the trash can). When you put something into
 the recycle bin or trash can, you can always open the recycle bin or trash can
-and get the file back.
+and get the file back, restoring it to its original location.
 
-When you remove a file or folder on the command line, the file or folder is
-removed and you can't get it back (easily or at all).
+When you remove a file or folder on the command line (using `rm` or `rmdir`),
+the file or folder is removed and you **can't** get it back, unless you've
+[backed it up somewhere].
+
+[backed it up somewhere]: ../week12/topic-1.html
 
 :::

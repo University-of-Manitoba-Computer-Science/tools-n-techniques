@@ -12,8 +12,9 @@ Connecting with SSH
 
 :::
 
-You opened your terminal *briefly* in [week 2] to install and run Pandoc to
-convert your Markdown-formatted plain text document into a `.docx` file.
+You opened your terminal *briefly* in [installing software on your personal
+computer] to install and run Pandoc to convert your Markdown-formatted plain
+text document into a `.docx` file.
 
 Your terminal isn't just for running Pandoc: terminals can be used to run many
 different programs, including running programs that will let you connect to
@@ -33,9 +34,9 @@ If you're on campus connected to U of M WiFi or you're off campus but you've
 installed the VPN and connected to it, let's open up our terminals and get
 connected to a different computer.
 
-[week 2]: ../week02/lecture.html
+[installing software on your personal computer]: ../week02/topic-2.html
 [IST's Virtual Private Network (VPN) page]:
-https://umanitoba.ca/computing/ist/connect/virtualpn.html
+https://umanitoba.ca/information-services-technology/my-security/vpn-support
 
 Open your terminal
 ------------------
@@ -45,7 +46,7 @@ it's totally OK if you do!), refer back to the notes on [verifying that Pandoc
 is installed].
 
 [verifying that Pandoc is installed]:
-../week02/lecture.html#verifying-that-pandoc-is-installed
+../week02/topic-2.html#verifying-that-pandoc-is-installed
 
 Connect to a remote computer
 ----------------------------
@@ -153,7 +154,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 This is a pretty scary looking warning! The summary of this is that `ssh` is
 telling you that it doesn't recognize the computer you're trying to connect to.
 When you're connecting to Aviary, you *may* see this warning more than once. You
-can safely enter `yes` (and you must enter `yes`, not just `y`) and press enter.
+can safely enter `yes` (and you must enter `yes`, not just `y`) and press
+<kbd>Enter</kbd>.
 
 Next, `ssh` is going to ask you to enter your password. Type in your password,
 but note that you won't see any feedback as you're typing (you won't see any `*`

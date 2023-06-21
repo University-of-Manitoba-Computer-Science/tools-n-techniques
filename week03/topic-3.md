@@ -1,4 +1,5 @@
----
+A "prompt" is what your shell prints out before it waits for you to enter
+something. In our case, it's `[you@bird ~]> `.---
 title: "Command line text editing"
 author: Franklin Bristow
 ---
@@ -13,26 +14,40 @@ Use a command-line text editor
 :::
 
 Directories are great, they're a useful tool for organizing our lives. But we
-really need to be able to actually *create* stuff on the command line. In week 2
-we spent some time getting to know VS Code. VS Code is an excellent text editor
-and *can* be used to edit remote files, but being able to use a command-line
-text editor is useful because command-line text editors are **always there**.
+really need to be able to actually *create* stuff on the command line. 
+
+We've spent some time getting to know VS Code, and VS Code is an excellent text
+editor and *can* be used to edit remote files, but being able to use a
+command-line text editor is useful because command-line text editors are
+**always there**.
 
 You are able to install VS Code on your own computer, but you don't always have
-control over remote computers, and you don't have permissions to install
-software on them.
+control over remote computers, and you (generally) don't have permissions to
+install software on them. You definitely don't have permission to install
+software on Aviary.
 
-We're going to start working with a command-line text editor called `vim`.
+In this module we're going to start working with a command-line text editor
+called [`vim`].
+
+[`vim`]: https://en.wikipedia.org/wiki/Vim_(text_editor)
 
 Opening `vim`
 -------------
 
 `vim` is a program, just like the programs that you've been running for creating
-and navigating directories.
+and navigating directories, so you can run it just like the other programs
+you've been running so far:
 
 ::: example
 
-You can start `vim` by typing `vim` at the prompt and pressing <kbd>Enter</kbd>.
+You can start `vim` by typing `vim` at the "prompt" and pressing <kbd>Enter</kbd>.
+
+::: aside
+
+A "prompt" is what your shell prints out before it waits for you to enter
+something. In our case, it's `[you@bird ~]> `.
+
+:::
 
 ```bash
 [you@bird ~]> vim
@@ -86,11 +101,11 @@ Create a new file with vim named `hello.md`.
 [you@bird ~]> vim hello.md
 ```
 
-Once you're in `vim`, enter insert mode by typing <kbd>i</kbd> on your keyboard.
+Once you're in `vim`, enter **insert mode** by typing <kbd>i</kbd> on your keyboard.
 Now start typing!
 
 Once you're finished, press <kbd>Escape</kbd> on your keyboard to get back into
-normal mode.
+**normal mode**.
 
 Now *save* the file by "writing" the file. Similar to quitting, you can write
 your file by typing `:w` (colon, then w) and pressing <kbd>Enter</kbd>.
@@ -109,7 +124,8 @@ hello.md
 can re-open the file that you just made by passing that same filename to `vim`
 on the command line.
 
-Cool! Now you can create new text files on the command-line with `vim`!
+Cool :sunglasses:! Now you can create new text files on the command-line with
+`vim`!
 
 Copying and pasting into `vim`
 ------------------------------
@@ -204,7 +220,7 @@ Cheatsheets
 Despite its minimal appearance, `vim` is a full-featured text editor that can do
 everything that you might want. As you've seen, interacting with programs on the
 command line is done entirely through your keyboard (you can keep clicking on
-the terminal, but nothing's going to happen).
+the terminal, but all you're doing is making fun clicking or tapping sounds).
 
 When you're in normal mode, you can get `vim` to do many different things for
 you, but listing out all of those different things would be painful and tedious.

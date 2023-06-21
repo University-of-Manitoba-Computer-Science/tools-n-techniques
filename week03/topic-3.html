@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Franklin Bristow" />
-  <title>Command line text editing</title>
+  <title>topic-3</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -121,7 +120,7 @@ formats</a></li>
 <li><a href="topic-0.html">Introduction</a></li>
 <li><a href="topic-1.html">Connecting to a remote computer</a></li>
 <li><a href="topic-2.html">Command line file management</a></li>
-<li><strong>Command line text editing</strong></li>
+<li><strong>None</strong></li>
 <li><a href="topic-4.html">Tab completion</a></li>
 <li><a href="topic-5.html">Transferring files</a></li>
 <li><a href="topic-6.html">handin</a></li>
@@ -241,10 +240,6 @@ server</a></li>
 </div>
 
 <div id="article-content">
-<header id="title-block-header">
-<h1 class="title">Command line text editing</h1>
-<p class="author">Franklin Bristow</p>
-</header>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#use-a-command-line-text-editor"
@@ -264,6 +259,9 @@ editors</a></li>
 </ul></li>
 </ul>
 </nav>
+<p>A “prompt” is what your shell prints out before it waits for you to
+enter something. In our case, it’s <code>[you@bird ~]&gt;</code>.—
+title: “Command line text editing” author: Franklin Bristow —</p>
 <h1 id="use-a-command-line-text-editor">Use a command-line text
 editor</h1>
 <div class="outcomes">
@@ -274,22 +272,29 @@ editor to open, inspect, edit, and save a file.</label></li>
 </div>
 <p>Directories are great, they’re a useful tool for organizing our
 lives. But we really need to be able to actually <em>create</em> stuff
-on the command line. In week 2 we spent some time getting to know VS
-Code. VS Code is an excellent text editor and <em>can</em> be used to
-edit remote files, but being able to use a command-line text editor is
-useful because command-line text editors are <strong>always
-there</strong>.</p>
+on the command line.</p>
+<p>We’ve spent some time getting to know VS Code, and VS Code is an
+excellent text editor and <em>can</em> be used to edit remote files, but
+being able to use a command-line text editor is useful because
+command-line text editors are <strong>always there</strong>.</p>
 <p>You are able to install VS Code on your own computer, but you don’t
-always have control over remote computers, and you don’t have
-permissions to install software on them.</p>
-<p>We’re going to start working with a command-line text editor called
-<code>vim</code>.</p>
+always have control over remote computers, and you (generally) don’t
+have permissions to install software on them. You definitely don’t have
+permission to install software on Aviary.</p>
+<p>In this module we’re going to start working with a command-line text
+editor called <a
+href="https://en.wikipedia.org/wiki/Vim_(text_editor)"><code>vim</code></a>.</p>
 <h2 id="opening-vim">Opening <code>vim</code></h2>
 <p><code>vim</code> is a program, just like the programs that you’ve
-been running for creating and navigating directories.</p>
+been running for creating and navigating directories, so you can run it
+just like the other programs you’ve been running so far:</p>
 <div class="example">
 <p>You can start <code>vim</code> by typing <code>vim</code> at the
-prompt and pressing <kbd>Enter</kbd>.</p>
+“prompt” and pressing <kbd>Enter</kbd>.</p>
+<div class="aside">
+<p>A “prompt” is what your shell prints out before it waits for you to
+enter something. In our case, it’s <code>[you@bird ~]&gt;</code>.</p>
+</div>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> vim</span></code></pre></div>
 <p>When <code>vim</code> opens, you’ll see something like this:</p>
@@ -327,10 +332,10 @@ create a new file with that name.</p>
 <p>Create a new file with vim named <code>hello.md</code>.</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> vim hello.md</span></code></pre></div>
-<p>Once you’re in <code>vim</code>, enter insert mode by typing
-<kbd>i</kbd> on your keyboard. Now start typing!</p>
+<p>Once you’re in <code>vim</code>, enter <strong>insert mode</strong>
+by typing <kbd>i</kbd> on your keyboard. Now start typing!</p>
 <p>Once you’re finished, press <kbd>Escape</kbd> on your keyboard to get
-back into normal mode.</p>
+back into <strong>normal mode</strong>.</p>
 <p>Now <em>save</em> the file by “writing” the file. Similar to
 quitting, you can write your file by typing <code>:w</code> (colon, then
 w) and pressing <kbd>Enter</kbd>.</p>
@@ -344,8 +349,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <p><code>vim</code> isn’t just good at making new files, you can also
 open existing files. You can re-open the file that you just made by
 passing that same filename to <code>vim</code> on the command line.</p>
-<p>Cool! Now you can create new text files on the command-line with
-<code>vim</code>!</p>
+<p>Cool <span class="emoji" data-emoji="sunglasses">😎</span>! Now you
+can create new text files on the command-line with <code>vim</code>!</p>
 <h2 id="copying-and-pasting-into-vim">Copying and pasting into
 <code>vim</code></h2>
 <p>You can create new text files on the command-line with
@@ -435,8 +440,8 @@ from the normal shortcut for pasting!</li>
 <p>Despite its minimal appearance, <code>vim</code> is a full-featured
 text editor that can do everything that you might want. As you’ve seen,
 interacting with programs on the command line is done entirely through
-your keyboard (you can keep clicking on the terminal, but nothing’s
-going to happen).</p>
+your keyboard (you can keep clicking on the terminal, but all you’re
+doing is making fun clicking or tapping sounds).</p>
 <p>When you’re in normal mode, you can get <code>vim</code> to do many
 different things for you, but listing out all of those different things
 would be painful and tedious.</p>

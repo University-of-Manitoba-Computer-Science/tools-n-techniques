@@ -121,7 +121,7 @@ formats</a></li>
 <li><a href="topic-0.html">Introduction</a></li>
 <li><a href="topic-1.html">Connecting to a remote computer</a></li>
 <li><strong>Command line file management</strong></li>
-<li><a href="topic-3.html">Command line text editing</a></li>
+<li><a href="topic-3.html">None</a></li>
 <li><a href="topic-4.html">Tab completion</a></li>
 <li><a href="topic-5.html">Transferring files</a></li>
 <li><a href="topic-6.html">handin</a></li>
@@ -316,9 +316,11 @@ have, they don’t represent what we want to actually keep on our remote
 computer, so let’s start making some of our own folders.</p>
 <p>We’re going to start small, let’s make a new folder. When we made
 folders with our visual file explorers we mostly used our mice, though
-you may have used a keyboard shortcut.. While you can literally click on
+you may have used a keyboard shortcut. While you can literally click on
 your terminal window, clicking on the terminal window isn’t actually
-going to do anything. Instead, we’re going to need to use a new command
+going to do anything other than making a fun clicking sound from your
+mouse (if you’re literally using a mouse) or a faint tapping sound as
+you tap your touchpad. Instead, we’re going to need to use a new command
 to create a folder: <code>mkdir</code>.</p>
 <div class="example">
 <p>The <code>mkdir</code> command will create a new folder that has the
@@ -362,7 +364,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello<span class="dt">\ </span>world</span></code></pre></div></li>
 </ol>
 <p>The issue with spaces is common to <strong>all</strong> commands on
-the command line, so my advice is to try avoiding their use.</p>
+the command line. This is a good opportunity to choose a new personal
+preference: When you’re working on the command line, do you want to
+always use dashes, underscores, or no spaces at all?</p>
 </div>
 <h2 id="navigating-directories"><span class="emoji"
 data-emoji="compass">🧭</span> Navigating directories</h2>
@@ -370,8 +374,9 @@ data-emoji="compass">🧭</span> Navigating directories</h2>
 directory. When we used visual file explorers, we “opened” the directory
 (either in a new window or in the same window) by double-clicking on the
 icon.</p>
-<p>Again, while we can click on our terminal window, clicking isn’t
-doing anything. To “open” a directory that we created, we need to
+<p>Again, we <em>can</em> double-click on our terminal window, that
+double-clicking isn’t doing anything other than making fun clicking or
+tapping sounds. To “open” a directory that we created, we need to
 “change” to that directory using a new command: <code>cd</code></p>
 <div class="example">
 <p>If the name of the folder that you created with <code>mkdir</code> is
@@ -393,7 +398,9 @@ your directory <code>hello</code>, you moved “down” a folder. You can
 move “up” a folder by changing to the “parent” directory using a special
 directory name <code>..</code> (two periods). You can also go back to
 your “home” directory (your user folder on this remote computer) by
-using a special directory name <code>~</code> (tilde).</p>
+using a special directory name <code>~</code> (<a
+href="https://en.wikipedia.org/wiki/Tilde">tilde</a>; I say this as
+‘till-duh’, but I’ve also heard ‘till-dee’).</p>
 <div class="example">
 <p>You can change to the parent directory of the current directory (the
 directory this directory is in) using <code>..</code>.</p>
@@ -448,24 +455,29 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href=
 <code>mv</code>, too.</p>
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello world <span class="co"># intentionally making two directories</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mv hello world/</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd world</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span></span></code></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span> Mail hello world</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mv hello world/   <span class="co"># move hello *into* world/</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd world          <span class="co"># change into world</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls            <span class="co"># now hello is *in* world/</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls ..         <span class="co"># hello is *not* in ~</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span> Mail world</span></code></pre></div>
 </div>
 <p>Just like with <code>cd</code>, you can use the special directories
-<code>..</code> and <code>~</code> to move a file into the parent
-directory or into your user directory. You can also use another special
-directory name <code>.</code> (one period) to move something to or from
-the <strong>current</strong> directory.</p>
+<code>..</code> and <code>~</code> to move (<code>mv</code>) a file into
+the parent directory, list (<code>ls</code>) files in the parent
+directory, or move (<code>mv</code>) files into your user directory (or
+list your user directory with <code>ls ~</code>). You can also use
+another special directory name <code>.</code> (one period) to move
+something to or from the <strong>current</strong> directory.</p>
 <div class="example">
 <p>You can move a directory to or from your home directory with
 <code>~</code> and use the <code>.</code> directory to move things into
 or from the current directory.</p>
 <div class="sourceCode" id="cb15"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd world</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv hello ~ <span class="co"># move hello to your user directory</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv hello ~   <span class="co"># move hello to your user directory</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv ~/hello . <span class="co"># move hello back into *this* directory</span></span></code></pre></div>
 </div>
@@ -503,9 +515,12 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href=
 <p>The command line doesn’t have a concept of a “temporary trash
 location” like Windows (the recycle bin) or macOS (the trash can). When
 you put something into the recycle bin or trash can, you can always open
-the recycle bin or trash can and get the file back.</p>
-<p>When you remove a file or folder on the command line, the file or
-folder is removed and you can’t get it back (easily or at all).</p>
+the recycle bin or trash can and get the file back, restoring it to its
+original location.</p>
+<p>When you remove a file or folder on the command line (using
+<code>rm</code> or <code>rmdir</code>), the file or folder is removed
+and you <strong>can’t</strong> get it back, unless you’ve <a
+href="../week12/topic-1.html">backed it up somewhere</a>.</p>
 </div>
 
 </div> <!-- article-content -->
