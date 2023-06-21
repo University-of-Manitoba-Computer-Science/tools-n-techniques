@@ -70,6 +70,8 @@ structured text standards: Markdown and $\LaTeX$.
 
 [plain text]: https://en.wikipedia.org/wiki/Plain_text
 [a plain text document]: topic-3.md
+[A lot]:
+https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
 
 Writing in Markdown
 -------------------
