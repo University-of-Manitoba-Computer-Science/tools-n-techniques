@@ -283,6 +283,12 @@ program you use depends on the operating system that you’re using. The
 following are <em>recommendations</em> for software that you can use,
 but there are many different programs you can use to transfer files
 between computers.</p>
+<div class="tip">
+<p>You only need to install software (in Windows and macOS) if you are
+planning to use a GUI. You don’t need to install anything at all if you
+are planning on <a href="#using-the-command-line">Using the command
+line</a> to transfer files.</p>
+</div>
 <details>
 <summary>
 GUIs for Windows
@@ -290,6 +296,12 @@ GUIs for Windows
 <p><a href="https://mobaxterm.mobatek.net">MobaXterm</a> is a full
 software suite for working with remote computers on Windows, including
 a(nother) terminal emulator.</p>
+<div class="aside">
+<p>If you’re planning on using MobaXterm, you should download the
+“Installer edition” — this has a <code>.zip</code> file that contains a
+<code>.msi</code> file, and you can install the <code>.msi</code> file
+in the same way that you did with Pandoc.</p>
+</div>
 <p>After you’ve installed MobaXterm, launch it. You can then connect to
 a remote computer by clicking the “Start local terminal” button that’s
 right in the middle of the main window, then connecting <em>the same way
@@ -361,9 +373,11 @@ drag files and folders to and from this window to transfer them).</p>
 <h2 id="using-the-command-line">Using the command line</h2>
 <p>Transferring files on the command line is the same regardless of
 which operating system you have on your computer.</p>
-<p>[Open your terminal], then navigate to the directory that
-<em>contains</em> the file or directory that you want to transfer from
-your computer to the remote computer.</p>
+<p><a
+href="../week02/topic-2.html#verifying-that-pandoc-is-installed">Open
+your terminal</a>, then navigate to the directory that <em>contains</em>
+the file or directory that you want to transfer from your computer to
+the remote computer.</p>
 <div class="aside">
 <p>Navigating directories on Windows, macOS, and Linux uses
 <em>mostly</em> the same commands: <code>cd</code> to
@@ -388,10 +402,14 @@ computer to the remote computer.</p>
 <p>When we’re copying files or folders with <code>scp</code>, we need to
 tell <code>scp</code> what we want to copy (the <strong>source</strong>)
 and where we want to copy it to (the <strong>destination</strong>).</p>
-<p>Any time we want to use a remote computer as a source or a
-destination, we need to provide <code>scp</code> with our username, the
-address of the remote computer, and a destination on the remote
-computer.</p>
+<p>Just like <a
+href="../week03/topic-1.html#connect-to-a-remote-computer">when using
+SSH</a>, any time we want to use a remote computer as a source or a
+destination, we need to provide <code>scp</code> with our username and
+the address of the remote computer. But since we’re trying to <em>send
+something</em>, we also need to tell <code>scp</code> where we want to
+put the file (a <strong>destination</strong> on the remote
+computer).</p>
 <h3 id="copying-single-files">Copying single files</h3>
 <div class="example">
 <div class="sourceCode" id="cb2"><pre
