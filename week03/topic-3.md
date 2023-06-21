@@ -1,5 +1,4 @@
-A "prompt" is what your shell prints out before it waits for you to enter
-something. In our case, it's `[you@bird ~]> `.---
+---
 title: "Command line text editing"
 author: Franklin Bristow
 ---
