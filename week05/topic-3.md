@@ -414,7 +414,7 @@ something that we can use to track multiple independent sequences of commits to
 a repository simultaneously. When a repository has multiple branches, its commit
 history can look something like this:
 
-![Branches in a repository.](commits with branches.jpg)
+![Branches in a repository.](commits-with-branches.jpg)
 
 Branches are very useful when you're working in a team of people, who are each
 independently working on (for example) a feature in a bigger project. All of
