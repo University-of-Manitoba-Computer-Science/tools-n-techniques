@@ -6,11 +6,6 @@ author: Franklin Bristow
 Summary
 =======
 
-You've probably been told about academic misconduct in the past. Hopefully
-seeing some examples of situations tailored to your experience in computer
-science courses has given you the ability to distinguish between being helpful,
-working together with permission, and academic misconduct.
-
 Even though we're calling what we're doing this week with version control
 "advanced", we're really just barely scratching the surface. Nevertheless,
 you have a *more* advanced view of version control software than making commits
@@ -31,7 +26,6 @@ You should now be able to:
 
 ::: outcomes
 
-* [X] Identify whether or not a situation is considered academic misconduct.
 * [X] Clone an existing remote version control repository.
 * [X] Create a new remote version control repository.
 * [X] Push an existing local repository to a remote version control repository.

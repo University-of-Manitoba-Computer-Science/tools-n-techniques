@@ -21,15 +21,10 @@ take a look at how we can manage projects: how can we organize the things that
 we need to do for a project, how can we plan out how we're going to do a
 project, and how do we work together with other people on a project?
 
-Finally, since we're starting to look at how we can work together, we also need
-to spend some time looking at how much collaboration is acceptable when you're
-working on labs and assignments for your courses in computer science.
-
 ::: outcomes
 
 By the end of this week you should be able to:
 
-* [ ] Identify whether or not a situation is considered academic misconduct.
 * [ ] Clone an existing remote version control repository.
 * [ ] Create a new remote version control repository.
 * [ ] Push an existing local repository to a remote version control repository.

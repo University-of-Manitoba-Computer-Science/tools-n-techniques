@@ -19,6 +19,7 @@ getting help from various places:
 * Offline documentation about the programs (comprehensive and correct, but
   sometimes inscrutable), and
 * Online (overwhelming, and sometimes wrong).
+* Is the help we are getting appropriate for an academic setting?
 
 This week we'll also (temporarily?) switch where we do our lab books: we'll
 migrate from text editors to the web browser and look at digital notebooks,
@@ -32,6 +33,7 @@ By the end of this week you should be able to:
 * [ ] Get help about a command by running the command.
 * [ ] Get help about a command by reading manual pages.
 * [ ] Find and assess the quality of help online.
+* [ ] Identify whether or not a situation is considered academic misconduct.
 * [ ] Use a web-based interactive notebook to document progress in a lab
   notebook.
 :::
