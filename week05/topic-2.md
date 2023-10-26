@@ -84,8 +84,7 @@ find a collection of their repositories on GitHub here:
 
 Scroll down a little bit to the "Repositories" section and pick an e-book. The
 titles (unfortunately) are pretty messy here, but they are readable (if you
-can't pick an e-book, I'll pick one for you: [Alice's Adventures in
-Wonderland]).
+can't pick an e-book, I'll pick one for you: [The Life and Adventures of Robinson Crusoe]).
 
 Once you click on a link to an e-book, you'll be taken to the main page on
 GitHub for that repository. The main table in the center of the page is a
@@ -103,14 +102,14 @@ should look when it's cloning the repository.
 Now you can paste this link into your terminal as part of a `git clone` command:
 
 ```bash
-git clone https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland_john-tenniel.git
+git clone git@github.com:standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git
 ```
 
 Now you've cloned a repository! :tada:
 
 [Standard Ebooks]: https://standardebooks.org/
-[Alice's Adventures in Wonderland]:
-https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland_john-tenniel
+[The Life and Adventures of Robinson Crusoe]:
+https://github.com/standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe
 
 :::
 
