@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Visual Debuggers</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">What even is debugging?</a></li>
+<li><a href="topic-3.html">Debugging strategies</a></li>
+<li><a href="topic-4.html">Debuggers</a></li>
+<li><strong>Visual Debuggers</strong></li>
+<li><a href="topic-6.html">Command-line Debuggers</a></li>
+<li><a href="topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">None</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Visual Debuggers</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#visual-debuggers" id="toc-visual-debuggers">Visual
+debuggers</a>
+<ul>
+<li><a href="#getting-started" id="toc-getting-started">Getting
+started</a></li>
+<li><a href="#running-java-in-vs-code"
+id="toc-running-java-in-vs-code">Running Java in VS Code</a></li>
+<li><a href="#debugging-in-vs-code"
+id="toc-debugging-in-vs-code">Debugging in VS Code</a>
+<ul>
+<li><a href="#setting-breakpoints" id="toc-setting-breakpoints">Setting
+breakpoints</a></li>
+<li><a href="#stepping-over" id="toc-stepping-over">Stepping
+over</a></li>
+<li><a href="#stepping-into" id="toc-stepping-into">Stepping
+into</a></li>
+<li><a href="#stepping-out" id="toc-stepping-out">Stepping out</a></li>
+<li><a href="#finishing" id="toc-finishing">Finishing</a></li>
+<li><a href="#catching-crashes" id="toc-catching-crashes">Catching
+crashes</a></li>
+</ul></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="visual-debuggers">Visual debuggers</h1>
+<p>Almost all languages have a visual debugger built into the integrated
+development environment (IDE) that you use for that language: <a
+href="https://www.jetbrains.com/idea/">IntelliJ</a> has a debugger for
+Java, <a href="https://visualstudio.microsoft.com/">Visual Studio</a>
+has a debugger for C# (and other languages), <a
+href="https://www.spyder-ide.org/">Spyder</a> has a debugger for
+Python.</p>
+<p>While we can’t comprehensively cover all different visual debuggers,
+most of the skills you’re going to learn about the debugger you’re using
+will transfer to other visual debuggers.</p>
+<p>We’re going to be using a visual debugger for Java that comes as an
+extension for Visual Studio Code.</p>
+<h2 id="getting-started">Getting started</h2>
+<p>You’ve already got VS Code installed on your machine. We’re going to
+be debugging some Java code and VS Code doesn’t have support for Java by
+default. Thankfully, though, we can install an extension to help us get
+support for the language.</p>
+<p><a
+href="https://code.visualstudio.com/docs/languages/java#_install-visual-studio-code-for-java">Microsoft
+recommends</a> that you install the <a
+href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension
+Pack for Java</a>. The [Extensions Pack for Java] page lists install
+instructions, and you should follow those instructions.</p>
+<p>Once the extension pack has finished installing a “Get Started”
+document should open:</p>
+<figure>
+<img src="get-started.png"
+alt="Get Started after installing the Extension Pack for Java" />
+<figcaption aria-hidden="true">Get Started after installing the
+Extension Pack for Java</figcaption>
+</figure>
+<p>If you’ve never installed a <a
+href="https://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a> (or
+don’t remember if you have, or don’t know if your VS Code is configured
+to use the JDK), you should install one (or configure VS Code to find
+your JDK).</p>
+<p>Before doing this check to see if you have a JDK installed by
+following the instructions in the “Get Started” document (open a
+terminal and run <code>java -version</code>). If you get output here
+that isn’t something of the form “Command not found”, then you’ve
+already got a JDK installed and configured and you can safely skip this
+step.</p>
+<details>
+<summary>
+Installing a JDK in Windows
+</summary>
+<p>Click on the “Install JDK” button. The defaults that VS Code suggests
+are good defaults that you can accept: Adoptium’s Temurin, version 17
+(LTS), and JVM is hotspot.</p>
+<p>Click on the Download button, find the <code>.msi</code> file in your
+Downloads folder, and follow the on-screen prompts.</p>
+<p>After you’ve finished installing the JDK click on the “Reload Window”
+button.</p>
+<p>You should now be ready to run and debug Java programs!</p>
+</details>
+<details>
+<summary>
+Installing a JDK in macOS
+</summary>
+<p>Click on the “Install JDK” button. The defaults that VS Code suggests
+are good defaults that you can accept: Adoptium’s Temurin, version 17
+(LTS), and JVM is hotspot.</p>
+<p>Click on the Download button, find the <code>.pkg</code> file in your
+Downloads folder, and follow the on-screen prompts.</p>
+<p>After you’ve finished installing the JDK click on the “Reload Window”
+button.</p>
+<p>You should now be ready to run and debug Java programs!</p>
+</details>
+<details>
+<summary>
+Installing a JDK in Linux
+</summary>
+<p>The installer that VS Code offers to help you by downloading is…
+fine, but it’s a pain to configure. I recommend you use your package
+manager instead. On Debian or Ubuntu-based distributions you can use
+<code>apt</code>:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install openjdk-17-jdk</span></code></pre></div>
+<p>After the install completes, you may need to click on the “Install
+JDK” button in VS Code, then click on the “Reload Window” button.</p>
+<p>You should now be ready to run and debug Java programs!</p>
+</details>
+<h2 id="running-java-in-vs-code">Running Java in VS Code</h2>
+<p>Once you’re set up, you can start debugging!</p>
+<p>Here’s a <strong>very small</strong> Java program (you can copy and
+paste this into a new file in VS Code, save it as
+<code>HelloWorld.java</code>):</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Scanner</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> HelloWorld</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="kw">...</span> args<span class="op">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> <span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> <span class="dt">int</span> left<span class="op">,</span> right<span class="op">,</span> sum<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Let&#39;s add x+y!&quot;</span><span class="op">);</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">&quot;Enter the left side (x): &quot;</span><span class="op">);</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        left <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">&quot;Enter the right side (y): &quot;</span><span class="op">);</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Thanks! Calculating...&quot;</span><span class="op">);</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">=</span> <span class="fu">add</span><span class="op">(</span>left<span class="op">,</span> right<span class="op">);</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;The sum is: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> sum<span class="op">);</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Thanks for letting me calculate for you!&quot;</span><span class="op">);</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        sc<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">add</span><span class="op">(</span><span class="dt">final</span> <span class="dt">int</span> left<span class="op">,</span> <span class="dt">final</span> <span class="dt">int</span> right<span class="op">)</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> <span class="dt">int</span> sum<span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">About to add left to right.&quot;</span><span class="op">);</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">=</span> left <span class="op">+</span> right<span class="op">;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">Heading back to the caller.&quot;</span><span class="op">);</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>OK, maybe it’s not that small, but it is mostly <code>println</code>
+statements.</p>
+<p>Once you save the file, VS Code may, uh, <em>think</em> for a little
+bit while it compiles your code and stuff. While VS Code is thinking,
+you’ll see some indication that it’s doing something in the form of a
+spinner in the bottom right side of the window.</p>
+<figure>
+<video src="progress-trim.webm" controls=""><a
+href="progress-trim.webm">Compiling progress in VS Code.</a></video>
+<figcaption aria-hidden="true">Compiling progress in VS
+Code.</figcaption>
+</figure>
+<p>Eventually you’ll be able to run the program in VS Code when you see
+the options to Run or Debug just above the <code>main</code> method:</p>
+<figure>
+<img src="run-button.png" alt="Run or Debug, just above main." />
+<figcaption aria-hidden="true">Run or Debug, just above
+<code>main</code>.</figcaption>
+</figure>
+<p>Click on the Run button for now, just to verify that your environment
+works correctly. If your environment is working correctly, the program
+should start running in a terminal pane in VS Code.</p>
+<h2 id="debugging-in-vs-code">Debugging in VS Code</h2>
+<p>Click on the Debug button now:</p>
+<figure>
+<img src="run-button.png" alt="Run or Debug, just above main." />
+<figcaption aria-hidden="true">Run or Debug, just above
+<code>main</code>.</figcaption>
+</figure>
+<p>Suddenly a lot has changed about our window.</p>
+<div class="aside">
+<p>… or if you’re running macOS, maybe it hasn’t. If these new panes
+didn’t show up, click on the debug button on the left side of the
+window, it’s the button that looks like a play button with a little bug
+on in.</p>
+</div>
+<figure>
+<img src="debug-layout.png" alt="The debug layout in VS Code." />
+<figcaption aria-hidden="true">The debug layout in VS Code.</figcaption>
+</figure>
+<p>On the left side of the window are four new panes:</p>
+<ol type="1">
+<li>The <strong>Variables</strong> pane, listing variables that are in
+scope and their current value.</li>
+<li>The <strong>Watch</strong> pane, where you can enter expressions to
+be evaluated so you can see how they change without writing those
+expressions in your program.</li>
+<li>The <strong>Call stack</strong> pane, showing information about the
+methods that have been called (this is similar to the stack trace you
+see when a Java program crashes).</li>
+<li>The <strong>Breakpoints</strong> pane, where you can see a list of
+places in your program that will cause the debugger to pause execution
+(exceptions) or where you have set a breakpoint in your code.</li>
+</ol>
+<p>On the top is a new toolbar that has (in this order):</p>
+<ol type="1">
+<li>A <strong>pause</strong> button to pause your running program.</li>
+<li>A <strong>step over</strong> button to run a line of code and move
+to the next one.</li>
+<li>A <strong>step into</strong> button for when you want to move
+<em>into</em> the method instead of running it to completion.</li>
+<li>A <strong>step out</strong> button for when you want to finish
+running the method and go back to where you were before.</li>
+<li>A <strong>stop</strong> button to stop your running program.</li>
+<li>A <strong>hot code replace</strong> button for when you make changes
+to your code while the debugger is running, replacing the running code
+with the newly saved file.</li>
+</ol>
+<p>Right now your program is blocked waiting for you to type something
+in. Type in some numbers in your terminal and the program will finish
+running. Other than briefly changing the layout, debugging hasn’t given
+us any new tools for learning about the flow and state of our
+program…</p>
+<h3 id="setting-breakpoints">Setting breakpoints</h3>
+<p>One of the main things you’ll do with a debugger is set breakpoints.
+As before, breakpoints are the places and/or conditions where you want
+the debugger to stop running your code so you can <em>look
+around</em>.</p>
+<p>You can set a breakpoint in VS Code by moving your mouse to where the
+line numbers are, then clicking on the red circle that shows up just to
+the left of the line number:</p>
+<figure>
+<img src="breakpoint-location.png"
+alt="The place where we can set a breakpoint." />
+<figcaption aria-hidden="true">The place where we can set a
+breakpoint.</figcaption>
+</figure>
+<p>Pick a line in the code where you would like the program to stop when
+the debugger is running. I’m going to suggest you set a breakpoint on
+line 17, just after the <code>Scanner</code>-based input is done.</p>
+<p>Once you’ve set your breakpoint (the red circle should be brighter
+and stay there when you move your mouse away), click the Debug button
+again. You’re going to have to enter the numbers again, but just after
+you enter the last number the contents of the panes will now have
+values, and the line where the program has paused on will be
+highlighted:</p>
+<figure>
+<img src="debugging.png" alt="Paused where a breakpoint is set." />
+<figcaption aria-hidden="true">Paused where a breakpoint is
+set.</figcaption>
+</figure>
+<p>In the variables pane you can see the names of all variables that are
+currently in scope (<code>args</code>, the values passed to your program
+on the command line, <code>sc</code> our <code>Scanner</code>,
+<code>left</code>, and <code>right</code>; <code>sum</code> doesn’t show
+up because it hasn’t been initialized with a value yet). You can also
+see these values on lines in the editor area where they are used.</p>
+<h3 id="stepping-over">Stepping over</h3>
+<p>Click on the <strong>Step over</strong> button. This will run the
+line that was highlighted, then move to the next line. If you set your
+breakpoint on line 17, then the <code>System.out.println</code> was run,
+and you can see the output in your terminal.</p>
+<p>Now the <em>next</em> line of code is highlighted (where we call
+<code>sum</code>).</p>
+<h3 id="stepping-into">Stepping into</h3>
+<p>Let’s step into this method, click on the <strong>Step into</strong>
+button. This changes the location of the highlighted line to be
+<em>in</em> the <code>sum</code> method:</p>
+<figure>
+<img src="step-into.png" alt="Just after stepping into sum." />
+<figcaption aria-hidden="true">Just after stepping into
+<code>sum</code>.</figcaption>
+</figure>
+<p>The content of the <strong>Variables</strong> pane has changed, now
+it’s only what’s in scope in the <code>sum</code> method
+(<code>left</code> and <code>right</code>).</p>
+<p>The content of the <strong>Call Stack</strong> pane has also changed.
+Before the only line under <code>Thread (main)</code> was
+<code>HelloWorld.main</code>, and now that we’re running code in the
+<code>sum</code> method, we’ve added that to our call stack.</p>
+<p>You can click on entries in the call stack to see what things looked
+like in the method that got you here. Click on the
+<code>HelloWorld.main</code> entry and you’ll be taken back to the place
+where we called <code>sum</code> in <code>main</code>, and you can
+review the state of the variables in the <strong>Variables</strong> pane
+again.</p>
+<h3 id="stepping-out">Stepping out</h3>
+<p>Click back on <code>HelloWorld.add</code> in the <strong>Call
+Stack</strong> pane. You should be highlighting line 30 right now.</p>
+<p>Click the <strong>Step over</strong> button twice, once to run the
+<code>System.out.println</code> and another time to run the
+<code>sum = left + right</code>.</p>
+<p>Now click on the <strong>Step out</strong> button. Stepping out runs
+the remaining lines in the method, then returns you to where you were
+before.</p>
+<h3 id="finishing">Finishing</h3>
+<p>At this point you can click on either the <strong>Pause/Play</strong>
+button to finish running the program, or click on the
+<strong>Stop</strong> button to end the program without finishing.</p>
+<h3 id="catching-crashes">Catching crashes</h3>
+<p>Debuggers can also help when your code crashes. Disable the
+breakpoint you set by clicking on the red circle, then click the Debug
+button again to restart debugging.</p>
+<p>Just after debugging starts, click the checkboxes in the
+<strong>Breakpoints</strong> pane to catch both “Uncaught exceptions”
+and “Caught exceptions”.</p>
+<p>Once the code is running, enter something that <em>isn’t</em> a
+number and press <kbd>Enter</kbd>. As soon as you do that, the debugger
+will pause execution because an exception was thrown:</p>
+<figure>
+<img src="crash.png"
+alt="Execution is paused because an exception was thrown." />
+<figcaption aria-hidden="true">Execution is paused because an exception
+was thrown.</figcaption>
+</figure>
+<p>We can see in the <strong>Call Stack</strong> pane that
+<code>Scanner</code> is throwing the exception and that the exception is
+an <code>InputMismatchException</code>. You <em>may</em> be able to
+click on the stack entries for <code>Scanner</code> if you have
+installed the source code for the JDK. When this is in a call stack for
+your own program, you can click on the methods and see the state your
+code was in just before the crash happened.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>These are the basics for using the debugger in VS Code, and there’s a
+lot we didn’t go into. You can read a lot more on the <a
+href="https://code.visualstudio.com/docs/java/java-debugging">Running
+and debugging Java</a> page on VS Code’s home page.</p>
+<p>The ideas we’ve worked through are present in almost all visual
+debugging tools. Here’s a short list of IDEs with debuggers that have
+similar functionality to VS Code’s debugger:</p>
+<ul>
+<li><a
+href="https://www.jetbrains.com/help/idea/debugging-code.html">Debug
+Java in IntelliJ IDEA</a></li>
+<li><a
+href="https://learn.microsoft.com/en-us/visualstudio/debugger/?view=vs-2022">Debug
+code in Visual Studio</a></li>
+<li><a href="https://code.visualstudio.com/docs/cpp/cpp-debug">Debug
+C/C++ in Visual Studio Code</a></li>
+</ul>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-5.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

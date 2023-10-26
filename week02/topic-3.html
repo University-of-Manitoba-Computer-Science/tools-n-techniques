@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Write plain text documents</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Installing software on your personal
+computer</a></li>
+<li><strong>Write plain text documents</strong></li>
+<li><a href="topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href="topic-5.html">Organizing your files</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Academic misconduct</a></li>
+<li><a href=".././week05/topic-3.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-4.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">None</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Write plain text documents</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#write-plain-text-documents"
+id="toc-write-plain-text-documents">Write plain text documents</a>
+<ul>
+<li><a href="#writing-in-markdown" id="toc-writing-in-markdown">Writing
+in Markdown</a>
+<ul>
+<li><a href="#titles" id="toc-titles">Titles</a></li>
+<li><a href="#emphasis" id="toc-emphasis">Emphasis</a></li>
+<li><a href="#lists" id="toc-lists">Lists</a></li>
+<li><a href="#code" id="toc-code">Code</a></li>
+<li><a href="#images-and-links" id="toc-images-and-links">Images and
+links</a></li>
+</ul></li>
+<li><a href="#writing-in-latex" id="toc-writing-in-latex">Writing in
+<span class="math inline">\LaTeX</span></a>
+<ul>
+<li><a href="#simple-expressions" id="toc-simple-expressions">Simple
+expressions</a></li>
+<li><a href="#fractions" id="toc-fractions">Fractions</a></li>
+<li><a href="#sequences" id="toc-sequences">Sequences</a></li>
+<li><a href="#common-cs-symbols" id="toc-common-cs-symbols">Common CS
+symbols</a></li>
+</ul></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="write-plain-text-documents">Write plain text documents</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Write plain text
+documents (including code and formulas) using structured markup formats
+(Markdown and <span class="math inline">\LaTeX</span>).</label></li>
+</ul>
+</div>
+<p><a
+href="https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html">A
+lot</a> of the stuff that we create in computer science is formatted as
+<a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> — all
+the source code that we write in Java, Python, Processing, and C (for
+example) are plain text documents.</p>
+<p>Plain text documents (<code>.txt</code> files!) don’t really seem
+that useful at first glance, but really are very useful:</p>
+<ul>
+<li>Writing plain text files to describe how to build and use software
+is common in industry (<code>README</code> files).</li>
+<li>Plain text files can be opened and read in almost all environments,
+including ones that don’t have a graphical user interface (like your
+terminal).</li>
+<li>Plain text is a format that’s long-lived (you can still open and
+read plain text files written in the 90s in modern computing
+environments today; you can’t open many word processor formats from the
+same time today).</li>
+<li>Plain text plays a lot more nicely with version control (we’ll get
+there!).</li>
+<li>Writing in plain text lets you focus on more on writing and less on
+formatting.</li>
+</ul>
+<p>All that said, plain text documents are, well, plain.</p>
+<ul>
+<li><p>You can’t add <em>emphasis</em> to certain words.</p></li>
+<li><p>You can’t easily</p>
+<ol type="1">
+<li>Make</li>
+<li>Numbered</li>
+<li>Lists</li>
+<li>Of</li>
+<li>Things.</li>
+</ol></li>
+<li><p>You can’t embed</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot; source code.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+<li><p>You certainly can’t include <img src="images.png"
+style="height: 1em" alt="A picture of the word “images”." />.</p></li>
+<li><p>You <strong>definitely</strong> can’t include fancy formulas:</p>
+<p><span class="math display">
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2ac}
+</span></p></li>
+</ul>
+<p>We’re going to be writing in this course, and you will be doing all
+of your writing in this course in <strong>plain text</strong>. When you
+write in plain text, you’re going to be doing <em>everything</em> that
+we listed above. In fact, this document was originally written as <a
+href="topic-3.md">a plain text document</a>!</p>
+<p>Plain text in and of itself won’t let us do those things very easily,
+so we need to write plain text, but write the plain text such that we’re
+following structured text standards: Markdown and <span
+class="math inline">\LaTeX</span>.</p>
+<h2 id="writing-in-markdown">Writing in Markdown</h2>
+<p>Writing <a
+href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>-formatted
+plain text documents is pretty straightforward: Open up VS Code, create
+a new file, and start writing words.</p>
+<div class="example">
+<p>Here, write this into VS Code:</p>
+<pre><code>Hi! It&#39;s me! I&#39;m writing Markdown-formatted plain text! Yay!</code></pre>
+</div>
+<p>Congratulations <span class="emoji" data-emoji="tada">🎉</span>! You
+just wrote some Markdown!</p>
+<p>OK, so it’s not really that exciting. And hey! We didn’t even do any
+of those things that I said we would do above, what gives?</p>
+<p>Adding some flair to your writing in Markdown isn’t really much more
+than doing what we just did:</p>
+<ul>
+<li><a href="#titles">Titles</a></li>
+<li><a href="#emphasis">Emphasis</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#images-and-links">Images and links</a></li>
+</ul>
+<h3 id="titles">Titles</h3>
+<p>Most documents have a title, or headings and subheadings (and
+subsubheadings).</p>
+<p>You’ve got two options for making headings in Markdown:</p>
+<ol type="1">
+<li>Use underlines (<code>===</code> or <code>---</code>).</li>
+<li>Use number signs or hashes (<code>#</code>, <code>##</code>,
+<code>###</code>).</li>
+</ol>
+<div class="example">
+<p>Here are some examples:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Top level heading</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">=================</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Here&#39;s some text under the top level</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>heading.</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Second level heading</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>--------------------</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>Here&#39;s some text under the second </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>level heading.</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Third level heading</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>There&#39;s only so many levels of </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>underlines, so you have to switch </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>to using number signs if you want </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>3+-level headings.</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Top</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>More text under a top level heading.</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Second</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>Some text under a different kind </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>of second level heading.</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Third</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>More text under a third level </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>heading.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<h1 id="top-level-heading">Top level heading</h1>
+<p>Here’s some text under the top level heading.</p>
+<h2 id="second-level-heading">Second level heading</h2>
+<p>Here’s some text under the second level heading.</p>
+<h3 id="third-level-heading">Third level heading</h3>
+<p>There’s only so many levels of underlines, so you have to switch to
+using number signs if you want 3+-level headings.</p>
+<h1 id="top">Top</h1>
+<p>More text under a top level heading.</p>
+<h2 id="second">Second</h2>
+<p>Some text under a different kind of second level heading.</p>
+<h3 id="third">Third</h3>
+<p>More text under a third level heading.</p>
+</div>
+</div>
+<p>Pick whichever style you want and stick with it. I prefer to use
+underlines because I think it’s more obvious, but has the downside of
+being limited to two levels of heading and subheading.</p>
+</div>
+<h3 id="emphasis">Emphasis</h3>
+<p>If you want to add emphasis (<em>italic</em>) to text in Markdown,
+you put asterisks <code>*</code> around the text:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>The word emphasis has *emphasis*.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>The word emphasis has <em>emphasis</em>.</p>
+</div>
+</div>
+</div>
+<p>If you want to add emphasis (<strong>bold</strong>) to text in
+Markdown, you put <em>two</em> asterisks <code>**</code> around the
+text:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Some text doesn&#39;t need emphasis,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>**some text needs to be bold**.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>Some text doesn’t need emphasis, <strong>some text needs to be
+bold</strong>.</p>
+</div>
+</div>
+</div>
+<h3 id="lists">Lists</h3>
+<p>There are two kinds of lists you can format in Markdown: Bullets and
+numbered lists. Bulleted lists use the asterisk symbol at the beginning
+of a line, numbered lists are a number followed by a period:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>This is</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A bulleted list</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>In Markdown.</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>This is</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>A numbered list</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>In Markdown.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<ul>
+<li>This is</li>
+<li>A bulleted list</li>
+<li>In Markdown.</li>
+</ul>
+<ol type="1">
+<li>This is</li>
+<li>A numbered list</li>
+<li>In Markdown.</li>
+</ol>
+</div>
+</div>
+</div>
+<h3 id="code">Code</h3>
+<p>You can put code (or any content that shouldn’t be formatted) in
+“fences”. A fence is a section in your plain text that’s surrounded by
+two lines that have just three backticks (```). If what you’re putting
+into the fence is source code for a specific programming language, you
+can indicate which language it is by writing the language name in lower
+case letters just after the first fence:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<pre><code>
+Plain text:
+
+```
+Here's some plain-text that's not formatted.
+```
+
+Some Java:
+
+```java
+public static void main(String... args)
+{
+  System.out.println("Hello, world!");
+}
+```
+
+Some Python:
+
+```python
+# it's embarrassing (for Java)
+# how much shorter this is
+print("Hi")
+```
+</code></pre>
+</div><div class="column output" style="width:50%;">
+<p>Plain text:</p>
+<pre><code>Here&#39;s some plain-text that&#39;s not formatted.</code></pre>
+<p>Some Java:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="kw">...</span> args<span class="op">)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Some Python:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it&#39;s embarrassing (for Java)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how much shorter this is</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hi&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="images-and-links">Images and links</h3>
+<p>You unfortunately can’t copy and paste a picture into your Markdown
+document in the same way you can with something like Word, but you can
+still <em>refer</em> to an image and have that image appear when
+[converting documents to different formats] like PDF or
+<code>docx</code>.</p>
+<p>Referring to an image in Markdown uses a “link”: some text that will
+appear as the caption or description of the image and the file name for
+the image (e.g., <code>jpg</code>, <code>gif</code>,
+<code>png</code>):</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Here&#39;s a cool picture:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="al">![The word &quot;images&quot;.](images.png)</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>Here’s a cool picture:</p>
+<figure>
+<img src="images.png" alt="The word “images”." />
+<figcaption aria-hidden="true">The word “images”.</figcaption>
+</figure>
+</div>
+</div>
+<p>The file <code>images.png</code> has to be in the same folder as the
+Markdown-formatted text file.</p>
+</div>
+<p>You can also make links to web pages using the same syntax, but
+without the leading <code>!</code>:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>You can get to UM Learn by clicking this</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">link to UM Learn</span><span class="co">](https://umlearn.ca)</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>and it will open in your web browser.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>You can get to UM Learn by clicking this <a
+href="https://umlearn.ca">link to UM Learn</a>, and it will open in your
+web browser.</p>
+</div>
+</div>
+</div>
+<p>Another format for writing links to web pages is to separate the
+address from the text you want displayed:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>You can get to UM Learn by clicking this</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">link to UM Learn</span><span class="co">]</span>, and it will open in</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>your web browser.</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ot">[link to UM Learn]: https://umlearn.ca</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>You can get to UM Learn by clicking this <a
+href="https://umlearn.ca">link to UM Learn</a>, and it will open in your
+web browser.</p>
+</div>
+</div>
+</div>
+<h2 id="writing-in-latex">Writing in <span
+class="math inline">\LaTeX</span></h2>
+<p>Finally, we want to be able to write fancy formulas in our plain text
+document. Unfortunately, Markdown doesn’t have syntax to support writing
+fancy formulas in and of itself. Fortunately, we can embed a
+<em>different</em> text format in our plain text documents that
+<em>does</em> have syntax for writing fancy formulas, and that text
+format is called <span class="math inline">\LaTeX</span>.</p>
+<div class="aside">
+<p><span class="math inline">\LaTeX</span> is pronounced “Lah-tek”, the
+<span class="math inline">X</span> in <span
+class="math inline">\LaTeX</span> is not <a
+href="https://en.wikipedia.org/wiki/X">the latin letter X</a>, but is
+instead <a href="https://en.wikipedia.org/wiki/Chi_(letter)">the Greek
+letter Chi</a>).</p>
+</div>
+<p>We can embed <span class="math inline">\LaTeX</span> in Markdown
+using some simple syntax:</p>
+<div class="example">
+<p>Single dollar signs around an expression will put that expression on
+the same line as the text you’re writing:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>For example, $x + 2$ is right on the</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>same line as everything else.</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>For example, <span class="math inline">x + 2</span> is right on the
+same line as everything else.</p>
+</div>
+</div>
+<p>Double dollar signs around an expression will put it on its own line
+and centered:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>For example, this is a fancy expression:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>x + 2</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>For example, this is a fancy expression:</p>
+<p><span class="math display">
+x + 2
+</span></p>
+</div>
+</div>
+</div>
+<p>We want to be able to accomplish a few things with <span
+class="math inline">\LaTeX</span>:</p>
+<ul>
+<li>Write simple expressions with variables, superscripts, and
+subscripts.</li>
+<li>Write expressions that include fractions.</li>
+<li>Write expressions that include sequences (e.g., sums and
+products).</li>
+<li>Write expressions that include common CS symbols (e.g., the <span
+class="math inline">\mathcal{O}</span> in “big O”).</li>
+</ul>
+<h3 id="simple-expressions">Simple expressions</h3>
+<p>Writing simple expressions with variables is straightforward, just
+wrap the expression with the appropriate number of dollar signs ($) and
+write it out:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ss">x + y + 10</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+x + y + 10
+</span></p>
+</div>
+</div>
+</div>
+<p>To make a value a superscript (like an exponent), you need to use the
+caret symbol (^). To make a value subscript (like an index), you need to
+use the underscore (_) symbol. Then wrap the value you want to be
+superscripted or subscripted in curly braces ({}):</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ss">x_{1}^{2} + y^{n+4} + z_{0} + 10</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+x_{1}^{2} + y^{n+4} + z_{0} + 10
+</span></p>
+</div>
+</div>
+</div>
+<h3 id="fractions">Fractions</h3>
+<p>Writing expressions that include fractions takes a little bit more
+than simple expressions, but it’s not much. Writing a fraction requires
+the use of a <em>command</em> in <span
+class="math inline">\LaTeX</span>: <code>\frac</code>. Commands in <span
+class="math inline">\LaTeX</span> generally also accept arguments, the
+things that you want the command to display. The <code>\frac</code>
+command takes two arguments: a numerator and a denominator. You can pass
+arguments to a command in separate sets of curly braces per argument,
+just after the command:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{2}</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\frac{1}{2}
+</span></p>
+</div>
+</div>
+</div>
+<p>That’s a pretty simple fraction, but the arguments that you pass to
+<code>\frac</code> can be any expression in <span
+class="math inline">\LaTeX</span>, <em>including</em> other
+fractions!</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{ x_1^{2} + y^{n+4} + 10 }</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ss">     { </span><span class="sc">\frac</span><span class="ss">{1}{2} }</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\frac{ x_1^{2} + y^{n+4} + 10 }
+     { \frac{1}{2} }
+</span></p>
+</div>
+</div>
+</div>
+<h3 id="sequences">Sequences</h3>
+<p>Sometimes you need to show an expression that includes sums of
+sequences (<span class="math inline">\sum</span>) or products of
+sequences (<span class="math inline">\prod</span>). Writing these
+expressions is similar to fractions in that you’ll use some commands
+(<code>\sum</code> and <code>\prod</code>), but you’ll also use
+superscripts (^) and subscripts (_) to place symbols above and below the
+sum or product symbols:</p>
+<div class="example">
+<p>Use the <code>\sum</code> command to display a summation:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\sum</span>_{n=0}^{<span class="fu">\infty</span>} x_n = <span class="fu">\infty</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\sum_{n=0}^{\infty} x_n = \infty
+</span></p>
+</div>
+</div>
+<p>Similarly, use the <code>\prod</code> command to display a
+product:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\prod</span>_{n=0}^{<span class="fu">\infty</span>} x_n = <span class="fu">\infty</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\prod_{n=0}^{\infty} x_n = \infty
+</span></p>
+</div>
+</div>
+</div>
+<h3 id="common-cs-symbols">Common CS symbols</h3>
+<p>Some other symbols that you’ll need to use when writing for CS are to
+describe things like complexity of algorithms, so “big O”, “big omega”,
+“theta”, logarithms and natural logarithms, etc.</p>
+<div class="example">
+<ul>
+<li>Big O: <code>\mathcal{O}</code> → <span
+class="math inline">\mathcal{O}</span></li>
+<li>Big omega: <code>\Omega</code> → <span
+class="math inline">\Omega</span></li>
+<li>Big theta: <code>\Theta</code> → <span
+class="math inline">\Theta</span></li>
+<li>Logarithm: <code>\log</code> → <span
+class="math inline">\log</span></li>
+<li>Natural logarithm: <code>\ln</code> → <span
+class="math inline">\ln</span></li>
+</ul>
+<p>A more complete example would look like:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\mathcal</span>{O}(<span class="fu">\log</span>(n))</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\mathcal{O}(\log(n))
+</span></p>
+</div>
+</div>
+</div>
+<p>You may also want to put subscripts on things like <code>\log</code>
+to indicate which number system you’re using, so for something like base
+2:</p>
+<div class="example">
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode latex"><code class="sourceCode latex"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\Theta</span>(<span class="fu">\log</span>_{2}(n))</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p><span class="math display">
+\Theta(\log_{2}(n))
+</span></p>
+</div>
+</div>
+</div>
+<h2 id="further-reading">Further reading</h2>
+<p>This document gets you started with Markdown and <span
+class="math inline">\LaTeX</span>, but you’re definitely going to run
+into situations where you want to do things that are a little bit more
+complex than what you’ve seen here (i.e., tables).</p>
+<p>You can find plenty of information online about both Markdown and
+<span class="math inline">\LaTeX</span>, but here are some resources
+that are particularly good or helpful:</p>
+<ul>
+<li><p>GitHub’s “<a
+href="https://guides.github.com/features/mastering-markdown/">Basic
+formatting syntax</a>” describes most of this document and a little bit
+more.</p></li>
+<li><p>GitHub’s “<a
+href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting">Working
+with advanced formatting</a>” shows things that are in this document
+(math and code blocks) and shows things like tables, and features that
+are specific to GitHub’s Markdown like “collapsed sections”.</p></li>
+<li><p>Pandoc’s “<a
+href="https://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc’s
+Markdown</a>” has similar content to the above, but focusing
+specifically on Pandoc.</p></li>
+<li><p><a href="https://www.overleaf.com/learn">Overleaf’s
+documentation</a> is a comprehensive overview of <span
+class="math inline">\LaTeX</span>, well beyond anything you would need
+for this course.</p>
+<div class="aside">
+<p>We’re embedding <span class="math inline">\LaTeX</span> within
+Markdown-formatted documents, but <span
+class="math inline">\LaTeX</span> is, in and of itself, a complete plain
+text document format. I (me, Franklin) personally find writing in <span
+class="math inline">\LaTeX</span> to be painful. Being able to embed
+bits of <span class="math inline">\LaTeX</span> in Markdown gives me the
+best of both worlds.</p>
+</div></li>
+</ul>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>
