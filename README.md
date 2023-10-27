@@ -1,3 +1,8 @@
+---
+title: About this book
+author: Franklin Bristow
+---
+
 Introduction to Tools and Techniques in Computer Science
 ========================================================
 
@@ -24,6 +29,8 @@ can use Pandoc to render something like a book is [Rippledoc]. We're using [a
 fork of Rippledoc] that uses Pandoc to get metadata instead of blindly trying to
 use the first line as the title.
 
+[The repository is hosted on Github] and is open for contributions.
+
 Here's the strategy for building this book:
 
 1. Switch to the `main` branch from whatever branch you're currently on.
@@ -39,3 +46,4 @@ Here's the strategy for building this book:
 [Pandoc]: https://pandoc.org
 [Rippledoc]: https://gitlab.com/uvtc/rippledoc/
 [a fork of Rippledoc]: https://github.com/fbristow/rippledoc
+[The repository is hosted on Github]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques
