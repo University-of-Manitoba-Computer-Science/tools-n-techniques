@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Version Control</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Compiling and running code</a></li>
+<li><strong>Version Control</strong></li>
+<li><a href="topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././week07/topic-1.html">Introduction</a></li>
+<li><a href=".././week07/topic-2.html">Getting help</a></li>
+<li><a href=".././week07/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././week07/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././week07/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././week07/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Version Control</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#version-control" id="toc-version-control">Version
+control</a>
+<ul>
+<li><a href="#initializing-and-adding-changes-to-a-repository"
+id="toc-initializing-and-adding-changes-to-a-repository">Initializing
+and adding changes to a repository</a>
+<ul>
+<li><a href="#adding-files-to-the-repository"
+id="toc-adding-files-to-the-repository">Adding files to the
+repository</a></li>
+<li><a href="#committing-changes-to-the-repository"
+id="toc-committing-changes-to-the-repository">Committing changes to the
+repository</a></li>
+</ul></li>
+<li><a href="#reverting-changes" id="toc-reverting-changes">Reverting
+changes</a></li>
+<li><a href="#files-that-shouldnt-be-version-controlled"
+id="toc-files-that-shouldnt-be-version-controlled">Files that
+<em>shouldn’t</em> be version controlled</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="version-control">Version control</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Use version control software on
+your own code to keep track of changes that you make over time
+(initializing and adding changes to a repository).</li>
+<li><input type="checkbox" checked="" />Use version control software on
+your own code to make changes and quickly be able to revert to a working
+state.</li>
+<li><input type="checkbox" checked="" />Identify files that should not
+be version controlled and make sure they aren’t included in a
+repository’s history (<code>.gitignore</code>).</li>
+</ul>
+</div>
+<p>Our bigger topic this week is looking at version control software.
+Version control is something that’s been around for a long time and
+different people have different opinions about how to do version
+control, and which software should be used for version control, but this
+week we’re going to focus on a specific version control tool: <a
+href="https://en.wikipedia.org/wiki/Git"><code>git</code></a>.</p>
+<p>Version control software helps you keep track of the changes that
+you’ve made to your own code or any kind of file over time. Version
+control isn’t entirely automatic, you have to tell the software which
+files to track and when it should track changes.</p>
+<h2 id="initializing-and-adding-changes-to-a-repository">Initializing
+and adding changes to a repository</h2>
+<p>We have to tell our version control software where the files are that
+we want it to help us manage. Most of the time this is a single folder
+where you keep your source code for a specific assignment or project.
+We’re going to call this location where files are a “repository”.</p>
+<p>We have to “initialize” the repository. Initializing the repository
+has the version control software create some new files and folders that
+<em>it</em> uses to help keep track of the changes we make to our
+files.</p>
+<div class="example">
+<p>Let’s start by making a new directory (somewhere appropriate in your
+folder structure).</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> my-project</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span></code></pre></div>
+<p>Once in the directory that contains the files (or <em>will</em>
+contain the files) that we want to track, we can ask our version control
+software to initialize the folder as a repository. With Git, this is a
+special command called <code>init</code>.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main <span class="co">##### </span><span class="al">NOTE</span><span class="co">: -b only works in git 2.28 or newer</span></span></code></pre></div>
+<p>Git should then tell you that it’s “Initialized an empty Git
+repository” in this directory!</p>
+</div>
+<div class="aside">
+<p>When you initialized the repository, Git told you that it initialized
+the repository in your directory and then there was a folder at the end
+named <code>.git/</code>.</p>
+<p>Try running <code>ls</code> in your directory. Can you see that
+folder?</p>
+<p>…</p>
+<p>No. You can’t see that folder. Where is it?</p>
+<p>You <em>can</em> see that folder if you ask <code>ls</code> to list
+<strong>a</strong>ll files:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> ls <span class="at">-a</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./</span>  ../  .git/</span></code></pre></div>
+<p>And look at that, there are those two special directories that we’ve
+seen before: <code>.</code> the current directory and <code>..</code>
+the parent directory.</p>
+</div>
+<p>Now that we’ve got an empty repository, we can start adding files to
+it. Version control software generally requires that you tell it
+specifically which files you want it to keep track of. That means that
+Git isn’t going to keep track of files that just happen to be in the
+same directory as the repository, you have to tell Git to actually keep
+track of those files.</p>
+<p>Create some new files in the repository:</p>
+<ul>
+<li><p>Make a new plain text file with some text in it using a
+command-line text editor like <code>vim</code>. Name the file
+<code>README.md</code>.</p></li>
+<li><p>Transfer a file from your computer to Aviary into this
+directory.</p></li>
+<li><p>Copy the <code>hello</code> folder from wherever it is to this
+directory.</p>
+<div class="aside">
+<p>You can copy files from one place to another on the same computer
+using the <code>cp</code> command. You can copy entire folders from one
+place to another using the <code>-r</code> option for recursive (just
+like <code>scp</code>!).</p>
+<p>To copy the <code>hello</code> folder here, you can use
+<code>cp</code> from this directory:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../hello . <span class="co"># if hello is in the parent directory</span></span></code></pre></div>
+</div></li>
+</ul>
+<p>Even though we put these files into this directory with the
+repository, Git still doesn’t know anything about them. We have to add
+these files to the repository in two steps:</p>
+<ol type="1">
+<li>Staging the changes by adding them with the <code>add</code>
+subcommand, and</li>
+<li>Committing the changes using the <code>commit</code>
+subcommand.</li>
+</ol>
+<h3 id="adding-files-to-the-repository">Adding files to the
+repository</h3>
+<p>Adding files to the repository is straightforward: you use
+<code>git add</code> and then tell Git which files should be added to
+the repository.</p>
+<p>Files that you add with <code>git add</code> are “staged” — Git knows
+that the files exist and that you want it to track changes to these
+files, but Git isn’t actually ready to track the changes.</p>
+<div class="example">
+<p>You can add files and changes to the repository one at a time using
+<code>git add</code> and including the name of the file that you want to
+add:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add README.md</span></code></pre></div>
+<p>You can also add entire folders to the repository:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add hello</span></code></pre></div>
+<p>You can also add <em>everything in the current working directory</em>
+to the repository:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add .</span></code></pre></div>
+</div>
+<p>Git doesn’t tell you anything when you add files or changes to be
+staged, but you can ask Git to tell you about the current state it’s in
+by using the <code>status</code> subcommand.</p>
+<div class="example">
+<p>You can find out which files or changes are staged to be committed
+using <code>git status</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git status</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> commits yet</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="kw">)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>          <span class="ex">new</span> file:   README.md</span></code></pre></div>
+<p>Git helpfully tells you how to <em>unstage</em> a file if you
+accidentally added a file or change you didn’t want to add to the
+repository.</p>
+</div>
+<h3 id="committing-changes-to-the-repository">Committing changes to the
+repository</h3>
+<p>Even though Git knows about the files or changes that you’ve staged,
+you haven’t told git that you <em>really</em> want it to track changes
+to those files.</p>
+<p>A “commit” is what Git really manages: what a specific set of files
+looked like at a specific point in time.</p>
+<p>When you make a commit to a repository, you’re telling your version
+control software that the changes that you’ve made to these files are
+important and it should keep track of that. Some important times where
+you would want to keep track of things:</p>
+<ul>
+<li>The first time you create a repository and you’re adding some files
+to it.</li>
+<li>When the thing you’re working on <em>works</em>.</li>
+<li>When you’ve finished working on a small part of a bigger
+project.</li>
+</ul>
+<p>When you make a commit to a repository, you have to include a “commit
+message”: a brief, human-readable message describing what you’re
+committing to the repository.</p>
+<p>We can commit staged changes to our repository using the
+<code>commit</code> subcommand.</p>
+<div class="aside">
+<p>Unfortunately, we’ve got to do some one-time set up before we can
+make our first commit. It’s OK If you skip this step (you can fix it
+later), but things will flow more smoothly if you do it now.</p>
+<p>Before we can make a commit, we need to tell <code>git</code> who we
+are. We can configure <code>git</code> and tell it who we are with the
+<code>git config</code> command:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your name&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email you@myumanitoba.ca <span class="co"># you should use your own</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># e-mail address here.</span></span></code></pre></div>
+<p>You only need to do this once per physical computer that you’re using
+<code>git</code> on. In other words: if you’re using two computers,
+you’ll need to run this set up step on each computer, but you only need
+to do it once.</p>
+</div>
+<div class="example">
+<p>We can commit staged changes to a repository using
+<code>git commit</code> and either writing a commit message in the
+command itself, or writing a longer commit message in your text
+editor.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git commit <span class="at">-m</span> <span class="st">&quot;Initial commit&quot;</span> <span class="co"># commit with a message inline</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[main</span> <span class="er">(</span><span class="ex">root-commit</span><span class="kw">)</span> <span class="ex">acff39c]</span> Initial commit</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span> file changed, 10 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span><span class="ex">,</span> 0 deletions<span class="er">(</span><span class="ex">-</span><span class="kw">)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 README.md</span></code></pre></div>
+<p>Your commit is going to look different from mine because you added
+more files than me to your commit and you used a different commit
+message.</p>
+<p>You can write a longer commit message by leaving out the
+<code>-m</code> part, and this will ask Git to open up your text editor
+where you can write a longer message.</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git commit <span class="co"># opens your text editor to write a message</span></span></code></pre></div>
+</div>
+<p>After you commit your changes to the repository, everything still
+looks pretty normal. Your files are all still there. Great <span
+class="emoji" data-emoji="tada">🎉</span>!</p>
+<p>You can ask Git to tell you what its status is again with
+<code>git status</code>, but this time it’s just going to say that there
+is nothing to commit</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git status</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> to commit, working tree clean</span></code></pre></div>
+<div class="aside">
+<p>Git commit messages are important metadata (data about your data)
+that help you (or others) better understand the changes that you’ve made
+to your files over time. They’re a lot like writing comments in code in
+the sense that they shouldn’t describe the files that you changed or
+even describe how you changed the files, but should describe why you
+changed the files and what the ultimate side-effect is (“I fixed this
+bug!”).</p>
+<p>Lots of people have opinions on Git commit messages:</p>
+<ul>
+<li>Tim Pope writes about them in <a
+href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">A
+Note About Git Commit Messages</a>.</li>
+<li>Chris Beams writes about them in <a
+href="https://cbea.ms/git-commit/">How to Write a Git Commit
+Message</a>.</li>
+<li>Randall Munroe visualizes them in <a
+href="https://xkcd.com/1296/">Git Commit</a>.</li>
+</ul>
+</div>
+<p>Adding changes and committing them to your repository is something
+that you should be doing not just when you initialize the repository,
+but frequently as you’re doing your work. You should add any changes to
+your repository each time you accomplish something (a new method is
+working, a bug has been fixed, a feature is complete).</p>
+<h2 id="reverting-changes">Reverting changes</h2>
+<p>Initializing our repository and adding and committing files and
+changes to our repository is great, but just adding stuff to the
+repository isn’t exactly useful.</p>
+<p>One important use for version control is being able to go back in
+time to changes that were previously committed to the repository.</p>
+<p>Let’s make some changes to our file. We don’t actually care what the
+changes are because we’re making these changes to be able to see how to
+<em>undo</em> changes.</p>
+<p>We can revert uncommitted changes to a file using the
+<code>restore</code> subcommand in Git.</p>
+<div class="example">
+<p>Mess up your <code>README.md</code>. Go ahead. Have fun!</p>
+<p>Here are some things you can do:</p>
+<ul>
+<li><p>Open it in your text editor and start typing.</p></li>
+<li><p>“Accidentally” copy a file and replace <code>README.md</code>
+with that file</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> hello/compiled/hello.c README.md</span></code></pre></div></li>
+<li><p>Remove your <code>README.md</code></p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> rm README.md</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove regular file <span class="st">&#39;README.md&#39;</span><span class="pp">?</span> y <span class="co"># LIVE DANGEROUSLY</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> </span></code></pre></div></li>
+</ul>
+<p>Once you’ve made changes to your file, you can ask Git to tell you
+about the status of the file (with <code>git status</code>). Depending
+on what you did, Git will tell you different things, but it will
+importantly <em>notice that something has changed</em>. Git will also
+helpfully give you a hint about how to get your files back to the state
+they were in before.</p>
+<p>Now revert the changes you made to your <code>README.md</code> with
+the <code>restore</code> subcommand</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore README.md</span></code></pre></div>
+<p>Now open up your <code>README.md</code> again, and it’s back to the
+way it was before you made the changes!</p>
+</div>
+<h2 id="files-that-shouldnt-be-version-controlled">Files that
+<em>shouldn’t</em> be version controlled</h2>
+<p>Being able to keep track of changes to our important files is great,
+but there are some files that will have changes that <em>don’t</em> care
+about.</p>
+<p>Some examples of files that will change as you change your own
+files:</p>
+<ul>
+<li>The <code>.class</code> files that get generated when you compile
+Java programs.</li>
+<li>The <code>.docx</code> and <code>.pdf</code> files that you generate
+when converting from Markdown to those formats.</li>
+<li>Output files that get generated when you run certain programs.</li>
+</ul>
+<p>The common identifying property of all of these files is that they
+are files that get <em>generated</em> or <em>created</em> by something
+else from the file that you want to keep track of (<code>.class</code>
+files are generated from the <code>.java</code> files you care about;
+<code>.docx</code> in this case is generated from the <code>.md</code>
+files that you care about).</p>
+<p>We don’t usually want to include these files in a version control
+repository for a couple of reasons:</p>
+<ol type="1">
+<li>We can really quickly re-generate them from the files that we’re
+working from (it’s pretty easy to run <code>pandoc</code> again!).</li>
+<li>Sometimes these files can be <strong>really</strong> big in terms of
+file size.</li>
+<li>They are extra changes in our version control history that we
+<em>don’t care about</em>.</li>
+</ol>
+<p>We can tell Git to ignore certain files when they change by created a
+special file named <a
+href="https://git-scm.com/docs/gitignore"><code>.gitignore</code></a> in
+our repository.</p>
+<div class="example">
+<p>Use your text editor to create a new file named
+<code>.gitignore</code> in the same folder as your repository.</p>
+<p>Each line in a <code>.gitignore</code> file is either a comment
+(lines beginning with <code>#</code>) or describes specific filenames or
+“patterns” of filenames to be ignored.</p>
+<p>Here’s an example of what a <code>.gitignore</code> file might look
+like:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode ini"><code class="sourceCode ini"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore README.docx (a specific filename)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dt">README.docx</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore all .class files (a &quot;pattern&quot;, any file that ends with .class)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">*.class</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the entire build directory</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="dt">build/</span></span></code></pre></div>
+</div>
+<p>The <code>.gitignore</code> file <em>is</em> a file you want Git to
+keep track of, so you need to add this file to your repository (use
+<code>git add</code>).</p>
+<div class="aside">
+<p>Just like the <code>.git</code> folder, the <code>.gitignore</code>
+file is “hidden”, it doesn’t show up when you try to look at the
+contents of a directory using commands like <code>ls</code>. This is
+true in general: any file that begins with a period (<code>.</code>) is
+considered to be “hidden” on Linux and macOS, but you can see those
+files by telling a command like <code>ls</code> to list everything
+(<code>ls -a</code>).</p>
+</div>
+<h2 id="further-reading">Further reading</h2>
+<p>This document gets you started with version control and Git, but
+you’re definitely going to run into situations where you want to do
+things that are more complex than what we’ve seen here, or you’re going
+to make a mistake and need to fix it.</p>
+<p>You can find lots of good information online about Git and version
+control, but here are some resources that are particularly good or
+helpful:</p>
+<ul>
+<li><p>Roger Dudler’s <a
+href="https://rogerdudler.github.io/git-guide/">git - the simple
+guide</a> does a great job of quickly summarizing the tasks you might
+need to do when doing version control with Git.</p></li>
+<li><p>Seth Robertson’s <a
+href="https://sethrobertson.github.io/GitFixUm/fixup.html">On undoing,
+fixing, or removing commits in git</a> is a “choose your own
+adventure”-style guide on … well, undoing, fixing, or removing commits
+in Git! Maybe you accidentally committed a file that you don’t want to
+be in your repository, or maybe you accidentally forgot to include a
+file in a commit that <em>should</em> have been included in that commit.
+This will guide you through getting into the state that you want to be
+in.</p></li>
+<li><p>If you’re OK with some profane language in English, Katie
+Sylor-Miller’s <a href="https://ohshitgit.com/">Oh Sh*t, git!?!</a> is
+also an excellent source of solutions to “Please help me!” moments that
+you will <em>definitely</em> encounter when you’re using
+<code>git</code>.</p>
+<div class="aside">
+<p>Yeah. I know you can swear on the internet. But I have children. And
+while one of my children can read, I don’t think that he’ll be able to
+figure out what sh*t means, and I’m OK with that.</p>
+</div></li>
+</ul>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-2.html">←prev</a></div><div class="nav-bar-push"><a href="topic-4.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

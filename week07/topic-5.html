@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Digital notebooks</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././week02/topic-1.html">Introduction</a></li>
+<li><a href=".././week02/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././week02/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././week02/topic-4.html">Converting documents to different
+formats</a></li>
+<li><a href=".././week02/topic-5.html">Organizing your files</a></li>
+<li><a href=".././week02/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././week03/topic-0.html">Introduction</a></li>
+<li><a href=".././week03/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././week03/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././week03/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././week03/topic-4.html">Tab completion</a></li>
+<li><a href=".././week03/topic-5.html">Transferring files</a></li>
+<li><a href=".././week03/topic-6.html">handin</a></li>
+<li><a href=".././week03/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././week04/topic-1.html">Introduction</a></li>
+<li><a href=".././week04/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././week04/topic-3.html">Version Control</a></li>
+<li><a href=".././week04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././week05/topic-1.html">Introduction</a></li>
+<li><a href=".././week05/topic-2.html">Advanced version control</a></li>
+<li><a href=".././week05/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././week05/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././week06/topic-1.html">Introduction</a></li>
+<li><a href=".././week06/topic-2.html">Finding files</a></li>
+<li><a href=".././week06/topic-3.html">Filtering lines</a></li>
+<li><a href=".././week06/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././week06/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././week06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Getting help</a></li>
+<li><a href="topic-3.html">Getting help — Examples</a></li>
+<li><a href="topic-4.html">Academic misconduct</a></li>
+<li><strong>Digital notebooks</strong></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././week08/topic-1.html">Introduction</a></li>
+<li><a href=".././week08/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././week08/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././week08/topic-4.html">Debuggers</a></li>
+<li><a href=".././week08/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././week08/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././week08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././week09/topic-1.html">Introduction</a></li>
+<li><a href=".././week09/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././week09/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././week09/topic-4.html">Piping</a></li>
+<li><a href=".././week09/topic-5.html">Shell scripts</a></li>
+<li><a href=".././week09/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././week10/topic-1.html">Introduction</a></li>
+<li><a href=".././week10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././week10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././week10/topic-5.html">Summry</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././week11/topic-1.html">Introduction</a></li>
+<li><a href=".././week11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././week11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././week11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././week11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././week11/topic-6.html">Summary</a></li>
+<li><a href=".././week11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././week12/topic-1.html">Introduction</a></li>
+<li><a href=".././week12/topic-2.html">Choose a backup strategy</a></li>
+<li><a href=".././week12/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././week12/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././week13/topic-1.html">Introduction</a></li>
+<li><a href=".././week13/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././week13/topic-4.html">Install packages</a></li>
+<li><a href=".././week13/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././week13/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Digital notebooks</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#web-based-digital-interactive-notebooks"
+id="toc-web-based-digital-interactive-notebooks">Web-based digital
+interactive notebooks</a></li>
+</ul>
+</nav>
+<h1 id="web-based-digital-interactive-notebooks">Web-based digital
+interactive notebooks</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><input type="checkbox" checked="" />Use a web-based interactive
+notebook to document progress in a lab notebook.</li>
+</ul>
+</div>
+<p>So far in the course you’ve been using a text editor
+(<code>vim</code> or VS Code) to write your lab notebook. This is… <a
+href="https://i.kym-cdn.com/photos/images/facebook/001/476/528/d03">fine</a>.</p>
+<p>Another approach to documenting your work and progress is to use
+“digital interactive notebooks”: software that runs in your web browser
+and allows you to create notebooks where you can run code and see
+results.</p>
+<p>One popular digital interactive notebook is <a
+href="https://jupyter.org/">Jupyter notebooks</a>.</p>
+<p>We’re not going to be using this extensively, this is really just to
+give you a chance to see another approach to documenting your work.</p>
+<p>Let’s start a new notebook here: <a
+href="https://jupyter.org/try-jupyter/lab/"
+class="uri">https://jupyter.org/try-jupyter/lab/</a></p>
+<p>When you first open this work space, you’re going to be greeted by an
+introductory notebook:</p>
+<figure>
+<img src="intro.png" alt="An introduction to Jupyter." />
+<figcaption aria-hidden="true">An introduction to Jupyter.</figcaption>
+</figure>
+<p>The introduction is great, but let’s get our hands dirty. Click on
+the + icon just above the toolbar to create a new notebook:</p>
+<figure>
+<img src="toolbar.png" alt="The toolbar." />
+<figcaption aria-hidden="true">The toolbar.</figcaption>
+</figure>
+<p>You’ll have a list of options to choose from for the type of notebook
+to create. You should choose “Python (Pyodide)” under “Notebook”.
+Clicking on that will give you a blank slate:</p>
+<figure>
+<img src="empty-notebook.png" alt="An empty notebook." />
+<figcaption aria-hidden="true">An empty notebook.</figcaption>
+</figure>
+<p>Jupyter notebooks are made up of a sequence of “cells”. Cells can
+contain plain text, Markdown-formatted text, or code. In this Jupyter
+notebook, the code that we can enter is Python. Different Jupyter
+notebooks support different languages, but this free one we’re using
+only supports Python and SQLite.</p>
+<p>On the toolbar is a drop down menu that’s currently set to “Code”.
+Click on that drop down and choose “Markdown”, then click in the cell
+(the gray box in the empty notebook) and start typing some Markdown.
+Similar to Pandoc, this Markdown also supports <span
+class="math inline">\LaTeX</span>.</p>
+<p>When you’re done entering your Markdown, either press
+<kbd>Control</kbd>+<kbd>Enter</kbd> on your keyboard, press
+<kbd>Shift</kbd>+<kbd>Enter</kbd>, or click somewhere outside the cell.
+This will get Jupyter to render your Markdown (it’s all fancy looking
+now!) and will also create a new cell below the one you just entered
+Markdown into.</p>
+<p>The new cell you just created is a Python code cell. Let’s try
+running some simple Python:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
+<p>Again, press <kbd>Control</kbd>+<kbd>Enter</kbd> or
+<kbd>Shift</kbd>+<kbd>Enter</kbd> on your keyboard. Jupyter is then
+going to <em>run that code</em> and show you the output immediately
+below the cell. Cool!</p>
+<p>Check out the introductory notebook for a more complex example using
+Python, NumPy (a Python library for doing math), and Matplotlib (a
+Python library for creating plots/charts/graphs).</p>
+<p>This entire idea is an implementation of something called <a
+href="https://en.wikipedia.org/wiki/Literate_programming">Literate
+Programming</a> — mixing code and explanations for the code together
+into a single place rather than having code and documentation be
+separate.</p>
+<p>You’re going to be writing your lab notebook in Jupyter this week and
+converting the notebook into other formats using Pandoc. You will not be
+expected to write any Python or other programming code in this
+notebook.</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-5.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>
