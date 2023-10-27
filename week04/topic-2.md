@@ -181,7 +181,7 @@ Hooray :tada:! You just compiled and ran your first C program.
 
 [C programming language]: https://en.wikipedia.org/wiki/C_(programming_language)
 
-### Compiled VM-based languages
+### Compiled Virtual Machine-based (VM-based) languages
 
 Change back to the main `hello` directory, then change into the `compiled-vm`
 directory.

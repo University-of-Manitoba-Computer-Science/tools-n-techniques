@@ -352,7 +352,7 @@ are some files that will have changes that *don't* care about.
 Some examples of files that will change as you change your own files:
 
 * The `.class` files that get generated when you compile Java programs.
-* The `.docx` and `.pdf` files that you generate when convering from Markdown to
+* The `.docx` and `.pdf` files that you generate when converting from Markdown to
   those formats.
 * Output files that get generated when you run certain programs.
 
