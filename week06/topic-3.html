@@ -323,22 +323,33 @@ follow along.</p>
 <p>Download this file from <a
 href="https://www.ncbi.nlm.nih.gov/">NCBI</a> to your user directory on
 Aviary (use <code>wget</code> or <code>curl</code>):</p>
-<pre><code>https://ftp.ncbi.nlm.nih.gov/genomes/Viruses/MonkeyPox.fn</code></pre>
-<p>Once you’ve downloaded the file, feel free to take a look at it using
-your preferred text editor on Aviary (e.g., <code>vim</code>,
+<pre><code>https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/030/370/485/GCA_030370485.1_ASM3037048v1/GCA_030370485.1_ASM3037048v1_genomic.fna.gz</code></pre>
+<p>This file type is a <code>gz</code> or “g-zipped” file (where the g
+means <a href="https://www.gnu.org/philosophy/free-sw.html">gnu</a>).
+Once you’ve downloaded the file, you will have to decompress it!</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> gunzip GCA_030370485.1_ASM3037048v1_genomic.fna.gz</span></code></pre></div>
+<p>You should now see
+<code>GCA_030370485.1_ASM3037048v1_genomic.fna</code>, noting that the
+<code>.gz</code> is not at the end of the filename any more.</p>
+<p>Now that it is unzipped - feel free to take a look at it using your
+preferred text editor on Aviary (e.g., <code>vim</code>,
 <code>nano</code>, <code>emacs</code>). This is a <a
 href="https://en.wikipedia.org/wiki/FASTA_format">FASTA-formatted
 file</a>. A FASTA-formatted file contains 1 or more “records”, where a
 record will have a unique identifier that’s meaningful to a biologist or
 microbiologist, and then the sequence data that corresponds to that
 identifier. Records look like this:</p>
-<pre><code>&gt;unique identifier
-CTCTTTCTCTCTTCGATGGGTCTCACAAAAATATTAAACCTCTTTCTGATGGAGTCGTAAAAAGTTTTTA
-TCCTTTCTCTCTTCGA</code></pre>
-<p>The file you just downloaded is about 15MB in size (there are about
-15 million characters in this file), so doing things like counting
+<pre><code>&gt;OR160415.1 Monkeypox virus isolate hMpxV/USA/IL-RIPHL-MPXV-050-0057/2023, complete genome
+TTACAGATCATTTATATTCCAAAAATATTAACTATATACGTTTATTATATGATGTTAACGTGTAAATTATAAACATTATT</code></pre>
+<p>The file you just downloaded is about 200KB in size (there are about
+200 thousand characters in this file), so doing things like counting
 records is not something we want to do by hand.</p>
 <h2 id="basic-use">Basic use</h2>
+<div class="aside">
+<p>You could do these exercises with any text file. Consider trying them
+with some of the markdown files you’ve created in the past, too!</p>
+</div>
 <p>Let’s start using <code>grep</code> to filter and print out lines
 that match a certain pattern.</p>
 <div class="example">
@@ -346,9 +357,9 @@ that match a certain pattern.</p>
 have unique identifiers, and the lines with unique identifiers contain
 or start with the <code>&gt;</code> character. Let’s use that as our
 filter:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;&gt;&#39;</span> MonkeyPox.fn <span class="co"># print all lines in MonkeyPox.fn that</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># contain the &gt; character</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># print all lines in the file that</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># contain the &gt; character</span></span></code></pre></div>
 <p>This will print out a bunch of lines (we’ll find out how many real
 soon!), and all the lines contain the pattern <code>&gt;</code>.</p>
 <p>We can actually be more precise with what we want by using an
@@ -357,9 +368,9 @@ soon!), and all the lines contain the pattern <code>&gt;</code>.</p>
 most FASTA-formatted files, the only place where the <code>&gt;</code>
 character appears is on the unique identifier line, but it’s possible
 for it to appear in other places, too.</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print all lines in MonkeyPox.fn that</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># **start with** the &gt; character</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;^&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># print all lines in the file that</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># **start with** the &gt; character</span></span></code></pre></div>
 <p>The <code>^</code> (caret, I prefer “hat”) is an “anchor”: “From the
 start of the line”.</p>
 </div>
@@ -369,13 +380,13 @@ want to know other stuff, like how many lines matched the pattern.
 Thankfully, <code>grep</code> has an option to help us with that:
 <code>-c</code>.</p>
 <div class="example">
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># count the lines in MonkeyPox.fn that</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># start with the &gt; character</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># count the lines in the file that</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                                      <span class="co"># start with the &gt; character</span></span></code></pre></div>
 <p>This prints out <em>only a number</em>, and the number represents how
 many lines matched the pattern.</p>
-<p>For <code>MonkeyPox.fn</code>, this tells us how many records are in
-this file.</p>
+<p>For <code>GCA_030370485.1_ASM3037048v1_genomic.fna</code>, this tells
+us how many records are in this file.</p>
 </div>
 <h2 id="showing-lines-around-the-matching-lines">Showing lines around
 the matching lines</h2>
@@ -386,20 +397,20 @@ calls this “context”.</p>
 <div class="example">
 <p>We can print the lines that match the pattern, plus the lines
 immediately after those using the <code>-A</code> option (after):</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifier and</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines of sequence data after it.</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 2 <span class="st">&#39;^&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># print out the record identifier and</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                                        <span class="co"># 2 lines of sequence data after it.</span></span></code></pre></div>
 <p>Similarly, we can print the lines that match the pattern, plus the
 lines immediately <em>before</em> those using the <code>-B</code> option
 (before):</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifier and</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines of sequence data before it.</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B</span> 2 <span class="st">&#39;^&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># print out the record identifier and</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                                        <span class="co"># 2 lines of sequence data before it.</span></span></code></pre></div>
 <p>We can do both at the same time with the <code>-C</code> option (this
 is upper-case C, for “context”):</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-C</span> 2 <span class="st">&#39;^&gt;&#39;</span> MonkeyPox.fn <span class="co"># print out the record identifer and both</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># 2 lines before and after it.</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-C</span> 2 <span class="st">&#39;^&gt;&#39;</span> GCA_030370485.1_ASM3037048v1_genomic.fna <span class="co"># print out the record identifier and both</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                                        <span class="co"># 2 lines before and after it.</span></span></code></pre></div>
 </div>
 <h2 id="filtering-recursively">Filtering recursively</h2>
 <p>Sometimes you want to search many files in the same directory for a
@@ -407,8 +418,8 @@ pattern, either because you don’t know which file contains the lines
 you’re looking for, or because your data is spread across many
 files.</p>
 <p>We’ve seen a “recursive” command before in week 3:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> hello <span class="co"># recursively remove hello and everything within it</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> hello <span class="co"># recursively remove hello and everything within it</span></span></code></pre></div>
 <p>The <code>grep</code> command also has a recursive option, and it’s
 also <code>-r</code>!</p>
 <div class="example">
@@ -431,8 +442,8 @@ data-emoji="sparkles">✨</span></li>
 contain one or more lines matching the pattern <code>:*:</code> (a
 colon, followed by any number of characters, followed by another
 colon).</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="st">&quot;:*:&quot;</span> <span class="co"># note no filename!</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="st">&quot;:*:&quot;</span> <span class="co"># note no filename!</span></span></code></pre></div>
 <p>Depending on the state you’re in, this is probably going to print out
 a few more files than you expected, including <code>.docx</code>
 files.</p>
@@ -443,8 +454,8 @@ a <code>.zip</code> file. Remember how to <code>unzip</code>
 <p>Go ahead, change into a directory containing one of the
 <code>.docx</code> files you created in <code>crazy-directories</code>
 and <code>unzip</code> it:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> robot.md.docx</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> robot.md.docx</span></code></pre></div>
 <p>There are going to be a bunch of new files in the directory that are
 mostly <code>.xml</code> files. XML is a “markup” language, sort of like
 Markdown.</p>
@@ -466,12 +477,12 @@ option.</p>
 to it.</p>
 <p>Let’s find all files that contain the pattern <code>:*:</code> again,
 but we’ll ask for <code>grep</code> to print out the line numbers:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;:*:&quot;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="at">-n</span> <span class="st">&quot;:*:&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;:*:&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="at">-n</span> <span class="st">&quot;:*:&quot;</span></span></code></pre></div>
 <p><em>Some</em> command line tools will allow you to combine options
 after a single <code>-</code> (so <code>-r -n</code> turns into
 <code>-rn</code>).</p>

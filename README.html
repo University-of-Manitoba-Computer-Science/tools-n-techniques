@@ -286,8 +286,14 @@ to.</p></li>
 <code>main</code> into <code>book</code>:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge main</span></code></pre></div></li>
-<li><p>Run the <code>rippledoc.py</code> to regenerate HTML
-sources.</p></li>
+<li><p>Run the <code>rippledoc.py</code> to regenerate HTML sources.
+These <code>.html</code> files are committed to the <code>book</code>
+branch - which is usually an anti-pattern since generally we wouldn’t
+commit something we can generate, but is required for the Github Pages
+to work. This has some interesting side-effects, such as having
+different <code>.gitignore</code> files for the two branches:
+<code>main</code> disallows <code>.html</code> files, and
+<code>book</code> allows them!</p></li>
 <li><p>Commit the changes and push to remote to redeploy.</p></li>
 </ol>
 
