@@ -71,9 +71,19 @@ Don't worry: you don't need to be a biologist or microbiologist to follow along.
 Download this file from [NCBI] to your user directory on Aviary (use `wget` or
 `curl`):
 
-    https://ftp.ncbi.nlm.nih.gov/genomes/Viruses/MonkeyPox.fn
+    https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/030/370/485/GCA_030370485.1_ASM3037048v1/GCA_030370485.1_ASM3037048v1_genomic.fna.gz
 
-Once you've downloaded the file, feel free to take a look at it using your
+This file type is a `gz` or "g-zipped" file (where the g means [gnu]).
+Once you've downloaded the file, you will have to decompress it!
+
+```bash
+gunzip gunzip GCA_030370485.1_ASM3037048v1_genomic.fna.gz
+```
+
+You should now see `GCA_030370485.1_ASM3037048v1_genomic.fna`, noting
+that the `.gz` is not at the end of the filename any more.
+
+Now that it is unzipped - feel free to take a look at it using your
 preferred text editor on Aviary (e.g., `vim`, `nano`, `emacs`). This is a
 [FASTA-formatted file]. A FASTA-formatted file contains 1 or more "records",
 where a record will have a unique identifier that's meaningful to a biologist or
@@ -81,20 +91,27 @@ microbiologist, and then the sequence data that corresponds to that identifier.
 Records look like this:
 
 ```
->unique identifier
-CTCTTTCTCTCTTCGATGGGTCTCACAAAAATATTAAACCTCTTTCTGATGGAGTCGTAAAAAGTTTTTA
-TCCTTTCTCTCTTCGA
+>OR160415.1 Monkeypox virus isolate hMpxV/USA/IL-RIPHL-MPXV-050-0057/2023, complete genome
+TTACAGATCATTTATATTCCAAAAATATTAACTATATACGTTTATTATATGATGTTAACGTGTAAATTATAAACATTATT
 ```
 
-The file you just downloaded is about 15MB in size (there are about 15 million
+The file you just downloaded is about 200KB in size (there are about 200 thousand
 characters in this file), so doing things like counting records is not something
 we want to do by hand.
 
 [NCBI]: https://www.ncbi.nlm.nih.gov/
 [FASTA-formatted file]: https://en.wikipedia.org/wiki/FASTA_format
+[gnu]: https://www.gnu.org/philosophy/free-sw.html
 
 Basic use
 ---------
+
+::: aside
+
+You could do these exercises with any text file. Consider trying them
+with some of the markdown files you've created in the past, too!
+
+:::
 
 Let's start using `grep` to filter and print out lines that match a certain
 pattern.
@@ -106,8 +123,8 @@ identifiers, and the lines with unique identifiers contain or start with the `>`
 character. Let's use that as our filter:
 
 ```bash
-grep '>' MonkeyPox.fn # print all lines in MonkeyPox.fn that
-                      # contain the > character
+grep '>' GCA_030370485.1_ASM3037048v1_genomic.fna # print all lines in the file that
+                                                  # contain the > character
 ```
 
 This will print out a bunch of lines (we'll find out how many real soon!), and
@@ -120,8 +137,8 @@ appears is on the unique identifier line, but it's possible for it to appear in
 other places, too.
 
 ```bash
-grep '^>' MonkeyPox.fn # print all lines in MonkeyPox.fn that
-                       # **start with** the > character
+grep '^>' GCA_030370485.1_ASM3037048v1_genomic.fna # print all lines in the file that
+                                                   # **start with** the > character
 ```
 
 The `^` (caret, I prefer "hat") is an "anchor": "From the start of the line".
@@ -138,14 +155,14 @@ option to help us with that: `-c`.
 ::: example
 
 ```bash
-grep -c '^>' MonkeyPox.fn # count the lines in MonkeyPox.fn that
-                          # start with the > character
+grep -c '^>' GCA_030370485.1_ASM3037048v1_genomic.fna # count the lines in the file that
+                                                      # start with the > character
 ```
 
 This prints out *only a number*, and the number represents how many lines
 matched the pattern.
 
-For `MonkeyPox.fn`, this tells us how many records are in this file.
+For `GCA_030370485.1_ASM3037048v1_genomic.fna`, this tells us how many records are in this file.
 
 :::
 
@@ -162,24 +179,24 @@ We can print the lines that match the pattern, plus the lines immediately after
 those using the `-A` option (after):
 
 ```bash
-grep -A 2 '^>' MonkeyPox.fn # print out the record identifier and
-                            # 2 lines of sequence data after it.
+grep -A 2 '^>' GCA_030370485.1_ASM3037048v1_genomic.fna # print out the record identifier and
+                                                        # 2 lines of sequence data after it.
 ```
 
 Similarly, we can print the lines that match the pattern, plus the lines
 immediately *before* those using the `-B` option (before):
 
 ```bash
-grep -B 2 '^>' MonkeyPox.fn # print out the record identifier and
-                            # 2 lines of sequence data before it.
+grep -B 2 '^>' GCA_030370485.1_ASM3037048v1_genomic.fna # print out the record identifier and
+                                                        # 2 lines of sequence data before it.
 ```
 
 We can do both at the same time with the `-C` option (this is upper-case C, for
 "context"):
 
 ```bash
-grep -C 2 '^>' MonkeyPox.fn # print out the record identifer and both
-                            # 2 lines before and after it.
+grep -C 2 '^>' GCA_030370485.1_ASM3037048v1_genomic.fna # print out the record identifier and both
+                                                        # 2 lines before and after it.
 ```
 
 :::
