@@ -40,7 +40,12 @@ Here's the strategy for building this book:
    ```bash
    git merge main
    ```
-5. Run the `rippledoc.py` to regenerate HTML sources.
+5. Run the `rippledoc.py` to regenerate HTML sources. These `.html` files
+   are committed to the `book` branch - which is usually an anti-pattern
+   since generally we wouldn't commit something we can generate, but is
+   required for the Github Pages to work. This has some interesting side-effects,
+   such as having different `.gitignore` files for the two branches: `main` disallows
+   `.html` files, and `book` allows them!
 6. Commit the changes and push to remote to redeploy.
 
 [Pandoc]: https://pandoc.org
