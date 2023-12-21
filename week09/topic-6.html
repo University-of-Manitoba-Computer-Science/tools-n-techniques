@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -126,7 +129,7 @@ dependencies</a></li>
 <li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
 <li><a href=".././week10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././week10/topic-5.html">Summry</a></li>
+<li><a href=".././week10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -204,14 +207,14 @@ full-featured programming languages.</p>
 <p>You should now be able to:</p>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Redirect the output from a
-program to a file.</li>
-<li><input type="checkbox" checked="" />Redirect a file to be the input
-for a program.</li>
-<li><input type="checkbox" checked="" />Send data between programs using
-a pipe.</li>
-<li><input type="checkbox" checked="" />Write and run shell scripts to
-repeat complex tasks.</li>
+<li><label><input type="checkbox" checked="" />Redirect the output from
+a program to a file.</label></li>
+<li><label><input type="checkbox" checked="" />Redirect a file to be the
+input for a program.</label></li>
+<li><label><input type="checkbox" checked="" />Send data between
+programs using a pipe.</label></li>
+<li><label><input type="checkbox" checked="" />Write and run shell
+scripts to repeat complex tasks.</label></li>
 </ul>
 </div>
 <p>Now you should be ready to start working on the assignment this

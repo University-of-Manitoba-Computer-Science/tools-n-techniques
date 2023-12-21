@@ -12,15 +12,18 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -190,7 +193,7 @@ dependencies</a></li>
 <li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
 <li><a href=".././week10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././week10/topic-5.html">Summry</a></li>
+<li><a href=".././week10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -261,10 +264,10 @@ id="toc-redirecting-standard-input">Redirecting standard input</a></li>
 <h1 id="redirecting-input-and-output">Redirecting input and output</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Redirect the output from a
-program to a file.</li>
-<li><input type="checkbox" checked="" />Redirect a file to be the input
-for a program.</li>
+<li><label><input type="checkbox" checked="" />Redirect the output from
+a program to a file.</label></li>
+<li><label><input type="checkbox" checked="" />Redirect a file to be the
+input for a program.</label></li>
 </ul>
 </div>
 <p>We can “redirect” input and output streams:</p>
@@ -396,7 +399,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># redirect both stdin and stdout:</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> html <span class="op">&lt;</span> my.md <span class="op">&gt;</span> my.html</span></code></pre></div>
 </div>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
@@ -405,7 +408,7 @@ href="https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-re
 class="uri">https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells</a><a
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section>
+</aside>
 
 </div> <!-- article-content -->
 

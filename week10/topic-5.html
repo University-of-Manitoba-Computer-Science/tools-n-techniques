@@ -5,15 +5,18 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Summry</title>
+  <title>Summary</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -126,7 +129,7 @@ output</a></li>
 <li><a href="topic-2.html">Programs requiring dependencies</a></li>
 <li><a href="topic-3.html">Create a Makefile</a></li>
 <li><a href="topic-4.html">Build and dependency management</a></li>
-<li><strong>Summry</strong></li>
+<li><strong>Summary</strong></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -176,7 +179,7 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Summry</h1>
+<h1 class="title">Summary</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
@@ -194,15 +197,17 @@ opinionated (<code>make</code>).</p>
 <p>You should now be able to:</p>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Download and run a program that
-requires you to install dependencies.</li>
-<li><input type="checkbox" checked="" />Create a <code>Makefile</code>
-to accomplish a task (building software, running commands).</li>
-<li><input type="checkbox" checked="" />Create a new empty software
-project that includes a build and dependency management tool.
+<li><label><input type="checkbox" checked="" />Download and run a
+program that requires you to install dependencies.</label></li>
+<li><label><input type="checkbox" checked="" />Create a
+<code>Makefile</code> to accomplish a task (building software, running
+commands).</label></li>
+<li><label><input type="checkbox" checked="" />Create a new empty
+software project that includes a build and dependency management
+tool.</label>
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Add and use a new dependency in
-a software project.</li>
+<li><label><input type="checkbox" checked="" />Add and use a new
+dependency in a software project.</label></li>
 </ul></li>
 </ul>
 </div>

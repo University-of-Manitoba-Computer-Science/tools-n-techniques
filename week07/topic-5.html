@@ -12,15 +12,18 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -210,7 +213,7 @@ dependencies</a></li>
 <li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
 <li><a href=".././week10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././week10/topic-5.html">Summry</a></li>
+<li><a href=".././week10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -274,8 +277,9 @@ interactive notebooks</a></li>
 interactive notebooks</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Use a web-based interactive
-notebook to document progress in a lab notebook.</li>
+<li><label><input type="checkbox" checked="" />Use a web-based
+interactive notebook to document progress in a lab
+notebook.</label></li>
 </ul>
 </div>
 <p>So far in the course you’ve been using a text editor

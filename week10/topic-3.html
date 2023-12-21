@@ -12,15 +12,18 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -208,7 +211,7 @@ output</a></li>
 <li><a href="topic-2.html">Programs requiring dependencies</a></li>
 <li><strong>Create a Makefile</strong></li>
 <li><a href="topic-4.html">Build and dependency management</a></li>
-<li><a href="topic-5.html">Summry</a></li>
+<li><a href="topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -292,8 +295,9 @@ reading</a></li>
 <h1 id="create-a-makefile">Create a <code>Makefile</code></h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Create a <code>Makefile</code>
-to accomplish a task (building software, running commands).</li>
+<li><label><input type="checkbox" checked="" />Create a
+<code>Makefile</code> to accomplish a task (building software, running
+commands).</label></li>
 </ul>
 </div>
 <p>Dependency management in Python is straightforward with
@@ -411,7 +415,7 @@ complicated and we’ll see all of it soon, but the simplest format for a
 <code>Makefile</code> is straightforward:</p>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">target:</span><span class="dt"> dependencies</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    commands</span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>commands</span></code></pre></div>
 <p>This is a <strong>rule</strong>, and the rule consists of a
 <strong>target</strong>, the target’s <strong>dependencies</strong>, and
 a <strong>sequence of 0 or more commands</strong> that can be used to
@@ -428,13 +432,13 @@ spaces.</p>
 <p>Here’s the <code>Makefile</code> for our imaginary program above:</p>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">set.o:</span><span class="dt"> set.c </span><span class="co"># set.o depends on set.c</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    clang set.c -c -o set.o</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang set.c -c -o set.o</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dv">list.o:</span><span class="dt"> list.c</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    clang list.c -c -o list.o</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang list.c -c -o list.o</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dv">my-app:</span><span class="dt"> my-app.c list.o set.o</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    clang my-app.c list.o set.o -o my-app</span></code></pre></div>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang my-app.c list.o set.o -o my-app</span></code></pre></div>
 </div>
 <p>Here are some general <a
 href="https://en.wikipedia.org/wiki/Rule_of_thumb">rules of
@@ -489,11 +493,11 @@ commands to generate a target from its dependencies:</p>
 program to use these variables:</p>
 <div class="sourceCode" id="cb12"><pre
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">set.o:</span><span class="dt"> set.c</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dv">list.o:</span><span class="dt"> list.c</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dv">my-app:</span><span class="dt"> my-app.c list.o set.o</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    clang <span class="ch">$^</span> -o <span class="ch">$@</span></span></code></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$^</span> -o <span class="ch">$@</span></span></code></pre></div>
 </div>
 <p>While this isn’t necessarily any easier to read, it does make sure
 that you’re including both the dependencies and the targets in the
@@ -526,10 +530,10 @@ href="https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules">imp
 rules</a>. One of the implicit rules that GNU Make has is for C
 programs:</p>
 <div class="sourceCode" id="cb13"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
 <p>There’s a bunch of unusual looking stuff here, but it’s
 straightforward:</p>
 <ul>
@@ -550,15 +554,15 @@ of which we’ve seen (<code>$^</code> and <code>$@</code>).</li>
 <h3 id="the-implicit-rules-and-variables-in-gnu-make">The implicit rules
 and variables in GNU Make</h3>
 <div class="sourceCode" id="cb14"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
 </div><div class="column" style="width:45%;">
 <h3 id="our-makefile">Our <code>Makefile</code></h3>
 <div class="sourceCode" id="cb15"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC </span><span class="ch">=</span><span class="st"> clang</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS </span><span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> clang</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello</span></span></code></pre></div>
 </div>
@@ -569,13 +573,13 @@ defined in GNU Make) come first, and the rules and variables on the
 right (the stuff that’s defined in our <code>Makefile</code>) come
 after:</p>
 <div class="sourceCode" id="cb16"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CC </span><span class="ch">=</span><span class="st"> clang</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS </span><span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> clang</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello</span></span></code></pre></div>
 <p>Variables that don’t have values will eventually turn into empty
@@ -659,7 +663,7 @@ let’s add a command to convert it:</p>
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.html:</span><span class="dt"> hello.md</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    pandoc hello.md --standalone -o hello.html</span></code></pre></div></li>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc hello.md --standalone -o hello.html</span></code></pre></div></li>
 </ol>
 <p>Now run <code>make</code> in your directory, and <code>make</code>
 should transform <code>hello.md</code> into <code>hello.html</code>
@@ -681,25 +685,25 @@ names of targets <code>$@</code> and dependencies
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.html:</span><span class="dt"> hello.md</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
 <li><p>We don’t want to give specific names for targets (or
 dependencies), so let’s use wildcards:</p>
 <div class="sourceCode" id="cb23"><pre
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%.html:</span><span class="dt"> %.md</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
 <li><p>We don’t want to list out the targets for <code>all</code>, we
 can use the <a
 href="https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html">wildcard
 function</a>:</p>
 <div class="sourceCode" id="cb24"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">MD </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> *.md</span><span class="ch">)</span></span>
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">MD</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> *.md</span><span class="ch">)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">MD</span><span class="kw">:</span><span class="ss">md</span><span class="kw">=</span><span class="ss">html</span><span class="ch">)</span><span class="dt"> </span><span class="co"># use the value of MD, but replace `md` with `html`</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="dv">%.html:</span><span class="dt"> %.md</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div>
 <p>Now you can add more Markdown files to this directory with any name
 and the files will be converted to HTML.</p></li>
 </ol>

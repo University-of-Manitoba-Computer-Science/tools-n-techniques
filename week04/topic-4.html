@@ -12,8 +12,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -127,7 +130,7 @@ dependencies</a></li>
 <li><a href=".././week10/topic-3.html">Create a Makefile</a></li>
 <li><a href=".././week10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././week10/topic-5.html">Summry</a></li>
+<li><a href=".././week10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
@@ -201,19 +204,19 @@ you’re working on a project with a team of other people.</p>
 <p>You should now be able to:</p>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" checked="" />Download a file from the
-internet on the command-line.</li>
-<li><input type="checkbox" checked="" />Compile and run programs of
-various programming languages on the command-line.</li>
-<li><input type="checkbox" checked="" />Use version control software on
-your own code to keep track of changes that you make over time
-(initializing and adding changes to a repository).</li>
-<li><input type="checkbox" checked="" />Use version control software on
-your own code to make changes and quickly be able to revert to a working
-state.</li>
-<li><input type="checkbox" checked="" />Identify files that should not
-be version controlled and make sure they aren’t included in a
-repository’s history (<code>.gitignore</code>).</li>
+<li><label><input type="checkbox" checked="" />Download a file from the
+internet on the command-line.</label></li>
+<li><label><input type="checkbox" checked="" />Compile and run programs
+of various programming languages on the command-line.</label></li>
+<li><label><input type="checkbox" checked="" />Use version control
+software on your own code to keep track of changes that you make over
+time (initializing and adding changes to a repository).</label></li>
+<li><label><input type="checkbox" checked="" />Use version control
+software on your own code to make changes and quickly be able to revert
+to a working state.</label></li>
+<li><label><input type="checkbox" checked="" />Identify files that
+should not be version controlled and make sure they aren’t included in a
+repository’s history (<code>.gitignore</code>).</label></li>
 </ul>
 </div>
 <p>You should now be ready to work on your assignment for the week!</p>
