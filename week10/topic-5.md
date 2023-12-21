@@ -1,5 +1,5 @@
 ---
-title: Summry
+title: Summary
 author: Franklin Bristow
 ---
 
