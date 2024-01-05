@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Command-line Debuggers</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././topic01/topic-1.html">Introduction</a></li>
+<li><a href=".././topic01/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././topic01/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././topic01/topic-4.html">Converting documents to
+different formats</a></li>
+<li><a href=".././topic01/topic-5.html">Organizing your files</a></li>
+<li><a href=".././topic01/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">What even is debugging?</a></li>
+<li><a href="topic-3.html">Debugging strategies</a></li>
+<li><a href="topic-4.html">Debuggers</a></li>
+<li><a href="topic-5.html">Visual Debuggers</a></li>
+<li><strong>Command-line Debuggers</strong></li>
+<li><a href="topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
+<li><a href=".././topic08/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic09/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic09/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic10/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic10/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic10/topic-6.html">Summary</a></li>
+<li><a href=".././topic10/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././topic11/topic-1.html">Introduction</a></li>
+<li><a href=".././topic11/topic-2.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic11/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic11/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="topic-7.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Command-line Debuggers</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#command-line-debuggers"
+id="toc-command-line-debuggers">Command-line debuggers</a>
+<ul>
+<li><a href="#getting-started" id="toc-getting-started">Getting
+started</a></li>
+<li><a href="#launching-the-debugger"
+id="toc-launching-the-debugger">Launching the debugger</a></li>
+<li><a href="#setting-breakpoints-and-running"
+id="toc-setting-breakpoints-and-running">Setting breakpoints and
+running</a></li>
+<li><a href="#stepping-over" id="toc-stepping-over">Stepping
+over</a></li>
+<li><a href="#stepping-into" id="toc-stepping-into">Stepping
+into</a></li>
+<li><a href="#stepping-out" id="toc-stepping-out">Stepping out</a></li>
+<li><a href="#finishing" id="toc-finishing">Finishing</a></li>
+<li><a href="#catching-crashes" id="toc-catching-crashes">Catching
+crashes</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="command-line-debuggers">Command-line debuggers</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Use a command-line
+debugger to set breakpoints, inspect values, step through a running
+program, and make observations about a program when it
+crashes.</label></li>
+</ul>
+</div>
+<p>Visual debugging tools are comfortable — it’s easy to see where we
+are, and telling the debugger what to do is straightforward because we
+can point our mouse and click on the places where we want to set
+breakpoints.</p>
+<p>Unfortunately, though, using a visual debugger is not always
+possible. One specific situation where you can’t (easily) use a visual
+debugger is when you’re working with remote computers — in your case
+(maybe) running C programs on Aviary.</p>
+<p>Thankfully, we can use command-line debuggers to help us debug
+programs on remote computers.</p>
+<p>We’re going to be looking specifically at debugging a C program using
+the <code>clang</code> compiler and the <code>lldb</code> debugger.</p>
+<p>You may or may not know C, but we’re not concerned with the program
+itself, more about how we interact with a command-line debugger.</p>
+<h2 id="getting-started">Getting started</h2>
+<p>Connect to Aviary with SSH, download and extract this package:</p>
+<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week08/hello.tar.gz</code></pre>
+<p>This program has a <code>Makefile</code>, so you can compile it using
+the <code>make</code> command.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> make</span></code></pre></div>
+<div class="aside">
+<p>Open the <code>Makefile</code> with your text editor. There’s a lot
+going on in there, but one important addition or difference from the way
+that we have compiled C programs previously is that we’ve added an extra
+option to our compiler <code>-g</code>. The <code>-g</code> option tells
+the compiler (approximately) to include the source code for the C
+program <em>in</em> the compiled file so that we can see the source code
+when we’re debugging the program.</p>
+<p>If you’re planning to debug a C program, you must add this option to
+your compile command:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-g</span> myprogram.c <span class="at">-o</span> myprogram</span></code></pre></div>
+</div>
+<p>Once you’ve compiled the code, run the program:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div>
+<p>This C program works in exactly the same way as the Java program we
+looked at.</p>
+<h2 id="launching-the-debugger">Launching the debugger</h2>
+<p>The debugger we’re going to use is <code>lldb</code>.
+<code>lldb</code> is a program that you run on the command line, and the
+argument that you pass to it is the program that you want to debug:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ./hello</span></code></pre></div>
+<p>There’s not much going on when you launch <code>lldb</code>:</p>
+<pre><code>(lldb) target create &quot;./hello&quot;
+Current executable set to &#39;/yourdir/hello&#39; (x86_64).
+(lldb)</code></pre>
+<p>Similar to your shell, <code>lldb</code> is patiently waiting for you
+to give it some commands.</p>
+<h2 id="setting-breakpoints-and-running">Setting breakpoints and
+running</h2>
+<p>You can set a breakpoint in <code>lldb</code> using the
+<code>b</code> command. Break points can either be set by line number or
+by function name. Let’s set a break point to pause running when we enter
+the <code>main</code> function:</p>
+<pre><code>(lldb) b main</code></pre>
+<p>This sets a break point on the first line of the <code>main</code>
+function in the program.</p>
+<p>Let’s start our program by running the <code>r</code> command:</p>
+<pre><code>(lldb) r
+Process 4425 launched: &#39;/yourdir/hello&#39; (x86_64)
+Process 4425 stopped
+* thread #1, name = &#39;hello&#39;, stop reason = breakpoint 1.1
+    frame #0: 0x000000000040114f hello`main at hello.c:10:5
+   7    {
+   8        int left, right, sum;
+   9   
+-&gt; 10       printf(&quot;Let&#39;s add x+y!\n&quot;);
+   11       printf(&quot;Enter the left side (x): &quot;);
+   12       scanf(&quot;%d&quot;, &amp;left);
+   13  
+(lldb)</code></pre>
+<div class="aside">
+<p>You may want to run your process by passing arguments or by passing a
+file that your program is supposed to read on “standard input” (more on
+this next week, but if you normally run your program with something like
+<code>./prog &lt; file.txt</code>, then you’re replacing standard
+input)).</p>
+<p>You can pass the name of a file that should be read as standard input
+using an <code>lldb</code> command <code>process launch -i</code>
+instead of using <code>r</code>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">-i</span> file.txt</span></code></pre></div>
+<p>If your program takes arguments on the command line (you need to pass
+things like <code>-o output.txt</code> or <code>-i input.txt</code>),
+you can pass arguments to the process using
+<code>process launch --</code>:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">--</span> <span class="at">-o</span> output.txt <span class="at">-i</span> input.txt</span></code></pre></div>
+</div>
+<p>Let’s set another breakpoint on line 17, just before we call the
+<code>add</code> function, then we’ll “continue” to the next break point
+by using the <code>c</code> command again:</p>
+<pre><code>(lldb) b 17
+Breakpoint 2: where = hello`main + 120 at hello.c:17:5, address = 0x00000000004011b8
+(lldb) c</code></pre>
+<p>At this point, the program should be asking you to enter values for
+the left side and right side, so enter some numeric values and press
+<kbd>Enter</kbd>. Just after you press <kbd>Enter</kbd>, the debugger
+takes over again, telling you where you are:</p>
+<pre><code>Let&#39;s add x+y!
+Enter the left side (x): 12
+Enter the right side (y): 20
+Process 9196 stopped
+* thread #1, name = &#39;hello&#39;, stop reason = breakpoint 2.1
+    frame #0: 0x00000000004011b8 hello`main at hello.c:17:5
+   14       printf(&quot;Enter the right side (y): &quot;);
+   15       scanf(&quot;%d&quot;, &amp;right);
+   16  
+-&gt; 17       printf(&quot;Thanks! Calculating...\n&quot;);
+   18       sum = add( left, right );
+   19       printf(&quot;The sum is %d\n&quot;, sum);
+   20       printf(&quot;Thanks for letting me calculate for you!&quot;);
+(lldb)</code></pre>
+<p>We don’t have a variables pane, but we can see which variables are
+currently in scope, their values, and their type by using the
+<code>var</code> command:</p>
+<pre><code>(lldb) var
+(int) left = 12
+(int) right = 20
+(int) sum = -7664
+(lldb)</code></pre>
+<p>The value you see for <code>sum</code> will almost certainly be
+different.</p>
+<p>You can also inspect the value for specific variables using the
+<code>p</code> command for print:</p>
+<pre><code>(lldb) p left
+(int) $0 = 12</code></pre>
+<h2 id="stepping-over">Stepping over</h2>
+<p>We just stepped over several lines of code using the <code>c</code>
+command for continue. Continuing will let the program run until the next
+break point is encountered, the program crashes, or the program
+ends.</p>
+<p>We can step over one line at a time using the <code>n</code> command
+for next:</p>
+<pre><code>(lldb) n
+Thanks! Calculating...
+Process 9196 stopped
+* thread #1, name = &#39;hello&#39;, stop reason = step over
+    frame #0: 0x00000000004011cc hello`main at hello.c:18:16
+   15       scanf(&quot;%d&quot;, &amp;right);
+   16  
+   17       printf(&quot;Thanks! Calculating...\n&quot;);
+-&gt; 18       sum = add( left, right );
+   19       printf(&quot;The sum is %d\n&quot;, sum);
+   20       printf(&quot;Thanks for letting me calculate for you!&quot;);
+   21  
+(lldb)</code></pre>
+<p>Now line of code we were on (line 17) has been executed and the arrow
+is pointing at the next line where we call <code>sum</code>.</p>
+<h2 id="stepping-into">Stepping into</h2>
+<p>Let’s step into this function using the <code>s</code> command for
+step.</p>
+<pre><code>(lldb) s
+Process 9196 stopped
+* thread #1, name = &#39;hello&#39;, stop reason = step in
+    frame #0: 0x000000000040122e hello`add(left=12, right=20) at hello.c:29:5
+   26   {
+   27       int sum;
+   28  
+-&gt; 29       printf(&quot;\tAbout to add left to right.\n&quot;);
+   30       sum = left + right;
+   31       printf(&quot;\tHeading back to the caller.\n&quot;);
+   32  
+(lldb)</code></pre>
+<p>The variables currently in scope have changed, and you can see which
+variables are currently in scope using the <code>var</code> command
+again.</p>
+<p>Since we’re in a function, our call stack has also changed. We can
+see the call stack using the <code>bt</code> command for backtrace:</p>
+<pre><code>(lldb) bt
+* thread #1, name = &#39;hello&#39;, stop reason = step in
+  * frame #0: 0x000000000040122e hello`add(left=12, right=20) at hello.c:29:5
+    frame #1: 0x00000000004011da hello`main at hello.c:18:11
+    frame #2: 0x00007ffff7e09d0a libc.so.6`__libc_start_main + 234
+    frame #3: 0x000000000040107a hello`_start + 42
+(lldb)</code></pre>
+<p>“<code>frame #0</code>” is the stack frame that we’re in right now in
+the <code>sum</code> function. “<code>frame #1</code>” is the stack
+frame for the <code>main</code> function.</p>
+<p>We can move around stack frames using the <code>up</code> and
+<code>down</code> commands:</p>
+<pre><code>(lldb) up
+frame #1: 0x00000000004011da hello`main at hello.c:18:11
+   15       scanf(&quot;%d&quot;, &amp;right);
+   16  
+   17       printf(&quot;Thanks! Calculating...\n&quot;);
+-&gt; 18       sum = add( left, right );
+   19       printf(&quot;The sum is %d\n&quot;, sum);
+   20       printf(&quot;Thanks for letting me calculate for you!&quot;);
+   21  
+(lldb) var
+(int) left = 12
+(int) right = 20
+(int) sum = -7664
+(lldb) down
+frame #0: 0x000000000040122e hello`add(left=12, right=20) at hello.c:29:5
+   26   {
+   27       int sum;
+   28  
+-&gt; 29       printf(&quot;\tAbout to add left to right.\n&quot;);
+   30       sum = left + right;
+   31       printf(&quot;\tHeading back to the caller.\n&quot;);
+   32  
+(lldb) var
+(const int) left = 12
+(const int) right = 20
+(int) sum = 0
+(lldb)</code></pre>
+<h2 id="stepping-out">Stepping out</h2>
+<p>Get back to stack frame #0 using your <code>up</code> or
+<code>down</code> commands, your arrow should be pointing at line 29
+right now.</p>
+<p>Step over the next two lines, enter the command <code>n</code> and
+press <kbd>Enter</kbd>. You can repeat the last command you entered in
+<code>lldb</code> by pressing the <kbd>Enter</kbd> key again.</p>
+<p>Once you’ve stepped twice, your arrow should be pointing at line 31.
+Let’s step out of the function by using the <code>finish</code> command
+(for finish):</p>
+<pre><code>(lldb) finish
+        Heading back to the caller.
+Process 12236 stopped
+* thread #1, name = &#39;hello&#39;, stop reason = step out
+Return value: (int) $0 = 50
+
+    frame #0: 0x00000000004011da hello`main at hello.c:18:9
+   15       scanf(&quot;%d&quot;, &amp;right);
+   16  
+   17       printf(&quot;Thanks! Calculating...\n&quot;);
+-&gt; 18       sum = add( left, right );
+   19       printf(&quot;The sum is %d\n&quot;, sum);
+   20       printf(&quot;Thanks for letting me calculate for you!&quot;);
+   21  
+(lldb)</code></pre>
+<h2 id="finishing">Finishing</h2>
+<p>At this point you can use the <code>c</code> command for continue to
+allow the program to finish running then the <code>q</code> command to
+quit <code>lldb</code>, or you can immediately use the <code>q</code>
+command to end the program without finishing.</p>
+<h2 id="catching-crashes">Catching crashes</h2>
+<p><code>lldb</code> will, by default, catch all crashes. That’s not
+entirely true. C programs, by default, will end when they crash, and
+they don’t print out friendly(-ish) error messages about why they
+crashed, they just crash and maybe print out
+<code>Segmentation fault</code> or <code>Bus error</code>.</p>
+<p>There’s another program in the package you downloaded call
+<code>ccrash.c</code>.</p>
+<p>Run <code>lldb</code> and pass it <code>ccrash</code>:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ccrash</span></code></pre></div>
+<p>Now run the program with the <code>r</code> command, and enter some
+text when prompted:</p>
+<pre><code>(lldb) r
+Process 12657 launched: &#39;/yourdir/ccrash&#39; (x86_64)
+Please enter some input: hello, world!
+Process 12657 stopped
+* thread #1, name = &#39;ccrash&#39;, stop reason = signal SIGSEGV: invalid address (fault address: 0x0)
+    frame #0: 0x0000000000401164 ccrash`main at ccrash.c:12:49
+   9   
+   10       get_input(my_input);
+   11  
+-&gt; 12       printf(&quot;Here&#39;s the input: %d on line %d\n&quot;, *my_input, __LINE__);
+   13  
+   14       return EXIT_SUCCESS;
+   15   }
+(lldb)</code></pre>
+<p>Now you can use the same commands we’ve been using to inspect state:
+<code>var</code>, <code>p</code>, <code>bt</code>, <code>up</code>, and
+<code>down</code>. You can also use the <code>q</code> command to quit.
+Since the program is still technically running, <code>lldb</code> will
+ask if it’s OK to quit, and you can confirm by entering <code>Y</code>
+and pressing <kbd>Enter</kbd>.</p>
+<div class="aside">
+<p>Why aren’t we doing the same example in crashing with C as we did
+with Java and <code>Scanner</code> crashing on non-number input?</p>
+<p>Well… try it. What happens when you enter a string into
+<code>hello.c</code> instead of a number?</p>
+</div>
+<h2 id="further-reading">Further reading</h2>
+<p>These are the basics for using <code>lldb</code> as a command-line
+debugger for a C program, and there’s lots more we didn’t get into. You
+can read more on the <a
+href="https://lldb.llvm.org/use/tutorial.html">LLDB Tutorial</a>
+page.</p>
+<p>LLDB is a good debugger for languages that have an <a
+href="https://llvm.org/">LLVM</a>-backed compiler; languages like C and
+C++ are examples of that.</p>
+<p>There are other command-line debuggers, and while they won’t at all
+share the same commands, they do share very similar concepts to what
+we’ve looked at with <code>lldb</code>. Here’s a short list of
+command-line debuggers for other languages:</p>
+<ul>
+<li><a
+href="https://docs.oracle.com/en/java/javase/17/docs/specs/man/jdb.html">JDB</a>
+is a command-line debugger for Java programs.</li>
+<li><a href="https://docs.python.org/3/library/pdb.html">PDB</a> is a
+command-line debugger for Python programs.</li>
+<li><a
+href="https://learn.microsoft.com/en-us/dotnet/framework/tools/mdbg-exe"><code>MDbg.exe</code></a>
+is a command-line debugger for .NET languages like C#.</li>
+</ul>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="topic-7.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-6.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

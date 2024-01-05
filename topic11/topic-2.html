@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Choose a backup strategy</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././topic01/topic-1.html">Introduction</a></li>
+<li><a href=".././topic01/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././topic01/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././topic01/topic-4.html">Converting documents to
+different formats</a></li>
+<li><a href=".././topic01/topic-5.html">Organizing your files</a></li>
+<li><a href=".././topic01/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
+<li><a href=".././topic08/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic09/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic09/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic10/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic10/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic10/topic-6.html">Summary</a></li>
+<li><a href=".././topic10/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><strong>Choose a backup strategy</strong></li>
+<li><a href="topic-3.html">Install and configure back up
+software</a></li>
+<li><a href="topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Choose a backup strategy</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#choose-a-backup-strategy"
+id="toc-choose-a-backup-strategy">Choose a backup strategy</a>
+<ul>
+<li><a href="#things-to-consider" id="toc-things-to-consider">Things to
+consider</a>
+<ul>
+<li><a href="#what-kind-of-data-are-you-backing-up"
+id="toc-what-kind-of-data-are-you-backing-up">What kind of data are you
+backing up?</a></li>
+<li><a href="#where-are-you-backing-up-to"
+id="toc-where-are-you-backing-up-to">Where are you backing up
+to?</a></li>
+<li><a href="#how-are-you-actually-going-to-back-up-your-data"
+id="toc-how-are-you-actually-going-to-back-up-your-data">How are you
+actually going to back up your data?</a></li>
+</ul></li>
+<li><a href="#software" id="toc-software">Software</a>
+<ul>
+<li><a href="#copy-and-paste" id="toc-copy-and-paste">Copy and
+paste</a></li>
+<li><a href="#live-synchronizing-folders"
+id="toc-live-synchronizing-folders">Live-synchronizing folders</a></li>
+<li><a href="#disk-imaging" id="toc-disk-imaging">Disk imaging</a></li>
+</ul></li>
+<li><a href="#section" id="toc-section">3-2-1</a></li>
+<li><a href="#restoring-and-verifying-backups"
+id="toc-restoring-and-verifying-backups">Restoring and verifying
+backups</a>
+<ul>
+<li><a href="#file-based-restore-and-verify"
+id="toc-file-based-restore-and-verify">File-based restore and
+verify</a></li>
+<li><a href="#image-based-restore-and-verify"
+id="toc-image-based-restore-and-verify">Image-based restore and
+verify</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="choose-a-backup-strategy">Choose a backup strategy</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Choose an appropriate
+backup strategy for protecting your files.</label></li>
+</ul>
+</div>
+<figure>
+<img src="backups.gif"
+alt="When not to start thinking about backups. (© Gregor Czaykowski)" />
+<figcaption aria-hidden="true">When not to start thinking about backups.
+(© <a href="https://loadingartist.com/comic/burned/">Gregor
+Czaykowski</a>)</figcaption>
+</figure>
+<p>The main driving factor in deciding how you’re going to be backing up
+your data is really the data itself: what the data is, how urgently you
+need the data back if it was gone, where you’re backing up to, how much
+you’re backing up, how much you’re willing to pay.</p>
+<p>Let’s look at each of these, then look at some strategies you can use
+to backup your files.</p>
+<h2 id="things-to-consider">Things to consider</h2>
+<h3 id="what-kind-of-data-are-you-backing-up">What kind of data are you
+backing up?</h3>
+<p>Not just what kind of data are you backing up, but:</p>
+<details>
+<summary>
+How important is that data?
+</summary>
+<ul>
+<li>Not very important (I know what this data is, but I don’t really
+care about it).</li>
+<li>Somewhat important (This is useful but not <em>that</em>
+important).</li>
+<li>Very important (I would be devastated if I lost this data).</li>
+</ul>
+</details>
+<details>
+<summary>
+How replaceable is that data if it were suddenly gone?
+</summary>
+<ul>
+<li>Trivially replaceable (I know exactly how to replace it, and I can
+do it in a few minutes).</li>
+<li>Painfully replaceable (I know exactly how to replace it, but it’s
+going to take hours or days).</li>
+<li>Irreplaceable (I can’t replace this at all).</li>
+</ul>
+</details>
+<details>
+<summary>
+How often do you use this data or how urgently do you need it back if it
+were gone?
+</summary>
+<ul>
+<li>Not frequently used and not urgent (you have this data, but you very
+rarely need to open it; when you need to open it, it wouldn’t be big
+deal if it were gone).</li>
+<li>Somewhat frequently used or somewhat urgent (you use this data
+regularly; when you need to open it you’d need it back within a day or
+two if it were gone).</li>
+<li>Very frequently used or very urgent (you use this data frequently
+and you need it back within minutes or hours if it were gone).</li>
+</ul>
+</details>
+<p>Here are some examples of the kinds of data you could consider
+backing up, and some answers to the questions above:</p>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 21%" />
+<col style="width: 20%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Thing to back up</th>
+<th>Importance</th>
+<th>Replaceability</th>
+<th>Frequency or urgency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Personal photos and videos</td>
+<td>Very important</td>
+<td>Irreplaceable</td>
+<td>Not something you use frequently; not urgent to get back when it’s
+missing, it’s OK to wait a few days.</td>
+</tr>
+<tr class="even">
+<td>Documents and assignments</td>
+<td>Important but less important over time.</td>
+<td>Painfully replaceable</td>
+<td>Something you use frequently near a due date and less frequently
+after; urgent to get back near a due date (minutes or hours), way less
+urgent after a due date.</td>
+</tr>
+<tr class="odd">
+<td>Web browser information like passwords, bookmarks, history.</td>
+<td>Passwords are important, bookmarks are less important, history is
+not important.</td>
+<td>Irreplaceable or painfully replaceable.</td>
+<td>Something you use frequently. Passwords could be very urgent to get
+back quickly.</td>
+</tr>
+<tr class="even">
+<td>Music and videos from online.</td>
+<td>Not very important.</td>
+<td>Replaceable from the source.</td>
+<td>Maybe something you use frequently, not that urgent to get
+back.</td>
+</tr>
+<tr class="odd">
+<td>Programs installed on your computer.</td>
+<td>Important.</td>
+<td>Replaceable.</td>
+<td>Something you use frequently. Could be urgent to get back, but not
+often.</td>
+</tr>
+<tr class="even">
+<td>Program configuration.</td>
+<td>Not very important.</td>
+<td>Painfully replaceable.</td>
+<td>Something you use frequently. Could be urgent to get back, but not
+often.</td>
+</tr>
+<tr class="odd">
+<td>Your operating system’s configuration (how you’ve configured
+keyboard shortcuts).</td>
+<td>Not very important.</td>
+<td>Trivially or painfully replaceable, depending on how much you have
+configured.</td>
+<td>Something you use frequently. Not that urgent to get back.</td>
+</tr>
+<tr class="even">
+<td>Your operating system.</td>
+<td>Important.</td>
+<td>Replaceable.</td>
+<td>Something you use frequently, pretty urgent to get back, but might
+mean bigger problems if it’s missing (failed hardware).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-are-you-backing-up-to">Where are you backing up to?</h3>
+<p>Once you’ve thought about the data that you want or need to back up,
+you should start thinking about where you’re going to back up that
+data.</p>
+<p>How important or replaceable your data is and the urgency that you
+have to get it back affect the choices you’re making here.</p>
+<p>If you’re backing up multiple different things, you might be backing
+up those things to different places.</p>
+<p>When you’re thinking about where you’re backing up to, you should
+consider a few things:</p>
+<ul>
+<li>How easy it is to use (“I already do stuff like this all the time”
+to “I need to learn something completely new”).</li>
+<li>How expensive it is (“I already have all required equipment or
+software” to “I need to buy new expensive hardware or software”).</li>
+<li>How reliable it is (“I still lose everything if my hardware fails”
+to “my house could burn down and I’m still OK”).</li>
+</ul>
+<p>Here are some examples of where you could back up to:</p>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Place</th>
+<th>Ease of use</th>
+<th>Cost</th>
+<th>Reliability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Another folder on your computer.</td>
+<td>Very easy, it’s just copy and paste.</td>
+<td>Very cheap, it’s just your computer.</td>
+<td>Very unreliable; if your hard drive fails, you lose both
+copies.</td>
+</tr>
+<tr class="even">
+<td>Another drive in or attached to your computer.</td>
+<td>Still very easy, it’s just copy and paste.</td>
+<td>Kind of expensive, new drives aren’t cheap.</td>
+<td>More reliable, can be made more reliable if you move the other drive
+to a different physical location.</td>
+</tr>
+<tr class="odd">
+<td>Other kinds of physical media (CDs, DVDs, <a
+href="https://en.wikipedia.org/wiki/Tape_drive">tapes</a>).</td>
+<td>Straightforward to use, but you might need special software.</td>
+<td>Can be expensive; CDs and DVDs are cheap, tape drives are not.</td>
+<td><a href="https://en.wikipedia.org/wiki/Disc_rot">CDs and DVDs are
+not long-term reliable</a>. Tapes are very reliable.</td>
+</tr>
+<tr class="even">
+<td>Online storage tools (Dropbox, OneDrive).</td>
+<td>Straightforward to use. You do need special software, but it’s
+usually simple to use.</td>
+<td>Usually free for small amounts of data and not very expensive for
+more.</td>
+<td>Generally reliable, but can fail in unexpected ways. You’re relying
+on the company running the service.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-are-you-actually-going-to-back-up-your-data">How are you
+actually going to back up your data?</h3>
+<p>When you’ve decided where you’re backing up to, then you can think
+about how you’re going to make the back ups. There are two approaches to
+backing up data from a computer:</p>
+<ol type="1">
+<li><p><strong>Image-based (drives or <a
+href="https://en.wikipedia.org/wiki/Disk_partitioning">partitions</a>)</strong>.</p>
+<p>This is making a byte-for-byte copy of your entire disk.</p>
+<p>This is good because you’re copying literally everything that’s on
+your drive. Ideally this means that you can take a complete image,
+remove the drive from your computer (or move to a different computer),
+then restore the image to the new drive or computer and immediately have
+an exact copy of the whole thing.</p>
+<p>This is bad because it takes a lot of space (you’re backing up a lot
+of stuff you don’t care about) and because you’re effectively treating
+all the data on your drive as the same kind of data (your operating
+system is not as important as your pictures). You also can’t trivially
+extract a single file from a drive image (you <em>can</em>, but not
+trivially).</p></li>
+<li><p><strong>File-based</strong>.</p>
+<p>This is copying just files and folders (and maybe their <a
+href="https://en.wikipedia.org/wiki/Metadata">metadata</a>), and usually
+this means that you can open the folder in your file browser and
+actually see the files.</p>
+<p>This is good because you’re only taking as much space as you need to
+back up what you’re trying to back up, and it means that you can be more
+<a href="https://en.wikipedia.org/wiki/Granularity">granular</a> about
+your approach to backing up your files (you can put pictures on tape in
+a safe deposit box and just not back up your downloaded music at
+all).</p>
+<p>This is bad because you have to intentionally back up what you want
+to back up. You also can’t (or shouldn’t) back up an entire operating
+system this way.</p></li>
+</ol>
+<h2 id="software">Software</h2>
+<p>Let’s look at a few examples of software for backing up your files
+and evaluate them.</p>
+<h3 id="copy-and-paste">Copy and paste</h3>
+<p>This is… copy and paste.</p>
+<figure>
+<img src="windows-copy.png" alt="Windows file transfer dialog." />
+<figcaption aria-hidden="true">Windows file transfer
+dialog.</figcaption>
+</figure>
+<figure>
+<img src="macos-copy.png" alt="macOS file transfer dialog." />
+<figcaption aria-hidden="true">macOS file transfer dialog.</figcaption>
+</figure>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> source destination</span></code></pre></div>
+<p>You can be more complicated than just simple copy-and-paste, though:
+something like <a href="https://rsync.samba.org/"><code>rsync</code></a>
+copies files, optionally preserves <a
+href="https://en.wikipedia.org/wiki/Metadata">metadata</a>, and can
+delete files in the destination that have been deleted in the source
+(synchronizing the contents of directories).</p>
+<p>Evaluation:</p>
+<ul>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Super
+easy to use, you don’t need any special software.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span>
+Free!</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span>
+Granular, you can choose exactly what you want to copy.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> You’re
+in control of your data at all times.</li>
+<li><span class="emoji" data-emoji="x">❌</span> Doesn’t preserve
+metadata (unless you’re using something like <code>rsync</code>).</li>
+<li><span class="emoji" data-emoji="x">❌</span> Isn’t versioned (you
+don’t have the current version and old versions in your back up, just
+the current version).</li>
+</ul>
+<h3 id="live-synchronizing-folders">Live-synchronizing folders</h3>
+<p>Some examples of software enabling live-synchronizing of folders
+include:</p>
+<ul>
+<li><a href="https://www.dropbox.com/">Dropbox</a></li>
+<li><a
+href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage">OneDrive</a></li>
+<li><a href="https://www.icloud.com/">iCloud</a></li>
+<li><a href="https://www.seafile.com/en/home/">Seafile</a></li>
+<li><a href="https://www.backblaze.com/">Backblaze</a></li>
+</ul>
+<p>Evaluation:</p>
+<ul>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span>
+Generally very easy to use, even if you need special software.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Usually
+free to use, but costs are also minimal (usually single digits per
+month).</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span>
+Granular, you can usually choose which folders to synchronize.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span>
+Versioned, you can usually go back to older versions of files.</li>
+<li><span class="emoji" data-emoji="x">❌</span> You have to trust
+someone else to host your data (Seafile can be “<a
+href="https://www.vice.com/en/article/pkb4ng/meet-the-self-hosters-taking-back-the-internet-one-server-at-a-time">self-hosted</a>”,
+see <a href="https://manual.seafile.com/">the Seafile manual</a> for
+more information).</li>
+</ul>
+<h3 id="disk-imaging">Disk imaging</h3>
+<p>Some examples of software for disk imaging are:</p>
+<ul>
+<li><a href="https://clonezilla.org/">CloneZilla</a></li>
+<li><a href="https://www.acronis.com/en-us/products/true-image/">Acronis
+Cyber Protect Home Office</a></li>
+<li><a href="http://redorescue.com/">Redo Rescue</a></li>
+<li><code>dd</code> for Linux/macOS can copy entire disks (see
+<code>man dd</code>).</li>
+</ul>
+<p>Evaluation:</p>
+<ul>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> <span
+class="emoji" data-emoji="x">❌</span> Some are easy to use (Redo
+Rescue, Acronis), some are not (CloneZilla, <code>dd</code>).</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> <span
+class="emoji" data-emoji="x">❌</span> some a free to use
+(<code>dd</code>, Redo Rescue, CloneZilla), some are not (Acronis).</li>
+<li><span class="emoji" data-emoji="x">❌</span> Not at all granular,
+you copy an entire disk or partition.</li>
+<li><span class="emoji" data-emoji="x">❌</span> Not versioned.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> You’re
+generally in control of your data.</li>
+</ul>
+<h2 id="section">3-2-1</h2>
+<p>Software enables you to actually copy or back up software, but
+there’s still strategy for <em>how</em> you manage your back ups.</p>
+<p>One strategy is called “3-2-1”, and it’s summed up as:</p>
+<ul>
+<li>Have at least 3 copies of your data.</li>
+<li>Have 2 local or on-site copies of your data on different devices
+(two different computers, one computer and one USB drive, one computer
+and CDs or DVDs).</li>
+<li>Have at least 1 copy be remote or off-site.</li>
+</ul>
+<p>You can read a lot more about “<a
+href="https://www.backblaze.com/blog/the-3-2-1-backup-strategy/">3-2-1</a>”
+and its variants like “<a
+href="https://www.backblaze.com/blog/whats-the-diff-3-2-1-vs-3-2-1-1-0-vs-4-3-2/">3-2-1-1-0
+or 4-3-2 backups</a>” (e.g., <a
+href="https://www.seagate.com/ca/en/blog/what-is-a-3-2-1-backup-strategy/">Seagate</a>,
+<a
+href="https://www.carbonite.com/blog/article/2016/01/what-is-3-2-1-backup/">Carbonite</a>,
+<a href="https://www.veeam.com/blog/321-backup-rule.html">Veeam</a>),
+but this is a pretty straightforward strategy.</p>
+<p>This strategy tries to mitigate or prevent several different
+things:</p>
+<ul>
+<li>Having 1 copy of your data off-site means that your data is
+resilient to a physical disaster where the other copies of your data are
+stored (e.g., fire, flood).</li>
+<li>Having 2 local copies means that your data is resilient to hardware
+failures (e.g., your disk dies, the CDs or DVDs you burned aren’t
+readable later).</li>
+<li>Having 3 copies in total means… you’ve got 3 copies in total. The
+likelihood of one failure happening is moderate, the likelihood of two
+failures happening is lower.</li>
+</ul>
+<h2 id="restoring-and-verifying-backups">Restoring and verifying
+backups</h2>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Restore and verify your
+backup from the remote server.</label></li>
+</ul>
+</div>
+<p>Having your data copied to one or more other places is great, but you
+can’t be confident that your back ups are actually back ups until you’ve
+demonstrated that you can restore the back up (you can actually get the
+data back you thought you were backing up).</p>
+<p>How you restore and verify your backups depends on whether you’re
+doing file-based backup or image-based backup.</p>
+<h3 id="file-based-restore-and-verify">File-based restore and
+verify</h3>
+<p>Verifying that your files are backed up can be as straightforward as
+opening your file explorer or web browser, navigating to the location
+where your files are backed up to, and then just manually inspecting if
+you have actual photos, files, and folders in that location (i.e.,
+literally open the files and look at them).</p>
+<p>That’s effective and easy, but not very scalable — checking hundreds
+or thousands of photos is tedious and painful.</p>
+<p>We’ve seen the idea of <code>diff</code> before in the context of
+comparing plain-text files, but we can also use
+<code>diff</code>-like-tools to compare entire folders for
+differences.</p>
+<p>Here are some tools that will allow you to compare entire folder
+structures for differences:</p>
+<ul>
+<li><a href="https://meldmerge.org/">Meld</a> (Meld works on all of
+Linux, macOS, and Windows)</li>
+<li><a href="https://winmerge.org/">WinMerge</a> (WinMerge only works on
+Windows)</li>
+<li><a href="https://invent.kde.org/sdk/kdiff3">KDiff3</a> (KDiff3 works
+on all of Linux, macOS, and Windows)</li>
+<li><a href="https://developer.apple.com/xcode/features/">FileMerge</a>
+(FileMerge is only for macOS with Xcode)</li>
+</ul>
+<p>The general strategy here is this:</p>
+<ol type="1">
+<li>Make the entire backed-up folder structure available on your local
+machine. This might be downloading your entire backed-up folder
+structure from the cloud provider you’re using (Dropbox, OneDrive),
+inserting a CD or DVD, plugging in an external USB drive, or using
+<code>rsync</code> or <code>scp</code> to copy your files back to your
+computer.</li>
+<li>Open your visual diff tool of choice and compare the two
+folders.</li>
+</ol>
+<p>Here’s what Meld looks like when you compare two folders to one
+another where the two folders have no differences:</p>
+<figure>
+<img src="meld-no-differences.png"
+alt="Meld comparing two folders with no differences." />
+<figcaption aria-hidden="true">Meld comparing two folders with no
+differences.</figcaption>
+</figure>
+<p>Here’s what Meld looks like when you compare two folders to one
+another and there’s one or more differences:</p>
+<figure>
+<img src="meld-with-differences.png"
+alt="Meld comparing two folders with one one or more differences." />
+<figcaption aria-hidden="true">Meld comparing two folders with one one
+or more differences.</figcaption>
+</figure>
+<p>Ideally, you should see no differences between what you got from your
+backup and what you have locally.</p>
+<h3 id="image-based-restore-and-verify">Image-based restore and
+verify</h3>
+<p>When you back up your data using an image-based approach you wind up
+with a single, very large file (many GBs).</p>
+<p>This file contains all the bytes that are either on your entire
+drive, or all the bytes that are on individual partitions that are on
+your drive.</p>
+<p>There are two ways to verify the contents of these files:</p>
+<ol type="1">
+<li>Mount the images and use the same approach as <a
+href="#file-based-restore-and-verify">File-based restore and
+verify</a>.</li>
+<li>Write your image(s) back to the same machine or a different
+machine.</li>
+</ol>
+<h4 id="mount-the-images">Mount the images</h4>
+<p>This approach is primarily limited to Linux or macOS. On Linux, you
+can treat an individual file as a complete drive by using a <a
+href="https://en.wikipedia.org/wiki/Loop_device">“loop” device</a>. You
+can take an individual file and “mount” it a though it were a drive.
+This is a feature of the idea that “<a
+href="https://en.wikipedia.org/wiki/Everything_is_a_file">everything is
+a file</a>”.</p>
+<p>You <em>can</em> do this on Windows, provided that you have something
+like the Windows Subsystem for Linux installed (which you should
+now!).</p>
+<p>Here’s an example of how you might mount a partition image from
+Windows (using the NTFS file system), this might not work depending on
+the distribution that you’re using:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-t</span> ntfs disk1.img /mnt/windows</span></code></pre></div>
+<p>Once your disk is mounted, you can compare the contents using the
+approach described in <a
+href="#file-based-restore-and-verify">File-based restore and
+verify</a>.</p>
+<h4 id="write-the-images">Write the images</h4>
+<p>The other option is to use the same software that you used to create
+the images in the first place (CloneZilla, Redo Rescue, Acronis, etc) to
+write them back to either the same device (dangerous!) or a different
+device that has similar characteristics.</p>
+<p>If you can write the images back and boot your machine again, and
+then use the same approach as in <a
+href="#file-based-restore-and-verify">File-based restore and verify</a>,
+you’ve got a working backup <span class="emoji"
+data-emoji="tada">🎉</span>!</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-2.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Finding files</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././topic01/topic-1.html">Introduction</a></li>
+<li><a href=".././topic01/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././topic01/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././topic01/topic-4.html">Converting documents to
+different formats</a></li>
+<li><a href=".././topic01/topic-5.html">Organizing your files</a></li>
+<li><a href=".././topic01/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><strong>Finding files</strong></li>
+<li><a href="topic-3.html">Filtering lines</a></li>
+<li><a href="topic-4.html">Reading and changing permissions</a></li>
+<li><a href="topic-5.html">Comparing plain text files</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
+<li><a href=".././topic08/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic09/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic09/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic10/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic10/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic10/topic-6.html">Summary</a></li>
+<li><a href=".././topic10/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././topic11/topic-1.html">Introduction</a></li>
+<li><a href=".././topic11/topic-2.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic11/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic11/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Finding files</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#finding-files" id="toc-finding-files">Finding files</a>
+<ul>
+<li><a href="#finding-files-by-name"
+id="toc-finding-files-by-name">Finding files by name</a>
+<ul>
+<li><a href="#finding-an-exact-file-name"
+id="toc-finding-an-exact-file-name">Finding an exact file name</a></li>
+<li><a href="#finding-a-file-name-matching-a-pattern"
+id="toc-finding-a-file-name-matching-a-pattern">Finding a file name
+matching a pattern</a></li>
+<li><a href="#finding-a-file-names-with-unknown-case"
+id="toc-finding-a-file-names-with-unknown-case">Finding a file names
+with unknown case</a></li>
+</ul></li>
+<li><a href="#running-programs-on-the-files-you-find"
+id="toc-running-programs-on-the-files-you-find">Running programs on the
+files you find</a>
+<ul>
+<li><a href="#what-would-we-want-to-do"
+id="toc-what-would-we-want-to-do">What would we want to do?</a></li>
+<li><a href="#using-find-to-accomplish-our-goal"
+id="toc-using-find-to-accomplish-our-goal">Using <code>find</code> to
+accomplish our goal</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="finding-files">Finding files</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Find files on the command
+line by name using patterns.</label></li>
+</ul>
+</div>
+<p>You might be saying to yourself “<a
+href="https://i.kym-cdn.com/photos/images/original/000/000/151/n725075089_288918_2774.jpg">wat</a>”.
+“Why would I ever need to find files on the command line?”</p>
+<p>I’d say to you: “You’re right, we just spent time figuring out an
+appropriate folder structure for your courses!”</p>
+<p>But then I’d also say: “You’re not always going to be working with
+folder structures that you made. You’re not always going to be working
+with files that you’ve created. Sometimes you’ll know what the name of a
+file is (or something like what the file name should look like), but not
+where it is within a deeply nested or complex folder structure.”</p>
+<p>So here I am saying it: You’re not always going to be working with
+folder structures that you made. You’re not always going to be working
+with files that you’ve created. Sometimes you’ll know what the name of a
+file is (or something like what the file name should look like), but not
+where it is within a deeply nested or complex folder structure.</p>
+<p>We’re going to be using a program that has an amazingly appropriate
+name: <code>find</code>.</p>
+<div class="aside">
+<p>If you’re using macOS, <em>some</em> of these examples will work on
+your local computer. If you’re using Windows, <strong>none</strong> of
+these examples will work on your local computer. If you’re using a Linux
+distribution, <strong><em>all</em></strong> of these examples will work
+on your local computer.</p>
+<p>Somewhat annoyingly, some of the examples that we’ll look at will
+work <em>differently</em> between macOS and Linux. We will try to use
+examples that work on both the same way, but…</p>
+<p>Please connect to Aviary before you try to run any of these
+examples.</p>
+</div>
+<div class="example">
+<p>The simplest way to run <code>find</code> is to run it with a single
+argument: the directory that you want to find files in:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> find .</span></code></pre></div>
+<p><code>find</code> will proceed to list all of the files that it can
+find starting in the current directory, and that’s probably a lot more
+than you expected.</p>
+</div>
+<h2 id="finding-files-by-name">Finding files by name</h2>
+<p>Normally this isn’t how you would use <code>find</code>. This is
+certainly <em>a</em> way you can run <code>find</code>, but it’s not the
+typical usage.</p>
+<p>One fairly common way to use <code>find</code> is to search for files
+by their name. We’re going to look at this in several ways:</p>
+<ul>
+<li>Finding files by an exact file name that we know in advance.</li>
+<li>Finding files by a file name that we know matches a pattern.</li>
+<li>Finding files by a file name that we know matches a pattern, but we
+don’t know the <em>case</em> of the file’s name (UPPER CASE or lower
+case).</li>
+</ul>
+<p>You’re going to be working with a directory structure that you don’t
+know anything about and is too deep and complex for you to manually
+search through. I really hope the directories you see in your job or
+your academic life don’t look anything like this!</p>
+<p>Start by downloading this file, but make sure that you <strong>do
+not</strong> download it into your repository:</p>
+<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week06/crazy-directories.tar</code></pre>
+<p><mark><strong>Note</strong></mark>: There are over 7000 directories
+in this folder structure. It’s not worth your time trying to find
+anything trying to use <code>cd</code> and <code>ls</code>.</p>
+<p>This is a <code>.tar</code> file (a “<a
+href="https://en.wikipedia.org/wiki/Tar_(computing)">Tape ARchive</a>”).
+Similar to a <code>.zip</code> file, this is a kind of “compressed” file
+— there are many files <em>within</em> this single file, and you need to
+use a program to “expand” the archive. For <code>.tar</code> files, the
+program’s name is <code>tar</code>:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> crazy-directories.tar <span class="co"># Th eXtract File</span></span></code></pre></div>
+<p><mark><strong>Note</strong></mark>: <strong>There are over 7000
+directories in this folder structure</strong>. Extracting the entire
+directory structure on Aviary will probably take 5 or more minutes to
+complete.</p>
+<div class="aside">
+<p>A <strong>single command</strong> was used to create this directory
+structure:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="dt">{</span>a<span class="dt">..</span>z<span class="dt">}</span>/{0..9}/{a..z}</span></code></pre></div>
+<p>This uses a feature that’s present in <em>some</em> shells called
+brace expansion.</p>
+<p>This <strong>will not</strong> work on Aviary when you first connect.
+Aviary, by default, uses a shell program called <a
+href="https://en.wikipedia.org/wiki/Tcsh">tcsh</a>. tcsh does not
+support brace expansion. <a
+href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> supports
+brace expansion, and that’s the shell that was used to create this
+directory structure. You can run <code>bash</code> on the command line
+to start the Bash shell.</p>
+<div class="aside">
+<p>An aside <em>within an aside</em>? Is that even legal?</p>
+<p>Bash and tcsh are not the only shell programs. There are <a
+href="https://en.wikipedia.org/wiki/List_of_command-line_interpreters">many
+shell programs</a>. We’re unfortunately not going to spend time talking
+about shells. Most people don’t even think about shells and just use the
+one that starts automatically when the terminal opens or when they
+connect to a remote computer.</p>
+<p>When you take the time to try out different shells, though, it’s a
+similar choice to choosing a text editor.</p>
+</div>
+</div>
+<h3 id="finding-an-exact-file-name">Finding an exact file name</h3>
+<p>Let’s imagine that we know the exact name of a file. I’m going to
+tell it to you. The file name that you want to find is
+“<code>bananas.md</code>”.</p>
+<div class="example">
+<p>Change into the <code>crazy-directories</code> directory
+(<code>cd</code>).</p>
+<p>We can use the <code>-name</code> option on <code>find</code> to look
+for a file by name when we know the exact name of the file:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
+</div>
+<h3 id="finding-a-file-name-matching-a-pattern">Finding a file name
+matching a pattern</h3>
+<p>Finding a file using a name that we know is straightforward.</p>
+<p>Sometimes (maybe more frequently), we only know what the file name
+<em>looks like</em>. Examples of situations like this might be:</p>
+<ul>
+<li>We want to find all files that have a name ending in
+“<code>.java</code>”.</li>
+<li>We want to find all files that have a name containing
+“<code>List</code>”.</li>
+<li>We want to find all files that have a name starting with
+“<code>Hello</code>”.</li>
+</ul>
+<p>Thankfully, we can use “patterns” to help us find files with names
+where we don’t know the <em>exact</em> name of the file.</p>
+<p>Patterns require using characters that have special meanings:</p>
+<ul>
+<li><code>*</code> means “anything”: any number of characters (0 or
+more) and any character.</li>
+<li><code>?</code> means “one character”: exactly one character, but it
+can be any character.</li>
+<li><code>[</code> and <code>]</code> is a “character class”;
+<code>[abc]</code> means “any of <code>a</code>, <code>b</code>, or
+<code>c</code>”.</li>
+</ul>
+<div class="example">
+<p>Starting from the <code>crazy-directories</code> directory, we’re
+going to be looking for files that match some specific patterns.</p>
+<p>You can find the same file that we saw before
+(<code>bananas.md</code>) using patterns:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*nanas.md&quot;</span>  <span class="co"># anything ending with &quot;nanas.md&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span>       <span class="co"># anything ending with &quot;.md&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;?ananas.md&quot;</span> <span class="co"># anything that has exactly one character, then</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># ananas.md</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*bananas*&quot;</span>  <span class="co"># anything that contains &quot;bananas&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;banana*&quot;</span>    <span class="co"># anything that starts with &quot;banana&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[AbC]ananas.md&quot;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># files named &quot;bananas.md&quot;, &quot;Aananas.md&quot;, or</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># &quot;Cananas.md&quot;</span></span></code></pre></div>
+</div>
+<h3 id="finding-a-file-names-with-unknown-case">Finding a file names
+with unknown case</h3>
+<p>You may have encountered this before while working on the command
+line, especially if you’re moving between Windows on your personal
+computer and Aviary: file names on Unix or Unix-like systems (Linux or
+macOS) are case sensitive. That means that “<code>BANANAS.md</code>” and
+“<code>bananas.md</code>” and “<code>bAnAnAs.md</code>” are three
+different file names that could be completely unique on Linux or
+macOS.</p>
+<p>We <em>could</em> use the character class pattern to find files that
+have any case, but typing this out would be extraordinarily tedious:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[Bb][Aa][Nn][Aa][[Nn][Aa][Ss].md&quot;</span></span></code></pre></div>
+<p>Thankfully, there’s another option for <code>find</code>:
+<code>-iname</code>.</p>
+<div class="example">
+<p>When you know the general pattern that your file has for its name,
+but you don’t know what case the file name uses, you can use the
+<code>-iname</code> option; the <code>i</code> in <code>-iname</code>
+stands for “ignore case”.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-iname</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
+<p>You can use any of the special characters (<code>*</code>,
+<code>?</code>, or <code>[]</code>) with the <code>-iname</code>
+option.</p>
+</div>
+<h2 id="running-programs-on-the-files-you-find">Running programs on the
+files you find</h2>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Execute commands on the
+files that match the pattern.</label></li>
+</ul>
+</div>
+<p>Sometimes finding the files is enough (i.e., “Great! Now I can open
+the file with <code>vi</code> or <code>vim</code> or <code>emacs</code>
+or …”). Sometimes you actually want to <em>do something</em> with the
+files that you find. Let’s first explore some of the things that we
+might want to <em>do</em> to files, and then look at the way we would
+use <code>find</code> to do those things on our behalf.</p>
+<h3 id="what-would-we-want-to-do">What would we want to do?</h3>
+<p>What kinds of things might you want to do with the files that you
+find on the command line using <code>find</code>?</p>
+<ul>
+<li>Converting between file formats (e.g., you like to download music
+using the <a href="https://en.wikipedia.org/wiki/FLAC">FLAC</a> format
+and need to convert to <a
+href="https://en.wikipedia.org/wiki/MP3">MP3</a>).
+<ul>
+<li>Or… you have many “<code>.md</code>” files that you want to convert
+to “<code>.docx</code>”.</li>
+</ul></li>
+<li>Changing files (e.g., you have many very large photos that you want
+to also have smaller versions of, or “thumbnails”).</li>
+<li>Deleting files (e.g., you have many <code>.class</code> files, and
+you want to delete them all).</li>
+</ul>
+<h3 id="using-find-to-accomplish-our-goal">Using <code>find</code> to
+accomplish our goal</h3>
+<p>We’re going to use two options on <code>find</code> to accomplish our
+goal: <code>-exec</code> and <code>-delete</code>.</p>
+<h4 id="delete"><code>-delete</code></h4>
+<p>Deleting files is pretty straightforward using the
+<code>-delete</code> option.</p>
+<div class="warning">
+<p>Remember: <strong>There is no “Recycle Bin” or “Trash Can” on the
+command line</strong>. When you delete something using either with
+<code>rm</code> or with the option we’re about to see, it’s
+<strong>gone</strong>.</p>
+</div>
+<div class="example">
+<p>Let’s delete the file with the exact file name
+<code>bananas.md</code>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span> <span class="at">-delete</span></span></code></pre></div>
+<p>The <code>-delete</code> option on <code>find</code> deletes any file
+that has a name matching the pattern that you’ve described to
+<code>find</code>. That means that if multiple files match the pattern,
+then all of those files would be deleted with the <code>-delete</code>
+option.</p>
+</div>
+<h4 id="exec"><code>-exec</code></h4>
+<p>More often than deleting stuff, you’re going to want to run a program
+on the things that you find.</p>
+<p>Similar to the way that the <code>-delete</code> option works (it
+deletes all files that have a name matching the pattern), the
+<code>-exec</code> option will run a program for each file that has a
+name matching the pattern.</p>
+<p>The <code>-exec</code> option is <em>slightly</em> differently from
+<code>-delete</code> in that you need to include how to run the command,
+but the best way to describe this is by example.</p>
+<div class="example">
+<p>Let’s start by finding all Markdown files in the
+<code>crazy-directories</code> directory:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+<p>There are a few more than expected!</p>
+<p>We want to convert all of these Markdown files to Word files
+(<code>.docx</code>). Doing this manually is possible, but tedious, so
+we’ll let <code>find</code> to the work for us:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="at">-exec</span> pandoc <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div>
+<p>There’s some weird looking stuff in there, so let’s break it
+down:</p>
+<ul>
+<li><div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+This is the same as what we’ve seen before: find all files with names
+that match the pattern.</li>
+<li><div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-exec</span></span></code></pre></div>
+Here’s the start of our new option for <code>find</code>. Everything
+that follows the <code>-exec</code> option is another complete
+command.</li>
+<li><div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">pandoc</span> <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>         <span class="co"># run pandoc on the name of the file</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote it in case there are spaces;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="co"># The output file is the same file name</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># with a .docx extension (Word), and the</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># command is terminated with \;</span></span></code></pre></div>
+<ul>
+<li>We’ve seen <code>pandoc</code> before lots of times.</li>
+<li>One new thing here is the <code>'{}'</code> (twice).
+<ul>
+<li><p>When <code>pandoc</code> is run by <code>find</code>, the
+<code>{}</code> is replaced with the name of the file that
+<code>find</code> found. The quotes are around <code>{}</code> in case
+the name of the file that <code>find</code> found contains spaces. In
+our example, one of the files <code>find</code> finds is
+<code>bAnAnAs.md</code>, and this would make the command look like:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div></li>
+</ul></li>
+<li>The <code>-f markdown+emoji</code> is an option to
+<code>pandoc</code> to say that we want it to actually render emoji
+using shortcodes.</li>
+<li>The <code>\;</code> is the “end of command” marker that the
+<code>-exec</code> option looks for so it knows where the command
+ends.</li>
+</ul></li>
+</ul>
+<p>If everything works out, we shouldn’t see any output
+(<code>pandoc</code> is pretty quiet).</p>
+<p>Now check out the new files you have in your directory:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span></span></code></pre></div>
+</div>
+<p>The <code>-exec</code> option sure looks <em>weird</em>, but it’s a
+pretty powerful option: we can find files that have a name matching a
+pattern, and then run commands on those files with a single command.</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-2.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

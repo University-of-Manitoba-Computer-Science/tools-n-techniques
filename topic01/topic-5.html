@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Organizing your files</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Installing software on your personal
+computer</a></li>
+<li><a href="topic-3.html">Write plain text documents</a></li>
+<li><a href="topic-4.html">Converting documents to different
+formats</a></li>
+<li><strong>Organizing your files</strong></li>
+<li><a href="topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
+<li><a href=".././topic08/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic09/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic09/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic10/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic10/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic10/topic-6.html">Summary</a></li>
+<li><a href=".././topic10/hello-pandocker.html">Hello,
+Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././topic11/topic-1.html">Introduction</a></li>
+<li><a href=".././topic11/topic-2.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic11/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic11/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Organizing your files</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#organizing-your-files"
+id="toc-organizing-your-files">Organizing your files</a>
+<ul>
+<li><a href="#planning-your-organization"
+id="toc-planning-your-organization">Planning your organization</a></li>
+<li><a href="#making-folders" id="toc-making-folders">Making
+folders</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="organizing-your-files">Organizing your files</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Define your own strategy
+for organizing your files.</label></li>
+<li><label><input type="checkbox" checked="" />Build a directory
+structure with a visual file explorer for the purpose of organizing your
+files.</label></li>
+</ul>
+</div>
+<p>Our computers are <a
+href="https://www.youtube.com/watch?v=L_o_O7v1ews">full of files</a>. As
+you take more and more courses in university, you’re going to find that
+you’re generating <a
+href="https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html">a
+lot</a> of files.</p>
+<figure>
+<img src="mess.png"
+alt="A messy desktop, finding files in here isn’t easy." />
+<figcaption aria-hidden="true">A messy desktop, finding files in here
+isn’t easy.</figcaption>
+</figure>
+<p>Keeping your files organized can help when</p>
+<ul>
+<li>You need to study for a test or exam.</li>
+<li>An assignment you’re currently working on builds on or uses ideas
+from an older assignment.</li>
+<li>You need to look back at the schoolwork you’ve done when you’re
+applying for jobs.</li>
+</ul>
+<p>Organizing your files isn’t super hard. You need a simple plan about
+<em>how</em> you want to organize your files so that when you’re saving
+a new file for the first time you know where to put it.</p>
+<h2 id="planning-your-organization">Planning your organization</h2>
+<p>Try to come up with a high-level structure that uses information
+about the files. Pick information about the files that are
+<strong>facts</strong> and aren’t going to change as time goes on (e.g.,
+dates and years, course names and numbers, departments, etc).</p>
+<p>Files and folders are hierarchical (it’s a tree <span class="emoji"
+data-emoji="deciduous_tree">🌳</span>!), and you can use facts about the
+files you’re going to organize as parts of that tree structure. When
+planning your organizational structure, try to keep the information
+that’s most important to finding what you’re looking for close to the
+top of the tree structure.</p>
+<div class="example">
+<p>I am an instructor in the Department of Computer Science at the
+University of Manitoba. My academic life revolves around academic years,
+terms, and courses. I usually want to be able to find information about
+a specific course very quickly, so course numbers are the highest level
+in my organizational structure.</p>
+<p>My general strategy for organizing my files looks like this:</p>
+<ul>
+<li>Course number
+<ul>
+<li>Year
+<ul>
+<li>Academic term (e.g., fall, winter, summer)
+<ul>
+<li>Deliverable type (e.g., assignments, labs, tests, schedules)
+<ul>
+<li>Actual deliverables in those categories (e.g., assignment 1, test 3,
+lab 2)
+<ul>
+<li>Actual files for those deliverables (e.g.,
+<code>assignment.md</code>, <code>test.tex</code>)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>An actual folder structure that I have for a course that I teach
+regularly looks like this:</p>
+<div style="line-height: 1;">
+<pre><code>comp3430/
+├── 2021
+│   └── summer
+│       ├── assignments
+│       │   └── assignment1
+│       │       └── assignment.md
+│       ├── schedule
+│       │   └── schedule.docx
+│       └── tests
+│           ├── test1
+│           │   └── test.tex
+│           └── test2
+│               └── test.tex
+└── 2022
+    ├── summer
+    │   ├── assignments
+    │   │   └── assignment1
+    │   ├── schedule
+    │   └── tests
+    │       ├── test1
+    │       └── test2
+    └── winter
+        ├── assignments
+        │   └── assignment1
+        ├── schedule
+        └── tests
+            ├── test1
+            └── test2</code></pre>
+</div>
+<p>Organizing your files exactly like this doesn’t make sense — you
+don’t usually take the same course across terms and years — so you
+shouldn’t use this exact organizational strategy.</p>
+</div>
+<p>Here are some examples of information about files that you can use to
+organize your academic life:</p>
+<ul>
+<li>Faculty course is offered in (e.g., Arts, Science, Business,
+Engineering).</li>
+<li>Course number and name (e.g., comp1010, “SCI 2000”, “HIST 1350 An
+Introduction to the History of Western Civilization to 1500”).</li>
+<li>Academic year and/or term (e.g., 2022, Fall 2022, Winter).</li>
+<li>Types of homework that you need to work on for a course (e.g., labs,
+assignments, projects).</li>
+<li>Actual deliverable for the type of homework (e.g., “Lab 1”,
+assignment4, “Final project”).</li>
+<li>Status of the files that you create for the type of homework (e.g.,
+“Draft 3”, “Final”, “Submitted”).</li>
+</ul>
+<p>You need to decide for yourself: Which of these are going to be names
+for folders and which of these are going to be names of files?</p>
+<h2 id="making-folders">Making folders</h2>
+<p>Planning your strategy for organizing files is just the first step.
+Now you actually have to make the folder structure!</p>
+<p>Making folders with your file explorer (Finder in macOS, Explorer in
+Windows, varies in Linux) is generally straightforward. You’ll find that
+you can create folders in several ways (some we’ll see later).</p>
+<details>
+<summary>
+Making new folders in Windows
+</summary>
+<p>Open Windows Explorer by doing one of the following:</p>
+<ul>
+<li>Click on the folder icon at the bottom of your screen.</li>
+<li>Click on the Microsoft logo in the corner of your screen, or press
+the Microsoft key (the “super” key) on your keyboard, then start typing
+“explorer”. When you see “File Explorer” appear, click on it.</li>
+</ul>
+<p>Windows Explorer shows a summary of the folders that you have on your
+computer when first started. I would recommend that you start creating
+your folder structure either on your Desktop or in your Documents
+folder. You should open one of those folders by double-clicking on the
+icon.</p>
+<p>Once you’ve opened either your Desktop or Documents folder, you can
+start creating a new folder.</p>
+<p>To create a new folder, you can do one of the following:</p>
+<ul>
+<li>Click on the “New Folder” or “New” → “Folder” buttons at the top of
+your Windows Explorer window.</li>
+<li>Right-click on empty space in the folder view area, then select
+“New” → “Folder”.</li>
+<li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> on your
+keyboard.</li>
+</ul>
+<p>The default name for a new folder is “New folder”. You should change
+the name of this new folder to be the name of the folder that you’re
+currently creating.</p>
+<p>Try creating a new folder using each of the above options and decide
+which one you like the best.</p>
+</details>
+<details>
+<summary>
+Making new folders in macOS
+</summary>
+<p>Open Finder by clicking on the Finder icon in your dock.</p>
+<p>Finder shows a summary of your recently accessed or created files
+when first started. I would recommend that you start creating your
+folder structure either on your Desktop or in your Documents folder. You
+should open one of these folder by clicking on its name on the left side
+of the Finder window.</p>
+<p>Once you’ve opened either your Desktop or Documents folder, you can
+start creating a new folder.</p>
+<p>To create a new folder, you can do one of the following:</p>
+<ul>
+<li>Click on the button with the gear or three dots icon at the top of
+the Finder window and select “New Folder”.</li>
+<li>Control-click (hold down the control key while clicking your mouse)
+or right-click on an empty space in the folder view area, then select
+“New Folder”.</li>
+<li>Press <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> on your
+keyboard.</li>
+</ul>
+<p>The default name for a new folder is “untitled folder”. You should
+change the name of this folder to be the name of the folder that you’re
+currently creating.</p>
+<p>Try creating a new folder using each of the above options and decide
+which one you like the best.</p>
+</details>
+<details>
+<summary>
+Making new folders in Linux
+</summary>
+<p>Open your file explorer (e.g., Files in Ubuntu/Gnome) by clicking on
+the folder icon in your dock, or by pressing the “super” key and
+starting to type “Files”.</p>
+<p>Files shows the contents of your user directory when first started. I
+would recommend that you start creating your folder structure either in
+your user directory, on your Desktop, or in your Documents folder. If
+you’re going to create the folder structure on your Desktop or in your
+Documents folder, you should open one of those folders by clicking on
+its name on the left side of the Files window.</p>
+<p>Once you’ve navigated to the folder you want to use, you can start
+creating a new folder.</p>
+<p>To create a new folder, you can do one of the following:</p>
+<ul>
+<li>Click on the button with the three dots icon near the top of the
+Files window and select “New Folder”.</li>
+<li>Right-click on an empty space in the folder view area, then select
+“New Folder”.</li>
+<li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> on your
+keyboard.</li>
+</ul>
+<p>Once you do one of these things, you will be asked for the name of
+the new folder before the folder is created, so enter the name of the
+folder that you want to create.</p>
+<p>Try creating a new folder using each of the above options and decide
+which one you like the best.</p>
+</details>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-5.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

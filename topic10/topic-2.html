@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Franklin Bristow" />
+  <title>Install and configure a virtual machine</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././topic01/topic-1.html">Introduction</a></li>
+<li><a href=".././topic01/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././topic01/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././topic01/topic-4.html">Converting documents to
+different formats</a></li>
+<li><a href=".././topic01/topic-5.html">Organizing your files</a></li>
+<li><a href=".././topic01/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
+<li><a href=".././topic08/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic09/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic09/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><strong>Install and configure a virtual machine</strong></li>
+<li><a href="topic-3.html">Download and use a pre-installed OS in VM
+software</a></li>
+<li><a href="topic-4.html">Run a command within a container</a></li>
+<li><a href="topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+<li><a href="hello-pandocker.html">Hello, Pandocker!</a></li>
+</ul></li>
+<li>Backups
+<ul>
+<li><a href=".././topic11/topic-1.html">Introduction</a></li>
+<li><a href=".././topic11/topic-2.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic11/topic-3.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic11/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Install and configure a virtual machine</h1>
+<p class="author">Franklin Bristow</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#install-and-configure-a-virtual-machine"
+id="toc-install-and-configure-a-virtual-machine">Install and configure a
+virtual machine</a>
+<ul>
+<li><a href="#what-even-is-a-virtual-machine"
+id="toc-what-even-is-a-virtual-machine">What even is a virtual
+machine?</a></li>
+<li><a href="#choosing-your-vm-software"
+id="toc-choosing-your-vm-software">Choosing your VM software</a></li>
+<li><a href="#install-virtualbox" id="toc-install-virtualbox">Install
+VirtualBox</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="install-and-configure-a-virtual-machine">Install and configure a
+virtual machine</h1>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Install and configure
+virtual machine software.</label></li>
+</ul>
+</div>
+<p>All of the topics this week are interrelated (everything’s going to
+be running a “virtual machine” of some kind), so let’s start by getting
+ourselves set up with some virtual machine software on our own
+computers.</p>
+<h2 id="what-even-is-a-virtual-machine">What even is a virtual
+machine?</h2>
+<p>… yeah, what the heck even is a “virtual machine”?</p>
+<p>You have a physical machine (hardware) in front of you. You’re using
+it right now to read these words. Physical machines have:</p>
+<ul>
+<li>A CPU (the processor, made of silicon; <a
+href="https://jakec007.github.io/2020-06-28-how-we-trick-rocks-to-think/">the
+rock we tricked into thinking</a>). CPUs are really good at doing math
+really really fast (billions of calculations per second).</li>
+<li>Some memory (the RAM, also made of silicon; you can imagine this as
+the scratchpad where the CPU can write stuff down temporarily while it’s
+doing math really really fast).</li>
+<li>More persistent storage (a disk or drive, … also increasingly <a
+href="https://en.wikipedia.org/wiki/Solid-state_drive">made of
+silicon</a>, but may be “<a
+href="https://en.wikipedia.org/wiki/Hard_disk_drive">spinning rust</a>”;
+this is where your files literally live as bits and bytes).</li>
+<li>Peripherals (displays, keyboards, touch pads or mice, stuff plugged
+in to USB ports).</li>
+</ul>
+<p>You are running a lot of <em>soft</em>ware on this hardware:</p>
+<ul>
+<li>Your web browser (Chrome, Firefox, Edge, Safari).</li>
+<li>A terminal emulator.</li>
+<li>Pandoc.</li>
+</ul>
+<p>And under all this software lives an “operating system” (Windows,
+macOS), the software that controls and manages the resources provided by
+your hardware so that programs like Pandoc and your terminal emulator
+don’t have to care about memory, keyboards, or persistence (they use
+“system calls” to ask the operating system to do stuff; the operating
+system cares about hardware).</p>
+<p>Virtual machine software is a program (it’s just bits and bytes, just
+like <code>"Hello, world!"</code>) that can <em>pretend</em> to be
+hardware.</p>
+<div class="aside">
+<p>Importantly, though, a virtual machine does not “emulate” hardware.
+An emulator is a program that will read a binary program that’s designed
+to run on different hardware (like a game console) that uses a
+completely different architecture.</p>
+<p>A virtual machine provides access to the physical hardware on your
+machine by working together with the operating system that’s installed
+on your computer.</p>
+</div>
+<p>Virtual machine software gives us the ability to install and run
+entire operating systems <em>in</em> the operating environment that we
+currently have. In other words, if you have a Mac and you’re running
+macOS, virtual machine software gives you the ability to run Windows
+<em>within</em> your macOS environment.</p>
+<h2 id="choosing-your-vm-software">Choosing your VM software</h2>
+<p>There are many different choices for Virtual Machine software. Which
+one you choose depends on a few different things:</p>
+<ul>
+<li>The hardware you’re running (are you running Apple Silicon, or an
+<code>x86_64</code> AMD or Intel processor?)</li>
+<li>The operating system you’re running (are you running Windows, macOS,
+or Linux?)</li>
+<li>The features that the VM software provides (a nice GUI, “snapshots”,
+the kinds of hardware it can provide to the OS running within it)</li>
+<li>The popularity of the VM software (yeah, it’s a little bit of a
+popularity contest, but more popular VM software means more or better
+support from a community compared to something that’s unpopular).</li>
+</ul>
+<p>Here are some options:</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Software</th>
+<th>Things to consider</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://www.qemu.org/">QEMU</a></td>
+<td><ul>
+<li>Works on all hardware</li>
+<li>Works on all platforms</li>
+<li>Is not at all user friendly (entirely command-line based out of the
+box, though many <a
+href="https://wiki.qemu.org/Links#GUIs_and_management_tools/systems">GUI
+front-ends for it exist</a>; is free and open source.</li>
+<li>Is extremely popular.</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.virtualbox.org/">VirtualBox</a></td>
+<td><ul>
+<li>Works on most hardware (Apple Silicon support is just
+beginning)</li>
+<li>Works on all platforms</li>
+<li>Is user friendly; is mostly free and open source.</li>
+<li>Is moderately popular.</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.vmware.com/">VMWare</a></td>
+<td><ul>
+<li>Works on most hardware (Apple Silicon support is just
+beginning)</li>
+<li>Works on all platforms</li>
+<li>Is user friendly, but is confusing to decide which product you
+should use; can be free, but is not open source.</li>
+<li>Is extremely popular.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<p>We’re going to use VirtualBox for this course and guide, but you’re
+welcome to choose whichever VM software you want.</p>
+<h2 id="install-virtualbox">Install VirtualBox</h2>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">Download
+VirtualBox for your platform</a> (you should download the 7.0.X series)
+and <a
+href="https://www.virtualbox.org/manual/UserManual.html#installation">install
+it</a>.</p>
+<p>You can also install the VirtualBox Extension Pack, but we don’t need
+the extension pack for the work we’re doing in this course right
+now.</p>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-1.html">←prev</a></div><div class="nav-bar-push"><a href="topic-3.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="topic-2.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>
