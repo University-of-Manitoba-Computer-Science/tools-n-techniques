@@ -34,7 +34,7 @@ If you're on campus connected to U of M WiFi or you're off campus but you've
 installed the VPN and connected to it, let's open up our terminals and get
 connected to a different computer.
 
-[installing software on your personal computer]: ../week02/topic-2.html
+[installing software on your personal computer]: ../topic01/topic-2.html
 [IST's Virtual Private Network (VPN) page]:
 https://umanitoba.ca/information-services-technology/my-security/vpn-support
 
@@ -46,7 +46,7 @@ it's totally OK if you do!), refer back to the notes on [verifying that Pandoc
 is installed].
 
 [verifying that Pandoc is installed]:
-../week02/topic-2.html#verifying-that-pandoc-is-installed
+../topic01/topic-2.html#verifying-that-pandoc-is-installed
 
 Connect to a remote computer
 ----------------------------

@@ -163,8 +163,8 @@ the remote computer. But since we're trying to *send something*, we also need to
 tell `scp` where we want to put the file (a **destination** on the remote
 computer).
 
-[Open your terminal]: ../week02/topic-2.html#verifying-that-pandoc-is-installed
-[when using SSH]: ../week03/topic-1.html#connect-to-a-remote-computer
+[Open your terminal]: ../topic01/topic-2.html#verifying-that-pandoc-is-installed
+[when using SSH]: ../topic02/topic-1.html#connect-to-a-remote-computer
 
 ### Copying single files
 
