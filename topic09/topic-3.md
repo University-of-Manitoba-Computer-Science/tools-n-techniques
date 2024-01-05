@@ -94,7 +94,7 @@ Running `make`
 
 Re-download or copy `hello.tar.gz`:
 
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week08/hello.tar.gz
+    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz
 
 If you're downloading this file again, you should extract it:
 

@@ -57,13 +57,13 @@ address. Addresses of files on the internet look like
 Here's a link to a `.zip` file that contains many versions of a "hello world"
 program:
 
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/hello.zip
+    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip
 
 Here's how you would download this file to a remote computer directly on the
 command line:
 
 ```bash
-[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/week04/hello.zip"
+[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip"
 ```
 
 :::
@@ -140,10 +140,12 @@ languages, but there are many more kinds of each type of language.
 
 ::: aside
 
-We're actually going to revisit building programs later in the course in week 9,
-when we actually go through the process of building more complex applications
-with build systems and dependency management, but for now we're just going to
-get programs compiled and run them.
+We're actually going to revisit building programs later in the course when we 
+look at the [command-line environment], when we actually go through the process
+of building more complex applications with build systems and dependency 
+management, but for now we're just going to get programs compiled and run them.
+
+[command-line environment]: ../topic08/topic-1.html
 
 :::
 

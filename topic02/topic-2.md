@@ -331,6 +331,6 @@ When you remove a file or folder on the command line (using `rm` or `rmdir`),
 the file or folder is removed and you **can't** get it back, unless you've
 [backed it up somewhere].
 
-[backed it up somewhere]: ../week12/topic-1.html
+[backed it up somewhere]: ../topic11/topic-1.html
 
 :::
