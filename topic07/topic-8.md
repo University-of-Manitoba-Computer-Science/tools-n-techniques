@@ -71,6 +71,21 @@ int main(int argc, char* argv[])
     return EXIT_SUCCESS;
 }
 ```
+<details><summary>How to compile this code</summary>
+Using the terminal, you can save this code in a file and name it `int_sum.c`, for example. Compile the C code by running:
+
+```bash
+clang -Wall int_sum.c -o int_sum
+```
+
+And run the executable:
+
+```bash
+./int_sum
+```
+
+</details>
+
     
 
 Question 3
