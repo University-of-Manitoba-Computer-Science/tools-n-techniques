@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Franklin Bristow" />
-  <title>Digital notebooks</title>
+  <meta name="author" content="Ikaro Costa" />
+  <title>Practice Questions</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -178,23 +178,23 @@ files</a></li>
 </ul></li>
 <li>Digital notebooks and getting help
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Getting help</a></li>
-<li><a href="topic-3.html">Getting help — Examples</a></li>
-<li><a href="topic-4.html">Academic misconduct</a></li>
-<li><strong>Digital notebooks</strong></li>
-<li><a href="topic-6.html">Summary</a></li>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
 </ul></li>
 <li>Debugging (strategies and usage)
 <ul>
-<li><a href=".././topic07/topic-1.html">Introduction</a></li>
-<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
-<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
-<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
-<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
-<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
-<li><a href=".././topic07/topic-7.html">Summary</a></li>
-<li><a href=".././topic07/topic-8.html">Practice Questions</a></li>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">What even is debugging?</a></li>
+<li><a href="topic-3.html">Debugging strategies</a></li>
+<li><a href="topic-4.html">Debuggers</a></li>
+<li><a href="topic-5.html">Visual Debuggers</a></li>
+<li><a href="topic-6.html">Command-line Debuggers</a></li>
+<li><a href="topic-7.html">Summary</a></li>
+<li><strong>Practice Questions</strong></li>
 </ul></li>
 <li>Command-line environment
 <ul>
@@ -261,104 +261,100 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+<div><a href="topic-7.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic08/topic-1.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Digital notebooks</h1>
-<p class="author">Franklin Bristow</p>
+<h1 class="title">Practice Questions</h1>
+<p class="author">Ikaro Costa</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#web-based-digital-interactive-notebooks"
-id="toc-web-based-digital-interactive-notebooks">Web-based digital
-interactive notebooks</a></li>
+<li><a href="#practice-questions" id="toc-practice-questions">Practice
+Questions</a>
+<ul>
+<li><a href="#question-1" id="toc-question-1">Question 1</a></li>
+<li><a href="#question-2" id="toc-question-2">Question 2</a></li>
+<li><a href="#question-3" id="toc-question-3">Question 3</a></li>
+</ul></li>
 </ul>
 </nav>
-<h1 id="web-based-digital-interactive-notebooks">Web-based digital
-interactive notebooks</h1>
-<div class="outcomes">
-<ul class="task-list">
-<li><label><input type="checkbox" checked="" />Use a web-based
-interactive notebook to document progress in a lab
-notebook.</label></li>
-</ul>
-</div>
-<p>So far in the course you’ve been using a text editor
-(<code>vim</code> or VS Code) to write your lab notebook. This is… <a
-href="https://i.kym-cdn.com/photos/images/facebook/001/476/528/d03">fine</a>.</p>
-<p>Another approach to documenting your work and progress is to use
-“digital interactive notebooks”: software that runs in your web browser
-and allows you to create notebooks where you can run code and see
-results.</p>
-<p>One popular digital interactive notebook is <a
-href="https://jupyter.org/">Jupyter notebooks</a>.</p>
-<p>We’re not going to be using this extensively, this is really just to
-give you a chance to see another approach to documenting your work.</p>
-<p>Let’s start a new notebook here: <a
-href="https://jupyter.org/try-jupyter/lab/"
-class="uri">https://jupyter.org/try-jupyter/lab/</a></p>
-<p>When you first open this work space, you’re going to be greeted by an
-introductory notebook:</p>
-<figure>
-<img src="intro.png" alt="An introduction to Jupyter." />
-<figcaption aria-hidden="true">An introduction to Jupyter.</figcaption>
-</figure>
-<p>The introduction is great, but let’s get our hands dirty. Click on
-the + icon just above the toolbar to create a new notebook:</p>
-<figure>
-<img src="toolbar.png" alt="The toolbar." />
-<figcaption aria-hidden="true">The toolbar.</figcaption>
-</figure>
-<p>You’ll have a list of options to choose from for the type of notebook
-to create. You should choose “Python (Pyodide)” under “Notebook”.
-Clicking on that will give you a blank slate:</p>
-<figure>
-<img src="empty-notebook.png" alt="An empty notebook." />
-<figcaption aria-hidden="true">An empty notebook.</figcaption>
-</figure>
-<p>Jupyter notebooks are made up of a sequence of “cells”. Cells can
-contain plain text, Markdown-formatted text, or code. In this Jupyter
-notebook, the code that we can enter is Python. Different Jupyter
-notebooks support different languages, but this free one we’re using
-only supports Python and SQLite.</p>
-<p>On the toolbar is a drop down menu that’s currently set to “Code”.
-Click on that drop down and choose “Markdown”, then click in the cell
-(the gray box in the empty notebook) and start typing some Markdown.
-Similar to Pandoc, this Markdown also supports <span
-class="math inline">\LaTeX</span>.</p>
-<p>When you’re done entering your Markdown, either press
-<kbd>Control</kbd>+<kbd>Enter</kbd> on your keyboard, press
-<kbd>Shift</kbd>+<kbd>Enter</kbd>, or click somewhere outside the cell.
-This will get Jupyter to render your Markdown (it’s all fancy looking
-now!) and will also create a new cell below the one you just entered
-Markdown into.</p>
-<p>The new cell you just created is a Python code cell. Let’s try
-running some simple Python:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
-<p>Again, press <kbd>Control</kbd>+<kbd>Enter</kbd> or
-<kbd>Shift</kbd>+<kbd>Enter</kbd> on your keyboard. Jupyter is then
-going to <em>run that code</em> and show you the output immediately
-below the cell. Cool!</p>
-<p>Check out the introductory notebook for a more complex example using
-Python, NumPy (a Python library for doing math), and Matplotlib (a
-Python library for creating plots/charts/graphs).</p>
-<p>This entire idea is an implementation of something called <a
-href="https://en.wikipedia.org/wiki/Literate_programming">Literate
-Programming</a> — mixing code and explanations for the code together
-into a single place rather than having code and documentation be
-separate.</p>
-<p>You’re going to be writing your lab notebook in Jupyter this week and
-converting the notebook into other formats using Pandoc. You will not be
-expected to write any Python or other programming code in this
-notebook.</p>
+<h1 id="practice-questions">Practice Questions</h1>
+<h2 id="question-1">Question 1</h2>
+<p>The following C code is supposed to calculate the sum of the first
+<span class="math inline">n</span> integers. However, there are bugs in
+this code. Using the pencil-and-paper method, find the bugs on this
+code. For example, when <span class="math inline">n = 5</span> the
+correct result should be <span class="math inline">15</span>. Then,
+start with <span class="math inline">n=5</span> and keep track of each
+variable in the code.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum_first_n_integers<span class="op">(</span><span class="dt">int</span> n<span class="op">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">){</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">=</span> sum <span class="op">+</span> i<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="question-2">Question 2</h2>
+<p>Another method to debug the code in the previous question would be to
+use a log-based method. Recall that the C command to print to
+<em>standard output</em> (spoiler of one of the next topics: <a
+href="https://en.wikipedia.org/wiki/Standard_streams#:~:text=std%3A%3Acin%20.-,Standard%20output%20(stdout),Not%20all%20programs%20generate%20output.">Standard
+Streams</a>) is:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The variable result is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> var<span class="op">);</span></span></code></pre></div>
+<p>This will replace the <code>%d</code> by the current value of
+<code>var</code> when the this line is reached. Rewrite the previous
+code including a log-based debugging and find the bugs in the code. You
+can edit, compile and run the following code snippet for this purpose.
+In case you do not recall how to compile C code, revisit the section on
+<a
+href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/topic-2.html">compiling
+and running code</a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum_first_n_integers<span class="op">(</span><span class="dt">int</span> n<span class="op">)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">){</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">=</span> sum <span class="op">+</span> i<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span><span class="op">*</span> argv<span class="op">[])</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> sum_first_n_integers<span class="op">(</span>n<span class="op">);</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Sum result is: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> result<span class="op">);</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="question-3">Question 3</h2>
+<p>Regarding debuggers, define in your own words the meaning of the
+following key terms:</p>
+<ol type="a">
+<li>Breakpoints;</li>
+<li>Step in;</li>
+<li>Step over;</li>
+<li>Step out.</li>
+</ol>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
+<div><a href="topic-7.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic08/topic-1.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->
@@ -367,7 +363,7 @@ notebook.</p>
 
 <div id="my-footer">
 &copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
-<a href="topic-5.md">Pandoc-Markdown source for this page</a><br/>
+<a href="topic-8.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
 </div> <!-- my-footer -->
