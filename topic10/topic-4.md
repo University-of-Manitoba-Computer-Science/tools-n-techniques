@@ -1,297 +1,292 @@
 ---
-title: Run a command within a container
+title: Build and dependency management
 author: Franklin Bristow
 ---
 
-Run a command within a container
-================================
+Create a new software project
+=============================
 
 ::: outcomes
 
-* [X] Run a command within a container.
+* [X] Create a new empty software project that includes a build and dependency
+  management tool.
+    * [X] Add and use a new dependency in a software project.
 
 :::
 
-[Containers] are related to virtual machines, but aren't the same thing. The main
-difference between a container and a virtual machine is that a container **does
-not** contain or run an entire operating system. Instead, containers run
-*within* an existing operating system. The theory is that a container uses fewer
-resources because it doesn't carry all the extra baggage of a complete operating
-system.
+We've previously installed the extension pack for Java in VS Code. This actually
+comes with "Maven for Java". Let's learn how to use that to create a new project
+with Maven.
 
-One fairly common use of containers is to distribute complex software and its
-dependencies as a single "image", similar to what you downloaded for SerenityOS
-when you were setting up a virtual machine. An image is basically an archive of
-an operating system's folder structure.
+Maven
+-----
 
-We could spend an entire course talking about the technical foundations of
-containers (that would be an *amazing* systems course), but in this course our
-goal is simple: install enough software to get a command running in a container.
+So far we've talked about dependency management (with Python's `pip`) and build
+management (with `make`).
 
-[Containers]: https://en.wikipedia.org/wiki/OS-level_virtualization
+[Maven] is both a dependency and build management tool. Where `pip` is pretty
+minimal (it only downloads dependencies and their dependencies and their
+dependencies and their dependencies and...), and `make` is... `make`, Maven is
+pretty comprehensive in what it does.
 
-Install Docker Desktop
-----------------------
+When we looked at `make`, one thing you might notice is that `make` has very few
+opinions about how you should create a `Makefile`. Yeah, we've got the idea of
+rules, targets, dependencies, commands, but you kind of have to do everything
+yourself. If you want a `clean` target, you have to write it. If you want an
+`all` target, you have to write it. While I might like to call my `clean` target
+`clean`, someone else might call it `cleanup`, and the only way we can reliably
+know is to look at the `Makefile` and read it. This is a long way to say that
+`make` is extremely unopinionated about everything except for tabs vs spaces.
 
-Undoubtedly the most popular container management software is [Docker].
+Maven, on the other hand is extremely opinionated:
 
-Docker has a highly polished visual environment for managing containers called
-[Docker Desktop].
+* A Java project that uses Maven must adhere to a very specific folder structure
+  (`src/main/java`, `src/test/java`, etc).
+* Maven has well-known and specified names for "goals" (`clean`, `package`,
+  etc).
 
-You should install Docker Desktop on your personal computer, following the
-instructions provided in [Docker's documentation].
+Ideally this gets you two things:
 
-::: warning
+1. If you know how to build and use one Maven project, you know how to build and
+   use all projects that use Maven (in theory), and
+2. You can do pretty complex things with very little configuration (in theory).
 
-If you're installing Docker Desktop on Windows, you're going to need to install
-the Windows Subsystem for Linux. There's a link in Docker's documentation, but
-for completeness, you can find [documentation about how to install WSL on
-Microsoft's web site].
+[Maven]: https://maven.apache.org/
 
-:::
+Create a project in VS Code
+---------------------------
 
-[Docker]: https://www.docker.com
-[Docker Desktop]: https://docs.docker.com/desktop/
-[Docker's documentation]: https://docs.docker.com/get-docker/
-[documentation about how to install WSL on Microsoft's web site]:
-https://learn.microsoft.com/en-us/windows/wsl/install
+Let's dive in. Start by opening VS Code. Normally you would create a new file in
+VS Code using something like <kbd>Control</kbd> or <kbd>Command</kbd> and
+<kbd>N</kbd>, or you would use the File &rarr; New File... menu, or you would
+create a new file by right clicking in the Explorer area and selecting New
+File... from the menu.
 
-Run a command within a container
---------------------------------
+We're going to do something a little bit different this time: we're going to
+open the "command palette" in VS Code. You can open the command palette by
+pressing:
 
-The simplest container command to run is "hello world", so let's start with
-that, then move on to something a little more complex.
+* <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Windows or Linux, or
+* <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS.
 
-::: example
+The command palette lets you type in generally what you want to do and gives
+suggestions. Let's create a new Maven Java project:
 
-Let's start by running the Docker Desktop app on your computer. This step isn't
-required (you don't need to start Docker Desktop before running any commands),
-but gives us an idea of the kinds of things we can do with Docker Desktop.
+1. Start by beginning to type, then selecting "Create Java Project...".
+2. Select "Maven <small>Create from archetype</small>".
 
-![Docker Desktop.](docker-desktop.png)
+   ![Choose "Maven <small>Create from archetype</small>".](palette.png)
+3. Select "`maven-archetype-quickstart`".
 
-We're not going to do anything with Docker Desktop, but note the tabs on the
-left:
+   ![Choose `maven-archetype-quickstart`.](archetype.png)
+4. You can choose any version here, but I would recommend version 1.4.
 
-* **Containers**: This is a list of running containers that you can inspect and
-  interact with.
-* **Images**: These are the container images that have been downloaded for
-  launching containers on your machine.
-* **Volumes**: Containers can't see or interact with the files on your computer
-  at all (they're completely self-contained). Volumes are a way for you to share
-  folders from your computer to a container so that you can either provide
-  inputs or receive outputs from a container.
+   ![Choose 1.4.](versions.png)
+5. Next you're going to get to enter two values: a "group Id" and an "artifact
+   Id". 
 
-Let's run a hello world container. If you had a terminal open before, close your
-terminal and re-open it; your `PATH` variable (yes, there is a `PATH` on all of
-Windows, macOS, and Linux) was modified by Docker Desktop when you installed it.
+   ![Enter your group Id.](groupid.png)
 
-Once your terminal is open again, run the following:
+   Group Id
+   : Sort of like the organization or ... group where one or more projects are
+     related to each other. 
+   : Is often a domain name reversed (e.g., `ca.umanitoba.cs.www`).
 
-```bash
-docker run hello-world
+   Artifact Id
+   : The name of the project that you're going to build.
+
+   You're welcome to use the default values for this (`com.example` and `demo`)
+   but when you create your own projects later you should pick more meaningful
+   group and artifact Ids.
+6. VS Code is going to prompt you to choose a directory where this project is
+   going to live. Maven is going to create a new directory with the same name as
+   the artifact Id within the folder you select.
+
+   ::: warning
+
+   The first time you do this, Maven is going to download a *bunch* of stuff.
+   This may take several minutes to complete.
+
+   :::
+7. You can monitor the progress of what's happening in the terminal that opens
+   at the bottom of your VS Code window. Eventually, Maven is going to prompt
+   you to enter a version number for your project:
+
+   ![Enter a version number for your project](yourversion.png)
+
+   ::: aside
+
+   Why didn't it ask when asking for group and artifact Ids?!
+
+   :::
+
+   You can safely accept the default by pressing <kbd>Enter</kbd>, or you can
+   enter something different.
+
+   ::: aside
+
+   There are [two hard problems in computer science]:
+
+   1. Naming things.
+   3. Cache invalidation.
+   2. Off-by-one errors.
+   4. Guaranteed order of message delivery.
+   5. Versioning.
+
+   One popular way to version your code is to use [semantic versioning].
+
+   [two hard problems in computer science]:
+   https://www.martinfowler.com/bliki/TwoHardThings.html
+   [semantic versioning]: https://semver.org/
+
+   :::
+8. Finally, (finally!), you can confirm the group and artifact Ids and the
+   version number that you selected by pressing <kbd>Enter</kbd>:
+
+   ![Confirm the details.](finish.png)
+
+If everything has worked out, your VS Code should now have the project open,
+and your explorer pane should show some folders and files:
+
+![The open Maven project.](explorer.png)
+
+In the "Java Projects" pane, expand `src/main/java`, then `com.example` (or
+whatever group Id you picked, this is the prefix of your package names in your
+project now), and open `App`. :tada:, you just created a new Java project with
+Maven support.
+
+Adding dependencies
+-------------------
+
+Ok? Awesome? This was a lot of work to not have to type in a "Hello, world!"
+project in Java.
+
+Yeah, OK, so you not having to type in `public static void main(String[] args)`
+is fine, it's not exactly a major benefit justifying the existence of Maven.
+
+One of the major reasons to want to use Maven is to very quickly be able to
+download and use dependencies to your Java projects. Dependencies in Java are
+kind of painful in a way that they aren't in Python with `pip`: you have to
+download a JAR file, put the JAR file near your `.java` and `.class` files,
+configure your `CLASSPATH`... It's not great.
+
+Adding a new dependency to a Java project using Maven is straightforward.
+
+Open the file named `pom.xml`, this file got created when you created the
+project.
+
+`pom.xml` is the configuration file for your project that Maven uses to do
+things like specify the dependencies for your project.
+
+We're going to do two things here:
+
+1. Find out how to find dependencies.
+2. Add the dependency to our `pom.xml`.
+
+Let's actually start by breaking our Java program: replace the contents of
+`App.java` with the following:
+
+```java
+package com.example;
+
+import org.json.JSONStringer;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+    public static void main(String[] args) {
+        JSONStringer stringer = new JSONStringer();
+        System.out.println(stringer.object()
+								   .key("Hello")
+                                   .value("world")
+                                   .endObject().toString());
+    }
+}
 ```
 
-You should see some output from Docker:
+This is a small chunk of code that will create a [JSON] object; it's not exactly
+important what the code is doing, just that it requires a dependency
+(`org.json`).
 
-```
-PS C:\Users\you> docker run hello-world
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-2db29710123e: Pull complete
-Digest: sha256:faa03e786c97f07ef34423fccceeec2398ec8a5759259f94d99078f264e9d7af
-Status: Downloaded newer image for hello-world:latest
+### Finding dependencies
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+Some projects will straight-up give you the information that you need to add
+them as a dependency to your `pom.xml`, but we'll look at a way to find a
+dependency.
 
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (amd64)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+Start by opening your web browser and going to <https://mvnrepository.com>. This
+is a comprehensive listing of dependencies that you can use in your Java
+project.
 
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+Let's look specifically for something to help us use [JSON] in our project. At
+the top of the page is a search field, enter "json" and press <kbd>Enter</kbd>.
 
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
+The first artifact that's listed is `json` with a group Id of `org.json`. Click
+on [`json`]. You're going to see lots of versions, click on the most recent
+version at the top of the table.
 
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
+In the middle of this page is a tabbed view with different tool names (Maven,
+Gradle, Gradle, Gradle, SBT, Ivy, ...). Maven is the default. There's a text
+area here where you can select some text. This is XML, the same format as
+`pom.xml`. Click on the text area and it *should* automatically copy this to
+your clipboard. If it doesn't, highlight the text and copy it.
 
-PS C:\Users\you>
-```
+### Add the dependency to `pom.xml`
 
-:tada: you just started and ran a container on your computer!
+Now switch back to VS Code, open `pom.xml`, and add this dependency below the
+`</dependency>` for `junit`:
 
-When you go back to Docker Desktop, you'll be able to see that in the Containers
-tab is a container with the image `hello-world:latest` that has "Exited". This
-is the container you just ran.
-
-You can technically run it again by pressing the play button :arrow_forward: on
-the right side of the window, but it's not going to do anything because the
-`hello-world` image prints to standard output, and there is no standard output
-display in Docker Desktop.
-
-You can (and probably should) delete this container by clicking on the trash can
-:wastebasket: icon on the far right side of the window.
-
-:::
-
-Hello world is always our classic "let's try this out for the first time"
-exercise, and while interesting, isn't really giving us a good idea of the kinds
-of things we can do with containers --- we were already able to write our own
-self-contained "Hello world" programs in Java, C, or Python (or whatever). Let's
-step up to something a little bit more complicated.
-
-::: example
-
-Let's follow the advice of Docker Desktop and "Run a Sample Container". Run the
-following in your terminal:
-
-```bash
-docker run -d -p 80:80 docker/getting-started
+```xml
+<dependencies>
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+    <scope>test</scope>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/org.json/json -->
+  <dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20220924</version>
+  </dependency>
+</dependencies>
 ```
 
-Docker does some stuff to download an image and then... nothing?
+As soon as you save, VS Code is going to ask if you want to "synchronize" the
+project:
 
-Let's step through what each of these options mean:
+![Do you want to synchronize?](update.png)
 
-* **`run`** is... well, it means download the image and run a new container
-  using that image as a basis. We saw that happening, `docker` prints out a
-  bunch of fancy animations showing progress downloading images.
-* **`-d`** is "`d`etach". This means that Docker is going to start the
-  container, and then run it "in the background" (the container will still be
-  running, but you can continue to use your terminal).
-* **`-p`** is "`p`ort forwarding". This is getting pretty far outside the scope
-  of our course, but one way to interact with applications is through a
-  "[port]". Port 80 is the port for [HTTP], and HTTP is the "protocol" (sort of
-  like the language) that your web browser (Chrome, Firefox, Safari, Edge) use
-  to talk to web servers. This is a bit of a hint about how to start interacting
-  with this container.
-* **`docker/getting-started`** is the name of the image that we want this
-  container to use when it launches.
+You do! Click "Yes"!
 
-You can check in Docker Desktop and see that this container is indeed running:
+Now go back to `App.java`. It compiles! Run the program the way you did when you
+were debugging!
 
-![The running getting started container.](getting-started.png)
+You just added a dependency to a Java project and used that dependency :tada:!
 
-Notice that you can click on the entry in the "Port(s)" column for this
-container. Click on it!
-
-Hey! Look at that! You're running a web server in this container, and your web
-browser is interacting with the web server in the container. :tada:
-
-This web server actually contains extensive documentation for using Docker, so
-if you're looking for some further reading about Docker, this is one place you
-can find it.
-
-[port]: https://en.wikipedia.org/wiki/Port_(computer_networking)
-[HTTP]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
-
-:::
-
-Running a web server in a container is an example of a long-running application.
-Let's do something that's a little bit different: we're going to run `pandoc` in
-a container.
-
-... `pandoc`? That feels a little underwhelming.
-
-OK, well, sure, it's *familiar*, but we're going to be doing things in a
-container that has a bunch of stuff configured that you can't do with the base
-`pandoc` install, including being able to produce PDFs on your Windows or macOS
-machine without installing $\LaTeX$.
-
-::: example
-
-We're going to use [pandocker]. Let's write ourselves a little Markdown file
-that takes advantage of some features in [pandocker] that we can't do with the
-base `pandoc` install:
-
-    https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker
-
-You should use this file to:
-
-* Create a PDF on Aviary with `pandoc`
-
-  ```bash
-  pandoc myfile.md -o myfile.pdf --toc
-  ```
-
-  Then transfer the PDF back to your own computer so you can see what it looks
-  like.
-* Create a PDF on your own machine with Pandocker using the following command:
-
-  <details><summary>macOS or Linux</summary>
-  ```bash
-  docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
-    $YOUR_FILE.md -o $YOUR_FILE.pdf --filter pandoc-latex-admonition \
-    --template eisvogel --toc --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-  <details><summary>macOS with Apple Silicon</summary>
-  ```bash
-  docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
-    dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
-    --filter pandoc-latex-admonition --template eisvogel --toc \
-    --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-  <details><summary>Windows with PowerShell</summary>
-  ```bash
-  docker run --rm -v ${PWD}:/pandoc dalibo/pandocker:stable lecture.md -o `
-    lecture.pdf --filter pandoc-latex-admonition --template eisvogel --toc `
-    --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-These two outputs are pretty different! As it is, you **can't** generate the
-same output on Aviary as you could with Docker and pandocker on your own
-machine --- configuring Pandoc with all of the required filters, templates, and
-supporting software is tedious and painful.
-
-There are a lot of options in this, but most of them are actually options for
-`pandoc` and not Docker. Let's step through the Docker options:
-
-* **`--rm`**: This option tells docker to remove the container after it exits.
-  This is a short-running container, so removing it once it's exited makes
-  sense.
-* **`-v (pwd):/pandoc`**: This is how we share files with a container. The `-v`
-  option is to "bind mount a volume". The short of this is that inside the
-  container is another directory structure, and `pwd` (your present working
-  directory) is shared inside the container at `/pandoc`.
-
-That's it for Docker options! The rest are options to `pandoc` that you can read
-about in the documentation for `pandoc`.
-
-:tada: You just ran `pandoc` in a container!
-
-[pandocker]: https://github.com/dalibo/pandocker
-
-:::
+[`json`]: https://mvnrepository.com/artifact/org.json/json
+[JSON]: https://en.wikipedia.org/wiki/JSON
 
 Further reading
 ---------------
 
-You've seen two examples of how to use containers, but you might want to know
-more about how to create your own containers.
+We've done the bare minimum here with Maven, but it's enough to get us started.
 
-* Read more about creating containers in [Docker's Get Started], either on
-  Docker's web site or in the getting started container you launched earlier.
-  This will take you further into containers and get you creating your own
-  containers.
-* Docker isn't the only tool for managing containers, [Podman] is an alternative
-  tool for managing containers.
-* If you're looking for a deep dive alternative, [FreeBSD Jails] predate the
-  idea of containers.
+You can read more about this in a few places:
 
-[Docker's Get Started]: https://docs.docker.com/get-started/
-[Podman]: https://podman.io/
-[FreeBSD Jails]:
-https://freebsdfoundation.org/freebsd-project/resources/introduction-to-freebsd-jails/
+* [VS Code's documentation for Java projects] gives you some more about using VS
+  Code for Java development, including more about how to use the Maven for Java
+  extension.
+* The [Maven] home page has comprehensive documentation about how to use Maven.
+* You can read more about other build and dependency management tools like
+  [Gradle], [Ivy], or [Ant]. Gradle is popular because it's typically the build
+  and dependency management tool used for Android app development.
+
+[VS Code's documentation for Java projects]:
+https://code.visualstudio.com/docs/java/java-project
+[Gradle]: https://gradle.org/
+[Ivy]: https://ant.apache.org/ivy/
+[Ant]: https://ant.apache.org
