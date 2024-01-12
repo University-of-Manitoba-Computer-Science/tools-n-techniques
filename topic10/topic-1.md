@@ -6,42 +6,49 @@ author: Franklin Bristow
 Introduction
 ============
 
-The ideal way to give your program to someone else to use is either as source
-code that they can download and compile (with a build tool!), then install on
-their system.
+Right now building a program doesn't really seem like a hard problem: you hit
+the Compile and/or Run buttons (whatever they look like for you), your program
+runs and does *stuff* :tada:.
 
-But... sometimes our software grows to be so complex that it has dependencies on
-*other* software. Sometimes our software grows to be so complex that it has
-dependencies on *specific versions* of software, and it's not exactly reasonable
-for you to expect someone to have that specific version on their computer.
+When your program consists of a single file, it can and should be that easy to
+build your code. But as the size of your code grows beyond one single file,
+building your program can become difficult and tedious. This week we're going to
+spend some time looking at tools for building software from source code, and
+look at building source code for different programming languages.
 
-Sometimes **you** want to use software that has these same kind of dependencies.
-Maybe you want to try out a piece of software, but you can't or don't want to
-install all of those dependencies on your main workstation.
-
-Maybe you just want to have a Linux distribution installed on your main machine
-without having to fully commit to using Linux all the time. It's OK! We can do
-that!
-
-A container is a way that we can package software *and* dependencies together.
-Virtual machines are software that allow us to run entire **operating systems**
-on our computer without actually installing the operating system as our main
-environment.
-
-"The Cloud"&trade; makes extensive use of containers and virtual machines.
-
-This week we're going to spend some time setting up virtual machine software on
-our computers, running a pre-installed operating system in the virtual machine
-software, running commands in a container, configuring a container, and setting
-up servers in "The Cloud"&trade;
+As your programs grow in complexity, you're also going to want to rely on source
+code and programs that have been developed by *other people*. We'll take a look
+at some approaches to downloading and using third-party libraries of code that
+aren't included as part of the language itself (I'm looking at you incredibly
+huge JDK!).
 
 ::: outcomes
 
-* [ ] Install and configure virtual machine software.
-* [ ] Download and use a pre-installed operating system in a virtual machine
-  software.
-* [ ] Run a command within a container.
-* [ ] Initialize a server in a publicly available cloud computing environment
-  (e.g., AWS).
+By the end of this week you should be able to:
+
+* [ ] Download and run a program that requires you to install dependencies.
+* [ ] Create a `Makefile` to accomplish a task (building software, running
+  commands).
+* [ ] Create a new empty software project that includes a build and dependency
+  management tool.
+    * [ ] Add and use a new dependency in a software project.
 
 :::
+
+Languages
+---------
+
+This isn't a programming course&trade;.
+
+While this isn't a programming course, we're kind of required to look at the
+topics we're looking at this week in the context of programming languages:
+
+* Installing dependencies with Python.
+* Using `make` with C (but also other stuff).
+* Build and dependency management with [Maven] and Java.
+
+While you almost certainly know some dialect of Java, the examples we're going
+through are less about knowing the language, and more about knowing how to get a
+program already written in that language up and running.
+
+[Maven]: https://maven.apache.org/
