@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -184,42 +181,46 @@ files</a></li>
 <li><a href="topic-2.html">Input and output on the command line</a></li>
 <li><strong>Redirecting input and output</strong></li>
 <li><a href="topic-4.html">Piping</a></li>
-<li><a href="topic-5.html">Shell scripts</a></li>
-<li><a href="topic-6.html">Summary</a></li>
+<li><a href="topic-5.html">Choose a backup strategy</a></li>
+<li><a href="topic-6.html">Install and configure back up
+software</a></li>
+<li><a href="topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Shell scripts</a></li>
+<li><a href=".././topic09/topic-3.html">Arguments</a></li>
+<li><a href=".././topic09/topic-4.html">Structures: conditional
+statements and loops</a></li>
+<li><a href=".././topic09/topic-5.html">Globs</a></li>
+<li><a href=".././topic09/topic-6.html">Debugging shell scripts</a></li>
+<li><a href=".././topic09/topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href=".././topic09/topic-1.html">Introduction</a></li>
-<li><a href=".././topic09/topic-2.html">Programs requiring
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
 dependencies</a></li>
-<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
-<li><a href=".././topic09/topic-4.html">Build and dependency
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././topic09/topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -402,7 +403,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># redirect both stdin and stdout:</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> html <span class="op">&lt;</span> my.md <span class="op">&gt;</span> my.html</span></code></pre></div>
 </div>
-<aside id="footnotes" class="footnotes footnotes-end-of-document"
+<section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
@@ -411,7 +412,7 @@ href="https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-re
 class="uri">https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells</a><a
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </div> <!-- article-content -->
 

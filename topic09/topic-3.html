@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Create a Makefile</title>
+  <title>Arguments</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -87,27 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script defer=""
-  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -204,40 +183,47 @@ line</a></li>
 <li><a href=".././topic08/topic-3.html">Redirecting input and
 output</a></li>
 <li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
-<li><a href=".././topic08/topic-6.html">Summary</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Shell scripts</a></li>
+<li><strong>Arguments</strong></li>
+<li><a href="topic-4.html">Structures: conditional statements and
+loops</a></li>
+<li><a href="topic-5.html">Globs</a></li>
+<li><a href="topic-6.html">Debugging shell scripts</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Programs requiring dependencies</a></li>
-<li><strong>Create a Makefile</strong></li>
-<li><a href="topic-4.html">Build and dependency management</a></li>
-<li><a href="topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -264,516 +250,95 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Create a <code>Makefile</code></h1>
+<h1 class="title">Arguments</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#create-a-makefile" id="toc-create-a-makefile">Create a
-<code>Makefile</code></a>
-<ul>
-<li><a href="#what-even-is-make" id="toc-what-even-is-make">What even is
-<code>make</code>?</a></li>
-<li><a href="#running-make" id="toc-running-make">Running
-<code>make</code></a></li>
-<li><a href="#format-of-a-makefile" id="toc-format-of-a-makefile">Format
-of a <code>Makefile</code></a>
-<ul>
-<li><a href="#variables" id="toc-variables">Variables</a></li>
-</ul></li>
-<li><a href="#using-gnu-make-to-build-c-programs"
-id="toc-using-gnu-make-to-build-c-programs">Using GNU Make to build C
-programs</a></li>
-<li><a href="#using-make-to-build-stuff"
-id="toc-using-make-to-build-stuff">Using <code>make</code> to build…
-stuff</a></li>
-<li><a href="#running-make-concurrently"
-id="toc-running-make-concurrently">Running <code>make</code>
-concurrently</a></li>
-<li><a href="#further-reading" id="toc-further-reading">Further
-reading</a></li>
-</ul></li>
+<li><a href="#arguments" id="toc-arguments">Arguments</a></li>
 </ul>
 </nav>
-<h1 id="create-a-makefile">Create a <code>Makefile</code></h1>
+<h1 id="arguments">Arguments</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Create a
-<code>Makefile</code> to accomplish a task (building software, running
-commands).</label></li>
+<li><label><input type="checkbox" checked="" />Use command-line
+arguments in a shell script.</label></li>
 </ul>
 </div>
-<p>Dependency management in Python is straightforward with
-<code>pip</code>. While people do distribute Python programs to other
-people to install on their computers, most of the time we’re not
-<em>compiling</em> Python programs.</p>
-<p>We’re going to switch now to taking a look at building software
-(compiling source code into a runnable program), specifically in the
-context of building C programs.</p>
-<p>There are many approaches to building C programs, and we’ve seen at
-least one way to do that in this course:</p>
+<p>Shell scripts that you write can accept arguments, just like programs
+you write in other programming languages. In both C and Java (and
+Python, technically), you can access arguments passed on the command
+line to your program as arrays of strings.</p>
+<p>Shell scripts can access command line arguments using variables, but
+you can directly access arguments on the command line as numbered
+variables like <code>$1</code>.</p>
+<div class="example">
+<p>Here’s a small program that will print out the values passed to it as
+arguments on the command line:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> my-app.c <span class="at">-o</span> my-app <span class="co"># compile my-app.c</span></span></code></pre></div>
-<p>This is fine when our program is exactly one file big, but as you
-design and grow your software, you’re very quickly going to find that
-single-file programs become unwieldy.</p>
-<div class="aside">
-<p>I’m not saying you <em>can’t</em> have a single file that’s got
-thousands of lines of code, but I am saying that it’s a “bad idea”™.</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;The first argument is </span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;The second argument is </span><span class="va">$2</span><span class="st">&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;The third argument is </span><span class="va">$3</span><span class="st">&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;All arguments are </span><span class="va">$*</span><span class="st">&quot;</span></span></code></pre></div>
+<p>Write this script and try running it with different arguments to see
+how the output changes. Don’t forget to use <code>chmod</code> to set
+execute permissions for your script!</p>
 </div>
-<p>In practice you’re probably going to be <a
-href="https://en.wikipedia.org/wiki/Decomposition_(computer_science)">decomposing</a>
-your application and problem into smaller functional units (you’re going
-to have your <code>main</code> function in one file, your
-<code>gui</code> code in a bunch of files in a separate folder, your
-data structures in individual files, …).</p>
-<p>You certainly <em>can</em> still compile these one at a time, but
-managing the dependencies between different units quickly gets painful
-(and tedious):</p>
+<p>A common use of arguments on the command line for shell scripts is to
+pass the name of a file or directory you want to operate on.</p>
+<div class="example">
+<p>Let’s upgrade our <code>la</code> script a little bit.</p>
+<p>Remember that <code>ls</code> can run with no arguments, and when run
+with no arguments it’s defaulting to printing out the contents of the
+directory <code>.</code>. But <code>ls</code> <em>can</em> accept
+arguments. Our <code>la</code> script doesn’t right now.</p>
+<p>Change your <code>la</code> script to accept an argument and pass it
+to <code>ls</code>:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> list.c <span class="at">-c</span> <span class="at">-o</span> list.o</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> set.c <span class="at">-c</span> <span class="at">-o</span> set.o</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> my-app.c list.o set.o <span class="at">-o</span> my-app</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">### Did I remember to re-compile everything?</span></span></code></pre></div>
-<h2 id="what-even-is-make">What even is <code>make</code>?</h2>
-<p><a
-href="https://en.wikipedia.org/wiki/Make_(software)"><code>make</code></a>
-is a program that can help you with situations like this: You tell it
-what things you’re trying to compile, how to compile those things, and
-what each unit depends on, and <code>make</code> will figure out the
-correct order of commands to run to make sure that you’re able to get
-your program out at the end.</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="co"># quotes in case of spaces!</span></span></code></pre></div>
+<p>Now run <code>la</code> again, but pass it an argument:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">la</span> .</span></code></pre></div>
+<p>Neat.</p>
 <div class="aside">
-<p><code>make</code> is going through the process of building a <a
-href="https://en.wikipedia.org/wiki/Dependency_graph">dependency
-graph</a>: a set of nodes and directed edges <span class="math inline">G
-= (V, E)</span>, where the nodes are the compiled outputs and the
-instructions for creating them, and the directed edges are the way that
-one compiled output depends on the existence of another compiled
-output.</p>
-<p>In the example we had above (<code>list.o</code>, <code>set.o</code>,
-and <code>my-app</code>), the dependency graph would look something like
-this:</p>
-<figure>
-<img src="dependency-graph.svg"
-alt="A dependency graph for list.o, set.o, and my-app." />
-<figcaption aria-hidden="true">A dependency graph for
-<code>list.o</code>, <code>set.o</code>, and
-<code>my-app</code>.</figcaption>
-</figure>
-</div>
-<p>We fortunately don’t have to draw a graph for <code>make</code> to
-create this graph. Instead, we list out “targets” (the things we’re
-trying to build), their dependencies (what this unit depends on), and
-the commands <code>make</code> should use to create that target. This
-all goes into a special file named <code>Makefile</code>.</p>
-<h2 id="running-make">Running <code>make</code></h2>
-<p>Re-download or copy <code>hello.tar.gz</code>:</p>
-<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz</code></pre>
-<p>If you’re downloading this file again, you should extract it:</p>
+<p>Why “quotes in case of spaces”? Try this:</p>
+<ol type="1">
+<li>Remove the quotes around <code>$1</code> in your script.</li>
+<li>Create a directory that has a space in its name
+(<code>mkdir "space dir"</code>).</li>
+<li>Try running <code>la "space dir"</code>.</li>
+<li>Put back the quotes around <code>$1</code> in your script.</li>
+</ol>
+<p>When the shell “expands” the variable <code>$1</code>, it’s replacing
+the value of that variable into the command <em>literally</em>. If the
+variable contains spaces, it will be replaced in the command spaces and
+all. In other words,</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> hello.tar.gz</span></code></pre></div>
-<p>The folder <code>hello</code> has a file named <code>Makefile</code>.
-You can run the command <code>make</code> in this directory to build the
-targets:</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> <span class="va">$1</span> <span class="co"># becomes:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> space dir</span></code></pre></div>
+<p>If you remember <em>way back a long time ago</em>, we had to put
+quotes around names with spaces when using <code>mkdir</code> because
+<code>mkdir</code> would turn <code>space dir</code> into two
+directories. Similarly, <code>ls</code> is looking for two separate
+directories.</p>
+<p>Including the quotes around <code>$1</code> makes sure that even if
+the variable contains spaces, it’s going to be quoted when it’s passed
+to the command:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
-<p><code>make</code> works by looking for a file in the current working
-directory that has a special name, <a
-href="https://www.gnu.org/software/make/manual/html_node/Makefile-Names.html">usually
-<code>Makefile</code></a> with an upper-case <code>M</code>. By default,
-<code>make</code> will find the first “target” in the file (the first
-thing that appears on the left side of a colon <code>:</code>). In
-<code>hello</code>, the first line in the <code>Makefile</code> that
-matches this looks like:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> HelloWorld.class hello ccrash</span></span></code></pre></div>
-<p>Our first “target” here is listing out all of the things we want to
-build in this <code>Makefile</code> as a “dependency”. This target is
-often called <code>all</code>, but this is also a “de facto” standard,
-you can also call this first target <code>cats</code> and
-<code>make</code> will behave the same way.</p>
-<p>Assuming that everything’s working, you should see output similar to
-the following:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> make</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> HelloWorld.java</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-Wpedantic</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-g</span>    hello.c   <span class="at">-o</span> hello</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-Wpedantic</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-g</span>    ccrash.c   <span class="at">-o</span> ccrash</span></code></pre></div>
-<p>This <code>Makefile</code> has a <code>clean</code> target, this is
-another “de facto” standard for a target name that doesn’t create
-anything new but deletes outputs from compilers:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> clean</span></code></pre></div>
-<p>You can also ask <code>make</code> to build a specific target by
-specifying the target name after <code>make</code>:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> hello</span></code></pre></div>
-<h2 id="format-of-a-makefile">Format of a <code>Makefile</code></h2>
-<p>Let’s take a look at what <code>Makefile</code>s look like in more
-detail. The <code>Makefile</code> in <code>hello</code> is slightly more
-complicated and we’ll see all of it soon, but the simplest format for a
-<code>Makefile</code> is straightforward:</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">target:</span><span class="dt"> dependencies</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>commands</span></code></pre></div>
-<p>This is a <strong>rule</strong>, and the rule consists of a
-<strong>target</strong>, the target’s <strong>dependencies</strong>, and
-a <strong>sequence of 0 or more commands</strong> that can be used to
-transform the dependencies into the target.</p>
-<p>Whatever your stance is on <a
-href="https://softwareengineering.stackexchange.com/questions/57/tabs-versus-spaces-what-is-the-proper-indentation-character-for-everything-in-e">tabs
-vs spaces</a>, <code>make</code> doesn’t care what you think: the
-whitespace before the <code>commands</code> <strong>must</strong> be a
-<kbd>Tab</kbd> (it cannot be spaces). Thankfully most text editors are
-aware of this, and when you create or open a file named
-<code>Makefile</code>, they will very helpfully put tabs in instead of
-spaces.</p>
-<div class="example">
-<p>Here’s the <code>Makefile</code> for our imaginary program above:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">set.o:</span><span class="dt"> set.c </span><span class="co"># set.o depends on set.c</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang set.c -c -o set.o</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dv">list.o:</span><span class="dt"> list.c</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang list.c -c -o list.o</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dv">my-app:</span><span class="dt"> my-app.c list.o set.o</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang my-app.c list.o set.o -o my-app</span></code></pre></div>
-</div>
-<p>Here are some general <a
-href="https://en.wikipedia.org/wiki/Rule_of_thumb">rules of
-thumb</a>:</p>
-<ul>
-<li>The dependencies listed on the right side of the <code>:</code>
-should generally include your source code (<code>.c</code>,
-<code>.java</code>, <code>.py</code>).</li>
-<li>The targets listed on the left side of the <code>:</code> are always
-going to be what your compiler produces as output (<code>.class</code>,
-<code>.o</code>).</li>
-<li>The commands should take as input the dependencies, and produce as
-output the target.</li>
-</ul>
-<h3 id="variables">Variables</h3>
-<p>Similar to shell scripts, <code>Makefile</code>s can also use <a
-href="https://www.gnu.org/software/make/manual/html_node/Using-Variables.html">variables</a>.
-We’re going to look at a specific kind of variable that can be used in
-rules to help make sure we don’t have to name targets and dependencies
-in our list of commands: <a
-href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">automatic
-variables</a>. Here are some of the automatic variables you can use in
-commands to generate a target from its dependencies:</p>
-<table style="width:82%;">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 52%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Automatic variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>$@</code></td>
-<td>The target’s file name.</td>
-</tr>
-<tr class="even">
-<td><code>$&lt;</code></td>
-<td>The name of the <em>first</em> dependency.</td>
-</tr>
-<tr class="odd">
-<td><code>$^</code></td>
-<td>The name of <em>all</em> dependencies.</td>
-</tr>
-</tbody>
-</table>
-<div class="example">
-<p>Let’s convert the <code>Makefile</code> above for our imaginary
-program to use these variables:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">set.o:</span><span class="dt"> set.c</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dv">list.o:</span><span class="dt"> list.c</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$&lt;</span> -c -o <span class="ch">$@</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dv">my-app:</span><span class="dt"> my-app.c list.o set.o</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>clang <span class="ch">$^</span> -o <span class="ch">$@</span></span></code></pre></div>
-</div>
-<p>While this isn’t necessarily any easier to read, it does make sure
-that you’re including both the dependencies and the targets in the
-commands used to transform the dependencies <em>into</em> the
-targets.</p>
-<div class="challenge">
-<p>Convert the <code>Makefile</code> from <code>hello</code> to use
-these <a
-href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">automatic
-variables</a>.</p>
-<p>There’s only one target specified (<code>HelloWorld.class</code>), so
-that’s the only one to change.</p>
-</div>
-<h2 id="using-gnu-make-to-build-c-programs">Using GNU Make to build C
-programs</h2>
-<p>You might have noticed that the <code>Makefile</code> in
-<code>hello</code> looks, uh, a little weird:</p>
-<ul>
-<li>It clearly compiles some C programs when you run
-<code>make</code>.</li>
-<li>The names of the C programs are listed as a dependency in the
-<code>all</code> target.</li>
-<li>There are no <code>clang</code> commands in this
-<code>Makefile</code> at all.</li>
-</ul>
-<p>What gives?</p>
-<p><a href="https://www.gnu.org/software/make/">GNU Make</a> knows a lot
-about C programs (and other languages) in the form of <a
-href="https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules">implicit
-rules</a>. One of the implicit rules that GNU Make has is for C
-programs:</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
-<p>There’s a bunch of unusual looking stuff here, but it’s
-straightforward:</p>
-<ul>
-<li><code>LINK.c</code> is a variable definition, and it’s a string that
-gets built up by evaluating many other variables (<code>CC</code>,
-<code>CFLAGS</code>, <code>CPPFLAGS</code>, …).</li>
-<li><code>%: %.c</code> is a target/dependency pair. The <code>%</code>
-is a <em>wildcard</em>, matching anything on the left as a target that
-has a matching dependency on the right with an extension of
-<code>.c</code> (this is what matches <code>hello</code> and
-<code>hello.c</code> in our <code>Makefile</code>).</li>
-<li>The command to build the target is a bunch of other variables, some
-of which we’ve seen (<code>$^</code> and <code>$@</code>).</li>
-</ul>
-<p>Let’s look at these side-by-side:</p>
-<div class="columns">
-<div class="column" style="width:45%;">
-<h3 id="the-implicit-rules-and-variables-in-gnu-make">The implicit rules
-and variables in GNU Make</h3>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
-</div><div class="column" style="width:45%;">
-<h3 id="our-makefile">Our <code>Makefile</code></h3>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> clang</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="co"># becomes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> <span class="st">&quot;space dir&quot;</span></span></code></pre></div>
 </div>
 </div>
-<p>While these two rule sets aren’t literally part of the same file, you
-can imagine that the rules and variables on the left (the stuff that’s
-defined in GNU Make) come first, and the rules and variables on the
-right (the stuff that’s defined in our <code>Makefile</code>) come
-after:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">LINK.c</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">CPPFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span><span class="st"> </span><span class="ch">$(</span><span class="dt">TARGET_ARCH</span><span class="ch">)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> clang</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello</span></span></code></pre></div>
-<p>Variables that don’t have values will eventually turn into empty
-strings, and variables that have values (even if they’re declared and
-defined later in the file) will be replace with the values that they’re
-given.</p>
-<p>Let’s step through this:</p>
-<ol type="1">
-<li><p>The first rule that has an actual target is our <code>all</code>
-target, so that’s the first thing that’s evaluated. <code>all</code>
-depends on <code>hello</code>.</p></li>
-<li><p><code>hello</code> then matches <code>%: %c</code>; it matches
-the wildcard as a target on the left specifically because there is a
-file named <code>hello.c</code> in this directory (the dependency is
-satisfied).</p></li>
-<li><p>The command for transforming <code>hello.c</code> (the
-dependency) into <code>hello</code> (the target) consists almost
-entirely of variables (everything <em>except</em> <code>-o</code>), but
-<code>$(LINK.c)</code> uses <code>$(CC)</code> (which we defined as
-<code>clang</code>) and <code>$(CFLAGS)</code> (which we defined as
-<code>-Wall...</code>), and uses the special variable <code>$^</code>
-(all dependencies).</p></li>
-<li><p>The command turns into:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-Wpedantic</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-g</span>    hello.c   <span class="at">-o</span> hello</span></code></pre></div>
-<p>(the extra spaces between <code>-g</code> and <code>hello.c</code>
-are the spaces in the variable <code>LINK.c</code> between the other
-variables, the spaces between <code>hello.c</code> and <code>-o</code>
-are from the empty variables between <code>$^</code> and
-<code>-o</code>).</p></li>
-</ol>
-<p>Neat <span class="emoji" data-emoji="camera">📷</span>.</p>
-<h2 id="using-make-to-build-stuff">Using <code>make</code> to build…
-stuff</h2>
-<p><code>make</code> is great at building code, but <code>make</code>
-isn’t just about building code, it’s about identifying
-<strong>targets</strong> and satisfying their
-<strong>dependencies</strong> by running <strong>commands</strong>.</p>
-<p>Let’s walk through an example of using <code>make</code> to do
-<em>other</em> stuff, like converting files from one format to another.
-Gosh. That sounds like something we’ve done before…</p>
-<p>Right, let’s use <code>make</code> to convert files from Markdown to
-other formats like <code>pdf</code> or <code>html</code>.</p>
-<p>Here’s a Markdown-formatted document that you can place into your
-current working directory:</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Hello!</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">======</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>I&#39;m a Markdown formatted file. We can write about</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Numbers and formulas $\frac{1}{2}$,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Code: <span class="in">`System.out.println`</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Or *whatever*.</span></code></pre></div>
-<p>Copy this into a file named <code>hello.md</code> in a directory
-<em>somewhere</em>.</p>
-<p>Now create a new file named <code>Makefile</code>; let’s step through
-writing it together:</p>
-<ol type="1">
-<li><p>We need to have a target for <code>all</code>, and we want that
-rule to be first. So let’s add an <code>all</code> target. We’ll focus
-for now on converting our Markdown file to HTML.</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span></code></pre></div></li>
-<li><p>Now we need to add a target for <code>hello.html</code> —
-<code>make</code> doesn’t know how to convert <code>.md</code> to
-<code>.html</code> in the same way it does <code>.c</code> to a compiled
-program, so let’s do that. We want to add a target that matches
-specifically <code>hello.html</code> (we’ll get fancier later, let’s
-keep it simple for now). <code>hello.html</code> depends on
-<code>hello.md</code> (we’re transforming <code>hello.md</code> into
-<code>hello.html</code>).</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.html:</span><span class="dt"> hello.md</span></span></code></pre></div></li>
-<li><p>Once we’ve got a target, we need to tell <code>make</code> how to
-do that transformation. Beneath our target for <code>hello.html</code>,
-let’s add a command to convert it:</p>
-<div class="sourceCode" id="cb21"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.html:</span><span class="dt"> hello.md</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc hello.md --standalone -o hello.html</span></code></pre></div></li>
-</ol>
-<p>Now run <code>make</code> in your directory, and <code>make</code>
-should transform <code>hello.md</code> into <code>hello.html</code>
-using <code>pandoc</code>. Nice <span class="emoji"
-data-emoji="tada">🎉</span>!</p>
-<p>Now the important bit: make changes to <code>hello.md</code> and
-re-run <code>make</code>. <code>make</code> will detect changes in the
-file (the modified date in the dependency is newer than the created date
-on the target) and will automatically figure out which dependencies need
-to be rebuilt.</p>
-<p>Neat <span class="emoji" data-emoji="camera">📷</span>.</p>
-<p>Let’s use what we’ve learned to try and turn this into something that
-can do what we did with shell scripting:</p>
-<ol type="1">
-<li><p>Let’s switch our command to use the built-in variables for the
-names of targets <code>$@</code> and dependencies
-<code>$&lt;</code>:</p>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.html:</span><span class="dt"> hello.md</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
-<li><p>We don’t want to give specific names for targets (or
-dependencies), so let’s use wildcards:</p>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.html</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%.html:</span><span class="dt"> %.md</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div></li>
-<li><p>We don’t want to list out the targets for <code>all</code>, we
-can use the <a
-href="https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html">wildcard
-function</a>:</p>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">MD</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> *.md</span><span class="ch">)</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">MD</span><span class="kw">:</span><span class="ss">md</span><span class="kw">=</span><span class="ss">html</span><span class="ch">)</span><span class="dt"> </span><span class="co"># use the value of MD, but replace `md` with `html`</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="dv">%.html:</span><span class="dt"> %.md</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>pandoc <span class="ch">$&lt;</span> --standalone -o <span class="ch">$@</span></span></code></pre></div>
-<p>Now you can add more Markdown files to this directory with any name
-and the files will be converted to HTML.</p></li>
-</ol>
-<div class="challenge">
-<p>Look further at having this work for nested directories (you’ll have
-to spend some more time looking at wildcards), and have this work for
-multiple formats of output (either by making new targets with new
-extensions, or by <a
-href="https://www.gnu.org/software/make/manual/html_node/Overriding.html">accepting
-variable arguments to <code>make</code></a>).</p>
-</div>
-<h2 id="running-make-concurrently">Running <code>make</code>
-concurrently</h2>
-<p>One final and minor thing to add is that <code>make</code> can try to
-build targets that are unrelated <em>concurrently</em>. Your computer
-has a processor with more than one core, and each core can be used by
-<code>make</code> to build unrelated dependencies for targets.</p>
-<p>Here’s the dependency graph we had from above:</p>
-<figure>
-<img src="dependency-graph.svg"
-alt="A dependency graph for list.o, set.o, and my-app." />
-<figcaption aria-hidden="true">A dependency graph for
-<code>list.o</code>, <code>set.o</code>, and
-<code>my-app</code>.</figcaption>
-</figure>
-<p>When <code>make</code> builds <code>set.o</code> and
-<code>list.o</code>, it can build them literally at the same time
-because they don’t have common dependencies.</p>
-<p>We can tell <code>make</code> to run on multiple CPUs using the
-option <code>-j</code> for <strong>j</strong>obs.</p>
-<div class="example">
-<p>You can pass <code>-j</code> to <code>make</code> for <em>any</em>
-<code>Makefile</code>, and if <code>make</code> identifies targets it
-can build independently of other targets, it will do that!</p>
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j10</span> <span class="co"># run 10 jobs concurrently (if possible)</span></span></code></pre></div>
-<p>This is helpful when you’re building things that aren’t trivial, or
-if you’re using <code>make</code> to transform files from one format to
-another where that transformation is expensive (e.g., converting audio
-or video from one format to another, converting images between
-formats).</p>
-<div class="warning">
-<p>Don’t set <code>-j</code> higher than the number of CPUs you have
-installed on the system. A command you can use to find out how many CPUs
-you have installed on a Linux system is <code>nproc</code>, and you can
-use that in conjunction with <code>make</code>:</p>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span><span class="va">$(</span><span class="fu">nproc</span><span class="va">)</span></span></code></pre></div>
-</div>
-</div>
-<h2 id="further-reading">Further reading</h2>
-<p>There’s a lot here, and we’re just barely scratching the surface. You
-can find more information about <code>make</code> in a few different
-places:</p>
-<ul>
-<li>If you really just want a place where you can quickly find, copy,
-and paste a <code>Makefile</code> that will work for the situation that
-you want, or if you’re looking for a more in depth tutorial on how to
-build a <code>Makefile</code>, look no further than <a
-href="https://makefiletutorial.com/"
-class="uri">https://makefiletutorial.com/</a>.</li>
-<li>The <a href="https://www.gnu.org/software/make/manual/">GNU Make
-documentation</a> is… comprehensive, it’s about 1MB (or one million
-characters) of documentation about how to use <code>make</code>. It’s a
-lot, but if you have a question, you can almost certainly find the
-answer there.</li>
-</ul>
+<p>While we’ve improved <code>la</code> slightly here, we’ve also broken
+it. Try running <code>la</code> by itself with no arguments.</p>
+<p>…</p>
+<p>Oops. Now we need to test for the special case of no arguments being
+passed. We’re going to need some more tools for that: conditional
+statements.</p>
 
 </div> <!-- article-content -->
 

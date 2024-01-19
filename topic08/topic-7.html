@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Debuggers</title>
+  <title>Summary</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -102,28 +102,25 @@ files</a></li>
 </ul></li>
 <li>Debugging (strategies and usage)
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">What even is debugging?</a></li>
-<li><a href="topic-3.html">Debugging strategies</a></li>
-<li><strong>Debuggers</strong></li>
-<li><a href="topic-5.html">Visual Debuggers</a></li>
-<li><a href="topic-6.html">Command-line Debuggers</a></li>
-<li><a href="topic-7.html">Summary</a></li>
-<li><a href="topic-8.html">Practice Questions</a></li>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+<li><a href=".././topic07/topic-8.html">Practice Questions</a></li>
 </ul></li>
 <li>Command-line environment
 <ul>
-<li><a href=".././topic08/topic-1.html">Introduction</a></li>
-<li><a href=".././topic08/topic-2.html">Input and output on the command
-line</a></li>
-<li><a href=".././topic08/topic-3.html">Redirecting input and
-output</a></li>
-<li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic08/topic-6.html">Install and configure back up
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Input and output on the command line</a></li>
+<li><a href="topic-3.html">Redirecting input and output</a></li>
+<li><a href="topic-4.html">Piping</a></li>
+<li><a href="topic-5.html">Choose a backup strategy</a></li>
+<li><a href="topic-6.html">Install and configure back up
 software</a></li>
-<li><a href=".././topic08/topic-7.html">Summary</a></li>
+<li><strong>Summary</strong></li>
 </ul></li>
 <li>Shell scripting
 <ul>
@@ -181,63 +178,70 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic09/topic-1.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Debuggers</h1>
+<h1 class="title">Summary</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#debuggers" id="toc-debuggers">Debuggers</a></li>
+<li><a href="#summary" id="toc-summary">Summary</a></li>
 </ul>
 </nav>
-<h1 id="debuggers">Debuggers</h1>
-<p>Pencil and paper debugging is tedious and painful, but effective.
-Log-based debugging is less tedious (maybe) and less painful (no risk of
-poking yourself with a pencil when you’re not using a pencil), and while
-easy, don’t always work (for example, a <code>printf</code> in a C
-program that’s before a line that crashes won’t always print before the
-program crashes).</p>
-<p>Despite being tedious, painful, and not always working, these
-strategies for debugging are approachable because they use tools that
-you have to know about to do programming in the first place, and they
-are <em>universal</em>: you can use log-based debugging in any language
-where you can print or produce output, and you can use pencil-and-paper
-debugging anywhere you’ve got a pencil, and paper.</p>
-<p>Nevertheless, they are painful. Painful and tedious.</p>
-<p>A debugger is a program that you can use to help you debug a program.
-Debuggers are usually very tightly coupled to the programming language
-or environment that you’re using (you use a Java debugger to debug Java
-programs, you use a Python debugger to debug Python programs, and you
-use a C debugger to debug C programs).</p>
-<p>All debuggers give you generally the same tools for working with your
-program, and we generally use them in the same way. A debugger will let
-us run one line of code at a time and inspect the values that variables
-have when the line of code has completed running.</p>
-<p>Almost all debuggers will use the same general terminology to
-describe actions or ideas:</p>
-<ul>
-<li>A <strong>break point</strong> is a way for you to tell the debugger
-where and when it should pause running your program. We can say things
-like “Start running from the beginning, then pause when you get to line
-158.”</li>
-<li>We can <strong>step into</strong> a function or method call when the
-line we’re about to run is a function or method call. Stepping into the
-function or method call means that our debugger will “move” to the code
-for the function, then let us run lines inside that function.</li>
-<li>We can <strong>step over</strong> a line, running whatever the line
-was and then pausing on the next line of code.</li>
-<li>We can <strong>inspect</strong> values, either by printing them out,
-or by seeing their values in a window or pane.</li>
+<h1 id="summary">Summary</h1>
+<p>This has been a bit of a whirlwind through some topics related to
+running programs on Linux or UNIX-like systems, with us learning a
+little bit about things that apply to <em>all</em> programs (how and
+where they get input, and how and where they send output).</p>
+<p>Depending on the path you take through CS, you may eventually learn
+about the underlying mechanisms of how this all works (maybe) in an
+operating systems course, specifically about how an operating system
+(OS) represents “processes” (running programs) as a data structure, and
+how the OS keeps track of files that a process has open
+(<code>STDIN</code>, <code>STDOUT</code>, and <code>STDERR</code> are
+all special file-like-things™; neat <span class="emoji"
+data-emoji="camera">📷</span>).</p>
+<p>But let’s be honest: backing up stuff is boring. Well, it’s boring
+right up until you actually need the back up. And sometimes we don’t
+<em>think</em> about backups right up until we need them. This week is
+an opportunity to consider what you’re doing for back ups, and to give
+you an opportunity to <em>back up your stuff</em>.</p>
+<p>Backing up isn’t just making sure that you’ve got a copy of your
+files, it’s copying your files across devices and locations. It’s also a
+choice of how you do back ups in the first place: file-based or
+image-based.</p>
+<p>Regardless of how you do back ups, restoring and verifying your back
+ups is an essential part of confirming that you <em>actually have a back
+up</em> and not just a bunch of <a
+href="https://en.wikipedia.org/wiki/Garbage">random bits and
+bytes</a>.</p>
+<p>You should now be able to:</p>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Redirect the output from
+a program to a file.</label></li>
+<li><label><input type="checkbox" checked="" />Redirect a file to be the
+input for a program.</label></li>
+<li><label><input type="checkbox" checked="" />Send data between
+programs using a pipe.</label></li>
+<li><label><input type="checkbox" checked="" />Choose an appropriate
+back up strategy for protecting your files.</label></li>
+<li><label><input type="checkbox" checked="" />Install and configure
+software to back up your files to a remote server.</label></li>
+<li><label><input type="checkbox" checked="" />Restore and verify your
+back up from the remote server.</label></li>
 </ul>
+</div>
+<p>Now you should be ready to start working on the assignment this
+week!</p>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic09/topic-1.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->
@@ -246,7 +250,7 @@ or by seeing their values in a window or pane.</li>
 
 <div id="my-footer">
 &copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
-<a href="topic-4.md">Pandoc-Markdown source for this page</a><br/>
+<a href="topic-7.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
 </div> <!-- my-footer -->

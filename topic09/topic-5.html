@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Summary</title>
+  <title>Globs</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -21,11 +21,72 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -122,40 +183,47 @@ line</a></li>
 <li><a href=".././topic08/topic-3.html">Redirecting input and
 output</a></li>
 <li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
-<li><a href=".././topic08/topic-6.html">Summary</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Shell scripts</a></li>
+<li><a href="topic-3.html">Arguments</a></li>
+<li><a href="topic-4.html">Structures: conditional statements and
+loops</a></li>
+<li><strong>Globs</strong></li>
+<li><a href="topic-6.html">Debugging shell scripts</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Programs requiring dependencies</a></li>
-<li><a href="topic-3.html">Create a Makefile</a></li>
-<li><a href="topic-4.html">Build and dependency management</a></li>
-<li><strong>Summary</strong></li>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -177,50 +245,163 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic10/topic-1.html">next→</a></div>
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Summary</h1>
+<h1 class="title">Globs</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#summary" id="toc-summary">Summary</a></li>
-</ul>
-</nav>
-<h1 id="summary">Summary</h1>
-<p>When you’re developing code outside of your academic career (and even
-within your academic career), you’re going to be writing code that goes
-beyond a single file. Different languages prefer to use different tools
-for handling building your code and managing dependencies, and these
-tools can be very opinionated in how they work (Maven) to not at all
-opinionated (<code>make</code>).</p>
-<p>You should now be able to:</p>
-<div class="outcomes">
-<ul class="task-list">
-<li><label><input type="checkbox" checked="" />Download and run a
-program that requires you to install dependencies.</label></li>
-<li><label><input type="checkbox" checked="" />Create a
-<code>Makefile</code> to accomplish a task (building software, running
-commands).</label></li>
-<li><label><input type="checkbox" checked="" />Create a new empty
-software project that includes a build and dependency management
-tool.</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="" />Add and use a new
-dependency in a software project.</label></li>
+<li><a href="#globs" id="toc-globs">Globs</a>
+<ul>
+<li><a href="#simple-globs" id="toc-simple-globs">Simple globs</a></li>
+<li><a href="#advanced-globs" id="toc-advanced-globs">Advanced globs</a>
+<ul>
+<li><a href="#begins-with-ends-with-or-contains-globs"
+id="toc-begins-with-ends-with-or-contains-globs">Begins-with, ends-with,
+or contains globs</a></li>
+<li><a href="#directory-globs" id="toc-directory-globs">Directory
+globs</a></li>
+</ul></li>
+<li><a href="#further-reading-about-globs"
+id="toc-further-reading-about-globs">Further reading about
+globs</a></li>
 </ul></li>
 </ul>
+</nav>
+<h1 id="globs">Globs</h1>
+<p>More often than not, the loops that you would want to write in the
+shell are intended to apply an operation to many files, and those files
+can be all in the same directory, or scattered throughout many
+directories.</p>
+<p>Shell languages (like Bash) have a feature called “globbing” that can
+help with quickly getting a list of files to operate on in something
+like a loop in a more reliable (and arguably easier!) way than using
+<code>find</code>.</p>
+<figure>
+<img src="globs.png"
+alt="Files covered in globs of jam. (Prompt: “a desk drawer with many files, all covered in blueberry jam”)" />
+<figcaption aria-hidden="true">Files covered in globs of jam. (Prompt:
+“a desk drawer with many files, all covered in blueberry
+jam”)</figcaption>
+</figure>
+<div class="aside">
+<p>Why “<em>glob</em>”?</p>
+<p>Apparently <a
+href="https://en.wikipedia.org/wiki/Glob_(programming)#Origin">it’s
+short for “global”</a>. I definitely don’t pronounce “glob” as “globe”
+(as in “global”), I pronounce it as in “glob” like a glob of jam.</p>
 </div>
-<p>Now you should be ready to start working on the assignment this
-week!</p>
+<h2 id="simple-globs">Simple globs</h2>
+<p>The simplest glob in a shell is the <code>*</code> character. This
+glob “expands” to all files in the current directory that are not
+hidden.</p>
+<div class="example">
+<p>If you have the following files in your current directory:</p>
+<pre><code>[you@bird fortnight8]&gt; ls -a
+. .. .gitignore hello.md hello.docx script.sh</code></pre>
+<p>Then the <code>*</code> glob would “expand” to
+<code>hello.md hello.docx script.sh</code>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> echo <span class="pp">*</span> <span class="co"># prints out the names of all files and folders in this directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello.md</span> hello.docx script.sh</span></code></pre></div>
+<p>This actually means that the <code>echo</code> program was run with
+<em>two arguments</em>, not just one. Before the shell launches the
+<code>echo</code> program, it effectively replaces the <code>*</code> in
+the command line with <code>hello.md hello.docx script.sh</code>.</p>
+</div>
+<div class="challenge">
+<p>Write your own shell script that prints out what its arguments are
+using the numbered argument variables (<code>$1 $2 $3</code>…) to see
+how a simple glob expands in different directories.</p>
+</div>
+<h2 id="advanced-globs">Advanced globs</h2>
+<p>Simple globs are the ones you will use most often because you
+<em>usually</em> want to do something to everything in the current
+directory. But simple globs are not the only kind of globs. Let’s look
+at two other kinds of globs:</p>
+<ol type="1">
+<li>Begins-with, ends-with, or contains globs</li>
+<li>Directory globs</li>
+</ol>
+<h3 id="begins-with-ends-with-or-contains-globs">Begins-with, ends-with,
+or contains globs</h3>
+<p>If you remember <em>way back</em> to <a
+href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-3.html">fortnight
+5 in COMP 1002</a>, you learned about a program named <code>grep</code>
+that could be used to filter lines from a file based on a pattern that
+you provided. The patterns that you gave to <code>grep</code>
+<em>also</em> use the <code>*</code> symbol to indicate “anything”, but
+we saw that you could put the <code>*</code> anywhere within a
+string.</p>
+<p>We can do the same thing with globs!</p>
+<div class="example">
+<p>We can match all file names that begin with <code>hello</code> using
+a glob <code>hello*</code>:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> echo hello<span class="pp">*</span> <span class="co"># assuming the same directory as above</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello.md</span> hello.docx</span></code></pre></div>
+<p>Or we can match all file names that end with <code>.md</code> using a
+glob <code>*.md</code>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> pandoc <span class="pp">*</span>.md <span class="at">-o</span> all.docx <span class="co"># run pandoc, passing *all* of</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># the markdown files in the </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># current directory, and convert</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># them all into a single Word</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># document</span></span></code></pre></div>
+<p>Or you can match file names that contain the letters <code>ll</code>
+using a glob <code>*ll*</code>:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> cat <span class="pp">*</span>ll<span class="pp">*</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.docx get printed out (which is a bunch of garbage!)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.md get printed out</span></span></code></pre></div>
+</div>
+<h3 id="directory-globs">Directory globs</h3>
+<p>Globs are helpful for matching many files in a directory, but <a
+href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic01/topic-5.html">we
+don’t keep all of our files in one directory</a>, right? (Right?!)</p>
+<p>We can also use globs to help us find files that are in
+subdirectories, but we have to change the way we’re writing out glob:
+instead of using one <code>*</code>, we use <em>two</em>
+<code>**</code>:</p>
+<div class="example">
+<p>Download (or find) [crazy-directories.tar] (use <code>wget</code>!).
+We previously used <code>find</code> to, uh, find the Markdown files in
+this massive blob of directories. We can also use globs to help us.</p>
+<p>Extract <code>crazy-directories.tar</code> (if you just downloaded
+it), then change into the directory. We can use globs to find all
+Markdown files in this directory:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> crazy-directories]<span class="op">&gt;</span> ls <span class="pp">**</span>/<span class="pp">*</span>.md <span class="co"># find files with names ending with .md</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                         <span class="co"># in any subdirectory</span></span></code></pre></div>
+</div>
+<p>The technical Bash name for this feature is not “directory glob”, but
+is instead called “globstar”.</p>
+<h2 id="further-reading-about-globs">Further reading about globs</h2>
+<p>You can read more about globs in a few places:</p>
+<ul>
+<li>The manual pages: use <code>man 7 glob</code> (or <a
+href="https://www.man7.org/linux/man-pages/man7/glob.7.html">manual
+pages online</a>).</li>
+<li>The <a
+href="https://tldp.org/LDP/abs/html/globbingref.html">Advanced
+Bash-Scripting Guide</a> has even more kinds of globbing (using curly
+braces <code>{}</code> and question marks <code>?</code>).
+<ul>
+<li><a
+href="https://tldp.org/LDP/abs/html/bashver4.html#GLOBSTARREF">Chapter
+37</a> of the Advanced Bash-Scripting Guide has more examples of how to
+use directory globs.</li>
+</ul></li>
+</ul>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic10/topic-1.html">next→</a></div>
+<div><a href="topic-4.html">←prev</a></div><div class="nav-bar-push"><a href="topic-6.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->

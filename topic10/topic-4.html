@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Run a command within a container</title>
+  <title>Build and dependency management</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -87,27 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <script defer=""
-  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -204,40 +183,45 @@ line</a></li>
 <li><a href=".././topic08/topic-3.html">Redirecting input and
 output</a></li>
 <li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
-<li><a href=".././topic08/topic-6.html">Summary</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Shell scripts</a></li>
+<li><a href=".././topic09/topic-3.html">Arguments</a></li>
+<li><a href=".././topic09/topic-4.html">Structures: conditional
+statements and loops</a></li>
+<li><a href=".././topic09/topic-5.html">Globs</a></li>
+<li><a href=".././topic09/topic-6.html">Debugging shell scripts</a></li>
+<li><a href=".././topic09/topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href=".././topic09/topic-1.html">Introduction</a></li>
-<li><a href=".././topic09/topic-2.html">Programs requiring
-dependencies</a></li>
-<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
-<li><a href=".././topic09/topic-4.html">Build and dependency
-management</a></li>
-<li><a href=".././topic09/topic-5.html">Summary</a></li>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Programs requiring dependencies</a></li>
+<li><a href="topic-3.html">Create a Makefile</a></li>
+<li><strong>Build and dependency management</strong></li>
+<li><a href="topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href="topic-3.html">Download and use a pre-installed OS in VM
-software</a></li>
-<li><strong>Run a command within a container</strong></li>
-<li><a href="topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href="topic-6.html">Summary</a></li>
-<li><a href="hello-pandocker.html">Hello, Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -264,289 +248,318 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Run a command within a container</h1>
+<h1 class="title">Build and dependency management</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#run-a-command-within-a-container"
-id="toc-run-a-command-within-a-container">Run a command within a
-container</a>
+<li><a href="#create-a-new-software-project"
+id="toc-create-a-new-software-project">Create a new software project</a>
 <ul>
-<li><a href="#install-docker-desktop"
-id="toc-install-docker-desktop">Install Docker Desktop</a></li>
-<li><a href="#run-a-command-within-a-container-1"
-id="toc-run-a-command-within-a-container-1">Run a command within a
-container</a></li>
+<li><a href="#maven" id="toc-maven">Maven</a></li>
+<li><a href="#create-a-project-in-vs-code"
+id="toc-create-a-project-in-vs-code">Create a project in VS
+Code</a></li>
+<li><a href="#adding-dependencies" id="toc-adding-dependencies">Adding
+dependencies</a>
+<ul>
+<li><a href="#finding-dependencies"
+id="toc-finding-dependencies">Finding dependencies</a></li>
+<li><a href="#add-the-dependency-to-pom.xml"
+id="toc-add-the-dependency-to-pom.xml">Add the dependency to
+<code>pom.xml</code></a></li>
+</ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="run-a-command-within-a-container">Run a command within a
-container</h1>
+<h1 id="create-a-new-software-project">Create a new software
+project</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Run a command within a
-container.</label></li>
+<li><label><input type="checkbox" checked="" />Create a new empty
+software project that includes a build and dependency management
+tool.</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Add and use a new
+dependency in a software project.</label></li>
+</ul></li>
 </ul>
 </div>
-<p><a
-href="https://en.wikipedia.org/wiki/OS-level_virtualization">Containers</a>
-are related to virtual machines, but aren’t the same thing. The main
-difference between a container and a virtual machine is that a container
-<strong>does not</strong> contain or run an entire operating system.
-Instead, containers run <em>within</em> an existing operating system.
-The theory is that a container uses fewer resources because it doesn’t
-carry all the extra baggage of a complete operating system.</p>
-<p>One fairly common use of containers is to distribute complex software
-and its dependencies as a single “image”, similar to what you downloaded
-for SerenityOS when you were setting up a virtual machine. An image is
-basically an archive of an operating system’s folder structure.</p>
-<p>We could spend an entire course talking about the technical
-foundations of containers (that would be an <em>amazing</em> systems
-course), but in this course our goal is simple: install enough software
-to get a command running in a container.</p>
-<h2 id="install-docker-desktop">Install Docker Desktop</h2>
-<p>Undoubtedly the most popular container management software is <a
-href="https://www.docker.com">Docker</a>.</p>
-<p>Docker has a highly polished visual environment for managing
-containers called <a href="https://docs.docker.com/desktop/">Docker
-Desktop</a>.</p>
-<p>You should install Docker Desktop on your personal computer,
-following the instructions provided in <a
-href="https://docs.docker.com/get-docker/">Docker’s
-documentation</a>.</p>
+<p>We’ve previously installed the extension pack for Java in VS Code.
+This actually comes with “Maven for Java”. Let’s learn how to use that
+to create a new project with Maven.</p>
+<h2 id="maven">Maven</h2>
+<p>So far we’ve talked about dependency management (with Python’s
+<code>pip</code>) and build management (with <code>make</code>).</p>
+<p><a href="https://maven.apache.org/">Maven</a> is both a dependency
+and build management tool. Where <code>pip</code> is pretty minimal (it
+only downloads dependencies and their dependencies and their
+dependencies and their dependencies and…), and <code>make</code> is…
+<code>make</code>, Maven is pretty comprehensive in what it does.</p>
+<p>When we looked at <code>make</code>, one thing you might notice is
+that <code>make</code> has very few opinions about how you should create
+a <code>Makefile</code>. Yeah, we’ve got the idea of rules, targets,
+dependencies, commands, but you kind of have to do everything yourself.
+If you want a <code>clean</code> target, you have to write it. If you
+want an <code>all</code> target, you have to write it. While I might
+like to call my <code>clean</code> target <code>clean</code>, someone
+else might call it <code>cleanup</code>, and the only way we can
+reliably know is to look at the <code>Makefile</code> and read it. This
+is a long way to say that <code>make</code> is extremely unopinionated
+about everything except for tabs vs spaces.</p>
+<p>Maven, on the other hand is extremely opinionated:</p>
+<ul>
+<li>A Java project that uses Maven must adhere to a very specific folder
+structure (<code>src/main/java</code>, <code>src/test/java</code>,
+etc).</li>
+<li>Maven has well-known and specified names for “goals”
+(<code>clean</code>, <code>package</code>, etc).</li>
+</ul>
+<p>Ideally this gets you two things:</p>
+<ol type="1">
+<li>If you know how to build and use one Maven project, you know how to
+build and use all projects that use Maven (in theory), and</li>
+<li>You can do pretty complex things with very little configuration (in
+theory).</li>
+</ol>
+<h2 id="create-a-project-in-vs-code">Create a project in VS Code</h2>
+<p>Let’s dive in. Start by opening VS Code. Normally you would create a
+new file in VS Code using something like <kbd>Control</kbd> or
+<kbd>Command</kbd> and <kbd>N</kbd>, or you would use the File → New
+File… menu, or you would create a new file by right clicking in the
+Explorer area and selecting New File… from the menu.</p>
+<p>We’re going to do something a little bit different this time: we’re
+going to open the “command palette” in VS Code. You can open the command
+palette by pressing:</p>
+<ul>
+<li><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Windows or
+Linux, or</li>
+<li><kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS.</li>
+</ul>
+<p>The command palette lets you type in generally what you want to do
+and gives suggestions. Let’s create a new Maven Java project:</p>
+<ol type="1">
+<li><p>Start by beginning to type, then selecting “Create Java
+Project…”.</p></li>
+<li><p>Select “Maven <small>Create from archetype</small>”.</p>
+<figure>
+<img src="palette.png" alt="Choose “Maven Create from archetype”." />
+<figcaption aria-hidden="true">Choose “Maven <small>Create from
+archetype</small>”.</figcaption>
+</figure></li>
+<li><p>Select “<code>maven-archetype-quickstart</code>”.</p>
+<figure>
+<img src="archetype.png" alt="Choose maven-archetype-quickstart." />
+<figcaption aria-hidden="true">Choose
+<code>maven-archetype-quickstart</code>.</figcaption>
+</figure></li>
+<li><p>You can choose any version here, but I would recommend version
+1.4.</p>
+<figure>
+<img src="versions.png" alt="Choose 1.4." />
+<figcaption aria-hidden="true">Choose 1.4.</figcaption>
+</figure></li>
+<li><p>Next you’re going to get to enter two values: a “group Id” and an
+“artifact Id”.</p>
+<figure>
+<img src="groupid.png" alt="Enter your group Id." />
+<figcaption aria-hidden="true">Enter your group Id.</figcaption>
+</figure>
+<dl>
+<dt>Group Id</dt>
+<dd>
+Sort of like the organization or … group where one or more projects are
+related to each other.
+</dd>
+<dd>
+Is often a domain name reversed (e.g.,
+<code>ca.umanitoba.cs.www</code>).
+</dd>
+<dt>Artifact Id</dt>
+<dd>
+The name of the project that you’re going to build.
+</dd>
+</dl>
+<p>You’re welcome to use the default values for this
+(<code>com.example</code> and <code>demo</code>) but when you create
+your own projects later you should pick more meaningful group and
+artifact Ids.</p></li>
+<li><p>VS Code is going to prompt you to choose a directory where this
+project is going to live. Maven is going to create a new directory with
+the same name as the artifact Id within the folder you select.</p>
 <div class="warning">
-<p>If you’re installing Docker Desktop on Windows, you’re going to need
-to install the Windows Subsystem for Linux. There’s a link in Docker’s
-documentation, but for completeness, you can find <a
-href="https://learn.microsoft.com/en-us/windows/wsl/install">documentation
-about how to install WSL on Microsoft’s web site</a>.</p>
-</div>
-<h2 id="run-a-command-within-a-container-1">Run a command within a
-container</h2>
-<p>The simplest container command to run is “hello world”, so let’s
-start with that, then move on to something a little more complex.</p>
-<div class="example">
-<p>Let’s start by running the Docker Desktop app on your computer. This
-step isn’t required (you don’t need to start Docker Desktop before
-running any commands), but gives us an idea of the kinds of things we
-can do with Docker Desktop.</p>
+<p>The first time you do this, Maven is going to download a
+<em>bunch</em> of stuff. This may take several minutes to complete.</p>
+</div></li>
+<li><p>You can monitor the progress of what’s happening in the terminal
+that opens at the bottom of your VS Code window. Eventually, Maven is
+going to prompt you to enter a version number for your project:</p>
 <figure>
-<img src="docker-desktop.png" alt="Docker Desktop." />
-<figcaption aria-hidden="true">Docker Desktop.</figcaption>
+<img src="yourversion.png"
+alt="Enter a version number for your project" />
+<figcaption aria-hidden="true">Enter a version number for your
+project</figcaption>
 </figure>
-<p>We’re not going to do anything with Docker Desktop, but note the tabs
-on the left:</p>
-<ul>
-<li><strong>Containers</strong>: This is a list of running containers
-that you can inspect and interact with.</li>
-<li><strong>Images</strong>: These are the container images that have
-been downloaded for launching containers on your machine.</li>
-<li><strong>Volumes</strong>: Containers can’t see or interact with the
-files on your computer at all (they’re completely self-contained).
-Volumes are a way for you to share folders from your computer to a
-container so that you can either provide inputs or receive outputs from
-a container.</li>
-</ul>
-<p>Let’s run a hello world container. If you had a terminal open before,
-close your terminal and re-open it; your <code>PATH</code> variable
-(yes, there is a <code>PATH</code> on all of Windows, macOS, and Linux)
-was modified by Docker Desktop when you installed it.</p>
-<p>Once your terminal is open again, run the following:</p>
+<div class="aside">
+<p>Why didn’t it ask when asking for group and artifact Ids?!</p>
+</div>
+<p>You can safely accept the default by pressing <kbd>Enter</kbd>, or
+you can enter something different.</p>
+<div class="aside">
+<p>There are <a
+href="https://www.martinfowler.com/bliki/TwoHardThings.html">two hard
+problems in computer science</a>:</p>
+<ol type="1">
+<li>Naming things.</li>
+<li>Cache invalidation.</li>
+<li>Off-by-one errors.</li>
+<li>Guaranteed order of message delivery.</li>
+<li>Versioning.</li>
+</ol>
+<p>One popular way to version your code is to use <a
+href="https://semver.org/">semantic versioning</a>.</p>
+</div></li>
+<li><p>Finally, (finally!), you can confirm the group and artifact Ids
+and the version number that you selected by pressing
+<kbd>Enter</kbd>:</p>
+<figure>
+<img src="finish.png" alt="Confirm the details." />
+<figcaption aria-hidden="true">Confirm the details.</figcaption>
+</figure></li>
+</ol>
+<p>If everything has worked out, your VS Code should now have the
+project open, and your explorer pane should show some folders and
+files:</p>
+<figure>
+<img src="explorer.png" alt="The open Maven project." />
+<figcaption aria-hidden="true">The open Maven project.</figcaption>
+</figure>
+<p>In the “Java Projects” pane, expand <code>src/main/java</code>, then
+<code>com.example</code> (or whatever group Id you picked, this is the
+prefix of your package names in your project now), and open
+<code>App</code>. <span class="emoji" data-emoji="tada">🎉</span>, you
+just created a new Java project with Maven support.</p>
+<h2 id="adding-dependencies">Adding dependencies</h2>
+<p>Ok? Awesome? This was a lot of work to not have to type in a “Hello,
+world!” project in Java.</p>
+<p>Yeah, OK, so you not having to type in
+<code>public static void main(String[] args)</code> is fine, it’s not
+exactly a major benefit justifying the existence of Maven.</p>
+<p>One of the major reasons to want to use Maven is to very quickly be
+able to download and use dependencies to your Java projects.
+Dependencies in Java are kind of painful in a way that they aren’t in
+Python with <code>pip</code>: you have to download a JAR file, put the
+JAR file near your <code>.java</code> and <code>.class</code> files,
+configure your <code>CLASSPATH</code>… It’s not great.</p>
+<p>Adding a new dependency to a Java project using Maven is
+straightforward.</p>
+<p>Open the file named <code>pom.xml</code>, this file got created when
+you created the project.</p>
+<p><code>pom.xml</code> is the configuration file for your project that
+Maven uses to do things like specify the dependencies for your
+project.</p>
+<p>We’re going to do two things here:</p>
+<ol type="1">
+<li>Find out how to find dependencies.</li>
+<li>Add the dependency to our <code>pom.xml</code>.</li>
+</ol>
+<p>Let’s actually start by breaking our Java program: replace the
+contents of <code>App.java</code> with the following:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
-<p>You should see some output from Docker:</p>
-<pre><code>PS C:\Users\you&gt; docker run hello-world
-Unable to find image &#39;hello-world:latest&#39; locally
-latest: Pulling from library/hello-world
-2db29710123e: Pull complete
-Digest: sha256:faa03e786c97f07ef34423fccceeec2398ec8a5759259f94d99078f264e9d7af
-Status: Downloaded newer image for hello-world:latest
-
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
-    (amd64)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-
-PS C:\Users\you&gt;</code></pre>
-<p><span class="emoji" data-emoji="tada">🎉</span> you just started and
-ran a container on your computer!</p>
-<p>When you go back to Docker Desktop, you’ll be able to see that in the
-Containers tab is a container with the image
-<code>hello-world:latest</code> that has “Exited”. This is the container
-you just ran.</p>
-<p>You can technically run it again by pressing the play button <span
-class="emoji" data-emoji="arrow_forward">▶️</span> on the right side of
-the window, but it’s not going to do anything because the
-<code>hello-world</code> image prints to standard output, and there is
-no standard output display in Docker Desktop.</p>
-<p>You can (and probably should) delete this container by clicking on
-the trash can <span class="emoji" data-emoji="wastebasket">🗑️</span>
-icon on the far right side of the window.</p>
-</div>
-<p>Hello world is always our classic “let’s try this out for the first
-time” exercise, and while interesting, isn’t really giving us a good
-idea of the kinds of things we can do with containers — we were already
-able to write our own self-contained “Hello world” programs in Java, C,
-or Python (or whatever). Let’s step up to something a little bit more
-complicated.</p>
-<div class="example">
-<p>Let’s follow the advice of Docker Desktop and “Run a Sample
-Container”. Run the following in your terminal:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 80:80 docker/getting-started</span></code></pre></div>
-<p>Docker does some stuff to download an image and then… nothing?</p>
-<p>Let’s step through what each of these options mean:</p>
-<ul>
-<li><strong><code>run</code></strong> is… well, it means download the
-image and run a new container using that image as a basis. We saw that
-happening, <code>docker</code> prints out a bunch of fancy animations
-showing progress downloading images.</li>
-<li><strong><code>-d</code></strong> is “<code>d</code>etach”. This
-means that Docker is going to start the container, and then run it “in
-the background” (the container will still be running, but you can
-continue to use your terminal).</li>
-<li><strong><code>-p</code></strong> is “<code>p</code>ort forwarding”.
-This is getting pretty far outside the scope of our course, but one way
-to interact with applications is through a “<a
-href="https://en.wikipedia.org/wiki/Port_(computer_networking)">port</a>”.
-Port 80 is the port for <a
-href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>,
-and HTTP is the “protocol” (sort of like the language) that your web
-browser (Chrome, Firefox, Safari, Edge) use to talk to web servers. This
-is a bit of a hint about how to start interacting with this
-container.</li>
-<li><strong><code>docker/getting-started</code></strong> is the name of
-the image that we want this container to use when it launches.</li>
-</ul>
-<p>You can check in Docker Desktop and see that this container is indeed
-running:</p>
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">json</span><span class="op">.</span><span class="im">JSONStringer</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> Hello world<span class="co">!</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> App <span class="op">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        JSONStringer stringer <span class="op">=</span> <span class="kw">new</span> <span class="fu">JSONStringer</span><span class="op">();</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>stringer<span class="op">.</span><span class="fu">object</span><span class="op">()</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">key</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">value</span><span class="op">(</span><span class="st">&quot;world&quot;</span><span class="op">)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">endObject</span><span class="op">().</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This is a small chunk of code that will create a <a
+href="https://en.wikipedia.org/wiki/JSON">JSON</a> object; it’s not
+exactly important what the code is doing, just that it requires a
+dependency (<code>org.json</code>).</p>
+<h3 id="finding-dependencies">Finding dependencies</h3>
+<p>Some projects will straight-up give you the information that you need
+to add them as a dependency to your <code>pom.xml</code>, but we’ll look
+at a way to find a dependency.</p>
+<p>Start by opening your web browser and going to <a
+href="https://mvnrepository.com"
+class="uri">https://mvnrepository.com</a>. This is a comprehensive
+listing of dependencies that you can use in your Java project.</p>
+<p>Let’s look specifically for something to help us use <a
+href="https://en.wikipedia.org/wiki/JSON">JSON</a> in our project. At
+the top of the page is a search field, enter “json” and press
+<kbd>Enter</kbd>.</p>
+<p>The first artifact that’s listed is <code>json</code> with a group Id
+of <code>org.json</code>. Click on <a
+href="https://mvnrepository.com/artifact/org.json/json"><code>json</code></a>.
+You’re going to see lots of versions, click on the most recent version
+at the top of the table.</p>
+<p>In the middle of this page is a tabbed view with different tool names
+(Maven, Gradle, Gradle, Gradle, SBT, Ivy, …). Maven is the default.
+There’s a text area here where you can select some text. This is XML,
+the same format as <code>pom.xml</code>. Click on the text area and it
+<em>should</em> automatically copy this to your clipboard. If it
+doesn’t, highlight the text and copy it.</p>
+<h3 id="add-the-dependency-to-pom.xml">Add the dependency to
+<code>pom.xml</code></h3>
+<p>Now switch back to VS Code, open <code>pom.xml</code>, and add this
+dependency below the <code>&lt;/dependency&gt;</code> for
+<code>junit</code>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dependencies</span>&gt;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">groupId</span>&gt;junit&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">artifactId</span>&gt;junit&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">version</span>&gt;4.11&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- https://mvnrepository.com/artifact/org.json/json --&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">groupId</span>&gt;org.json&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">artifactId</span>&gt;json&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">version</span>&gt;20220924&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">dependency</span>&gt;</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">dependencies</span>&gt;</span></code></pre></div>
+<p>As soon as you save, VS Code is going to ask if you want to
+“synchronize” the project:</p>
 <figure>
-<img src="getting-started.png"
-alt="The running getting started container." />
-<figcaption aria-hidden="true">The running getting started
-container.</figcaption>
+<img src="update.png" alt="Do you want to synchronize?" />
+<figcaption aria-hidden="true">Do you want to synchronize?</figcaption>
 </figure>
-<p>Notice that you can click on the entry in the “Port(s)” column for
-this container. Click on it!</p>
-<p>Hey! Look at that! You’re running a web server in this container, and
-your web browser is interacting with the web server in the container.
-<span class="emoji" data-emoji="tada">🎉</span></p>
-<p>This web server actually contains extensive documentation for using
-Docker, so if you’re looking for some further reading about Docker, this
-is one place you can find it.</p>
-</div>
-<p>Running a web server in a container is an example of a long-running
-application. Let’s do something that’s a little bit different: we’re
-going to run <code>pandoc</code> in a container.</p>
-<p>… <code>pandoc</code>? That feels a little underwhelming.</p>
-<p>OK, well, sure, it’s <em>familiar</em>, but we’re going to be doing
-things in a container that has a bunch of stuff configured that you
-can’t do with the base <code>pandoc</code> install, including being able
-to produce PDFs on your Windows or macOS machine without installing
-<span class="math inline">\LaTeX</span>.</p>
-<div class="example">
-<p>We’re going to use <a
-href="https://github.com/dalibo/pandocker">pandocker</a>. Let’s write
-ourselves a little Markdown file that takes advantage of some features
-in <a href="https://github.com/dalibo/pandocker">pandocker</a> that we
-can’t do with the base <code>pandoc</code> install:</p>
-<pre><code>https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker</code></pre>
-<p>You should use this file to:</p>
-<ul>
-<li><p>Create a PDF on Aviary with <code>pandoc</code></p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> myfile.md <span class="at">-o</span> myfile.pdf <span class="at">--toc</span></span></code></pre></div>
-<p>Then transfer the PDF back to your own computer so you can see what
-it looks like.</p></li>
-<li><p>Create a PDF on your own machine with Pandocker using the
-following command:</p>
-<details>
-<summary>
-<p>macOS or Linux</p>
-</summary>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc dalibo/pandocker:stable <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="at">--filter</span> pandoc-latex-admonition <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
-</details>
-<details>
-<summary>
-<p>macOS with Apple Silicon</p>
-</summary>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--platform</span><span class="op">=</span>linux/amd64 <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc <span class="dt">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dalibo/pandocker:stable <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="dt">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="dt">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
-</details>
-<details>
-<summary>
-<p>Windows with PowerShell</p>
-</summary>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="va">${PWD}</span>:/pandoc dalibo/pandocker:stable lecture.md <span class="at">-o</span> <span class="kw">`</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">lecture.pdf</span> <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="kw">`</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--pdf-engine=xelatex</span> <span class="at">--listings</span></span></code></pre></div>
-</details></li>
-</ul>
-<p>These two outputs are pretty different! As it is, you
-<strong>can’t</strong> generate the same output on Aviary as you could
-with Docker and pandocker on your own machine — configuring Pandoc with
-all of the required filters, templates, and supporting software is
-tedious and painful.</p>
-<p>There are a lot of options in this, but most of them are actually
-options for <code>pandoc</code> and not Docker. Let’s step through the
-Docker options:</p>
-<ul>
-<li><strong><code>--rm</code></strong>: This option tells docker to
-remove the container after it exits. This is a short-running container,
-so removing it once it’s exited makes sense.</li>
-<li><strong><code>-v (pwd):/pandoc</code></strong>: This is how we share
-files with a container. The <code>-v</code> option is to “bind mount a
-volume”. The short of this is that inside the container is another
-directory structure, and <code>pwd</code> (your present working
-directory) is shared inside the container at <code>/pandoc</code>.</li>
-</ul>
-<p>That’s it for Docker options! The rest are options to
-<code>pandoc</code> that you can read about in the documentation for
-<code>pandoc</code>.</p>
-<p><span class="emoji" data-emoji="tada">🎉</span> You just ran
-<code>pandoc</code> in a container!</p>
-</div>
+<p>You do! Click “Yes”!</p>
+<p>Now go back to <code>App.java</code>. It compiles! Run the program
+the way you did when you were debugging!</p>
+<p>You just added a dependency to a Java project and used that
+dependency <span class="emoji" data-emoji="tada">🎉</span>!</p>
 <h2 id="further-reading">Further reading</h2>
-<p>You’ve seen two examples of how to use containers, but you might want
-to know more about how to create your own containers.</p>
+<p>We’ve done the bare minimum here with Maven, but it’s enough to get
+us started.</p>
+<p>You can read more about this in a few places:</p>
 <ul>
-<li>Read more about creating containers in <a
-href="https://docs.docker.com/get-started/">Docker’s Get Started</a>,
-either on Docker’s web site or in the getting started container you
-launched earlier. This will take you further into containers and get you
-creating your own containers.</li>
-<li>Docker isn’t the only tool for managing containers, <a
-href="https://podman.io/">Podman</a> is an alternative tool for managing
-containers.</li>
-<li>If you’re looking for a deep dive alternative, <a
-href="https://freebsdfoundation.org/freebsd-project/resources/introduction-to-freebsd-jails/">FreeBSD
-Jails</a> predate the idea of containers.</li>
+<li><a href="https://code.visualstudio.com/docs/java/java-project">VS
+Code’s documentation for Java projects</a> gives you some more about
+using VS Code for Java development, including more about how to use the
+Maven for Java extension.</li>
+<li>The <a href="https://maven.apache.org/">Maven</a> home page has
+comprehensive documentation about how to use Maven.</li>
+<li>You can read more about other build and dependency management tools
+like <a href="https://gradle.org/">Gradle</a>, <a
+href="https://ant.apache.org/ivy/">Ivy</a>, or <a
+href="https://ant.apache.org">Ant</a>. Gradle is popular because it’s
+typically the build and dependency management tool used for Android app
+development.</li>
 </ul>
 
 </div> <!-- article-content -->

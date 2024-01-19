@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Summary</title>
+  <title>Install and configure back up software</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -23,9 +23,6 @@
     }
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -120,42 +117,45 @@ files</a></li>
 <li><a href="topic-2.html">Input and output on the command line</a></li>
 <li><a href="topic-3.html">Redirecting input and output</a></li>
 <li><a href="topic-4.html">Piping</a></li>
-<li><a href="topic-5.html">Shell scripts</a></li>
-<li><strong>Summary</strong></li>
+<li><a href="topic-5.html">Choose a backup strategy</a></li>
+<li><strong>Install and configure back up software</strong></li>
+<li><a href="topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Shell scripts</a></li>
+<li><a href=".././topic09/topic-3.html">Arguments</a></li>
+<li><a href=".././topic09/topic-4.html">Structures: conditional
+statements and loops</a></li>
+<li><a href=".././topic09/topic-5.html">Globs</a></li>
+<li><a href=".././topic09/topic-6.html">Debugging shell scripts</a></li>
+<li><a href=".././topic09/topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href=".././topic09/topic-1.html">Introduction</a></li>
-<li><a href=".././topic09/topic-2.html">Programs requiring
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
 dependencies</a></li>
-<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
-<li><a href=".././topic09/topic-4.html">Build and dependency
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././topic09/topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -177,56 +177,63 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic09/topic-1.html">next→</a></div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="topic-7.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Summary</h1>
+<h1 class="title">Install and configure back up software</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#summary" id="toc-summary">Summary</a></li>
+<li><a href="#install-and-configure-back-up-software"
+id="toc-install-and-configure-back-up-software">Install and configure
+back up software</a></li>
 </ul>
 </nav>
-<h1 id="summary">Summary</h1>
-<p>This has been a bit of a whirlwind through some topics related to
-running programs on Linux or UNIX-like systems, with us learning a
-little bit about things that apply to <em>all</em> programs (how and
-where they get input, and how and where they send output).</p>
-<p>Depending on the path you take through CS, you may eventually learn
-about the underlying mechanisms of how this all works (maybe) in an
-operating systems course, specifically about how an operating system
-(OS) represents “processes” (running programs) as a data structure, and
-how the OS keeps track of files that a process has open
-(<code>STDIN</code>, <code>STDOUT</code>, and <code>STDERR</code> are
-all special file-like-things™; neat <span class="emoji"
-data-emoji="camera">📷</span>).</p>
-<p>You’ve also seen how to take the commands you’ve been running on the
-command line and keep them in a <em>script</em> so that you can quickly
-re-run them. While this isn’t a programming course, shells are
-full-featured programming languages.</p>
-<p>You should now be able to:</p>
+<h1 id="install-and-configure-back-up-software">Install and configure
+back up software</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Redirect the output from
-a program to a file.</label></li>
-<li><label><input type="checkbox" checked="" />Redirect a file to be the
-input for a program.</label></li>
-<li><label><input type="checkbox" checked="" />Send data between
-programs using a pipe.</label></li>
-<li><label><input type="checkbox" checked="" />Write and run shell
-scripts to repeat complex tasks.</label></li>
+<li><label><input type="checkbox" checked="" />Install and configure
+software to back up your files to a remote server.</label></li>
 </ul>
 </div>
-<p>Now you should be ready to start working on the assignment this
-week!</p>
+<p>Many of you already have OneDrive installed. Many of you already have
+Dropbox installed. These are reasonable tools for backing up your
+data.</p>
+<p>If you haven’t installed one of those tools already, then you should
+do it now!</p>
+<p>… what should you pick?</p>
+<ul>
+<li><a
+href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage">OneDrive</a>
+<ul>
+<li>OneDrive only works on macOS or Windows (or Android or iOS). If
+you’re running Linux, you’re out of luck.</li>
+<li>OneDrive with your UManitoba student account gets you 1TB of space
+for free.</li>
+</ul></li>
+<li><a href="https://www.dropbox.com/">Dropbox</a>
+<ul>
+<li>Dropbox works on all platforms (Windows, macOS, Linux)</li>
+<li><a href="https://www.dropbox.com/basic">Dropbox Free</a> gives you
+2GB of space for free.</li>
+</ul></li>
+</ul>
+<p>These tools are generally straightforward to install, and will back
+up your files to a remote server.</p>
+<div class="challenge">
+<p>Self-host Seafile. Go through the process of setting up your own
+Seafile Server. You’re more than welcome to complete this challenge, but
+you are completely on your own for support.</p>
+</div>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic09/topic-1.html">next→</a></div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="topic-7.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->

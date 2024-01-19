@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Debuggers</title>
+  <title>Summary</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -102,14 +102,14 @@ files</a></li>
 </ul></li>
 <li>Debugging (strategies and usage)
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">What even is debugging?</a></li>
-<li><a href="topic-3.html">Debugging strategies</a></li>
-<li><strong>Debuggers</strong></li>
-<li><a href="topic-5.html">Visual Debuggers</a></li>
-<li><a href="topic-6.html">Command-line Debuggers</a></li>
-<li><a href="topic-7.html">Summary</a></li>
-<li><a href="topic-8.html">Practice Questions</a></li>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+<li><a href=".././topic07/topic-8.html">Practice Questions</a></li>
 </ul></li>
 <li>Command-line environment
 <ul>
@@ -148,18 +148,16 @@ management</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Install and configure a virtual
 machine</a></li>
-<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic11/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+<li><a href="topic-3.html">Download and use a pre-installed OS in VM
+software</a></li>
+<li><a href="topic-4.html">Run a command within a container</a></li>
+<li><a href="topic-5.html">Initialize a server in a public
 cloud</a></li>
-<li><a href=".././topic11/topic-6.html">Summary</a></li>
-<li><a href=".././topic11/hello-pandocker.html">Hello,
-Pandocker!</a></li>
+<li><strong>Summary</strong></li>
+<li><a href="hello-pandocker.html">Hello, Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -181,63 +179,44 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="hello-pandocker.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Debuggers</h1>
+<h1 class="title">Summary</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#debuggers" id="toc-debuggers">Debuggers</a></li>
+<li><a href="#summary" id="toc-summary">Summary</a></li>
 </ul>
 </nav>
-<h1 id="debuggers">Debuggers</h1>
-<p>Pencil and paper debugging is tedious and painful, but effective.
-Log-based debugging is less tedious (maybe) and less painful (no risk of
-poking yourself with a pencil when you’re not using a pencil), and while
-easy, don’t always work (for example, a <code>printf</code> in a C
-program that’s before a line that crashes won’t always print before the
-program crashes).</p>
-<p>Despite being tedious, painful, and not always working, these
-strategies for debugging are approachable because they use tools that
-you have to know about to do programming in the first place, and they
-are <em>universal</em>: you can use log-based debugging in any language
-where you can print or produce output, and you can use pencil-and-paper
-debugging anywhere you’ve got a pencil, and paper.</p>
-<p>Nevertheless, they are painful. Painful and tedious.</p>
-<p>A debugger is a program that you can use to help you debug a program.
-Debuggers are usually very tightly coupled to the programming language
-or environment that you’re using (you use a Java debugger to debug Java
-programs, you use a Python debugger to debug Python programs, and you
-use a C debugger to debug C programs).</p>
-<p>All debuggers give you generally the same tools for working with your
-program, and we generally use them in the same way. A debugger will let
-us run one line of code at a time and inspect the values that variables
-have when the line of code has completed running.</p>
-<p>Almost all debuggers will use the same general terminology to
-describe actions or ideas:</p>
-<ul>
-<li>A <strong>break point</strong> is a way for you to tell the debugger
-where and when it should pause running your program. We can say things
-like “Start running from the beginning, then pause when you get to line
-158.”</li>
-<li>We can <strong>step into</strong> a function or method call when the
-line we’re about to run is a function or method call. Stepping into the
-function or method call means that our debugger will “move” to the code
-for the function, then let us run lines inside that function.</li>
-<li>We can <strong>step over</strong> a line, running whatever the line
-was and then pausing on the next line of code.</li>
-<li>We can <strong>inspect</strong> values, either by printing them out,
-or by seeing their values in a window or pane.</li>
+<h1 id="summary">Summary</h1>
+<p>This week we’ve been focusing on getting operating systems and tools
+running in virtual environments, and we’ve found a pretty reasonable use
+case for containers (we got a fully configured <code>pandoc</code> on
+our own machines!).</p>
+<p>You should now be able to:</p>
+<div class="outcomes">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Install and configure
+virtual machine software.</label></li>
+<li><label><input type="checkbox" checked="" />Download and use a
+pre-installed operating system in a virtual machine
+software.</label></li>
+<li><label><input type="checkbox" checked="" />Run a command within a
+container.</label></li>
+<li><label><input type="checkbox" checked="" />Initialize a server in a
+publicly available cloud computing environment (e.g., AWS).</label></li>
 </ul>
+</div>
+<p>You should now be ready to start working on the assignment!</p>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-5.html">←prev</a></div><div class="nav-bar-push"><a href="hello-pandocker.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->
@@ -246,7 +225,7 @@ or by seeing their values in a window or pane.</li>
 
 <div id="my-footer">
 &copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
-<a href="topic-4.md">Pandoc-Markdown source for this page</a><br/>
+<a href="topic-6.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
 </div> <!-- my-footer -->

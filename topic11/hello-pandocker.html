@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Franklin Bristow" />
-  <title>Reading and changing permissions</title>
+  <meta name="author" content="you" />
+  <title>Hello, Pandocker!</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -146,12 +146,14 @@ projects</a></li>
 </ul></li>
 <li>Advanced shell usage
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Finding files</a></li>
-<li><a href="topic-3.html">Filtering lines</a></li>
-<li><strong>Reading and changing permissions</strong></li>
-<li><a href="topic-5.html">Comparing plain text files</a></li>
-<li><a href="topic-6.html">Summary</a></li>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
 </ul></li>
 <li>Digital notebooks and getting help
 <ul>
@@ -210,18 +212,16 @@ management</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Install and configure a virtual
 machine</a></li>
-<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic11/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+<li><a href="topic-3.html">Download and use a pre-installed OS in VM
+software</a></li>
+<li><a href="topic-4.html">Run a command within a container</a></li>
+<li><a href="topic-5.html">Initialize a server in a public
 cloud</a></li>
-<li><a href=".././topic11/topic-6.html">Summary</a></li>
-<li><a href=".././topic11/hello-pandocker.html">Hello,
-Pandocker!</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+<li><strong>Hello, Pandocker!</strong></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -243,143 +243,69 @@ server</a></li>
 <div id="article-box">
 
 <div id="header-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic12/topic-1.html">next→</a></div>
 </div>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Reading and changing permissions</h1>
-<p class="author">Franklin Bristow</p>
+<h1 class="title">Hello, Pandocker!</h1>
+<p class="author">you</p>
+<p class="date">now</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#read-and-change-permissions"
-id="toc-read-and-change-permissions">Read and change permissions</a>
+<li><a href="#stuff-about-pandocker"
+id="toc-stuff-about-pandocker">Stuff about Pandocker</a></li>
+<li><a href="#using-admonitions" id="toc-using-admonitions">Using
+Admonitions</a></li>
+<li><a href="#making-a-pdf-from-this-file"
+id="toc-making-a-pdf-from-this-file">Making a PDF from this file</a>
 <ul>
-<li><a href="#reading-permissions" id="toc-reading-permissions">Reading
-permissions</a></li>
-<li><a href="#changing-permissions"
-id="toc-changing-permissions">Changing permissions</a></li>
+<li><a href="#on-windows" id="toc-on-windows">On Windows</a></li>
+<li><a href="#on-linux-or-macos" id="toc-on-linux-or-macos">On Linux or
+macOS</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="read-and-change-permissions">Read and change permissions</h1>
-<div class="outcomes">
-<ul class="task-list">
-<li><label><input type="checkbox" checked="" />Read and change
-permissions on files.</label></li>
-</ul>
-</div>
-<p>Finding files by name and filtering lines in files is useful (I
-promise!).</p>
-<p>We’re going to switch gears a little bit and spend some time looking
-at files and permissions.</p>
-<p>You probably haven’t spent a lot of time thinking about permissions.
-Permissions on files are metadata (there’s that word again; data about
-the data) that your operating system (Windows, macOS, Linux) uses to
-decide whether or not you or other users are allowed to read, write, or
-execute (run) a file.</p>
-<p>You probably haven’t spent a lot of time thinking about permissions
-partly because you’re probably the only person using your computer; why
-would you care about permissions when nobody else is going to use your
-computer?</p>
-<p>That’s true, but now you are using computers that have other people
-using them: Aviary.</p>
-<div class="aside">
-<p>Who else uses Aviary? There are currently more than 1000 active user
-accounts on the CS Linux systems, mostly undergraduate students, but
-also faculty and other staff.</p>
-<p>You can find out who else is currently logged in to the bird machine
-that you’re connected to (remember: Aviary has about 25 computers in it)
-using the <code>w</code> command:</p>
-<pre><code>[you@bird ~]&gt; w # I guess it&#39;s just you
- 19:44:05 up  3:03,  2 users,  load average: 0.08, 0.07, 0.09
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-you      pts/2    tmux(7408).%0    Mon14    1.00s  6:29   0.03s w
-you      pts/3    tmux(7408).%2    Tue19    5.00s 13.95s 13.54s vi notebook.md</code></pre>
-</div>
-<p>Permissions are important in multi-user systems like this.</p>
-<h2 id="reading-permissions">Reading permissions</h2>
-<p>Let’s start by checking the permissions on our files. We’ll use a
-command that we’ve used frequently: <code>ls</code></p>
-<div class="example">
-<p>Let’s print out the “long” listing of all the files in our current
-directory using the <code>-l</code> option (that’s a lower case L):</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">-l</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 17100</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 1 you csunderg       52 Oct  3 14:39 crazy-directories/</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 you csunderg  1239277 Oct  2 16:24 crazy-directories.zip</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 you csunderg 16012093 Jun 16 12:49 MonkeyPox.fn</span></code></pre></div>
-<p>Your output will look a little different than this (you’ve probably
-got different files and directories), but it should look similar to
-this.</p>
-</div>
-<p>Files and directories have a concept of ownership (a user account and
-a “group” own a file), and permissions for three distinct sets of people
-(the user account that owns it, the group that owns it, and everyone
-else “other” or “world”).</p>
-<p>You can see which user account owns a file in the second column of
-output from <code>ls -l</code>. All files that are in your user
-directory should be owned by your user account.</p>
-<p>You can see which group owns a file in the third column of output
-from <code>ls -l</code>. Your user accounts are in the
-<code>csunderg</code> group, so that’s the group that “owns” these
-files.</p>
-<p>We can see which permissions each set of people has in the first
-column. Let’s take apart the first column in pieces:</p>
-<pre><code>drwxr-xr-x
-|||||||||| 
-|uuugggooo # u = user, g = group, o = other
--&gt; type</code></pre>
-<p>The directory <code>crazy-directories</code> has the following
-metadata for permissions:</p>
+<h1 id="stuff-about-pandocker">Stuff about Pandocker</h1>
+<p>Pandocker is pretty cool and comes with support for a lot of
+different things, including:</p>
 <ul>
-<li>It is a directory, so the first letter is <code>d</code>. Files have
-a first letter of <code>-</code>.</li>
-<li>Your user account has all permissions on it: Read, Write, and
-eXecute.</li>
-<li>The group has only the ability to Read and eXecute this
-directory.</li>
-<li>Similarly, other users have the ability to Read and eXecute this
-directory.</li>
+<li>A filter for PDF output to show important information
+(admonitions)</li>
+<li>A template (Eisvogel) that makes your PDFs look <em>great</em></li>
 </ul>
-<div class="aside">
-<p>When I think of the word “execute” in the context of the command
-line, I think about running a program. Why do directories have execute
-permissions and other regular files don’t?</p>
-<p>This is an unfortunate case of something being overloaded and having
-multiple meanings in different contexts.</p>
-<p>When a regular file has the eXecute permission, that means that you
-can run it like a program. When a directory has the eXecute permission,
-that means that you can change into that directory with <code>cd</code>.
-<span class="emoji" data-emoji="shrug">🤷</span></p>
+<h1 id="using-admonitions">Using Admonitions</h1>
+<div class="admonition danger">
+<p>Pandocker requires that you have <a
+href="https://docker.com">Docker</a> installed on your machine.</p>
 </div>
-<p>User, group, and other have different uses in different places, and
-we’ll see an example of this in our assignment for this week.</p>
-<h2 id="changing-permissions">Changing permissions</h2>
-<p>Seeing permissions is an important part of knowing what we need to
-change, when we need to change it.</p>
-<p>We can change permissions on files using a program called
-<code>chmod</code>.</p>
-<div class="example">
-<p>We can change the permissions for user, group, and world on files or
-directories using <code>chmod</code>. <code>chmod</code> will let us
-specify permissions for each of user, group, and other. Let’s change
-then inspect some permissions on <code>crazy-directories</code>. Try
-running each of these one at a time, then running <code>ls -l</code> to
-see how the permissions have changed each time.</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-x crazy-directories <span class="co"># remove (-) the eXecute permission for user</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x crazy-directories <span class="co"># add (+) the eXecute permission for everyone</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug-r crazy-directories <span class="co"># remove read permissions for user and group</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug+r crazy-directories <span class="co"># add back read permissions for user and group</span></span></code></pre></div>
+<div class="admonition">
+<p>This is a regular admonition, there should be a gray line on the left
+side to bring attention to it</p>
 </div>
+<h1 id="making-a-pdf-from-this-file">Making a PDF from this file</h1>
+<ol type="1">
+<li>Install Docker.</li>
+<li>Run a Pandocker container.</li>
+</ol>
+<h2 id="on-windows">On Windows</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="va">${PWD}</span>:/pandoc dalibo/pandocker:stable <span class="kw">`</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">hello-pandocker.md</span> <span class="at">-o</span> hello-pandocker.pdf <span class="kw">`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="kw">`</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+<h2 id="on-linux-or-macos">On Linux or macOS</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc dalibo/pandocker:stable <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    hello-pandocker.md <span class="at">-o</span> hello-pandocker.pdf <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
 
 </div> <!-- article-content -->
 
 <div id="footer-nav-bar">
-<div><a href="topic-3.html">←prev</a></div><div class="nav-bar-push"><a href="topic-5.html">next→</a></div>
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic12/topic-1.html">next→</a></div>
 </div>
 
 </div> <!-- article-box -->
@@ -388,7 +314,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 
 <div id="my-footer">
 &copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
-<a href="topic-4.md">Pandoc-Markdown source for this page</a><br/>
+<a href="hello-pandocker.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
 </div> <!-- my-footer -->

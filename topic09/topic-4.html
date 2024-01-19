@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Build and dependency management</title>
+  <title>Structures: conditional statements and loops</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -186,40 +183,46 @@ line</a></li>
 <li><a href=".././topic08/topic-3.html">Redirecting input and
 output</a></li>
 <li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
-<li><a href=".././topic08/topic-6.html">Summary</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Shell scripts</a></li>
+<li><a href="topic-3.html">Arguments</a></li>
+<li><strong>Structures: conditional statements and loops</strong></li>
+<li><a href="topic-5.html">Globs</a></li>
+<li><a href="topic-6.html">Debugging shell scripts</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><a href="topic-2.html">Programs requiring dependencies</a></li>
-<li><a href="topic-3.html">Create a Makefile</a></li>
-<li><strong>Build and dependency management</strong></li>
-<li><a href="topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -246,319 +249,190 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Build and dependency management</h1>
+<h1 class="title">Structures: conditional statements and loops</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#create-a-new-software-project"
-id="toc-create-a-new-software-project">Create a new software project</a>
+<li><a href="#structures-conditional-statements-and-loops"
+id="toc-structures-conditional-statements-and-loops">Structures:
+conditional statements and loops</a>
 <ul>
-<li><a href="#maven" id="toc-maven">Maven</a></li>
-<li><a href="#create-a-project-in-vs-code"
-id="toc-create-a-project-in-vs-code">Create a project in VS
-Code</a></li>
-<li><a href="#adding-dependencies" id="toc-adding-dependencies">Adding
-dependencies</a>
-<ul>
-<li><a href="#finding-dependencies"
-id="toc-finding-dependencies">Finding dependencies</a></li>
-<li><a href="#add-the-dependency-to-pom.xml"
-id="toc-add-the-dependency-to-pom.xml">Add the dependency to
-<code>pom.xml</code></a></li>
-</ul></li>
-<li><a href="#further-reading" id="toc-further-reading">Further
-reading</a></li>
+<li><a href="#conditional-statements"
+id="toc-conditional-statements">Conditional statements</a></li>
+<li><a href="#loops" id="toc-loops">Loops</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="create-a-new-software-project">Create a new software
-project</h1>
+<h1 id="structures-conditional-statements-and-loops">Structures:
+conditional statements and loops</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Create a new empty
-software project that includes a build and dependency management
-tool.</label>
+<li><label><input type="checkbox" checked="" />Use loops, conditional
+statements, and variables in a shell script.</label>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Add and use a new
-dependency in a software project.</label></li>
+<li><label><input type="checkbox" checked="" />Use “globs” in a shell
+script to apply operations to files.</label></li>
 </ul></li>
 </ul>
 </div>
-<p>We’ve previously installed the extension pack for Java in VS Code.
-This actually comes with “Maven for Java”. Let’s learn how to use that
-to create a new project with Maven.</p>
-<h2 id="maven">Maven</h2>
-<p>So far we’ve talked about dependency management (with Python’s
-<code>pip</code>) and build management (with <code>make</code>).</p>
-<p><a href="https://maven.apache.org/">Maven</a> is both a dependency
-and build management tool. Where <code>pip</code> is pretty minimal (it
-only downloads dependencies and their dependencies and their
-dependencies and their dependencies and…), and <code>make</code> is…
-<code>make</code>, Maven is pretty comprehensive in what it does.</p>
-<p>When we looked at <code>make</code>, one thing you might notice is
-that <code>make</code> has very few opinions about how you should create
-a <code>Makefile</code>. Yeah, we’ve got the idea of rules, targets,
-dependencies, commands, but you kind of have to do everything yourself.
-If you want a <code>clean</code> target, you have to write it. If you
-want an <code>all</code> target, you have to write it. While I might
-like to call my <code>clean</code> target <code>clean</code>, someone
-else might call it <code>cleanup</code>, and the only way we can
-reliably know is to look at the <code>Makefile</code> and read it. This
-is a long way to say that <code>make</code> is extremely unopinionated
-about everything except for tabs vs spaces.</p>
-<p>Maven, on the other hand is extremely opinionated:</p>
-<ul>
-<li>A Java project that uses Maven must adhere to a very specific folder
-structure (<code>src/main/java</code>, <code>src/test/java</code>,
-etc).</li>
-<li>Maven has well-known and specified names for “goals”
-(<code>clean</code>, <code>package</code>, etc).</li>
-</ul>
-<p>Ideally this gets you two things:</p>
-<ol type="1">
-<li>If you know how to build and use one Maven project, you know how to
-build and use all projects that use Maven (in theory), and</li>
-<li>You can do pretty complex things with very little configuration (in
-theory).</li>
-</ol>
-<h2 id="create-a-project-in-vs-code">Create a project in VS Code</h2>
-<p>Let’s dive in. Start by opening VS Code. Normally you would create a
-new file in VS Code using something like <kbd>Control</kbd> or
-<kbd>Command</kbd> and <kbd>N</kbd>, or you would use the File → New
-File… menu, or you would create a new file by right clicking in the
-Explorer area and selecting New File… from the menu.</p>
-<p>We’re going to do something a little bit different this time: we’re
-going to open the “command palette” in VS Code. You can open the command
-palette by pressing:</p>
-<ul>
-<li><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Windows or
-Linux, or</li>
-<li><kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS.</li>
-</ul>
-<p>The command palette lets you type in generally what you want to do
-and gives suggestions. Let’s create a new Maven Java project:</p>
-<ol type="1">
-<li><p>Start by beginning to type, then selecting “Create Java
-Project…”.</p></li>
-<li><p>Select “Maven <small>Create from archetype</small>”.</p>
-<figure>
-<img src="palette.png" alt="Choose “Maven Create from archetype”." />
-<figcaption aria-hidden="true">Choose “Maven <small>Create from
-archetype</small>”.</figcaption>
-</figure></li>
-<li><p>Select “<code>maven-archetype-quickstart</code>”.</p>
-<figure>
-<img src="archetype.png" alt="Choose maven-archetype-quickstart." />
-<figcaption aria-hidden="true">Choose
-<code>maven-archetype-quickstart</code>.</figcaption>
-</figure></li>
-<li><p>You can choose any version here, but I would recommend version
-1.4.</p>
-<figure>
-<img src="versions.png" alt="Choose 1.4." />
-<figcaption aria-hidden="true">Choose 1.4.</figcaption>
-</figure></li>
-<li><p>Next you’re going to get to enter two values: a “group Id” and an
-“artifact Id”.</p>
-<figure>
-<img src="groupid.png" alt="Enter your group Id." />
-<figcaption aria-hidden="true">Enter your group Id.</figcaption>
-</figure>
-<dl>
-<dt>Group Id</dt>
-<dd>
-Sort of like the organization or … group where one or more projects are
-related to each other.
-</dd>
-<dd>
-Is often a domain name reversed (e.g.,
-<code>ca.umanitoba.cs.www</code>).
-</dd>
-<dt>Artifact Id</dt>
-<dd>
-The name of the project that you’re going to build.
-</dd>
-</dl>
-<p>You’re welcome to use the default values for this
-(<code>com.example</code> and <code>demo</code>) but when you create
-your own projects later you should pick more meaningful group and
-artifact Ids.</p></li>
-<li><p>VS Code is going to prompt you to choose a directory where this
-project is going to live. Maven is going to create a new directory with
-the same name as the artifact Id within the folder you select.</p>
-<div class="warning">
-<p>The first time you do this, Maven is going to download a
-<em>bunch</em> of stuff. This may take several minutes to complete.</p>
-</div></li>
-<li><p>You can monitor the progress of what’s happening in the terminal
-that opens at the bottom of your VS Code window. Eventually, Maven is
-going to prompt you to enter a version number for your project:</p>
-<figure>
-<img src="yourversion.png"
-alt="Enter a version number for your project" />
-<figcaption aria-hidden="true">Enter a version number for your
-project</figcaption>
-</figure>
-<div class="aside">
-<p>Why didn’t it ask when asking for group and artifact Ids?!</p>
-</div>
-<p>You can safely accept the default by pressing <kbd>Enter</kbd>, or
-you can enter something different.</p>
-<div class="aside">
-<p>There are <a
-href="https://www.martinfowler.com/bliki/TwoHardThings.html">two hard
-problems in computer science</a>:</p>
-<ol type="1">
-<li>Naming things.</li>
-<li>Cache invalidation.</li>
-<li>Off-by-one errors.</li>
-<li>Guaranteed order of message delivery.</li>
-<li>Versioning.</li>
-</ol>
-<p>One popular way to version your code is to use <a
-href="https://semver.org/">semantic versioning</a>.</p>
-</div></li>
-<li><p>Finally, (finally!), you can confirm the group and artifact Ids
-and the version number that you selected by pressing
-<kbd>Enter</kbd>:</p>
-<figure>
-<img src="finish.png" alt="Confirm the details." />
-<figcaption aria-hidden="true">Confirm the details.</figcaption>
-</figure></li>
-</ol>
-<p>If everything has worked out, your VS Code should now have the
-project open, and your explorer pane should show some folders and
-files:</p>
-<figure>
-<img src="explorer.png" alt="The open Maven project." />
-<figcaption aria-hidden="true">The open Maven project.</figcaption>
-</figure>
-<p>In the “Java Projects” pane, expand <code>src/main/java</code>, then
-<code>com.example</code> (or whatever group Id you picked, this is the
-prefix of your package names in your project now), and open
-<code>App</code>. <span class="emoji" data-emoji="tada">🎉</span>, you
-just created a new Java project with Maven support.</p>
-<h2 id="adding-dependencies">Adding dependencies</h2>
-<p>Ok? Awesome? This was a lot of work to not have to type in a “Hello,
-world!” project in Java.</p>
-<p>Yeah, OK, so you not having to type in
-<code>public static void main(String[] args)</code> is fine, it’s not
-exactly a major benefit justifying the existence of Maven.</p>
-<p>One of the major reasons to want to use Maven is to very quickly be
-able to download and use dependencies to your Java projects.
-Dependencies in Java are kind of painful in a way that they aren’t in
-Python with <code>pip</code>: you have to download a JAR file, put the
-JAR file near your <code>.java</code> and <code>.class</code> files,
-configure your <code>CLASSPATH</code>… It’s not great.</p>
-<p>Adding a new dependency to a Java project using Maven is
-straightforward.</p>
-<p>Open the file named <code>pom.xml</code>, this file got created when
-you created the project.</p>
-<p><code>pom.xml</code> is the configuration file for your project that
-Maven uses to do things like specify the dependencies for your
-project.</p>
-<p>We’re going to do two things here:</p>
-<ol type="1">
-<li>Find out how to find dependencies.</li>
-<li>Add the dependency to our <code>pom.xml</code>.</li>
-</ol>
-<p>Let’s actually start by breaking our Java program: replace the
-contents of <code>App.java</code> with the following:</p>
+<p>Shell scripting languages are fully featured programming languages
+and include structures like conditional statements and loops. They
+contain other structures, too, but let’s stick to the basics.</p>
+<h2 id="conditional-statements">Conditional statements</h2>
+<p>Conditional statements in <code>bash</code> use the familiar
+<code>if</code> keyword and <em>resemble</em> the expressions you’ve
+seen in other languages.</p>
+<p>One of the major differences in <code>bash</code> are expressions
+themselves: most of the questions you’re going to be asking about a
+variable use unary operators.</p>
+<p>Here’s what a <code>bash</code> conditional statement looks like:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">json</span><span class="op">.</span><span class="im">JSONStringer</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> Hello world<span class="co">!</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> App <span class="op">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        JSONStringer stringer <span class="op">=</span> <span class="kw">new</span> <span class="fu">JSONStringer</span><span class="op">();</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>stringer<span class="op">.</span><span class="fu">object</span><span class="op">()</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">key</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">value</span><span class="op">(</span><span class="st">&quot;world&quot;</span><span class="op">)</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="op">.</span><span class="fu">endObject</span><span class="op">().</span><span class="fu">toString</span><span class="op">());</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>This is a small chunk of code that will create a <a
-href="https://en.wikipedia.org/wiki/JSON">JSON</a> object; it’s not
-exactly important what the code is doing, just that it requires a
-dependency (<code>org.json</code>).</p>
-<h3 id="finding-dependencies">Finding dependencies</h3>
-<p>Some projects will straight-up give you the information that you need
-to add them as a dependency to your <code>pom.xml</code>, but we’ll look
-at a way to find a dependency.</p>
-<p>Start by opening your web browser and going to <a
-href="https://mvnrepository.com"
-class="uri">https://mvnrepository.com</a>. This is a comprehensive
-listing of dependencies that you can use in your Java project.</p>
-<p>Let’s look specifically for something to help us use <a
-href="https://en.wikipedia.org/wiki/JSON">JSON</a> in our project. At
-the top of the page is a search field, enter “json” and press
-<kbd>Enter</kbd>.</p>
-<p>The first artifact that’s listed is <code>json</code> with a group Id
-of <code>org.json</code>. Click on <a
-href="https://mvnrepository.com/artifact/org.json/json"><code>json</code></a>.
-You’re going to see lots of versions, click on the most recent version
-at the top of the table.</p>
-<p>In the middle of this page is a tabbed view with different tool names
-(Maven, Gradle, Gradle, Gradle, SBT, Ivy, …). Maven is the default.
-There’s a text area here where you can select some text. This is XML,
-the same format as <code>pom.xml</code>. Click on the text area and it
-<em>should</em> automatically copy this to your clipboard. If it
-doesn’t, highlight the text and copy it.</p>
-<h3 id="add-the-dependency-to-pom.xml">Add the dependency to
-<code>pom.xml</code></h3>
-<p>Now switch back to VS Code, open <code>pom.xml</code>, and add this
-dependency below the <code>&lt;/dependency&gt;</code> for
-<code>junit</code>:</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="ot">-a</span> hello.c <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;hello.c exists&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;hello.c does not exist&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>The <code>-a</code> is a unary operator on file names.
+<code>-a</code> returns true if the file exists, and returns false if
+the file does not exist.</p>
+<p>Spacing is important here! <code>bash</code> is not a very smart
+language. You might be tempted to leave out spaces between
+<code>[[</code> and <code>-a</code> or between <code>hello.c</code> and
+<code>]]</code>, but you <strong>must</strong> have spaces between these
+symbols.</p>
+<div class="aside">
+<p>WHY?!</p>
+<p><code>bash</code> is, uh, weird. <code>[[</code> is technically a
+command that takes arguments. The arguments the <code>[[</code> command
+is getting in the above example are <code>-a</code>,
+<code>hello.c</code>, and <code>]]</code>. The <code>;</code> is a line
+separator (like in Python it’s optional, but can be used).</p>
+<p>Yeah, weird.</p>
+</div>
+<p><code>bash</code> has many unary operators that you can use to test
+files or variables. The one we care about right now is the
+<code>-n</code> operator, asking if a string is non-zero in length.</p>
+<div class="example">
+<p>Let’s add a conditional statement to <code>la</code> to test for the
+presence of arguments:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dependencies</span>&gt;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">groupId</span>&gt;junit&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">artifactId</span>&gt;junit&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">version</span>&gt;4.11&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- https://mvnrepository.com/artifact/org.json/json --&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">groupId</span>&gt;org.json&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">artifactId</span>&gt;json&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">version</span>&gt;20220924&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">dependencies</span>&gt;</span></code></pre></div>
-<p>As soon as you save, VS Code is going to ask if you want to
-“synchronize” the project:</p>
-<figure>
-<img src="update.png" alt="Do you want to synchronize?" />
-<figcaption aria-hidden="true">Do you want to synchronize?</figcaption>
-</figure>
-<p>You do! Click “Yes”!</p>
-<p>Now go back to <code>App.java</code>. It compiles! Run the program
-the way you did when you were debugging!</p>
-<p>You just added a dependency to a Java project and used that
-dependency <span class="emoji" data-emoji="tada">🎉</span>!</p>
-<h2 id="further-reading">Further reading</h2>
-<p>We’ve done the bare minimum here with Maven, but it’s enough to get
-us started.</p>
-<p>You can read more about this in a few places:</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">]]</span> <span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-al</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-al</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+</div>
+<p>You can find more unary operators in <code>bash</code> by reading the
+<code>CONDITIONAL EXPRESSIONS</code> section of its manual page, but
+here are some examples:</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-a file</code></td>
+<td>True if file exists.</td>
+</tr>
+<tr class="even">
+<td><code>-d file</code></td>
+<td>True if file exists and is a directory.</td>
+</tr>
+<tr class="odd">
+<td><code>-r file</code></td>
+<td>True if file exists and is readable.</td>
+</tr>
+<tr class="even">
+<td><code>-s file</code></td>
+<td>True if file exists and has a size greater than 0.</td>
+</tr>
+<tr class="odd">
+<td><code>string1 == string2</code></td>
+<td>True if the strings are equal.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loops">Loops</h2>
+<p>We can’t talk about conditional statements without at least saying
+something about loops!</p>
+<p>Similar to conditional statements, loops use the familiar
+<code>for</code> keyword. Bash also supports <code>while</code> and
+<code>until</code> loops, but most of the time you’re using a loop in
+Bash, you’re operating on some sequence of file names rather than until
+some event happens.</p>
+<p>The structure of a <code>for</code> loop is frustratingly different
+from conditional statements in a way it’s not in other programming
+languages — the conditional statements you saw above use the
+<code>[[</code> and <code>]]</code> brackets for wrapping the
+expression, but <code>for</code> loops generally do not use brackets or
+parenthesis in Bash.</p>
+<p>Here’s what a <code>for</code> loop looks like in Bash:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> <span class="pp">*</span> <span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$f</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
 <ul>
-<li><a href="https://code.visualstudio.com/docs/java/java-project">VS
-Code’s documentation for Java projects</a> gives you some more about
-using VS Code for Java development, including more about how to use the
-Maven for Java extension.</li>
-<li>The <a href="https://maven.apache.org/">Maven</a> home page has
-comprehensive documentation about how to use Maven.</li>
-<li>You can read more about other build and dependency management tools
-like <a href="https://gradle.org/">Gradle</a>, <a
-href="https://ant.apache.org/ivy/">Ivy</a>, or <a
-href="https://ant.apache.org">Ant</a>. Gradle is popular because it’s
-typically the build and dependency management tool used for Android app
-development.</li>
+<li>The <code>for</code> is … <code>for</code>, it’s the start of the
+loop.</li>
+<li>The <code>f</code> is the name of the variable you want to use as
+the name for the value in the current iteration of the loop over the
+sequence.</li>
+<li>The <code>in</code> is a separator between the variable name and the
+sequence.</li>
+<li>In this case <code>*</code> <em>is</em> the sequence. This is a
+“glob” or a pattern, and this glob in the shell means “all files in the
+current directory” (more on this soon!).</li>
+<li>The semi-colon <code>;</code>, like in conditional statements above,
+ends the current statement.</li>
+<li><code>do</code>, then is the beginning of the body of the loop.
+<ul>
+<li><code>echo $f</code> is one command you want run on the variable.
+This will print out the variable’s name.</li>
+</ul></li>
+<li><code>done</code> ends the body of the loop.</li>
 </ul>
+<div class="aside">
+<p>Maybe this looks sort of familiar. Maybe this looks like what we were
+doing with <code>find</code> and <code>-exec</code>. They do accomplish
+similar results!</p>
+<p>Both work, and both are effective. One way to think about this
+matching of ideas is that <code>find</code> and <code>-exec</code> are
+more of a functional programming paradigm (this is a <code>map</code>
+operation), <code>for</code> loops are more of a procedural
+paradigm.</p>
+<p>Some people may find that a loop is more readable than
+<code>find</code> and <code>-exec</code>, though, especially if you’re
+going to do <em>several</em> operations on a file or item in a loop.</p>
+</div>
+<p>When you’re writing <code>for</code> loops, the sequence can either
+use the patterns you’ve seen before (like <code>*.md</code>), or can be
+the result of a <em>command</em>.</p>
+<p>In fact, we can rewrite the <code>for</code> loop from above using
+<code>find</code>!</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-maxdepth</span> 1<span class="va">)</span> <span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$f</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>The output looks a little bit different, but the result is the
+same.</p>
+<p>Another common kind of loop you may want to write is one that
+iterates over a sequence of numbers (like the traditional
+<code>for</code> loop you’ve seen in languages like Java). To do that
+you can use the <code>seq</code> command:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> 1 10<span class="va">)</span> <span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$num</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
 
 </div> <!-- article-content -->
 
