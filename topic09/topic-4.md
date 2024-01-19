@@ -171,25 +171,3 @@ for num in $(seq 1 10) ; do
 done
 ```
 
-### Globs
-
-More often than not, the loops that you would want to write in the shell are
-intended to apply an operation to many files, and those files can be all in the
-same directory, or scattered throughout many directories.
-
-Shell languages (like Bash) have a feature called "globbing" that can help with
-quickly getting a list of files to operate on in something like a loop in a
-more reliable (and arguably easier!) way than using `find`.
-
-![Files covered in globs of jam. (Prompt: "a desk drawer with many files, all covered in blueberry jam")](globs.png)
-
-::: aside
-
-Why "*glob*"?
-
-Apparently [it's short for "global"]. I definitely don't pronounce "glob" as 
-"globe" (as in "global"), I pronounce it as in "glob"
-
-[it's short for "global"]: https://en.wikipedia.org/wiki/Glob_(programming)#Origin
-
-::: 

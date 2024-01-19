@@ -1,53 +1,116 @@
 ---
-title: Summary
+title: Debugging shell scripts
 author: Franklin Bristow
 ---
 
-Summary
-=======
+Debugging shell scripts
+=======================
 
-At this point you should be able to create shell scripts to help you when you
-run into repetitive tasks on the command line.
+::: outcomes
 
-Even though shell scripting languages are complete programming languages, you 
-should also take the time to evaluate whether or not making a shell script is 
-the right tool :hammer_and_wrench: for the job:
+* [X] Apply strategies to debug shell scripts.
 
-* Shell scripts can help quickly apply a sequence of operations to files.
-* Shell scripts *can* operate on strings, but it's pretty painful!
-* Shell scripts *usually **can't*** do basic math (you have to use a separate
-  calculator program, like `bc`).
-* Shell scripting languages don't usually or trivially allow you to build
-  complex composite data structures and objects (no classes), so building up
-  abstractions can be tricky (if possible at all).
-* Shell scripting languages don't usually (or ever) have the kind of supporting
-  tools that other programming languages have (no debuggers, no libraries, no
-  specific IDEs, no ...).
+:::
 
-Shell scripts are great for quickly finding files and running programs on those
-files, other programming languages are *usually* going to be better for
-actually doing stuff *to* the files.
+If you haven't already figured it out, shell scripting isn't... it isn't a great
+language for programming. I'm not judging shell scripts, but. No. Yes, I am
+judging shell scripts. And my judgment is that they are perfectly fine the way
+they are, but they are not a good general purpose programming language.
 
-Further reading
----------------
+Shell scripting languages do not come with an IDE and they do not come with a
+debugger. You can, however, do *something* to debug shell scripts.
 
-Just like programming (and anything, really), shell scripting goes way beyond 
-what you've been introduced to here. You've got a good start, but as you keep
-working with shell scripting, you'll find yourself running into situations where
-you need to get some more help.
+Log-based debugging
+-------------------
 
-* You can read the manual page for your shell to learn more about its scripting
-  language (e.g., `man bash` or `man tcsh`).
-    * Sections of interest in the manual page for `bash` include the
-      `CONDITIONAL EXPRESSIONS` section and the `Compound Commands` subsection.
-* Joshua Levy's "[The Art of Command Line]" is a very good resource that's been
-  translated into many languages. It's a good reference to keep in your
-  bookmarks.
-* [ShellCheck] is a tool for identifying and then helping you fix possible bugs
-  in your shell scripts.
-* The [Advanced Bash-Scripting Guide] is a comprehensive guide for shell
-  scripting with Bash.
+Re-read (or read) [log-based debugging].
 
-[The Art of Command Line]: https://github.com/jlevy/the-art-of-command-line
-[ShellCheck]: https://www.shellcheck.net/
-[Advanced Bash-Scripting Guide]: https://tldp.org/LDP/abs/html/
+You can print values of variables in shell scripts using the commands `echo` or
+`printf`.
+
+::: example
+
+We can print out the current value of a variable in a string with `echo`:
+
+```bash
+NAME="Franklin"
+echo "Hi, $NAME"
+```
+
+You can also print out values with `printf`:
+
+```bash
+PI=3 # close enough
+printf "%d\n" $PI
+```
+
+:::
+
+`echo` is pretty straightforward to use; `printf` can be as complex as
+`printf(3)` in the C programming language, but you can refer to the manual pages
+to find out more about how to use `printf` by running `man 1 printf`.
+
+[log-based debugging]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/topic-3.html#log-based-debugging
+
+Changing Bash Behaviour
+-----------------------
+
+Bash is not a good general purpose programming language. For many reasons. But
+two reasons that are relevant right now are:
+
+1. By default, Bash does not stop running a script if a variable that's being 
+   used does not have a value or has not been initialized.
+2. By default, Bash does not stop running a script if a program in the script
+   exits with an error.
+
+In other words, if Bash runs into something that could be a possible error, it
+just keeps going without stopping.
+
+::: example
+
+If you run the following script, it will just run to completion without telling
+you that a variable hasn't been initialized or given any value:
+
+```bash
+#!/usr/bin/env bash
+echo "Your name is $YOUR_NAME"
+echo "Hi $YOUR_NAME!"
+```
+
+Try creating this script and running it (don't forget to [make it executable]!).
+
+Go ahead. I'll wait.
+
+...
+
+...
+
+...
+
+Nice.
+
+[make it executable]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-4.html
+
+:::
+
+You can change how Bash behaves in these two (obviously!) error situations by
+changing Bash's behaviour using [the `set` command].
+
+The two options we're going to change are the ones that correspond to `-e` and
+`-x`. The `-e` option says "exit on any error", and the `-x` option says to 
+print a "trace" of commands (it prints out the commands that have run, this
+helps give you a sense of the flow of the script).
+
+[the `set` command]: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+
+::: example
+
+For ***any*** script that you write, you should start it with:
+
+```bash
+#!/usr/bin/env bash
+set -e    # exit on any error
+set -x    # print out all commands that are run
+```
+
+:::
