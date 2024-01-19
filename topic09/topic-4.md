@@ -1,292 +1,173 @@
 ---
-title: Build and dependency management
+title: "Structures: conditional statements and loops"
 author: Franklin Bristow
 ---
 
-Create a new software project
-=============================
+Structures: conditional statements and loops
+============================================
 
 ::: outcomes
 
-* [X] Create a new empty software project that includes a build and dependency
-  management tool.
-    * [X] Add and use a new dependency in a software project.
+* [X] Use loops, conditional statements, and variables in a shell script.
+    * [X] Use "globs" in a shell script to apply operations to files.
 
 :::
 
-We've previously installed the extension pack for Java in VS Code. This actually
-comes with "Maven for Java". Let's learn how to use that to create a new project
-with Maven.
 
-Maven
+Shell scripting languages are fully featured programming languages and include
+structures like conditional statements and loops. They contain other structures,
+too, but let's stick to the basics.
+
+Conditional statements
+----------------------
+
+Conditional statements in `bash` use the familiar `if` keyword and *resemble*
+the expressions you've seen in other languages.
+
+One of the major differences in `bash` are expressions themselves: most of the
+questions you're going to be asking about a variable use unary operators.
+
+Here's what a `bash` conditional statement looks like:
+
+```bash
+if [[ -a hello.c ]]; then
+    echo "hello.c exists"
+else
+    echo "hello.c does not exist"
+fi
+```
+
+The `-a` is a unary operator on file names. `-a` returns true if the file
+exists, and returns false if the file does not exist.
+
+Spacing is important here! `bash` is not a very smart language. You might be
+tempted to leave out spaces between `[[` and `-a` or between `hello.c` and `]]`,
+but you **must** have spaces between these symbols.
+
+::: aside
+
+WHY?!
+
+`bash` is, uh, weird. `[[` is technically a command that takes arguments. The
+arguments the `[[` command is getting in the above example are `-a`, `hello.c`,
+and `]]`. The `;` is a line separator (like in Python it's optional, but can be
+used).
+
+Yeah, weird.
+
+:::
+
+`bash` has many unary operators that you can use to test files or variables. The
+one we care about right now is the `-n` operator, asking if a string is non-zero
+in length.
+
+::: example
+
+Let's add a conditional statement to `la` to test for the presence of arguments:
+
+```bash
+#!/usr/bin/env bash
+
+if [[ -n "$1" ]] ; then
+    ls -al "$1"
+else
+    ls -al
+fi
+```
+
+:::
+
+You can find more unary operators in `bash` by reading the `CONDITIONAL
+EXPRESSIONS` section of its manual page, but here are some examples:
+
++----------------------+----------------------------------------------------+
+| Operator             | Meaning                                            |
++======================+====================================================+
+| `-a file`            | True if file exists.                               |
++----------------------+----------------------------------------------------+
+| `-d file`            | True if file exists and is a directory.            |
++----------------------+----------------------------------------------------+
+| `-r file`            | True if file exists and is readable.               |
++----------------------+----------------------------------------------------+
+| `-s file`            | True if file exists and has a size greater than 0. |
++----------------------+----------------------------------------------------+
+| `string1 == string2` | True if the strings are equal.                     |
++----------------------+----------------------------------------------------+
+
+Loops
 -----
 
-So far we've talked about dependency management (with Python's `pip`) and build
-management (with `make`).
+We can't talk about conditional statements without at least saying something
+about loops!
 
-[Maven] is both a dependency and build management tool. Where `pip` is pretty
-minimal (it only downloads dependencies and their dependencies and their
-dependencies and their dependencies and...), and `make` is... `make`, Maven is
-pretty comprehensive in what it does.
+Similar to conditional statements, loops use the familiar `for` keyword. Bash
+also supports `while` and `until` loops, but most of the time you're using a
+loop in Bash, you're operating on some sequence of file names rather than until
+some event happens.
 
-When we looked at `make`, one thing you might notice is that `make` has very few
-opinions about how you should create a `Makefile`. Yeah, we've got the idea of
-rules, targets, dependencies, commands, but you kind of have to do everything
-yourself. If you want a `clean` target, you have to write it. If you want an
-`all` target, you have to write it. While I might like to call my `clean` target
-`clean`, someone else might call it `cleanup`, and the only way we can reliably
-know is to look at the `Makefile` and read it. This is a long way to say that
-`make` is extremely unopinionated about everything except for tabs vs spaces.
+The structure of a `for` loop is frustratingly different from conditional
+statements in a way it's not in other programming languages --- the conditional
+statements you saw above use the `[[` and `]]` brackets for wrapping the
+expression, but `for` loops generally do not use brackets or parenthesis in
+Bash.
 
-Maven, on the other hand is extremely opinionated:
+Here's what a `for` loop looks like in Bash:
 
-* A Java project that uses Maven must adhere to a very specific folder structure
-  (`src/main/java`, `src/test/java`, etc).
-* Maven has well-known and specified names for "goals" (`clean`, `package`,
-  etc).
-
-Ideally this gets you two things:
-
-1. If you know how to build and use one Maven project, you know how to build and
-   use all projects that use Maven (in theory), and
-2. You can do pretty complex things with very little configuration (in theory).
-
-[Maven]: https://maven.apache.org/
-
-Create a project in VS Code
----------------------------
-
-Let's dive in. Start by opening VS Code. Normally you would create a new file in
-VS Code using something like <kbd>Control</kbd> or <kbd>Command</kbd> and
-<kbd>N</kbd>, or you would use the File &rarr; New File... menu, or you would
-create a new file by right clicking in the Explorer area and selecting New
-File... from the menu.
-
-We're going to do something a little bit different this time: we're going to
-open the "command palette" in VS Code. You can open the command palette by
-pressing:
-
-* <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Windows or Linux, or
-* <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS.
-
-The command palette lets you type in generally what you want to do and gives
-suggestions. Let's create a new Maven Java project:
-
-1. Start by beginning to type, then selecting "Create Java Project...".
-2. Select "Maven <small>Create from archetype</small>".
-
-   ![Choose "Maven <small>Create from archetype</small>".](palette.png)
-3. Select "`maven-archetype-quickstart`".
-
-   ![Choose `maven-archetype-quickstart`.](archetype.png)
-4. You can choose any version here, but I would recommend version 1.4.
-
-   ![Choose 1.4.](versions.png)
-5. Next you're going to get to enter two values: a "group Id" and an "artifact
-   Id". 
-
-   ![Enter your group Id.](groupid.png)
-
-   Group Id
-   : Sort of like the organization or ... group where one or more projects are
-     related to each other. 
-   : Is often a domain name reversed (e.g., `ca.umanitoba.cs.www`).
-
-   Artifact Id
-   : The name of the project that you're going to build.
-
-   You're welcome to use the default values for this (`com.example` and `demo`)
-   but when you create your own projects later you should pick more meaningful
-   group and artifact Ids.
-6. VS Code is going to prompt you to choose a directory where this project is
-   going to live. Maven is going to create a new directory with the same name as
-   the artifact Id within the folder you select.
-
-   ::: warning
-
-   The first time you do this, Maven is going to download a *bunch* of stuff.
-   This may take several minutes to complete.
-
-   :::
-7. You can monitor the progress of what's happening in the terminal that opens
-   at the bottom of your VS Code window. Eventually, Maven is going to prompt
-   you to enter a version number for your project:
-
-   ![Enter a version number for your project](yourversion.png)
-
-   ::: aside
-
-   Why didn't it ask when asking for group and artifact Ids?!
-
-   :::
-
-   You can safely accept the default by pressing <kbd>Enter</kbd>, or you can
-   enter something different.
-
-   ::: aside
-
-   There are [two hard problems in computer science]:
-
-   1. Naming things.
-   3. Cache invalidation.
-   2. Off-by-one errors.
-   4. Guaranteed order of message delivery.
-   5. Versioning.
-
-   One popular way to version your code is to use [semantic versioning].
-
-   [two hard problems in computer science]:
-   https://www.martinfowler.com/bliki/TwoHardThings.html
-   [semantic versioning]: https://semver.org/
-
-   :::
-8. Finally, (finally!), you can confirm the group and artifact Ids and the
-   version number that you selected by pressing <kbd>Enter</kbd>:
-
-   ![Confirm the details.](finish.png)
-
-If everything has worked out, your VS Code should now have the project open,
-and your explorer pane should show some folders and files:
-
-![The open Maven project.](explorer.png)
-
-In the "Java Projects" pane, expand `src/main/java`, then `com.example` (or
-whatever group Id you picked, this is the prefix of your package names in your
-project now), and open `App`. :tada:, you just created a new Java project with
-Maven support.
-
-Adding dependencies
--------------------
-
-Ok? Awesome? This was a lot of work to not have to type in a "Hello, world!"
-project in Java.
-
-Yeah, OK, so you not having to type in `public static void main(String[] args)`
-is fine, it's not exactly a major benefit justifying the existence of Maven.
-
-One of the major reasons to want to use Maven is to very quickly be able to
-download and use dependencies to your Java projects. Dependencies in Java are
-kind of painful in a way that they aren't in Python with `pip`: you have to
-download a JAR file, put the JAR file near your `.java` and `.class` files,
-configure your `CLASSPATH`... It's not great.
-
-Adding a new dependency to a Java project using Maven is straightforward.
-
-Open the file named `pom.xml`, this file got created when you created the
-project.
-
-`pom.xml` is the configuration file for your project that Maven uses to do
-things like specify the dependencies for your project.
-
-We're going to do two things here:
-
-1. Find out how to find dependencies.
-2. Add the dependency to our `pom.xml`.
-
-Let's actually start by breaking our Java program: replace the contents of
-`App.java` with the following:
-
-```java
-package com.example;
-
-import org.json.JSONStringer;
-
-/**
- * Hello world!
- *
- */
-public class App {
-    public static void main(String[] args) {
-        JSONStringer stringer = new JSONStringer();
-        System.out.println(stringer.object()
-								   .key("Hello")
-                                   .value("world")
-                                   .endObject().toString());
-    }
-}
+```bash
+for f in * ; do
+    echo $f
+done
 ```
 
-This is a small chunk of code that will create a [JSON] object; it's not exactly
-important what the code is doing, just that it requires a dependency
-(`org.json`).
+* The `for` is ... `for`, it's the start of the loop.
+* The `f` is the name of the variable you want to use as the name for the value
+  in the current iteration of the loop over the sequence.
+* The `in` is a separator between the variable name and the sequence.
+* In this case `*` *is* the sequence. This is a "glob" or a pattern, and this
+  glob in the shell means "all files in the current directory" (more on this 
+  soon!).
+* The semi-colon `;`, like in conditional statements above, ends the current
+  statement.
+* `do`, then is the beginning of the body of the loop.
+    * `echo $f` is one command you want run on the variable. This will print out
+      the variable's name.
+* `done` ends the body of the loop.
 
-### Finding dependencies
+::: aside
 
-Some projects will straight-up give you the information that you need to add
-them as a dependency to your `pom.xml`, but we'll look at a way to find a
-dependency.
+Maybe this looks sort of familiar. Maybe this looks like what we were doing with
+`find` and `-exec`. They do accomplish similar results!
 
-Start by opening your web browser and going to <https://mvnrepository.com>. This
-is a comprehensive listing of dependencies that you can use in your Java
-project.
+Both work, and both are effective. One way to think about this matching of ideas
+is that `find` and `-exec` are more of a functional programming paradigm (this
+is a `map` operation), `for` loops are more of a procedural paradigm.
 
-Let's look specifically for something to help us use [JSON] in our project. At
-the top of the page is a search field, enter "json" and press <kbd>Enter</kbd>.
+Some people may find that a loop is more readable than `find` and `-exec`, 
+though, especially if you're going to do *several* operations on a file or item
+in a loop.
 
-The first artifact that's listed is `json` with a group Id of `org.json`. Click
-on [`json`]. You're going to see lots of versions, click on the most recent
-version at the top of the table.
+:::
 
-In the middle of this page is a tabbed view with different tool names (Maven,
-Gradle, Gradle, Gradle, SBT, Ivy, ...). Maven is the default. There's a text
-area here where you can select some text. This is XML, the same format as
-`pom.xml`. Click on the text area and it *should* automatically copy this to
-your clipboard. If it doesn't, highlight the text and copy it.
+When you're writing `for` loops, the sequence can either use the patterns you've
+seen before (like `*.md`), or can be the result of a *command*. 
 
-### Add the dependency to `pom.xml`
+In fact, we can rewrite the `for` loop from above using `find`!
 
-Now switch back to VS Code, open `pom.xml`, and add this dependency below the
-`</dependency>` for `junit`:
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.11</version>
-    <scope>test</scope>
-  </dependency>
-  <!-- https://mvnrepository.com/artifact/org.json/json -->
-  <dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20220924</version>
-  </dependency>
-</dependencies>
+```bash
+for f in $(find . -maxdepth 1) ; do
+    echo $f
+done
 ```
 
-As soon as you save, VS Code is going to ask if you want to "synchronize" the
-project:
+The output looks a little bit different, but the result is the same.
 
-![Do you want to synchronize?](update.png)
+Another common kind of loop you may want to write is one that iterates over a
+sequence of numbers (like the traditional `for` loop you've seen in languages
+like Java). To do that you can use the `seq` command:
 
-You do! Click "Yes"!
+```bash
+for num in $(seq 1 10) ; do
+    echo $num
+done
+```
 
-Now go back to `App.java`. It compiles! Run the program the way you did when you
-were debugging!
-
-You just added a dependency to a Java project and used that dependency :tada:!
-
-[`json`]: https://mvnrepository.com/artifact/org.json/json
-[JSON]: https://en.wikipedia.org/wiki/JSON
-
-Further reading
----------------
-
-We've done the bare minimum here with Maven, but it's enough to get us started.
-
-You can read more about this in a few places:
-
-* [VS Code's documentation for Java projects] gives you some more about using VS
-  Code for Java development, including more about how to use the Maven for Java
-  extension.
-* The [Maven] home page has comprehensive documentation about how to use Maven.
-* You can read more about other build and dependency management tools like
-  [Gradle], [Ivy], or [Ant]. Gradle is popular because it's typically the build
-  and dependency management tool used for Android app development.
-
-[VS Code's documentation for Java projects]:
-https://code.visualstudio.com/docs/java/java-project
-[Gradle]: https://gradle.org/
-[Ivy]: https://ant.apache.org/ivy/
-[Ant]: https://ant.apache.org

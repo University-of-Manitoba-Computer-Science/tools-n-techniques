@@ -1,588 +1,474 @@
 ---
-title: Shell scripts
+title: Choose a backup strategy
 author: Franklin Bristow
 ---
 
-Shell scripts
-=============
+
+Choose a backup strategy
+=========================
 
 ::: outcomes
 
-* [X] Write and run shell scripts to repeat complex tasks.
+* [X] Choose an appropriate backup strategy for protecting your files.
 
 :::
 
-::: {style='float: left;width: 300px'}
+![When not to start thinking about backups. (&copy; [Gregor
+Czaykowski](https://loadingartist.com/comic/burned/))](backups.gif)
 
-![A script.](script.png)
+The main driving factor in deciding how you're going to be backing up your data
+is really the data itself: what the data is, how urgently you need the data back
+if it was gone, where you're backing up to, how much you're backing up, how much
+you're willing to pay.
+
+Let's look at each of these, then look at some strategies you can use to backup
+your files.
+
+Things to consider
+-------------------
+
+### What kind of data are you backing up?
+
+Not just what kind of data are you backing up, but:
+
+<details><summary>How important is that data?</summary>
+
+* Not very important (I know what this data is, but I don't really care about
+  it).
+* Somewhat important (This is useful but not *that* important).
+* Very important (I would be devastated if I lost this data).
+
+</details>
+
+<details><summary>How replaceable is that data if it were suddenly
+gone?</summary>
+
+* Trivially replaceable (I know exactly how to replace it, and I can do it in a
+  few minutes).
+* Painfully replaceable (I know exactly how to replace it, but it's going to
+  take hours or days).
+* Irreplaceable (I can't replace this at all).
+
+</details>
+
+<details><summary>How often do you use this data or how urgently do you need it
+back if it were gone?</summary>
+
+* Not frequently used and not urgent (you have this data, but you very
+  rarely need to open it; when you need to open it, it wouldn't be big deal
+  if it were gone).
+* Somewhat frequently used or somewhat urgent (you use this data regularly;
+  when you need to open it you'd need it back within a day or two if it were
+  gone).
+* Very frequently used or very urgent (you use this data frequently and you
+  need it back within minutes or hours if it were gone).
+
+</details>
+
+Here are some examples of the kinds of data you could consider backing up, and
+some answers to the questions above:
+
++------------------+-----------------+----------------+-------------------------+
+| Thing to back up | Importance      | Replaceability | Frequency or urgency    |
++==================+=================+================+=========================+
+| Personal photos  | Very important  | Irreplaceable  | Not something you use   |
+| and videos       |                 |                | frequently; not urgent  |
+|                  |                 |                | to get back when it's   |
+|                  |                 |                | missing, it's OK to     |
+|                  |                 |                | wait a few days.        |
++------------------+-----------------+----------------+-------------------------+
+| Documents and    | Important but   | Painfully      | Something you use       |
+| assignments      | less important  | replaceable    | frequently near a due   |
+|                  | over time.      |                | date and less           |
+|                  |                 |                | frequently after;       |
+|                  |                 |                | urgent to get back near |
+|                  |                 |                | a due date (minutes or  |
+|                  |                 |                | hours), way less        |
+|                  |                 |                | urgent after a due      |
+|                  |                 |                | date.                   |
++------------------+-----------------+----------------+-------------------------+
+| Web browser      | Passwords are   | Irreplaceable  | Something you use       |
+| information like | important,      | or painfully   | frequently. Passwords   |
+| passwords,       | bookmarks are   | replaceable.   | could be very urgent to |
+| bookmarks,       | less important, |                | get back quickly.       |
+| history.         | history is not  |                |                         |
+|                  | important.      |                |                         |
++------------------+-----------------+----------------+-------------------------+
+| Music and        | Not very        | Replaceable    | Maybe something you use |
+| videos from      | important.      | from the       | frequently, not that    |
+| online.          |                 | source.        | urgent to get back.     |
++------------------+-----------------+----------------+-------------------------+
+| Programs         | Important.      | Replaceable.   | Something you use       |
+| installed on     |                 |                | frequently. Could       |
+| your computer.   |                 |                | be urgent to get back,  |
+|                  |                 |                | but not often.          |
++------------------+-----------------+----------------+-------------------------+
+| Program          | Not very        | Painfully      | Something you use       |
+| configuration.   | important.      | replaceable.   | frequently. Could be    |
+|                  |                 |                | urgent to get back, but |
+|                  |                 |                | not often.              |
++------------------+-----------------+----------------+-------------------------+
+| Your operating   | Not very        | Trivially or   | Something you use       |
+| system's         | important.      | painfully      | frequently. Not that    |
+| configuration    |                 | replaceable,   | urgent to get back.     |
+| (how you've      |                 | depending on   |                         |
+| configured       |                 | how much you   |                         |
+| keyboard         |                 | have           |                         |
+| shortcuts).      |                 | configured.    |                         |
++------------------+-----------------+----------------+-------------------------+
+| Your operating   | Important.      | Replaceable.   | Something you use       |
+| system.          |                 |                | frequently, pretty      |
+|                  |                 |                | urgent to get back, but |
+|                  |                 |                | might mean bigger       |
+|                  |                 |                | problems if it's        |
+|                  |                 |                | missing (failed         |
+|                  |                 |                | hardware).              |
++------------------+-----------------+----------------+-------------------------+
+
+### Where are you backing up to?
+
+Once you've thought about the data that you want or need to back up, you should
+start thinking about where you're going to back up that data.
+
+How important or replaceable your data is and the urgency that you have to get
+it back affect the choices you're making here.
+
+If you're backing up multiple different things, you might be backing up those
+things to different places.
+
+When you're thinking about where you're backing up to, you should consider a few
+things:
+
+* How easy it is to use ("I already do stuff like this all the time" to "I need to
+  learn something completely new").
+* How expensive it is ("I already have all required equipment or software" to "I
+  need to buy new expensive hardware or software").
+* How reliable it is ("I still lose everything if my hardware fails" to "my house
+  could burn down and I'm still OK").
+
+Here are some examples of where you could back up to:
+
++-------------------+----------------------+-----------------+------------------+
+| Place             | Ease of use          | Cost            | Reliability      |
++===================+======================+=================+==================+
+| Another folder    | Very easy, it's      | Very cheap,     | Very unreliable; |
+| on your computer. | just copy and paste. | it's just your  | if your hard     |
+|                   |                      | computer.       | drive fails,     |
+|                   |                      |                 | you lose both    |
+|                   |                      |                 | copies.          |
++-------------------+----------------------+-----------------+------------------+
+| Another drive in  | Still very easy,     | Kind of         | More reliable,   |
+| or attached to    | it's just copy and   | expensive,      | can be made more |
+| your computer.    | paste.               | new drives      | reliable if you  |
+|                   |                      | aren't cheap.   | move the other   |
+|                   |                      |                 | drive to a       |
+|                   |                      |                 | different        |
+|                   |                      |                 | physical         |
+|                   |                      |                 | location.        |
++-------------------+----------------------+-----------------+------------------+
+| Other kinds of    | Straightforward to   | Can be          | [CDs and DVDs    |
+| physical media    | use, but you might   | expensive; CDs  | are not          |
+| (CDs, DVDs,       | need special         | and DVDs are    | long-term        |
+| [tapes]).         | software.            | cheap, tape     | reliable]. Tapes |
+|                   |                      | drives are not. | are very         |
+|                   |                      |                 | reliable.        |
++-------------------+----------------------+-----------------+------------------+
+| Online storage    | Straightforward to   | Usually free    | Generally        |
+| tools (Dropbox,   | use. You do need     | for small       | reliable, but    |
+| OneDrive).        | special software,    | amounts of      | can fail in      |
+|                   | but it's usually     | data and not    | unexpected ways. |
+|                   | simple to use.       | very expensive  | You're relying   |
+|                   |                      | for more.       | on the company   |
+|                   |                      |                 | running the      |
+|                   |                      |                 | service.         |
++-------------------+----------------------+-----------------+------------------+
+
+[CDs and DVDs are not long-term reliable]:
+https://en.wikipedia.org/wiki/Disc_rot
+[tapes]: https://en.wikipedia.org/wiki/Tape_drive
+
+### How are you actually going to back up your data?
+
+When you've decided where you're backing up to, then you can think about how
+you're going to make the back ups. There are two approaches to backing up data
+from a computer: 
+
+1. **Image-based (drives or [partitions])**.
+
+   This is making a byte-for-byte copy of your entire disk.
+
+   This is good because you're copying literally everything that's on your
+   drive. Ideally this means that you can take a complete image, remove the
+   drive from your computer (or move to a different computer), then restore the
+   image to the new drive or computer and immediately have an exact copy of the
+   whole thing.
+
+   This is bad because it takes a lot of space (you're backing up a lot of stuff
+   you don't care about) and because you're effectively treating all the data on
+   your drive as the same kind of data (your operating system is not as
+   important as your pictures). You also can't trivially extract a single file
+   from a drive image (you *can*, but not trivially).
+2. **File-based**.
+
+   This is copying just files and folders (and maybe their [metadata]), and
+   usually this means that you can open the folder in your file browser and
+   actually see the files.
+
+   This is good because you're only taking as much space as you need to back up
+   what you're trying to back up, and it means that you can be more [granular]
+   about your approach to backing up your files (you can put pictures on tape in
+   a safe deposit box and just not back up your downloaded music at all).
+
+   This is bad because you have to intentionally back up what you want to back
+   up. You also can't (or shouldn't) back up an entire operating system this
+   way.
+
+[partitions]: https://en.wikipedia.org/wiki/Disk_partitioning
+[metadata]: https://en.wikipedia.org/wiki/Metadata
+[granular]: https://en.wikipedia.org/wiki/Granularity
+
+Software
+--------
+
+Let's look at a few examples of software for backing up your files and evaluate
+them.
+
+### Copy and paste
+
+This is... copy and paste.
+
+![Windows file transfer dialog.](windows-copy.png)
+
+![macOS file transfer dialog.](macos-copy.png)
+
+```bash
+cp -r source destination
+```
+
+You can be more complicated than just simple copy-and-paste, though: something
+like [`rsync`] copies files, optionally preserves [metadata], and can delete
+files in the destination that have been deleted in the source (synchronizing the
+contents of directories).
+
+Evaluation:
+
+* :heavy_check_mark: Super easy to use, you don't need any special software.
+* :heavy_check_mark: Free!
+* :heavy_check_mark: Granular, you can choose exactly what you want to copy.
+* :heavy_check_mark: You're in control of your data at all times.
+* :x: Doesn't preserve metadata (unless you're using something like `rsync`).
+* :x: Isn't versioned (you don't have the current version and old versions in
+  your back up, just the current version).
+
+[`rsync`]: https://rsync.samba.org/
+
+### Live-synchronizing folders
+
+Some examples of software enabling live-synchronizing of folders include:
+
+* [Dropbox]
+* [OneDrive]
+* [iCloud]
+* [Seafile]
+* [Backblaze]
+
+Evaluation:
+
+* :heavy_check_mark: Generally very easy to use, even if you need special
+  software.
+* :heavy_check_mark: Usually free to use, but costs are also minimal (usually
+  single digits per month).
+* :heavy_check_mark: Granular, you can usually choose which folders to
+  synchronize.
+* :heavy_check_mark: Versioned, you can usually go back to older versions of
+  files.
+* :x: You have to trust someone else to host your data (Seafile can be
+  "[self-hosted]", see [the Seafile manual] for more information).
+
+[Dropbox]: https://www.dropbox.com/
+[OneDrive]:
+https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage
+[iCloud]: https://www.icloud.com/
+[Seafile]: https://www.seafile.com/en/home/ 
+[self-hosted]:
+https://www.vice.com/en/article/pkb4ng/meet-the-self-hosters-taking-back-the-internet-one-server-at-a-time
+[the Seafile manual]: https://manual.seafile.com/
+[Backblaze]: https://www.backblaze.com/
+
+### Disk imaging
+
+Some examples of software for disk imaging are:
+
+* [CloneZilla]
+* [Acronis Cyber Protect Home Office]
+* [Redo Rescue]
+* `dd` for Linux/macOS can copy entire disks (see `man dd`).
+
+Evaluation:
+
+* :heavy_check_mark: :x: Some are easy to use (Redo Rescue, Acronis), some are
+  not (CloneZilla, `dd`).
+* :heavy_check_mark: :x: some a free to use (`dd`, Redo Rescue, CloneZilla),
+  some are not (Acronis).
+* :x: Not at all granular, you copy an entire disk or partition.
+* :x: Not versioned.
+* :heavy_check_mark: You're generally in control of your data.
+
+[CloneZilla]: https://clonezilla.org/
+[Acronis Cyber Protect Home Office]:
+https://www.acronis.com/en-us/products/true-image/
+[Redo Rescue]: http://redorescue.com/
+
+3-2-1
+-----
+
+Software enables you to actually copy or back up software, but there's still
+strategy for *how* you manage your back ups.
+
+One strategy is called "3-2-1", and it's summed up as:
+
+* Have at least 3 copies of your data.
+* Have 2 local or on-site copies of your data on different devices (two
+  different computers, one computer and one USB drive, one computer and CDs or
+  DVDs).
+* Have at least 1 copy be remote or off-site.
+
+You can read a lot more about "[3-2-1]" and its variants like "[3-2-1-1-0 or 4-3-2
+backups]" (e.g., [Seagate], [Carbonite], [Veeam]), but this is a pretty
+straightforward strategy.
+
+This strategy tries to mitigate or prevent several different things:
+
+* Having 1 copy of your data off-site means that your data is resilient to a
+  physical disaster where the other copies of your data are stored (e.g., fire,
+  flood).
+* Having 2 local copies means that your data is resilient to hardware failures
+  (e.g., your disk dies, the CDs or DVDs you burned aren't readable later).
+* Having 3 copies in total means... you've got 3 copies in total. The likelihood
+  of one failure happening is moderate, the likelihood of two failures happening
+  is lower.
+
+[3-2-1]: https://www.backblaze.com/blog/the-3-2-1-backup-strategy/
+[3-2-1-1-0 or 4-3-2 backups]:
+https://www.backblaze.com/blog/whats-the-diff-3-2-1-vs-3-2-1-1-0-vs-4-3-2/
+[Seagate]: https://www.seagate.com/ca/en/blog/what-is-a-3-2-1-backup-strategy/
+[Carbonite]:
+https://www.carbonite.com/blog/article/2016/01/what-is-3-2-1-backup/
+[Veeam]: https://www.veeam.com/blog/321-backup-rule.html
+
+Restoring and verifying backups
+-------------------------------
+
+::: outcomes
+
+* [X] Restore and verify your backup from the remote server.
 
 :::
 
-At this point you're pretty familiar with using the command line; you should be
-able to do a variety of things:
+Having your data copied to one or more other places is great, but you can't be
+confident that your back ups are actually back ups until you've demonstrated
+that you can restore the back up (you can actually get the data back you thought
+you were backing up).
 
-* Navigate and create folder structures.
-* Edit text files.
-* Convert files between various formats.
-* Filter lines from text files.
-* Read and change permissions on files.
-* Use version control software.
-* Find files by name or properties.
-* Redirect standard input, output, and error.
-* Construct pipelines of commands.
+How you restore and verify your backups depends on whether you're doing
+file-based backup or image-based backup.
 
-While there's a whole world of things you can still learn about using the
-command line, and more command line tools than you can imagine to learn about
-(which sometimes themselves contain entire programming languages!), you've
-learned and demonstrated a lot! :tada:
+### File-based restore and verify
 
-As you're getting more used to using the command line, you may find yourself
-repeating similar, complex commands over and over again. Or maybe you find
-yourself doing the same kinds of things over and over again, maybe running
-multiple commands repeatedly. Or maybe you've built a complex pipeline that
-you want to keep for use later because you'll need to use it again.
+Verifying that your files are backed up can be as straightforward as opening
+your file explorer or web browser, navigating to the location where your files
+are backed up to, and then just manually inspecting if you have actual photos,
+files, and folders in that location (i.e., literally open the files and look at
+them).
 
-In their very simplest form, shell scripts are plain text files that contain a
-sequence of commands or statements, separated by newlines or semi-colons. As you
-grow shell scripts, they can contain things like conditional statements, loops,
-functions, and... uh, hey, [wait a minute]. That, uh, that sounds an awful lot
-like programming.
+That's effective and easy, but not very scalable --- checking hundreds or
+thousands of photos is tedious and painful.
 
-Most of the time we spend interacting with shells is interactive: the shell is
-waiting for us to enter a command, and when we press <kbd>Enter</kbd>, the shell
-runs the command, waits for it to finish (it actually `wait(2)`s, it's a C
-function), then patiently waits for us to enter another command.
+We've seen the idea of `diff` before in the context of comparing plain-text
+files, but we can also use `diff`-like-tools to compare entire folders for
+differences.
 
-Most shells can also run non-interactively: you give the shell the name of a
-file that contains a sequence of commands and the shell will just interpret,
-then run the sequence of commands like it's a program.
+Here are some tools that will allow you to compare entire folder structures for
+differences:
 
-[wait a minute]: https://youtu.be/g3YiPC91QUk?t=58
+* [Meld] (Meld works on all of Linux, macOS, and Windows)
+* [WinMerge] (WinMerge only works on Windows)
+* [KDiff3] (KDiff3 works on all of Linux, macOS, and Windows)
+* [FileMerge] (FileMerge is only for macOS with Xcode)
 
-Shells and languages
---------------------
+The general strategy here is this:
 
-Similar to different programming languages, different shells use different
-syntax to express similar ideas. Deciding which shell program to use defines
-what syntax you're going to use and the kinds of keywords you should be using
-when you're looking for help (in the manual page for the shell, on the shell's
-website, or generally online).
+1. Make the entire backed-up folder structure available on your local machine.
+   This might be downloading your entire backed-up folder structure from the
+   cloud provider you're using (Dropbox, OneDrive), inserting a CD or DVD,
+   plugging in an external USB drive, or using `rsync` or `scp` to copy your
+   files back to your computer.
+2. Open your visual diff tool of choice and compare the two folders.
 
-While your default shell on Aviary is `tcsh`, we're going to be using `bash` as
-a shell interpreter for scripting. This is an opinionated choice, just as
-using `vim` instead of `emacs` is an opinionated choice. As you get more
-comfortable using the command line, you may want to choose a different shell
-(like `fish`) and thus a different shell language, but `bash` and its syntax are
-common enough that we'll treat it like a "[lingua franca]".
+Here's what Meld looks like when you compare two folders to one another where
+the two folders have no differences:
 
-[lingua franca]: https://en.wikipedia.org/wiki/Lingua_franca
+![Meld comparing two folders with no differences.](meld-no-differences.png)
 
-Basic scripting
----------------
+Here's what Meld looks like when you compare two folders to one another and
+there's one or more differences:
 
-Let's start with the basics: the general structure of a shell script and some
-very simple shell scripts.
+![Meld comparing two folders with one one or more
+differences.](meld-with-differences.png)
 
-### General structure
+Ideally, you should see no differences between what you got from your backup and
+what you have locally.
 
-Shell scripts all start with a "[shebang]" line --- a line that starts with the
-symbols `#!`. The first line indicates which program is going to be run to
-interpret the rest of the file.
+[Meld]: https://meldmerge.org/
+[WinMerge]: https://winmerge.org/
+[KDiff3]: https://invent.kde.org/sdk/kdiff3
+[FileMerge]: https://developer.apple.com/xcode/features/
 
-```bash
-#!/usr/bin/env bash # this is a bash script
-```
+### Image-based restore and verify
 
-Everything after the first line is the actual contents of the script, the
-sequence of commands to be executed.
+When you back up your data using an image-based approach you wind up with a
+single, very large file (many GBs).
 
-[shebang]: https://en.wikipedia.org/wiki/Shebang_(Unix)
+This file contains all the bytes that are either on your entire drive, or all
+the bytes that are on individual partitions that are on your drive.
 
-### Simple scripts
+There are two ways to verify the contents of these files:
 
-Here's an example of a very simple script:
+1. Mount the images and use the same approach as [File-based restore and
+   verify].
+2. Write your image(s) back to the same machine or a different machine.
 
-```bash
-#!/usr/bin/env bash
+#### Mount the images
 
-ls -la
-```
+This approach is primarily limited to Linux or macOS. On Linux, you can treat an
+individual file as a complete drive by using a ["loop" device]. You can take an
+individual file and "mount" it a though it were a drive. This is a feature of
+the idea that "[everything is a file]".
 
-Copy and paste this into a new plain text file on Aviary; give it a file name
-that represents what this does (I recommend `la`, "list all").
+You *can* do this on Windows, provided that you have something like the Windows
+Subsystem for Linux installed (which you should now!).
 
-::: aside
-
-Copying and pasting into `vim` is tedious, having to enter and exit paste mode
-is a real bother. Another way to quickly copy and paste into your terminal to
-create a new file is using the program `cat`. As above, `cat` is a program that
-will read standard input and write to standard output. But we can redirect
-standard output to a file!
+Here's an example of how you might mount a partition image from Windows (using
+the NTFS file system), this might not work depending on the distribution that
+you're using:
 
 ```bash
-cat > la
+mount -t ntfs disk1.img /mnt/windows
 ```
 
-Once you enter that, press <kbd>Enter</kbd>, then paste, then press
-<kbd>Control</kbd>+<kbd>D</kbd>.
+Once your disk is mounted, you can compare the contents using the approach
+described in [File-based restore and verify].
 
-That's it!
+["loop" device]: https://en.wikipedia.org/wiki/Loop_device
+[everything is a file]: https://en.wikipedia.org/wiki/Everything_is_a_file
 
-:::
+#### Write the images
 
-Once you've written the file, exit your editor. Before we can run a shell
-script, we need to mark it as executable using `chmod`:
+The other option is to use the same software that you used to create the images
+in the first place (CloneZilla, Redo Rescue, Acronis, etc) to write them back
+to either the same device (dangerous!) or a different device that has similar
+characteristics.
 
-```bash
-chmod a+x la
-```
-
-Then we can run the script:
-
-```bash
-./la
-```
-
-:tada:, your first shell script!
-
-Shell scripts consist of one or more lines of commands to run. Add another line
-to your script:
-
-```bash
-find . -name "*.md"
-```
-
-Then run it again (you don't need to `chmod` again). Now *two* commands worth of
-output appear.
-
-One command that you might find helpful when you're scripting is the `echo`
-command, this is a "print" command for shells:
-
-```bash
-echo "Hello, world!"
-```
-
-You can also write comments using the `#` symbol, anything following is a
-comment:
-
-```bash
-echo "Hello, world" # a friendly message
-find . -name "*.docx" -delete # clean up Word files
-```
-
-::: example
-
-Here's a more complete (and completely contrived) example of a script:
-
-```bash
-#!/usr/bin/env bash
-
-echo "Here's what's in the current directory:"
-# list all with long listings
-ls -al
-
-echo "Here are all the Markdown files:"
-# find all files with the `.md` extension
-find . -name "*.md"
-```
-
-:::
-
-Environment variables and the `$PATH`
-------------------------------------
-
-Shell languages, like other programming languages, support variables.
-
-Almost all shells follow the same convention for naming variables:
-
-* Variable names start with a `$`,
-* Variable names are all `UPPERCASE`,
-* Variable names are [`SNAKE_CASE`] (they use underscores to separate words).
-
-[`SNAKE_CASE`]: https://en.wikipedia.org/wiki/Snake_case
-
-All shells have special variables, and those special variables help your shell
-make decisions, or help define the behaviour that your shell has. These special
-variables are called "environment variables".
-
-::: example
-
-Try running this in your shell to find out what shell you're using:
-
-```bash
-echo $SHELL
-```
-
-`$SHELL` is an environment variable that contains the name of the running shell.
-
-:::
-
-When you enter the names of programs on the command line, your shell has to
-figure out where that program actually is in a folder structure.
-
-::: aside
-
-This is might seem obvious when you think about it, but think about it: the
-programs that you're running on the command line are just files with bits in
-them. They were written in a programming language (often C), then compiled and
-put in a folder somewhere.
-
-A lot of programs on Linux and UNIX systems live in the folders `/bin` and
-`/usr/bin`. You can learn a bit more about where files live on a Linux system by
-reading a manual page:
-
-
-```bash
-man hier 
-
-### OR
-
-man 7 hier # hier is in section 7 for miscellaneous
-```
-
-:::
-
-Your shell uses a special environment variable called `$PATH` (often called
-*the* `$PATH`) to find where the command you just entered exists as a file. The
-`$PATH` contains a list of directories that your shell will look in to find the
-file representing the command you asked it to run. Different shells use
-different separators for directory entries in the path. Both `tcsh` and `bash`
-use a colon `:` to separate directories.
-
-::: example
-
-As above, use the `echo` command to print out what the `$PATH` is right now in
-your shell:
-
-```bash
-echo $PATH
-```
-
-:::
-
-Your `$PATH` will contain many folders on Aviary, but it importantly includes
-two directories:
-
-1. `.`: the current directory, and this is why you don't have to type `./` in
-   front of programs you've written and compiled yourself.
-2. `~/bin`: a directory named `bin` relative to your home directory. When you
-   `echo $PATH`, the `~` will be listed as an absolute path (e.g.,
-   `/home/student/you/bin`).
-
-What this means is that we can put scripts we write into the directory `~/bin`,
-then we can run them *anywhere*.
-
-::: example
-
-The directory `~/bin` *may not* exist in your user directory on Aviary. Create
-the directory, then move the `la` script you wrote above into this directory.
-
-This applies **only** to `tcsh`: `tcsh` [caches] the names of commands that are
-in folders on the `$PATH`. After you add something to `~/bin` (which is on your
-`$PATH`), you've got to get `tcsh` to regenerate this cache. You can regenerate
-the cache in `tcsh` by running the command:
-
-```bash
-rehash
-```
-
-You must do this any time you add programs or commands to folders on the `$PATH`
-that you want to work in other places, but this only applies to `tcsh`. If
-you're using a different shell like `bash` or `fish`, then your shell will
-almost certainly do this for you.
-
-Now change back to your user directory:
-
-```bash
-cd ~
-
-### Or just `cd` with no arguments
-
-cd
-```
-
-And run `la`. :tada:, now you can run `la` in *any* directory.
-
-:::
-
-You can find out which environment variables are currently set and what their
-values are using the `env` command.
-
-[caches]: https://en.wikipedia.org/wiki/Cache_(computing)
-
-Arguments
----------
-
-Shell scripts that you write can accept arguments, just like programs you write
-in other programming languages. In both C and Java (and Python, technically),
-you can access arguments passed on the command line to your program as arrays of
-strings.
-
-Shell scripts can access command line arguments using variables, but you can
-directly access arguments on the command line as numbered variables like `$1`.
-
-::: example
-
-Here's a small program that will print out the values passed to it as arguments
-on the command line:
-
-```bash
-#!/usr/bin/env bash
-
-echo "The first argument is $1"
-echo "The second argument is $2"
-echo "The third argument is $3"
-echo "All arguments are $*"
-```
-
-Write this script and try running it with different arguments to see how the
-output changes. Don't forget to use `chmod` to set execute permissions for your
-script!
-
-:::
-
-A common use of arguments on the command line for shell scripts is to pass the
-name of a file or directory you want to operate on.
-
-::: example
-
-Let's upgrade our `la` script a little bit.
-
-Remember that `ls` can run with no arguments, and when run with no arguments
-it's defaulting to printing out the contents of the directory `.`. But `ls`
-*can* accept arguments. Our `la` script doesn't right now.
-
-Change your `la` script to accept an argument and pass it to `ls`:
-
-```bash
-#!/usr/bin/env bash
-
-ls -al "$1" # quotes in case of spaces!
-```
-
-Now run `la` again, but pass it an argument:
-
-```bash
-la .
-```
-
-Neat.
-
-::: aside
-
-Why "quotes in case of spaces"? Try this:
-
-1. Remove the quotes around `$1` in your script.
-2. Create a directory that has a space in its name (`mkdir "space dir"`).
-3. Try running `la "space dir"`.
-4. Put back the quotes around `$1` in your script.
-
-When the shell "expands" the variable `$1`, it's replacing the value of that
-variable into the command *literally*. If the variable contains spaces, it will
-be replaced in the command spaces and all. In other words,
-
-```bash
-ls -al $1 # becomes:
-ls -al space dir
-```
-
-If you remember *way back a long time ago*, we had to put quotes around names
-with spaces when using `mkdir` because `mkdir` would turn `space dir` into two
-directories. Similarly, `ls` is looking for two separate directories.
-
-Including the quotes around `$1` makes sure that even if the variable contains
-spaces, it's going to be quoted when it's passed to the command:
-
-```bash
-ls -al "$1" # becomes
-ls -al "space dir"
-```
-
-:::
-
-:::
-
-While we've improved `la` slightly here, we've also broken it. Try running `la`
-by itself with no arguments.
-
-...
-
-Oops. Now we need to test for the special case of no arguments being passed.
-We're going to need some more tools for that: conditional statements.
-
-Structures: conditional statements and loops
---------------------------------------------
-
-Shell scripting languages are fully featured programming languages and include
-structures like conditional statements and loops. They contain other structures,
-too, but let's stick to the basics.
-
-### Conditional statements
-
-Conditional statements in `bash` use the familiar `if` keyword and *resemble*
-the expressions you've seen in other languages.
-
-One of the major differences in `bash` are expressions themselves: most of the
-questions you're going to be asking about a variable use unary operators.
-
-Here's what a `bash` conditional statement looks like:
-
-```bash
-if [[ -a hello.c ]]; then
-    echo "hello.c exists"
-else
-    echo "hello.c does not exist"
-fi
-```
-
-The `-a` is a unary operator on file names. `-a` returns true if the file
-exists, and returns false if the file does not exist.
-
-Spacing is important here! `bash` is not a very smart language. You might be
-tempted to leave out spaces between `[[` and `-a` or between `hello.c` and `]]`,
-but you **must** have spaces between these symbols.
-
-::: aside
-
-WHY?!
-
-`bash` is, uh, weird. `[[` is technically a command that takes arguments. The
-arguments the `[[` command is getting in the above example are `-a`, `hello.c`,
-and `]]`. The `;` is a line separator (like in Python it's optional, but can be
-used).
-
-Yeah, weird.
-
-:::
-
-`bash` has many unary operators that you can use to test files or variables. The
-one we care about right now is the `-n` operator, asking if a string is non-zero
-in length.
-
-::: example
-
-Let's add a conditional statement to `la` to test for the presence of arguments:
-
-```bash
-#!/usr/bin/env bash
-
-if [[ -n "$1" ]] ; then
-    ls -al "$1"
-else
-    ls -al
-fi
-```
-
-:::
-
-You can find more unary operators in `bash` by reading the `CONDITIONAL
-EXPRESSIONS` section of its manual page, but here are some examples:
-
-+----------------------+----------------------------------------------------+
-| Operator             | Meaning                                            |
-+======================+====================================================+
-| `-a file`            | True if file exists.                               |
-+----------------------+----------------------------------------------------+
-| `-d file`            | True if file exists and is a directory.            |
-+----------------------+----------------------------------------------------+
-| `-r file`            | True if file exists and is readable.               |
-+----------------------+----------------------------------------------------+
-| `-s file`            | True if file exists and has a size greater than 0. |
-+----------------------+----------------------------------------------------+
-| `string1 == string2` | True if the strings are equal.                     |
-+----------------------+----------------------------------------------------+
-
-### Loops
-
-We can't talk about conditional statements without at least saying something
-about loops!
-
-Similar to conditional statements, loops use the familiar `for` keyword. Bash
-also supports `while` and `until` loops, but most of the time you're using a
-loop in Bash, you're operating on some sequence of file names rather than until
-some event happens.
-
-The structure of a `for` loop is frustratingly different from conditional
-statements in a way it's not in other programming languages --- the conditional
-statements you saw above use the `[[` and `]]` brackets for wrapping the
-expression, but `for` loops generally do not use brackets or parenthesis in
-Bash.
-
-Here's what a `for` loop looks like in Bash:
-
-```bash
-for f in * ; do
-    echo $f
-done
-```
-
-* The `for` is ... `for`, it's the start of the loop.
-* The `f` is the name of the variable you want to use as the name for the value
-  in the current iteration of the loop over the sequence.
-* The `in` is a separator between the variable name and the sequence.
-* In this case `*` *is* the sequence. This is a "glob" or a pattern, and this
-  glob in the shell means "all files in the current directory".
-* The semi-colon `;`, like in conditional statements above, ends the current
-  statement.
-* `do`, then is the beginning of the body of the loop.
-    * `echo $f` is one command you want run on the variable. This will print out
-      the variable's name.
-* `done` ends the body of the loop.
-
-::: aside
-
-Maybe this looks sort of familiar. Maybe this looks like what we were doing with
-`find` and `-exec`. They do accomplish similar results!
-
-Both work, and both are effective. One way to think about this matching of ideas
-is that `find` and `-exec` are more of a functional programming paradigm (this
-is a `map` operation), `for` loops are more of a procedural paradigm.
-
-:::
-
-When you're writing `for` loops, the sequence can either use the patterns you've
-seen before (like `*.md`), or can be the result of a *command*. 
-
-In fact, we can rewrite the `for` loop from above using `find`!
-
-```bash
-for f in $(find . -maxdepth 1) ; do
-    echo $f
-done
-```
-
-The output looks a little bit different, but the result is the same.
-
-Another common kind of loop you may want to write is one that iterates over a
-sequence of numbers (like the traditional `for` loop you've seen in languages
-like Java). To do that you can use the `seq` command:
-
-```bash
-for num in $(seq 1 10) ; do
-    echo $num
-done
-```
-
-Further reading
----------------
-
-Just like programming, shell scripting goes way beyond what you've been
-introduced to here. You've got a good start, but as you keep working with shell
-scripting, you'll find yourself running into situations where you need to get
-some more help.
-
-* You can read the manual page for your shell to learn more about its scripting
-  language (e.g., `man bash` or `man tcsh`).
-    * Sections of interest in the manual page for `bash` include the
-      `CONDITIONAL EXPRESSIONS` section and the `Compound Commands` subsection.
-* Joshua Levy's "[The Art of Command Line]" is a very good resource that's been
-  translated into many languages. It's a good reference to keep in your
-  bookmarks.
-* [ShellCheck] is a tool for identifying and then helping you fix possible bugs
-  in your shell scripts.
-* The [Advanced Bash-Scripting Guide] is a comprehensive guide for shell
-  scripting with Bash.
-
-[The Art of Command Line]: https://github.com/jlevy/the-art-of-command-line
-[ShellCheck]: https://www.shellcheck.net/
-[Advanced Bash-Scripting Guide]: https://tldp.org/LDP/abs/html/
+If you can write the images back and boot your machine again, and then use the
+same approach as in [File-based restore and verify], you've got a working
+backup :tada:!

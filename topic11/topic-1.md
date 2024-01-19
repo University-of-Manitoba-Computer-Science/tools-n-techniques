@@ -6,25 +6,42 @@ author: Franklin Bristow
 Introduction
 ============
 
-You're doing a lot of work in your courses. Pretty much everything you're doing
-at school is digital: you're writing source code, you're writing documents,
-maybe you're making spreadsheets or taking photos. Losing this data could be
-catastrophic, especially if you're in a situation where you couldn't possibly
-bail out.
+The ideal way to give your program to someone else to use is either as source
+code that they can download and compile (with a build tool!), then install on
+their system.
 
-While version control is a tool that you can effectively use as a remote backup,
-its main purpose is not as a backup of your software. In fact, version control
-software is downright terrible as a backup strategy for documents that aren't
-plain text (like source code or Markdown-formatted documents).
+But... sometimes our software grows to be so complex that it has dependencies on
+*other* software. Sometimes our software grows to be so complex that it has
+dependencies on *specific versions* of software, and it's not exactly reasonable
+for you to expect someone to have that specific version on their computer.
 
-This week we're going to talk about what a good, automated backup strategy is,
-the kinds of tools that you can use to do it, and get our machines configured so
-that we're able to quickly back up our assignments to aviary.
+Sometimes **you** want to use software that has these same kind of dependencies.
+Maybe you want to try out a piece of software, but you can't or don't want to
+install all of those dependencies on your main workstation.
+
+Maybe you just want to have a Linux distribution installed on your main machine
+without having to fully commit to using Linux all the time. It's OK! We can do
+that!
+
+A container is a way that we can package software *and* dependencies together.
+Virtual machines are software that allow us to run entire **operating systems**
+on our computer without actually installing the operating system as our main
+environment.
+
+"The Cloud"&trade; makes extensive use of containers and virtual machines.
+
+This week we're going to spend some time setting up virtual machine software on
+our computers, running a pre-installed operating system in the virtual machine
+software, running commands in a container, configuring a container, and setting
+up servers in "The Cloud"&trade;
 
 ::: outcomes
 
-* [ ] Choose an appropriate backup strategy for protecting your files.
-* [ ] Install and configure software to backup your files to a remote server.
-* [ ] Restore and verify your backup from the remote server.
+* [ ] Install and configure virtual machine software.
+* [ ] Download and use a pre-installed operating system in a virtual machine
+  software.
+* [ ] Run a command within a container.
+* [ ] Initialize a server in a publicly available cloud computing environment
+  (e.g., AWS).
 
 :::
