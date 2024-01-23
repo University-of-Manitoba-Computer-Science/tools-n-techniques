@@ -14,20 +14,20 @@ Match the symbols with what they do:
 :::::: columns
 ::: {.column width=50%}
 
-- 1. `>`
-- 2. `<`
-- 3. `>>`
-- 4. `|`
-- 5. `2>`
+1. `>`
+2. `<`
+3. `>>`
+4. `|`
+5. `2>`
 
 :::
 ::: {.column width=50%}
 
-- a. Pipe standard output from one program to another program's standard input
-- b. Redirect standard error output (in some shells)
-- c. Redirect standard output to a file and overwrite it
-- d. Redirect standard output to a file and append to it
-- e. Redirect standard input to be from a file
+a. Pipe standard output from one program to another program's standard input
+b. Redirect standard error output (in some shells)
+c. Redirect standard output to a file and overwrite it
+d. Redirect standard output to a file and append to it
+e. Redirect standard input to be from a file
 
 :::
 ::::::
