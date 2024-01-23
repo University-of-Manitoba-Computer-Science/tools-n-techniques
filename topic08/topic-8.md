@@ -2,7 +2,7 @@
 title: Practice Questions
 author: Alex Kitt
 ---
-%%  %%
+
 Practice Questions
 ==================
 
