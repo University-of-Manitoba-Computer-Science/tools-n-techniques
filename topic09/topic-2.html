@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Programs requiring dependencies</title>
+  <title>Shell scripts</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -186,40 +183,48 @@ line</a></li>
 <li><a href=".././topic08/topic-3.html">Redirecting input and
 output</a></li>
 <li><a href=".././topic08/topic-4.html">Piping</a></li>
-<li><a href=".././topic08/topic-5.html">Shell scripts</a></li>
-<li><a href=".././topic08/topic-6.html">Summary</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+<li><a href=".././topic08/topic-8.html">Practice Questions</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><strong>Shell scripts</strong></li>
+<li><a href="topic-3.html">Arguments</a></li>
+<li><a href="topic-4.html">Structures: conditional statements and
+loops</a></li>
+<li><a href="topic-5.html">Globs</a></li>
+<li><a href="topic-6.html">Debugging shell scripts</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href="topic-1.html">Introduction</a></li>
-<li><strong>Programs requiring dependencies</strong></li>
-<li><a href="topic-3.html">Create a Makefile</a></li>
-<li><a href="topic-4.html">Build and dependency management</a></li>
-<li><a href="topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -246,276 +251,272 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Programs requiring dependencies</h1>
+<h1 class="title">Shell scripts</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#programs-requiring-dependencies"
-id="toc-programs-requiring-dependencies">Programs requiring
-dependencies</a>
+<li><a href="#shell-scripts" id="toc-shell-scripts">Shell scripts</a>
 <ul>
-<li><a href="#downloading-the-program"
-id="toc-downloading-the-program">Downloading the program</a></li>
-<li><a href="#dependency-management-in-python"
-id="toc-dependency-management-in-python">Dependency management in
-Python</a>
+<li><a href="#shells-and-languages" id="toc-shells-and-languages">Shells
+and languages</a></li>
+<li><a href="#basic-scripting" id="toc-basic-scripting">Basic
+scripting</a>
 <ul>
-<li><a href="#listing-project-dependencies"
-id="toc-listing-project-dependencies">Listing project
-dependencies</a></li>
+<li><a href="#general-structure" id="toc-general-structure">General
+structure</a></li>
+<li><a href="#simple-scripts" id="toc-simple-scripts">Simple
+scripts</a></li>
 </ul></li>
-<li><a href="#installing-the-dependencies"
-id="toc-installing-the-dependencies">Installing the
-dependencies</a></li>
-<li><a href="#running-the-program" id="toc-running-the-program">Running
-the program</a></li>
-<li><a href="#further-reading" id="toc-further-reading">Further
-reading</a></li>
+<li><a href="#environment-variables-and-the-path"
+id="toc-environment-variables-and-the-path">Environment variables and
+the <code>$PATH</code></a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="programs-requiring-dependencies">Programs requiring
-dependencies</h1>
+<h1 id="shell-scripts">Shell scripts</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Download and run a
-program that requires to you to install dependencies.</label></li>
+<li><label><input type="checkbox" checked="" />Write and run shell
+scripts to repeat complex tasks.</label></li>
 </ul>
 </div>
-<p>When you’re working at school you’re building almost everything from
-the ground up: data structures, abstract data types, working with
-structured and unstructured data, implementing algorithms.</p>
-<p>When you get into the real world things suddenly change: your boss is
-probably going to be annoyed with you if you spend an afternoon building
-a linked list in a language that has extensive support for <a
-href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/doc-files/coll-index.html">a
-variety of different types of collections</a>. More often than not in
-the real world, you’re going to be writing software that depends on
-other software: other programs, other libraries, or other frameworks of
-code.</p>
-<p>While you’re (probably) most familiar with languages like Java, we’re
-going to take a diversion and look at downloading and running a program
-in Python that requires some external dependencies.</p>
-<h2 id="downloading-the-program">Downloading the program</h2>
-<p>The program you’re going to be using as an example is actually
-something that extends <a href="https://pandoc.org">Pandoc</a>: a
-“filter” for Pandoc.</p>
-<p>You can find the repository here:</p>
-<pre><code>https://code.cs.umanitoba.ca/cs-lab-course/suppress-notes</code></pre>
-<p>You’re going to want to get this into your user directory on Aviary
-(Download a zip from GitLab and <code>unzip</code>,
-<code>git clone</code>, whatever works best for you).</p>
-<div class="challenge">
-<p>Do this entirely on your own machine <em>on the command line</em>.
-This is easier on macOS than Windows because <code>unzip</code> is
-already installed.</p>
-<p>If you do this on your own machine, you’re on your own, but be
-forewarned that you’re going to need to install Python (<a
-href="https://docs.python.org/3/using/windows.html">on Windows</a> or <a
-href="https://docs.python.org/3/using/mac.html">on macOS</a>).</p>
+<div style="float: left;width: 300px">
+<figure>
+<img src="script.png" alt="A script." />
+<figcaption aria-hidden="true">A script.</figcaption>
+</figure>
 </div>
-<h2 id="dependency-management-in-python">Dependency management in
-Python</h2>
-<p>Dependency management in Python is… <a
-href="https://stackoverflow.com/questions/54475042/python-dependency-hell-a-compromise-between-virtualenv-and-global-dependencies">not
-exactly a solved problem</a>.</p>
-<p>We’re going to stick to the basics, though, and use Python’s <a
-href="https://pypi.org/project/pip/"><code>pip</code></a>.
-<code>pip</code> is a command-line tool that you can use to install
-Python libraries (or packages) that you can then use (or depend on) in
-your own Python programs.</p>
-<p>Using <code>pip</code> is pretty easy (once you know the dependency
-that you want):</p>
-<ol type="1">
-<li>Figure out what the name of the dependency is.</li>
-<li>Install the dependency with <code>pip install</code>.</li>
-</ol>
-<div class="example">
-<p>Assuming you know what the name of your dependency is, installing it
-is straightforward with <code>pip</code>. Let’s assume that you’re
-building a command-line tool in Python and you want to make it look <a
-href="https://www.youtube.com/watch?v=93lrosBEW-Q"><em>real
-shiny</em></a>. A Python package you can use to make your command-line
-tools look great is <a
-href="https://pypi.org/project/rich/"><code>rich</code></a>. Once you
-know the name of the package (<code>rich</code> in this case), you can
-use <code>pip</code> to install your dependency:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rich</span></code></pre></div>
-</div>
-<p><code>pip</code> gives us the ability to quickly install dependencies
-on the command line, and it installs the most recent version of the
-library by default.</p>
-<p>We can also install specific versions of dependencies, or versions
-that meet specific criteria:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install exactly this version</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rich==12.6.0</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install a version that&#39;s compatible with X</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rich~=12.6.0</span></code></pre></div>
-<p>In this context, “compatible with” means that the API (the functions
-you’re calling in the package) are still the same, but there might be
-releases that are newer that have important security or other bug
-fixes.</p>
-<h3 id="listing-project-dependencies">Listing project dependencies</h3>
-<p>Installing individual dependencies on the command line is fine, and
-is a good way for us to very quickly get to work when we’re trying to
-build something without having to worry about versions.</p>
-<p>When you’re ready to actually distribute your code to other people,
-though, you’re suddenly depending on both specific versions of packages
-that you had installed when you were writing your code, and … well,
-probably a lot of different packages.</p>
-<p>You <em>can</em> just list out instructions for the users of your
-program or package:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>My really cool project</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">======================</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>This is my amazing project <span class="sc">:tada:</span>!</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Installing</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>----------</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>You need to install the following dependencies with <span class="in">`pip`</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`rich`</span> version 12.6.0</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`click`</span> version 8.0.3</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`Pillow`</span> version 9.0.1</span></code></pre></div>
-<p>… but that would be tedious for anyone using your code (<em>you</em>
-know how to use <code>pip</code> now, but this would be tedious; can you
-imagine your parents doing this???).</p>
-<p>Thankfully, <code>pip</code> can read files that contain a listing of
-the dependencies that you have for your project: a file named
-<code>requirements.txt</code>.</p>
-<p><code>requirements.txt</code> is a file that straight-up lists the
-dependencies and their versions, everything that comes after
-<code>pip install</code>.</p>
-<div class="example">
-<p>Here’s a <code>requirements.txt</code> that describes the
-dependencies for the amazing project above:</p>
-<pre class="plain"><code>rich==12.6.0
-click==8.0.3
-Pillow==9.0.1</code></pre>
-</div>
-<p><code>pip</code>’s requirements files can also have comments, though
-it’s restricted to line that <em>start with</em> <code>#</code>.</p>
-<div class="example">
-<p>Here’s the same <code>requirements.txt</code>, but one that has
-comments:</p>
-<pre class="plain"><code># we need rich 12.6.0 for a very important, but arbitrary reason.
-rich==12.6.0
-# we use click for handling command line arguments
-click==8.0.3
-# Pillow is a great image processing library
-Pillow==9.0.1</code></pre>
-</div>
-<p>Once we’ve got a file that has these dependencies listed, we can use
-<code>pip</code> to install the dependencies all at once with
-<code>pip install -r</code>.</p>
-<div class="example">
-<p>If you have a file named <code>requirements.txt</code> that has the
-contents listed above, you can use <code>pip</code> to install the
-dependencies:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div>
-</div>
-<p>You can write your own <code>requirements.txt</code> by hand, but you
-can also generate one using the command <code>pip freeze</code>.
-<code>pip freeze</code> will list <em>all</em> versions of <em>all</em>
-Python packages currently on your system (even ones you didn’t install
-and ones that are unrelated to your program), but will give you a
-comprehensive list of the state of your system.</p>
-<div class="example">
-<p>You can use <code>pip freeze</code> and some output redirection to
-generate a <code>requirements.txt</code>:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code></pre></div>
-</div>
-<div class="aside">
-<p>How important is it that your file is named
-<code>requirements.txt</code>? Not at all! You could call it
-“<code>dependencies.txt</code>”. You could call it
-“<code>cats are cool.txt</code>”. You could call it
-“<code>dogs drool.txt</code>”. (Can you sense a theme here? <span
-class="emoji" data-emoji="cat">🐱</span>)</p>
-<p>The name <code>requirements.txt</code> is a <a
-href="https://en.wikipedia.org/wiki/De_facto_standard">“de facto”
-standard</a>. All that matters is that what comes after the
-<code>-r</code> option is the name of a file that follows the standard
-of “one package and version per line”.</p>
-</div>
-<h2 id="installing-the-dependencies">Installing the dependencies</h2>
-<p>The repository that you downloaded/cloned/whatever has a list of
-requirements as <code>requirements.txt</code>. You should install those
-requirements for this project.</p>
-<h2 id="running-the-program">Running the program</h2>
-<p>The repository that you downloaded/cloned/whatever has a
-<code>README.md</code> that describes how to run the software. You
-should read the <code>README.md</code> to see how to run the
-software.</p>
-<p>After you get the software running, just for the sake of seeing what
-can happen when you don’t install dependencies for a Python project.</p>
-<div class="example">
-<p>Let’s start by uninstalling dependencies with <code>pip</code>:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> suppress-notes]<span class="op">&gt;</span> pip uninstall <span class="at">-r</span> requirements.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Found</span> existing installation: panflute 1.12.5</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Uninstalling</span> panflute-1.12.5:</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Would</span> remove:</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/you/.local/bin/panfl</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/you/.local/bin/panflute</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/you/.local/lib/python3.10/site-packages/panflute-1.12.5.dist-info/*</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/you/.local/lib/python3.10/site-packages/panflute/*</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Proceed</span> <span class="er">(</span><span class="ex">Y/n</span><span class="kw">)</span><span class="ex">?</span> Y</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Successfully</span> uninstalled panflute-1.12.5</span></code></pre></div>
-<p>Now try running the software using the instructions again (through
-Pandoc, but don’t pipe to <code>lynx</code>); what kind of output do you
-see now?</p>
-<p>Python is helpful enough to tell you the name of the missing
-package:</p>
-<pre><code>Traceback (most recent call last):
-  File &quot;/home/you/suppress-notes/./suppress-notes&quot;, line 3, in &lt;module&gt;
-    import panflute as pf
-ModuleNotFoundError: No module named &#39;panflute&#39;
-Error running filter suppress-notes:
-Filter returned error status 1</code></pre>
-<p>If you’re planning on using this filter again, you should reinstall
-the dependencies with <code>pip</code>:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div>
-</div>
-<h2 id="further-reading">Further reading</h2>
-<p>Dependency management in Python is… <a
-href="https://stackoverflow.com/questions/54475042/python-dependency-hell-a-compromise-between-virtualenv-and-global-dependencies">not
-exactly a solved problem</a>.</p>
-<p>Pip is the best place to start with Python package and dependency
-management because it comes for free as part of Python itself (Python’s
-got <a
-href="https://www.computer.org/csdl/magazine/cs/2007/03/c3007/13rRUzpQPH7">“batteries
-included”</a>).</p>
-<p>That said, not everyone agrees that Pip alone is the right choice, or
-even agrees if Pip is the right tool at all.</p>
-<p>You can read a little more about dependency management and packaging
-in Python in a couple of places:</p>
+<p>At this point you’re pretty familiar with using the command line; you
+should be able to do a variety of things:</p>
 <ul>
-<li><p>You might be noticing that we’re installing specific versions of
-packages “globally”; installing with <code>pip</code> means we’re
-installing into a folder in our own user directory that any Python
-program we run will use. Sometimes we’ll have multiple different Python
-programs that use the same dependency, but rely on different versions
-that aren’t compatible with one another (<code>panflute</code> is fixed
-at version 1.12.5 in <code>suppress-notes</code>, but the most recent
-version if <code>panflute</code> is 2.1.X, these are not compatible with
-one another).</p>
-<p>Python has something called “<a
-href="https://docs.python.org/3/tutorial/venv.html">virtual
-environments</a>” where you can install dependencies for a specific
-program in a specific directory rather than “globally”.</p></li>
-<li><p><a href="https://python-poetry.org/">Poetry</a> is a more
-advanced tool than <code>pip</code> that is both a dependency manager
-and a build and packaging tool for Python. Poetry doesn’t work with
-<code>pip</code>, but instead replaces <code>pip</code>.</p></li>
+<li>Navigate and create folder structures.</li>
+<li>Edit text files.</li>
+<li>Convert files between various formats.</li>
+<li>Filter lines from text files.</li>
+<li>Read and change permissions on files.</li>
+<li>Use version control software.</li>
+<li>Find files by name or properties.</li>
+<li>Redirect standard input, output, and error.</li>
+<li>Construct pipelines of commands.</li>
 </ul>
+<p>While there’s a whole world of things you can still learn about using
+the command line, and more command line tools than you can imagine to
+learn about (which sometimes themselves contain entire programming
+languages!), you’ve learned and demonstrated a lot! <span class="emoji"
+data-emoji="tada">🎉</span></p>
+<p>As you’re getting more used to using the command line, you may find
+yourself repeating similar, complex commands over and over again. Or
+maybe you find yourself doing the same kinds of things over and over
+again, maybe running multiple commands repeatedly. Or maybe you’ve built
+a complex pipeline that you want to keep for use later because you’ll
+need to use it again.</p>
+<p>In their very simplest form, shell scripts are plain text files that
+contain a sequence of commands or statements, separated by newlines or
+semi-colons. As you grow shell scripts, they can contain things like
+conditional statements, loops, functions, and… uh, hey, <a
+href="https://youtu.be/g3YiPC91QUk?t=58">wait a minute</a>. That, uh,
+that sounds an awful lot like programming.</p>
+<p>Most of the time we spend interacting with shells is interactive: the
+shell is waiting for us to enter a command, and when we press
+<kbd>Enter</kbd>, the shell runs the command, waits for it to finish (it
+actually <code>wait(2)</code>s, it’s a C function), then patiently waits
+for us to enter another command.</p>
+<p>Most shells can also run non-interactively: you give the shell the
+name of a file that contains a sequence of commands and the shell will
+just interpret, then run the sequence of commands like it’s a
+program.</p>
+<h2 id="shells-and-languages">Shells and languages</h2>
+<p>Similar to different programming languages, different shells use
+different syntax to express similar ideas. Deciding which shell program
+to use defines what syntax you’re going to use and the kinds of keywords
+you should be using when you’re looking for help (in the manual page for
+the shell, on the shell’s website, or generally online).</p>
+<p>While your default shell on Aviary is <code>tcsh</code>, we’re going
+to be using <code>bash</code> as a shell interpreter for scripting. This
+is an opinionated choice, just as using <code>vim</code> instead of
+<code>emacs</code> is an opinionated choice. As you get more comfortable
+using the command line, you may want to choose a different shell (like
+<code>fish</code>) and thus a different shell language, but
+<code>bash</code> and its syntax are common enough that we’ll treat it
+like a “<a href="https://en.wikipedia.org/wiki/Lingua_franca">lingua
+franca</a>”.</p>
+<h2 id="basic-scripting">Basic scripting</h2>
+<p>Let’s start with the basics: the general structure of a shell script
+and some very simple shell scripts.</p>
+<h3 id="general-structure">General structure</h3>
+<p>Shell scripts all start with a “<a
+href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a>” line —
+a line that starts with the symbols <code>#!</code>. The first line
+indicates which program is going to be run to interpret the rest of the
+file.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash # this is a bash script</span></span></code></pre></div>
+<p>Everything after the first line is the actual contents of the script,
+the sequence of commands to be executed.</p>
+<h3 id="simple-scripts">Simple scripts</h3>
+<p>Here’s an example of a very simple script:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span></span></code></pre></div>
+<p>Copy and paste this into a new plain text file on Aviary; give it a
+file name that represents what this does (I recommend <code>la</code>,
+“list all”).</p>
+<div class="aside">
+<p>Copying and pasting into <code>vim</code> is tedious, having to enter
+and exit paste mode is a real bother. Another way to quickly copy and
+paste into your terminal to create a new file is using the program
+<code>cat</code>. As above, <code>cat</code> is a program that will read
+standard input and write to standard output. But we can redirect
+standard output to a file!</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> la</span></code></pre></div>
+<p>Once you enter that, press <kbd>Enter</kbd>, then paste, then press
+<kbd>Control</kbd>+<kbd>D</kbd>.</p>
+<p>That’s it!</p>
+</div>
+<p>Once you’ve written the file, exit your editor. Before we can run a
+shell script, we need to mark it as executable using
+<code>chmod</code>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x la</span></code></pre></div>
+<p>Then we can run the script:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./la</span></span></code></pre></div>
+<p><span class="emoji" data-emoji="tada">🎉</span>, your first shell
+script!</p>
+<p>Shell scripts consist of one or more lines of commands to run. Add
+another line to your script:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span></span></code></pre></div>
+<p>Then run it again (you don’t need to <code>chmod</code> again). Now
+<em>two</em> commands worth of output appear.</p>
+<p>One command that you might find helpful when you’re scripting is the
+<code>echo</code> command, this is a “print” command for shells:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Hello, world!&quot;</span></span></code></pre></div>
+<p>You can also write comments using the <code>#</code> symbol, anything
+following is a comment:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Hello, world&quot;</span> <span class="co"># a friendly message</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-delete</span> <span class="co"># clean up Word files</span></span></code></pre></div>
+<div class="example">
+<p>Here’s a more complete (and completely contrived) example of a
+script:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Here&#39;s what&#39;s in the current directory:&quot;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># list all with long listings</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Here are all the Markdown files:&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># find all files with the `.md` extension</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span></span></code></pre></div>
+</div>
+<h2 id="environment-variables-and-the-path">Environment variables and
+the <code>$PATH</code></h2>
+<p>Shell languages, like other programming languages, support
+variables.</p>
+<p>Almost all shells follow the same convention for naming
+variables:</p>
+<ul>
+<li>Variable names start with a <code>$</code>,</li>
+<li>Variable names are all <code>UPPERCASE</code>,</li>
+<li>Variable names are <a
+href="https://en.wikipedia.org/wiki/Snake_case"><code>SNAKE_CASE</code></a>
+(they use underscores to separate words).</li>
+</ul>
+<p>All shells have special variables, and those special variables help
+your shell make decisions, or help define the behaviour that your shell
+has. These special variables are called “environment variables”.</p>
+<div class="example">
+<p>Try running this in your shell to find out what shell you’re
+using:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$SHELL</span></span></code></pre></div>
+<p><code>$SHELL</code> is an environment variable that contains the name
+of the running shell.</p>
+</div>
+<p>When you enter the names of programs on the command line, your shell
+has to figure out where that program actually is in a folder
+structure.</p>
+<div class="aside">
+<p>This is might seem obvious when you think about it, but think about
+it: the programs that you’re running on the command line are just files
+with bits in them. They were written in a programming language (often
+C), then compiled and put in a folder somewhere.</p>
+<p>A lot of programs on Linux and UNIX systems live in the folders
+<code>/bin</code> and <code>/usr/bin</code>. You can learn a bit more
+about where files live on a Linux system by reading a manual page:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> hier </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">### OR</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> 7 hier <span class="co"># hier is in section 7 for miscellaneous</span></span></code></pre></div>
+</div>
+<p>Your shell uses a special environment variable called
+<code>$PATH</code> (often called <em>the</em> <code>$PATH</code>) to
+find where the command you just entered exists as a file. The
+<code>$PATH</code> contains a list of directories that your shell will
+look in to find the file representing the command you asked it to run.
+Different shells use different separators for directory entries in the
+path. Both <code>tcsh</code> and <code>bash</code> use a colon
+<code>:</code> to separate directories.</p>
+<div class="example">
+<p>As above, use the <code>echo</code> command to print out what the
+<code>$PATH</code> is right now in your shell:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code></pre></div>
+</div>
+<p>Your <code>$PATH</code> will contain many folders on Aviary, but it
+importantly includes two directories:</p>
+<ol type="1">
+<li><code>.</code>: the current directory, and this is why you don’t
+have to type <code>./</code> in front of programs you’ve written and
+compiled yourself.</li>
+<li><code>~/bin</code>: a directory named <code>bin</code> relative to
+your home directory. When you <code>echo $PATH</code>, the
+<code>~</code> will be listed as an absolute path (e.g.,
+<code>/home/student/you/bin</code>).</li>
+</ol>
+<p>What this means is that we can put scripts we write into the
+directory <code>~/bin</code>, then we can run them
+<em>anywhere</em>.</p>
+<div class="example">
+<p>The directory <code>~/bin</code> <em>may not</em> exist in your user
+directory on Aviary. Create the directory, then move the <code>la</code>
+script you wrote above into this directory.</p>
+<p>This applies <strong>only</strong> to <code>tcsh</code>:
+<code>tcsh</code> <a
+href="https://en.wikipedia.org/wiki/Cache_(computing)">caches</a> the
+names of commands that are in folders on the <code>$PATH</code>. After
+you add something to <code>~/bin</code> (which is on your
+<code>$PATH</code>), you’ve got to get <code>tcsh</code> to regenerate
+this cache. You can regenerate the cache in <code>tcsh</code> by running
+the command:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rehash</span></span></code></pre></div>
+<p>You must do this any time you add programs or commands to folders on
+the <code>$PATH</code> that you want to work in other places, but this
+only applies to <code>tcsh</code>. If you’re using a different shell
+like <code>bash</code> or <code>fish</code>, then your shell will almost
+certainly do this for you.</p>
+<p>Now change back to your user directory:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Or just `cd` with no arguments</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code></pre></div>
+<p>And run <code>la</code>. <span class="emoji"
+data-emoji="tada">🎉</span>, now you can run <code>la</code> in
+<em>any</em> directory.</p>
+</div>
+<p>You can find out which environment variables are currently set and
+what their values are using the <code>env</code> command.</p>
 
 </div> <!-- article-content -->
 

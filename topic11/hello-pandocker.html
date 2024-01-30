@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="you" />
+  <title>Hello, Pandocker!</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<div id="main-outer-box">
+
+<div id="my-header">
+  <a href="../index.html">Introduction to Tools and Techniques in Computer Science</a>
+</div>
+
+<div id="trunk-box">
+
+<div id="nav-box">
+<p>Contents:</p>
+<ul>
+<li>Setup, writing structured text, and file management
+<ul>
+<li><a href=".././topic01/topic-1.html">Introduction</a></li>
+<li><a href=".././topic01/topic-2.html">Installing software on your
+personal computer</a></li>
+<li><a href=".././topic01/topic-3.html">Write plain text
+documents</a></li>
+<li><a href=".././topic01/topic-4.html">Converting documents to
+different formats</a></li>
+<li><a href=".././topic01/topic-5.html">Organizing your files</a></li>
+<li><a href=".././topic01/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Remote connections and command-line file management
+<ul>
+<li><a href=".././topic02/topic-0.html">Introduction</a></li>
+<li><a href=".././topic02/topic-1.html">Connecting to a remote
+computer</a></li>
+<li><a href=".././topic02/topic-2.html">Command line file
+management</a></li>
+<li><a href=".././topic02/topic-3.html">Command line text
+editing</a></li>
+<li><a href=".././topic02/topic-4.html">Tab completion</a></li>
+<li><a href=".././topic02/topic-5.html">Transferring files</a></li>
+<li><a href=".././topic02/topic-6.html">handin</a></li>
+<li><a href=".././topic02/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Compiling and running code, version control
+<ul>
+<li><a href=".././topic03/topic-1.html">Introduction</a></li>
+<li><a href=".././topic03/topic-2.html">Compiling and running
+code</a></li>
+<li><a href=".././topic03/topic-3.html">Version Control</a></li>
+<li><a href=".././topic03/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced version control, project management
+<ul>
+<li><a href=".././topic04/topic-1.html">Introduction</a></li>
+<li><a href=".././topic04/topic-2.html">Advanced version
+control</a></li>
+<li><a href=".././topic04/topic-3.html">Managing personal
+projects</a></li>
+<li><a href=".././topic04/topic-4.html">Summary</a></li>
+</ul></li>
+<li>Advanced shell usage
+<ul>
+<li><a href=".././topic05/topic-1.html">Introduction</a></li>
+<li><a href=".././topic05/topic-2.html">Finding files</a></li>
+<li><a href=".././topic05/topic-3.html">Filtering lines</a></li>
+<li><a href=".././topic05/topic-4.html">Reading and changing
+permissions</a></li>
+<li><a href=".././topic05/topic-5.html">Comparing plain text
+files</a></li>
+<li><a href=".././topic05/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Digital notebooks and getting help
+<ul>
+<li><a href=".././topic06/topic-1.html">Introduction</a></li>
+<li><a href=".././topic06/topic-2.html">Getting help</a></li>
+<li><a href=".././topic06/topic-3.html">Getting help — Examples</a></li>
+<li><a href=".././topic06/topic-4.html">Academic misconduct</a></li>
+<li><a href=".././topic06/topic-5.html">Digital notebooks</a></li>
+<li><a href=".././topic06/topic-6.html">Summary</a></li>
+</ul></li>
+<li>Debugging (strategies and usage)
+<ul>
+<li><a href=".././topic07/topic-1.html">Introduction</a></li>
+<li><a href=".././topic07/topic-2.html">What even is debugging?</a></li>
+<li><a href=".././topic07/topic-3.html">Debugging strategies</a></li>
+<li><a href=".././topic07/topic-4.html">Debuggers</a></li>
+<li><a href=".././topic07/topic-5.html">Visual Debuggers</a></li>
+<li><a href=".././topic07/topic-6.html">Command-line Debuggers</a></li>
+<li><a href=".././topic07/topic-7.html">Summary</a></li>
+<li><a href=".././topic07/topic-8.html">Practice Questions</a></li>
+</ul></li>
+<li>Command-line environment
+<ul>
+<li><a href=".././topic08/topic-1.html">Introduction</a></li>
+<li><a href=".././topic08/topic-2.html">Input and output on the command
+line</a></li>
+<li><a href=".././topic08/topic-3.html">Redirecting input and
+output</a></li>
+<li><a href=".././topic08/topic-4.html">Piping</a></li>
+<li><a href=".././topic08/topic-5.html">Choose a backup
+strategy</a></li>
+<li><a href=".././topic08/topic-6.html">Install and configure back up
+software</a></li>
+<li><a href=".././topic08/topic-7.html">Summary</a></li>
+<li><a href=".././topic08/topic-8.html">Practice Questions</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Shell scripts</a></li>
+<li><a href=".././topic09/topic-3.html">Arguments</a></li>
+<li><a href=".././topic09/topic-4.html">Structures: conditional
+statements and loops</a></li>
+<li><a href=".././topic09/topic-5.html">Globs</a></li>
+<li><a href=".././topic09/topic-6.html">Debugging shell scripts</a></li>
+<li><a href=".././topic09/topic-7.html">Summary</a></li>
+</ul></li>
+<li>Build systems and dependency management
+<ul>
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
+dependencies</a></li>
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
+management</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
+</ul></li>
+<li>Containers, virtual machines, and “The Cloud ™”
+<ul>
+<li><a href="topic-1.html">Introduction</a></li>
+<li><a href="topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href="topic-3.html">Download and use a pre-installed OS in VM
+software</a></li>
+<li><a href="topic-4.html">Run a command within a container</a></li>
+<li><a href="topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href="topic-6.html">Summary</a></li>
+<li><strong>Hello, Pandocker!</strong></li>
+</ul></li>
+<li>Running your own Linux system
+<ul>
+<li><a href=".././topic12/topic-1.html">Introduction</a></li>
+<li><a href=".././topic12/topic-2.html">Choose a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-3.html">Install a Linux
+distribution</a></li>
+<li><a href=".././topic12/topic-4.html">Install packages</a></li>
+<li><a href=".././topic12/topic-5.html">Configure and run a web
+server</a></li>
+<li><a href=".././topic12/topic-6.html">Summary</a></li>
+</ul></li>
+<li><a href=".././README.html">About this book</a></li>
+</ul>
+
+</div>
+
+<div id="article-box">
+
+<div id="header-nav-bar">
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic12/topic-1.html">next→</a></div>
+</div>
+
+<div id="article-content">
+<header id="title-block-header">
+<h1 class="title">Hello, Pandocker!</h1>
+<p class="author">you</p>
+<p class="date">now</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#stuff-about-pandocker"
+id="toc-stuff-about-pandocker">Stuff about Pandocker</a></li>
+<li><a href="#using-admonitions" id="toc-using-admonitions">Using
+Admonitions</a></li>
+<li><a href="#making-a-pdf-from-this-file"
+id="toc-making-a-pdf-from-this-file">Making a PDF from this file</a>
+<ul>
+<li><a href="#on-windows" id="toc-on-windows">On Windows</a></li>
+<li><a href="#on-linux-or-macos" id="toc-on-linux-or-macos">On Linux or
+macOS</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="stuff-about-pandocker">Stuff about Pandocker</h1>
+<p>Pandocker is pretty cool and comes with support for a lot of
+different things, including:</p>
+<ul>
+<li>A filter for PDF output to show important information
+(admonitions)</li>
+<li>A template (Eisvogel) that makes your PDFs look <em>great</em></li>
+</ul>
+<h1 id="using-admonitions">Using Admonitions</h1>
+<div class="admonition danger">
+<p>Pandocker requires that you have <a
+href="https://docker.com">Docker</a> installed on your machine.</p>
+</div>
+<div class="admonition">
+<p>This is a regular admonition, there should be a gray line on the left
+side to bring attention to it</p>
+</div>
+<h1 id="making-a-pdf-from-this-file">Making a PDF from this file</h1>
+<ol type="1">
+<li>Install Docker.</li>
+<li>Run a Pandocker container.</li>
+</ol>
+<h2 id="on-windows">On Windows</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="va">${PWD}</span>:/pandoc dalibo/pandocker:stable <span class="kw">`</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">hello-pandocker.md</span> <span class="at">-o</span> hello-pandocker.pdf <span class="kw">`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="kw">`</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+<h2 id="on-linux-or-macos">On Linux or macOS</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc dalibo/pandocker:stable <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    hello-pandocker.md <span class="at">-o</span> hello-pandocker.pdf <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+
+</div> <!-- article-content -->
+
+<div id="footer-nav-bar">
+<div><a href="topic-6.html">←prev</a></div><div class="nav-bar-push"><a href=".././topic12/topic-1.html">next→</a></div>
+</div>
+
+</div> <!-- article-box -->
+
+</div> <!-- trunk-box -->
+
+<div id="my-footer">
+&copy; Franklin Bristow 2022 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+<a href="hello-pandocker.md">Pandoc-Markdown source for this page</a><br/>
+(Docs processed by
+<a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
+</div> <!-- my-footer -->
+
+</div> <!-- main-outer-box -->
+
+</body>
+</html>

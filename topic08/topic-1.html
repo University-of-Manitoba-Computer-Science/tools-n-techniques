@@ -23,9 +23,6 @@
     }
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -120,42 +117,47 @@ files</a></li>
 <li><a href="topic-2.html">Input and output on the command line</a></li>
 <li><a href="topic-3.html">Redirecting input and output</a></li>
 <li><a href="topic-4.html">Piping</a></li>
-<li><a href="topic-5.html">Shell scripts</a></li>
-<li><a href="topic-6.html">Summary</a></li>
+<li><a href="topic-5.html">Choose a backup strategy</a></li>
+<li><a href="topic-6.html">Install and configure back up
+software</a></li>
+<li><a href="topic-7.html">Summary</a></li>
+<li><a href="topic-8.html">Practice Questions</a></li>
+</ul></li>
+<li>Shell scripting
+<ul>
+<li><a href=".././topic09/topic-1.html">Introduction</a></li>
+<li><a href=".././topic09/topic-2.html">Shell scripts</a></li>
+<li><a href=".././topic09/topic-3.html">Arguments</a></li>
+<li><a href=".././topic09/topic-4.html">Structures: conditional
+statements and loops</a></li>
+<li><a href=".././topic09/topic-5.html">Globs</a></li>
+<li><a href=".././topic09/topic-6.html">Debugging shell scripts</a></li>
+<li><a href=".././topic09/topic-7.html">Summary</a></li>
 </ul></li>
 <li>Build systems and dependency management
 <ul>
-<li><a href=".././topic09/topic-1.html">Introduction</a></li>
-<li><a href=".././topic09/topic-2.html">Programs requiring
+<li><a href=".././topic10/topic-1.html">Introduction</a></li>
+<li><a href=".././topic10/topic-2.html">Programs requiring
 dependencies</a></li>
-<li><a href=".././topic09/topic-3.html">Create a Makefile</a></li>
-<li><a href=".././topic09/topic-4.html">Build and dependency
+<li><a href=".././topic10/topic-3.html">Create a Makefile</a></li>
+<li><a href=".././topic10/topic-4.html">Build and dependency
 management</a></li>
-<li><a href=".././topic09/topic-5.html">Summary</a></li>
+<li><a href=".././topic10/topic-5.html">Summary</a></li>
 </ul></li>
 <li>Containers, virtual machines, and “The Cloud ™”
 <ul>
-<li><a href=".././topic10/topic-1.html">Introduction</a></li>
-<li><a href=".././topic10/topic-2.html">Install and configure a virtual
-machine</a></li>
-<li><a href=".././topic10/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic10/topic-4.html">Run a command within a
-container</a></li>
-<li><a href=".././topic10/topic-5.html">Initialize a server in a public
-cloud</a></li>
-<li><a href=".././topic10/topic-6.html">Summary</a></li>
-<li><a href=".././topic10/hello-pandocker.html">Hello,
-Pandocker!</a></li>
-</ul></li>
-<li>Backups
-<ul>
 <li><a href=".././topic11/topic-1.html">Introduction</a></li>
-<li><a href=".././topic11/topic-2.html">Choose a backup
-strategy</a></li>
-<li><a href=".././topic11/topic-3.html">Install and configure back up
-software</a></li>
-<li><a href=".././topic11/topic-4.html">Summary</a></li>
+<li><a href=".././topic11/topic-2.html">Install and configure a virtual
+machine</a></li>
+<li><a href=".././topic11/topic-3.html">Download and use a pre-installed
+OS in VM software</a></li>
+<li><a href=".././topic11/topic-4.html">Run a command within a
+container</a></li>
+<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+cloud</a></li>
+<li><a href=".././topic11/topic-6.html">Summary</a></li>
+<li><a href=".././topic11/hello-pandocker.html">Hello,
+Pandocker!</a></li>
 </ul></li>
 <li>Running your own Linux system
 <ul>
@@ -198,8 +200,21 @@ really complex commands that would be difficult to do with the visual
 desktop tools that you have at your disposal right now.</p>
 <p>We’ll spend some time looking at how to use our shells effectively,
 and we’ll look at how to build up pipelines of programs to accomplish
-complex tasks. We’ll also be spending some time documenting how we
-accomplished those complex tasks with shell scripting.</p>
+complex tasks.</p>
+<p>We’re also going to digress a <em>little bit</em> and look at backing
+up our data. Pretty much everything you’re doing at school (and in
+life!) is digital: you’re writing source code, you’re writing documents,
+maybe you’re making spreadsheets or taking photos. Losing this data
+could be catastrophic, especially if you’re in a situation where you
+couldn’t possibly bail out.</p>
+<p>While version control is a tool that you can effectively use as a
+remote backup, its main purpose is not as a backup of your software. In
+fact, version control software is downright terrible as a backup
+strategy for documents that aren’t plain text (like pictures!).</p>
+<p>We’re going to talk about what a good, automated backup strategy is,
+the kinds of tools that you can use to do it, and get our machines
+configured so that we’re able to quickly back up our assignments to
+aviary.</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
@@ -209,8 +224,12 @@ to a file.</label></li>
 a program.</label></li>
 <li><label><input type="checkbox" />Send data between programs using a
 pipe.</label></li>
-<li><label><input type="checkbox" />Write and run shell scripts to
-repeat complex tasks.</label></li>
+<li><label><input type="checkbox" />Choose an appropriate backup
+strategy for protecting your files.</label></li>
+<li><label><input type="checkbox" />Install and configure software to
+backup your files to a remote server.</label></li>
+<li><label><input type="checkbox" />Restore and verify your backup from
+the remote server.</label></li>
 </ul>
 </div>
 
