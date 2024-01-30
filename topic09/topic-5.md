@@ -137,7 +137,7 @@ the directory. We can use globs to find all Markdown files in this directory:
                                          # in any subdirectory
 ```
 
-[crazy-directories.tar.gz]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar
+[crazy-directories.tar]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar
 
 :::
 
