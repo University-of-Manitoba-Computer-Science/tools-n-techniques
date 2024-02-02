@@ -9,7 +9,8 @@ Practice Questions
 Question 1
 ----------
 
-In COMP 1002, you have successfully built your personal webpage. We are now
+In COMP 1002, you have successfully built your personal webpage when
+you learned about [Reading and Changing Permissions](https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-4.html) of files. We are now
 going to automate a few of those processes in building (or updating) your personal
 webpage. For this, we are going to write a shell script to automate the conversion
 from markdown to HTML and also to change the permissions of the generated HTML
@@ -40,7 +41,7 @@ Now, we improve the shell script `publish_webpage` from Question 1.
 ### Input Error Prevention
 
 Imagine
-that you shared your script with a friend but he did not check your implementation.
+that you shared your script with a friend but they did not check your implementation.
 The idea here is to prevent that your friend type an incorrect name as the argument
 of `publish_webpage`. For this, before performing any action in the script
 `publish_webpage`, check if the file passed on the command line by the user actually
@@ -53,6 +54,17 @@ Question 3
 Using a glob to find all the `zip` files in a directory, write a shell script
 called `unzipall` that uses a `for` loop to iterate over all the `zip` files,
 then use `unzip` to extract the files from the compressed format.
+
+Let's test the `unzipall` script. For this, we need a few `zip` files to extract.
+Download the following file using the `wget` command:
+
+```bash
+https://home.cs.umanitoba.ca/~penhacir/to_extract.zip
+```
+Extract the downloaded `to_extract.zip` file. Then, you will have five other
+`zip` files. Use the script `unzipall` you have written to extract all the
+compressed files. If you need help, the section on [Compiling and running code](https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/topic-2.html)
+shows how to use `wget` and how to use `unzip` to extract compressed `zip` files.
 
 ::: challenge
 The use of glob can remove the need of loops in many actions on a shell script.
