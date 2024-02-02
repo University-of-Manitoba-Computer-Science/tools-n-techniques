@@ -47,6 +47,8 @@ of `publish_webpage`. For this, before performing any action in the script
 `publish_webpage`, check if the file passed on the command line by the user actually
 exists. If the file do not exist, print to standard output "File not found!" using `echo`
 command. Otherwise, print "File found!" and execute the rest of the script.
+If you need to recal the file operators you can check the section on
+[Structures: conditional statements and loops](https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic09/topic-4.html).
 
 Question 3
 ----------
