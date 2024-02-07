@@ -61,7 +61,7 @@ Let's test the `unzipall` script. For this, we need a few `zip` files to extract
 Download the following file using the `wget` command:
 
 ```bash
-https://home.cs.umanitoba.ca/~penhacir/to_extract.zip
+https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic09/to_extract.zip
 ```
 Extract the downloaded `to_extract.zip` file. Then, you will have five other
 `zip` files. Use the script `unzipall` you have written to extract all the
