@@ -9,21 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -257,16 +248,14 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#practice-questions" id="toc-practice-questions">Practice
-Questions</a>
+<li><a href="#practice-questions">Practice Questions</a>
 <ul>
-<li><a href="#question-1" id="toc-question-1">Question 1</a></li>
-<li><a href="#question-2" id="toc-question-2">Question 2</a>
+<li><a href="#question-1">Question 1</a></li>
+<li><a href="#question-2">Question 2</a>
 <ul>
-<li><a href="#input-error-prevention"
-id="toc-input-error-prevention">Input Error Prevention</a></li>
+<li><a href="#input-error-prevention">Input Error Prevention</a></li>
 </ul></li>
-<li><a href="#question-3" id="toc-question-3">Question 3</a></li>
+<li><a href="#question-3">Question 3</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -324,7 +313,7 @@ format.</p>
 <code>zip</code> files to extract. Download the following file using the
 <code>wget</code> command:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://home.cs.umanitoba.ca/~penhacir/to_extract.zip</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic09/to_extract.zip</span></span></code></pre></div>
 <p>Extract the downloaded <code>to_extract.zip</code> file. Then, you
 will have five other <code>zip</code> files. Use the script
 <code>unzipall</code> you have written to extract all the compressed

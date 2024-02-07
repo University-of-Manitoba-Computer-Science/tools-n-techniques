@@ -9,21 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -254,24 +245,19 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#creating-folders-and-finding-your-way-around"
-id="toc-creating-folders-and-finding-your-way-around">Creating folders
-and finding your way around</a>
+<li><a href="#creating-folders-and-finding-your-way-around">Creating
+folders and finding your way around</a>
 <ul>
-<li><a href="#looking-around" id="toc-looking-around"><span
-class="emoji" data-emoji="eyes">👀</span> Looking around</a></li>
-<li><a href="#making-a-directory" id="toc-making-a-directory"><span
-class="emoji" data-emoji="hammer_and_wrench">🛠️</span> Making a
-directory</a></li>
-<li><a href="#navigating-directories"
-id="toc-navigating-directories"><span class="emoji"
+<li><a href="#looking-around"><span class="emoji"
+data-emoji="eyes">👀</span> Looking around</a></li>
+<li><a href="#making-a-directory"><span class="emoji"
+data-emoji="hammer_and_wrench">🛠️</span> Making a directory</a></li>
+<li><a href="#navigating-directories"><span class="emoji"
 data-emoji="compass">🧭</span> Navigating directories</a></li>
-<li><a href="#moving-and-renaming-directories"
-id="toc-moving-and-renaming-directories"><span class="emoji"
+<li><a href="#moving-and-renaming-directories"><span class="emoji"
 data-emoji="pencil2">✏️</span> Moving and renaming directories</a></li>
-<li><a href="#removing-directories" id="toc-removing-directories"><span
-class="emoji" data-emoji="wastebasket">🗑️</span> Removing
-directories</a></li>
+<li><a href="#removing-directories"><span class="emoji"
+data-emoji="wastebasket">🗑️</span> Removing directories</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -279,10 +265,11 @@ directories</a></li>
 and finding your way around</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Create, rename, delete,
-and inspect folder structures on the command-line.</label></li>
-<li><label><input type="checkbox" checked="" />Navigate folder
-structures on the command-line.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Create, rename, delete, and inspect folder structures on the
+command-line.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Navigate folder structures on the command-line.</li>
 </ul>
 </div>
 <p>Being connected to a remote computer is nice, but we really want to

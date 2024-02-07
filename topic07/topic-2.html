@@ -9,21 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -88,7 +79,7 @@
   </style>
   <link rel="stylesheet" href="../styles.css" />
   <script defer=""
-  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  src="/usr/share/javascript/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -104,7 +95,7 @@
 }}});
   </script>
   <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  href="/usr/share/javascript/katex/katex.min.css" />
 </head>
 <body>
 
@@ -275,21 +266,20 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#what-even-is-debugging"
-id="toc-what-even-is-debugging">What even is debugging?</a>
+<li><a href="#what-even-is-debugging">What even is debugging?</a>
 <ul>
-<li><a href="#the-flow-of-our-program"
-id="toc-the-flow-of-our-program">The flow of our program</a></li>
-<li><a href="#the-state-of-our-program"
-id="toc-the-state-of-our-program">The state of our program</a></li>
+<li><a href="#the-flow-of-our-program">The flow of our program</a></li>
+<li><a href="#the-state-of-our-program">The state of our
+program</a></li>
 </ul></li>
 </ul>
 </nav>
 <h1 id="what-even-is-debugging">What even is debugging?</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Describe what debugging
-allows you to observe about a running program.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Describe what debugging allows you to observe about a running
+program.</li>
 </ul>
 </div>
 <p>Everyone’s code doesn’t work sometimes. Sometimes your code crashes
@@ -376,7 +366,7 @@ a variable and use it without giving it a value. C can be bad and it
 should feel bad.</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> value<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The value is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> value<span class="op">);</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The value is %d</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> value<span class="op">);</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">// we can&#39;t predict what this will print</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">// your compiler will warn you, though (probably)</span></span></code></pre></div></li>
 </ul>

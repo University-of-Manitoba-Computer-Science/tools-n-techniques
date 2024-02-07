@@ -9,21 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -255,24 +246,19 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#create-a-new-software-project"
-id="toc-create-a-new-software-project">Create a new software project</a>
+<li><a href="#create-a-new-software-project">Create a new software
+project</a>
 <ul>
-<li><a href="#maven" id="toc-maven">Maven</a></li>
-<li><a href="#create-a-project-in-vs-code"
-id="toc-create-a-project-in-vs-code">Create a project in VS
+<li><a href="#maven">Maven</a></li>
+<li><a href="#create-a-project-in-vs-code">Create a project in VS
 Code</a></li>
-<li><a href="#adding-dependencies" id="toc-adding-dependencies">Adding
-dependencies</a>
+<li><a href="#adding-dependencies">Adding dependencies</a>
 <ul>
-<li><a href="#finding-dependencies"
-id="toc-finding-dependencies">Finding dependencies</a></li>
-<li><a href="#add-the-dependency-to-pom.xml"
-id="toc-add-the-dependency-to-pom.xml">Add the dependency to
+<li><a href="#finding-dependencies">Finding dependencies</a></li>
+<li><a href="#add-the-dependency-to-pom.xml">Add the dependency to
 <code>pom.xml</code></a></li>
 </ul></li>
-<li><a href="#further-reading" id="toc-further-reading">Further
-reading</a></li>
+<li><a href="#further-reading">Further reading</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -280,12 +266,11 @@ reading</a></li>
 project</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Create a new empty
-software project that includes a build and dependency management
-tool.</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="" />Add and use a new
-dependency in a software project.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Create a new empty software project that includes a build and dependency
+management tool.<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+Add and use a new dependency in a software project.</li>
 </ul></li>
 </ul>
 </div>

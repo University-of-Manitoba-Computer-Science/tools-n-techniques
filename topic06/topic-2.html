@@ -9,21 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -257,29 +248,22 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#getting-help" id="toc-getting-help">Getting help</a>
+<li><a href="#getting-help">Getting help</a>
 <ul>
-<li><a href="#getting-help-by-running-the-command"
-id="toc-getting-help-by-running-the-command">Getting help by running the
-command</a></li>
-<li><a href="#getting-help-by-reading-manual-pages"
-id="toc-getting-help-by-reading-manual-pages">Getting help by reading
-manual pages</a>
+<li><a href="#getting-help-by-running-the-command">Getting help by
+running the command</a></li>
+<li><a href="#getting-help-by-reading-manual-pages">Getting help by
+reading manual pages</a>
 <ul>
-<li><a href="#what-if-i-dont-know-the-name"
-id="toc-what-if-i-dont-know-the-name">What if I don’t know the
+<li><a href="#what-if-i-dont-know-the-name">What if I don’t know the
 name?</a></li>
 </ul></li>
-<li><a href="#find-and-assess-the-quality-of-help-online"
-id="toc-find-and-assess-the-quality-of-help-online">Find and assess the
-quality of help online</a>
+<li><a href="#find-and-assess-the-quality-of-help-online">Find and
+assess the quality of help online</a>
 <ul>
-<li><a href="#how-to-ask-the-question"
-id="toc-how-to-ask-the-question">How to ask the question</a></li>
-<li><a href="#places-to-look" id="toc-places-to-look">Places to
-look</a></li>
-<li><a href="#assessing-what-you-find"
-id="toc-assessing-what-you-find">Assessing what you find</a></li>
+<li><a href="#how-to-ask-the-question">How to ask the question</a></li>
+<li><a href="#places-to-look">Places to look</a></li>
+<li><a href="#assessing-what-you-find">Assessing what you find</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -287,12 +271,12 @@ id="toc-assessing-what-you-find">Assessing what you find</a></li>
 <h1 id="getting-help">Getting help</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Get help about a command
-by running the command.</label></li>
-<li><label><input type="checkbox" checked="" />Get help about a command
-by reading manual pages.</label></li>
-<li><label><input type="checkbox" checked="" />Find and assess the
-quality of help online.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Get help about a command by running the command.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Get help about a command by reading manual pages.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Find and assess the quality of help online.</li>
 </ul>
 </div>
 <p>We’ve all been here: I need to do something (something for an
@@ -352,11 +336,11 @@ a little while now: <code>git</code>.</p>
 <kbd>Enter</kbd>:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git <span class="pp">[--</span><span class="ss">version</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">help</span><span class="pp">]</span> [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] <span class="pp">[--</span><span class="ss">html</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">man</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">info</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> <span class="pp">[--</span><span class="ss">no</span><span class="pp">-</span><span class="ss">replace</span><span class="pp">-</span><span class="ss">objects</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">bare</span><span class="pp">]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git [--version] [--help] [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] [--html-path] [--man-path] [--info-path]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> [--no-replace-objects] [--bare]</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--git-dir=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>] [--work-tree=<span class="op">&lt;</span>path<span class="op">&gt;</span>] [--namespace=<span class="op">&lt;</span>name<span class="op">&gt;</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> <span class="ex">[</span><span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> [<span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">These</span> are common Git commands used in various situations:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -410,7 +394,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <code>--help</code>:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">--help</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> ls <span class="pp">[</span><span class="ss">OPTION</span><span class="pp">]</span>... <span class="pp">[</span><span class="ss">FILE</span><span class="pp">]</span>...                                            </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> ls [OPTION]... [FILE]...                                            </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">List</span> information about the FILEs <span class="er">(</span><span class="ex">the</span> current directory by default<span class="kw">)</span><span class="bu">.</span>       </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Sort</span> entries alphabetically if none of <span class="at">-cftuvSUX</span> nor <span class="at">--sort</span> is specified.  </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                                                           </span>
