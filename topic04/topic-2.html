@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -246,62 +255,76 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#advanced-version-control">Advanced version control</a>
+<li><a href="#advanced-version-control"
+id="toc-advanced-version-control">Advanced version control</a>
 <ul>
-<li><a href="#cloning-an-existing-repository">Cloning an existing
+<li><a href="#cloning-an-existing-repository"
+id="toc-cloning-an-existing-repository">Cloning an existing
 repository</a>
 <ul>
-<li><a href="#finding-a-repositorys-address">Finding a repository’s
+<li><a href="#finding-a-repositorys-address"
+id="toc-finding-a-repositorys-address">Finding a repository’s
 address</a></li>
 </ul></li>
-<li><a href="#create-a-new-remote-version-control-repository">Create a
-new remote version control repository</a>
+<li><a href="#create-a-new-remote-version-control-repository"
+id="toc-create-a-new-remote-version-control-repository">Create a new
+remote version control repository</a>
 <ul>
-<li><a href="#sign-up-for-gitlab">Sign up for GitLab</a></li>
-<li><a href="#create-a-new-repository">Create a new repository</a></li>
+<li><a href="#sign-up-for-gitlab" id="toc-sign-up-for-gitlab">Sign up
+for GitLab</a></li>
+<li><a href="#create-a-new-repository"
+id="toc-create-a-new-repository">Create a new repository</a></li>
 </ul></li>
-<li><a href="#pushing-to-a-remote-repository">Pushing to a remote
+<li><a href="#pushing-to-a-remote-repository"
+id="toc-pushing-to-a-remote-repository">Pushing to a remote
 repository</a>
 <ul>
-<li><a href="#configuring-your-repository">Configuring your
+<li><a href="#configuring-your-repository"
+id="toc-configuring-your-repository">Configuring your
 repository</a></li>
-<li><a href="#pushing-to-the-remote-repository">Pushing to the remote
+<li><a href="#pushing-to-the-remote-repository"
+id="toc-pushing-to-the-remote-repository">Pushing to the remote
 repository</a></li>
 </ul></li>
-<li><a href="#branches">Branches</a>
+<li><a href="#branches" id="toc-branches">Branches</a>
 <ul>
-<li><a href="#creating-a-new-branch">Creating a new branch</a></li>
-<li><a href="#listing-and-switching-branches">Listing and switching
+<li><a href="#creating-a-new-branch"
+id="toc-creating-a-new-branch">Creating a new branch</a></li>
+<li><a href="#listing-and-switching-branches"
+id="toc-listing-and-switching-branches">Listing and switching
 branches</a></li>
-<li><a href="#pushing-branches-to-remote">Pushing branches to
-remote</a></li>
-<li><a href="#merging-branches">Merging branches</a></li>
+<li><a href="#pushing-branches-to-remote"
+id="toc-pushing-branches-to-remote">Pushing branches to remote</a></li>
+<li><a href="#merging-branches" id="toc-merging-branches">Merging
+branches</a></li>
 </ul></li>
-<li><a href="#synchronizing-projects-between-computers">Synchronizing
-projects between computers</a>
+<li><a href="#synchronizing-projects-between-computers"
+id="toc-synchronizing-projects-between-computers">Synchronizing projects
+between computers</a>
 <ul>
-<li><a href="#install-git">Install Git</a></li>
-<li><a href="#cloning-your-repository">Cloning your repository</a></li>
-<li><a href="#workflow">Workflow</a></li>
+<li><a href="#install-git" id="toc-install-git">Install Git</a></li>
+<li><a href="#cloning-your-repository"
+id="toc-cloning-your-repository">Cloning your repository</a></li>
+<li><a href="#workflow" id="toc-workflow">Workflow</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
 </ul>
 </nav>
 <h1 id="advanced-version-control">Advanced version control</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Clone an existing remote version control repository.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Create a new remote version control repository.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Push an existing local repository to a remote version control
-repository.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Use branching and merging with a version control repository.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Synchronize repositories between computers for a personal project.</li>
+<li><label><input type="checkbox" checked="" />Clone an existing remote
+version control repository.</label></li>
+<li><label><input type="checkbox" checked="" />Create a new remote
+version control repository.</label></li>
+<li><label><input type="checkbox" checked="" />Push an existing local
+repository to a remote version control repository.</label></li>
+<li><label><input type="checkbox" checked="" />Use branching and merging
+with a version control repository.</label></li>
+<li><label><input type="checkbox" checked="" />Synchronize repositories
+between computers for a personal project.</label></li>
 </ul>
 </div>
 <h2 id="cloning-an-existing-repository">Cloning an existing

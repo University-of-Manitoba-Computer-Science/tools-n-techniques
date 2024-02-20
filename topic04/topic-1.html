@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -183,7 +191,7 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
 </ul>
 </nav>
 <h1 id="introduction">Introduction</h1>
@@ -204,20 +212,18 @@ people on a project?</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Clone an existing remote version control repository.</li>
-<li><input type="checkbox" disabled="" />
-Create a new remote version control repository.</li>
-<li><input type="checkbox" disabled="" />
-Push an existing local repository to a remote version control
-repository.</li>
-<li><input type="checkbox" disabled="" />
-Use branching and merging with a version control repository.</li>
-<li><input type="checkbox" disabled="" />
-Synchronize repositories between computers for a personal project.</li>
-<li><input type="checkbox" disabled="" />
-Manage personal project tasks as issues using web-based issue tracking
-software.</li>
+<li><label><input type="checkbox" />Clone an existing remote version
+control repository.</label></li>
+<li><label><input type="checkbox" />Create a new remote version control
+repository.</label></li>
+<li><label><input type="checkbox" />Push an existing local repository to
+a remote version control repository.</label></li>
+<li><label><input type="checkbox" />Use branching and merging with a
+version control repository.</label></li>
+<li><label><input type="checkbox" />Synchronize repositories between
+computers for a personal project.</label></li>
+<li><label><input type="checkbox" />Manage personal project tasks as
+issues using web-based issue tracking software.</label></li>
 </ul>
 </div>
 

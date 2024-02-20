@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -184,22 +192,24 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#organizing-your-files">Organizing your files</a>
+<li><a href="#organizing-your-files"
+id="toc-organizing-your-files">Organizing your files</a>
 <ul>
-<li><a href="#planning-your-organization">Planning your
-organization</a></li>
-<li><a href="#making-folders">Making folders</a></li>
+<li><a href="#planning-your-organization"
+id="toc-planning-your-organization">Planning your organization</a></li>
+<li><a href="#making-folders" id="toc-making-folders">Making
+folders</a></li>
 </ul></li>
 </ul>
 </nav>
 <h1 id="organizing-your-files">Organizing your files</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Define your own strategy for organizing your files.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Build a directory structure with a visual file explorer for the purpose
-of organizing your files.</li>
+<li><label><input type="checkbox" checked="" />Define your own strategy
+for organizing your files.</label></li>
+<li><label><input type="checkbox" checked="" />Build a directory
+structure with a visual file explorer for the purpose of organizing your
+files.</label></li>
 </ul>
 </div>
 <p>Our computers are <a

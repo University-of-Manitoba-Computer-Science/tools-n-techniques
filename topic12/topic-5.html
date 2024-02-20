@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -245,12 +254,16 @@ Pandocker!</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#configure-and-run-a-web-server">Configure and run a web
+<li><a href="#configure-and-run-a-web-server"
+id="toc-configure-and-run-a-web-server">Configure and run a web
 server</a>
 <ul>
-<li><a href="#installing-caddy">Installing Caddy</a></li>
-<li><a href="#configuring-caddy">Configuring Caddy</a></li>
-<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#installing-caddy" id="toc-installing-caddy">Installing
+Caddy</a></li>
+<li><a href="#configuring-caddy" id="toc-configuring-caddy">Configuring
+Caddy</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -258,8 +271,8 @@ server</a>
 server</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Configure and run a web server.</li>
+<li><label><input type="checkbox" checked="" />Configure and run a web
+server.</label></li>
 </ul>
 </div>
 <p>One very popular use for Linux is to run web servers. A web server is

@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -246,10 +255,12 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#converting-documents-to-different-formats">Converting
-documents to different formats</a>
+<li><a href="#converting-documents-to-different-formats"
+id="toc-converting-documents-to-different-formats">Converting documents
+to different formats</a>
 <ul>
-<li><a href="#converting-to-word">Converting to Word</a></li>
+<li><a href="#converting-to-word" id="toc-converting-to-word">Converting
+to Word</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -257,9 +268,8 @@ documents to different formats</a>
 to different formats</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Convert plain text documents to different formats (e.g.,
-<code>docx</code>).</li>
+<li><label><input type="checkbox" checked="" />Convert plain text
+documents to different formats (e.g., <code>docx</code>).</label></li>
 </ul>
 </div>
 <p>We installed Pandoc, then shifted to writing a bunch of plain text.

@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -248,17 +257,22 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#debugging-strategies">Debugging strategies</a>
+<li><a href="#debugging-strategies"
+id="toc-debugging-strategies">Debugging strategies</a>
 <ul>
-<li><a href="#pencil-and-paper-debugging">Pencil-and-paper
-debugging</a></li>
-<li><a href="#log-based-debugging">Log-based debugging</a>
+<li><a href="#pencil-and-paper-debugging"
+id="toc-pencil-and-paper-debugging">Pencil-and-paper debugging</a></li>
+<li><a href="#log-based-debugging"
+id="toc-log-based-debugging">Log-based debugging</a>
 <ul>
-<li><a href="#languages-with-meaningful-error-messages">Languages with
+<li><a href="#languages-with-meaningful-error-messages"
+id="toc-languages-with-meaningful-error-messages">Languages with
 meaningful error messages</a></li>
-<li><a href="#languages-without-meaningful-error-messages">Languages
-without meaningful error messages</a></li>
-<li><a href="#general-advice-for-log-based-debugging">General advice for
+<li><a href="#languages-without-meaningful-error-messages"
+id="toc-languages-without-meaningful-error-messages">Languages without
+meaningful error messages</a></li>
+<li><a href="#general-advice-for-log-based-debugging"
+id="toc-general-advice-for-log-based-debugging">General advice for
 log-based debugging</a></li>
 </ul></li>
 </ul></li>
@@ -316,8 +330,8 @@ computer</a>.</p>
 <h2 id="log-based-debugging">Log-based debugging</h2>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Use log-based debugging to identify a problem with code.</li>
+<li><label><input type="checkbox" checked="" />Use log-based debugging
+to identify a problem with code.</label></li>
 </ul>
 </div>
 <p>Pencil-and-paper debugging is a tedious but effective strategy for
@@ -382,9 +396,9 @@ don’t necessarily have to trace the flow through that function, you may
 only care that the value you get back from the function is what you
 expect, so adding print statements before and after the call is
 enough:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The value right now is [%s]</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> my_string<span class="op">);</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The value right now is [</span><span class="sc">%s</span><span class="st">]</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> my_string<span class="op">);</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_function<span class="op">(</span>my_string<span class="op">);</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;Now the value is [%s]</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> my_string<span class="op">);</span></span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;Now the value is [</span><span class="sc">%s</span><span class="st">]</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> my_string<span class="op">);</span></span></code></pre></div>
 <p>If you can see that the value <em>was not</em> what you expected,
 then move your editor to that function call and start adding similar
 print messages until you find a single statement that you wrote that
@@ -407,7 +421,7 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="
 <li><p>Print the <strong>line number</strong> that the print statement
 is on. You can print the line number in C with a magic variable:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The current line number is %d</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> __LINE__<span class="op">);</span></span></code></pre></div></li>
+class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The current line number is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> __LINE__<span class="op">);</span></span></code></pre></div></li>
 <li><p>When working with strings, <strong>wrap the value</strong> with
 symbols you know won’t or shouldn’t be in the string so that you can see
 (for example) leading or trailing space characters:</p>

@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -245,10 +254,13 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#connecting-with-ssh">Connecting with SSH</a>
+<li><a href="#connecting-with-ssh"
+id="toc-connecting-with-ssh">Connecting with SSH</a>
 <ul>
-<li><a href="#open-your-terminal">Open your terminal</a></li>
-<li><a href="#connect-to-a-remote-computer">Connect to a remote
+<li><a href="#open-your-terminal" id="toc-open-your-terminal">Open your
+terminal</a></li>
+<li><a href="#connect-to-a-remote-computer"
+id="toc-connect-to-a-remote-computer">Connect to a remote
 computer</a></li>
 </ul></li>
 </ul>
@@ -256,8 +268,8 @@ computer</a></li>
 <h1 id="connecting-with-ssh">Connecting with SSH</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Connect to a remote computer using <code>ssh</code>.</li>
+<li><label><input type="checkbox" checked="" />Connect to a remote
+computer using <code>ssh</code>.</label></li>
 </ul>
 </div>
 <p>You opened your terminal <em>briefly</em> in <a
@@ -312,23 +324,23 @@ identify ourself.</p>
 <div class="checklist">
 <p>Before you start connecting to a remote computer, you need:</p>
 <ol type="1">
-<li><input type="checkbox" disabled="" />
-The <strong>name and location</strong> of the remote computer (an
-address).</li>
-<li><input type="checkbox" disabled="" />
-Our <strong>username</strong> on the remote computer (how we identify
-ourselves to the computer).</li>
-<li><input type="checkbox" disabled="" />
-Our <strong>password</strong> on the remote computer (how we prove our
-identity to the computer).</li>
+<li><label><input type="checkbox" />The <strong>name and
+location</strong> of the remote computer (an address).</label></li>
+<li><label><input type="checkbox" />Our <strong>username</strong> on the
+remote computer (how we identify ourselves to the
+computer).</label></li>
+<li><label><input type="checkbox" />Our <strong>password</strong> on the
+remote computer (how we prove our identity to the
+computer).</label></li>
 </ol>
 </div>
 <p>Here’s what you need to know to connect to the U of M CS computer
 systems.</p>
 <ol type="1">
-<li><p><input type="checkbox" disabled="" checked="" />
-The <strong>name and location</strong> (address) of the remote computer
-for the CS department is</p><pre><code>aviary.cs.umanitoba.ca</code></pre>
+<li><p><label><input type="checkbox" checked="" />The <strong>name and
+location</strong> (address) of the remote computer for the CS department
+is</label></p>
+<pre><code>aviary.cs.umanitoba.ca</code></pre>
 <div class="aside">
 <p>Aviary is not actually a real computer, but instead is an address for
 <strong>many</strong> computers. Each time you connect to the address
@@ -342,16 +354,15 @@ data-emoji="bird">🐦</span>. An <a
 href="https://en.wikipedia.org/wiki/Aviary">aviary</a> is a big bird
 house! It’s funny! It’s a joke!</p>
 </div></li>
-<li><p><input type="checkbox" disabled="" checked="" />
-Your <strong>username</strong> on this remote computer is your UMNetID
-(the part of your <span class="citation"
+<li><p><label><input type="checkbox" checked="" />Your
+<strong>username</strong> on this remote computer is your UMNetID (the
+part of your <span class="citation"
 data-cites="myumanitoba.ca">@myumanitoba.ca</span> e-mail address before
 <span class="citation"
-data-cites="myumanitoba.ca">@myumanitoba.ca</span>).</p></li>
-<li><p><input type="checkbox" disabled="" checked="" />
-Your initial default <strong>password</strong> is your student number.
-You will be required to change this the first time you log in to
-aviary.</p></li>
+data-cites="myumanitoba.ca">@myumanitoba.ca</span>).</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Your initial default
+<strong>password</strong> is your student number. You will be required
+to change this the first time you log in to aviary.</label></p></li>
 </ol>
 <p>Now that you’ve got that information we can actually start connecting
 to a remote computer. When we’re connecting to remote computers, we’re
