@@ -105,6 +105,9 @@
   </script>
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 
@@ -360,7 +363,7 @@ output.</p>
 and <code>my-app</code>), the dependency graph would look something like
 this:</p>
 <figure>
-<img src="dependency-graph.svg"
+<img src="dependencies.png"
 alt="A dependency graph for list.o, set.o, and my-app." />
 <figcaption aria-hidden="true">A dependency graph for
 <code>list.o</code>, <code>set.o</code>, and
@@ -730,7 +733,7 @@ has a processor with more than one core, and each core can be used by
 <code>make</code> to build unrelated dependencies for targets.</p>
 <p>Here’s the dependency graph we had from above:</p>
 <figure>
-<img src="dependency-graph.svg"
+<img src="dependencies.png"
 alt="A dependency graph for list.o, set.o, and my-app." />
 <figcaption aria-hidden="true">A dependency graph for
 <code>list.o</code>, <code>set.o</code>, and
