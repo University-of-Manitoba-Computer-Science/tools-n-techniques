@@ -76,7 +76,7 @@ one compiled output depends on the existence of another compiled output.
 In the example we had above (`list.o`, `set.o`, and `my-app`), the dependency
 graph would look something like this:
 
-![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependency-graph.svg)
+![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependencies.png)
 
 [dependency graph]: https://en.wikipedia.org/wiki/Dependency_graph
 
@@ -498,7 +498,7 @@ targets.
 
 Here's the dependency graph we had from above:
 
-![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependency-graph.svg)
+![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependencies.png)
 
 When `make` builds `set.o` and `list.o`, it can build them literally at the same
 time because they don't have common dependencies.
