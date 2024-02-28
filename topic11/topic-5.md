@@ -182,12 +182,12 @@ suggest some reasonable values you can choose for each.
 * **Image**: This is where you're picking which operating system is going to be
   running in your virtual machine. There are both Windows and Linux options.
   You're welcome to pick whichever you want, but I would recommend you pick
-  "Ubuntu Server 20.04 LTS - Gen2".
+  "Ubuntu Server 20.04 LTS - x64 Gen2" or "Ubuntu Server 22.04 LTS - x64 Gen2".
 * **VM architecture**: You can choose what kind of physical processor is going
-  to be used to run your application. Arm64 is effectively the same as Apple's
-  M1 and M2, or the processor that's running in your phone. x64 is effectively
-  the same as what's in most PCs. You must pick "x64" for this option, the free
-  tier that we're using doesn't yet have any Arm64 options.
+  to be used to run your application. Arm64 is effectively the same as Apple
+  Silicon (M1, M2, M3, etc), or the processor that's running in your phone. x64
+  is effectively the same as what's in most PCs. You must pick "x64" for this
+  option, the free tier that we're using doesn't yet have any Arm64 options.
 * **Size**: This is where you get to pick how much CPU and memory you want in
   your virtual machine. We're not doing much with this virtual machine, so we
   don't need to pick anything crazy here. I would recommend that you pick
@@ -211,7 +211,7 @@ too much time, and you'll eventually see a message reporting something like
 Once that message appears, click on the blue "Go to resource" button to see the
 details of your machine.
 
-There's a lot, but you've just stared a virtual machine in the cloud :tada:!
+There's a lot, but you've just started a virtual machine in the cloud :tada:!
 
 
 [Centre of Canada]: https://en.wikipedia.org/wiki/Centre_of_Canada
