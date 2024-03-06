@@ -313,6 +313,8 @@ id="toc-debugging-shell-scripts">Debugging shell scripts</a>
 id="toc-log-based-debugging">Log-based debugging</a></li>
 <li><a href="#changing-bash-behaviour"
 id="toc-changing-bash-behaviour">Changing Bash Behaviour</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -398,6 +400,31 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-e</span>    <span class="co"># exit on any error</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-x</span>    <span class="co"># print out all commands that are run</span></span></code></pre></div>
 </div>
+<h2 id="further-reading">Further reading</h2>
+<p>Shell scripting isn’t… it isn’t a great language for general purpose
+programming, but maybe that’s because nobody has built up the kind of
+tooling we have for debugging like in other programming languages.</p>
+<p>Here are some links where you can read a bit more about debugging
+shell scripts:</p>
+<ul>
+<li>On Julia Evans’ “<a href="https://wizardzines.com/">wizard
+zines</a>” there’s a comic specifically on “<a
+href="https://wizardzines.com/comics/bash-debugging/">bash
+debugging</a>”. It’s short, visual, but gives some additional tips like
+using the <code>trap</code> builtin for even more debugging
+goodness.</li>
+<li>An actual Bash debugging tool exists as “<a
+href="https://bashdb.sourceforge.net/">BASH Debugger</a>”, but it’s not
+usually installed anywhere by default (it’s not on Aviary, for example),
+and I’m not entirely sure how it works in the sense that commands have
+side-effects outside of the language. This is something you will have to
+build and install on your own if you want to use it.</li>
+<li>Greg’s Wiki entry on <a
+href="https://mywiki.wooledge.org/BashPitfalls#set_-euo_pipefail">Bash
+Pitfalls</a> explains why some of the options that we’re listing in this
+book are still not exactly great ways to debug a shell script (but it’s
+kinda all we’ve got).</li>
+</ul>
 
 </div> <!-- article-content -->
 
