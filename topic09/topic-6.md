@@ -114,3 +114,29 @@ set -x    # print out all commands that are run
 ```
 
 :::
+
+Further reading
+---------------
+
+Shell scripting isn't... it isn't a great language for general purpose
+programming, but maybe that's because nobody has built up the kind of tooling we
+have for debugging like in other programming languages.
+
+Here are some links where you can read a bit more about debugging shell scripts:
+
+* On Julia Evans' "[wizard zines]" there's a comic specifically on "[bash
+  debugging]". It's short, visual, but gives some additional tips like using the
+  `trap` builtin for even more debugging goodness.
+* An actual Bash debugging tool exists as "[BASH Debugger]", but it's not
+  usually installed anywhere by default (it's not on Aviary, for example), and
+  I'm not entirely sure how it works in the sense that commands have
+  side-effects outside of the language. This is something you will have to build
+  and install on your own if you want to use it.
+* Greg's Wiki entry on [Bash Pitfalls] explains why some of the options that
+  we're listing in this book are still not exactly great ways to debug a shell
+  script (but it's kinda all we've got).
+
+[wizard zines]: https://wizardzines.com/
+[bash debugging]: https://wizardzines.com/comics/bash-debugging/
+[BASH Debugger]: https://bashdb.sourceforge.net/
+[Bash Pitfalls]: https://mywiki.wooledge.org/BashPitfalls#set_-euo_pipefail
