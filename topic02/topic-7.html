@@ -9,23 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -197,14 +186,16 @@ Containers, virtual machines, and “The Cloud ™”
 <li><a href=".././topic11/topic-2.html">Install and configure a virtual
 machine</a></li>
 <li><a href=".././topic11/topic-3.html">Download and use a pre-installed
-OS in VM software</a></li>
-<li><a href=".././topic11/topic-4.html">Run a command within a
+OS in VM software (VirtualBox)</a></li>
+<li><a href=".././topic11/topic-4.html">Download and use a pre-installed
+OS in VM software (UTM)</a></li>
+<li><a href=".././topic11/topic-5.html">Run a command within a
 container</a></li>
-<li><a href=".././topic11/topic-5.html">Initialize a server in a public
+<li><a href=".././topic11/topic-6.html">Initialize a server in a public
 cloud</a></li>
-<li><a href=".././topic11/topic-6.html">Summary</a></li>
 <li><a href=".././topic11/hello-pandocker.html">Hello,
 Pandocker!</a></li>
+<li><a href=".././topic11/topic-7.html">Summary</a></li>
 </ul>
 </details>
 <details>
@@ -246,21 +237,23 @@ including sending files back and forth between that remote computer</p>
 <div class="outcomes">
 <p>You should now be able to:</p>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Connect to a remote
-computer using <code>ssh</code>.</label></li>
-<li><label><input type="checkbox" checked="" />Create, rename, delete,
-and inspect folder structures on the command-line.</label></li>
-<li><label><input type="checkbox" checked="" />Navigate folder
-structures on the command-line.</label></li>
-<li><label><input type="checkbox" checked="" />Use a command-line text
-editor to open, inspect, edit, and save a file.</label></li>
-<li><label><input type="checkbox" checked="" />Complete commands and
-filenames with tab completion.</label></li>
-<li><label><input type="checkbox" checked="" />Transfer files between
-your computer and a remote computer.</label></li>
-<li><label><input type="checkbox" checked="" />Use the
-<code>handin</code> command in the U of M CS UNIX
-environment.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Connect to a remote computer using <code>ssh</code>.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Create, rename, delete, and inspect folder structures on the
+command-line.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Navigate folder structures on the command-line.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Use a command-line text editor to open, inspect, edit, and save a
+file.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Complete commands and filenames with tab completion.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Transfer files between your computer and a remote computer.</li>
+<li><input type="checkbox" disabled="" checked="" />
+Use the <code>handin</code> command in the U of M CS UNIX
+environment.</li>
 </ul>
 </div>
 

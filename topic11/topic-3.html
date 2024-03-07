@@ -5,25 +5,16 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Franklin Bristow" />
-  <title>Download and use a pre-installed OS in VM software</title>
+  <title>Download and use a pre-installed OS in VM software (VirtualBox)</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
+    ul.task-list{list-style: none;}
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -87,9 +78,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -263,13 +251,15 @@ Containers, virtual machines, and “The Cloud ™”
 <li><a href="topic-1.html">Introduction</a></li>
 <li><a href="topic-2.html">Install and configure a virtual
 machine</a></li>
-<li><strong>Download and use a pre-installed OS in VM
-software</strong></li>
-<li><a href="topic-4.html">Run a command within a container</a></li>
-<li><a href="topic-5.html">Initialize a server in a public
+<li><strong>Download and use a pre-installed OS in VM software
+(VirtualBox)</strong></li>
+<li><a href="topic-4.html">Download and use a pre-installed OS in VM
+software (UTM)</a></li>
+<li><a href="topic-5.html">Run a command within a container</a></li>
+<li><a href="topic-6.html">Initialize a server in a public
 cloud</a></li>
-<li><a href="topic-6.html">Summary</a></li>
 <li><a href="hello-pandocker.html">Hello, Pandocker!</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul>
 </details>
 <details>
@@ -299,38 +289,37 @@ server</a></li>
 
 <div id="article-content">
 <header id="title-block-header">
-<h1 class="title">Download and use a pre-installed OS in VM
-software</h1>
+<h1 class="title">Download and use a pre-installed OS in VM software
+(VirtualBox)</h1>
 <p class="author">Franklin Bristow</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#download-and-use-a-pre-installed-os-in-vm-software"
-id="toc-download-and-use-a-pre-installed-os-in-vm-software">Download and
-use a pre-installed OS in VM software</a>
+<li><a
+href="#download-and-use-a-pre-installed-os-in-vm-software-virtualbox">Download
+and use a pre-installed OS in VM software (VirtualBox)</a>
 <ul>
-<li><a href="#download-an-image" id="toc-download-an-image">Download an
-image</a></li>
-<li><a href="#create-a-new-vm" id="toc-create-a-new-vm">Create a new
-VM</a></li>
-<li><a href="#run-the-vm" id="toc-run-the-vm">Run the VM</a>
+<li><a href="#download-an-image">Download an image</a></li>
+<li><a href="#create-a-new-vm">Create a new VM</a></li>
+<li><a href="#run-the-vm">Run the VM</a>
 <ul>
-<li><a href="#snapshots" id="toc-snapshots">Snapshots</a></li>
+<li><a href="#snapshots">Snapshots</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="download-and-use-a-pre-installed-os-in-vm-software">Download and
-use a pre-installed OS in VM software</h1>
+<h1
+id="download-and-use-a-pre-installed-os-in-vm-software-virtualbox">Download
+and use a pre-installed OS in VM software (VirtualBox)</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Download and use a
-pre-installed operating system in a virtual machine
-software.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Download and use a pre-installed operating system in a virtual machine
+software.</li>
 </ul>
 </div>
-<p>You’ve been using Windows or macOS on your personal computer and
-you’re using Linux when you connect to Aviary.</p>
+<p>You’ve been using Windows or macOS (or maybe Linux!) on your personal
+computer and you’re using Linux when you connect to Aviary.</p>
 <p>We’re going to try something a little different here and use a brand
 new experimental operating system called <a
 href="https://serenityos.org">SerenityOS</a>.</p>
@@ -348,7 +337,13 @@ YouTube</a>.</p>
 “disk image”, this is a bit for bit copy of a hard drive or disk.
 Everything else that we need to set up is going to be done in VirtualBox
 itself.</p>
-<p>Download the latest image of SerenityOS here: <a
+<div class="warning">
+<p>For our virtual machine, we are going to use one specific version
+from January 2023. Download the SerenityOS from the following link: <a
+href="https://serenity-builds.halves.dev/builds/2023-01-03/"
+class="uri">https://serenity-builds.halves.dev/builds/2023-01-03/</a></p>
+</div>
+<p>The latest image of SerenityOS can be found here: <a
 href="https://serenity-builds.halves.dev/"
 class="uri">https://serenity-builds.halves.dev/</a></p>
 <p>There are two options: a “Raw image” or “VirtualBox VDI”. The raw

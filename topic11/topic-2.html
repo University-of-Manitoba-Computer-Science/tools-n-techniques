@@ -9,23 +9,12 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -199,12 +188,14 @@ Containers, virtual machines, and “The Cloud ™”
 <li><a href="topic-1.html">Introduction</a></li>
 <li><strong>Install and configure a virtual machine</strong></li>
 <li><a href="topic-3.html">Download and use a pre-installed OS in VM
-software</a></li>
-<li><a href="topic-4.html">Run a command within a container</a></li>
-<li><a href="topic-5.html">Initialize a server in a public
+software (VirtualBox)</a></li>
+<li><a href="topic-4.html">Download and use a pre-installed OS in VM
+software (UTM)</a></li>
+<li><a href="topic-5.html">Run a command within a container</a></li>
+<li><a href="topic-6.html">Initialize a server in a public
 cloud</a></li>
-<li><a href="topic-6.html">Summary</a></li>
 <li><a href="hello-pandocker.html">Hello, Pandocker!</a></li>
+<li><a href="topic-7.html">Summary</a></li>
 </ul>
 </details>
 <details>
@@ -239,17 +230,15 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#install-and-configure-a-virtual-machine"
-id="toc-install-and-configure-a-virtual-machine">Install and configure a
-virtual machine</a>
+<li><a href="#install-and-configure-a-virtual-machine">Install and
+configure a virtual machine</a>
 <ul>
-<li><a href="#what-even-is-a-virtual-machine"
-id="toc-what-even-is-a-virtual-machine">What even is a virtual
+<li><a href="#what-even-is-a-virtual-machine">What even is a virtual
 machine?</a></li>
-<li><a href="#choosing-your-vm-software"
-id="toc-choosing-your-vm-software">Choosing your VM software</a></li>
-<li><a href="#install-virtualbox" id="toc-install-virtualbox">Install
-VirtualBox</a></li>
+<li><a href="#choosing-your-vm-software">Choosing your VM
+software</a></li>
+<li><a href="#install-virtualbox">Install VirtualBox</a></li>
+<li><a href="#install-utm">Install UTM</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -257,8 +246,8 @@ VirtualBox</a></li>
 virtual machine</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><label><input type="checkbox" checked="" />Install and configure
-virtual machine software.</label></li>
+<li><input type="checkbox" disabled="" checked="" />
+Install and configure virtual machine software.</li>
 </ul>
 </div>
 <p>All of the topics this week are interrelated (everything’s going to
@@ -350,7 +339,12 @@ support from a community compared to something that’s unpopular).</li>
 <li>Is not at all user friendly (entirely command-line based out of the
 box, though many <a
 href="https://wiki.qemu.org/Links#GUIs_and_management_tools/systems">GUI
-front-ends for it exist</a>; is free and open source.</li>
+front-ends for it exist</a>; is free and open source.
+<ul>
+<li>One GUI front-end for macOS is called <a
+href="https://getutm.app/">UTM</a>, and it is generally quite
+user-friendly.</li>
+</ul></li>
 <li>Is extremely popular.</li>
 </ul></td>
 </tr>
@@ -377,8 +371,86 @@ should use; can be free, but is not open source.</li>
 </tr>
 </tbody>
 </table>
-<p>We’re going to use VirtualBox for this course and guide, but you’re
-welcome to choose whichever VM software you want.</p>
+<p>We’re going to use either VirtualBox (on Windows, Linux, or macOS
+with Intel processors) or a front-end for QEMU called <a
+href="https://getutm.app/">UTM</a> (on macOS, especially with Apple
+Silicon, but it also works on Intel processors) for this course and
+guide, but you’re welcome to choose whichever VM software you want.</p>
+<p>If you are using Windows or Linux, you should <a
+href="#install-virtualbox">Install VirtualBox</a>.</p>
+<p>If you are using macOS with an Intel processor, you can <a
+href="#install-virtualbox">Install VirtualBox</a> or <a
+href="#install-utm">Install UTM</a>. If you are using macOS with Apple
+Silicon, you <u><strong>must</strong></u> <a href="#install-utm">Install
+UTM</a>.</p>
+<div class="aside">
+<p>How do I find out what kind of processor I’m using? There are two
+kinds of information you may want to know about your processor: the
+brand (the company that manufactures the processor) and the
+“architecture” or “<a
+href="https://en.wikipedia.org/wiki/Instruction_set_architecture">instruction
+set architecture</a>”.</p>
+<details>
+<summary>
+On Windows
+</summary>
+<p>The answer in 2024 is almost guaranteed to be an Intel or AMD
+processor. The architecture that your processor uses is called
+(interchangeably) “x86_64” or “amd64”. If you have a <em>really</em> old
+computer it might just be “x86”, but that’s highly unlikely if your
+laptop is less than 15 years old.</p>
+<p>This is changing, but Windows on other kinds of processors is not yet
+common.</p>
+<p>You can find out what brand and model of processor you have installed
+on Windows by <a
+href="https://support.microsoft.com/en-us/windows/find-out-how-many-cores-your-processor-has-3126ef99-0247-33b3-81fc-065e9fb0c35b">opening
+the task manager</a>.</p>
+</details>
+<details>
+<summary>
+On macOS
+</summary>
+<p>The answer in 2024 could be either Intel or Apple. You can find out
+what kind of processor your mac has by <a
+href="https://support.apple.com/en-us/102767">opening the “About This
+Mac” dialog</a>.</p>
+<p>If you bought your Mac as any of “M1”, “M2”, or “M3” (after 2021),
+then your computer is using Apple Silicon. The instruction set
+architecture of Apple Silicon is called “ARM”.</p>
+<p>If you your Mac was made before 2021 (or you have built a
+[“Hackintosh”]), then your computer may be using an Intel processor and
+uses the “x86_64” or “amd64” (used interchangeably) instruction set
+architecture. If your Mac is <em>really</em> old, it may use the “x86”
+instruction set architecture.</p>
+</details>
+<details>
+<summary>
+On Linux
+</summary>
+<p>As with most things Linux, how you accomplish this visually depends
+on the <a
+href="https://en.wikipedia.org/wiki/Desktop_environment">desktop
+environment</a> that you have installed.</p>
+<p>If you’re using <a
+href="https://en.wikipedia.org/wiki/GNOME">GNOME</a> and <a
+href="https://ubuntu.com/">Ubuntu</a>, you can <a
+href="https://help.ubuntu.com/stable/ubuntu-help/about-hardware.html.en">discover
+information about your system hardware</a>.</p>
+<p>If you’re using something else (or using GNOME and Ubuntu but want to
+approach this a different way), you can find out information about your
+computer’s processor using the <code>lscpu</code> command in your
+terminal. Depending on what’s installed on your system, you may also be
+able to find out information about your system using the
+<code>lshw</code> command or something like <a
+href="https://github.com/dylanaraps/neofetch"><code>neofetch</code></a>.</p>
+<p>Regardless of the distribution or desktop environment that you’re
+using, you’re almost certainly using an Intel or AMD processor, and the
+architecture that your processor uses is called (interchangeably)
+“x86_64” or “amd64”. If you have a <em>really</em> old computer it might
+just be “x86”, but that’s highly unlikely if your laptop is less than 15
+years old.</p>
+</details>
+</div>
 <h2 id="install-virtualbox">Install VirtualBox</h2>
 <p><a href="https://www.virtualbox.org/wiki/Downloads">Download
 VirtualBox for your platform</a> (you should download the 7.0.X series)
@@ -386,8 +458,33 @@ and <a
 href="https://www.virtualbox.org/manual/UserManual.html#installation">install
 it</a>.</p>
 <p>You can also install the VirtualBox Extension Pack, but we don’t need
-the extension pack for the work we’re doing in this course right
-now.</p>
+the extension pack for the work we’re doing in this course right now.
+You <em>don’t</em> need to enable Python support (VirtualBox can be
+configured and managed with Python scripts, but that’s out of scope for
+this course).</p>
+<p>If you’re using VirtualBox, you should proceed to <a
+href="topic-3.html">Download and use a pre-installed OS in VM software
+(VirtualBox)</a></p>
+<h2 id="install-utm">Install UTM</h2>
+<p>As above, <a href="https://mac.getutm.app/">UTM for macOS</a> is a
+front-end for QEMU for macOS. You should <a
+href="https://docs.getutm.app/installation/macos/">download and install
+UTM</a>.</p>
+<div class="aside">
+<p>UTM is free and <a
+href="https://en.wikipedia.org/wiki/Open-source_software">open
+source</a>. The developer of UTM has published UTM in the Apple App
+Store, and where you can buy the software to install it. Buying the
+software on the App Store supports the developer of UTM.</p>
+<p>The developer also makes UTM <a
+href="https://github.com/utmapp/UTM/releases">available for installation
+on GitHub</a>. Downloading UTM from GitHub is free. You should scroll
+down to the “Assets” section of the latest release and download the
+<code>.dmg</code> file.</p>
+</div>
+<p>If you’re using UTM, you should proceed to <a
+href="topic-4.html">Download and use a pre-installed OS in VM software
+(UTM)</a>.</p>
 
 </div> <!-- article-content -->
 
