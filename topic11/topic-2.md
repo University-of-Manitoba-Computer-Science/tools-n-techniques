@@ -142,6 +142,7 @@ information you may want to know about your processor: the brand (the company
 that manufactures the processor) and the "architecture" or "[instruction set
 architecture]".
 
+
 <details><summary>On Windows</summary>
 
 The answer in 2024 is almost guaranteed to be an Intel or AMD processor. The
@@ -203,7 +204,7 @@ laptop is less than 15 years old.
 [discover information about your system hardware]: https://help.ubuntu.com/stable/ubuntu-help/about-hardware.html.en
 [`neofetch`]: https://github.com/dylanaraps/neofetch
 
-</summary>
+</details>
 
 [instruction set architecture]: https://en.wikipedia.org/wiki/Instruction_set_architecture
 :::
@@ -232,10 +233,10 @@ https://www.virtualbox.org/wiki/Downloads
 Install UTM
 -----------
 
-As above, [UTM] is a front-end for QEMU for macOS. You should [download and
-install UTM].
+As above, [UTM for macOS] is a front-end for QEMU for macOS. You should
+[download and install UTM].
 
-[UTM]: https://mac.getutm.app/
+[UTM for macOS]: https://mac.getutm.app/
 [download and install UTM]: https://docs.getutm.app/installation/macos/
 
 ::: aside

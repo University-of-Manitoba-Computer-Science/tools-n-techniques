@@ -41,7 +41,15 @@ We're going to download an "image". The full name for this thing is "disk
 image", this is a bit for bit copy of a hard drive or disk. Everything else that
 we need to set up is going to be done in VirtualBox itself.
 
-Download the latest image of SerenityOS here:
+::: warning
+
+For our virtual machine, we are going to use one specific version from January 2023.
+Download the SerenityOS from the following link:
+<https://serenity-builds.halves.dev/builds/2023-01-03/>
+
+:::
+
+The latest image of SerenityOS can be found here:
 <https://serenity-builds.halves.dev/>
 
 There are two options: a "Raw image" or "VirtualBox VDI". The raw image can be
