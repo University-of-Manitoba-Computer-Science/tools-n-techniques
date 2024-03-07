@@ -1,9 +1,9 @@
 ---
-title: Download and use a pre-installed OS in VM software
+title: Download and use a pre-installed OS in VM software (VirtualBox)
 author: Franklin Bristow
 ---
 
-Download and use a pre-installed OS in VM software
+Download and use a pre-installed OS in VM software (VirtualBox)
 ==================================================
 
 ::: outcomes
@@ -13,8 +13,8 @@ Download and use a pre-installed OS in VM software
 
 :::
 
-You've been using Windows or macOS on your personal computer and you're using
-Linux when you connect to Aviary.
+You've been using Windows or macOS (or maybe Linux!) on your personal computer
+and you're using Linux when you connect to Aviary.
 
 We're going to try something a little different here and use a brand new
 experimental operating system called [SerenityOS].

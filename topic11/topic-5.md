@@ -1,274 +1,297 @@
 ---
-title: Initialize a server in a public cloud
+title: Run a command within a container
 author: Franklin Bristow
 ---
 
-Initialize a server in a public cloud
-=====================================
+Run a command within a container
+================================
 
 ::: outcomes
 
-* [X] Initialize a server in a publicly available cloud computing environment
-  (e.g., AWS).
+* [X] Run a command within a container.
 
 :::
 
-VMs are pretty cool! Containers are also pretty cool, they enable us to do stuff
-on our own machine that we couldn't do before.
+[Containers] are related to virtual machines, but aren't the same thing. The main
+difference between a container and a virtual machine is that a container **does
+not** contain or run an entire operating system. Instead, containers run
+*within* an existing operating system. The theory is that a container uses fewer
+resources because it doesn't carry all the extra baggage of a complete operating
+system.
 
-Let's move off of our machine into the cloud.
+One fairly common use of containers is to distribute complex software and its
+dependencies as a single "image", similar to what you downloaded for SerenityOS
+when you were setting up a virtual machine. An image is basically an archive of
+an operating system's folder structure.
 
-![Clouds! ([Pixabay
-License](https://pixabay.com/photos/clouds-nature-sky-cumulus-weather-4215608/))](clouds.jpg)
+We could spend an entire course talking about the technical foundations of
+containers (that would be an *amazing* systems course), but in this course our
+goal is simple: install enough software to get a command running in a container.
 
-What even is a cloud?
----------------------
+[Containers]: https://en.wikipedia.org/wiki/OS-level_virtualization
 
-> A visible cluster of water droplets and/or ice particles in the
-> atmosphere. ([Weather and meteorology glossary])
+Install Docker Desktop
+----------------------
 
-That... doesn't seem like it's for [the right course].
+Undoubtedly the most popular container management software is [Docker].
 
-What's a cloud in the context of computing?
+Docker has a highly polished visual environment for managing containers called
+[Docker Desktop].
 
-> Cloud computing is a model for enabling ubiquitous, convenient, on-demand
-> network access to a shared pool of configurable computing resources (e.g.,
-> networks, servers, storage, applications, and services) that can be rapidly
-> provisioned and released with minimal management effort or service provider
-> interaction. ([NIST])
+You should install Docker Desktop on your personal computer, following the
+instructions provided in [Docker's documentation].
 
-... wow, I think the definition of what a literal cloud is was easier to
-understand.
+::: warning
 
-I think we'll be able to better understand what cloud computing is in the
-context of how we got to cloud computing, so let's take a brief detour define
-some terms.
+If you're installing Docker Desktop on Windows, you're going to need to install
+the Windows Subsystem for Linux. There's a link in Docker's documentation, but
+for completeness, you can find [documentation about how to install WSL on
+Microsoft's web site].
 
-A **server** is a computer. A laptop can be a server, a desktop can be a server,
-or a rack-mounted computer can be a server.
+:::
 
-![Some rack-mounted computers in racks. (&copy; Victorgrigas [CC BY-SA
-3.0](https://commons.wikimedia.org/wiki/File:Wikimedia_Foundation_Servers-8055_35.jpg))](servers.jpg)
+[Docker]: https://www.docker.com
+[Docker Desktop]: https://docs.docker.com/desktop/
+[Docker's documentation]: https://docs.docker.com/get-docker/
+[documentation about how to install WSL on Microsoft's web site]:
+https://learn.microsoft.com/en-us/windows/wsl/install
 
-We usually call a computer a server when that computer is sharing some of its
-resources (files, access to other networks, applications) over a network.
+Run a command within a container
+--------------------------------
 
-Not *that* long ago, the choices you had were limited for running a server on
-the internet. One was to buy a server, then pay rent to have that server put
-into a rack in a data center (a building with a very fast internet connection,
-air conditioning, and support staff). This is expensive if all you want to do is
-share your personal home page on the internet, but might make sense if you're
-running an application that many people use.
+The simplest container command to run is "hello world", so let's start with
+that, then move on to something a little more complex.
 
-Eventually virtual machines appeared, and instead of buying or renting an entire
-server, companies began to sell or rent *virtual machines* --- a hosting company
-could buy one large physical rack mounted server and run many virtual machines
-on that one single machine, then sell access to those virtual machines.
+::: example
 
-This is appealing because 1) you only have to pay for what you're actually
-using, and 2) paying for more CPUs or memory when you need it is trivial
-compared to buying a new physical server. These companies also created their
-own suite of web applications and web sites for managing access to these virtual
-machines, and this is effectively what "the cloud" is: renting virtual machines
-in someone's data center.
+Let's start by running the Docker Desktop app on your computer. This step isn't
+required (you don't need to start Docker Desktop before running any commands),
+but gives us an idea of the kinds of things we can do with Docker Desktop.
 
-[Weather and meteorology glossary]:
-  https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/glossary.html#wsglossaryC
+![Docker Desktop.](docker-desktop.png)
 
-[the right course]: https://umanitoba.ca/environment-earth-resources/
-[NIST]: https://www.nist.gov/publications/nist-definition-cloud-computing
+We're not going to do anything with Docker Desktop, but note the tabs on the
+left:
 
-What cloud are we using?
-------------------------
+* **Containers**: This is a list of running containers that you can inspect and
+  interact with.
+* **Images**: These are the container images that have been downloaded for
+  launching containers on your machine.
+* **Volumes**: Containers can't see or interact with the files on your computer
+  at all (they're completely self-contained). Volumes are a way for you to share
+  folders from your computer to a container so that you can either provide
+  inputs or receive outputs from a container.
 
-There are three major cloud providers:
+Let's run a hello world container. If you had a terminal open before, close your
+terminal and re-open it; your `PATH` variable (yes, there is a `PATH` on all of
+Windows, macOS, and Linux) was modified by Docker Desktop when you installed it.
 
-1. [Amazon AWS].
-2. [Google Cloud].
-3. [Microsoft Azure].
-
-All of these cloud providers have free tiers: either by giving you a certain
-amount of credit or by specifying kinds of virtual machines with small amounts
-of resources that are free to use. Unfortunately, though, even though they are
-free, most require you to provide a credit card for if or when you go beyond
-what's being provided for free.
-
-We're going to be using Microsoft Azure for one specific reason: Students get
-free access to Azure without needing to provide a credit card; there are no
-other technical or other reasons for choosing Microsoft over the other cloud
-providers.
-
-[Amazon AWS]: https://aws.amazon.com/
-[Google Cloud]: https://cloud.google.com/
-[Microsoft Azure]: https://azure.microsoft.com/en-us/
-
-Running your own server in the cloud
-------------------------------------
-
-With that out of the way, let's get started on getting a server running on a
-cloud provider!
-
-### Sign up
-
-Sign up for [Azure for Students] using your `@myumanitoba.ca` e-mail address.
-You must use your U of M e-mail address because it's proof that you're a current
-student at the U of M.
-
-[Azure for Students]: https://azure.microsoft.com/en-ca/free/students/
-
-### Spin up your server
-
-Once you've set up your account we can start working on setting up a server.
-
-Begin by going to [your main Azure page]. There's a lot going on on this page!
-We're looking to set up a new virtual machine. You should see a section labelled
-"**Azure services**" near the top of the page:
-
-![Azure services.](services.png)
-
-We want to launch a new virtual machine, so click on "Virtual machines".
-
-This will take you to a page that has a list of the virtual machines that you
-currently have running on Azure. You don't have any yet, so this list will be
-empty. In the middle of the page should be a button labelled "Create", click it,
-then click on "Azure virtual machine".
-
-![Create a new VM button.](create.png)
-
-Next you're going to be able to choose options about your new virtual machine.
-There are a lot of options, but let's try to take a look at each of them, and
-suggest some reasonable values you can choose for each.
-
-* **Subscription**: You should only have one choice here (Azure for Students)
-  unless you've signed up for Azure before.
-* **Resource Group**: When you create a virtual machine on Azure, many different
-  "things" are going to be created that are related to each other, but are
-  reported separately (e.g., the address for your virtual machine is reported
-  separately from the virtual machine itself). You should select "(New) Resource
-  Group".
-* **Virtual machine name**: Give your new virtual machine a name! Naming things
-  is hard. You can name this whatever you want for this exercise, but typically
-  you name virtual machines with their intended purpose (e.g., database, web,
-  app).
-
-  ::: aside
-
-  Naming things is hard. You've actually seen a naming convention already:
-  Aviary. Aviary is not one computer, it's many computers, and
-  `aviary.cs.umanitoba.ca` is a "round-robin" DNS entry (remember, it's a joke;
-  ha ha).
-
-  You can find a [list of lists of naming conventions] if you're looking for
-  inspiration.
-
-  [list of lists of naming conventions]: https://namingschemes.com/Main_Page
-
-  :::
-* **Region**: This is the approximate location of where the computer running
-  your virtual machine will be physically located. I would recommend that you
-  pick something close to home: "(Canada) Central Canada" (Winnipeg is near the
-  [Centre of Canada], but apparently this data centre is actually in or near
-  Toronto).
-* **Availability options**: Virtual machines can be running in *many* locations
-  and not just one. The idea is that if one data centre goes offline, another
-  one will seamlessly pick up your virtual machine and keep it running. Our plan
-  is to bring up the virtual machine so that we can connect to it and that's
-  about it, so leave this set to "No infrastructure redundancy required".
-* **Security type**: You can choose the kinds of physical security devices that
-  are attached to the computer your virtual machine is running on. We don't
-  really care about this, but if your app is working with personally
-  identifiable information you might care about this option. For now you should
-  select "Standard".
-* **Image**: This is where you're picking which operating system is going to be
-  running in your virtual machine. There are both Windows and Linux options.
-  You're welcome to pick whichever you want, but I would recommend you pick
-  "Ubuntu Server 20.04 LTS - x64 Gen2" or "Ubuntu Server 22.04 LTS - x64 Gen2".
-* **VM architecture**: You can choose what kind of physical processor is going
-  to be used to run your application. Arm64 is effectively the same as Apple
-  Silicon (M1, M2, M3, etc), or the processor that's running in your phone. x64
-  is effectively the same as what's in most PCs. You must pick "x64" for this
-  option, the free tier that we're using doesn't yet have any Arm64 options.
-* **Size**: This is where you get to pick how much CPU and memory you want in
-  your virtual machine. We're not doing much with this virtual machine, so we
-  don't need to pick anything crazy here. I would recommend that you pick
-  "Standard_B1s".
-* **Authentication type**: Pick "Password".
-* **Username**: Pick a username. This could be the same as your username on
-  Aviary, it can be something else. Pick whatever you would like.
-* **Password** and **Confirm password**: Pick a password.
-* **Public inbound ports** and **Select inbound ports** you can decide what
-  kinds of applications are going to be running on your server. We only want SSH
-  right now, so leave this as the default.
-
-Finally, click on the blue "Review + create" button at the bottom. You can
-review the details here, then click on the blue "Create" button.
-
-When you click the create button, Azure will slowly create your virtual machine
-and all of the other resources required to get it running. This shouldn't take
-too much time, and you'll eventually see a message reporting something like
-"Your deployment is complete".
-
-Once that message appears, click on the blue "Go to resource" button to see the
-details of your machine.
-
-There's a lot, but you've just started a virtual machine in the cloud :tada:!
-
-
-[Centre of Canada]: https://en.wikipedia.org/wiki/Centre_of_Canada
-[your main Azure page]: https://portal.azure.com/#home
-
-### Connect with SSH
-
-The main thing we're interested in right now is the virtual machine's address.
-Remember: our goal is to connect to our virtual machine with SSH, and the three
-pieces of information we need to connect to a server with SSH are:
-
-1. The address of the server.
-2. Our username (how we identify ourself).
-3. Our password (how we prove that we are who we say we are).
-
-You set the username and password yourself when you were setting details for the
-server.
-
-You can find the address of your server on the right side of the page under the
-"Networking" heading. You're going to see a sequence of numbers and not a
-friendly name (like aviary). This is an [IP address]. You can use an IP address
-in the same way as you can a domain name when you're connecting with SSH:
+Once your terminal is open again, run the following:
 
 ```bash
-ssh you@10.10.3.4
+docker run hello-world
 ```
 
-Connect to your server with SSH!
+You should see some output from Docker:
 
-[IP address]: https://en.wikipedia.org/wiki/IP_address
+```
+PS C:\Users\you> docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete
+Digest: sha256:faa03e786c97f07ef34423fccceeec2398ec8a5759259f94d99078f264e9d7af
+Status: Downloaded newer image for hello-world:latest
 
-### Shut it down!
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
-OK awesome! You're welcome to start playing with this virtual machine (it's just
-another Linux server, similar to Aviary), but at this point we're done, we've
-accomplished what we set out to do.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
 
-Back in your Azure portal you should click on the Stop button at the top of the
-page.
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\you>
+```
+
+:tada: you just started and ran a container on your computer!
+
+When you go back to Docker Desktop, you'll be able to see that in the Containers
+tab is a container with the image `hello-world:latest` that has "Exited". This
+is the container you just ran.
+
+You can technically run it again by pressing the play button :arrow_forward: on
+the right side of the window, but it's not going to do anything because the
+`hello-world` image prints to standard output, and there is no standard output
+display in Docker Desktop.
+
+You can (and probably should) delete this container by clicking on the trash can
+:wastebasket: icon on the far right side of the window.
+
+:::
+
+Hello world is always our classic "let's try this out for the first time"
+exercise, and while interesting, isn't really giving us a good idea of the kinds
+of things we can do with containers --- we were already able to write our own
+self-contained "Hello world" programs in Java, C, or Python (or whatever). Let's
+step up to something a little bit more complicated.
+
+::: example
+
+Let's follow the advice of Docker Desktop and "Run a Sample Container". Run the
+following in your terminal:
+
+```bash
+docker run -d -p 80:80 docker/getting-started
+```
+
+Docker does some stuff to download an image and then... nothing?
+
+Let's step through what each of these options mean:
+
+* **`run`** is... well, it means download the image and run a new container
+  using that image as a basis. We saw that happening, `docker` prints out a
+  bunch of fancy animations showing progress downloading images.
+* **`-d`** is "`d`etach". This means that Docker is going to start the
+  container, and then run it "in the background" (the container will still be
+  running, but you can continue to use your terminal).
+* **`-p`** is "`p`ort forwarding". This is getting pretty far outside the scope
+  of our course, but one way to interact with applications is through a
+  "[port]". Port 80 is the port for [HTTP], and HTTP is the "protocol" (sort of
+  like the language) that your web browser (Chrome, Firefox, Safari, Edge) use
+  to talk to web servers. This is a bit of a hint about how to start interacting
+  with this container.
+* **`docker/getting-started`** is the name of the image that we want this
+  container to use when it launches.
+
+You can check in Docker Desktop and see that this container is indeed running:
+
+![The running getting started container.](getting-started.png)
+
+Notice that you can click on the entry in the "Port(s)" column for this
+container. Click on it!
+
+Hey! Look at that! You're running a web server in this container, and your web
+browser is interacting with the web server in the container. :tada:
+
+This web server actually contains extensive documentation for using Docker, so
+if you're looking for some further reading about Docker, this is one place you
+can find it.
+
+[port]: https://en.wikipedia.org/wiki/Port_(computer_networking)
+[HTTP]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+
+:::
+
+Running a web server in a container is an example of a long-running application.
+Let's do something that's a little bit different: we're going to run `pandoc` in
+a container.
+
+... `pandoc`? That feels a little underwhelming.
+
+OK, well, sure, it's *familiar*, but we're going to be doing things in a
+container that has a bunch of stuff configured that you can't do with the base
+`pandoc` install, including being able to produce PDFs on your Windows or macOS
+machine without installing $\LaTeX$.
+
+::: example
+
+We're going to use [pandocker]. Let's write ourselves a little Markdown file
+that takes advantage of some features in [pandocker] that we can't do with the
+base `pandoc` install:
+
+    https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker
+
+You should use this file to:
+
+* Create a PDF on Aviary with `pandoc`
+
+  ```bash
+  pandoc myfile.md -o myfile.pdf --toc
+  ```
+
+  Then transfer the PDF back to your own computer so you can see what it looks
+  like.
+* Create a PDF on your own machine with Pandocker using the following command:
+
+  <details><summary>macOS or Linux</summary>
+  ```bash
+  docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
+    $YOUR_FILE.md -o $YOUR_FILE.pdf --filter pandoc-latex-admonition \
+    --template eisvogel --toc --pdf-engine=xelatex --listings
+  ```
+  </details>
+
+  <details><summary>macOS with Apple Silicon</summary>
+  ```bash
+  docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
+    dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
+    --filter pandoc-latex-admonition --template eisvogel --toc \
+    --pdf-engine=xelatex --listings
+  ```
+  </details>
+
+  <details><summary>Windows with PowerShell</summary>
+  ```bash
+  docker run --rm -v ${PWD}:/pandoc dalibo/pandocker:stable lecture.md -o `
+    lecture.pdf --filter pandoc-latex-admonition --template eisvogel --toc `
+    --pdf-engine=xelatex --listings
+  ```
+  </details>
+
+These two outputs are pretty different! As it is, you **can't** generate the
+same output on Aviary as you could with Docker and pandocker on your own
+machine --- configuring Pandoc with all of the required filters, templates, and
+supporting software is tedious and painful.
+
+There are a lot of options in this, but most of them are actually options for
+`pandoc` and not Docker. Let's step through the Docker options:
+
+* **`--rm`**: This option tells docker to remove the container after it exits.
+  This is a short-running container, so removing it once it's exited makes
+  sense.
+* **`-v (pwd):/pandoc`**: This is how we share files with a container. The `-v`
+  option is to "bind mount a volume". The short of this is that inside the
+  container is another directory structure, and `pwd` (your present working
+  directory) is shared inside the container at `/pandoc`.
+
+That's it for Docker options! The rest are options to `pandoc` that you can read
+about in the documentation for `pandoc`.
+
+:tada: You just ran `pandoc` in a container!
+
+[pandocker]: https://github.com/dalibo/pandocker
+
+:::
 
 Further reading
 ---------------
 
-Initializing a new server feels like just scratching the surface, and it really
-is. We'll soon look at managing a Linux installation, but for now we're going to
-stop at initializing the server.
+You've seen two examples of how to use containers, but you might want to know
+more about how to create your own containers.
 
-If you're interested in learning more, you should check out some resources
-provided by the different cloud providers:
+* Read more about creating containers in [Docker's Get Started], either on
+  Docker's web site or in the getting started container you launched earlier.
+  This will take you further into containers and get you creating your own
+  containers.
+* Docker isn't the only tool for managing containers, [Podman] is an alternative
+  tool for managing containers.
+* If you're looking for a deep dive alternative, [FreeBSD Jails] predate the
+  idea of containers.
 
-* Microsoft's [Training for Azure] has many high quality and structured
-  tutorials for working with virtual machines in Azure.
-* Amazon's [AWS SkillBuilder] similarly has high quality and structured
-  tutorials for working with AWS.
-* Google's [Cloud Documentation] ... *similarly has high quality and structured
-  tutorials for working with Google Cloud*.
-
-[Training for Azure]: https://learn.microsoft.com/en-us/training/azure/
-[AWS SkillBuilder]: https://explore.skillbuilder.aws/learn
-[Cloud Documentation]: https://cloud.google.com/docs
+[Docker's Get Started]: https://docs.docker.com/get-started/
+[Podman]: https://podman.io/
+[FreeBSD Jails]:
+https://freebsdfoundation.org/freebsd-project/resources/introduction-to-freebsd-jails/
