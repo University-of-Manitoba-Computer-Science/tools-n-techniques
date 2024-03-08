@@ -81,8 +81,8 @@ choose depends on a few different things:
 
 * The hardware you're running (are you running Apple Silicon, or an `x86_64` AMD
   or Intel processor?)
-* The operating system you're running (are you running Windows, macOS, or
-  Linux?)
+* The "platform" or operating system you're running (are you running Windows,
+  macOS, or Linux?)
 * The features that the VM software provides (a nice GUI, "snapshots", the kinds
   of hardware it can provide to the OS running within it)
 * The popularity of the VM software (yeah, it's a little bit of a popularity
@@ -97,20 +97,20 @@ Here are some options:
 | [QEMU]       | * Works on all hardware                                        |
 |              | * Works on all platforms                                       |
 |              | * Is not at all user friendly (entirely command-line based out |
-|              | of the box, though many [GUI front-ends for it exist]; is free |
-|              | and open source.                                               |
-|              |   * One GUI front-end for macOS is called [UTM], and it is     |
-|              |     generally quite user-friendly.                             |
+|              | of the box, though many [GUI front-ends for it exist]); is     |
+|              | free and open source.                                          |
+|              | * One GUI front-end for macOS is called [UTM], and it is       |
+|              | generally quite user-friendly.                                 |
 |              | * Is extremely popular.                                        |
 +--------------+----------------------------------------------------------------+
-| [VirtualBox] | * Works on most hardware (Apple Silicon support is just        |
-|              | beginning)                                                     |
+| [VirtualBox] | * Works on most hardware (it **does not** run on Apple         |
+|              | Silicon).                                                      |
 |              | * Works on all platforms                                       |
 |              | * Is user friendly; is mostly free and open source.            |
 |              | * Is moderately popular.                                       |
 +--------------+----------------------------------------------------------------+
-| [VMWare]     | * Works on most hardware (Apple Silicon support is just        |
-|              | beginning)                                                     |
+| [VMWare]     | * Works on most hardware (Apple Silicon support is getting     |
+|              | better).                                                       |
 |              | * Works on all platforms                                       |
 |              | * Is user friendly, but is confusing to decide which product   |
 |              | you should use; can be free, but is not open source.           |
@@ -174,7 +174,7 @@ your computer may be using an Intel processor and uses the "x86_64" or "amd64"
 old, it may use the "x86" instruction set architecture.
 
 [opening the "About This Mac" dialog]: https://support.apple.com/en-us/102767
-[Hackintosh]: https://en.wikipedia.org/wiki/Hackintosh
+["Hackintosh"]: https://en.wikipedia.org/wiki/Hackintosh
 
 </details>
 
