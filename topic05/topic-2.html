@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -25,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -294,24 +303,29 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#finding-files">Finding files</a>
+<li><a href="#finding-files" id="toc-finding-files">Finding files</a>
 <ul>
-<li><a href="#finding-files-by-name">Finding files by name</a>
+<li><a href="#finding-files-by-name"
+id="toc-finding-files-by-name">Finding files by name</a>
 <ul>
-<li><a href="#finding-an-exact-file-name">Finding an exact file
-name</a></li>
-<li><a href="#finding-a-file-name-matching-a-pattern">Finding a file
-name matching a pattern</a></li>
-<li><a href="#finding-a-file-names-with-unknown-case">Finding a file
-names with unknown case</a></li>
+<li><a href="#finding-an-exact-file-name"
+id="toc-finding-an-exact-file-name">Finding an exact file name</a></li>
+<li><a href="#finding-a-file-name-matching-a-pattern"
+id="toc-finding-a-file-name-matching-a-pattern">Finding a file name
+matching a pattern</a></li>
+<li><a href="#finding-a-file-names-with-unknown-case"
+id="toc-finding-a-file-names-with-unknown-case">Finding a file names
+with unknown case</a></li>
 </ul></li>
-<li><a href="#running-programs-on-the-files-you-find">Running programs
-on the files you find</a>
+<li><a href="#running-programs-on-the-files-you-find"
+id="toc-running-programs-on-the-files-you-find">Running programs on the
+files you find</a>
 <ul>
-<li><a href="#what-would-we-want-to-do">What would we want to
-do?</a></li>
-<li><a href="#using-find-to-accomplish-our-goal">Using <code>find</code>
-to accomplish our goal</a></li>
+<li><a href="#what-would-we-want-to-do"
+id="toc-what-would-we-want-to-do">What would we want to do?</a></li>
+<li><a href="#using-find-to-accomplish-our-goal"
+id="toc-using-find-to-accomplish-our-goal">Using <code>find</code> to
+accomplish our goal</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -319,8 +333,8 @@ to accomplish our goal</a></li>
 <h1 id="finding-files">Finding files</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Find files on the command line by name using patterns.</li>
+<li><label><input type="checkbox" checked="" />Find files on the command
+line by name using patterns.</label></li>
 </ul>
 </div>
 <p>You might be saying to yourself “<a
@@ -506,8 +520,8 @@ option.</p>
 files you find</h2>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Execute commands on the files that match the pattern.</li>
+<li><label><input type="checkbox" checked="" />Execute commands on the
+files that match the pattern.</label></li>
 </ul>
 </div>
 <p>Sometimes finding the files is enough (i.e., “Great! Now I can open

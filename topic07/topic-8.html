@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -25,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -79,7 +88,7 @@
   </style>
   <link rel="stylesheet" href="../styles.css" />
   <script defer=""
-  src="/usr/share/javascript/katex/katex.min.js"></script>
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -95,7 +104,7 @@
 }}});
   </script>
   <link rel="stylesheet"
-  href="/usr/share/javascript/katex/katex.min.css" />
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
 </head>
 <body>
 
@@ -314,11 +323,12 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#practice-questions">Practice Questions</a>
+<li><a href="#practice-questions" id="toc-practice-questions">Practice
+Questions</a>
 <ul>
-<li><a href="#question-1">Question 1</a></li>
-<li><a href="#question-2">Question 2</a></li>
-<li><a href="#question-3">Question 3</a></li>
+<li><a href="#question-1" id="toc-question-1">Question 1</a></li>
+<li><a href="#question-2" id="toc-question-2">Question 2</a></li>
+<li><a href="#question-3" id="toc-question-3">Question 3</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -349,7 +359,7 @@ use a log-based method. Recall that the C command to print to
 <em>standard output</em> (spoiler of one of the next topics: <a
 href="https://en.wikipedia.org/wiki/Standard_streams#:~:text=std%3A%3Acin%20.-,Standard%20output%20(stdout),Not%20all%20programs%20generate%20output.">Standard
 Streams</a>) is:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The variable result is %d</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> var<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;The variable result is </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> var<span class="op">);</span></span></code></pre></div>
 <p>This will replace the <code>%d</code> by the current value of
 <code>var</code> when the this line is reached. Rewrite the previous
 code including a log-based debugging and find the bugs in the code. You
@@ -379,7 +389,7 @@ and running code</a>.</p>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> sum_first_n_integers<span class="op">(</span>n<span class="op">);</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Sum result is: %d</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> result<span class="op">);</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Sum result is: </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> result<span class="op">);</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>

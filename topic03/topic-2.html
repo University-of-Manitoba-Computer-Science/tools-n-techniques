@@ -9,12 +9,21 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -25,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -295,21 +304,28 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#compiling-and-running-code">Compiling and running code</a>
+<li><a href="#compiling-and-running-code"
+id="toc-compiling-and-running-code">Compiling and running code</a>
 <ul>
-<li><a href="#starting-your-terminal-and-connecting">Starting your
-terminal and connecting</a></li>
-<li><a href="#downloading-files-from-the-internet">Downloading files
-from the internet</a></li>
-<li><a href="#unzipping-that-zip-file">Unzipping that zip file</a></li>
-<li><a href="#compile-and-run-programs">Compile and run programs</a>
+<li><a href="#starting-your-terminal-and-connecting"
+id="toc-starting-your-terminal-and-connecting">Starting your terminal
+and connecting</a></li>
+<li><a href="#downloading-files-from-the-internet"
+id="toc-downloading-files-from-the-internet">Downloading files from the
+internet</a></li>
+<li><a href="#unzipping-that-zip-file"
+id="toc-unzipping-that-zip-file">Unzipping that zip file</a></li>
+<li><a href="#compile-and-run-programs"
+id="toc-compile-and-run-programs">Compile and run programs</a>
 <ul>
-<li><a href="#compiled-languages">Compiled languages</a></li>
-<li><a
-href="#compiled-virtual-machine-based-vm-based-languages">Compiled
+<li><a href="#compiled-languages" id="toc-compiled-languages">Compiled
+languages</a></li>
+<li><a href="#compiled-virtual-machine-based-vm-based-languages"
+id="toc-compiled-virtual-machine-based-vm-based-languages">Compiled
 Virtual Machine-based (VM-based) languages</a></li>
-<li><a href="#interpreted-or-scripting-languages">Interpreted or
-scripting languages</a></li>
+<li><a href="#interpreted-or-scripting-languages"
+id="toc-interpreted-or-scripting-languages">Interpreted or scripting
+languages</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -317,11 +333,10 @@ scripting languages</a></li>
 <h1 id="compiling-and-running-code">Compiling and running code</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Download a file from the internet on the command-line.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Compile and run programs of various programming languages on the
-command-line.</li>
+<li><label><input type="checkbox" checked="" />Download a file from the
+internet on the command-line.</label></li>
+<li><label><input type="checkbox" checked="" />Compile and run programs
+of various programming languages on the command-line.</label></li>
 </ul>
 </div>
 <h2 id="starting-your-terminal-and-connecting">Starting your terminal

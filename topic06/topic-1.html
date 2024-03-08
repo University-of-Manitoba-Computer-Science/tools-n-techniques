@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -233,7 +241,7 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
 </ul>
 </nav>
 <h1 id="introduction">Introduction</h1>
@@ -260,18 +268,16 @@ place so that we can simultaneously document and explore code.</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Get help about a command by running the command.</li>
-<li><input type="checkbox" disabled="" />
-Get help about a command by reading manual pages.</li>
-<li><input type="checkbox" disabled="" />
-Find and assess the quality of help online.</li>
-<li><input type="checkbox" disabled="" />
-Identify whether or not a situation is considered academic
-misconduct.</li>
-<li><input type="checkbox" disabled="" />
-Use a web-based interactive notebook to document progress in a lab
-notebook.</li>
+<li><label><input type="checkbox" />Get help about a command by running
+the command.</label></li>
+<li><label><input type="checkbox" />Get help about a command by reading
+manual pages.</label></li>
+<li><label><input type="checkbox" />Find and assess the quality of help
+online.</label></li>
+<li><label><input type="checkbox" />Identify whether or not a situation
+is considered academic misconduct.</label></li>
+<li><label><input type="checkbox" />Use a web-based interactive notebook
+to document progress in a lab notebook.</label></li>
 </ul>
 </div>
 

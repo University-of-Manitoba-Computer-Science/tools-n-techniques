@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -237,23 +245,21 @@ including sending files back and forth between that remote computer</p>
 <div class="outcomes">
 <p>You should now be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Connect to a remote computer using <code>ssh</code>.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Create, rename, delete, and inspect folder structures on the
-command-line.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Navigate folder structures on the command-line.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Use a command-line text editor to open, inspect, edit, and save a
-file.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Complete commands and filenames with tab completion.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Transfer files between your computer and a remote computer.</li>
-<li><input type="checkbox" disabled="" checked="" />
-Use the <code>handin</code> command in the U of M CS UNIX
-environment.</li>
+<li><label><input type="checkbox" checked="" />Connect to a remote
+computer using <code>ssh</code>.</label></li>
+<li><label><input type="checkbox" checked="" />Create, rename, delete,
+and inspect folder structures on the command-line.</label></li>
+<li><label><input type="checkbox" checked="" />Navigate folder
+structures on the command-line.</label></li>
+<li><label><input type="checkbox" checked="" />Use a command-line text
+editor to open, inspect, edit, and save a file.</label></li>
+<li><label><input type="checkbox" checked="" />Complete commands and
+filenames with tab completion.</label></li>
+<li><label><input type="checkbox" checked="" />Transfer files between
+your computer and a remote computer.</label></li>
+<li><label><input type="checkbox" checked="" />Use the
+<code>handin</code> command in the U of M CS UNIX
+environment.</label></li>
 </ul>
 </div>
 

@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -230,7 +238,7 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
 </ul>
 </nav>
 <h1 id="introduction">Introduction</h1>
@@ -259,19 +267,18 @@ aviary.</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Redirect the output from a program to a file.</li>
-<li><input type="checkbox" disabled="" />
-Redirect a file to be the input for a program.</li>
-<li><input type="checkbox" disabled="" />
-Send data between programs using a pipe.</li>
-<li><input type="checkbox" disabled="" />
-Choose an appropriate backup strategy for protecting your files.</li>
-<li><input type="checkbox" disabled="" />
-Install and configure software to backup your files to a remote
-server.</li>
-<li><input type="checkbox" disabled="" />
-Restore and verify your backup from the remote server.</li>
+<li><label><input type="checkbox" />Redirect the output from a program
+to a file.</label></li>
+<li><label><input type="checkbox" />Redirect a file to be the input for
+a program.</label></li>
+<li><label><input type="checkbox" />Send data between programs using a
+pipe.</label></li>
+<li><label><input type="checkbox" />Choose an appropriate backup
+strategy for protecting your files.</label></li>
+<li><label><input type="checkbox" />Install and configure software to
+backup your files to a remote server.</label></li>
+<li><label><input type="checkbox" />Restore and verify your backup from
+the remote server.</label></li>
 </ul>
 </div>
 

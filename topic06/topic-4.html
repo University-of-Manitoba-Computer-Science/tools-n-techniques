@@ -9,10 +9,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -233,19 +241,20 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a
-href="#academic-misconduct-or-is-this-inappropriate-help">Academic
+<li><a href="#academic-misconduct-or-is-this-inappropriate-help"
+id="toc-academic-misconduct-or-is-this-inappropriate-help">Academic
 misconduct (or is this inappropriate help?)</a>
 <ul>
-<li><a href="#situations">Situations</a>
+<li><a href="#situations" id="toc-situations">Situations</a>
 <ul>
-<li><a href="#situation-1">Situation 1</a></li>
-<li><a href="#situation-2">Situation 2</a></li>
-<li><a href="#situation-3">Situation 3</a></li>
-<li><a href="#situation-4">Situation 4</a></li>
-<li><a href="#situation-5">Situation 5</a></li>
+<li><a href="#situation-1" id="toc-situation-1">Situation 1</a></li>
+<li><a href="#situation-2" id="toc-situation-2">Situation 2</a></li>
+<li><a href="#situation-3" id="toc-situation-3">Situation 3</a></li>
+<li><a href="#situation-4" id="toc-situation-4">Situation 4</a></li>
+<li><a href="#situation-5" id="toc-situation-5">Situation 5</a></li>
 </ul></li>
-<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+reading</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -253,9 +262,8 @@ misconduct (or is this inappropriate help?)</a>
 misconduct (or is this inappropriate help?)</h1>
 <div class="outcomes">
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
-Identify whether or not a situation is considered academic
-misconduct.</li>
+<li><label><input type="checkbox" checked="" />Identify whether or not a
+situation is considered academic misconduct.</label></li>
 </ul>
 </div>
 <p>We have looked at using version control locally (i.e., using it on
