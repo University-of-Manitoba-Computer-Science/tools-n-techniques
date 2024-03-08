@@ -321,8 +321,8 @@ one you choose depends on a few different things:</p>
 <ul>
 <li>The hardware you’re running (are you running Apple Silicon, or an
 <code>x86_64</code> AMD or Intel processor?)</li>
-<li>The operating system you’re running (are you running Windows, macOS,
-or Linux?)</li>
+<li>The “platform” or operating system you’re running (are you running
+Windows, macOS, or Linux?)</li>
 <li>The features that the VM software provides (a nice GUI, “snapshots”,
 the kinds of hardware it can provide to the OS running within it)</li>
 <li>The popularity of the VM software (yeah, it’s a little bit of a
@@ -350,20 +350,18 @@ support from a community compared to something that’s unpopular).</li>
 <li>Is not at all user friendly (entirely command-line based out of the
 box, though many <a
 href="https://wiki.qemu.org/Links#GUIs_and_management_tools/systems">GUI
-front-ends for it exist</a>; is free and open source.
-<ul>
+front-ends for it exist</a>); is free and open source.</li>
 <li>One GUI front-end for macOS is called <a
 href="https://getutm.app/">UTM</a>, and it is generally quite
 user-friendly.</li>
-</ul></li>
 <li>Is extremely popular.</li>
 </ul></td>
 </tr>
 <tr class="even">
 <td><a href="https://www.virtualbox.org/">VirtualBox</a></td>
 <td><ul>
-<li>Works on most hardware (Apple Silicon support is just
-beginning)</li>
+<li>Works on most hardware (it <strong>does not</strong> run on Apple
+Silicon).</li>
 <li>Works on all platforms</li>
 <li>Is user friendly; is mostly free and open source.</li>
 <li>Is moderately popular.</li>
@@ -372,8 +370,8 @@ beginning)</li>
 <tr class="odd">
 <td><a href="https://www.vmware.com/">VMWare</a></td>
 <td><ul>
-<li>Works on most hardware (Apple Silicon support is just
-beginning)</li>
+<li>Works on most hardware (Apple Silicon support is getting
+better).</li>
 <li>Works on all platforms</li>
 <li>Is user friendly, but is confusing to decide which product you
 should use; can be free, but is not open source.</li>
@@ -428,11 +426,12 @@ Mac” dialog</a>.</p>
 <p>If you bought your Mac as any of “M1”, “M2”, or “M3” (after 2021),
 then your computer is using Apple Silicon. The instruction set
 architecture of Apple Silicon is called “ARM”.</p>
-<p>If you your Mac was made before 2021 (or you have built a
-[“Hackintosh”]), then your computer may be using an Intel processor and
-uses the “x86_64” or “amd64” (used interchangeably) instruction set
-architecture. If your Mac is <em>really</em> old, it may use the “x86”
-instruction set architecture.</p>
+<p>If you your Mac was made before 2021 (or you have built a <a
+href="https://en.wikipedia.org/wiki/Hackintosh">“Hackintosh”</a>), then
+your computer may be using an Intel processor and uses the “x86_64” or
+“amd64” (used interchangeably) instruction set architecture. If your Mac
+is <em>really</em> old, it may use the “x86” instruction set
+architecture.</p>
 </details>
 <details>
 <summary>
