@@ -212,7 +212,7 @@ We're going to use [pandocker]. Let's write ourselves a little Markdown file
 that takes advantage of some features in [pandocker] that we can't do with the
 base `pandoc` install:
 
-    https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker
+    https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker/-/raw/main/hello-pandocker.md
 
 You should use this file to:
 
