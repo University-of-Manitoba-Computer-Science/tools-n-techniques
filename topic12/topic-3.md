@@ -36,16 +36,6 @@ Before you start, decide where you're going to install it:
   responsibility for lost data or lost use of your machine).
 * A virtual machine.
 
-If you're installing in a VM, VirtualBox is fine. ... unless you're using an M1
-Mac.
-
-If you're using an M1 Mac, you should uninstall VirtualBox and instead install
-[UTM]. UTM is free and open source. You can support the developer by buying it
-on the App Store, or you can [download it from GitHub].
-
-[UTM]: https://mac.getutm.app/
-[download it from GitHub]: https://docs.getutm.app/installation/macos/#github
-
 Download the ISO
 ----------------
 

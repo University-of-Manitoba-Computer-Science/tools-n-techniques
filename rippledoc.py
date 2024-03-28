@@ -406,7 +406,8 @@ def get_nav_box_content(md_fnm):
 
 def make_toc_md_list_for(md_fnm):
     res = []
-    for fnm in full_ordered_list_of_paths:
+    section_num = -1
+    for idx, fnm in enumerate(full_ordered_list_of_paths):
         if fnm == "./index.md":
             continue
 
@@ -427,12 +428,16 @@ def make_toc_md_list_for(md_fnm):
             html_link = get_rel_path_from_to(md_fnm, html_fnm)
 
         if fnm == md_fnm:
-            res.append(f"{indent}  * __{title}__")
+            res[section_num[0]] = f"<details open><summary>{section_num[1]}</summary>"
+            res.append(f"* __{title}__")
         else:
             if is_a_dir:
-                res.append(f"{indent}  * {title}")
+                if idx > 0: # don't need to end the tag for the first entry.
+                    res.append("</details>")
+                res.append(f"<details><summary>{title}</summary>")
+                section_num = (len(res)-1, title)
             else:
-                res.append(f"{indent}  * [{title}]({html_link})")
+                res.append(f"* [{title}]({html_link})")
     return res
 
 

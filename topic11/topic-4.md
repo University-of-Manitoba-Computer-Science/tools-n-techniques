@@ -1,297 +1,123 @@
 ---
-title: Run a command within a container
+title: Download and use a pre-installed OS in VM software (UTM)
 author: Franklin Bristow
 ---
 
-Run a command within a container
-================================
+Download and use a pre-installed OS in VM software (UTM)
+==================================================
 
 ::: outcomes
 
-* [X] Run a command within a container.
+* [X] Download and use a pre-installed operating system in a virtual machine
+  software.
 
 :::
 
-[Containers] are related to virtual machines, but aren't the same thing. The main
-difference between a container and a virtual machine is that a container **does
-not** contain or run an entire operating system. Instead, containers run
-*within* an existing operating system. The theory is that a container uses fewer
-resources because it doesn't carry all the extra baggage of a complete operating
-system.
+You've been using macOS (or [maybe Linux]!) on your personal computer and you're
+using Linux when you connect to Aviary.
 
-One fairly common use of containers is to distribute complex software and its
-dependencies as a single "image", similar to what you downloaded for SerenityOS
-when you were setting up a virtual machine. An image is basically an archive of
-an operating system's folder structure.
+[maybe Linux]: https://asahilinux.org/
 
-We could spend an entire course talking about the technical foundations of
-containers (that would be an *amazing* systems course), but in this course our
-goal is simple: install enough software to get a command running in a container.
+::: challenge
 
-[Containers]: https://en.wikipedia.org/wiki/OS-level_virtualization
+Instead of proceeding with the following sections, try getting [SerenityOS] up
+and running on your machine by following the [Build Instructions for macOS].
 
-Install Docker Desktop
-----------------------
+This is a **big** challenge because it requires you to go through the process of
+installing *even more* software, including [Homebrew] (a package manager for
+macOS).
 
-Undoubtedly the most popular container management software is [Docker].
+::: aside
 
-Docker has a highly polished visual environment for managing containers called
-[Docker Desktop].
+SerenityOS is a fascinating project: it's a brand new, from scratch operating
+system and environment that was started by one person that's grown into a pretty
+big community.
 
-You should install Docker Desktop on your personal computer, following the
-instructions provided in [Docker's documentation].
+The main author of SerenityOS (Andreas Kling) has been developing SerenityOS
+entirely in the open, including [live-streaming coding on YouTube].
 
-::: warning
-
-If you're installing Docker Desktop on Windows, you're going to need to install
-the Windows Subsystem for Linux. There's a link in Docker's documentation, but
-for completeness, you can find [documentation about how to install WSL on
-Microsoft's web site].
+[live-streaming coding on YouTube]: https://www.youtube.com/c/AndreasKling
+[SerenityOS]: https://serenityos.org
+[Build Instructions for macOS]: https://github.com/SerenityOS/serenity/blob/master/Documentation/BuildInstructionsMacOS.md
+[Homebrew]: https://brew.sh/
 
 :::
 
-[Docker]: https://www.docker.com
-[Docker Desktop]: https://docs.docker.com/desktop/
-[Docker's documentation]: https://docs.docker.com/get-docker/
-[documentation about how to install WSL on Microsoft's web site]:
-https://learn.microsoft.com/en-us/windows/wsl/install
+:::
 
-Run a command within a container
---------------------------------
+Download an image
+-----------------
 
-The simplest container command to run is "hello world", so let's start with
-that, then move on to something a little more complex.
+UTM makes getting pre-made OS images fairly straightforward. When you first
+start UTM, you should see a button labelled "Browse UTM Gallery":
 
-::: example
+![UTM's main window.](UTM.png)
 
-Let's start by running the Docker Desktop app on your computer. This step isn't
-required (you don't need to start Docker Desktop before running any commands),
-but gives us an idea of the kinds of things we can do with Docker Desktop.
+Click on that button, or go directly to <https://mac.getutm.app/gallery/>.
 
-![Docker Desktop.](docker-desktop.png)
+You can pretty safely choose any of the images that are in the gallery, but to
+be consistent, we'll choose [the ReactOS image].
 
-We're not going to do anything with Docker Desktop, but note the tabs on the
-left:
+[the ReactOS image]: https://mac.getutm.app/gallery/reactos-0-4-14
 
-* **Containers**: This is a list of running containers that you can inspect and
-  interact with.
-* **Images**: These are the container images that have been downloaded for
-  launching containers on your machine.
-* **Volumes**: Containers can't see or interact with the files on your computer
-  at all (they're completely self-contained). Volumes are a way for you to share
-  folders from your computer to a container so that you can either provide
-  inputs or receive outputs from a container.
+::: aside
 
-Let's run a hello world container. If you had a terminal open before, close your
-terminal and re-open it; your `PATH` variable (yes, there is a `PATH` on all of
-Windows, macOS, and Linux) was modified by Docker Desktop when you installed it.
+[ReactOS] is a free and open-source re-implementation of Microsoft Windows. It's
+ultimate goal is for people using ReactOS to be able to run ReactOS using
+hardware drivers that were built for Windows, and be able to run software that
+was built for Windows, but in an entirely free and open-source operating system.
 
-Once your terminal is open again, run the following:
-
-```bash
-docker run hello-world
-```
-
-You should see some output from Docker:
-
-```
-PS C:\Users\you> docker run hello-world
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-2db29710123e: Pull complete
-Digest: sha256:faa03e786c97f07ef34423fccceeec2398ec8a5759259f94d99078f264e9d7af
-Status: Downloaded newer image for hello-world:latest
-
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (amd64)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-
-PS C:\Users\you>
-```
-
-:tada: you just started and ran a container on your computer!
-
-When you go back to Docker Desktop, you'll be able to see that in the Containers
-tab is a container with the image `hello-world:latest` that has "Exited". This
-is the container you just ran.
-
-You can technically run it again by pressing the play button :arrow_forward: on
-the right side of the window, but it's not going to do anything because the
-`hello-world` image prints to standard output, and there is no standard output
-display in Docker Desktop.
-
-You can (and probably should) delete this container by clicking on the trash can
-:wastebasket: icon on the far right side of the window.
+[ReactOS]: https://reactos.org/
 
 :::
 
-Hello world is always our classic "let's try this out for the first time"
-exercise, and while interesting, isn't really giving us a good idea of the kinds
-of things we can do with containers --- we were already able to write our own
-self-contained "Hello world" programs in Java, C, or Python (or whatever). Let's
-step up to something a little bit more complicated.
+You have two options for proceeding: 
 
-::: example
+1. You can have UTM completely automatically download and configure the virtual
+   machine by clicking on the "Open in UTM" button on [the ReactOS image] page,
+   or
+2. You can configure the virtual machine by yourself.
 
-Let's follow the advice of Docker Desktop and "Run a Sample Container". Run the
-following in your terminal:
+For now we're content with running the new operating system in a virtual,
+so click on the "Open in UTM" button and try it out!
 
-```bash
-docker run -d -p 80:80 docker/getting-started
-```
+Run the VM
+----------
 
-Docker does some stuff to download an image and then... nothing?
+Once you've got ReactOS in your UTM window, you can click on the Play button and
+start playing with ReactOS!
 
-Let's step through what each of these options mean:
+### Cloning and running without changes
 
-* **`run`** is... well, it means download the image and run a new container
-  using that image as a basis. We saw that happening, `docker` prints out a
-  bunch of fancy animations showing progress downloading images.
-* **`-d`** is "`d`etach". This means that Docker is going to start the
-  container, and then run it "in the background" (the container will still be
-  running, but you can continue to use your terminal).
-* **`-p`** is "`p`ort forwarding". This is getting pretty far outside the scope
-  of our course, but one way to interact with applications is through a
-  "[port]". Port 80 is the port for [HTTP], and HTTP is the "protocol" (sort of
-  like the language) that your web browser (Chrome, Firefox, Safari, Edge) use
-  to talk to web servers. This is a bit of a hint about how to start interacting
-  with this container.
-* **`docker/getting-started`** is the name of the image that we want this
-  container to use when it launches.
+Virtual machines are entire operating systems running on your computer in
+*software*. Because this isn't a complete actual physical computer, we can do a
+couple of interesting things that we can't do with real hardware:
 
-You can check in Docker Desktop and see that this container is indeed running:
+1. We can *clone* an existing virtual machine.
+2. We can temporarily run the virtual machine without persisting any changes
+   made to the OS (sort of like being able to revert a commit with `git`).
 
-![The running getting started container.](getting-started.png)
+#### Cloning
 
-Notice that you can click on the entry in the "Port(s)" column for this
-container. Click on it!
+Right click on the ReactOS virtual machine in UTM and select "Clone...". This
+will ask if you want to duplicate the entire virtual machine and will make... an
+entire copy of the virtual machine. You should now have two copies of the same
+virtual machine in UTM.
 
-Hey! Look at that! You're running a web server in this container, and your web
-browser is interacting with the web server in the container. :tada:
+This can be helpful if you want to (for example) install an operating system
+into a virtual machine, then try stuff out and be able to get back to a known
+good state. For example, you might be working on figuring out what dependencies
+are required when installing your application on a new operating system, you can
+run that operating system in a virtual machine, clone it, make changes, and get
+back to the original state very quickly.
 
-This web server actually contains extensive documentation for using Docker, so
-if you're looking for some further reading about Docker, this is one place you
-can find it.
+#### Running without changes
 
-[port]: https://en.wikipedia.org/wiki/Port_(computer_networking)
-[HTTP]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+UTM also has the ability to run a virtual machine and discard any changes that
+you make while the VM is running.
 
-:::
+Right click on the ReactOS virtual machine (one of the two you have now, anyway)
+and select "Run without saving changes".
 
-Running a web server in a container is an example of a long-running application.
-Let's do something that's a little bit different: we're going to run `pandoc` in
-a container.
-
-... `pandoc`? That feels a little underwhelming.
-
-OK, well, sure, it's *familiar*, but we're going to be doing things in a
-container that has a bunch of stuff configured that you can't do with the base
-`pandoc` install, including being able to produce PDFs on your Windows or macOS
-machine without installing $\LaTeX$.
-
-::: example
-
-We're going to use [pandocker]. Let's write ourselves a little Markdown file
-that takes advantage of some features in [pandocker] that we can't do with the
-base `pandoc` install:
-
-    https://code.cs.umanitoba.ca/cs-lab-course/hello-pandocker
-
-You should use this file to:
-
-* Create a PDF on Aviary with `pandoc`
-
-  ```bash
-  pandoc myfile.md -o myfile.pdf --toc
-  ```
-
-  Then transfer the PDF back to your own computer so you can see what it looks
-  like.
-* Create a PDF on your own machine with Pandocker using the following command:
-
-  <details><summary>macOS or Linux</summary>
-  ```bash
-  docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
-    $YOUR_FILE.md -o $YOUR_FILE.pdf --filter pandoc-latex-admonition \
-    --template eisvogel --toc --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-  <details><summary>macOS with Apple Silicon</summary>
-  ```bash
-  docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
-    dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
-    --filter pandoc-latex-admonition --template eisvogel --toc \
-    --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-  <details><summary>Windows with PowerShell</summary>
-  ```bash
-  docker run --rm -v ${PWD}:/pandoc dalibo/pandocker:stable lecture.md -o `
-    lecture.pdf --filter pandoc-latex-admonition --template eisvogel --toc `
-    --pdf-engine=xelatex --listings
-  ```
-  </details>
-
-These two outputs are pretty different! As it is, you **can't** generate the
-same output on Aviary as you could with Docker and pandocker on your own
-machine --- configuring Pandoc with all of the required filters, templates, and
-supporting software is tedious and painful.
-
-There are a lot of options in this, but most of them are actually options for
-`pandoc` and not Docker. Let's step through the Docker options:
-
-* **`--rm`**: This option tells docker to remove the container after it exits.
-  This is a short-running container, so removing it once it's exited makes
-  sense.
-* **`-v (pwd):/pandoc`**: This is how we share files with a container. The `-v`
-  option is to "bind mount a volume". The short of this is that inside the
-  container is another directory structure, and `pwd` (your present working
-  directory) is shared inside the container at `/pandoc`.
-
-That's it for Docker options! The rest are options to `pandoc` that you can read
-about in the documentation for `pandoc`.
-
-:tada: You just ran `pandoc` in a container!
-
-[pandocker]: https://github.com/dalibo/pandocker
-
-:::
-
-Further reading
----------------
-
-You've seen two examples of how to use containers, but you might want to know
-more about how to create your own containers.
-
-* Read more about creating containers in [Docker's Get Started], either on
-  Docker's web site or in the getting started container you launched earlier.
-  This will take you further into containers and get you creating your own
-  containers.
-* Docker isn't the only tool for managing containers, [Podman] is an alternative
-  tool for managing containers.
-* If you're looking for a deep dive alternative, [FreeBSD Jails] predate the
-  idea of containers.
-
-[Docker's Get Started]: https://docs.docker.com/get-started/
-[Podman]: https://podman.io/
-[FreeBSD Jails]:
-https://freebsdfoundation.org/freebsd-project/resources/introduction-to-freebsd-jails/
+Any changes you make to the virtual machine should be discarded when you power 
+the virtual machine off.

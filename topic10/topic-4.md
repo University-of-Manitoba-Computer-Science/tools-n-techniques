@@ -123,15 +123,17 @@ suggestions. Let's create a new Maven Java project:
    You can safely accept the default by pressing <kbd>Enter</kbd>, or you can
    enter something different.
 
-   ::: aside
+   <div class="aside">
 
    There are [two hard problems in computer science]:
 
-   1. Naming things.
-   3. Cache invalidation.
-   2. Off-by-one errors.
-   4. Guaranteed order of message delivery.
-   5. Versioning.
+   <ol>
+   <li value="1"> Naming things.
+   <li value="3"> Cache invalidation.
+   <li value="2"> Off-by-one errors.
+   <li value="4"> Guaranteed order of message delivery.
+   <li value="5" type="i"> Versioning.
+   </ol>
 
    One popular way to version your code is to use [semantic versioning].
 
@@ -139,7 +141,7 @@ suggestions. Let's create a new Maven Java project:
    https://www.martinfowler.com/bliki/TwoHardThings.html
    [semantic versioning]: https://semver.org/
 
-   :::
+   </div>
 8. Finally, (finally!), you can confirm the group and artifact Ids and the
    version number that you selected by pressing <kbd>Enter</kbd>:
 
