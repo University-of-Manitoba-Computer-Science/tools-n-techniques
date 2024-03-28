@@ -130,7 +130,7 @@ some popular distributions:
 * [Fedora] (user friendly; easy to ask for help; tries to compromose between
   stability and keeping up to date with the latest and greatest).
 * [OpenSUSE] (user friendly; easy to ask or pay to get help; tries to compromise
-  between stability and keeping up to date with the latest and gratest).
+  between stability and keeping up to date with the latest and greatest).
 * [Red Hat Enterprise Linux] (user friendly; pay to get help; focus
   primarily on stability).
 * [ArchLinux] (not user friendly, most things are done on the command-line; easy
