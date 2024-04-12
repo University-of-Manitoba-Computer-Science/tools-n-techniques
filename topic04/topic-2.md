@@ -759,8 +759,10 @@ out:
   basics. Part of it is free, but it isn't entirely free.
 * [GitHub Skills] is a suite of resources similar to "Learn GitLab with
   tutorials", but targeting GitHub specifically.
+* [Oh My Git!] is a game to help learning how to use Git and its concepts.
 
 [Documentation page]: https://git-scm.com/doc
 [Learn GitLab with tutorials]: https://docs.gitlab.com/ee/tutorials/
 [Learn Enough Git to be Dangerous]: https://www.learnenough.com/git-tutorial
 [GitHub Skills]: https://skills.github.com/
+[Oh My Git!]: https://ohmygit.org/
