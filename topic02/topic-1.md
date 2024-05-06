@@ -114,8 +114,16 @@ Here's what you need to know to connect to the U of M CS computer systems.
    :::
 2. [X] Your **username** on this remote computer is your UMNetID (the part of
    your @myumanitoba.ca e-mail address before @myumanitoba.ca).
-3. [X] Your initial default **password** is your student number. You will be
-   required to change this the first time you log in to aviary.
+3. [X] Your initial default **password** is the letters `Cs#` (this is
+   upper-case C, lower-case S, and the [number
+   sign/hash/hashtag/hex/octothorpe/sharp/...]) followed by your
+   student number. If your student number is 1234567, then your initial default
+   password would be `Cs#1234567`.
+
+   You will be required to change this the first time you log in to aviary.
+
+[number sign/hash/hashtag/hex/octothorpe/sharp/...]:
+https://en.wikipedia.org/wiki/Number_sign#Names
 
 Now that you've got that information we can actually start connecting to a
 remote computer. When we're connecting to remote computers, we're going to use
