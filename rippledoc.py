@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-# Copyright 2018 John Gabriele <jgabriele@fastmail.fm>
-#           2022 Franklin Bristow <fbristow@gmail.com>
+# Copyright 2018           John Gabriele <jgabriele@fastmail.fm>
+#           2022,2023,2024 Franklin Bristow <fbristow@gmail.com>
 #
 # This file constitutes the Rippledoc program.
 #
@@ -21,7 +21,7 @@
 import os, os.path, sys, subprocess, io, re, shutil
 import panflute as pf
 
-VERSION = "2022-12-15"
+VERSION = "2024-09-06"
 
 project_name = None
 copyright_info = None
@@ -353,6 +353,9 @@ def process_all_md_files():
 
 def pandoc_process_file(md_fnm):
     html_fnm = md_fnm[:-2] + 'html'
+    dirname = os.path.dirname(md_fnm)
+    glossary = os.path.join(dirname, 'glossary.yml')
+    print(glossary)
 
     # Get the header and footer files ready, for this particular md_fnm.
     depth = md_fnm.count('/') - 1
@@ -384,6 +387,9 @@ def pandoc_process_file(md_fnm):
     pandoc_cmd.append('--css=' + '../' * depth + 'styles.css')
     pandoc_cmd.extend(['-B', '/tmp/before.html', '-A', '/tmp/after.html'])
     pandoc_cmd.extend(['-o', html_fnm])
+    if os.path.exists(glossary):
+        pandoc_cmd.append('--lua-filter=pangloss.lua') # pangloss is at the root of the directory (like styles)
+        pandoc_cmd.extend(['--metadata-file', glossary]) # the actual glossary is in the directory with the topic.
     subprocess.check_call(pandoc_cmd)
 
 

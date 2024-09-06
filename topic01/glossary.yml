@@ -1,0 +1,28 @@
+glossary:
+  text:
+    name: text
+    description: |
+      "text" and "plain text" mean that you can write things down entirely with
+      the characters on your keyboard.  "text" and "plain text" are ways for us
+      to describe a file that has *just* text --- in other words, just letters,
+      numbers, and symbols that don't have any extra information about (for
+      example) being bold, italics, paragraphs, headings, etc.
+  structured-text:
+    name: structured text
+    description: |
+      Structured text is (+text) that gives special meaning to some characters.
+      For example, in Markdown, putting the symbol `#` at the beginning of a
+      line means that this is a top level heading or title for what you're
+      writing. This is instead of clicking on (for example) the "Heading 1"
+      style in Microsoft Word.
+  format:
+    name:
+      singular: format
+      plural: formats
+    description: |
+      A format is an agreed upon way for us to write things down so that other
+      people understand what that means, or an agreed upon shape and size of a
+      physical thing. For example, physical objects like paper have formats in
+      the form of size, like A4, letter, or legal size paper. Microsoft Word or
+      PDF are document formats. Formats can also be (+text) formats, where we 
+      agree upon the meaning of certain symbols. See also (+structured-text).
