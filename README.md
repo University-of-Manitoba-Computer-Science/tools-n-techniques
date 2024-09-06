@@ -50,5 +50,5 @@ Here's the strategy for building this book:
 
 [Pandoc]: https://pandoc.org
 [Rippledoc]: https://gitlab.com/uvtc/rippledoc/
-[a fork of Rippledoc]: https://github.com/fbristow/rippledoc
+[a fork of Rippledoc]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/blob/main/rippledoc.py
 [The repository is hosted on Github]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques
