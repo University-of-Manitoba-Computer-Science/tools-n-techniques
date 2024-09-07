@@ -35,17 +35,17 @@ Here's the strategy for building this book:
 
 1. Switch to the `main` branch from whatever branch you're currently on.
 2. Make changes to the Markdown files you want to make changes to.
-3. Commit your changes and optionally push them to remote.
+3. Commit your changes and optionally push them to remote `main`.
 4. Switch to the `book` branch, and merge `main` into `book`:
    ```bash
    git merge main
    ```
-5. Run the `rippledoc.py` to regenerate HTML sources. These `.html` files
-   are committed to the `book` branch - which is usually an anti-pattern
-   since generally we wouldn't commit something we can generate, but is
-   required for the Github Pages to work. This has some interesting side-effects,
-   such as having different `.gitignore` files for the two branches: `main` disallows
-   `.html` files, and `book` allows them!
+5. Run `rippledoc.py` to regenerate HTML sources. These `.html` files are
+   committed to the `book` branch. We don't *usually* want that because we
+   generally wouldn't commit something we can generate, but is required for the
+   Github Pages to work. This has some interesting side-effects, such as having
+   different `.gitignore` files for the two branches: `main` disallows `.html`
+   files, and `book` allows them!
 6. Commit the changes and push to remote to redeploy.
 
 [Pandoc]: https://pandoc.org
