@@ -325,9 +325,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#write-plain-text-documents"
-id="toc-write-plain-text-documents">Write plain text documents</a>
-<ul>
 <li><a href="#writing-in-markdown" id="toc-writing-in-markdown">Writing
 in Markdown</a>
 <ul>
@@ -350,10 +347,8 @@ symbols</a></li>
 </ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="write-plain-text-documents">Write plain text documents</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Write plain text
@@ -389,20 +384,22 @@ formatting.</li>
 <li><p>You can’t add <em>emphasis</em> to certain words.</p></li>
 <li><p>You can’t easily</p>
 <ol type="1">
-<li>Make</li>
+<li>Make nice looking</li>
 <li>Numbered</li>
 <li>Lists</li>
 <li>Of</li>
 <li>Things.</li>
 </ol></li>
 <li><p>You can’t embed</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot; source code.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>with <a
+href="https://en.wikipedia.org/wiki/Syntax_highlighting">syntax
+highlighting</a>.</p></li>
 <li><p>You certainly can’t include <img src="images.png"
 style="height: 1em" alt="A picture of the word “images”." />.</p></li>
 <li><p>You <strong>definitely</strong> can’t include fancy formulas:</p>
@@ -419,7 +416,7 @@ href="topic-3.md">a plain text document</a>!</p>
 so we need to write plain text, but write the plain text such that we’re
 following structured text standards: Markdown and <span
 class="math inline">\LaTeX</span>.</p>
-<h2 id="writing-in-markdown">Writing in Markdown</h2>
+<h1 id="writing-in-markdown">Writing in Markdown</h1>
 <p>Writing <a
 href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>-formatted
 plain text documents is pretty straightforward: Open up VS Code, create
@@ -427,6 +424,16 @@ a new file, and start writing words.</p>
 <div class="example">
 <p>Here, write this into VS Code:</p>
 <pre><code>Hi! It&#39;s me! I&#39;m writing Markdown-formatted plain text! Yay!</code></pre>
+<p>And then save the file (press (<kbd>Ctrl</kbd> or
+<kbd>Command</kbd>)+<kbd>S</kbd> on your keyboard).</p>
+<div class="important">
+<p>When you save the file, make sure that the file name ends with
+<code>.md</code> for <strong>M</strong>ark<strong>D</strong>own.</p>
+</div>
+<p>After you save the file with the <code>.md</code> extension, VS Code
+<em>should</em> add a new button to the top right side of its interface,
+a preview button: <img src="vscode-md-preview.png" style="height: 1em"
+alt="The preview button in VS Code" />.</p>
 </div>
 <p>Congratulations <span class="emoji" data-emoji="tada">🎉</span>! You
 just wrote some Markdown!</p>
@@ -441,9 +448,10 @@ than doing what we just did:</p>
 <li><a href="#code">Code</a></li>
 <li><a href="#images-and-links">Images and links</a></li>
 </ul>
-<h3 id="titles">Titles</h3>
+<h2 id="titles">Titles</h2>
 <p>Most documents have a title, or headings and subheadings (and
-subsubheadings).</p>
+subsubheadings (and subsubsubheadings (…and sub×6-headings (but not
+sub×7-headings, that’s just madness)))).</p>
 <p>You’ve got two options for making headings in Markdown:</p>
 <ol type="1">
 <li>Use underlines (<code>===</code> or <code>---</code>).</li>
@@ -507,7 +515,7 @@ using number signs if you want 3+-level headings.</p>
 underlines because I think it’s more obvious, but has the downside of
 being limited to two levels of heading and subheading.</p>
 </div>
-<h3 id="emphasis">Emphasis</h3>
+<h2 id="emphasis">Emphasis</h2>
 <p>If you want to add emphasis (<em>italic</em>) to text in Markdown,
 you put asterisks <code>*</code> around the text:</p>
 <div class="example">
@@ -535,7 +543,7 @@ bold</strong>.</p>
 </div>
 </div>
 </div>
-<h3 id="lists">Lists</h3>
+<h2 id="lists">Lists</h2>
 <p>There are two kinds of lists you can format in Markdown: Bullets and
 numbered lists. Bulleted lists use the asterisk symbol at the beginning
 of a line, numbered lists are a number followed by a period:</p>
@@ -564,7 +572,7 @@ class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><
 </div>
 </div>
 </div>
-<h3 id="code">Code</h3>
+<h2 id="code">Code</h2>
 <p>You can put code (or any content that shouldn’t be formatted) in
 “fences”. A fence is a section in your plain text that’s surrounded by
 two lines that have just three backticks (```). If what you’re putting
@@ -615,7 +623,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a hr
 </div>
 </div>
 </div>
-<h3 id="images-and-links">Images and links</h3>
+<h2 id="images-and-links">Images and links</h2>
 <p>You unfortunately can’t copy and paste a picture into your Markdown
 document in the same way you can with something like Word, but you can
 still <em>refer</em> to an image and have that image appear when
@@ -640,8 +648,10 @@ class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1">
 </figure>
 </div>
 </div>
-<p>The file <code>images.png</code> has to be in the same folder as the
-Markdown-formatted text file.</p>
+<div class="important">
+<p>The file <code>images.png</code> has to be <em>in the same
+folder</em> as the Markdown-formatted text file.</p>
+</div>
 </div>
 <p>You can also make links to web pages using the same syntax, but
 without the leading <code>!</code>:</p>
@@ -677,8 +687,8 @@ web browser.</p>
 </div>
 </div>
 </div>
-<h2 id="writing-in-latex">Writing in <span
-class="math inline">\LaTeX</span></h2>
+<h1 id="writing-in-latex">Writing in <span
+class="math inline">\LaTeX</span></h1>
 <p>Finally, we want to be able to write fancy formulas in our plain text
 document. Unfortunately, Markdown doesn’t have syntax to support writing
 fancy formulas in and of itself. Fortunately, we can embed a
@@ -737,7 +747,7 @@ products).</li>
 <li>Write expressions that include common CS symbols (e.g., the <span
 class="math inline">\mathcal{O}</span> in “big O”).</li>
 </ul>
-<h3 id="simple-expressions">Simple expressions</h3>
+<h2 id="simple-expressions">Simple expressions</h2>
 <p>Writing simple expressions with variables is straightforward, just
 wrap the expression with the appropriate number of dollar signs ($) and
 write it out:</p>
@@ -773,7 +783,7 @@ x_{1}^{2} + y^{n+4} + z_{0} + 10
 </div>
 </div>
 </div>
-<h3 id="fractions">Fractions</h3>
+<h2 id="fractions">Fractions</h2>
 <p>Writing expressions that include fractions takes a little bit more
 than simple expressions, but it’s not much. Writing a fraction requires
 the use of a <em>command</em> in <span
@@ -817,7 +827,7 @@ class="sourceCode latex"><code class="sourceCode latex"><span id="cb18-1"><a hre
 </div>
 </div>
 </div>
-<h3 id="sequences">Sequences</h3>
+<h2 id="sequences">Sequences</h2>
 <p>Sometimes you need to show an expression that includes sums of
 sequences (<span class="math inline">\sum</span>) or products of
 sequences (<span class="math inline">\prod</span>). Writing these
@@ -850,7 +860,7 @@ class="sourceCode latex"><code class="sourceCode latex"><span id="cb20-1"><a hre
 </div>
 </div>
 </div>
-<h3 id="common-cs-symbols">Common CS symbols</h3>
+<h2 id="common-cs-symbols">Common CS symbols</h2>
 <p>Some other symbols that you’ll need to use when writing for CS are to
 describe things like complexity of algorithms, so “big O”, “big omega”,
 “theta”, logarithms and natural logarithms, etc.</p>
@@ -894,7 +904,7 @@ class="sourceCode latex"><code class="sourceCode latex"><span id="cb22-1"><a hre
 </div>
 </div>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>This document gets you started with Markdown and <span
 class="math inline">\LaTeX</span>, but you’re definitely going to run
 into situations where you want to do things that are a little bit more

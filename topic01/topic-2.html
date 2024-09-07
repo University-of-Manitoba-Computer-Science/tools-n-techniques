@@ -306,10 +306,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#installing-software-on-your-personal-computer"
-id="toc-installing-software-on-your-personal-computer">Installing
-software on your personal computer</a>
-<ul>
 <li><a href="#vs-code" id="toc-vs-code">VS Code</a>
 <ul>
 <li><a href="#downloading-vs-code"
@@ -332,11 +328,8 @@ installed</a></li>
 <li><a href="#running-pandoc" id="toc-running-pandoc">Running
 Pandoc</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="installing-software-on-your-personal-computer">Installing
-software on your personal computer</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Install software on your
@@ -351,23 +344,26 @@ some of that software yourself.</p>
 using throughout the course: <a
 href="https://code.visualstudio.com/">Visual Studio Code</a> (henceforth
 “VS Code”) and <a href="https://pandoc.org/">Pandoc</a>.</p>
-<p>Installing software is generally fairly straightforward, and the
-first thing you’re going to need to do is download the software to your
-computer.</p>
-<h2 id="vs-code">VS Code</h2>
-<h3 id="downloading-vs-code">Downloading VS Code</h3>
+<p>Installing software is generally straightforward. The first thing
+you’re going to need to do is download the software from it’s
+source.</p>
+<h1 id="vs-code">VS Code</h1>
+<h2 id="downloading-vs-code">Downloading VS Code</h2>
 <p>Open your web browser (e.g., Edge, Chrome, Safari, Firefox) and
 navigate to <a href="https://code.visualstudio.com/"
 class="uri">https://code.visualstudio.com/</a>.</p>
 <p>The VS Code website is usually smart enough to figure out which
 operating system you’re running and lets you pick the right type of file
-to download on the main page, but you can also go straight to <a
-href="https://code.visualstudio.com/Download">the download page</a>.
-You’ll need to download the right package for your operating system.
-There are lots of options, but you should just click on the big buttons
-for “Windows”, “Mac”, or <code>.deb</code>/<code>.rpm</code> if you’re
-running Linux.</p>
-<h3 id="installing-vs-code">Installing VS Code</h3>
+to download on the main page.</p>
+<div class="aside">
+<p>If you don’t see the right option on the main page, you can also go
+to <a href="https://code.visualstudio.com/Download">the download
+page</a>. On the Download page you’ll see many options and it’s up to
+you to figure out which file you should download (but you can almost
+certainly safely click on the big buttons for “Windows”, “Mac”, or
+choose <code>.deb</code>/<code>.rpm</code> if you’re running Linux).</p>
+</div>
+<h2 id="installing-vs-code">Installing VS Code</h2>
 <p>How you install VS Code depends on the operating system you’re
 using.</p>
 <details>
@@ -393,8 +389,8 @@ Installing VS Code on Linux
 <code>.rpm</code> file) and double-click on it. Your software manager
 should then prompt you to install the package, follow the prompts.</p>
 </details>
-<h3 id="verifying-that-vs-code-is-installed">Verifying that VS Code is
-installed</h3>
+<h2 id="verifying-that-vs-code-is-installed">Verifying that VS Code is
+installed</h2>
 <p>Once you’ve gone through the install process, you should check that
 VS Code is actually installed on your computer by running VS Code.</p>
 <details>
@@ -431,10 +427,9 @@ application launcher menu in the corner of your screen, or press the
 Microsoft key (the “super” key) on your keyboard, then start typing “VS
 Code”. When you see VS Code appear, click on it.</p>
 </details>
-<h2 id="pandoc">Pandoc</h2>
-<h3 id="downloading-pandoc">Downloading Pandoc</h3>
-<p>Open your web browser (e.g., Edge, Chrome, Safari, Firefox) and
-navigate to <a href="https://pandoc.org"
+<h1 id="pandoc">Pandoc</h1>
+<h2 id="downloading-pandoc">Downloading Pandoc</h2>
+<p>Open your web browser and navigate to <a href="https://pandoc.org"
 class="uri">https://pandoc.org</a>. Click on the “Installing” link at
 the top of the page.</p>
 <p>The Pandoc website is <em>sometimes</em> smart enough to figure out
@@ -452,7 +447,7 @@ lot</a> of choices, I recommend that you pick:</p>
 Linux distribution like Ubuntu or Pop!_OS. If you’re using something
 else and need help, ask for help now.</li>
 </ul>
-<h3 id="installing-pandoc">Installing Pandoc</h3>
+<h2 id="installing-pandoc">Installing Pandoc</h2>
 <p>How you install Pandoc depends on the operating system you’re
 using.</p>
 <details>
@@ -479,16 +474,18 @@ it.</p>
 <div class="aside">
 <p>Depending on your experience with Linux-based operating systems, you
 might be asking “Why aren’t you using a package manager for this?”. The
-answer to that question is “We’re going to use package managers later in
-the course.” If you feel comfortable using your package manager right
-now, feel free to install <code>pandoc</code> using your package manager
+answer to that question is “<a
+href="https://en.wikipedia.org/wiki/Hold_your_horses">Hold your
+horses</a> :race_horse:! We’re going to use package managers in COMP
+1006.” If you feel comfortable using your package manager right now,
+feel free to install <code>pandoc</code> using your package manager
 instead of using the <code>.deb</code> package.</p>
-<p>If you don’t know what a “package manager” is, don’t worry! We’ll get
+<p>If you don’t know what a “package manager” is: don’t worry! We’ll get
 there!</p>
 </div>
 </details>
-<h3 id="verifying-that-pandoc-is-installed">Verifying that Pandoc is
-installed</h3>
+<h2 id="verifying-that-pandoc-is-installed">Verifying that Pandoc is
+installed</h2>
 <p>Unlike VS Code, Pandoc is not a program that has a graphical user
 interface (GUI), so no icon will be made for running the program after
 it’s been installed.</p>
@@ -503,12 +500,14 @@ Opening your terminal on Windows
 that’s built in is called the “Command Prompt”. You can alternatively
 install another one from the Microsoft Store called “<a
 href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-ca&amp;gl=CA">Windows
-Terminal</a>”. I recommend that you install this (it’s worlds better
-than the Command Prompt), but it’s not required.</p>
+Terminal</a>”. I recommend that you install this (it’s
+<strong>much</strong> better than the Command Prompt), but it’s not
+required.</p>
 <p>Your terminal program <strong>does not</strong> have a desktop icon,
 so either click on the Microsoft logo (the “Start menu”) or press the
 Microsoft key (the “super” key) on your keyboard, then start typing
-“cmd”. When you see Command Prompt appear, click on it.</p>
+“cmd” or “term”. When you see Command Prompt or Terminal appear, click
+on it.</p>
 </details>
 <details>
 <summary>
@@ -534,20 +533,23 @@ screen, or press the Microsoft key (the “super” key) on your keyboard,
 then start typing “terminal”. When you see a terminal application
 appear, click on it.</p>
 </details>
-<h3 id="running-pandoc">Running Pandoc</h3>
+<h2 id="running-pandoc">Running Pandoc</h2>
 <p>Now that you’ve got your terminal open, you should be able to run
 Pandoc. At this point, it doesn’t matter what operating system you’re
 using, running Pandoc is the same for all.</p>
 <p>In your terminal, type in <code>pandoc</code> and press
-<kbd>Enter</kbd>. As soon as you press <kbd>Enter</kbd>, Pandoc is
-patiently waiting for you to type something in.</p>
+<kbd>Enter</kbd>. As soon as you press <kbd>Enter</kbd>, Pandoc won’t
+show any output, but is patiently waiting for you to type something
+in.</p>
+<div class="aside">
 <p>If you see anything printed to the screen (like an error message),
 stop here and ask for help.</p>
-<p>If you don’t see anything (which is what you should see!), … type
-something in! Let’s do the classical “Hello, world”. After you type in
-“Hello, world”, press <kbd>Enter</kbd> on your keyboard, then press (on
-macOS and Linux) <kbd>Ctrl</kbd>+<kbd>D</kbd> or (on Windows) press
-<kbd>Ctrl</kbd>+<kbd>Z</kbd> then <kbd>Enter</kbd>.</p>
+</div>
+<p>Pandoc is <em>patiently waiting for you to type something in</em>,
+so… type something in! Let’s do the classical “Hello, world”. After you
+type in “Hello, world”, press <kbd>Enter</kbd> on your keyboard, then
+press (on macOS and Linux) <kbd>Ctrl</kbd>+<kbd>D</kbd> or (on Windows)
+press <kbd>Ctrl</kbd>+<kbd>Z</kbd> then <kbd>Enter</kbd>.</p>
 <p>Pandoc should then take your input and turn it into <a
 href="https://en.wikipedia.org/wiki/HTML">HTML</a>:</p>
 <div class="sourceCode" id="cb1"><pre
