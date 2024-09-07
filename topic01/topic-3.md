@@ -3,10 +3,6 @@ title: Write plain text documents
 author: Franklin Bristow
 ---
 
-
-Write plain text documents
-==========================
-
 ::: outcomes
 
 * [X] Write plain text documents (including code and formulas) using structured
@@ -36,7 +32,7 @@ All that said, plain text documents are, well, plain.
 
 * You can't add *emphasis* to certain words. 
 * You can't easily
-  1. Make
+  1. Make nice looking
   2. Numbered
   3. Lists
   4. Of
@@ -51,6 +47,8 @@ All that said, plain text documents are, well, plain.
     return EXIT_SUCCESS;
   }
   ```
+
+  with [syntax highlighting].
 * You certainly can't include ![A picture of the word
   "images".](images.png){style='height: 1em'}.
 * You **definitely** can't include fancy formulas:
@@ -72,9 +70,10 @@ structured text standards: Markdown and $\LaTeX$.
 [a plain text document]: topic-3.md
 [A lot]:
 https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
+[syntax highlighting]: https://en.wikipedia.org/wiki/Syntax_highlighting
 
 Writing in Markdown
--------------------
+===================
 
 Writing [Markdown]-formatted plain text documents is pretty straightforward:
 Open up VS Code, create a new file, and start writing words.
@@ -86,6 +85,20 @@ Here, write this into VS Code:
 ```
 Hi! It's me! I'm writing Markdown-formatted plain text! Yay!
 ```
+
+And then save the file (press (<kbd>Ctrl</kbd> or
+<kbd>Command</kbd>)+<kbd>S</kbd> on your keyboard). 
+
+::: important
+
+When you save the file, make sure that the file name ends with `.md` for
+**M**ark**D**own.
+
+:::
+
+After you save the file with the `.md` extension, VS Code *should* add a new
+button to the top right side of its interface, a preview button: ![The preview
+button in VS Code](vscode-md-preview.png){style='height: 1em'}.
 
 :::
 
@@ -105,9 +118,12 @@ what we just did:
 
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
 
-### Titles
+Titles
+------
 
-Most documents have a title, or headings and subheadings (and subsubheadings).
+Most documents have a title, or headings and subheadings (and subsubheadings
+(and subsubsubheadings (...and sub&times;6-headings (but not
+sub&times;7-headings, that's just madness)))).
 
 You've got two options for making headings in Markdown:
 
@@ -200,7 +216,8 @@ two levels of heading and subheading.
 
 :::
 
-### Emphasis
+Emphasis
+--------
 
 If you want to add emphasis (*italic*) to text in Markdown, you put asterisks `*`
 around the text:
@@ -245,7 +262,8 @@ Some text doesn't need emphasis,
 
 :::
 
-### Lists
+Lists
+-----
 
 There are two kinds of lists you can format in Markdown: Bullets and numbered
 lists. Bulleted lists use the asterisk symbol at the beginning of a line,
@@ -281,7 +299,8 @@ numbered lists are a number followed by a period:
 
 :::
 
-### Code
+Code
+----
 
 You can put code (or any content that shouldn't be formatted) in "fences". A
 fence is a section in your plain text that's surrounded by two lines that have
@@ -347,7 +366,8 @@ print("Hi")
 
 :::
 
-### Images and links
+Images and links
+----------------
 
 You unfortunately can't copy and paste a picture into your Markdown document in
 the same way you can with something like Word, but you can still *refer* to an
@@ -379,8 +399,12 @@ Here's a cool picture:
 :::
 ::::::
 
-The file `images.png` has to be in the same folder as the Markdown-formatted
+::: important
+
+The file `images.png` has to be *in the same folder* as the Markdown-formatted
 text file.
+
+:::
 
 :::
 
@@ -438,7 +462,7 @@ your web browser.
 :::
 
 Writing in $\LaTeX$
--------------------
+===================
 
 Finally, we want to be able to write fancy formulas in our plain text document.
 Unfortunately, Markdown doesn't have syntax to support writing fancy formulas in
@@ -511,7 +535,8 @@ We want to be able to accomplish a few things with $\LaTeX$:
 [the latin letter X]: https://en.wikipedia.org/wiki/X
 [the Greek letter Chi]: https://en.wikipedia.org/wiki/Chi_(letter)
 
-### Simple expressions
+Simple expressions
+------------------
 
 Writing simple expressions with variables is straightforward, just wrap the
 expression with the appropriate number of dollar signs (\$) and write it out:
@@ -569,7 +594,8 @@ $$
 
 :::
 
-### Fractions
+Fractions
+---------
 
 Writing expressions that include fractions takes a little bit more than simple
 expressions, but it's not much. Writing a fraction requires the use of a
@@ -629,7 +655,8 @@ $$
 
 :::
 
-### Sequences
+Sequences
+---------
 
 Sometimes you need to show an expression that includes sums of sequences
 ($\sum$) or products of sequences ($\prod$). Writing these expressions is
@@ -676,7 +703,8 @@ $$
 
 :::
 
-### Common CS symbols
+Common CS symbols
+-----------------
 
 Some other symbols that you'll need to use when writing for CS are to describe
 things like complexity of algorithms, so "big O", "big omega", "theta",
@@ -736,7 +764,7 @@ $$
 :::
 
 Further reading
----------------
+===============
 
 This document gets you started with Markdown and $\LaTeX$, but you're definitely
 going to run into situations where you want to do things that are a little bit

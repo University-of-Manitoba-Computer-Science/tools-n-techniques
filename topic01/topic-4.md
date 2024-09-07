@@ -3,15 +3,14 @@ title: Converting documents to different formats
 author: Franklin Bristow
 ---
 
-
-Converting documents to different formats
-=========================================
-
 ::: outcomes
 
 * [X] Convert plain text documents to different formats (e.g., `docx`).
 
 :::
+
+... oh yeah, Pandoc!
+====================
 
 We installed Pandoc, then shifted to writing a bunch of plain text. Now we're
 back to using Pandoc. The purpose of installing Pandoc is that it's a tool we
@@ -25,7 +24,9 @@ in our Terminal, so if you closed your terminal, you should open it up again
 like you did before when verifying that Pandoc is installed.
 
 First: **Save** your plain text Markdown-formatted document *somewhere*. I'm
-going to recommend that (for now!) you save this file to your Desktop folder.
+going to recommend that (for now!) you save this file to your Desktop folder. If
+you already saved your file (and you don't know which folder it's in), then use
+the "Save as" feature in VS Code and save it to your Desktop folder.
 
 Make sure that you save your file with a name that has a `.md` extension. This
 isn't *super* important, but it makes Pandoc's job a little easier when deciding
@@ -39,10 +40,10 @@ cd Desktop
 ```
 
 Congratulations :tada:! You just ran your second terminal command (Second?!
-Yeah! you ran `pandoc` earlier!).
+Yeah! You ran `pandoc` earlier!).
 
 Converting to Word
-------------------
+==================
 
 OK, but now we need to do the hard work of actually converting our
 Markdown-formatted document to a Word file. It's actually straightforward:
@@ -62,6 +63,8 @@ text file **and** a Word-formatted `.docx` file :tada:!
 Open up the Word-formatted file with Microsoft Word, Office 365, or Google Docs
 and take a look.
 
+::: aside
+
 If Pandoc *did* print something out, a few things could be wrong:
 
 * You might not have saved your file to your Desktop folder. Try saving the
@@ -76,3 +79,5 @@ If Pandoc *did* print something out, a few things could be wrong:
   then you can't access your Desktop folder from where you are right now. Your
   terminal could be anywhere right now, so your best course of action would be
   to ask for help!
+
+:::

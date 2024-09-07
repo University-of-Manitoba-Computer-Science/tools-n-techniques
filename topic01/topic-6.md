@@ -3,11 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-
-
-Summary
-=======
-
 Whew! That feels like a lot, but we've accomplished lots of different things in
 this lesson. You should be able to:
 

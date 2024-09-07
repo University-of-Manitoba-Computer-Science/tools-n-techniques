@@ -268,3 +268,12 @@ tr.odd {
     border-style: dotted;
     padding: 1em;
 }
+.important::before {
+    content: "\203c\fe0f  Important!";
+    font-weight: bold;
+}
+
+.important {
+    border-style: dotted;
+    padding: 1em;
+}
