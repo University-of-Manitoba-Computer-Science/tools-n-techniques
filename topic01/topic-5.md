@@ -3,10 +3,6 @@ title: Organizing your files
 author: Franklin Bristow
 ---
 
-
-Organizing your files
-=====================
-
 ::: outcomes
 
 * [X] Define your own strategy for organizing your files.
@@ -36,7 +32,7 @@ time you know where to put it.
 https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
 
 Planning your organization
---------------------------
+==========================
 
 Try to come up with a high-level structure that uses information about the
 files. Pick information about the files that are **facts** and aren't going to
@@ -105,9 +101,9 @@ comp3430/
 
 :::
 
-Organizing your files exactly like this doesn't make sense --- you don't usually
+Organizing *your* files exactly like this doesn't make sense --- you don't usually
 take the same course across terms and years --- so you shouldn't use this exact
-organizational strategy.
+organizational strategy; you should make your own!
 
 :::
 
@@ -131,7 +127,7 @@ folders and which of these are going to be names of files?
 [full of files]: https://www.youtube.com/watch?v=L_o_O7v1ews
 
 Making folders
---------------
+==============
 
 Planning your strategy for organizing files is just the first step. Now you
 actually have to make the folder structure!

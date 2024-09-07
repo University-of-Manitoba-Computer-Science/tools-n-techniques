@@ -3,9 +3,6 @@ title: Installing software on your personal computer
 author: Franklin Bristow
 ---
   
-Installing software on your personal computer
-=============================================
-
 ::: outcomes
 
 * [X] Install software on your personal computer (e.g., `pandoc` and VS Code).
@@ -19,30 +16,39 @@ software installed on it and you maybe installed some of that software yourself.
 We're going to install two pieces of software that you're going to be using
 throughout the course: [Visual Studio Code] (henceforth "VS Code") and [Pandoc].
 
-Installing software is generally fairly straightforward, and the first thing
-you're going to need to do is download the software to your computer.
+Installing software is generally straightforward. The first thing you're going
+to need to do is download the software from it's source.
 
 [Visual Studio Code]: https://code.visualstudio.com/
 [Pandoc]: https://pandoc.org/
 
 VS Code
--------
+=======
 
-### Downloading VS Code
+Downloading VS Code
+-------------------
 
 Open your web browser (e.g., Edge, Chrome, Safari, Firefox) and navigate to
 <https://code.visualstudio.com/>.
 
 The VS Code website is usually smart enough to figure out which operating system
 you're running and lets you pick the right type of file to download on the main
-page, but you can also go straight to [the download page]. You'll need to
-download the right package for your operating system. There are lots of options,
-but you should just click on the big buttons for "Windows", "Mac", or
-`.deb`/`.rpm` if you're running Linux.
+page.
+
+::: aside
+
+If you don't see the right option on the main page, you can also go to [the
+download page]. On the Download page you'll see many options and it's up to you
+to figure out which file you should download (but you can almost certainly
+safely click on the big buttons for "Windows", "Mac", or choose `.deb`/`.rpm` if
+you're running Linux).
 
 [the download page]: https://code.visualstudio.com/Download
 
-### Installing VS Code
+:::
+
+Installing VS Code
+------------------
 
 How you install VS Code depends on the operating system you're using.
 
@@ -68,7 +74,8 @@ the prompts.
 
 </details>
 
-### Verifying that VS Code is installed
+Verifying that VS Code is installed
+-----------------------------------
 
 Once you've gone through the install process, you should check that VS Code is
 actually installed on your computer by running VS Code.
@@ -109,12 +116,13 @@ click on it.
 </details>
 
 Pandoc
------
+======
 
-### Downloading Pandoc
+Downloading Pandoc
+------------------
 
-Open your web browser (e.g., Edge, Chrome, Safari, Firefox) and navigate to
-<https://pandoc.org>. Click on the "Installing" link at the top of the page.
+Open your web browser and navigate to <https://pandoc.org>. Click on the
+"Installing" link at the top of the page.
 
 The Pandoc website is *sometimes* smart enough to figure out which operating
 system you're running and links you directly to the right type of file to
@@ -134,7 +142,8 @@ https://github.com/jgm/pandoc/releases/latest
 [a lot]:
 http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
 
-### Installing Pandoc
+Installing Pandoc
+-----------------
 
 How you install Pandoc depends on the operating system you're using.
 
@@ -161,17 +170,21 @@ software manager will prompt you to install it.
 
 Depending on your experience with Linux-based operating systems, you might be
 asking "Why aren't you using a package manager for this?". The answer to that
-question is "We're going to use package managers later in the course." If you
-feel comfortable using your package manager right now, feel free to install
-`pandoc` using your package manager instead of using the `.deb` package.
+question is "[Hold your horses] :race_horse:! We're going to use package
+managers in COMP 1006." If you feel comfortable using your package manager right
+now, feel free to install `pandoc` using your package manager instead of using
+the `.deb` package.
 
-If you don't know what a "package manager" is, don't worry! We'll get there!
+If you don't know what a "package manager" is: don't worry! We'll get there!
+
+[Hold your horses]: https://en.wikipedia.org/wiki/Hold_your_horses
 
 :::
 
 </details>
 
-### Verifying that Pandoc is installed
+Verifying that Pandoc is installed
+----------------------------------
 
 Unlike VS Code, Pandoc is not a program that has a graphical user interface
 (GUI), so no icon will be made for running the program after it's been
@@ -185,13 +198,13 @@ has been installed, you're going to need to open your terminal program.
 You have a few different options for terminals on Windows. The one that's built
 in is called the "Command Prompt". You can alternatively install another one
 from the Microsoft Store called "[Windows Terminal]". I recommend that you
-install this (it's worlds better than the Command Prompt), but it's not
+install this (it's **much** better than the Command Prompt), but it's not
 required.
 
 Your terminal program **does not** have a desktop icon, so either click on the
 Microsoft logo (the "Start menu") or press the Microsoft key (the "super" key)
-on your keyboard, then start typing "cmd".  When you see Command Prompt appear,
-click on it.
+on your keyboard, then start typing "cmd" or "term".  When you see Command
+Prompt or Terminal appear, click on it.
 
 [Windows Terminal]:
 https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-ca&gl=CA
@@ -222,20 +235,25 @@ see a terminal application appear, click on it.
 
 </details>
 
-### Running Pandoc
+Running Pandoc
+--------------
 
 Now that you've got your terminal open, you should be able to run Pandoc. At
 this point, it doesn't matter what operating system you're using, running Pandoc
 is the same for all.
 
 In your terminal, type in `pandoc` and press <kbd>Enter</kbd>. As soon as you
-press <kbd>Enter</kbd>, Pandoc is patiently waiting for you to type something
-in.
+press <kbd>Enter</kbd>, Pandoc won't show any output, but is patiently waiting
+for you to type something in.
+
+::: aside
 
 If you see anything printed to the screen (like an error message), stop here and
 ask for help.
 
-If you don't see anything (which is what you should see!), ... type something
+:::
+
+Pandoc is *patiently waiting for you to type something in*, so... type something
 in! Let's do the classical "Hello, world". After you type in "Hello, world",
 press <kbd>Enter</kbd> on your keyboard, then press (on macOS and Linux)
 <kbd>Ctrl</kbd>+<kbd>D</kbd> or (on Windows) press <kbd>Ctrl</kbd>+<kbd>Z</kbd>

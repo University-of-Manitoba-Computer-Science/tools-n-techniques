@@ -3,23 +3,25 @@ title: Introduction
 author: Franklin Bristow
 ---
 
-Introduction
-============
+First things first: we're going to get ourselves set up and organized:
 
-First things first: we're going to get ourselves set up and organized. We'll
-first take a look at some tools that you can use for editing text, and we'll
-look at some strategies that you can use to organize your files.
+1. We're going to install some software on our machines that we will be using
+   throughout the course.
+2. We'll use the tools that you can use for editing text and transforming it
+   into other formats, and
+3. We'll look at some strategies that you can use to organize your files.
 
-Despite the amount of programming you've done in COMP 1010 and COMP 1020, you're
-also going to be expected to do a lot of *writing* in computer science. In some
-cases that's going to be to describe how to compile or run your work. In some
-cases your writing is going to *be* the work. In some cases you're going to be
-writing to communicate with your peers and teammates (both in school and in the
-workplace).
+You may be doing a lot of programming in [COMP 1010] (or [COMP 1012]) and [COMP
+1020], but you're also going to be expected to do a lot of *writing* in computer
+science. In some cases that's going to be to describe how someone else should
+run your work. In some cases your writing is going to *be* the work. In some
+cases you're going to be writing to communicate with your peers and teammates
+(both in school and in the workplace).
 
-We'll spend some time this week looking at [Markdown] and $\LaTeX$ for writing
-structured text, and a tool called [Pandoc] for sharing and distributing that
-text in formats like PDF and Word.
+In this topic, we will be looking at [Markdown] and $\LaTeX$ for writing
+structured text, a tool called [Pandoc] for sharing and distributing that
+text in formats like PDF and Word, getting you set up with [VS Code], and trying
+to establish some practices for organizing your files into a folder structure.
 
 ::: outcomes
 
@@ -35,3 +37,7 @@ text in formats like PDF and Word.
 
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
 [Pandoc]: https://pandoc.org
+[COMP 1010]: https://umanitoba.ca/science/sites/science/files/2023-08/COMP-1010.pdf
+[COMP 1012]: https://umanitoba.ca/science/sites/science/files/2023-08/COMP-1012.pdf
+[COMP 1020]: https://umanitoba.ca/science/sites/science/files/2023-08/COMP-1020.pdf
+[VS Code]: https://code.visualstudio.com/
