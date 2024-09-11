@@ -3,9 +3,6 @@ title: "Command line text editing"
 author: Franklin Bristow
 ---
 
-Use a command-line text editor
-==============================
-
 ::: outcomes
 
 * [X] Use a command-line text editor to open, inspect, edit, and save a file.
@@ -16,7 +13,7 @@ Directories are great, they're a useful tool for organizing our lives. But we
 really need to be able to actually *create* stuff on the command line. 
 
 We've spent some time getting to know VS Code, and VS Code is an excellent text
-editor and *can* be used to edit remote files, but being able to use a
+editor and [*can* be used to edit remote files], but being able to use a
 command-line text editor is useful because command-line text editors are
 **always there**.
 
@@ -29,9 +26,11 @@ In this module we're going to start working with a command-line text editor
 called [`vim`].
 
 [`vim`]: https://en.wikipedia.org/wiki/Vim_(text_editor)
+[*can* be used to edit remote files]:
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh
 
 Opening `vim`
--------------
+=============
 
 `vim` is a program, just like the programs that you've been running for creating
 and navigating directories, so you can run it just like the other programs
@@ -80,17 +79,17 @@ You can quit `vim` by typing `:q` (colon, then q) and pressing <kbd>Enter</kbd>.
 mode and insert mode.
 
 When you start `vim`, you are in "normal" mode. In "normal" mode, you're
-interacting with `vim` itself and you can give *`vim`* commands, like saving
+interacting with `vim` itself and you can give commands *to `vim`*, like saving
 your file or exiting. In "insert" mode, you're actually able to make changes to
 the file.
 
 [modes]: https://en.wikipedia.org/wiki/Vim_(text_editor)#Modes
 
 Editing and saving a file
--------------------------
+=========================
 
-Open `vim` again, but this time pass it a filename to create a new file with
-that name.
+Open `vim` again (if didn't close it, quit, then open it again), but this time
+pass it a filename to create a new file with that name.
 
 ::: example
 
@@ -103,7 +102,7 @@ Create a new file with vim named `hello.md`.
 Once you're in `vim`, enter **insert mode** by typing <kbd>i</kbd> on your keyboard.
 Now start typing!
 
-Once you're finished, press <kbd>Escape</kbd> on your keyboard to get back into
+Once you're finished, press <kbd>Esc</kbd> on your keyboard to get back into
 **normal mode**.
 
 Now *save* the file by "writing" the file. Similar to quitting, you can write
@@ -127,10 +126,10 @@ Cool :sunglasses:! Now you can create new text files on the command-line with
 `vim`!
 
 Copying and pasting into `vim`
-------------------------------
+==============================
 
 You can create new text files on the command-line with `vim`, but sometimes you
-also want to copy some text from one place and then copy it into `vim`, just
+also want to copy some text from one place and then paste it into `vim`, just
 like you do with other programs.
 
 You *can* paste into `vim`, but you have to tell `vim` that you're about to
@@ -214,7 +213,7 @@ To paste text into your terminal window you can do one of two things:
 </details>
 
 Cheatsheets
------------
+===========
 
 Despite its minimal appearance, `vim` is a full-featured text editor that can do
 everything that you might want. As you've seen, interacting with programs on the
@@ -238,7 +237,7 @@ the cheat sheet are:
 * Doing the same thing multiple times (cutting the next three lines `d3↓`).
 
 Other editors
--------------
+=============
 
 `vim` is not the only text editor, and you're not required to use `vim` for this
 course (or any course, really). You're welcome to try out and use other text

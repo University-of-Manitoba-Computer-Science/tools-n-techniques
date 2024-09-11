@@ -3,9 +3,6 @@ title: "Transferring files"
 author: Franklin Bristow
 ---
 
-Transfer files 
-==============
-
 ::: outcomes
 
 * [X] Transfer files between your computer and a remote computer.
@@ -22,7 +19,7 @@ two different ways you can do it: using a graphical user interface (a GUI) and
 using command-line tools.
 
 Using a GUI
------------
+===========
 
 You're going to need to install a new program on your computer to get a GUI to
 transfer files between your computer and a remote computer. The program you use
@@ -46,7 +43,7 @@ Windows, including a(nother) terminal emulator.
 
 If you're planning on using MobaXterm, you should download the "Installer
 edition" &mdash; this has a `.zip` file that contains a `.msi` file, and you
-can install the `.msi` file in the same way that you did with Pandoc.
+can install the `.msi` file in [the same way that you did with Pandoc].
 
 :::
 
@@ -73,11 +70,12 @@ display on the left of MobaXterm. MobaXterm will then start transferring the
 file or folder that you've asked it to copy to the remote computer.
 
 [MobaXterm]: https://mobaxterm.mobatek.net
+[the same way you did with Pandoc]: ../topic01/topic-2.html
 </details>
 
 <details><summary>GUIs for macOS</summary>
 [Cyberduck] is a tool designed specifically for transferring files between
-computers. Installing Cyberduck is the same process as installing VS Code
+computers. Installing Cyberduck is [the same process as installing VS Code]
 (download the `.zip` file, copy the app into your Applications directory).
 
 Once you've installed Cyberduck, create a new "SFTP" connection by clicking on
@@ -95,6 +93,7 @@ file explorer (e.g., drag files and folders to and from this window to transfer
 them).
 
 [Cyberduck]: https://cyberduck.io/
+[the same process as installing VS Code]: ../topic01/topic-2.html
 </details>
 
 <details><summary>GUIs for Linux</summary>
@@ -124,7 +123,7 @@ and folders to and from this window to transfer them).
 </details>
 
 Using the command line
-----------------------
+======================
 
 Transferring files on the command line is the same regardless of which operating
 system you have on your computer.
@@ -166,7 +165,8 @@ computer).
 [Open your terminal]: ../topic01/topic-2.html#verifying-that-pandoc-is-installed
 [when using SSH]: ../topic02/topic-1.html#connect-to-a-remote-computer
 
-### Copying single files
+Copying single files
+--------------------
 
 ::: example
 
@@ -223,7 +223,8 @@ scp fbristow@aviary.cs.umanitoba.ca:hello.md .
 
 :::
 
-### Copying directories
+Copying directories
+-------------------
 
 We're not limited to copying individual files between computers. In fact, that
 would get really tedious if we had many files we wanted to copy, or entire

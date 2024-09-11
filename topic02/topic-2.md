@@ -3,9 +3,6 @@ title: "Command line file management"
 author: Franklin Bristow
 ---
 
-Creating folders and finding your way around
-============================================
-
 ::: outcomes
 
 * [X] Create, rename, delete, and inspect folder structures on the command-line.
@@ -15,12 +12,14 @@ Creating folders and finding your way around
 
 Being connected to a remote computer is nice, but we really want to be able to
 actually *do* stuff on that remote computer. The very first thing we're going to
-do is to re-do something that we did last week --- we're going to navigate
-around folder structures and create new folders, ultimately to re-create the
-folder structure you created last week.
+do is to re-do something that we did in the [last unit] --- we're going to
+navigate around folder structures and create new folders, ultimately to
+re-create the folder structure you created in the last unit.
+
+[last unit]: ../topic01/topic-5.html
 
 :eyes: Looking around
----------------------
+=====================
 
 When you connect to a remote computer you're interacting with a program called a
 "shell". When you see something that looks like
@@ -57,7 +56,7 @@ is shown here.
 :::
 
 :hammer_and_wrench: Making a directory
---------------------------------------
+======================================
 
 While `bin` and `Mail` are good directories to have, they don't represent what
 we want to actually keep on our remote computer, so let's start making some of
@@ -133,15 +132,15 @@ all?
 :::
 
 :compass: Navigating directories
---------------------------------
+================================
 
 Now that we've made a directory, we need to be able to "open" the directory.
 When we used visual file explorers, we "opened" the directory (either in a new
 window or in the same window) by double-clicking on the icon.
 
-Again, we *can* double-click on our terminal window, that double-clicking isn't
-doing anything other than making fun clicking or tapping sounds. To "open" a
-directory that we created, we need to "change" to that directory using a new
+Again, we *can* double-click on our terminal window, but that double-clicking
+isn't doing anything other than making fun clicking or tapping sounds. To "open"
+a directory that we created, we need to "change" to that directory using a new
 command: `cd`
 
 ::: example
@@ -191,10 +190,10 @@ You can change back to your user directory at any time from anywhere using `~`.
 
 The last part of being able to move around in a directory structure on a remote
 computer is knowing where you are. Our shell has a concept of a "working
-directory". Thinking about visual file explorers, this is the folder that we're
-currently looking at. We can ask our shell to tell us what directory we're
-currently in using the `pwd` command, `pwd` stands for **p**rint **w**orking
-**d**irectory.
+directory". Thinking about visual file explorers, this is the window in our file
+explorer that we're currently looking at. We can ask our shell to tell us what
+directory we're currently in using the `pwd` command, `pwd` stands for **p**rint
+**w**orking **d**irectory.
 
 ::: example
 
@@ -222,7 +221,7 @@ Now try changing into `hello` and re-run `pwd` to see that the directory you're
 [tilde]: https://en.wikipedia.org/wiki/Tilde
 
 :pencil2: Moving and renaming directories
------------------------------------------
+=========================================
 
 Sometimes when making a directory you realize that you made the directory in the
 wrong place, or you gave it the wrong name (or misspelled the name). 
@@ -279,7 +278,7 @@ directory to move things into or from the current directory.
 :::
 
 :wastebasket: Removing directories
-----------------------------------
+==================================
 
 Sometimes you don't need a directory anymore and you want to remove it. You can
 remove directories using two different commands: `rm` and `rmdir`.
