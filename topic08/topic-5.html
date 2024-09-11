@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -418,7 +415,7 @@ backing up, and some answers to the questions above:</p>
 <col style="width: 31%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Thing to back up</th>
 <th>Importance</th>
 <th>Replaceability</th>
@@ -426,14 +423,14 @@ backing up, and some answers to the questions above:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Personal photos and videos</td>
 <td>Very important</td>
 <td>Irreplaceable</td>
 <td>Not something you use frequently; not urgent to get back when it’s
 missing, it’s OK to wait a few days.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Documents and assignments</td>
 <td>Important but less important over time.</td>
 <td>Painfully replaceable</td>
@@ -441,7 +438,7 @@ missing, it’s OK to wait a few days.</td>
 after; urgent to get back near a due date (minutes or hours), way less
 urgent after a due date.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Web browser information like passwords, bookmarks, history.</td>
 <td>Passwords are important, bookmarks are less important, history is
 not important.</td>
@@ -449,28 +446,28 @@ not important.</td>
 <td>Something you use frequently. Passwords could be very urgent to get
 back quickly.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Music and videos from online.</td>
 <td>Not very important.</td>
 <td>Replaceable from the source.</td>
 <td>Maybe something you use frequently, not that urgent to get
 back.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Programs installed on your computer.</td>
 <td>Important.</td>
 <td>Replaceable.</td>
 <td>Something you use frequently. Could be urgent to get back, but not
 often.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Program configuration.</td>
 <td>Not very important.</td>
 <td>Painfully replaceable.</td>
 <td>Something you use frequently. Could be urgent to get back, but not
 often.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Your operating system’s configuration (how you’ve configured
 keyboard shortcuts).</td>
 <td>Not very important.</td>
@@ -478,7 +475,7 @@ keyboard shortcuts).</td>
 configured.</td>
 <td>Something you use frequently. Not that urgent to get back.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Your operating system.</td>
 <td>Important.</td>
 <td>Replaceable.</td>
@@ -514,7 +511,7 @@ to “my house could burn down and I’m still OK”).</li>
 <col style="width: 23%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Place</th>
 <th>Ease of use</th>
 <th>Cost</th>
@@ -522,21 +519,21 @@ to “my house could burn down and I’m still OK”).</li>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Another folder on your computer.</td>
 <td>Very easy, it’s just copy and paste.</td>
 <td>Very cheap, it’s just your computer.</td>
 <td>Very unreliable; if your hard drive fails, you lose both
 copies.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Another drive in or attached to your computer.</td>
 <td>Still very easy, it’s just copy and paste.</td>
 <td>Kind of expensive, new drives aren’t cheap.</td>
 <td>More reliable, can be made more reliable if you move the other drive
 to a different physical location.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Other kinds of physical media (CDs, DVDs, <a
 href="https://en.wikipedia.org/wiki/Tape_drive">tapes</a>).</td>
 <td>Straightforward to use, but you might need special software.</td>
@@ -544,7 +541,7 @@ href="https://en.wikipedia.org/wiki/Tape_drive">tapes</a>).</td>
 <td><a href="https://en.wikipedia.org/wiki/Disc_rot">CDs and DVDs are
 not long-term reliable</a>. Tapes are very reliable.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Online storage tools (Dropbox, OneDrive).</td>
 <td>Straightforward to use. You do need special software, but it’s
 usually simple to use.</td>

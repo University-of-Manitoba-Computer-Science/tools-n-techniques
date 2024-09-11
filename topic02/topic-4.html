@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -303,13 +300,6 @@ server</a></li>
 <h1 class="title">Tab completion</h1>
 <p class="author">Franklin Bristow</p>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#tab-completion" id="toc-tab-completion">Tab
-completion</a></li>
-</ul>
-</nav>
-<h1 id="tab-completion">Tab completion</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Complete commands and

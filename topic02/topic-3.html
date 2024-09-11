@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -305,10 +302,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#use-a-command-line-text-editor"
-id="toc-use-a-command-line-text-editor">Use a command-line text
-editor</a>
-<ul>
 <li><a href="#opening-vim" id="toc-opening-vim">Opening
 <code>vim</code></a></li>
 <li><a href="#editing-and-saving-a-file"
@@ -319,11 +312,8 @@ id="toc-copying-and-pasting-into-vim">Copying and pasting into
 <li><a href="#cheatsheets" id="toc-cheatsheets">Cheatsheets</a></li>
 <li><a href="#other-editors" id="toc-other-editors">Other
 editors</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="use-a-command-line-text-editor">Use a command-line text
-editor</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Use a command-line text
@@ -334,9 +324,11 @@ editor to open, inspect, edit, and save a file.</label></li>
 lives. But we really need to be able to actually <em>create</em> stuff
 on the command line.</p>
 <p>We’ve spent some time getting to know VS Code, and VS Code is an
-excellent text editor and <em>can</em> be used to edit remote files, but
-being able to use a command-line text editor is useful because
-command-line text editors are <strong>always there</strong>.</p>
+excellent text editor and <a
+href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh"><em>can</em>
+be used to edit remote files</a>, but being able to use a command-line
+text editor is useful because command-line text editors are
+<strong>always there</strong>.</p>
 <p>You are able to install VS Code on your own computer, but you don’t
 always have control over remote computers, and you (generally) don’t
 have permissions to install software on them. You definitely don’t have
@@ -344,7 +336,7 @@ permission to install software on Aviary.</p>
 <p>In this module we’re going to start working with a command-line text
 editor called <a
 href="https://en.wikipedia.org/wiki/Vim_(text_editor)"><code>vim</code></a>.</p>
-<h2 id="opening-vim">Opening <code>vim</code></h2>
+<h1 id="opening-vim">Opening <code>vim</code></h1>
 <p><code>vim</code> is a program, just like the programs that you’ve
 been running for creating and navigating directories, so you can run it
 just like the other programs you’ve been running so far:</p>
@@ -382,19 +374,20 @@ but only two that we care about right now: normal mode and insert
 mode.</p>
 <p>When you start <code>vim</code>, you are in “normal” mode. In
 “normal” mode, you’re interacting with <code>vim</code> itself and you
-can give <em><code>vim</code></em> commands, like saving your file or
+can give commands <em>to <code>vim</code></em>, like saving your file or
 exiting. In “insert” mode, you’re actually able to make changes to the
 file.</p>
-<h2 id="editing-and-saving-a-file">Editing and saving a file</h2>
-<p>Open <code>vim</code> again, but this time pass it a filename to
-create a new file with that name.</p>
+<h1 id="editing-and-saving-a-file">Editing and saving a file</h1>
+<p>Open <code>vim</code> again (if didn’t close it, quit, then open it
+again), but this time pass it a filename to create a new file with that
+name.</p>
 <div class="example">
 <p>Create a new file with vim named <code>hello.md</code>.</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> vim hello.md</span></code></pre></div>
 <p>Once you’re in <code>vim</code>, enter <strong>insert mode</strong>
 by typing <kbd>i</kbd> on your keyboard. Now start typing!</p>
-<p>Once you’re finished, press <kbd>Escape</kbd> on your keyboard to get
+<p>Once you’re finished, press <kbd>Esc</kbd> on your keyboard to get
 back into <strong>normal mode</strong>.</p>
 <p>Now <em>save</em> the file by “writing” the file. Similar to
 quitting, you can write your file by typing <code>:w</code> (colon, then
@@ -411,11 +404,11 @@ open existing files. You can re-open the file that you just made by
 passing that same filename to <code>vim</code> on the command line.</p>
 <p>Cool <span class="emoji" data-emoji="sunglasses">😎</span>! Now you
 can create new text files on the command-line with <code>vim</code>!</p>
-<h2 id="copying-and-pasting-into-vim">Copying and pasting into
-<code>vim</code></h2>
+<h1 id="copying-and-pasting-into-vim">Copying and pasting into
+<code>vim</code></h1>
 <p>You can create new text files on the command-line with
 <code>vim</code>, but sometimes you also want to copy some text from one
-place and then copy it into <code>vim</code>, just like you do with
+place and then paste it into <code>vim</code>, just like you do with
 other programs.</p>
 <p>You <em>can</em> paste into <code>vim</code>, but you have to tell
 <code>vim</code> that you’re about to paste something into it. You have
@@ -496,7 +489,7 @@ things:</p>
 from the normal shortcut for pasting!</li>
 </ul>
 </details>
-<h2 id="cheatsheets">Cheatsheets</h2>
+<h1 id="cheatsheets">Cheatsheets</h1>
 <p>Despite its minimal appearance, <code>vim</code> is a full-featured
 text editor that can do everything that you might want. As you’ve seen,
 interacting with programs on the command line is done entirely through
@@ -521,7 +514,7 @@ the bottom of the file, <code>gg</code> to move to the top).</li>
 <li>Doing the same thing multiple times (cutting the next three lines
 <code>d3↓</code>).</li>
 </ul>
-<h2 id="other-editors">Other editors</h2>
+<h1 id="other-editors">Other editors</h1>
 <p><code>vim</code> is not the only text editor, and you’re not required
 to use <code>vim</code> for this course (or any course, really). You’re
 welcome to try out and use other text editors, like <code>nano</code>,

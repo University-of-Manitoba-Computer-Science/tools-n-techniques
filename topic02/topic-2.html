@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -305,10 +302,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#creating-folders-and-finding-your-way-around"
-id="toc-creating-folders-and-finding-your-way-around">Creating folders
-and finding your way around</a>
-<ul>
 <li><a href="#looking-around" id="toc-looking-around"><span
 class="emoji" data-emoji="eyes">👀</span> Looking around</a></li>
 <li><a href="#making-a-directory" id="toc-making-a-directory"><span
@@ -323,11 +316,8 @@ data-emoji="pencil2">✏️</span> Moving and renaming directories</a></li>
 <li><a href="#removing-directories" id="toc-removing-directories"><span
 class="emoji" data-emoji="wastebasket">🗑️</span> Removing
 directories</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="creating-folders-and-finding-your-way-around">Creating folders
-and finding your way around</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Create, rename, delete,
@@ -338,12 +328,12 @@ structures on the command-line.</label></li>
 </div>
 <p>Being connected to a remote computer is nice, but we really want to
 be able to actually <em>do</em> stuff on that remote computer. The very
-first thing we’re going to do is to re-do something that we did last
-week — we’re going to navigate around folder structures and create new
-folders, ultimately to re-create the folder structure you created last
-week.</p>
-<h2 id="looking-around"><span class="emoji" data-emoji="eyes">👀</span>
-Looking around</h2>
+first thing we’re going to do is to re-do something that we did in the
+<a href="../topic01/topic-5.html">last unit</a> — we’re going to
+navigate around folder structures and create new folders, ultimately to
+re-create the folder structure you created in the last unit.</p>
+<h1 id="looking-around"><span class="emoji" data-emoji="eyes">👀</span>
+Looking around</h1>
 <p>When you connect to a remote computer you’re interacting with a
 program called a “shell”. When you see something that looks like</p>
 <div class="sourceCode" id="cb1"><pre
@@ -367,8 +357,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 on the remote computer was created. What you see may not be
 <em>exactly</em> the same as what is shown here.</p>
 </div>
-<h2 id="making-a-directory"><span class="emoji"
-data-emoji="hammer_and_wrench">🛠️</span> Making a directory</h2>
+<h1 id="making-a-directory"><span class="emoji"
+data-emoji="hammer_and_wrench">🛠️</span> Making a directory</h1>
 <p>While <code>bin</code> and <code>Mail</code> are good directories to
 have, they don’t represent what we want to actually keep on our remote
 computer, so let’s start making some of our own folders.</p>
@@ -426,13 +416,13 @@ the command line. This is a good opportunity to choose a new personal
 preference: When you’re working on the command line, do you want to
 always use dashes, underscores, or no spaces at all?</p>
 </div>
-<h2 id="navigating-directories"><span class="emoji"
-data-emoji="compass">🧭</span> Navigating directories</h2>
+<h1 id="navigating-directories"><span class="emoji"
+data-emoji="compass">🧭</span> Navigating directories</h1>
 <p>Now that we’ve made a directory, we need to be able to “open” the
 directory. When we used visual file explorers, we “opened” the directory
 (either in a new window or in the same window) by double-clicking on the
 icon.</p>
-<p>Again, we <em>can</em> double-click on our terminal window, that
+<p>Again, we <em>can</em> double-click on our terminal window, but that
 double-clicking isn’t doing anything other than making fun clicking or
 tapping sounds. To “open” a directory that we created, we need to
 “change” to that directory using a new command: <code>cd</code></p>
@@ -474,10 +464,11 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href=
 <p>The last part of being able to move around in a directory structure
 on a remote computer is knowing where you are. Our shell has a concept
 of a “working directory”. Thinking about visual file explorers, this is
-the folder that we’re currently looking at. We can ask our shell to tell
-us what directory we’re currently in using the <code>pwd</code> command,
-<code>pwd</code> stands for <strong>p</strong>rint
-<strong>w</strong>orking <strong>d</strong>irectory.</p>
+the window in our file explorer that we’re currently looking at. We can
+ask our shell to tell us what directory we’re currently in using the
+<code>pwd</code> command, <code>pwd</code> stands for
+<strong>p</strong>rint <strong>w</strong>orking
+<strong>d</strong>irectory.</p>
 <div class="example">
 <p>Type <code>pwd</code> into your terminal, then press
 <kbd>Enter</kbd>. The directory that you’re currently “in” will be
@@ -494,8 +485,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href=
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/student/you/hello</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span></span></code></pre></div>
 </div>
-<h2 id="moving-and-renaming-directories"><span class="emoji"
-data-emoji="pencil2">✏️</span> Moving and renaming directories</h2>
+<h1 id="moving-and-renaming-directories"><span class="emoji"
+data-emoji="pencil2">✏️</span> Moving and renaming directories</h1>
 <p>Sometimes when making a directory you realize that you made the
 directory in the wrong place, or you gave it the wrong name (or
 misspelled the name).</p>
@@ -539,8 +530,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href=
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv ~/hello . <span class="co"># move hello back into *this* directory</span></span></code></pre></div>
 </div>
-<h2 id="removing-directories"><span class="emoji"
-data-emoji="wastebasket">🗑️</span> Removing directories</h2>
+<h1 id="removing-directories"><span class="emoji"
+data-emoji="wastebasket">🗑️</span> Removing directories</h1>
 <p>Sometimes you don’t need a directory anymore and you want to remove
 it. You can remove directories using two different commands:
 <code>rm</code> and <code>rmdir</code>.</p>

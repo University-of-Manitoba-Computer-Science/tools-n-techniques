@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -305,18 +302,13 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#connecting-with-ssh"
-id="toc-connecting-with-ssh">Connecting with SSH</a>
-<ul>
 <li><a href="#open-your-terminal" id="toc-open-your-terminal">Open your
 terminal</a></li>
 <li><a href="#connect-to-a-remote-computer"
 id="toc-connect-to-a-remote-computer">Connect to a remote
 computer</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="connecting-with-ssh">Connecting with SSH</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Connect to a remote
@@ -344,12 +336,13 @@ Virtual Private Network (VPN) page</a>.</p>
 <p>If you’re on campus connected to U of M WiFi or you’re off campus but
 you’ve installed the VPN and connected to it, let’s open up our
 terminals and get connected to a different computer.</p>
-<h2 id="open-your-terminal">Open your terminal</h2>
-<p>We opened our terminals in week 2. If you forget how to open your
-terminal (and it’s totally OK if you do!), refer back to the notes on <a
-href="../topic01/topic-2.html#verifying-that-pandoc-is-installed">verifying
+<h1 id="open-your-terminal">Open your terminal</h1>
+<p>Open your terminal!</p>
+<p>If you forget how to open your terminal (and it’s totally OK if you
+do!), we previously opened our terminal to <a
+href="../topic01/topic-2.html#verifying-that-pandoc-is-installed">verify
 that Pandoc is installed</a>.</p>
-<h2 id="connect-to-a-remote-computer">Connect to a remote computer</h2>
+<h1 id="connect-to-a-remote-computer">Connect to a remote computer</h1>
 <p>Now that your terminal is open, let’s connect to a remote
 computer.</p>
 <p>Just like we used the <code>pandoc</code> command to run Pandoc, we
@@ -411,9 +404,10 @@ part of your <span class="citation"
 data-cites="myumanitoba.ca">@myumanitoba.ca</span> e-mail address before
 <span class="citation"
 data-cites="myumanitoba.ca">@myumanitoba.ca</span>).</label></p></li>
-<li><p><label><input type="checkbox" checked="" />Your initial default
-<strong>password</strong> is the letters <code>Cs#</code> (this is
-upper-case C, lower-case S, and the <a
+<li><p><label><input type="checkbox" checked="" />Your <a
+href="https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes">initial
+default <strong>password</strong></a> is the letters <code>Cs#</code>
+(this is upper-case C, lower-case S, and the <a
 href="https://en.wikipedia.org/wiki/Number_sign#Names">number
 sign/hash/hashtag/hex/octothorpe/sharp/…</a>) followed by your student
 number. If your student number is 1234567, then your initial default

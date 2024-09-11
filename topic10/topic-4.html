@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -461,24 +458,24 @@ project</figcaption>
 <p>You can safely accept the default by pressing <kbd>Enter</kbd>, or
 you can enter something different.</p>
 <div class="aside">
-
 <p>There are <a
 href="https://www.martinfowler.com/bliki/TwoHardThings.html">two hard
 problems in computer science</a>:</p>
 <ol>
 <li value="1">
-<p>Naming things.</p>
+Naming things.
 <li value="3">
-<p>Cache invalidation.</p>
+Cache invalidation.
 <li value="2">
-<p>Off-by-one errors.</p>
+Off-by-one errors.
 <li value="4">
-<p>Guaranteed order of message delivery.</p>
+Guaranteed order of message delivery.
 <li value="5" type="i">
-<p>Versioning.</p>
+Versioning.
 </ol>
 <p>One popular way to version your code is to use <a
 href="https://semver.org/">semantic versioning</a>.</p>
+</div>
 </div></li>
 <li><p>Finally, (finally!), you can confirm the group and artifact Ids
 and the version number that you selected by pressing

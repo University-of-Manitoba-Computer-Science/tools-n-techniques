@@ -34,7 +34,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -87,9 +87,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../styles.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -305,8 +302,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#transfer-files" id="toc-transfer-files">Transfer files</a>
-<ul>
 <li><a href="#using-a-gui" id="toc-using-a-gui">Using a GUI</a></li>
 <li><a href="#using-the-command-line"
 id="toc-using-the-command-line">Using the command line</a>
@@ -316,10 +311,8 @@ id="toc-copying-single-files">Copying single files</a></li>
 <li><a href="#copying-directories" id="toc-copying-directories">Copying
 directories</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="transfer-files">Transfer files</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Transfer files between
@@ -334,7 +327,7 @@ directly on your own computer.</p>
 the remote computer and from the remote computer) is fairly
 straightforward. We’ll look at two different ways you can do it: using a
 graphical user interface (a GUI) and using command-line tools.</p>
-<h2 id="using-a-gui">Using a GUI</h2>
+<h1 id="using-a-gui">Using a GUI</h1>
 <p>You’re going to need to install a new program on your computer to get
 a GUI to transfer files between your computer and a remote computer. The
 program you use depends on the operating system that you’re using. The
@@ -358,7 +351,7 @@ a(nother) terminal emulator.</p>
 <p>If you’re planning on using MobaXterm, you should download the
 “Installer edition” — this has a <code>.zip</code> file that contains a
 <code>.msi</code> file, and you can install the <code>.msi</code> file
-in the same way that you did with Pandoc.</p>
+in [the same way that you did with Pandoc].</p>
 </div>
 <p>After you’ve installed MobaXterm, launch it. You can then connect to
 a remote computer by clicking the “Start local terminal” button that’s
@@ -385,9 +378,9 @@ GUIs for macOS
 </summary>
 <p><a href="https://cyberduck.io/">Cyberduck</a> is a tool designed
 specifically for transferring files between computers. Installing
-Cyberduck is the same process as installing VS Code (download the
-<code>.zip</code> file, copy the app into your Applications
-directory).</p>
+Cyberduck is <a href="../topic01/topic-2.html">the same process as
+installing VS Code</a> (download the <code>.zip</code> file, copy the
+app into your Applications directory).</p>
 <p>Once you’ve installed Cyberduck, create a new “SFTP” connection by
 clicking on the + button on the bottom left side of the window. In the
 list of options at the top, choose “SFTP (SSH File Transfer Protocol)”.
@@ -428,7 +421,7 @@ class="emoji" data-emoji="tada">🎉</span>! You can interact with this
 window in the same way you do with other file explorer windows (e.g.,
 drag files and folders to and from this window to transfer them).</p>
 </details>
-<h2 id="using-the-command-line">Using the command line</h2>
+<h1 id="using-the-command-line">Using the command line</h1>
 <p>Transferring files on the command line is the same regardless of
 which operating system you have on your computer.</p>
 <p><a
@@ -468,7 +461,7 @@ the address of the remote computer. But since we’re trying to <em>send
 something</em>, we also need to tell <code>scp</code> where we want to
 put the file (a <strong>destination</strong> on the remote
 computer).</p>
-<h3 id="copying-single-files">Copying single files</h3>
+<h2 id="copying-single-files">Copying single files</h2>
 <div class="example">
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> source-file.md you@remote.name.ca:~/folder</span></code></pre></div>
@@ -517,7 +510,7 @@ something like:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> fbristow@aviary.cs.umanitoba.ca:hello.md .</span></code></pre></div>
 </div>
-<h3 id="copying-directories">Copying directories</h3>
+<h2 id="copying-directories">Copying directories</h2>
 <p>We’re not limited to copying individual files between computers. In
 fact, that would get really tedious if we had many files we wanted to
 copy, or entire folder structures!</p>
