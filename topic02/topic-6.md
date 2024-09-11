@@ -3,9 +3,6 @@ title: "`handin`"
 author: Franklin Bristow
 ---
 
-`handin`
-========
-
 ::: outcomes
 
 * [X] Use the `handin` command in the U of M CS UNIX environment.

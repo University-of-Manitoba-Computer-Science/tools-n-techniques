@@ -3,9 +3,6 @@ title: "Tab completion"
 author: Franklin Bristow
 ---
 
-Tab completion
-==============
-
 ::: outcomes
 
 * [X] Complete commands and filenames with tab completion.

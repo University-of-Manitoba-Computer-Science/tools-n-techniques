@@ -3,9 +3,6 @@ title: "Connecting to a remote computer"
 author: Franklin Bristow
 ---
 
-Connecting with SSH
-===================
-
 ::: outcomes
 
 * [X] Connect to a remote computer using `ssh`.
@@ -39,17 +36,18 @@ connected to a different computer.
 https://umanitoba.ca/information-services-technology/my-security/vpn-support
 
 Open your terminal
-------------------
+==================
 
-We opened our terminals in week 2. If you forget how to open your terminal (and
-it's totally OK if you do!), refer back to the notes on [verifying that Pandoc
-is installed].
+Open your terminal!
 
-[verifying that Pandoc is installed]:
+If you forget how to open your terminal (and it's totally OK if you do!), we
+previously opened our terminal to [verify that Pandoc is installed].
+
+[verify that Pandoc is installed]:
 ../topic01/topic-2.html#verifying-that-pandoc-is-installed
 
 Connect to a remote computer
-----------------------------
+============================
 
 Now that your terminal is open, let's connect to a remote computer.
 
@@ -114,7 +112,7 @@ Here's what you need to know to connect to the U of M CS computer systems.
    :::
 2. [X] Your **username** on this remote computer is your UMNetID (the part of
    your @myumanitoba.ca e-mail address before @myumanitoba.ca).
-3. [X] Your initial default **password** is the letters `Cs#` (this is
+3. [X] Your [initial default **password**] is the letters `Cs#` (this is
    upper-case C, lower-case S, and the [number
    sign/hash/hashtag/hex/octothorpe/sharp/...]) followed by your
    student number. If your student number is 1234567, then your initial default
@@ -124,6 +122,8 @@ Here's what you need to know to connect to the U of M CS computer systems.
 
 [number sign/hash/hashtag/hex/octothorpe/sharp/...]:
 https://en.wikipedia.org/wiki/Number_sign#Names
+[initial default **password**]:
+https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
 
 Now that you've got that information we can actually start connecting to a
 remote computer. When we're connecting to remote computers, we're going to use
