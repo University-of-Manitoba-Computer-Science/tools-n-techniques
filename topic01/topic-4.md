@@ -3,6 +3,12 @@ title: Converting documents to different formats
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/-vMcskxslVY?si=yx73i4SapP3uISRG"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Convert plain text documents to different formats (e.g., `docx`).
