@@ -4,9 +4,6 @@ author: Franklin Bristow
 ---
 
 
-Compiling and running code
-==========================
-
 ::: outcomes
 
 * [X] Download a file from the internet on the command-line.
@@ -16,17 +13,18 @@ Compiling and running code
 :::
 
 Starting your terminal and connecting
--------------------------------------
+=====================================
 
-You spent a lot of time in your terminal in "Remote connections and command-line
-file management", and we're going to continue to spend a lot of time in our
+You spent a lot of time in your terminal in "[Remote connections and command-line
+file management]", and we're going to continue to spend a lot of time in our
 terminal in this module. So: open your terminal and connect to Aviary. If you forget
 how to connect to a remote computer (and it's totally OK if you do!), refer back
 to the notes on connecting to a remote computer.
 
+[Remote connections and command-line file management]: ../topic02/topic-0.html
 
 Downloading files from the internet
------------------------------------
+===================================
 
 Sometimes you need to download files from the internet so that you can work with
 them on the command line:
@@ -40,13 +38,15 @@ them on the command line:
 
 In all of these cases it's possible for you to open your web browser (e.g.,
 Microsoft Edge, Google Chrome, Mozilla Firefox), go to the page with the URL,
-click the URL, download the file to your Downloads folder, then transfer the
-file to the remote computer with something like `scp`, but doing that is tedious
+click the URL, download the file to your Downloads folder, then [transfer the
+file to the remote computer with something like `scp`], but doing that is tedious
 and time consuming (you have to download the file to your computer, then
 transfer it *again* to another computer).
 
+[transfer the file to the remote computer with something like `scp`]: ../topic02/topic-5.html
+
 Thankfully it's straightforward to download files from the internet directly to
-the remote computer using a command-line programs `wget`.
+the remote computer using a command-line program `wget`.
 
 ::: example
 
@@ -57,13 +57,13 @@ address. Addresses of files on the internet look like
 Here's a link to a `.zip` file that contains many versions of a "hello world"
 program:
 
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip
+    https://toolsntechniques.ca/topic03/hello.zip
 
 Here's how you would download this file to a remote computer directly on the
 command line:
 
 ```bash
-[you@bird ~]> wget "https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip"
+wget "https://toolsntechniques.ca/topic03/hello.zip"
 ```
 
 :::
@@ -76,7 +76,7 @@ computer without downloading it to your computer first!
 You were given the address directly in this example, but how do you get
 addresses from web sites in general?
 
-* Sometimes you get told the address directly, just like in this example.
+* Sometimes you are told the address directly, just like in this example.
 * You may find a link to the file that you want on a web page. You can copy a
   link from a web page by right clicking on the link, then selecting (something
   similar to) "Copy link".
@@ -89,7 +89,7 @@ on web sites that require you to log in before you can see the files.
 :::
 
 Unzipping that zip file
------------------------
+=======================
 
 You might have noticed that the file you just downloaded to the remote computer
 is a `.zip` file.
@@ -101,20 +101,24 @@ program called `unzip` to unzip a zip file.
 ::: example
 
 Find the file that you just downloaded (you put it into an appropriate location
-in your folder structure, right? If not: `mv` the file you downloaded into the
-right place!).
+in your folder structure, right? If not: [`mv` the file you downloaded into the
+right place]!).
 
-In the same directory as the zip file, you can use `unzip` and tell `unzip` the
+[`mv` the file you downloaded into the right place]:
+../topic02/topic-2.html#moving-and-renaming-directories
+
+In the **same directory** as the zip file (i.e., if you type `ls`, you should
+see the zip file in the directory), you can use `unzip` and tell `unzip` the
 name of the file it should unzip:
 
 ```bash
-[you@bird ~]> unzip hello.zip
+unzip hello.zip
 ```
 
 :::
 
 Compile and run programs
-------------------------
+========================
 
 We're not going to be doing any programming in this course, but we do want to be
 able to compile and run code on the command line. The file that you just
@@ -140,10 +144,10 @@ languages, but there are many more kinds of each type of language.
 
 ::: aside
 
-We're actually going to revisit building programs later in the course when we 
-look at the [command-line environment], when we actually go through the process
-of building more complex applications with build systems and dependency 
-management, but for now we're just going to get programs compiled and run them.
+You will revisit building programs in COMP 1006 when you look at the
+[command-line environment], when we actually go through the process of building
+more complex applications with build systems and dependency management, but for
+now we're just going to get programs compiled and run them.
 
 [command-line environment]: ../topic08/topic-1.html
 
@@ -152,7 +156,8 @@ management, but for now we're just going to get programs compiled and run them.
 All the examples are in the folder that you unzipped called `hello`. Change into
 that directory now with `cd hello`.
 
-### Compiled languages
+Compiled languages
+------------------
 
 Change into the `compiled` directory and list its contents. This directory
 contains a hello world program that's written in the [C programming language].
@@ -183,7 +188,8 @@ Hooray :tada:! You just compiled and ran your first C program.
 
 [C programming language]: https://en.wikipedia.org/wiki/C_(programming_language)
 
-### Compiled Virtual Machine-based (VM-based) languages
+Compiled Virtual Machine-based (VM-based) languages
+---------------------------------------------------
 
 Change back to the main `hello` directory, then change into the `compiled-vm`
 directory.
@@ -228,7 +234,8 @@ Hello, Java :coffee:!
 
 :::
 
-### Interpreted or scripting languages
+Interpreted or scripting languages
+----------------------------------
 
 The last kind of language we're going to look at are languages that are run *by*
 a program. An example of this kind of language is [Python].
