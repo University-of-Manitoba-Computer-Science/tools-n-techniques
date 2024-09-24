@@ -30,7 +30,7 @@ courses or not:
   working code that I edited and then **it didn't work anymore** and I couldn't
   remember what I changed.
 * Sometimes when I am writing (and I am usually writing in [Markdown and
-  $\LaTeX$!), I re-read what I wrote and realize that I should probably make
+  $\LaTeX$]!), I re-read what I wrote and realize that I should probably make
   some changes (e.g., I've changed this paragraph at least 3 times). Sometimes I
   will cut and paste paragraphs from one place to another only to realize that
   the way that I had it originally flows a lot more nicely than ... whatever
@@ -47,7 +47,7 @@ courses or not:
 
 We're going to use version control software to help us keep track of changes
 that we've made to plain text files over time (plain text includes both
-documents we're writing in Markdown and $\LaTex$ **and** source code).  While
+documents we're writing in Markdown and $\LaTeX$ **and** source code).  While
 many different version control software exist, we're going to be specifically
 looking at `git`, and we're going to be using some web-based software called
 GitLab to help us.
