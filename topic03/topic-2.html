@@ -304,9 +304,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#compiling-and-running-code"
-id="toc-compiling-and-running-code">Compiling and running code</a>
-<ul>
 <li><a href="#starting-your-terminal-and-connecting"
 id="toc-starting-your-terminal-and-connecting">Starting your terminal
 and connecting</a></li>
@@ -327,10 +324,8 @@ Virtual Machine-based (VM-based) languages</a></li>
 id="toc-interpreted-or-scripting-languages">Interpreted or scripting
 languages</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="compiling-and-running-code">Compiling and running code</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Download a file from the
@@ -339,16 +334,17 @@ internet on the command-line.</label></li>
 of various programming languages on the command-line.</label></li>
 </ul>
 </div>
-<h2 id="starting-your-terminal-and-connecting">Starting your terminal
-and connecting</h2>
-<p>You spent a lot of time in your terminal in “Remote connections and
-command-line file management”, and we’re going to continue to spend a
-lot of time in our terminal in this module. So: open your terminal and
-connect to Aviary. If you forget how to connect to a remote computer
-(and it’s totally OK if you do!), refer back to the notes on connecting
-to a remote computer.</p>
-<h2 id="downloading-files-from-the-internet">Downloading files from the
-internet</h2>
+<h1 id="starting-your-terminal-and-connecting">Starting your terminal
+and connecting</h1>
+<p>You spent a lot of time in your terminal in “<a
+href="../topic02/topic-0.html">Remote connections and command-line file
+management</a>”, and we’re going to continue to spend a lot of time in
+our terminal in this module. So: open your terminal and connect to
+Aviary. If you forget how to connect to a remote computer (and it’s
+totally OK if you do!), refer back to the notes on connecting to a
+remote computer.</p>
+<h1 id="downloading-files-from-the-internet">Downloading files from the
+internet</h1>
 <p>Sometimes you need to download files from the internet so that you
 can work with them on the command line:</p>
 <ul>
@@ -362,12 +358,12 @@ but the configuration file is very long or hard to type out.</li>
 <p>In all of these cases it’s possible for you to open your web browser
 (e.g., Microsoft Edge, Google Chrome, Mozilla Firefox), go to the page
 with the URL, click the URL, download the file to your Downloads folder,
-then transfer the file to the remote computer with something like
-<code>scp</code>, but doing that is tedious and time consuming (you have
-to download the file to your computer, then transfer it <em>again</em>
-to another computer).</p>
+then <a href="../topic02/topic-5.html">transfer the file to the remote
+computer with something like <code>scp</code></a>, but doing that is
+tedious and time consuming (you have to download the file to your
+computer, then transfer it <em>again</em> to another computer).</p>
 <p>Thankfully it’s straightforward to download files from the internet
-directly to the remote computer using a command-line programs
+directly to the remote computer using a command-line program
 <code>wget</code>.</p>
 <div class="example">
 <p>You can use a program like <code>wget</code> to download a file from
@@ -375,11 +371,11 @@ the internet using its address. Addresses of files on the internet look
 like <code>https://example.com/file.txt</code>.</p>
 <p>Here’s a link to a <code>.zip</code> file that contains many versions
 of a “hello world” program:</p>
-<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip</code></pre>
+<pre><code>https://toolsntechniques.ca/topic03/hello.zip</code></pre>
 <p>Here’s how you would download this file to a remote computer directly
 on the command line:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> wget <span class="st">&quot;https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/hello.zip&quot;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="st">&quot;https://toolsntechniques.ca/topic03/hello.zip&quot;</span></span></code></pre></div>
 </div>
 <p>Congratulations <span class="emoji" data-emoji="tada">🎉</span>! You
 just downloaded a file directly to a remote computer without downloading
@@ -388,7 +384,7 @@ it to your computer first!</p>
 <p>You were given the address directly in this example, but how do you
 get addresses from web sites in general?</p>
 <ul>
-<li>Sometimes you get told the address directly, just like in this
+<li>Sometimes you are told the address directly, just like in this
 example.</li>
 <li>You may find a link to the file that you want on a web page. You can
 copy a link from a web page by right clicking on the link, then
@@ -400,7 +396,7 @@ remote computer would be files that are stored on a course web page on
 UM Learn. More generally: files that are on web sites that require you
 to log in before you can see the files.</p>
 </div>
-<h2 id="unzipping-that-zip-file">Unzipping that zip file</h2>
+<h1 id="unzipping-that-zip-file">Unzipping that zip file</h1>
 <p>You might have noticed that the file you just downloaded to the
 remote computer is a <code>.zip</code> file.</p>
 <p>Your operating system will automatically unzip a zip file when you
@@ -409,14 +405,17 @@ can use a command-line program called <code>unzip</code> to unzip a zip
 file.</p>
 <div class="example">
 <p>Find the file that you just downloaded (you put it into an
-appropriate location in your folder structure, right? If not:
-<code>mv</code> the file you downloaded into the right place!).</p>
-<p>In the same directory as the zip file, you can use <code>unzip</code>
-and tell <code>unzip</code> the name of the file it should unzip:</p>
+appropriate location in your folder structure, right? If not: <a
+href="../topic02/topic-2.html#moving-and-renaming-directories"><code>mv</code>
+the file you downloaded into the right place</a>!).</p>
+<p>In the <strong>same directory</strong> as the zip file (i.e., if you
+type <code>ls</code>, you should see the zip file in the directory), you
+can use <code>unzip</code> and tell <code>unzip</code> the name of the
+file it should unzip:</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> unzip hello.zip</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> hello.zip</span></code></pre></div>
 </div>
-<h2 id="compile-and-run-programs">Compile and run programs</h2>
+<h1 id="compile-and-run-programs">Compile and run programs</h1>
 <p>We’re not going to be doing any programming in this course, but we do
 want to be able to compile and run code on the command line. The file
 that you just downloaded and unzipped contains implementations of
@@ -440,16 +439,16 @@ resulting program using a <em>different</em> program (compiled, but
 these languages, but there are many more kinds of each type of
 language.</p>
 <div class="aside">
-<p>We’re actually going to revisit building programs later in the course
-when we look at the <a href="../topic08/topic-1.html">command-line
-environment</a>, when we actually go through the process of building
-more complex applications with build systems and dependency management,
-but for now we’re just going to get programs compiled and run them.</p>
+<p>You will revisit building programs in COMP 1006 when you look at the
+<a href="../topic08/topic-1.html">command-line environment</a>, when we
+actually go through the process of building more complex applications
+with build systems and dependency management, but for now we’re just
+going to get programs compiled and run them.</p>
 </div>
 <p>All the examples are in the folder that you unzipped called
 <code>hello</code>. Change into that directory now with
 <code>cd hello</code>.</p>
-<h3 id="compiled-languages">Compiled languages</h3>
+<h2 id="compiled-languages">Compiled languages</h2>
 <p>Change into the <code>compiled</code> directory and list its
 contents. This directory contains a hello world program that’s written
 in the <a
@@ -473,8 +472,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="
 <p>Hooray <span class="emoji" data-emoji="tada">🎉</span>! You just
 compiled and ran your first C program.</p>
 </div>
-<h3 id="compiled-virtual-machine-based-vm-based-languages">Compiled
-Virtual Machine-based (VM-based) languages</h3>
+<h2 id="compiled-virtual-machine-based-vm-based-languages">Compiled
+Virtual Machine-based (VM-based) languages</h2>
 <p>Change back to the main <code>hello</code> directory, then change
 into the <code>compiled-vm</code> directory.</p>
 <div class="aside">
@@ -506,8 +505,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> Hello <span class="co"># the same name as the class in the .java file.</span></span></code></pre></div>
 <p>Hello, Java <span class="emoji" data-emoji="coffee">☕</span>!</p>
 </div>
-<h3 id="interpreted-or-scripting-languages">Interpreted or scripting
-languages</h3>
+<h2 id="interpreted-or-scripting-languages">Interpreted or scripting
+languages</h2>
 <p>The last kind of language we’re going to look at are languages that
 are run <em>by</em> a program. An example of this kind of language is <a
 href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a>.</p>

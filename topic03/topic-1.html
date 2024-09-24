@@ -23,6 +23,24 @@
     }
   </style>
   <link rel="stylesheet" href="../styles.css" />
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 </head>
 <body>
 
@@ -238,39 +256,61 @@ server</a></li>
 <h1 class="title">Introduction</h1>
 <p class="author">Franklin Bristow</p>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-</ul>
-</nav>
-<h1 id="introduction">Introduction</h1>
 <p>We’re getting comfortable with using the command line, managing
 folders and files, and writing structured text, but all you’ve been
-doing in your CS courses up to this point has been programming, and the
-things we’ve been doing in this course haven’t exactly been related to
-programming.</p>
-<p>This week we’re going to switch things up a bit: we’re going to look
-at how to compile and run code on Linux systems (we’ll do Java, Python,
-and C).</p>
-<p>While it’s cool <span class="emoji" data-emoji="sunglasses">😎</span>
-to be able to run your code on remote systems and you’re definitely
-going to have to do this lots in the future, it’s, uh, not exactly a
-week worth of material.</p>
-<p>The bigger topic this week is going to be an introduction to <a
+doing in your CS courses (if you’re taking CS courses!) up to this point
+has been programming, and the things we’ve been doing in this course
+haven’t exactly been related to programming.</p>
+<p>We’re going to switch things up a bit: we’re not going to do any
+programming, but we are going to look at how to compile and run code on
+Linux systems (we’ll do Java, Python, and C). Even if you don’t know how
+to program, knowing how to compile and run code can help with work or
+research you might be doing that has nothing to do with Computer
+Science.</p>
+<p>… and while it’s cool <span class="emoji"
+data-emoji="sunglasses">😎</span> to be able to compile and run code on
+remote systems and you’re definitely going to have to do this lots in
+the future, it’s, uh, not exactly a significant amount of course
+material.</p>
+<p>Our bigger topic is going to be an introduction to <a
 href="https://en.wikipedia.org/wiki/Version_control">version
-control</a>. Have you ever copied and pasted big chunks of code,
-commented one of the chunks out, and edited the other because you were
-worried about losing your working code? Have you ever copied and pasted
-entire files for the same reason? Even worse, have you ever had working
-code that you edited and then <strong>it didn’t work anymore</strong>
-and you couldn’t remember what you changed?</p>
-<p>Yeah, turns out that everyone does that. Some people do it for longer
-than others. Some never stop. We’re going to stop. We’re going to use
-version control software to help us keep track of changes that we’ve
-made to our code over time. While many different version control
-software exist, we’re going to be specifically looking at
-<code>git</code>. This week we’re going to focus on using it
-<em>locally</em>.</p>
+control</a>. Version control can help you in a couple of different ways,
+whether you’re taking CS courses or not:</p>
+<ul>
+<li><p>Sometimes when working on code, I (me, Franklin) will find myself
+in a situation where some of my code doesn’t work, but it <em>sorta</em>
+works. So: I copy and paste the chunk of code, comment one of the chunks
+and edit the other because I was worried about losing my working code.
+Even worse, I’ve had working code that I edited and then <strong>it
+didn’t work anymore</strong> and I couldn’t remember what I
+changed.</p></li>
+<li><p>Sometimes when I am writing (and I am usually writing in
+[Markdown and <span class="math inline">\LaTeX</span>!), I re-read what
+I wrote and realize that I should probably make some changes (e.g., I’ve
+changed this paragraph at least 3 times). Sometimes I will cut and paste
+paragraphs from one place to another only to realize that the way that I
+had it originally flows a lot more nicely than … whatever this is right
+now, but the undo feature in my text editor doesn’t go back far enough
+to get back to the better flowing state and I just can’t reproduce
+it.</p>
+<p>(“You can <a
+href="https://support.microsoft.com/en-us/office/track-changes-in-word-197ba630-0f5f-4a8e-9a77-3712475e806a">track
+changes in Word</a>!” I can hear you saying through my screen, and, yes,
+I definitely can track changes in Word, but then I would have to <em>use
+Word</em>.)</p></li>
+<li><p>Sometimes I am working on an experiment (or something that
+requires me to keep track of values that I’m observing), and I
+accidentally and unintentionally change a value, but I don’t notice
+until it’s too late (or I never notice <span class="emoji"
+data-emoji="frowning_face">☹️</span>).</p></li>
+</ul>
+<p>We’re going to use version control software to help us keep track of
+changes that we’ve made to plain text files over time (plain text
+includes both documents we’re writing in Markdown and <span
+class="math inline">\LaTex</span> <strong>and</strong> source code).
+While many different version control software exist, we’re going to be
+specifically looking at <code>git</code>, and we’re going to be using
+some web-based software called GitLab to help us.</p>
 <div class="outcomes">
 <p>By the end of this week you should be able to:</p>
 <ul class="task-list">

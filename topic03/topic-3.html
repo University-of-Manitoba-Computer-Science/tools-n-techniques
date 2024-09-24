@@ -304,16 +304,13 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#version-control" id="toc-version-control">Version
-control</a>
+<li><a href="#initializing-a-repository"
+id="toc-initializing-a-repository">Initializing a repository</a></li>
+<li><a href="#adding-files-to-a-repository"
+id="toc-adding-files-to-a-repository">Adding files to a repository</a>
 <ul>
-<li><a href="#initializing-and-adding-changes-to-a-repository"
-id="toc-initializing-and-adding-changes-to-a-repository">Initializing
-and adding changes to a repository</a>
-<ul>
-<li><a href="#adding-files-to-the-repository"
-id="toc-adding-files-to-the-repository">Adding files to the
-repository</a></li>
+<li><a href="#staging-changes" id="toc-staging-changes">“Staging”
+changes</a></li>
 <li><a href="#committing-changes-to-the-repository"
 id="toc-committing-changes-to-the-repository">Committing changes to the
 repository</a></li>
@@ -325,10 +322,8 @@ id="toc-files-that-shouldnt-be-version-controlled">Files that
 <em>shouldn’t</em> be version controlled</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="version-control">Version control</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Use version control
@@ -342,18 +337,16 @@ should not be version controlled and make sure they aren’t included in a
 repository’s history (<code>.gitignore</code>).</label></li>
 </ul>
 </div>
-<p>Our bigger topic this week is looking at version control software.
-Version control is something that’s been around for a long time and
-different people have different opinions about how to do version
-control, and which software should be used for version control, but this
-week we’re going to focus on a specific version control tool: <a
+<p>Version control is something that’s been around for a long time and
+different people have different opinions about how to do version control
+and which software should be used for version control. We’re going to
+focus on a specific version control tool: <a
 href="https://en.wikipedia.org/wiki/Git"><code>git</code></a>.</p>
 <p>Version control software helps you keep track of the changes that
 you’ve made to your own code or any kind of file over time. Version
 control isn’t entirely automatic, you have to tell the software which
 files to track and when it should track changes.</p>
-<h2 id="initializing-and-adding-changes-to-a-repository">Initializing
-and adding changes to a repository</h2>
+<h1 id="initializing-a-repository">Initializing a repository</h1>
 <p>We have to tell our version control software where the files are that
 we want it to help us manage. Most of the time this is a single folder
 where you keep your source code for a specific assignment or project.
@@ -373,7 +366,7 @@ contain the files) that we want to track, we can ask our version control
 software to initialize the folder as a repository. With Git, this is a
 special command called <code>init</code>.</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main <span class="co">##### </span><span class="al">NOTE</span><span class="co">: -b only works in git 2.28 or newer</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main </span></code></pre></div>
 <p>Git should then tell you that it’s “Initialized an empty Git
 repository” in this directory!</p>
 </div>
@@ -387,9 +380,14 @@ folder?</p>
 <p>No. You can’t see that folder. Where is it?</p>
 <p>You <em>can</em> see that folder if you ask <code>ls</code> to list
 <strong>a</strong>ll files:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> ls <span class="at">-a</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./</span>  ../  .git/</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>./  ../  .git/</code></pre>
+</div>
+</div>
 <p>And look at that, there are those two special directories that we’ve
 seen before: <code>.</code> the current directory and <code>..</code>
 the parent directory.</p>
@@ -400,6 +398,7 @@ specifically which files you want it to keep track of. That means that
 Git isn’t going to keep track of files that just happen to be in the
 same directory as the repository, you have to tell Git to actually keep
 track of those files.</p>
+<h1 id="adding-files-to-a-repository">Adding files to a repository</h1>
 <p>Create some new files in the repository:</p>
 <ul>
 <li><p>Make a new plain text file with some text in it using a
@@ -416,21 +415,20 @@ place to another using the <code>-r</code> option for recursive (just
 like <code>scp</code>!).</p>
 <p>To copy the <code>hello</code> folder here, you can use
 <code>cp</code> from this directory:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../hello . <span class="co"># if hello is in the parent directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../hello . <span class="co"># if hello is in the parent directory</span></span></code></pre></div>
 </div></li>
 </ul>
 <p>Even though we put these files into this directory with the
 repository, Git still doesn’t know anything about them. We have to add
 these files to the repository in two steps:</p>
 <ol type="1">
-<li>Staging the changes by adding them with the <code>add</code>
+<li>“Staging” the changes by adding them with the <code>add</code>
 subcommand, and</li>
 <li>Committing the changes using the <code>commit</code>
 subcommand.</li>
 </ol>
-<h3 id="adding-files-to-the-repository">Adding files to the
-repository</h3>
+<h2 id="staging-changes">“Staging” changes</h2>
 <p>Adding files to the repository is straightforward: you use
 <code>git add</code> and then tell Git which files should be added to
 the repository.</p>
@@ -441,15 +439,15 @@ files, but Git isn’t actually ready to track the changes.</p>
 <p>You can add files and changes to the repository one at a time using
 <code>git add</code> and including the name of the file that you want to
 add:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add README.md</span></code></pre></div>
-<p>You can also add entire folders to the repository:</p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add hello</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span></code></pre></div>
+<p>You can also add entire folders to the repository:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add hello</span></code></pre></div>
 <p>You can also add <em>everything in the current working directory</em>
 to the repository:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add .</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div>
 </div>
 <p>Git doesn’t tell you anything when you add files or changes to be
 staged, but you can ask Git to tell you about the current state it’s in
@@ -457,21 +455,26 @@ by using the <code>status</code> subcommand.</p>
 <div class="example">
 <p>You can find out which files or changes are staged to be committed
 using <code>git status</code>:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git status</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> commits yet</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="kw">)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>          <span class="ex">new</span> file:   README.md</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+          new file:   README.md</code></pre>
+</div>
+</div>
 <p>Git helpfully tells you how to <em>unstage</em> a file if you
 accidentally added a file or change you didn’t want to add to the
 repository.</p>
 </div>
-<h3 id="committing-changes-to-the-repository">Committing changes to the
-repository</h3>
+<h2 id="committing-changes-to-the-repository">Committing changes to the
+repository</h2>
 <p>Even though Git knows about the files or changes that you’ve staged,
 you haven’t told git that you <em>really</em> want it to track changes
 to those files.</p>
@@ -500,10 +503,10 @@ later), but things will flow more smoothly if you do it now.</p>
 <p>Before we can make a commit, we need to tell <code>git</code> who we
 are. We can configure <code>git</code> and tell it who we are with the
 <code>git config</code> command:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your name&quot;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email you@myumanitoba.ca <span class="co"># you should use your own</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># e-mail address here.</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your name&quot;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email you@myumanitoba.ca <span class="co"># you should use your own</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># e-mail address here.</span></span></code></pre></div>
 <p>You only need to do this once per physical computer that you’re using
 <code>git</code> on. In other words: if you’re using two computers,
 you’ll need to run this set up step on each computer, but you only need
@@ -514,19 +517,25 @@ to do it once.</p>
 <code>git commit</code> and either writing a commit message in the
 command itself, or writing a longer commit message in your text
 editor.</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git commit <span class="at">-m</span> <span class="st">&quot;Initial commit&quot;</span> <span class="co"># commit with a message inline</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[main</span> <span class="er">(</span><span class="ex">root-commit</span><span class="kw">)</span> <span class="ex">acff39c]</span> Initial commit</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span> file changed, 10 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span><span class="ex">,</span> 0 deletions<span class="er">(</span><span class="ex">-</span><span class="kw">)</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 README.md</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># commit with a message inline</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Initial commit&quot;</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>[main (root-commit) acff39c] Initial commit
+ 1 file changed, 10 insertions(+), 0 deletions(-)
+ create mode 100644 README.md</code></pre>
+</div>
+</div>
 <p>Your commit is going to look different from mine because you added
 more files than me to your commit and you used a different commit
 message.</p>
 <p>You can write a longer commit message by leaving out the
 <code>-m</code> part, and this will ask Git to open up your text editor
 where you can write a longer message.</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git commit <span class="co"># opens your text editor to write a message</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="co"># opens your text editor to write a message</span></span></code></pre></div>
 </div>
 <p>After you commit your changes to the repository, everything still
 looks pretty normal. Your files are all still there. Great <span
@@ -534,10 +543,15 @@ class="emoji" data-emoji="tada">🎉</span>!</p>
 <p>You can ask Git to tell you what its status is again with
 <code>git status</code>, but this time it’s just going to say that there
 is nothing to commit</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git status</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> to commit, working tree clean</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>On branch main
+nothing to commit, working tree clean</code></pre>
+</div>
+</div>
 <div class="aside">
 <p>Git commit messages are important metadata (data about your data)
 that help you (or others) better understand the changes that you’ve made
@@ -563,7 +577,7 @@ that you should be doing not just when you initialize the repository,
 but frequently as you’re doing your work. You should add any changes to
 your repository each time you accomplish something (a new method is
 working, a bug has been fixed, a feature is complete).</p>
-<h2 id="reverting-changes">Reverting changes</h2>
+<h1 id="reverting-changes">Reverting changes</h1>
 <p>Initializing our repository and adding and committing files and
 changes to our repository is great, but just adding stuff to the
 repository isn’t exactly useful.</p>
@@ -581,13 +595,11 @@ changes are because we’re making these changes to be able to see how to
 <li><p>Open it in your text editor and start typing.</p></li>
 <li><p>“Accidentally” copy a file and replace <code>README.md</code>
 with that file</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> hello/compiled/hello.c README.md</span></code></pre></div></li>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> hello/compiled/hello.c README.md</span></code></pre></div></li>
 <li><p>Remove your <code>README.md</code></p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> rm README.md</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> remove regular file <span class="st">&#39;README.md&#39;</span><span class="pp">?</span> y <span class="co"># LIVE DANGEROUSLY</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> </span></code></pre></div></li>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> README.md <span class="co"># LIVE DANGEROUSLY</span></span></code></pre></div></li>
 </ul>
 <p>Once you’ve made changes to your file, you can ask Git to tell you
 about the status of the file (with <code>git status</code>). Depending
@@ -597,13 +609,13 @@ helpfully give you a hint about how to get your files back to the state
 they were in before.</p>
 <p>Now revert the changes you made to your <code>README.md</code> with
 the <code>restore</code> subcommand</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore README.md</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore README.md</span></code></pre></div>
 <p>Now open up your <code>README.md</code> again, and it’s back to the
 way it was before you made the changes!</p>
 </div>
-<h2 id="files-that-shouldnt-be-version-controlled">Files that
-<em>shouldn’t</em> be version controlled</h2>
+<h1 id="files-that-shouldnt-be-version-controlled">Files that
+<em>shouldn’t</em> be version controlled</h1>
 <p>Being able to keep track of changes to our important files is great,
 but there are some files that will have changes that <em>don’t</em> care
 about.</p>
@@ -644,15 +656,15 @@ our repository.</p>
 “patterns” of filenames to be ignored.</p>
 <p>Here’s an example of what a <code>.gitignore</code> file might look
 like:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode ini"><code class="sourceCode ini"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore README.docx (a specific filename)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dt">README.docx</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore all .class files (a &quot;pattern&quot;, any file that ends with .class)</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">*.class</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the entire build directory</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="dt">build/</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode ini"><code class="sourceCode ini"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore README.docx (a specific filename)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">README.docx</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore all .class files (a &quot;pattern&quot;, any file that ends with .class)</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="dt">*.class</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the entire build directory</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="dt">build/</span></span></code></pre></div>
 </div>
 <p>The <code>.gitignore</code> file <em>is</em> a file you want Git to
 keep track of, so you need to add this file to your repository (use
@@ -666,7 +678,7 @@ considered to be “hidden” on Linux and macOS, but you can see those
 files by telling a command like <code>ls</code> to list everything
 (<code>ls -a</code>).</p>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>This document gets you started with version control and Git, but
 you’re definitely going to run into situations where you want to do
 things that are more complex than what we’ve seen here, or you’re going
@@ -694,9 +706,11 @@ also an excellent source of solutions to “Please help me!” moments that
 you will <em>definitely</em> encounter when you’re using
 <code>git</code>.</p>
 <div class="aside">
-<p>Yeah. I know you can swear on the internet. But I have children. And
-while one of my children can read, I don’t think that he’ll be able to
-figure out what sh*t means, and I’m OK with that.</p>
+<p>Yeah. I know you can swear on the internet. But I have children. One
+of my children can read and the other is <em>learning</em> to read, and
+they will both eventually be able to figure out what sh*t means (and I’m
+OK with that), I still feel some parental sense of responsibility to
+keep it clean.</p>
 </div></li>
 </ul>
 
