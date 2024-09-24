@@ -2,10 +2,8 @@
 title: "Summary"
 author: Franklin Bristow
 ---
-Summary
-=======
 
-You've *probably* compiled and run software on your own computer before, but now
+You've *maybe* compiled and run software on your own computer before, but now
 you can also compile and run some software on the command line (C, Java, and
 Python). Most other programming languages work the same way as these three
 examples (compile and run, compile and run with another program, or just run
@@ -32,5 +30,3 @@ You should now be able to:
   included in a repository's history (`.gitignore`).
 
 :::
-
-You should now be ready to work on your assignment for the week!

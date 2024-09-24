@@ -3,9 +3,6 @@ title: "Version Control"
 author: Franklin Bristow
 ---
 
-Version control
-===============
-
 ::: outcomes
 
 * [X] Use version control software on your own code to keep track of changes
@@ -17,11 +14,10 @@ Version control
 
 :::
 
-Our bigger topic this week is looking at version control software. Version
-control is something that's been around for a long time and different people
-have different opinions about how to do version control, and which software
-should be used for version control, but this week we're going to focus on a
-specific version control tool: [`git`].
+Version control is something that's been around for a long time and different
+people have different opinions about how to do version control and which
+software should be used for version control. We're going to focus on a specific
+version control tool: [`git`].
 
 Version control software helps you keep track of the changes that you've made to
 your own code or any kind of file over time. Version control isn't entirely
@@ -30,8 +26,8 @@ track changes.
 
 [`git`]: https://en.wikipedia.org/wiki/Git
 
-Initializing and adding changes to a repository
------------------------------------------------
+Initializing a repository
+=========================
 
 We have to tell our version control software where the files are that we want it
 to help us manage. Most of the time this is a single folder where you keep your
@@ -57,7 +53,7 @@ we want to track, we can ask our version control software to initialize the
 folder as a repository. With Git, this is a special command called `init`.
 
 ```bash
-git init -b main ##### NOTE: -b only works in git 2.28 or newer
+git init -b main 
 ```
 
 Git should then tell you that it's "Initialized an empty Git repository" in this
@@ -79,10 +75,22 @@ No. You can't see that folder. Where is it?
 
 You *can* see that folder if you ask `ls` to list **a**ll files:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> ls -a
+ls -a
+```
+
+:::
+::: {.column .output width=50%}
+
+```
 ./  ../  .git/
 ```
+
+:::
+::::::
 
 And look at that, there are those two special directories that we've seen
 before: `.` the current directory and `..` the parent directory.
@@ -94,6 +102,9 @@ control software generally requires that you tell it specifically which files
 you want it to keep track of. That means that Git isn't going to keep track of
 files that just happen to be in the same directory as the repository, you have
 to tell Git to actually keep track of those files.
+
+Adding files to a repository
+============================
 
 Create some new files in the repository:
 
@@ -120,10 +131,11 @@ Even though we put these files into this directory with the repository, Git
 still doesn't know anything about them. We have to add these files to the
 repository in two steps:
 
-1. Staging the changes by adding them with the `add` subcommand, and
+1. "Staging" the changes by adding them with the `add` subcommand, and
 2. Committing the changes using the `commit` subcommand.
 
-### Adding files to the repository
+"Staging" changes
+-----------------
 
 Adding files to the repository is straightforward: you use `git add` and then
 tell Git which files should be added to the repository.
@@ -138,20 +150,20 @@ You can add files and changes to the repository one at a time using `git add`
 and including the name of the file that you want to add:
 
 ```bash
-[you@bird my-project]> git add README.md
+git add README.md
 ```
 
 You can also add entire folders to the repository:
 
 ```bash
-[you@bird my-project]> git add hello
+git add hello
 ```
 
 You can also add *everything in the current working directory* to the
 repository:
 
 ```bash
-[you@bird my-project]> git add .
+git add .
 ```
 
 :::
@@ -165,8 +177,17 @@ you can ask Git to tell you about the current state it's in by using the
 You can find out which files or changes are staged to be committed using `git
 status`:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git status
+git status
+```
+
+:::
+::: {.column .output width=50%}
+
+```
 On branch main
 
 No commits yet
@@ -176,12 +197,16 @@ Changes to be committed:
           new file:   README.md
 ```
 
+:::
+::::::
+
 Git helpfully tells you how to *unstage* a file if you accidentally added a file
 or change you didn't want to add to the repository.
 
 :::
 
-### Committing changes to the repository
+Committing changes to the repository
+------------------------------------
 
 Even though Git knows about the files or changes that you've staged, you haven't
 told git that you *really* want it to track changes to those files.
@@ -231,12 +256,25 @@ We can commit staged changes to a repository using `git commit` and either
 writing a commit message in the command itself, or writing a longer commit
 message in your text editor.
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git commit -m "Initial commit" # commit with a message inline
+# commit with a message inline
+git commit -m "Initial commit"
+```
+
+:::
+::: {.column .output width=50%}
+
+```
 [main (root-commit) acff39c] Initial commit
  1 file changed, 10 insertions(+), 0 deletions(-)
  create mode 100644 README.md
 ```
+
+:::
+::::::
 
 Your commit is going to look different from mine because you added more files
 than me to your commit and you used a different commit message.
@@ -245,7 +283,7 @@ You can write a longer commit message by leaving out the `-m` part, and this
 will ask Git to open up your text editor where you can write a longer message.
 
 ```bash
-[you@bird my-project]> git commit # opens your text editor to write a message
+git commit # opens your text editor to write a message
 ```
 
 :::
@@ -256,11 +294,23 @@ normal. Your files are all still there. Great :tada:!
 You can ask Git to tell you what its status is again with `git status`, but this
 time it's just going to say that there is nothing to commit
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git status
+git status
+```
+
+:::
+::: {.column .output width=50%}
+
+```
 On branch main
 nothing to commit, working tree clean
 ```
+
+:::
+::::::
 
 ::: aside
 
@@ -291,7 +341,7 @@ you accomplish something (a new method is working, a bug has been fixed, a
 feature is complete).
 
 Reverting changes
------------------
+=================
 
 Initializing our repository and adding and committing files and changes to our
 repository is great, but just adding stuff to the repository isn't exactly
@@ -321,9 +371,7 @@ Here are some things you can do:
 * Remove your `README.md`
 
   ```bash
-  [you@bird my-project]> rm README.md
-  rm: remove regular file 'README.md'? y # LIVE DANGEROUSLY
-  [you@bird my-project]> 
+  rm -f README.md # LIVE DANGEROUSLY
   ```
 
 Once you've made changes to your file, you can ask Git to tell you about the
@@ -344,7 +392,7 @@ made the changes!
 :::
 
 Files that *shouldn't* be version controlled
---------------------------------------------
+============================================
 
 Being able to keep track of changes to our important files is great, but there
 are some files that will have changes that *don't* care about.
@@ -413,7 +461,7 @@ command like `ls` to list everything (`ls -a`).
 [`.gitignore`]: https://git-scm.com/docs/gitignore
 
 Further reading
----------------
+===============
 
 This document gets you started with version control and Git, but you're
 definitely going to run into situations where you want to do things that are
@@ -438,9 +486,10 @@ here are some resources that are particularly good or helpful:
 
   ::: aside
 
-  Yeah. I know you can swear on the internet. But I have children. And while one
-  of my children can read, I don't think that he'll be able to figure out what
-  sh\*t means, and I'm OK with that.
+  Yeah. I know you can swear on the internet. But I have children. One of my
+  children can read and the other is *learning* to read, and they will both
+  eventually be able to figure out what sh\*t means (and I'm OK with that), I
+  still feel some parental sense of responsibility to keep it clean.
 
   :::
 
