@@ -23,8 +23,8 @@ directory, but before you finish typing `hello`, press the <kbd>Tab</kbd> key on
 your keyboard.
 
 ```bash
-[you@bird somewhere]> cd ~
-[you@bird ~]> cd he#TAB
+cd ~ # go back to my user directory
+cd he#TAB
 ```
 
 Your shell (the thing you're typing commands into) will try to automatically

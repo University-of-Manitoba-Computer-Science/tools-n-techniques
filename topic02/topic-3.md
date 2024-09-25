@@ -48,7 +48,7 @@ something. In our case, it's `[you@bird ~]> `.
 :::
 
 ```bash
-[you@bird ~]> vim
+vim
 ```
 
 When `vim` opens, you'll see something like this:
@@ -96,7 +96,7 @@ pass it a filename to create a new file with that name.
 Create a new file with vim named `hello.md`.
 
 ```bash
-[you@bird ~]> vim hello.md
+vim hello.md
 ```
 
 Once you're in `vim`, enter **insert mode** by typing <kbd>i</kbd> on your keyboard.
@@ -110,11 +110,19 @@ your file by typing `:w` (colon, then w) and pressing <kbd>Enter</kbd>.
 
 Now you can quit `vim` and check out the file you just created.
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> ls
-hello.md
-[you@bird ~]>
+ls
 ```
+:::
+::: {.column .output width=50%}
+```
+hello.md
+```
+:::
+::::::
 
 :::
 
