@@ -348,7 +348,7 @@ just like the other programs you’ve been running so far:</p>
 enter something. In our case, it’s <code>[you@bird ~]&gt;</code>.</p>
 </div>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> vim</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span></span></code></pre></div>
 <p>When <code>vim</code> opens, you’ll see something like this:</p>
 <pre><code>~                    VIM - Vi IMproved
 ~                                                          
@@ -384,7 +384,7 @@ name.</p>
 <div class="example">
 <p>Create a new file with vim named <code>hello.md</code>.</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> vim hello.md</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> hello.md</span></code></pre></div>
 <p>Once you’re in <code>vim</code>, enter <strong>insert mode</strong>
 by typing <kbd>i</kbd> on your keyboard. Now start typing!</p>
 <p>Once you’re finished, press <kbd>Esc</kbd> on your keyboard to get
@@ -394,10 +394,14 @@ quitting, you can write your file by typing <code>:w</code> (colon, then
 w) and pressing <kbd>Enter</kbd>.</p>
 <p>Now you can quit <code>vim</code> and check out the file you just
 created.</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello.md</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello.md</code></pre>
+</div>
+</div>
 </div>
 <p><code>vim</code> isn’t just good at making new files, you can also
 open existing files. You can re-open the file that you just made by

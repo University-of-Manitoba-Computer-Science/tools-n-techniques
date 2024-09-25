@@ -336,8 +336,7 @@ re-create the folder structure you created in the last unit.</p>
 Looking around</h1>
 <p>When you connect to a remote computer you’re interacting with a
 program called a “shell”. When you see something that looks like</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+<pre><code>[you@bird ~]&gt;</code></pre>
 <p>the shell is patiently waiting for you to type some commands into it
 to tell it what to do.</p>
 <p>Let’s start by running a command that will ask the shell to print out
@@ -349,10 +348,14 @@ time someone is talking about a directory, they mean folder.</p>
 folders that are in the current directory.</p>
 <p>Type <code>ls</code> into your terminal, then press
 <kbd>Enter</kbd>:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  Mail</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin  Mail</code></pre>
+</div>
+</div>
 <p>The folders that you see here were created for you when your account
 on the remote computer was created. What you see may not be
 <em>exactly</em> the same as what is shown here.</p>
@@ -375,11 +378,15 @@ to create a folder: <code>mkdir</code>.</p>
 name that you pass to it on the command line.</p>
 <p>Type <code>mkdir hello</code> into your terminal, press
 <kbd>Enter</kbd>, then re-run <code>ls</code>:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  hello  Mail</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin  hello  Mail</code></pre>
+</div>
+</div>
 </div>
 <p>You just made a new folder <span class="emoji"
 data-emoji="tada">🎉</span>!</p>
@@ -387,11 +394,15 @@ data-emoji="tada">🎉</span>!</p>
 <p>One (minor) problem with making folders in our terminal is that we
 can’t use spaces <code>' '</code> in the same way that we could when
 making folders in our visual file explorers:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello world</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span>  world</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello world</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello  world</code></pre>
+</div>
+</div>
 <p>This didn’t make one folder named <code>hello world</code>, it made
 <em>two folders</em>, one named <code>hello</code> and one named
 <code>world</code>. You’ve got a few options:</p>
@@ -399,17 +410,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <li><p>Don’t use spaces at all and instead use dashes <code>-</code> or
 underscores <code>_</code> to represent spaces, or just don’t have
 spaces (similar to naming variables).</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello-world</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello_world</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> helloworld</span></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello-world</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello_world</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> helloworld</span></code></pre></div></li>
 <li><p>Put quotes around the name that includes spaces.</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="st">&quot;hello world&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="st">&#39;hello world&#39;</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="st">&quot;hello world&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="st">&#39;hello world&#39;</span></span></code></pre></div></li>
 <li><p>Escape the spaces with a backslash character <code>\</code>.</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello<span class="dt">\ </span>world</span></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello<span class="dt">\ </span>world</span></code></pre></div></li>
 </ol>
 <p>The issue with spaces is common to <strong>all</strong> commands on
 the command line. This is a good opportunity to choose a new personal
@@ -430,15 +441,26 @@ tapping sounds. To “open” a directory that we created, we need to
 <p>If the name of the folder that you created with <code>mkdir</code> is
 <code>hello</code>, then you should be able to change into
 <code>hello</code> with <code>cd</code>:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  hello  Mail</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd hello</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> ls</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span></span></code></pre></div>
-<p>Notice that when you changed into <code>hello</code>, your
-<strong>prompt</strong> changed from <code>~</code> to
-<code>hello</code>!</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin  hello  Mail</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>There should be no output (the directory is empty, you just made
+it!), but your <strong>prompt</strong> will change to look something
+like:</p>
+<pre><code>[you@bird hello]&gt;</code></pre>
+</div>
+</div>
 </div>
 <p>Now that you’ve changed <em>into</em> a directory, you also need to
 be able to change <em>out of</em> a directory. When you changed into
@@ -452,14 +474,12 @@ href="https://en.wikipedia.org/wiki/Tilde">tilde</a>; I say this as
 <div class="example">
 <p>You can change to the parent directory of the current directory (the
 directory this directory is in) using <code>..</code>.</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> cd ..</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 <p>You can change back to your user directory at any time from anywhere
 using <code>~</code>.</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> cd ~</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span></code></pre></div>
 </div>
 <p>The last part of being able to move around in a directory structure
 on a remote computer is knowing where you are. Our shell has a concept
@@ -473,17 +493,25 @@ ask our shell to tell us what directory we’re currently in using the
 <p>Type <code>pwd</code> into your terminal, then press
 <kbd>Enter</kbd>. The directory that you’re currently “in” will be
 printed out.</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> pwd</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/student/you</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>/home/student/you</code></pre>
+</div>
+</div>
 <p>Now try changing into <code>hello</code> and re-run <code>pwd</code>
 to see that the directory you’re “in” has changed:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd hello</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> pwd</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/student/you/hello</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>/home/student/you/hello</code></pre>
+</div>
+</div>
 </div>
 <h1 id="moving-and-renaming-directories"><span class="emoji"
 data-emoji="pencil2">✏️</span> Moving and renaming directories</h1>
@@ -494,24 +522,55 @@ misspelled the name).</p>
 at the same time!) with the <code>mv</code> command.</p>
 <div class="example">
 <p>You can rename a directory with <code>mv</code>.</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  hello  Mail</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mv hello not-hello</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>  Mail  not-hello</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin  hello  Mail</code></pre>
+<p>We should see a directory named <code>hello</code> because of the
+<code>mkdir</code> we ran before.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> hello not-hello</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin  Mail  not-hello</code></pre>
+</div>
+</div>
 <p>You can <em>move</em> a directory into another directory with
 <code>mv</code>, too.</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello world <span class="co"># intentionally making two directories</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span> Mail hello world</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mv hello world/   <span class="co"># move hello *into* world/</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd world          <span class="co"># change into world</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls            <span class="co"># now hello is *in* world/</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls ..         <span class="co"># hello is *not* in ~</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span> Mail world</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentionally making two directories</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello world </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin Mail hello world</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> hello world/   <span class="co"># move hello *into* world/</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> world          <span class="co"># change into world</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                <span class="co"># now hello is *in* world/</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ..         <span class="co"># hello is *not* in ~</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>bin Mail world</code></pre>
+</div>
+</div>
 </div>
 <p>Just like with <code>cd</code>, you can use the special directories
 <code>..</code> and <code>~</code> to move (<code>mv</code>) a file into
@@ -524,11 +583,27 @@ something to or from the <strong>current</strong> directory.</p>
 <p>You can move a directory to or from your home directory with
 <code>~</code> and use the <code>.</code> directory to move things into
 or from the current directory.</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> cd world</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv hello ~   <span class="co"># move hello to your user directory</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> ls</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> world]<span class="op">&gt;</span> mv ~/hello . <span class="co"># move hello back into *this* directory</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> world</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> hello ~   <span class="co"># move hello to your user directory</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<p>There should be no output, we just moved <code>hello</code> out of
+the directory.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move hello back into *this* directory</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ~/hello . </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello</code></pre>
+</div>
+</div>
 </div>
 <h1 id="removing-directories"><span class="emoji"
 data-emoji="wastebasket">🗑️</span> Removing directories</h1>
@@ -539,26 +614,37 @@ it. You can remove directories using two different commands:
 <p>You can remove <em>empty</em> directories using the
 <code>rmdir</code> command, and this is <em>usually</em> the command you
 want to use to try removing a directory.</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> rmdir hello</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> hello</span></code></pre></div>
 <p>If you try to remove a directory that has other stuff in it (files or
 folders), <code>rmdir</code> will warn you and refuse to remove the
 directory:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> mkdir hello/world <span class="co"># makes a directory in hello named world</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> rmdir hello</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rmdir:</span> failed to remove directory <span class="st">&#39;hello&#39;</span>: Directory not empty</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># makes a directory in hello named world</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hello/world </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> hello</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>rmdir: failed to remove directory &#39;hello&#39;: Directory not empty</code></pre>
+</div>
+</div>
 <p>You can remove files and directories using the <code>rm</code>
 command, and you can remove directories that have things in them by
 asking <code>rm</code> to remove <em>recursively</em>.</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> rm <span class="at">-r</span> hello <span class="co"># remove hello and all of its contents</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> hello <span class="co"># remove hello and all of its contents</span></span></code></pre></div>
 <p>The <code>rm</code> command itself will refuse to remove directories
 unless you tell it to remove them recursively.</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> rm hello</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rm:</span> cannot remove <span class="st">&#39;hello&#39;</span>: Is a directory</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> hello</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>rm: cannot remove &#39;hello&#39;: Is a directory</code></pre>
+</div>
+</div>
 </div>
 <div class="aside">
 <p>The command line doesn’t have a concept of a “temporary trash
