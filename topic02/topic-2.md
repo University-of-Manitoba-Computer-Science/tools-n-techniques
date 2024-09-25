@@ -24,7 +24,7 @@ re-create the folder structure you created in the last unit.
 When you connect to a remote computer you're interacting with a program called a
 "shell". When you see something that looks like
 
-```bash
+```
 [you@bird ~]>
 ```
 
@@ -43,11 +43,21 @@ the current directory.
 
 Type `ls` into your terminal, then press <kbd>Enter</kbd>:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> ls
-bin  Mail
-[you@bird ~]>
+ls
 ```
+:::
+::: {.column .output width=50%}
+
+```
+bin  Mail
+```
+
+:::
+::::::
 
 The folders that you see here were created for you when your account on the
 remote computer was created. What you see may not be *exactly* the same as what
@@ -77,12 +87,22 @@ it on the command line.
 
 Type `mkdir hello` into your terminal, press <kbd>Enter</kbd>, then re-run `ls`:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> mkdir hello
-[you@bird ~]> ls
-bin  hello  Mail
-[you@bird ~]>
+mkdir hello
+ls
 ```
+
+:::
+::: {.column .output width=50%}
+```
+bin  hello  Mail
+```
+
+:::
+::::::
 
 :::
 
@@ -94,12 +114,19 @@ One (minor) problem with making folders in our terminal is that we can't use
 spaces `' '` in the same way that we could when making folders in our visual
 file explorers:
 
+:::::: columns
+::: {.column .input width=50%}
 ```bash
-[you@bird ~]> mkdir hello world
-[you@bird ~]> ls
-hello  world
-[you@bird ~]>
+mkdir hello world
+ls
 ```
+:::
+::: {.column .output width=50%}
+```
+hello  world
+```
+:::
+::::::
 
 This didn't make one folder named `hello world`, it made *two folders*, one
 named `hello` and one named `world`. You've got a few options:
@@ -148,16 +175,36 @@ command: `cd`
 If the name of the folder that you created with `mkdir` is `hello`, then you
 should be able to change into `hello` with `cd`:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> ls
+ls
+```
+:::
+::: {.column .output width=50%}
+```
 bin  hello  Mail
-[you@bird ~]> cd hello
-[you@bird hello]> ls
+```
+:::
+::::::
+:::::: columns
+::: {.column .input width=50%}
+
+```bash
+cd hello
+ls
+```
+:::
+::: {.column .output width=50%}
+There should be no output (the directory is empty, you just made it!), but your
+**prompt** will change to look something like:
+
+```
 [you@bird hello]>
 ```
-
-Notice that when you changed into `hello`, your **prompt** changed from `~` to
-`hello`!
+:::
+::::::
 
 :::
 
@@ -175,15 +222,13 @@ You can change to the parent directory of the current directory (the directory
 this directory is in) using `..`.
 
 ```bash
-[you@bird hello]> cd ..
-[you@bird ~]> 
+cd ..
 ```
 
 You can change back to your user directory at any time from anywhere using `~`.
 
 ```bash
-[you@bird hello]> cd ~
-[you@bird ~]>
+cd ~
 ```
 
 :::
@@ -200,21 +245,38 @@ directory we're currently in using the `pwd` command, `pwd` stands for **p**rint
 Type `pwd` into your terminal, then press <kbd>Enter</kbd>. The directory that
 you're currently "in" will be printed out.
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> pwd
-/home/student/you
-[you@bird ~]>
+pwd
 ```
+
+:::
+::: {.column .output width=50%}
+```
+/home/student/you
+```
+:::
+::::::
 
 Now try changing into `hello` and re-run `pwd` to see that the directory you're
 "in" has changed:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> cd hello
-[you@bird hello]> pwd
-/home/student/you/hello
-[you@bird hello]>
+cd hello
+pwd
 ```
+:::
+::: {.column .output width=50%}
+```
+/home/student/you/hello
+```
+:::
+::::::
 
 :::
 
@@ -233,27 +295,78 @@ same time!) with the `mv` command.
 
 You can rename a directory with `mv`.
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> ls
+ls
+```
+:::
+::: {.column .output width=50%}
+```
 bin  hello  Mail
-[you@bird ~]> mv hello not-hello
-[you@bird ~]> ls
+```
+
+We should see a directory named `hello` because of the `mkdir` we ran before.
+:::
+::::::
+:::::: columns
+::: {.column .input width=50%}
+```bash
+mv hello not-hello
+ls
+```
+:::
+::: {.column .output width=50%}
+```
 bin  Mail  not-hello
 ```
+:::
+::::::
 
 You can *move* a directory into another directory with `mv`, too.
 
+:::::: columns
+::: {.column .input width=50%}
 ```bash
-[you@bird ~]> mkdir hello world # intentionally making two directories
-[you@bird ~]> ls
+# intentionally making two directories
+mkdir hello world 
+ls
+```
+:::
+::: {.column .output width=50%}
+
+```
 bin Mail hello world
-[you@bird ~]> mv hello world/   # move hello *into* world/
-[you@bird ~]> cd world          # change into world
-[you@bird world]> ls            # now hello is *in* world/
+```
+:::
+::::::
+:::::: columns
+::: {.column .input width=50%}
+```bash
+mv hello world/   # move hello *into* world/
+cd world          # change into world
+ls                # now hello is *in* world/
+```
+:::
+::: {.column .output width=50%}
+```
 hello
-[you@bird world]> ls ..         # hello is *not* in ~
+```
+:::
+::::::
+:::::: columns
+::: {.column .input width=50%}
+```bash
+ls ..         # hello is *not* in ~
+```
+:::
+::: {.column .output width=50%}
+```
 bin Mail world
 ```
+:::
+::::::
 
 :::
 
@@ -268,12 +381,36 @@ period) to move something to or from the **current** directory.
 You can move a directory to or from your home directory with `~` and use the `.`
 directory to move things into or from the current directory.
 
+:::::: columns
+::: {.column .input width=50%}
 ```bash
-[you@bird ~]> cd world
-[you@bird world]> mv hello ~   # move hello to your user directory
-[you@bird world]> ls
-[you@bird world]> mv ~/hello . # move hello back into *this* directory
+cd world
+mv hello ~   # move hello to your user directory
+ls
 ```
+:::
+::: {.column .output width=50%}
+
+There should be no output, we just moved `hello` out of the directory.
+
+:::
+::::::
+:::::: columns
+::: {.column .input width=50%}
+```bash
+# move hello back into *this* directory
+mv ~/hello . 
+ls
+```
+:::
+::: {.column .output width=50%}
+
+```
+hello
+```
+
+:::
+::::::
 
 :::
 
@@ -289,33 +426,52 @@ You can remove *empty* directories using the `rmdir` command, and this is
 *usually* the command you want to use to try removing a directory.
 
 ```bash
-[you@bird ~]> rmdir hello
+rmdir hello
 ```
 
 If you try to remove a directory that has other stuff in it (files or folders),
 `rmdir` will warn you and refuse to remove the directory:
 
+:::::: columns
+::: {.column .input width=50%}
 ```bash
-[you@bird ~]> mkdir hello
-[you@bird ~]> mkdir hello/world # makes a directory in hello named world
-[you@bird ~]> rmdir hello
+mkdir hello
+# makes a directory in hello named world
+mkdir hello/world 
+rmdir hello
+```
+:::
+::: {.column .output width=50%}
+
+```
 rmdir: failed to remove directory 'hello': Directory not empty
 ```
+:::
+::::::
 
 You can remove files and directories using the `rm` command, and you can remove
 directories that have things in them by asking `rm` to remove *recursively*.
 
 ```bash
-[you@bird ~]> rm -r hello # remove hello and all of its contents
+rm -r hello # remove hello and all of its contents
 ```
 
 The `rm` command itself will refuse to remove directories unless you tell it to
 remove them recursively.
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird ~]> rm hello
+rm hello
+```
+:::
+::: {.column .output width=50%}
+```
 rm: cannot remove 'hello': Is a directory
 ```
+:::
+::::::
 
 :::
 
