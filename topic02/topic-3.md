@@ -3,6 +3,12 @@ title: "Command line text editing"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/7ur2RkSvSok?si=vUwoklIhgUC8rqKz"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Use a command-line text editor to open, inspect, edit, and save a file.

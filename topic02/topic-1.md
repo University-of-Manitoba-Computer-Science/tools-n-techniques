@@ -3,6 +3,12 @@ title: "Connecting to a remote computer"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/k6krKHNOG5U?si=mDkBXGeB8hxp8SXU"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Connect to a remote computer using `ssh`.

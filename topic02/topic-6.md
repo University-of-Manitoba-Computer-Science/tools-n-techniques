@@ -3,6 +3,12 @@ title: "`handin`"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/TzeF7R9YYBI?si=q5VfsBWLajGaJgoH"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Use the `handin` command in the U of M CS UNIX environment.
