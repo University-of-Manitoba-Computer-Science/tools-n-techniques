@@ -3,6 +3,12 @@ title: "Command line file management"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/gkZa1S5eJ6U?si=iJreZyfZ8a5AIFH6"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Create, rename, delete, and inspect folder structures on the command-line.
