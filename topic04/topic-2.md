@@ -3,13 +3,9 @@ title: "Advanced version control"
 author: Franklin Bristow
 ---
 
-Advanced version control
-========================
-
 ::: outcomes
 
 * [X] Clone an existing remote version control repository.
-* [X] Create a new remote version control repository.
 * [X] Push an existing local repository to a remote version control repository.
 * [X] Use branching and merging with a version control repository.
 * [X] Synchronize repositories between computers for a personal project.
@@ -17,29 +13,41 @@ Advanced version control
 :::
 
 Cloning an existing repository
-------------------------------
+==============================
 
 We're not the first people to initialize repositories and use version control.
 In fact, vast online repositories of different projects exist on sites like
 [GitHub], [GitLab], [SourceHut], and more.
 
 Cloning an existing repository from a website is straightforward using the `git
-clone` subcommand.
+clone` subcommand, just like it was when you cloned your own repository. The
+difference now is that we're going to start cloning repositories from out in the
+wild :national_park:.
 
 ::: example
 
 Let's clone a specific repository. The specific repository contains the source
-code that you downloaded on the command-line last week (the hello project).
+code that you previously downloaded on the command-line (the hello project).
 
-Start by opening your terminal and connecting to Aviary, then run:
+Start by [opening your terminal] and [connecting to Aviary], then run:
+
+[opening your terminal]:
+../topic01/topic-2.html#verifying-that-pandoc-is-installed
+[connecting to Aviary]: ../topic02/topic-1.html
+
+::: input
 
 ```bash
 git clone https://code.cs.umanitoba.ca/cs-lab-course/hello
 ```
 
+:::
+
 `git` is going to start connecting to a remote web server that's hosting some
 source code in a `git` repository, and you should see output that looks similar
-to the following:
+to the following (just like you saw when you cloned your own repository):
+
+::: output
 
 ```
 Cloning into 'hello'...
@@ -50,12 +58,14 @@ remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (8/8), done.
 ```
 
+:::
+
 There's a lot of output here that (honestly) isn't that important in terms of
 being able to use `git` for tracking changes to your files.
 
-Just like when you created your own `git` repository last week, the folder
+Just like when you created and cloned your own `git` repository, the folder
 `hello` now contains another repository. This repository contains the code that
-you downloaded last week as a `zip` file!
+you downloaded as a `zip` file!
 
 :::
 
@@ -63,7 +73,8 @@ you downloaded last week as a `zip` file!
 [GitLab]: https://about.gitlab.com/
 [SourceHut]: https://sr.ht/
 
-### Finding a repository's address
+Finding a repository's address
+------------------------------
 
 Similar to connecting to a remote computer, we have to tell `git` where to find
 the repository by giving it an address or location. In the example above, I
@@ -79,8 +90,7 @@ high quality public domain e-books.
 The team at Standard Ebooks use GitHub extensively to collaborate and track
 changes to the files that are used in the creation of their e-books. You can
 find a collection of their repositories on GitHub here:
-
-    https://github.com/standardebooks
+<https://github.com/standardebooks>
 
 Scroll down a little bit to the "Repositories" section and pick an e-book. The
 titles (unfortunately) are pretty messy here, but they are readable (if you
@@ -105,7 +115,7 @@ Now you can paste this link into your terminal as part of a `git clone` command:
 git clone git@github.com:standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git
 ```
 
-Now you've cloned a repository! :tada:
+Now you've cloned a repository made by someone else! :tada:
 
 [Standard Ebooks]: https://standardebooks.org/
 [The Life and Adventures of Robinson Crusoe]:
@@ -113,242 +123,8 @@ https://github.com/standardebooks/daniel-defoe_the-life-and-adventures-of-robins
 
 :::
 
-Create a new remote version control repository
-----------------------------------------------
-
-Cloning existing repositories is something that you will do *sometimes*, but not
-actually that often. The times when you will will want to clone existing
-repositories are either:
-
-1. You've previously created a remote repository and you want to clone it into a
-   new location, or
-2. You're downloading someone's software for the purpose of compiling it and
-   using it.
-
-Let's make our own new remote repository. Creating a new remote repository is
-different from initializing a repository on the command line with `git init`,
-but they are related to one another. 
-
-When you initialize a new repository on the command line, `git` is creating that
-`.git` directory that's filled with all the [stuff `git` needs] to keep track of
-changes to your files. When you create a new remote repository, you're really
-creating a well-known other place (that's not on your computer or on Aviary)
-where you can duplicate and manage your files.
-
-We're going to be doing this not with GitHub, but with a free, open-source, and
-self-hostable product called [GitLab]. The U of M CS Department hosts an
-instance of GitLab (there's a web site you can go to that's dedicated for
-students taking COMP courses at the U of M) at
-
-    https://code.cs.umanitoba.ca
-
-Open that link, then we're going to go through a few things to create a new
-repository.
-
-[stuff `git` needs]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
-
-### Sign up for GitLab
-
-Before we can do *anything* with this instance of GitLab, you're going to need
-to sign up for a new account. You can skip this step if you've previously signed
-up for a GitLab account here.
-
-On [the log in page], click on the "Register now" link, it's just below the big
-blue "Sign in" button.
-
-When you sign up, you can enter whatever you want for your "First name", "Last
-name", and "Username" (this is not audited by our tech staff), but you **must**
-use your `@myumanitoba.ca` e-mail address, no other e-mail addresses are
-permitted to sign up.
-
-::: aside
-
-The account you're creating here is not at all connected to your account on
-Aviary, you don't (and shouldn't) use the same password for both of these
-systems.
-
-This is a real aside: consider starting to use a [password manager] to generate
-and securely store your passwords. I can personally recommend [KeePassXC], but
-some people like [1password]. Others prefer to manage their passwords on the
-command line and can use tools like [pass].
-
-Main advice: don't use the same password for everything; don't write your
-password on your hand.
-
-[pass]: https://www.passwordstore.org/
-[1password]: https://1password.com/
-[KeePassXC]: https://keepassxc.org/
-[password manager]: https://en.wikipedia.org/wiki/Password_manager
-
-:::
-
-Just after you sign up, GitLab will ask you what you think your "role" should
-be. Ultimately this is helping GitLab decide how it should organize itself in
-terms of what you see when you first log in. I would suggest that you choose
-"**Software Developer**" here.
-
-Congrats! You just signed up for a version control repository service! :tada:
-
-[the log in page]: https://code.cs.umanitoba.ca/users/sign_in
-
-### Create a new repository
-
-Now we get to the part that we're really interested in: actually creating a
-remote repository to upload our code to.
-
-Just after you finish creating your account, and each time you log in to GitLab,
-you're going to be at [your dashboard].
-
-![The GitLab dashboard.](dashboard.png)
-
-Click on "Create a project". There are several options you can choose from to
-create a project, but for now you should click on "Create blank project".
-Ultimately our goal is to copy an existing repository to this remote repository.
-
-Now you get to be creative by picking a project name. The project name that you
-enter here will become part of the project's URL (the address or location of the
-repository). If you're following along with the examples from last week, you
-should pick something like `my-project`. If you want to start putting your
-course documents into this repository (like you might in an assignment), you
-should pick something like a course name (e.g., `SCI2000`).
-
-![Selecting a project name.](project-name.png)
-
-The only option you have for visibility is "Private", and you should leave it
-that way.
-
-![Project visibility level (you can only choose Private).](visibility-level.png)
-
-::: aside
-
-Some repository hosting software (like GitHub) provide the (default) option to
-have public repositories. While public repositories are important, in
-circumstances where you're planning to put your course documents into the
-repository (which you should be!), you don't want to risk having your course
-documents being publicly available and accessible. In short: avoid academic
-misconduct situations by keeping your repository private.
-
-:::
-
-You'll also see some options for project configuration. You should **deselect
-everything** for your first repository; we're eventually going to be uploading
-an existing repository to this remote repository, and we don't want any file
-conflicts.
-
-![Project configuration options.](project-configuration.png)
-
-Finally, click the "Create project" button. If everything's worked out, you
-should see a new (and empty) project page:
-
-![A fresh, new, empty project.](new-empty-project.png)
-
-You just created a new remote repository! :tada:
-
-[your dashboard]: https://code.cs.umanitoba.ca/dashboard/projects
-
-Pushing to a remote repository
-------------------------------
-
-Right, that repository is there, but it's... empty.
-
-Our goal now is to take an existing repository and "push" the repository's
-contents to our new empty remote repository.
-
-Open your terminal, connect to Aviary, and navigate to the folder that contains
-a `git` repository (one of the ones you created last week). Alternatively,
-create a new folder and initialize an entirely new repository, and `add` and
-`commit` some files to that repository. All of the examples below this section
-assume that your present working directory (`pwd`) is a Git repository and
-contains a `.git` folder.
-
-### Configuring your repository
-
-Before you can push to a remote repository, you have to tell Git where it's
-supposed to push to by configuring your repository. This is a **one-time** set
-up, you only need to do this once per repository.
-
-You can configure the remote repository in Git using the `git remote`
-subcommand:
-
-::: example
-
-Starting from a repository (your present working directory should be one that
-has a `.git` directory), we first need to tell `git` *where* we want to push our
-code to, this is going to be the remote repository's address. We'll do this
-using the `git remote` command:
-
-```bash
-git remote add origin https://code.cs.umanitoba.ca/you/your-project
-```
-
-You can get location or address of the repository in GitLab in any of the
-following ways:
-
-* Copy and paste the address from your web browser,
-* Find the address in the instructions GitLab shows you for setting up your
-  repository, or
-* Click on the blue "Clone" button in GitLab and copy the address from there.
-
-  ![The blue "Clone" button in GitLab](gitlab-clone.png)
-
-When you run this command with your own repository's address, `git` shouldn't
-print any output, and you're ready to push your repository to the remote!
-
-:::
-
-### Pushing to the remote repository
-
-Now that your repository has a remote, we want to push all the commits that
-you've made (and thus all the files) to the remote repository. Pushing to the
-remote repository is something that you should do often, our goal is to make
-sure that the local repository you have is approximately synchronized with the
-remote repository on the server.
-
-You can push all commits to the remote repository using the `git push`
-subcommand:
-
-::: example
-
-The first time you push to the remote repository, you have to tell Git which
-"branch" goes to the remote (more on branches below):
-
-```bash
-git push -u origin main
-```
-
-Any subsequent time you want to synchronize your local repository with the
-remote repository, you just need to run:
-
-```bash
-git push
-```
-
-Regardless of which one you're running here, `git` is going to ask you to enter
-a username and password. The username and password that you enter here are the
-ones that you chose when you signed up for your GitLab account at
-<https://code.cs.umanitoba.ca>.
-
-You should see output similar to the following:
-
-```
-[you@bird my-project]> git push -u origin main
-Username for 'https://code.cs.umanitoba.ca': you@myumanitoba.ca
-Password for 'https://you@mumanitoba.ca@code.cs.umanitoba.ca':
-Enumerating objects: 3, done.
-Counting objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 225 bytes | 225.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://code.cs.umanitoba.ca/csstud1/my-project.git
- * [new branch]      main -> main
-Branch 'main' set up to track remote branch 'main' from 'origin'. 
-```
-
-Now refresh your browser window that has the remote repository, and you should see some files! :tada:
-
-:::
-
 Branches
---------
+========
 
 So far we've been using the basic features of Git to track changes to files that
 we have in a repository. We can visualize these changes as a linear list:
@@ -362,8 +138,17 @@ get back to previous commits using the `git checkout` subcommand.
 
 Take a look at the commit history from one of your own repositories:
 
+::: input
+
 ```bash
-[you@bird my-project]> git log
+git log
+```
+
+:::
+
+::: output
+
+```
 commit 3d7739db044efa992bbfdb2d613a0fc025f39d71 (HEAD -> main, origin/main)
 Author: Franklin Bristow <fbristow@cs.umanitoba.ca>
 Date:   Mon Sep 26 14:07:53 2022 -0500
@@ -379,13 +164,19 @@ Date:   Mon Sep 26 13:58:54 2022 -0500
    Looking back at log messages is cool, so let's use `git log` to see them. 
 ```
 
+:::
+
 Those long numbers that you see after the word "commit" are unique identifiers
 for that commit. You can get back to the state that your project was in at that
 state by using the `git checkout` command:
 
+::: input
+
 ```bash
-[you@bird my-project]> git checkout 3d7739
+git checkout 3d7739
 ```
+
+:::
 
 You can either copy and paste the complete commit ID, or you can use the first 7
 or 8 characters. 
@@ -397,23 +188,29 @@ out some information about what you can do, including how to get back to the
 You can quickly get back to the "head" (the last commit that you
 made) using the `git switch` command:
 
+::: input
+
 ```bash
-[you@bird my-project]> git switch main
+git switch main
 ```
+
+:::
 
 :::
 
 This is good enough for the most part, but there's more to Git than just keeping
 track of a linear sequence of changes over time. One of the most powerful
-concepts behind Git is that it can actually keep track of an entire *graph* of
+concepts behind Git is that it can actually keep track of an entire [*graph*] of
 changes over time, possibly coming from many authors and contributors.
+
+[*graph*]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
 
 We're going to take a look at a feature in Git called "branches". Branches are
 something that we can use to track multiple independent sequences of commits to
 a repository simultaneously. When a repository has multiple branches, its commit
 history can look something like this:
 
-![Branches in a repository.](commits-with-branches.jpg)
+![Branches in a repository.](commits-with-branches.png)
 
 Branches are very useful when you're working in a team of people, who are each
 independently working on (for example) a feature in a bigger project. All of
@@ -432,7 +229,8 @@ of the philosophy of best practices with branches.
 
 :::
 
-### Creating a new branch
+Creating a new branch
+---------------------
 
 You can create a new branch in your `git` repository using the `git branch`
 subcommand.
@@ -452,7 +250,8 @@ something about what you're intending to work on in that branch (e.g.,
 
 :::
 
-### Listing and switching branches
+Listing and switching branches
+------------------------------
 
 We just created a branch (:tada:), but... that's not very useful in and of
 itself. We want to be able to see which branches are currently in a repository,
@@ -464,20 +263,44 @@ changes. We're going to use the `git branch` and `git switch` commands.
 We can ask `git` to tell us which branches are in a repository by using the `git
 branch` subcommand without specifying a branch name:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git branch
+git branch
+```
+
+:::
+::: {.column .output width=50%}
+
+```
 * main
   my-new-branch
 ```
 
+:::
+::::::
+
 We can ask `git` to switch us to that branch using the `git switch` subcommand:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git switch my-new-branch
-[you@bird my-project]> git branch
+git switch my-new-branch
+git branch
+```
+
+:::
+::: {.column .output width=50%}
+
+```
   main
 * my-new-branch
 ```
+
+:::
+::::::
 
 :::
 
@@ -489,7 +312,8 @@ Try creating several branches, make changes, stage (add), then commit those
 changes, then switch between branches to get an sense of how commits apply to
 branches.
 
-### Pushing branches to remote
+Pushing branches to remote
+--------------------------
 
 You can also push branches that you have in your local repository to the remote
 repository. You actually already did this the first time you pushed to a remote
@@ -501,18 +325,23 @@ can also push local branches to remote with `git push`:
 To push the new `my-new-branch` to the remote repository, we would use the
 `push` subcommand with the `-u origin` option:
 
+::: input
+
 ```bash
 git push -u origin my-new-branch
 ```
 
 :::
 
-### Merging branches
+:::
+
+Merging branches
+----------------
 
 OK great! Now we have one repository that has several different commit
 histories. If you want to think in terms of data structures (and maybe you don't
 want to think in terms of data structures), we've effectively built a tree
-:tree: of commit histories.
+:evergreen_tree: of commit histories.
 
 Having these multiple, independent commit histories is fine, but if we're
 working on a project with multiple people, and those multiple people each have
@@ -529,26 +358,42 @@ use the `git merge` subcommand to do this.
 Start by listing the branches that you have in your repository with `git
 branch`:
 
+:::::: columns
+::: {.column .input width=50%}
+
 ```bash
-[you@bird my-project]> git branch
+git branch
+```
+
+:::
+::: {.column .output width=50%}
+
+```
   main
   my-new-branch
 * another-branch
 ```
+:::
+::::::
 
 You can merge multiple branches together by switching to the "target" branch
 (usually `main`), then running `git merge` with the name of the branch that you
 want to bring into that branch.
 
+::: input
+
 ```bash
-[you@bird my-project]> git switch main # switch back to the main branch
-[you@bird my-project]> git merge my-new-branch
+git switch main # switch back to the main branch
+git merge my-new-branch
 ```
+:::
 
 If everything goes smoothly, `git` will tell you about what it's done to your
 file by telling you how many files were changes, how many "insertions" it made
 (additions to your files) and how many "deletions" it made (lines or changes
 that removed content):
+
+::: output
 
 ```
 Updating 8e7c6d6..ca7accf
@@ -556,6 +401,8 @@ Fast-forward
  updated-file | 3 +--
  1 file changed, 1 insertion(+), 2 deletion(-)
 ```
+
+:::
 
 :::
 
@@ -572,19 +419,27 @@ get a "merge conflict".
 Let's start again with a different branch, switch to `main`, then `merge`
 changes again:
 
+::: input
+
 ```bash
-[you@bird my-project]> git switch main # switch back to the main branch
-[you@bird my-project]> git merge my-other-new-branch
+git switch main # switch back to the main branch
+git merge my-other-new-branch
 ```
+
+:::
 
 When things don't go the way you expected, `git` is going to report that it
 couldn't automatically merge your changes:
+
+::: output
 
 ```
 Auto-merging updated-file
 CONFLICT (content): Merge conflict in updated-file
 Automatic merge failed; fix conflicts and then commit the result.
 ```
+
+:::
 
 Git tried it's best (it really did!), but it couldn't figure out how it should
 merge the changes from the different histories. When Git can't merge changes,
@@ -593,15 +448,21 @@ the correct way to merge things. If you just want to bail out (give up on
 merging and get back to a good state in `main`), you can use the `--abort`
 option:
 
+::: input
+
 ```bash
-[you@bird my-project]> git merge --abort
+git merge --abort
 ```
+
+:::
 
 At that point, you're back to the last commit you had on the `main` branch.
 
 You probably want to help Git with the merge, though. The way you help Git with
 the merge is to open the file that's listed in the conflict and take a look. The
 file's contents are going to look something like:
+
+::: output
 
 ```
 <<<<<<< HEAD
@@ -610,6 +471,8 @@ the content that's in the main branch
 the content that's in the branch you were trying to merge
 >>>>>>> my-other-new-branch
 ```
+
+:::
 
 Git is highlighting the change that it couldn't merge. Your job to help Git is
 to replace this entire block (everything between `<<<<<<` and `>>>>>>`) with
@@ -622,10 +485,14 @@ section.
 Once you've done that and you're satisfied with the changes, you should `add`
 the changes that you made, then `commit`:
 
+::: input
+
 ```bash
-[you@bird my-project]> git add .
-[you@bird my-project]> git commit -m "Merge with my-other-new-branch"
+git add .
+git commit -m "Merge with my-other-new-branch"
 ```
+
+:::
 
 :tada:! You just resolved a merge conflict!
 
@@ -634,7 +501,7 @@ the changes that you made, then `commit`:
 [Things may not go smoothly]: https://www.youtube.com/watch?v=yJxCdh1Ps48
 
 Synchronizing projects between computers
-----------------------------------------
+========================================
 
 Doing `scp` is, honestly, a little tedious. Even using graphical tools is pretty
 tedious.
@@ -646,7 +513,8 @@ the "secondary" computer (Aviary in this case).
 You've already got your repository on Aviary, so let's clone the repository onto
 your own personal computer.
 
-### Install Git
+Install Git
+-----------
 
 Git is originally a command-line tool (how you've been using it). You can
 install `git` on all of Windows, macOS, and Linux. How you install it depends on
@@ -708,12 +576,8 @@ what to do here, you should ask for help.
 
 </details>
 
-### Cloning your repository
-
-Once you've got a `git` client installed you can actually follow the
-instructions in [Cloning an existing repository].
-
-### Workflow
+Workflow
+--------
 
 You can generally keep using `git` the way that you've been using it up until
 now: make changes to your files, stage the changes with `add`, then `commit` the
@@ -721,17 +585,25 @@ changes to history.
 
 Now you should also `push` to your remote repository occasionally:
 
+::: input
+
 ```bash
-[you@bird my-project]> git push
+git push
 ```
+
+:::
 
 You *don't* need to do `-u origin`.
 
 To get the changes on your other computer, you should use `git pull`:
 
+::: input
+
 ```bash
-[you@your-computer my-project]> git pull
+git pull
 ```
+
+:::
 
 Depending on what you've done with your repositories, you may get merge
 conflicts when you pull (if you edited a file on your local computer *and* on

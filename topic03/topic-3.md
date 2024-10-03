@@ -29,82 +29,259 @@ track changes.
 Initializing a repository
 =========================
 
-We have to tell our version control software where the files are that we want it
-to help us manage. Most of the time this is a single folder where you keep your
-source code for a specific assignment or project. We're going to call this
-location where files are a "repository".
+`git` keeps track of things in something called a "repository". In terms of the
+things we know about so far in this course, a "repository" is really just a
+directory that has some special (hidden) files in it. Repositories can be local
+directories, but more often than not repositories are also hosted on a remote
+server. When a repository is hosted on a remote server, we're going to refer to
+it as a "remote repository".
 
-We have to "initialize" the repository. Initializing the repository has the
-version control software create some new files and folders that *it* uses to
-help keep track of the changes we make to our files.
+Let's make our own new remote repository. 
 
-::: example
+We're going to be doing this not with GitHub, but with a free, open-source, and
+self-hostable product called GitLab. The U of M CS Department hosts an instance
+of GitLab (there's a web site you can go to that's dedicated for students taking
+COMP courses at the U of M) at <https://code.cs.umanitoba.ca>
 
-Let's start by making a new directory (somewhere appropriate in your folder
-structure).
+Open that link, then we're going to go through a few things to create a new
+repository.
 
-```bash
-mkdir my-project
-cd my-project
-```
+[stuff `git` needs]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
 
-Once in the directory that contains the files (or *will* contain the files) that
-we want to track, we can ask our version control software to initialize the
-folder as a repository. With Git, this is a special command called `init`.
 
-```bash
-git init -b main 
-```
+Sign up for GitLab
+------------------
 
-Git should then tell you that it's "Initialized an empty Git repository" in this
-directory!
+Before we can do *anything* with this instance of GitLab, you're going to need
+to sign up for a new account. You can skip this step if you've previously signed
+up for a GitLab account here.
 
-:::
+On [the log in page], click on the "Register now" link, it's just below the big
+blue "Sign in" button.
+
+When you sign up, you can enter whatever you want for your "First name", "Last
+name", and "Username" (this is not audited by our tech staff), but you **must**
+use your `@myumanitoba.ca` e-mail address, no other e-mail addresses are
+permitted to sign up.
 
 ::: aside
 
-When you initialized the repository, Git told you that it initialized the
-repository in your directory and then there was a folder at the end named
-`.git/`.
+The account you're creating here is not at all connected to your account on
+Aviary, you don't (and shouldn't) use the same password for both of these
+systems.
 
-Try running `ls` in your directory. Can you see that folder?
+This is a real aside: consider starting to use a [password manager] to generate
+and securely store your passwords. I can personally recommend [KeePassXC], but
+some people like [1password]. Others prefer to manage their passwords on the
+command line and can use tools like [pass].
 
-...
+Main advice: don't use the same password for everything; don't write your
+password on your hand.
 
-No. You can't see that folder. Where is it?
+[pass]: https://www.passwordstore.org/
+[1password]: https://1password.com/
+[KeePassXC]: https://keepassxc.org/
+[password manager]: https://en.wikipedia.org/wiki/Password_manager
 
-You *can* see that folder if you ask `ls` to list **a**ll files:
+:::
+
+Congrats! You just signed up for a version control repository service! :tada:
+
+[the log in page]: https://code.cs.umanitoba.ca/users/sign_in
+
+Create a new repository
+-----------------------
+
+Now we get to the part that we're really interested in: actually creating a
+remote repository to upload our code to.
+
+Just after you finish creating your account, and each time you log in to GitLab,
+you're going to be at [your dashboard].
+
+![The GitLab dashboard.](dashboard.png)
+
+Click on "Create a project". There are several options you can choose from to
+create a project, but for now you should click on "Create blank project".
+
+Now you get to be creative by picking a project name. The project name that you
+enter here will become part of the project's URL (the address or location of the
+repository). If you want to start putting your course documents into this
+repository (like you might in an assignment), you should pick something like a
+course name (e.g., `COMP1002`).
+
+![Selecting a project name.](project-name.png)
+
+::: aside
+
+Kind of like when you were [organizing your files], creating a repository has
+some amount of decision making in terms of what you're planning to put *into* a
+repository.
+
+When building software we usually just make one repository for one application,
+but some organizations use [different strategies]. A good general strategy might
+be "one repository for one piece of work".
+
+For the purposes of this book and course, I would recommend that you make one
+repository per *course* (e.g., make a repository for COMP 1002, make a separate
+repository for COMP 2280, make a separate repository for COMP 4820, etc).
+
+Other options that you might consider (for coursework or in general) are a
+repository for each:
+
+* Assignment,
+* Code library,
+* Project,
+* Publication.
+
+[organizing your files]: ../topic01/topic-5.html
+[different strategies]: https://en.wikipedia.org/wiki/Monorepo
+
+:::
+
+The only option you have for visibility is "Private", and you should leave it
+that way.
+
+![Project visibility level (you can only choose Private).](visibility-level.png)
+
+::: aside
+
+Some repository hosting software (like GitHub) provide the (default) option to
+have public repositories. While public repositories are important, in
+circumstances where you're planning to put your course documents into the
+repository (which you should be!), you don't want to risk having your course
+documents being publicly available and accessible. In short: avoid academic
+misconduct situations by keeping your repository private.
+
+:::
+
+You'll also see some options for project configuration. You should **deselect
+everything** for your first repository. It's not going to hurt to have a
+default `README.md` added to your repository, but we're ultimately going to
+change what this `README.md` says.
+
+![Project configuration options.](project-configuration.png)
+
+Finally, click the "Create project" button. If everything's worked out, you
+should see a new (and empty) project page:
+
+![A fresh, new, empty project.](new-empty-project.png)
+
+You just created a new remote repository! :tada:
+
+[your dashboard]: https://code.cs.umanitoba.ca/dashboard/projects
+
+Now that we've got an empty repository, we want to start adding files to it.
+
+Cloning a repository
+=====================
+
+To be able to add files to our repository, we're going to need to get the
+repository into a spot where we can use it. You should do this on Aviary, but
+you *can* do this on your local machine.  If you are doing this on your local
+machine, you will need to [install `git`].
+
+[install `git`]: https://git-scm.com/downloads
+
+[Open your terminal] and [connect to Aviary :bird:].
+
+[Open your terminal]: ../topic01/topic-2.html#verifying-that-pandoc-is-installed
+[connect to Aviary :bird:]: ../topic02/topic-1.html
+
+The main way that we get a remote repository onto our own machines is to "clone"
+the repository. We only need one piece of information to clone a remote
+repository: the address of the repository.
+
+You can find the address of your repository in two places:
+
+1. The address bar of your browser, or
+2. By clicking on the blue "Code" button on the repository page.
+
+   ![The blue "Clone" button in GitLab.](gitlab-clone.png)
+
+Once you know the address of the repository, you will use `git` on the command
+line to get your repository onto Aviary; specifically you will use the command
+
+```bash
+git clone
+```
+
+::: example
+
+I (me, Franklin) created a new repository with the name `hello-world`. The
+address bar in my browser has the address:
+
+    https://code.cs.umanitoba.ca/fbristow/hello-world
+
+To get this repository into my user directory on Aviary, I would run the
+following:
+
+::: input
+
+```bash
+git clone https://code.cs.umanitoba.ca/fbristow/hello-world
+```
+
+:::
+
+::: output
+
+```
+Cloning into 'hello-world'...
+Username for 'https://code.cs.umanitoba.ca': 
+```
+
+The remote server is now asking me to enter my username and password. You should
+use the username and password that you used to create your account on GitLab.
+
+Once you've entered your username and password, `git` will clone your
+repository:
+
+::: output
+
+```
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receving objects: 100% (5/5), done.
+```
+
+:::
+
+Now if you check out what's in your directory, you should see a new folder:
 
 :::::: columns
 ::: {.column .input width=50%}
 
 ```bash
-ls -a
+ls
 ```
 
 :::
 ::: {.column .output width=50%}
 
 ```
-./  ../  .git/
+comp1002 bin hello-world
 ```
 
 :::
 ::::::
 
-And look at that, there are those two special directories that we've seen
-before: `.` the current directory and `..` the parent directory.
+:::
 
 :::
 
-Now that we've got an empty repository, we can start adding files to it. Version
-control software generally requires that you tell it specifically which files
-you want it to keep track of. That means that Git isn't going to keep track of
-files that just happen to be in the same directory as the repository, you have
-to tell Git to actually keep track of those files.
+:tada:, you've just cloned the remote repository to your local user directory.
+Now you should change directory into that repository!
 
 Adding files to a repository
 ============================
+
+Version control software generally requires that you tell it specifically which
+files you want it to keep track of. That means that Git isn't going to keep
+track of files that just happen to be in the same directory as the repository,
+you have to tell Git to actually keep track of those files.
+
 
 Create some new files in the repository:
 
@@ -459,6 +636,63 @@ command like `ls` to list everything (`ls -a`).
 :::
 
 [`.gitignore`]: https://git-scm.com/docs/gitignore
+
+Pushing to the remote repository
+================================
+
+Now that you've made your repository and added files to it, we want to push all the commits that
+you've made (and thus all the files) to the remote repository. Pushing to the
+remote repository is something that you should do often, our goal is to make
+sure that the local repository you have is approximately synchronized with the
+remote repository on the server.
+
+You can push all commits to the remote repository using the `git push`
+subcommand:
+
+::: example
+
+You really just need to run:
+
+```bash
+git push
+```
+
+after you've made some commits.
+
+Just like when you initially cloned the repository, `git` is going to ask you to enter
+a username and password. The username and password that you enter here are the
+ones that you chose when you signed up for your GitLab account at
+<https://code.cs.umanitoba.ca>.
+
+You might see output similar to the following:
+
+::: input
+
+```bash
+git push
+```
+
+:::
+
+::: output
+
+```
+Username for 'https://code.cs.umanitoba.ca': you@myumanitoba.ca
+Password for 'https://you@mumanitoba.ca@code.cs.umanitoba.ca':
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 225 bytes | 225.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://code.cs.umanitoba.ca/you/comp-1002.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'. 
+```
+
+:::
+
+Now refresh your browser window that has the remote repository, and you should see some files! :tada:
+
+:::
 
 Further reading
 ===============

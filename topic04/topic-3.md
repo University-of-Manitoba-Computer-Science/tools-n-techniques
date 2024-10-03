@@ -3,9 +3,6 @@ title: "Managing personal projects"
 author: Franklin Bristow
 ---
 
-Managing personal projects
-==========================
-
 ::: outcomes
 
 * [X] Manage personal project tasks as issues using web-based issue tracking
@@ -14,7 +11,7 @@ Managing personal projects
 :::
 
 Issue tracking
---------------
+==============
 
 One helpful feature that's included in most online version control repositories
 (like GitHub or GitLab) are "issue trackers". Every remote repository that you
@@ -41,7 +38,7 @@ task is going to get assigned to this person".
 :::
 
 Creating a new issue
---------------------
+====================
 
 Creating new issues is pretty easy: click on the "New issue" button! On the page
 you're taken to, you can enter a title (a *very* short summary of what you're
@@ -57,7 +54,7 @@ case!), select a due date (when you want to finish this by), or add "milestones"
 classifies the issue, but doesn't fit in to the title, type, or description).
 
 Coming up with issues
----------------------
+=====================
 
 Mechanically creating issues is indeed pretty easy. Deciding what issues or
 tasks you want to actually have... isn't quite as easy.
@@ -81,7 +78,7 @@ One alternative way you can think about issue tracking is like a TODO list, but
 with a nice web interface.
 
 Closing issues
---------------
+==============
 
 Just creating issues is... not a healthy way to live your life.
 
