@@ -196,6 +196,8 @@ You can find the address of your repository in two places:
 1. The address bar of your browser, or
 2. By clicking on the blue "Code" button on the repository page.
 
+   ![The blue "Clone" button in GitLab.](gitlab-clone.png)
+
 Once you know the address of the repository, you will use `git` on the command
 line to get your repository onto Aviary; specifically you will use the command
 
