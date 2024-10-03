@@ -303,9 +303,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#advanced-version-control"
-id="toc-advanced-version-control">Advanced version control</a>
-<ul>
 <li><a href="#cloning-an-existing-repository"
 id="toc-cloning-an-existing-repository">Cloning an existing
 repository</a>
@@ -313,26 +310,6 @@ repository</a>
 <li><a href="#finding-a-repositorys-address"
 id="toc-finding-a-repositorys-address">Finding a repository’s
 address</a></li>
-</ul></li>
-<li><a href="#create-a-new-remote-version-control-repository"
-id="toc-create-a-new-remote-version-control-repository">Create a new
-remote version control repository</a>
-<ul>
-<li><a href="#sign-up-for-gitlab" id="toc-sign-up-for-gitlab">Sign up
-for GitLab</a></li>
-<li><a href="#create-a-new-repository"
-id="toc-create-a-new-repository">Create a new repository</a></li>
-</ul></li>
-<li><a href="#pushing-to-a-remote-repository"
-id="toc-pushing-to-a-remote-repository">Pushing to a remote
-repository</a>
-<ul>
-<li><a href="#configuring-your-repository"
-id="toc-configuring-your-repository">Configuring your
-repository</a></li>
-<li><a href="#pushing-to-the-remote-repository"
-id="toc-pushing-to-the-remote-repository">Pushing to the remote
-repository</a></li>
 </ul></li>
 <li><a href="#branches" id="toc-branches">Branches</a>
 <ul>
@@ -351,21 +328,15 @@ id="toc-synchronizing-projects-between-computers">Synchronizing projects
 between computers</a>
 <ul>
 <li><a href="#install-git" id="toc-install-git">Install Git</a></li>
-<li><a href="#cloning-your-repository"
-id="toc-cloning-your-repository">Cloning your repository</a></li>
 <li><a href="#workflow" id="toc-workflow">Workflow</a></li>
-</ul></li>
 </ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
 </ul>
 </nav>
-<h1 id="advanced-version-control">Advanced version control</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Clone an existing remote
-version control repository.</label></li>
-<li><label><input type="checkbox" checked="" />Create a new remote
 version control repository.</label></li>
 <li><label><input type="checkbox" checked="" />Push an existing local
 repository to a remote version control repository.</label></li>
@@ -375,42 +346,52 @@ with a version control repository.</label></li>
 between computers for a personal project.</label></li>
 </ul>
 </div>
-<h2 id="cloning-an-existing-repository">Cloning an existing
-repository</h2>
+<h1 id="cloning-an-existing-repository">Cloning an existing
+repository</h1>
 <p>We’re not the first people to initialize repositories and use version
 control. In fact, vast online repositories of different projects exist
 on sites like <a href="https://github.com/">GitHub</a>, <a
 href="https://about.gitlab.com/">GitLab</a>, <a
 href="https://sr.ht/">SourceHut</a>, and more.</p>
 <p>Cloning an existing repository from a website is straightforward
-using the <code>git clone</code> subcommand.</p>
+using the <code>git clone</code> subcommand, just like it was when you
+cloned your own repository. The difference now is that we’re going to
+start cloning repositories from out in the wild <span class="emoji"
+data-emoji="national_park">🏞️</span>.</p>
 <div class="example">
 <p>Let’s clone a specific repository. The specific repository contains
-the source code that you downloaded on the command-line last week (the
+the source code that you previously downloaded on the command-line (the
 hello project).</p>
-<p>Start by opening your terminal and connecting to Aviary, then
-run:</p>
+<p>Start by <a
+href="../topic01/topic-2.html#verifying-that-pandoc-is-installed">opening
+your terminal</a> and <a href="../topic02/topic-1.html">connecting to
+Aviary</a>, then run:</p>
+<div class="input">
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://code.cs.umanitoba.ca/cs-lab-course/hello</span></code></pre></div>
+</div>
 <p><code>git</code> is going to start connecting to a remote web server
 that’s hosting some source code in a <code>git</code> repository, and
-you should see output that looks similar to the following:</p>
+you should see output that looks similar to the following (just like you
+saw when you cloned your own repository):</p>
+<div class="output">
 <pre><code>Cloning into &#39;hello&#39;...
 remote: Enumerating objects: 8, done.
 remote: Counting objects: 100% (8/8), done.
 remote: Compressing objects: 100% (4/4), done.
 remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (8/8), done.</code></pre>
+</div>
 <p>There’s a lot of output here that (honestly) isn’t that important in
 terms of being able to use <code>git</code> for tracking changes to your
 files.</p>
-<p>Just like when you created your own <code>git</code> repository last
-week, the folder <code>hello</code> now contains another repository.
-This repository contains the code that you downloaded last week as a
+<p>Just like when you created and cloned your own <code>git</code>
+repository, the folder <code>hello</code> now contains another
+repository. This repository contains the code that you downloaded as a
 <code>zip</code> file!</p>
 </div>
-<h3 id="finding-a-repositorys-address">Finding a repository’s
-address</h3>
+<h2 id="finding-a-repositorys-address">Finding a repository’s
+address</h2>
 <p>Similar to connecting to a remote computer, we have to tell
 <code>git</code> where to find the repository by giving it an address or
 location. In the example above, I provided you with the complete command
@@ -422,9 +403,9 @@ site that’s curated and published many free, high quality public domain
 e-books.</p>
 <p>The team at Standard Ebooks use GitHub extensively to collaborate and
 track changes to the files that are used in the creation of their
-e-books. You can find a collection of their repositories on GitHub
-here:</p>
-<pre><code>https://github.com/standardebooks</code></pre>
+e-books. You can find a collection of their repositories on GitHub here:
+<a href="https://github.com/standardebooks"
+class="uri">https://github.com/standardebooks</a></p>
 <p>Scroll down a little bit to the “Repositories” section and pick an
 e-book. The titles (unfortunately) are pretty messy here, but they are
 readable (if you can’t pick an e-book, I’ll pick one for you: <a
@@ -452,221 +433,12 @@ can copy.</figcaption>
 </figure>
 <p>Now you can paste this link into your terminal as part of a
 <code>git clone</code> command:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git</span></code></pre></div>
-<p>Now you’ve cloned a repository! <span class="emoji"
-data-emoji="tada">🎉</span></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git</span></code></pre></div>
+<p>Now you’ve cloned a repository made by someone else! <span
+class="emoji" data-emoji="tada">🎉</span></p>
 </div>
-<h2 id="create-a-new-remote-version-control-repository">Create a new
-remote version control repository</h2>
-<p>Cloning existing repositories is something that you will do
-<em>sometimes</em>, but not actually that often. The times when you will
-will want to clone existing repositories are either:</p>
-<ol type="1">
-<li>You’ve previously created a remote repository and you want to clone
-it into a new location, or</li>
-<li>You’re downloading someone’s software for the purpose of compiling
-it and using it.</li>
-</ol>
-<p>Let’s make our own new remote repository. Creating a new remote
-repository is different from initializing a repository on the command
-line with <code>git init</code>, but they are related to one
-another.</p>
-<p>When you initialize a new repository on the command line,
-<code>git</code> is creating that <code>.git</code> directory that’s
-filled with all the <a
-href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">stuff
-<code>git</code> needs</a> to keep track of changes to your files. When
-you create a new remote repository, you’re really creating a well-known
-other place (that’s not on your computer or on Aviary) where you can
-duplicate and manage your files.</p>
-<p>We’re going to be doing this not with GitHub, but with a free,
-open-source, and self-hostable product called <a
-href="https://about.gitlab.com/">GitLab</a>. The U of M CS Department
-hosts an instance of GitLab (there’s a web site you can go to that’s
-dedicated for students taking COMP courses at the U of M) at</p>
-<pre><code>https://code.cs.umanitoba.ca</code></pre>
-<p>Open that link, then we’re going to go through a few things to create
-a new repository.</p>
-<h3 id="sign-up-for-gitlab">Sign up for GitLab</h3>
-<p>Before we can do <em>anything</em> with this instance of GitLab,
-you’re going to need to sign up for a new account. You can skip this
-step if you’ve previously signed up for a GitLab account here.</p>
-<p>On <a href="https://code.cs.umanitoba.ca/users/sign_in">the log in
-page</a>, click on the “Register now” link, it’s just below the big blue
-“Sign in” button.</p>
-<p>When you sign up, you can enter whatever you want for your “First
-name”, “Last name”, and “Username” (this is not audited by our tech
-staff), but you <strong>must</strong> use your
-<code>@myumanitoba.ca</code> e-mail address, no other e-mail addresses
-are permitted to sign up.</p>
-<div class="aside">
-<p>The account you’re creating here is not at all connected to your
-account on Aviary, you don’t (and shouldn’t) use the same password for
-both of these systems.</p>
-<p>This is a real aside: consider starting to use a <a
-href="https://en.wikipedia.org/wiki/Password_manager">password
-manager</a> to generate and securely store your passwords. I can
-personally recommend <a href="https://keepassxc.org/">KeePassXC</a>, but
-some people like <a href="https://1password.com/">1password</a>. Others
-prefer to manage their passwords on the command line and can use tools
-like <a href="https://www.passwordstore.org/">pass</a>.</p>
-<p>Main advice: don’t use the same password for everything; don’t write
-your password on your hand.</p>
-</div>
-<p>Just after you sign up, GitLab will ask you what you think your
-“role” should be. Ultimately this is helping GitLab decide how it should
-organize itself in terms of what you see when you first log in. I would
-suggest that you choose “<strong>Software Developer</strong>” here.</p>
-<p>Congrats! You just signed up for a version control repository
-service! <span class="emoji" data-emoji="tada">🎉</span></p>
-<h3 id="create-a-new-repository">Create a new repository</h3>
-<p>Now we get to the part that we’re really interested in: actually
-creating a remote repository to upload our code to.</p>
-<p>Just after you finish creating your account, and each time you log in
-to GitLab, you’re going to be at <a
-href="https://code.cs.umanitoba.ca/dashboard/projects">your
-dashboard</a>.</p>
-<figure>
-<img src="dashboard.png" alt="The GitLab dashboard." />
-<figcaption aria-hidden="true">The GitLab dashboard.</figcaption>
-</figure>
-<p>Click on “Create a project”. There are several options you can choose
-from to create a project, but for now you should click on “Create blank
-project”. Ultimately our goal is to copy an existing repository to this
-remote repository.</p>
-<p>Now you get to be creative by picking a project name. The project
-name that you enter here will become part of the project’s URL (the
-address or location of the repository). If you’re following along with
-the examples from last week, you should pick something like
-<code>my-project</code>. If you want to start putting your course
-documents into this repository (like you might in an assignment), you
-should pick something like a course name (e.g.,
-<code>SCI2000</code>).</p>
-<figure>
-<img src="project-name.png" alt="Selecting a project name." />
-<figcaption aria-hidden="true">Selecting a project name.</figcaption>
-</figure>
-<p>The only option you have for visibility is “Private”, and you should
-leave it that way.</p>
-<figure>
-<img src="visibility-level.png"
-alt="Project visibility level (you can only choose Private)." />
-<figcaption aria-hidden="true">Project visibility level (you can only
-choose Private).</figcaption>
-</figure>
-<div class="aside">
-<p>Some repository hosting software (like GitHub) provide the (default)
-option to have public repositories. While public repositories are
-important, in circumstances where you’re planning to put your course
-documents into the repository (which you should be!), you don’t want to
-risk having your course documents being publicly available and
-accessible. In short: avoid academic misconduct situations by keeping
-your repository private.</p>
-</div>
-<p>You’ll also see some options for project configuration. You should
-<strong>deselect everything</strong> for your first repository; we’re
-eventually going to be uploading an existing repository to this remote
-repository, and we don’t want any file conflicts.</p>
-<figure>
-<img src="project-configuration.png"
-alt="Project configuration options." />
-<figcaption aria-hidden="true">Project configuration
-options.</figcaption>
-</figure>
-<p>Finally, click the “Create project” button. If everything’s worked
-out, you should see a new (and empty) project page:</p>
-<figure>
-<img src="new-empty-project.png" alt="A fresh, new, empty project." />
-<figcaption aria-hidden="true">A fresh, new, empty project.</figcaption>
-</figure>
-<p>You just created a new remote repository! <span class="emoji"
-data-emoji="tada">🎉</span></p>
-<h2 id="pushing-to-a-remote-repository">Pushing to a remote
-repository</h2>
-<p>Right, that repository is there, but it’s… empty.</p>
-<p>Our goal now is to take an existing repository and “push” the
-repository’s contents to our new empty remote repository.</p>
-<p>Open your terminal, connect to Aviary, and navigate to the folder
-that contains a <code>git</code> repository (one of the ones you created
-last week). Alternatively, create a new folder and initialize an
-entirely new repository, and <code>add</code> and <code>commit</code>
-some files to that repository. All of the examples below this section
-assume that your present working directory (<code>pwd</code>) is a Git
-repository and contains a <code>.git</code> folder.</p>
-<h3 id="configuring-your-repository">Configuring your repository</h3>
-<p>Before you can push to a remote repository, you have to tell Git
-where it’s supposed to push to by configuring your repository. This is a
-<strong>one-time</strong> set up, you only need to do this once per
-repository.</p>
-<p>You can configure the remote repository in Git using the
-<code>git remote</code> subcommand:</p>
-<div class="example">
-<p>Starting from a repository (your present working directory should be
-one that has a <code>.git</code> directory), we first need to tell
-<code>git</code> <em>where</em> we want to push our code to, this is
-going to be the remote repository’s address. We’ll do this using the
-<code>git remote</code> command:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://code.cs.umanitoba.ca/you/your-project</span></code></pre></div>
-<p>You can get location or address of the repository in GitLab in any of
-the following ways:</p>
-<ul>
-<li><p>Copy and paste the address from your web browser,</p></li>
-<li><p>Find the address in the instructions GitLab shows you for setting
-up your repository, or</p></li>
-<li><p>Click on the blue “Clone” button in GitLab and copy the address
-from there.</p>
-<figure>
-<img src="gitlab-clone.png" alt="The blue “Clone” button in GitLab" />
-<figcaption aria-hidden="true">The blue “Clone” button in
-GitLab</figcaption>
-</figure></li>
-</ul>
-<p>When you run this command with your own repository’s address,
-<code>git</code> shouldn’t print any output, and you’re ready to push
-your repository to the remote!</p>
-</div>
-<h3 id="pushing-to-the-remote-repository">Pushing to the remote
-repository</h3>
-<p>Now that your repository has a remote, we want to push all the
-commits that you’ve made (and thus all the files) to the remote
-repository. Pushing to the remote repository is something that you
-should do often, our goal is to make sure that the local repository you
-have is approximately synchronized with the remote repository on the
-server.</p>
-<p>You can push all commits to the remote repository using the
-<code>git push</code> subcommand:</p>
-<div class="example">
-<p>The first time you push to the remote repository, you have to tell
-Git which “branch” goes to the remote (more on branches below):</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div>
-<p>Any subsequent time you want to synchronize your local repository
-with the remote repository, you just need to run:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
-<p>Regardless of which one you’re running here, <code>git</code> is
-going to ask you to enter a username and password. The username and
-password that you enter here are the ones that you chose when you signed
-up for your GitLab account at <a href="https://code.cs.umanitoba.ca"
-class="uri">https://code.cs.umanitoba.ca</a>.</p>
-<p>You should see output similar to the following:</p>
-<pre><code>[you@bird my-project]&gt; git push -u origin main
-Username for &#39;https://code.cs.umanitoba.ca&#39;: you@myumanitoba.ca
-Password for &#39;https://you@mumanitoba.ca@code.cs.umanitoba.ca&#39;:
-Enumerating objects: 3, done.
-Counting objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 225 bytes | 225.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://code.cs.umanitoba.ca/csstud1/my-project.git
- * [new branch]      main -&gt; main
-Branch &#39;main&#39; set up to track remote branch &#39;main&#39; from &#39;origin&#39;. </code></pre>
-<p>Now refresh your browser window that has the remote repository, and
-you should see some files! <span class="emoji"
-data-emoji="tada">🎉</span></p>
-</div>
-<h2 id="branches">Branches</h2>
+<h1 id="branches">Branches</h1>
 <p>So far we’ve been using the basic features of Git to track changes to
 files that we have in a repository. We can visualize these changes as a
 linear list:</p>
@@ -681,27 +453,33 @@ subcommand, and we can also get back to previous commits using the
 <div class="example">
 <p>Take a look at the commit history from one of your own
 repositories:</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git log</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 3d7739db044efa992bbfdb2d613a0fc025f39d71 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main, origin/main<span class="kw">)</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Franklin Bristow <span class="op">&lt;</span>fbristow@cs.umanitoba.ca<span class="op">&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Mon Sep 26 14:07:53 2022 <span class="at">-0500</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Updating</span> TODO.</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 943ae855084a66fbdee8b7469f81be284e04cf65</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Franklin Bristow <span class="op">&lt;</span>fbristow@cs.umanitoba.ca<span class="op">&gt;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Mon Sep 26 13:58:54 2022 <span class="at">-0500</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Writing</span> more about version control.</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Looking</span> back at log messages is cool, so let<span class="st">&#39;s use `git log` to see them. </span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>commit 3d7739db044efa992bbfdb2d613a0fc025f39d71 (HEAD -&gt; main, origin/main)
+Author: Franklin Bristow &lt;fbristow@cs.umanitoba.ca&gt;
+Date:   Mon Sep 26 14:07:53 2022 -0500
+
+    Updating TODO.
+
+commit 943ae855084a66fbdee8b7469f81be284e04cf65
+Author: Franklin Bristow &lt;fbristow@cs.umanitoba.ca&gt;
+Date:   Mon Sep 26 13:58:54 2022 -0500
+
+   Writing more about version control.
+    
+   Looking back at log messages is cool, so let&#39;s use `git log` to see them. </code></pre>
+</div>
 <p>Those long numbers that you see after the word “commit” are unique
 identifiers for that commit. You can get back to the state that your
 project was in at that state by using the <code>git checkout</code>
 command:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git checkout 3d7739</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3d7739</span></code></pre></div>
+</div>
 <p>You can either copy and paste the complete commit ID, or you can use
 the first 7 or 8 characters.</p>
 <p>When you run that command (with the appropriate commit ID!),
@@ -709,21 +487,25 @@ the first 7 or 8 characters.</p>
 including how to get back to the <code>main</code> branch.</p>
 <p>You can quickly get back to the “head” (the last commit that you
 made) using the <code>git switch</code> command:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git switch main</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span></code></pre></div>
+</div>
 </div>
 <p>This is good enough for the most part, but there’s more to Git than
 just keeping track of a linear sequence of changes over time. One of the
 most powerful concepts behind Git is that it can actually keep track of
-an entire <em>graph</em> of changes over time, possibly coming from many
-authors and contributors.</p>
+an entire <a
+href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"><em>graph</em></a>
+of changes over time, possibly coming from many authors and
+contributors.</p>
 <p>We’re going to take a look at a feature in Git called “branches”.
 Branches are something that we can use to track multiple independent
 sequences of commits to a repository simultaneously. When a repository
 has multiple branches, its commit history can look something like
 this:</p>
 <figure>
-<img src="commits-with-branches.jpg" alt="Branches in a repository." />
+<img src="commits-with-branches.png" alt="Branches in a repository." />
 <figcaption aria-hidden="true">Branches in a repository.</figcaption>
 </figure>
 <p>Branches are very useful when you’re working in a team of people, who
@@ -741,20 +523,20 @@ version control workflow.</p>
 <code>main</code> branch?” instead of the philosophy of best practices
 with branches.</p>
 </div>
-<h3 id="creating-a-new-branch">Creating a new branch</h3>
+<h2 id="creating-a-new-branch">Creating a new branch</h2>
 <p>You can create a new branch in your <code>git</code> repository using
 the <code>git branch</code> subcommand.</p>
 <div class="example">
 <p>From anywhere inside your <code>git</code> repository, you can run
 <code>git branch</code> to create a new branch in your repository:</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch my-new-branch</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch my-new-branch</span></code></pre></div>
 <p>Typically when you make a new branch, the name of the branch should
 represent something about what you’re intending to work on in that
 branch (e.g., “new-feature”).</p>
 </div>
-<h3 id="listing-and-switching-branches">Listing and switching
-branches</h3>
+<h2 id="listing-and-switching-branches">Listing and switching
+branches</h2>
 <p>We just created a branch (<span class="emoji"
 data-emoji="tada">🎉</span>), but… that’s not very useful in and of
 itself. We want to be able to see which branches are currently in a
@@ -765,17 +547,27 @@ that we can track changes. We’re going to use the
 <p>We can ask <code>git</code> to tell us which branches are in a
 repository by using the <code>git branch</code> subcommand without
 specifying a branch name:</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git branch</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> main</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">my-new-branch</span></span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>* main
+  my-new-branch</code></pre>
+</div>
+</div>
 <p>We can ask <code>git</code> to switch us to that branch using the
 <code>git switch</code> subcommand:</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git switch my-new-branch</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git branch</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> my-new-branch</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch my-new-branch</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>  main
+* my-new-branch</code></pre>
+</div>
+</div>
 </div>
 <p>Once we’re on this new branch, we can use <code>git</code> the same
 way that we were before, <code>add</code>ing and <code>commit</code>ing
@@ -784,7 +576,7 @@ changes, then switch back to our <code>main</code> branch using
 <p>Try creating several branches, make changes, stage (add), then commit
 those changes, then switch between branches to get an sense of how
 commits apply to branches.</p>
-<h3 id="pushing-branches-to-remote">Pushing branches to remote</h3>
+<h2 id="pushing-branches-to-remote">Pushing branches to remote</h2>
 <p>You can also push branches that you have in your local repository to
 the remote repository. You actually already did this the first time you
 pushed to a remote repository with your <code>main</code> branch when
@@ -794,14 +586,17 @@ branches to remote with <code>git push</code>:</p>
 <p>To push the new <code>my-new-branch</code> to the remote repository,
 we would use the <code>push</code> subcommand with the
 <code>-u origin</code> option:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin my-new-branch</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin my-new-branch</span></code></pre></div>
 </div>
-<h3 id="merging-branches">Merging branches</h3>
+</div>
+<h2 id="merging-branches">Merging branches</h2>
 <p>OK great! Now we have one repository that has several different
 commit histories. If you want to think in terms of data structures (and
 maybe you don’t want to think in terms of data structures), we’ve
-effectively built a tree :tree: of commit histories.</p>
+effectively built a tree <span class="emoji"
+data-emoji="evergreen_tree">🌲</span> of commit histories.</p>
 <p>Having these multiple, independent commit histories is fine, but if
 we’re working on a project with multiple people, and those multiple
 people each have their own branch, we need to be able to take all the
@@ -815,25 +610,34 @@ to do this.</p>
 <div class="example">
 <p>Start by listing the branches that you have in your repository with
 <code>git branch</code>:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git branch</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">my-new-branch</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> another-branch</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>  main
+  my-new-branch
+* another-branch</code></pre>
+</div>
+</div>
 <p>You can merge multiple branches together by switching to the “target”
 branch (usually <code>main</code>), then running <code>git merge</code>
 with the name of the branch that you want to bring into that branch.</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git switch main <span class="co"># switch back to the main branch</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git merge my-new-branch</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main <span class="co"># switch back to the main branch</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge my-new-branch</span></code></pre></div>
+</div>
 <p>If everything goes smoothly, <code>git</code> will tell you about
 what it’s done to your file by telling you how many files were changes,
 how many “insertions” it made (additions to your files) and how many
 “deletions” it made (lines or changes that removed content):</p>
+<div class="output">
 <pre><code>Updating 8e7c6d6..ca7accf
 Fast-forward
  updated-file | 3 +--
  1 file changed, 1 insertion(+), 2 deletion(-)</code></pre>
+</div>
 </div>
 <h4 id="merge-conflicts">Merge conflicts</h4>
 <p><a href="https://www.youtube.com/watch?v=yJxCdh1Ps48">Things may not
@@ -845,33 +649,41 @@ but sometimes it can’t and you’ll get a “merge conflict”.</p>
 <div class="example">
 <p>Let’s start again with a different branch, switch to
 <code>main</code>, then <code>merge</code> changes again:</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git switch main <span class="co"># switch back to the main branch</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git merge my-other-new-branch</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main <span class="co"># switch back to the main branch</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge my-other-new-branch</span></code></pre></div>
+</div>
 <p>When things don’t go the way you expected, <code>git</code> is going
 to report that it couldn’t automatically merge your changes:</p>
+<div class="output">
 <pre><code>Auto-merging updated-file
 CONFLICT (content): Merge conflict in updated-file
 Automatic merge failed; fix conflicts and then commit the result.</code></pre>
+</div>
 <p>Git tried it’s best (it really did!), but it couldn’t figure out how
 it should merge the changes from the different histories. When Git can’t
 merge changes, it’s in a state where you either must abandon the merge,
 or help Git figure out the correct way to merge things. If you just want
 to bail out (give up on merging and get back to a good state in
 <code>main</code>), you can use the <code>--abort</code> option:</p>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git merge <span class="at">--abort</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--abort</span></span></code></pre></div>
+</div>
 <p>At that point, you’re back to the last commit you had on the
 <code>main</code> branch.</p>
 <p>You probably want to help Git with the merge, though. The way you
 help Git with the merge is to open the file that’s listed in the
 conflict and take a look. The file’s contents are going to look
 something like:</p>
+<div class="output">
 <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 the content that&#39;s in the main branch
 =======
 the content that&#39;s in the branch you were trying to merge
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; my-other-new-branch</code></pre>
+</div>
 <p>Git is highlighting the change that it couldn’t merge. Your job to
 help Git is to replace this entire block (everything between
 <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> and
@@ -884,14 +696,16 @@ section.</p>
 <p>Once you’ve done that and you’re satisfied with the changes, you
 should <code>add</code> the changes that you made, then
 <code>commit</code>:</p>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git add .</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git commit <span class="at">-m</span> <span class="st">&quot;Merge with my-other-new-branch&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Merge with my-other-new-branch&quot;</span></span></code></pre></div>
+</div>
 <p><span class="emoji" data-emoji="tada">🎉</span>! You just resolved a
 merge conflict!</p>
 </div>
-<h2 id="synchronizing-projects-between-computers">Synchronizing projects
-between computers</h2>
+<h1 id="synchronizing-projects-between-computers">Synchronizing projects
+between computers</h1>
 <p>Doing <code>scp</code> is, honestly, a little tedious. Even using
 graphical tools is pretty tedious.</p>
 <p>One way (among many!) that you can keep your folders synchronized
@@ -900,7 +714,7 @@ repository, cloning and pulling on the “secondary” computer (Aviary in
 this case).</p>
 <p>You’ve already got your repository on Aviary, so let’s clone the
 repository onto your own personal computer.</p>
-<h3 id="install-git">Install Git</h3>
+<h2 id="install-git">Install Git</h2>
 <p>Git is originally a command-line tool (how you’ve been using it). You
 can install <code>git</code> on all of Windows, macOS, and Linux. How
 you install it depends on which of those that you’re using.</p>
@@ -957,25 +771,24 @@ you’ve used <code>sudo</code> before, this is what you should use to run
 these commands. If you’re not sure what to do here, you should ask for
 help.</p>
 </details>
-<h3 id="cloning-your-repository">Cloning your repository</h3>
-<p>Once you’ve got a <code>git</code> client installed you can actually
-follow the instructions in <a
-href="#cloning-an-existing-repository">Cloning an existing
-repository</a>.</p>
-<h3 id="workflow">Workflow</h3>
+<h2 id="workflow">Workflow</h2>
 <p>You can generally keep using <code>git</code> the way that you’ve
 been using it up until now: make changes to your files, stage the
 changes with <code>add</code>, then <code>commit</code> the changes to
 history.</p>
 <p>Now you should also <code>push</code> to your remote repository
 occasionally:</p>
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> my-project]<span class="op">&gt;</span> git push</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
+</div>
 <p>You <em>don’t</em> need to do <code>-u origin</code>.</p>
 <p>To get the changes on your other computer, you should use
 <code>git pull</code>:</p>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@your-computer</span> my-project]<span class="op">&gt;</span> git pull</span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div>
+</div>
 <p>Depending on what you’ve done with your repositories, you may get
 merge conflicts when you pull (if you edited a file on your local
 computer <em>and</em> on Aviary). You can deal with merge conflicts as

@@ -305,7 +305,15 @@ server</a></li>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#initializing-a-repository"
-id="toc-initializing-a-repository">Initializing a repository</a></li>
+id="toc-initializing-a-repository">Initializing a repository</a>
+<ul>
+<li><a href="#sign-up-for-gitlab" id="toc-sign-up-for-gitlab">Sign up
+for GitLab</a></li>
+<li><a href="#create-a-new-repository"
+id="toc-create-a-new-repository">Create a new repository</a></li>
+</ul></li>
+<li><a href="#cloning-a-repository"
+id="toc-cloning-a-repository">Cloning a repository</a></li>
 <li><a href="#adding-files-to-a-repository"
 id="toc-adding-files-to-a-repository">Adding files to a repository</a>
 <ul>
@@ -320,6 +328,9 @@ changes</a></li>
 <li><a href="#files-that-shouldnt-be-version-controlled"
 id="toc-files-that-shouldnt-be-version-controlled">Files that
 <em>shouldn’t</em> be version controlled</a></li>
+<li><a href="#pushing-to-the-remote-repository"
+id="toc-pushing-to-the-remote-repository">Pushing to the remote
+repository</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
 </ul>
@@ -347,58 +358,210 @@ you’ve made to your own code or any kind of file over time. Version
 control isn’t entirely automatic, you have to tell the software which
 files to track and when it should track changes.</p>
 <h1 id="initializing-a-repository">Initializing a repository</h1>
-<p>We have to tell our version control software where the files are that
-we want it to help us manage. Most of the time this is a single folder
-where you keep your source code for a specific assignment or project.
-We’re going to call this location where files are a “repository”.</p>
-<p>We have to “initialize” the repository. Initializing the repository
-has the version control software create some new files and folders that
-<em>it</em> uses to help keep track of the changes we make to our
-files.</p>
-<div class="example">
-<p>Let’s start by making a new directory (somewhere appropriate in your
-folder structure).</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> my-project</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span></code></pre></div>
-<p>Once in the directory that contains the files (or <em>will</em>
-contain the files) that we want to track, we can ask our version control
-software to initialize the folder as a repository. With Git, this is a
-special command called <code>init</code>.</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-b</span> main </span></code></pre></div>
-<p>Git should then tell you that it’s “Initialized an empty Git
-repository” in this directory!</p>
-</div>
+<p><code>git</code> keeps track of things in something called a
+“repository”. In terms of the things we know about so far in this
+course, a “repository” is really just a directory that has some special
+(hidden) files in it. Repositories can be local directories, but more
+often than not repositories are also hosted on a remote server. When a
+repository is hosted on a remote server, we’re going to refer to it as a
+“remote repository”.</p>
+<p>Let’s make our own new remote repository.</p>
+<p>We’re going to be doing this not with GitHub, but with a free,
+open-source, and self-hostable product called GitLab. The U of M CS
+Department hosts an instance of GitLab (there’s a web site you can go to
+that’s dedicated for students taking COMP courses at the U of M) at <a
+href="https://code.cs.umanitoba.ca"
+class="uri">https://code.cs.umanitoba.ca</a></p>
+<p>Open that link, then we’re going to go through a few things to create
+a new repository.</p>
+<h2 id="sign-up-for-gitlab">Sign up for GitLab</h2>
+<p>Before we can do <em>anything</em> with this instance of GitLab,
+you’re going to need to sign up for a new account. You can skip this
+step if you’ve previously signed up for a GitLab account here.</p>
+<p>On <a href="https://code.cs.umanitoba.ca/users/sign_in">the log in
+page</a>, click on the “Register now” link, it’s just below the big blue
+“Sign in” button.</p>
+<p>When you sign up, you can enter whatever you want for your “First
+name”, “Last name”, and “Username” (this is not audited by our tech
+staff), but you <strong>must</strong> use your
+<code>@myumanitoba.ca</code> e-mail address, no other e-mail addresses
+are permitted to sign up.</p>
 <div class="aside">
-<p>When you initialized the repository, Git told you that it initialized
-the repository in your directory and then there was a folder at the end
-named <code>.git/</code>.</p>
-<p>Try running <code>ls</code> in your directory. Can you see that
-folder?</p>
-<p>…</p>
-<p>No. You can’t see that folder. Where is it?</p>
-<p>You <em>can</em> see that folder if you ask <code>ls</code> to list
-<strong>a</strong>ll files:</p>
+<p>The account you’re creating here is not at all connected to your
+account on Aviary, you don’t (and shouldn’t) use the same password for
+both of these systems.</p>
+<p>This is a real aside: consider starting to use a <a
+href="https://en.wikipedia.org/wiki/Password_manager">password
+manager</a> to generate and securely store your passwords. I can
+personally recommend <a href="https://keepassxc.org/">KeePassXC</a>, but
+some people like <a href="https://1password.com/">1password</a>. Others
+prefer to manage their passwords on the command line and can use tools
+like <a href="https://www.passwordstore.org/">pass</a>.</p>
+<p>Main advice: don’t use the same password for everything; don’t write
+your password on your hand.</p>
+</div>
+<p>Congrats! You just signed up for a version control repository
+service! <span class="emoji" data-emoji="tada">🎉</span></p>
+<h2 id="create-a-new-repository">Create a new repository</h2>
+<p>Now we get to the part that we’re really interested in: actually
+creating a remote repository to upload our code to.</p>
+<p>Just after you finish creating your account, and each time you log in
+to GitLab, you’re going to be at <a
+href="https://code.cs.umanitoba.ca/dashboard/projects">your
+dashboard</a>.</p>
+<figure>
+<img src="dashboard.png" alt="The GitLab dashboard." />
+<figcaption aria-hidden="true">The GitLab dashboard.</figcaption>
+</figure>
+<p>Click on “Create a project”. There are several options you can choose
+from to create a project, but for now you should click on “Create blank
+project”.</p>
+<p>Now you get to be creative by picking a project name. The project
+name that you enter here will become part of the project’s URL (the
+address or location of the repository). If you want to start putting
+your course documents into this repository (like you might in an
+assignment), you should pick something like a course name (e.g.,
+<code>COMP1002</code>).</p>
+<figure>
+<img src="project-name.png" alt="Selecting a project name." />
+<figcaption aria-hidden="true">Selecting a project name.</figcaption>
+</figure>
+<div class="aside">
+<p>Kind of like when you were <a
+href="../topic01/topic-5.html">organizing your files</a>, creating a
+repository has some amount of decision making in terms of what you’re
+planning to put <em>into</em> a repository.</p>
+<p>When building software we usually just make one repository for one
+application, but some organizations use <a
+href="https://en.wikipedia.org/wiki/Monorepo">different strategies</a>.
+A good general strategy might be “one repository for one piece of
+work”.</p>
+<p>For the purposes of this book and course, I would recommend that you
+make one repository per <em>course</em> (e.g., make a repository for
+COMP 1002, make a separate repository for COMP 2280, make a separate
+repository for COMP 4820, etc).</p>
+<p>Other options that you might consider (for coursework or in general)
+are a repository for each:</p>
+<ul>
+<li>Assignment,</li>
+<li>Code library,</li>
+<li>Project,</li>
+<li>Publication.</li>
+</ul>
+</div>
+<p>The only option you have for visibility is “Private”, and you should
+leave it that way.</p>
+<figure>
+<img src="visibility-level.png"
+alt="Project visibility level (you can only choose Private)." />
+<figcaption aria-hidden="true">Project visibility level (you can only
+choose Private).</figcaption>
+</figure>
+<div class="aside">
+<p>Some repository hosting software (like GitHub) provide the (default)
+option to have public repositories. While public repositories are
+important, in circumstances where you’re planning to put your course
+documents into the repository (which you should be!), you don’t want to
+risk having your course documents being publicly available and
+accessible. In short: avoid academic misconduct situations by keeping
+your repository private.</p>
+</div>
+<p>You’ll also see some options for project configuration. You should
+<strong>deselect everything</strong> for your first repository. It’s not
+going to hurt to have a default <code>README.md</code> added to your
+repository, but we’re ultimately going to change what this
+<code>README.md</code> says.</p>
+<figure>
+<img src="project-configuration.png"
+alt="Project configuration options." />
+<figcaption aria-hidden="true">Project configuration
+options.</figcaption>
+</figure>
+<p>Finally, click the “Create project” button. If everything’s worked
+out, you should see a new (and empty) project page:</p>
+<figure>
+<img src="new-empty-project.png" alt="A fresh, new, empty project." />
+<figcaption aria-hidden="true">A fresh, new, empty project.</figcaption>
+</figure>
+<p>You just created a new remote repository! <span class="emoji"
+data-emoji="tada">🎉</span></p>
+<p>Now that we’ve got an empty repository, we want to start adding files
+to it.</p>
+<h1 id="cloning-a-repository">Cloning a repository</h1>
+<p>To be able to add files to our repository, we’re going to need to get
+the repository into a spot where we can use it. You should do this on
+Aviary, but you <em>can</em> do this on your local machine. If you are
+doing this on your local machine, you will need to <a
+href="https://git-scm.com/downloads">install <code>git</code></a>.</p>
+<p><a
+href="../topic01/topic-2.html#verifying-that-pandoc-is-installed">Open
+your terminal</a> and <a href="../topic02/topic-1.html">connect to
+Aviary <span class="emoji" data-emoji="bird">🐦</span></a>.</p>
+<p>The main way that we get a remote repository onto our own machines is
+to “clone” the repository. We only need one piece of information to
+clone a remote repository: the address of the repository.</p>
+<p>You can find the address of your repository in two places:</p>
+<ol type="1">
+<li><p>The address bar of your browser, or</p></li>
+<li><p>By clicking on the blue “Code” button on the repository page.</p>
+<figure>
+<img src="gitlab-clone.png" alt="The blue “Clone” button in GitLab." />
+<figcaption aria-hidden="true">The blue “Clone” button in
+GitLab.</figcaption>
+</figure></li>
+</ol>
+<p>Once you know the address of the repository, you will use
+<code>git</code> on the command line to get your repository onto Aviary;
+specifically you will use the command</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone</span></code></pre></div>
+<div class="example">
+<p>I (me, Franklin) created a new repository with the name
+<code>hello-world</code>. The address bar in my browser has the
+address:</p>
+<pre><code>https://code.cs.umanitoba.ca/fbristow/hello-world</code></pre>
+<p>To get this repository into my user directory on Aviary, I would run
+the following:</p>
+<div class="input">
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://code.cs.umanitoba.ca/fbristow/hello-world</span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>Cloning into &#39;hello-world&#39;...
+Username for &#39;https://code.cs.umanitoba.ca&#39;: </code></pre>
+<p>The remote server is now asking me to enter my username and password.
+You should use the username and password that you used to create your
+account on GitLab.</p>
+<p>Once you’ve entered your username and password, <code>git</code> will
+clone your repository:</p>
+<div class="output">
+<pre><code>remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receving objects: 100% (5/5), done.</code></pre>
+</div>
+<p>Now if you check out what’s in your directory, you should see a new
+folder:</p>
 <div class="columns">
 <div class="column input" style="width:50%;">
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div><div class="column output" style="width:50%;">
-<pre><code>./  ../  .git/</code></pre>
+<pre><code>comp1002 bin hello-world</code></pre>
 </div>
 </div>
-<p>And look at that, there are those two special directories that we’ve
-seen before: <code>.</code> the current directory and <code>..</code>
-the parent directory.</p>
 </div>
-<p>Now that we’ve got an empty repository, we can start adding files to
-it. Version control software generally requires that you tell it
+</div>
+<p><span class="emoji" data-emoji="tada">🎉</span>, you’ve just cloned
+the remote repository to your local user directory. Now you should
+change directory into that repository!</p>
+<h1 id="adding-files-to-a-repository">Adding files to a repository</h1>
+<p>Version control software generally requires that you tell it
 specifically which files you want it to keep track of. That means that
 Git isn’t going to keep track of files that just happen to be in the
 same directory as the repository, you have to tell Git to actually keep
 track of those files.</p>
-<h1 id="adding-files-to-a-repository">Adding files to a repository</h1>
 <p>Create some new files in the repository:</p>
 <ul>
 <li><p>Make a new plain text file with some text in it using a
@@ -415,8 +578,8 @@ place to another using the <code>-r</code> option for recursive (just
 like <code>scp</code>!).</p>
 <p>To copy the <code>hello</code> folder here, you can use
 <code>cp</code> from this directory:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../hello . <span class="co"># if hello is in the parent directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../hello . <span class="co"># if hello is in the parent directory</span></span></code></pre></div>
 </div></li>
 </ul>
 <p>Even though we put these files into this directory with the
@@ -439,15 +602,15 @@ files, but Git isn’t actually ready to track the changes.</p>
 <p>You can add files and changes to the repository one at a time using
 <code>git add</code> and including the name of the file that you want to
 add:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span></code></pre></div>
 <p>You can also add entire folders to the repository:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add hello</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add hello</span></code></pre></div>
 <p>You can also add <em>everything in the current working directory</em>
 to the repository:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div>
 </div>
 <p>Git doesn’t tell you anything when you add files or changes to be
 staged, but you can ask Git to tell you about the current state it’s in
@@ -457,8 +620,8 @@ by using the <code>status</code> subcommand.</p>
 using <code>git status</code>:</p>
 <div class="columns">
 <div class="column input" style="width:50%;">
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
 </div><div class="column output" style="width:50%;">
 <pre><code>On branch main
 
@@ -503,10 +666,10 @@ later), but things will flow more smoothly if you do it now.</p>
 <p>Before we can make a commit, we need to tell <code>git</code> who we
 are. We can configure <code>git</code> and tell it who we are with the
 <code>git config</code> command:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your name&quot;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email you@myumanitoba.ca <span class="co"># you should use your own</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># e-mail address here.</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your name&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email you@myumanitoba.ca <span class="co"># you should use your own</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="co"># e-mail address here.</span></span></code></pre></div>
 <p>You only need to do this once per physical computer that you’re using
 <code>git</code> on. In other words: if you’re using two computers,
 you’ll need to run this set up step on each computer, but you only need
@@ -519,9 +682,9 @@ command itself, or writing a longer commit message in your text
 editor.</p>
 <div class="columns">
 <div class="column input" style="width:50%;">
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># commit with a message inline</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Initial commit&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># commit with a message inline</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Initial commit&quot;</span></span></code></pre></div>
 </div><div class="column output" style="width:50%;">
 <pre><code>[main (root-commit) acff39c] Initial commit
  1 file changed, 10 insertions(+), 0 deletions(-)
@@ -534,8 +697,8 @@ message.</p>
 <p>You can write a longer commit message by leaving out the
 <code>-m</code> part, and this will ask Git to open up your text editor
 where you can write a longer message.</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="co"># opens your text editor to write a message</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="co"># opens your text editor to write a message</span></span></code></pre></div>
 </div>
 <p>After you commit your changes to the repository, everything still
 looks pretty normal. Your files are all still there. Great <span
@@ -545,8 +708,8 @@ class="emoji" data-emoji="tada">🎉</span>!</p>
 is nothing to commit</p>
 <div class="columns">
 <div class="column input" style="width:50%;">
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div>
 </div><div class="column output" style="width:50%;">
 <pre><code>On branch main
 nothing to commit, working tree clean</code></pre>
@@ -595,11 +758,11 @@ changes are because we’re making these changes to be able to see how to
 <li><p>Open it in your text editor and start typing.</p></li>
 <li><p>“Accidentally” copy a file and replace <code>README.md</code>
 with that file</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> hello/compiled/hello.c README.md</span></code></pre></div></li>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> hello/compiled/hello.c README.md</span></code></pre></div></li>
 <li><p>Remove your <code>README.md</code></p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> README.md <span class="co"># LIVE DANGEROUSLY</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> README.md <span class="co"># LIVE DANGEROUSLY</span></span></code></pre></div></li>
 </ul>
 <p>Once you’ve made changes to your file, you can ask Git to tell you
 about the status of the file (with <code>git status</code>). Depending
@@ -609,8 +772,8 @@ helpfully give you a hint about how to get your files back to the state
 they were in before.</p>
 <p>Now revert the changes you made to your <code>README.md</code> with
 the <code>restore</code> subcommand</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore README.md</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore README.md</span></code></pre></div>
 <p>Now open up your <code>README.md</code> again, and it’s back to the
 way it was before you made the changes!</p>
 </div>
@@ -656,15 +819,15 @@ our repository.</p>
 “patterns” of filenames to be ignored.</p>
 <p>Here’s an example of what a <code>.gitignore</code> file might look
 like:</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode ini"><code class="sourceCode ini"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore README.docx (a specific filename)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">README.docx</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore all .class files (a &quot;pattern&quot;, any file that ends with .class)</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="dt">*.class</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the entire build directory</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="dt">build/</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode ini"><code class="sourceCode ini"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore README.docx (a specific filename)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dt">README.docx</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore all .class files (a &quot;pattern&quot;, any file that ends with .class)</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="dt">*.class</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the entire build directory</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="dt">build/</span></span></code></pre></div>
 </div>
 <p>The <code>.gitignore</code> file <em>is</em> a file you want Git to
 keep track of, so you need to add this file to your repository (use
@@ -677,6 +840,46 @@ true in general: any file that begins with a period (<code>.</code>) is
 considered to be “hidden” on Linux and macOS, but you can see those
 files by telling a command like <code>ls</code> to list everything
 (<code>ls -a</code>).</p>
+</div>
+<h1 id="pushing-to-the-remote-repository">Pushing to the remote
+repository</h1>
+<p>Now that you’ve made your repository and added files to it, we want
+to push all the commits that you’ve made (and thus all the files) to the
+remote repository. Pushing to the remote repository is something that
+you should do often, our goal is to make sure that the local repository
+you have is approximately synchronized with the remote repository on the
+server.</p>
+<p>You can push all commits to the remote repository using the
+<code>git push</code> subcommand:</p>
+<div class="example">
+<p>You really just need to run:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
+<p>after you’ve made some commits.</p>
+<p>Just like when you initially cloned the repository, <code>git</code>
+is going to ask you to enter a username and password. The username and
+password that you enter here are the ones that you chose when you signed
+up for your GitLab account at <a href="https://code.cs.umanitoba.ca"
+class="uri">https://code.cs.umanitoba.ca</a>.</p>
+<p>You might see output similar to the following:</p>
+<div class="input">
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>Username for &#39;https://code.cs.umanitoba.ca&#39;: you@myumanitoba.ca
+Password for &#39;https://you@mumanitoba.ca@code.cs.umanitoba.ca&#39;:
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 225 bytes | 225.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://code.cs.umanitoba.ca/you/comp-1002.git
+ * [new branch]      main -&gt; main
+Branch &#39;main&#39; set up to track remote branch &#39;main&#39; from &#39;origin&#39;. </code></pre>
+</div>
+<p>Now refresh your browser window that has the remote repository, and
+you should see some files! <span class="emoji"
+data-emoji="tada">🎉</span></p>
 </div>
 <h1 id="further-reading">Further reading</h1>
 <p>This document gets you started with version control and Git, but
