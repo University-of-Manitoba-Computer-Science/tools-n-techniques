@@ -3,6 +3,8 @@ title: "Version Control"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2BZKs22993U?si=zRpm07u2518Fi4Vf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Use version control software on your own code to keep track of changes
