@@ -23,10 +23,9 @@ You should now be able to:
 
 ::: outcomes
 
-* [X] Clone an existing remote version control repository.
-* [X] Push an existing local repository to a remote version control repository.
 * [X] Use branching and merging with a version control repository.
-* [X] Synchronize repositories between computers for a personal project.
+* [X] Synchronize repositories between computers for a personal project (e.g.,
+  `git push` and `git pull`).
 * [X] Manage personal project tasks as issues using web-based issue tracking
   software.
 
