@@ -608,6 +608,21 @@ Depending on what you've done with your repositories, you may get merge
 conflicts when you pull (if you edited a file on your local computer *and* on
 Aviary). You can deal with merge conflicts as described above.
 
+Visual Git clients
+==================
+
+Using Git on the command-line is fine, but requires you to maintain a mental
+model of what branches in your repository look like. `git log` and `git branch`
+can help you figure out what's in a branch, but it's still tricky to keep track
+of all this.
+
+Git also has [a variety of graphical clients] that you can use to help visualize
+what's going on in your repositories, how branches relate to each other, and the
+changes that are in a branch. These graphical clients can also help you by doing
+all of the operations that we've been doing on the command line!
+
+[a variety of graphical clients]: https://git-scm.com/downloads/guis
+
 Further reading
 ===============
 
