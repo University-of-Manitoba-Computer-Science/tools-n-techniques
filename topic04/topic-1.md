@@ -17,12 +17,9 @@ project, and how do we work together with other people on a project?
 
 ::: outcomes
 
-By the end of this week you should be able to:
-
-* [ ] Clone an existing remote version control repository.
-* [ ] Push an existing local repository to a remote version control repository.
 * [ ] Use branching and merging with a version control repository.
-* [ ] Synchronize repositories between computers for a personal project.
+* [ ] Synchronize repositories between computers for a personal project (e.g.,
+  `git push` and `git pull`).
 * [ ] Manage personal project tasks as issues using web-based issue tracking
   software.
 

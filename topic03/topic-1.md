@@ -54,8 +54,6 @@ GitLab to help us.
 
 ::: outcomes
 
-By the end of this week you should be able to:
-
 * [ ] Download a file from the internet on the command-line.
 * [ ] Compile and run programs of various programming languages on the command-line.
 * [ ] Use version control software on your own code to keep track of changes that
