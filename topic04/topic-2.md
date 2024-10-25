@@ -3,6 +3,12 @@ title: "Advanced version control"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/videoseries?si=hyh4LaKJ2EwnWqeK&amp;list=PLGqzRfI3gmjczhXb_odrkVCOS2p9C5CYo"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Use branching and merging with a version control repository.
