@@ -652,9 +652,13 @@ out:
 * [GitHub Skills] is a suite of resources similar to "Learn GitLab with
   tutorials", but targeting GitHub specifically.
 * [Oh My Git!] is a game to help learning how to use Git and its concepts.
+* [Learn Git Branching] is an interactive and visual guide for doing branching
+  in Git and it goes well beyond what we're doing with branches (it includes
+  things like "cherry picking"!).
 
 [Documentation page]: https://git-scm.com/doc
 [Learn GitLab with tutorials]: https://docs.gitlab.com/ee/tutorials/
 [Learn Enough Git to be Dangerous]: https://www.learnenough.com/git-tutorial
 [GitHub Skills]: https://skills.github.com/
 [Oh My Git!]: https://ohmygit.org/
+[Learn Git Branching]: https://learngitbranching.js.org/
