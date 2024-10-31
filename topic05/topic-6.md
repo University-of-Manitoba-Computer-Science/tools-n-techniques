@@ -3,14 +3,11 @@ title: "Summary"
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 OK, so we've actually really only looked at 3 or 4 tools and called that
 "advanced shell usage"; what gives?
 
-It turns out that there are a few different implicit learning outcomes that you
-met by going through this exercise of learning these tools:
+It turns out that there are a few different *implicit* learning outcomes that
+you met by going through this exercise of learning these tools:
 
 * You had a sense that command-line programs had "options" (like `ls -a`), but
   now you're beginning to see that almost all command-line programs have options.
@@ -26,7 +23,8 @@ met by going through this exercise of learning these tools:
   This is something that you'll actually see in two other courses implicitly and
   explicitly: implicitly in COMP 3350 as a "design pattern" and explicitly in
   COMP 3430 as... well, the mechanical API for how programs launch other
-  programs.
+  programs (your shell :shell: *is* a program, it's job is to start *other*
+  programs).
 * You've learned a little bit more about how Git works in terms of how to
   compare different text files to one another (Git uses something like `diff`
   internally).
@@ -42,8 +40,6 @@ You should now be able to:
 * [X] Compare plain text files.
 
 :::
-
-Now you should be ready to start working on the assignment this week!
 
 [COMP 3030: Automata Theory and Formal Languages]:
 https://sci.umanitoba.ca/cs/wp-content/uploads/sites/3/2022/05/comp3030.pdf

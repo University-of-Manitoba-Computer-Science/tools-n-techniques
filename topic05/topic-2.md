@@ -3,10 +3,6 @@ title: "Finding files"
 author: Franklin Bristow
 ---
 
-
-Finding files
-=============
-
 ::: outcomes
 
 * [X] Find files on the command line by name using patterns.
@@ -16,8 +12,9 @@ Finding files
 You might be saying to yourself "[wat]". "Why would I ever need to find files on
 the command line?"
 
-I'd say to you: "You're right, we just spent time figuring out an appropriate
-folder structure for your courses!"
+I'd say to you: "You're right :+1:! we just spent time figuring out an
+appropriate folder structure for your courses! It should be pretty easy to find
+a file in that nice folder structure!"
 
 But then I'd also say: "You're not always going to be working with folder
 structures that you made. You're not always going to be working with files
@@ -54,9 +51,16 @@ Please connect to Aviary before you try to run any of these examples.
 The simplest way to run `find` is to run it with a single argument: the
 directory that you want to find files in:
 
+
+::: input
+
 ```bash
-[you@bird ~]> find .
+find .
+
+# this is the word `find` with a space, then a period after it.
 ```
+
+:::
 
 `find` will proceed to list all of the files that it can find starting in the
 current directory, and that's probably a lot more than you expected.
@@ -67,7 +71,7 @@ current directory, and that's probably a lot more than you expected.
 https://i.kym-cdn.com/photos/images/original/000/000/151/n725075089_288918_2774.jpg
 
 Finding files by name
----------------------
+=====================
 
 Normally this isn't how you would use `find`. This is certainly *a* way you can
 run `find`, but it's not the typical usage.
@@ -82,29 +86,45 @@ going to look at this in several ways:
 
 You're going to be working with a directory structure that you don't know
 anything about and is too deep and complex for you to manually search through.
-I really hope the directories you see in your job or your academic life don't
-look anything like this!
+(I really hope the directories you see in your job or your academic life don't
+look anything like this!)
 
-Start by downloading this file, but make sure that you **do not** download it into
-your repository:
+Start by [downloading this file] (on the command line; either use `wget` or
+download to your local computer then transfer with `scp`), but make sure that
+you **do not** download it into your repository:
 
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar
+<https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar>
 
-<mark>**Note**</mark>: There are over 7000 directories in this folder structure.
-It's not worth your time trying to find anything trying to use `cd` and `ls`.
+[downloading this file]: ../topic03/topic-2.html#downloading-files-from-the-internet
+
+::: warning
+
+**Note**: There are over 7000 directories in this folder structure.  It's not
+worth your time trying to find anything trying to use `cd` and `ls`.
+
+:::
 
 This is a `.tar` file (a "[Tape ARchive]"). Similar to a `.zip` file, this is
 a kind of "compressed" file --- there are many files *within* this single file,
 and you need to use a program to "expand" the archive. For `.tar` files, the
 program's name is `tar`:
 
+::: input
+
 ```bash
-tar -xf crazy-directories.tar # Th eXtract File
+tar -xf crazy-directories.tar 
+# The options xf are for e**X**tract from **F**ile
 ```
+
+:::
+
+::: warning
 
 <mark>**Note**</mark>: **There are over 7000 directories in this folder
 structure**. Extracting the entire directory structure on Aviary will probably
 take 5 or more minutes to complete.
+
+:::
 
 [Tape ARchive]: https://en.wikipedia.org/wiki/Tar_(computing)
 
@@ -128,10 +148,10 @@ Bash shell.
 
 An aside *within an aside*? Is that even legal?
 
-Bash and tcsh are not the only shell programs. There are [many shell programs].
-We're unfortunately not going to spend time talking about shells. Most people
-don't even think about shells and just use the one that starts automatically
-when the terminal opens or when they connect to a remote computer.
+`bash` and `tcsh` are not the only shell programs. There are [many shell
+programs].  We're unfortunately not going to spend time talking about shells.
+Most people don't even think about shells and just use the one that starts
+automatically when the terminal opens or when they connect to a remote computer.
 
 When you take the time to try out different shells, though, it's a similar
 choice to choosing a text editor.
@@ -147,7 +167,8 @@ https://en.wikipedia.org/wiki/List_of_command-line_interpreters
 
 :::
 
-### Finding an exact file name
+Finding an exact file name
+--------------------------
 
 Let's imagine that we know the exact name of a file. I'm going to tell it to
 you. The file name that you want to find is "`bananas.md`".
@@ -159,13 +180,18 @@ Change into the `crazy-directories` directory (`cd`).
 We can use the `-name` option on `find` to look for a file by name when we know
 the exact name of the file:
 
+::: input
+
 ```bash
 find . -name "bananas.md"
 ```
 
 :::
 
-### Finding a file name matching a pattern
+:::
+
+Finding a file name matching a pattern
+--------------------------------------
 
 Finding a file using a name that we know is straightforward.
 
@@ -192,6 +218,8 @@ files that match some specific patterns.
 
 You can find the same file that we saw before (`bananas.md`) using patterns:
 
+::: input
+
 ```bash
 find . -name "*nanas.md"  # anything ending with "nanas.md"
 find . -name "*.md"       # anything ending with ".md"
@@ -204,9 +232,12 @@ find . -name "[AbC]ananas.md"
                           # "Cananas.md"
 ```
 
+::: 
+
 :::
 
-### Finding a file names with unknown case
+Finding a file names with unknown case
+--------------------------------------
 
 You may have encountered this before while working on the command line,
 especially if you're moving between Windows on your personal computer and
@@ -218,9 +249,13 @@ macOS.
 We *could* use the character class pattern to find files that have any case, but
 typing this out would be extraordinarily tedious:
 
+::: input
+
 ```bash
 find . -name "[Bb][Aa][Nn][Aa][[Nn][Aa][Ss].md"
 ```
+
+:::
 
 Thankfully, there's another option for `find`: `-iname`.
 
@@ -230,17 +265,21 @@ When you know the general pattern that your file has for its name, but you don't
 know what case the file name uses, you can use the `-iname` option; the `i` in
 `-iname` stands for "ignore case".
 
+::: input
+
 ```bash
 find . -iname "bananas.md"
 ```
+
+:::
 
 You can use any of the special characters (`*`, `?`, or `[]`) with the `-iname`
 option.
 
 :::
 
-Running programs on the files you find
---------------------------------------
+Running programs on the files you find (with `find`)
+====================================================
 
 ::: outcomes
 
@@ -254,7 +293,8 @@ something* with the files that you find. Let's first explore some of the things
 that we might want to *do* to files, and then look at the way we would use
 `find` to do those things on our behalf.
 
-### What would we want to do?
+What would we want to do?
+-------------------------
 
 What kinds of things might you want to do with the files that you find on the
 command line using `find`?
@@ -270,12 +310,13 @@ command line using `find`?
 [FLAC]: https://en.wikipedia.org/wiki/FLAC
 [MP3]: https://en.wikipedia.org/wiki/MP3
 
-### Using `find` to accomplish our goal
+Using `find` to accomplish our goal
+-----------------------------------
 
 We're going to use two options on `find` to accomplish our goal: `-exec` and
 `-delete`.
 
-#### `-delete`
+### `-delete`
 
 Deleting files is pretty straightforward using the `-delete` option.
 
@@ -291,9 +332,13 @@ it's **gone**.
 
 Let's delete the file with the exact file name `bananas.md`:
 
+::: input
+
 ```bash
 find . -name "bananas.md" -delete
 ```
+
+:::
 
 The `-delete` option on `find` deletes any file that has a name matching the
 pattern that you've described to `find`. That means that if multiple files
@@ -302,7 +347,7 @@ option.
 
 :::
 
-#### `-exec`
+### `-exec`
 
 More often than deleting stuff, you're going to want to run a program on the
 things that you find.
@@ -318,18 +363,26 @@ include how to run the command, but the best way to describe this is by example.
 
 Let's start by finding all Markdown files in the `crazy-directories` directory:
 
+::: input
+
 ```bash
 find . -name "*.md" # find all files with the extension .md
 ```
+
+:::
 
 There are a few more than expected!
 
 We want to convert all of these Markdown files to Word files (`.docx`). Doing
 this manually is possible, but tedious, so we'll let `find` to the work for us:
 
+::: input
+
 ```bash
 find . -name "*.md" -exec pandoc '{}' -f markdown+emoji -o '{}'.docx \;
 ```
+
+:::
 
 There's some weird looking stuff in there, so let's break it down:
 
@@ -373,9 +426,13 @@ If everything works out, we shouldn't see any output (`pandoc` is pretty quiet).
 
 Now check out the new files you have in your directory:
 
+::: input
+
 ```bash
 find . -name "*.docx"
 ```
+
+:::
 
 :::
 

@@ -3,19 +3,17 @@ title: "Comparing plain text files"
 author: Franklin Bristow
 ---
 
-Compare plain text files
-========================
-
 ::: outcomes
 
 * [X] Compare plain text files.
 
 :::
 
-The last thing we'll do this week is look at comparing plain text files to one
-another. You've actually been introduced to this topic already when we looked at
-the output from `git diff`: when you run `git diff` you're comparing the files
-as they were in the last commit to the current state that the files are in now!
+The last thing we'll do in this topic is look at comparing plain text files to
+one another. You've actually been introduced to this topic already when we
+looked at the output from `git diff`: when you run `git diff` you're comparing
+the files as they were in the last commit to the current state that the files
+are in now!
 
 We also sometimes want to be able to compare files directly to one another when,
 for example, they aren't under version control (we don't have the files in our
@@ -29,9 +27,16 @@ Let's get back one more time to the root of `crazy-directories`. Once you're
 there, let's compare the differences between `b/5/s/bananas.md` and
 `b/5/s/bAnAnAs.md`:
 
+:::::: columns
+::: {.column .input width=30%}
+
 ```bash
-diff -u b/5/s/bananas.md b/5/s/bAnAnAs.md
+diff -u b/5/s/bananas.md \
+        b/5/s/bAnAnAs.md
 ```
+
+:::
+::: {.column .output width=70%}
 
 You should see output that looks something like this:
 
@@ -46,6 +51,8 @@ You should see output that looks something like this:
 -You found me! That's bananas :banana:!
 +You found me! That's ... wait, what?
 ```
+:::
+::::::
 
 `diff` is reporting to us the differences between the first file we passed and
 the second file. It indicates which file lines belong to using the `-` and `+`
