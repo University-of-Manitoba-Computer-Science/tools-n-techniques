@@ -3,10 +3,6 @@ title: "Reading and changing permissions"
 author: Franklin Bristow
 ---
 
-
-Read and change permissions
-===========================
-
 ::: outcomes
 
 * [X] Read and change permissions on files.
@@ -40,20 +36,34 @@ You can find out who else is currently logged in to the bird machine that you're
 connected to (remember: Aviary has about 25 computers in it) using the `w`
 command:
 
+:::::: columns
+::: {.column .input width=20%}
+
+```bash
+w 
 ```
-[you@bird ~]> w # I guess it's just you
+:::
+::: {.column .output width=80%}
+```
  19:44:05 up  3:03,  2 users,  load average: 0.08, 0.07, 0.09
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 you      pts/2    tmux(7408).%0    Mon14    1.00s  6:29   0.03s w
 you      pts/3    tmux(7408).%2    Tue19    5.00s 13.95s 13.54s vi notebook.md
 ```
 
+(I guess it's just you).
+
+The output you see from `w` will differ depending on who else is currently
+connected to that specific machine in Aviary!
+:::
+::::::
+
 :::
 
 Permissions are important in multi-user systems like this.
 
 Reading permissions
--------------------
+===================
 
 Let's start by checking the permissions on our files. We'll use a command that
 we've used frequently: `ls`
@@ -63,13 +73,25 @@ we've used frequently: `ls`
 Let's print out the "long" listing of all the files in our current directory
 using the `-l` option (that's a lower case L):
 
+:::::: columns
+::: {.column .input width=20%}
+
 ```bash
-[you@bird ~]> ls -l
+ls -l
+```
+
+:::
+::: {.column .output width=80%}
+
+```
 total 17100
 drwxr-xr-x 1 you csunderg       52 Oct  3 14:39 crazy-directories/
 -rw-r--r-- 1 you csunderg  1239277 Oct  2 16:24 crazy-directories.zip
 -rw-r--r-- 1 you csunderg 16012093 Jun 16 12:49 MonkeyPox.fn
 ```
+
+:::
+::::::
 
 Your output will look a little different than this (you've probably got
 different files and directories), but it should look similar to this.
@@ -102,9 +124,12 @@ The directory `crazy-directories` has the following metadata for permissions:
 
 * It is a directory, so the first letter is `d`. Files have a first letter of
   `-`.
-* Your user account has all permissions on it: Read, Write, and eXecute.
-* The group has only the ability to Read and eXecute this directory.
-* Similarly, other users have the ability to Read and eXecute this directory.
+* Your user account (the `u` part) has all permissions on it: Read, Write, and
+  eXecute.
+* The group (the `g` part) has only the ability to Read and eXecute this
+  directory.
+* Similarly, other users (the `o` part) have the ability to Read and eXecute
+  this directory.
 
 ::: aside
 
@@ -112,8 +137,10 @@ When I think of the word "execute" in the context of the command line, I think
 about running a program. Why do directories have execute permissions and other
 regular files don't?
 
-This is an unfortunate case of something being overloaded and having multiple
+This is an unfortunate case of something being [overloaded] and having multiple
 meanings in different contexts.
+
+[overloaded]: https://en.wikipedia.org/wiki/Function_overloading
 
 When a regular file has the eXecute permission, that means that you can run it
 like a program. When a directory has the eXecute permission, that means that you
@@ -122,7 +149,7 @@ can change into that directory with `cd`. :shrug:
 :::
 
 User, group, and other have different uses in different places, and we'll see an
-example of this in our assignment for this week.
+example of this later in an assignment.
 
 Changing permissions
 --------------------
