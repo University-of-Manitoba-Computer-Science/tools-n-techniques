@@ -103,7 +103,7 @@ Advanced shell usage
 <ul>
 <li><strong>Introduction</strong></li>
 <li><a href="topic-2.html">Finding files</a></li>
-<li><a href="topic-3.html">Filtering lines</a></li>
+<li><a href="topic-3.html">Filter lines from large text files</a></li>
 <li><a href="topic-4.html">Reading and changing permissions</a></li>
 <li><a href="topic-5.html">Comparing plain text files</a></li>
 <li><a href="topic-6.html">Summary</a></li>
@@ -237,28 +237,22 @@ server</a></li>
 <h1 class="title">Introduction</h1>
 <p class="author">Franklin Bristow</p>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-</ul>
-</nav>
-<h1 id="introduction">Introduction</h1>
 <p>Version control is an amazing tool. It’s overwhelming now, but you’re
 going to be using this extensively both in school and when you get into
 industry.</p>
 <p>We’ll keep using version control throughout this course, but, for
 now, we’re going to move on.</p>
-<p>This week we’re going to be spending some quality time with our
-shells <span class="emoji" data-emoji="shell">🐚</span>. That plain-text
-interface seems to be both intimidating and primitive all at the same
-time. Yes, shells can be intimidating, but we can do pretty powerful
-things with shells that might otherwise seem magical to someone who’s
-never written a program before.</p>
+<p>We’re going to be spending some quality time with our shells <span
+class="emoji" data-emoji="shell">🐚</span>. That plain-text interface
+seems to be both intimidating and primitive all at the same time. Yes,
+shells can be intimidating, but we can do pretty powerful things with
+shells that might otherwise seem magical to someone who’s never written
+a program before.</p>
 <p>“But I can just write a program to do that!” I’ll hear you thinking
-in class. Yeah, you can write a program to do stuff like we’re going to
-see, but <em>why would you write a program that already exists?</em></p>
+(through both space, and time). Yeah, you can write a program to do the
+same things we’re going to see in some command line tools, but <em>why
+would you write a program that already exists?</em></p>
 <div class="outcomes">
-<p>By the end of this week you should be able to:</p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Find files on the command line by
 name using patterns.</label>

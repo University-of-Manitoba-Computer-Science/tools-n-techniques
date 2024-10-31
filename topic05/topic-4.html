@@ -167,7 +167,7 @@ Advanced shell usage
 <ul>
 <li><a href="topic-1.html">Introduction</a></li>
 <li><a href="topic-2.html">Finding files</a></li>
-<li><a href="topic-3.html">Filtering lines</a></li>
+<li><a href="topic-3.html">Filter lines from large text files</a></li>
 <li><strong>Reading and changing permissions</strong></li>
 <li><a href="topic-5.html">Comparing plain text files</a></li>
 <li><a href="topic-6.html">Summary</a></li>
@@ -303,17 +303,14 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#read-and-change-permissions"
-id="toc-read-and-change-permissions">Read and change permissions</a>
-<ul>
 <li><a href="#reading-permissions" id="toc-reading-permissions">Reading
-permissions</a></li>
+permissions</a>
+<ul>
 <li><a href="#changing-permissions"
 id="toc-changing-permissions">Changing permissions</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="read-and-change-permissions">Read and change permissions</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Read and change
@@ -342,25 +339,39 @@ also faculty and other staff.</p>
 <p>You can find out who else is currently logged in to the bird machine
 that you’re connected to (remember: Aviary has about 25 computers in it)
 using the <code>w</code> command:</p>
-<pre><code>[you@bird ~]&gt; w # I guess it&#39;s just you
- 19:44:05 up  3:03,  2 users,  load average: 0.08, 0.07, 0.09
+<div class="columns">
+<div class="column input" style="width:20%;">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w</span> </span></code></pre></div>
+</div><div class="column output" style="width:80%;">
+<pre><code> 19:44:05 up  3:03,  2 users,  load average: 0.08, 0.07, 0.09
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 you      pts/2    tmux(7408).%0    Mon14    1.00s  6:29   0.03s w
 you      pts/3    tmux(7408).%2    Tue19    5.00s 13.95s 13.54s vi notebook.md</code></pre>
+<p>(I guess it’s just you).</p>
+<p>The output you see from <code>w</code> will differ depending on who
+else is currently connected to that specific machine in Aviary!</p>
+</div>
+</div>
 </div>
 <p>Permissions are important in multi-user systems like this.</p>
-<h2 id="reading-permissions">Reading permissions</h2>
+<h1 id="reading-permissions">Reading permissions</h1>
 <p>Let’s start by checking the permissions on our files. We’ll use a
 command that we’ve used frequently: <code>ls</code></p>
 <div class="example">
 <p>Let’s print out the “long” listing of all the files in our current
 directory using the <code>-l</code> option (that’s a lower case L):</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">-l</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 17100</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 1 you csunderg       52 Oct  3 14:39 crazy-directories/</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 you csunderg  1239277 Oct  2 16:24 crazy-directories.zip</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 you csunderg 16012093 Jun 16 12:49 MonkeyPox.fn</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:20%;">
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code></pre></div>
+</div><div class="column output" style="width:80%;">
+<pre><code>total 17100
+drwxr-xr-x 1 you csunderg       52 Oct  3 14:39 crazy-directories/
+-rw-r--r-- 1 you csunderg  1239277 Oct  2 16:24 crazy-directories.zip
+-rw-r--r-- 1 you csunderg 16012093 Jun 16 12:49 MonkeyPox.fn</code></pre>
+</div>
+</div>
 <p>Your output will look a little different than this (you’ve probably
 got different files and directories), but it should look similar to
 this.</p>
@@ -387,26 +398,27 @@ metadata for permissions:</p>
 <ul>
 <li>It is a directory, so the first letter is <code>d</code>. Files have
 a first letter of <code>-</code>.</li>
-<li>Your user account has all permissions on it: Read, Write, and
-eXecute.</li>
-<li>The group has only the ability to Read and eXecute this
-directory.</li>
-<li>Similarly, other users have the ability to Read and eXecute this
-directory.</li>
+<li>Your user account (the <code>u</code> part) has all permissions on
+it: Read, Write, and eXecute.</li>
+<li>The group (the <code>g</code> part) has only the ability to Read and
+eXecute this directory.</li>
+<li>Similarly, other users (the <code>o</code> part) have the ability to
+Read and eXecute this directory.</li>
 </ul>
 <div class="aside">
 <p>When I think of the word “execute” in the context of the command
 line, I think about running a program. Why do directories have execute
 permissions and other regular files don’t?</p>
-<p>This is an unfortunate case of something being overloaded and having
-multiple meanings in different contexts.</p>
+<p>This is an unfortunate case of something being <a
+href="https://en.wikipedia.org/wiki/Function_overloading">overloaded</a>
+and having multiple meanings in different contexts.</p>
 <p>When a regular file has the eXecute permission, that means that you
 can run it like a program. When a directory has the eXecute permission,
 that means that you can change into that directory with <code>cd</code>.
 <span class="emoji" data-emoji="shrug">🤷</span></p>
 </div>
 <p>User, group, and other have different uses in different places, and
-we’ll see an example of this in our assignment for this week.</p>
+we’ll see an example of this later in an assignment.</p>
 <h2 id="changing-permissions">Changing permissions</h2>
 <p>Seeing permissions is an important part of knowing what we need to
 change, when we need to change it.</p>
@@ -419,11 +431,11 @@ specify permissions for each of user, group, and other. Let’s change
 then inspect some permissions on <code>crazy-directories</code>. Try
 running each of these one at a time, then running <code>ls -l</code> to
 see how the permissions have changed each time.</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-x crazy-directories <span class="co"># remove (-) the eXecute permission for user</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x crazy-directories <span class="co"># add (+) the eXecute permission for everyone</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug-r crazy-directories <span class="co"># remove read permissions for user and group</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug+r crazy-directories <span class="co"># add back read permissions for user and group</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-x crazy-directories <span class="co"># remove (-) the eXecute permission for user</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x crazy-directories <span class="co"># add (+) the eXecute permission for everyone</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug-r crazy-directories <span class="co"># remove read permissions for user and group</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> ug+r crazy-directories <span class="co"># add back read permissions for user and group</span></span></code></pre></div>
 </div>
 
 </div> <!-- article-content -->

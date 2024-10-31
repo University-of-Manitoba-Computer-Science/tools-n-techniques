@@ -167,7 +167,7 @@ Advanced shell usage
 <ul>
 <li><a href="topic-1.html">Introduction</a></li>
 <li><strong>Finding files</strong></li>
-<li><a href="topic-3.html">Filtering lines</a></li>
+<li><a href="topic-3.html">Filter lines from large text files</a></li>
 <li><a href="topic-4.html">Reading and changing permissions</a></li>
 <li><a href="topic-5.html">Comparing plain text files</a></li>
 <li><a href="topic-6.html">Summary</a></li>
@@ -303,8 +303,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#finding-files" id="toc-finding-files">Finding files</a>
-<ul>
 <li><a href="#finding-files-by-name"
 id="toc-finding-files-by-name">Finding files by name</a>
 <ul>
@@ -317,20 +315,22 @@ matching a pattern</a></li>
 id="toc-finding-a-file-names-with-unknown-case">Finding a file names
 with unknown case</a></li>
 </ul></li>
-<li><a href="#running-programs-on-the-files-you-find"
-id="toc-running-programs-on-the-files-you-find">Running programs on the
-files you find</a>
+<li><a href="#running-programs-on-the-files-you-find-with-find"
+id="toc-running-programs-on-the-files-you-find-with-find">Running
+programs on the files you find (with <code>find</code>)</a>
 <ul>
 <li><a href="#what-would-we-want-to-do"
 id="toc-what-would-we-want-to-do">What would we want to do?</a></li>
 <li><a href="#using-find-to-accomplish-our-goal"
 id="toc-using-find-to-accomplish-our-goal">Using <code>find</code> to
-accomplish our goal</a></li>
+accomplish our goal</a>
+<ul>
+<li><a href="#delete" id="toc-delete"><code>-delete</code></a></li>
+<li><a href="#exec" id="toc-exec"><code>-exec</code></a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="finding-files">Finding files</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Find files on the command
@@ -340,8 +340,10 @@ line by name using patterns.</label></li>
 <p>You might be saying to yourself “<a
 href="https://i.kym-cdn.com/photos/images/original/000/000/151/n725075089_288918_2774.jpg">wat</a>”.
 “Why would I ever need to find files on the command line?”</p>
-<p>I’d say to you: “You’re right, we just spent time figuring out an
-appropriate folder structure for your courses!”</p>
+<p>I’d say to you: “You’re right <span class="emoji"
+data-emoji="+1">👍</span>! we just spent time figuring out an
+appropriate folder structure for your courses! It should be pretty easy
+to find a file in that nice folder structure!”</p>
 <p>But then I’d also say: “You’re not always going to be working with
 folder structures that you made. You’re not always going to be working
 with files that you’ve created. Sometimes you’ll know what the name of a
@@ -369,13 +371,17 @@ examples.</p>
 <div class="example">
 <p>The simplest way to run <code>find</code> is to run it with a single
 argument: the directory that you want to find files in:</p>
+<div class="input">
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> find .</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> .</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the word `find` with a space, then a period after it.</span></span></code></pre></div>
+</div>
 <p><code>find</code> will proceed to list all of the files that it can
 find starting in the current directory, and that’s probably a lot more
 than you expected.</p>
 </div>
-<h2 id="finding-files-by-name">Finding files by name</h2>
+<h1 id="finding-files-by-name">Finding files by name</h1>
 <p>Normally this isn’t how you would use <code>find</code>. This is
 certainly <em>a</em> way you can run <code>find</code>, but it’s not the
 typical usage.</p>
@@ -390,31 +396,44 @@ case).</li>
 </ul>
 <p>You’re going to be working with a directory structure that you don’t
 know anything about and is too deep and complex for you to manually
-search through. I really hope the directories you see in your job or
-your academic life don’t look anything like this!</p>
-<p>Start by downloading this file, but make sure that you <strong>do
-not</strong> download it into your repository:</p>
-<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar</code></pre>
-<p><mark><strong>Note</strong></mark>: There are over 7000 directories
-in this folder structure. It’s not worth your time trying to find
-anything trying to use <code>cd</code> and <code>ls</code>.</p>
+search through. (I really hope the directories you see in your job or
+your academic life don’t look anything like this!)</p>
+<p>Start by <a
+href="../topic03/topic-2.html#downloading-files-from-the-internet">downloading
+this file</a> (on the command line; either use <code>wget</code> or
+download to your local computer then transfer with <code>scp</code>),
+but make sure that you <strong>do not</strong> download it into your
+repository:</p>
+<p><a
+href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar"
+class="uri">https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar</a></p>
+<div class="warning">
+<p><strong>Note</strong>: There are over 7000 directories in this folder
+structure. It’s not worth your time trying to find anything trying to
+use <code>cd</code> and <code>ls</code>.</p>
+</div>
 <p>This is a <code>.tar</code> file (a “<a
 href="https://en.wikipedia.org/wiki/Tar_(computing)">Tape ARchive</a>”).
 Similar to a <code>.zip</code> file, this is a kind of “compressed” file
 — there are many files <em>within</em> this single file, and you need to
 use a program to “expand” the archive. For <code>.tar</code> files, the
 program’s name is <code>tar</code>:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> crazy-directories.tar <span class="co"># Th eXtract File</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> crazy-directories.tar </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The options xf are for e**X**tract from **F**ile</span></span></code></pre></div>
+</div>
+<div class="warning">
 <p><mark><strong>Note</strong></mark>: <strong>There are over 7000
 directories in this folder structure</strong>. Extracting the entire
 directory structure on Aviary will probably take 5 or more minutes to
 complete.</p>
+</div>
 <div class="aside">
 <p>A <strong>single command</strong> was used to create this directory
 structure:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="dt">{</span>a<span class="dt">..</span>z<span class="dt">}</span>/{0..9}/{a..z}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="dt">{</span>a<span class="dt">..</span>z<span class="dt">}</span>/{0..9}/{a..z}</span></code></pre></div>
 <p>This uses a feature that’s present in <em>some</em> shells called
 brace expansion.</p>
 <p>This <strong>will not</strong> work on Aviary when you first connect.
@@ -427,7 +446,8 @@ directory structure. You can run <code>bash</code> on the command line
 to start the Bash shell.</p>
 <div class="aside">
 <p>An aside <em>within an aside</em>? Is that even legal?</p>
-<p>Bash and tcsh are not the only shell programs. There are <a
+<p><code>bash</code> and <code>tcsh</code> are not the only shell
+programs. There are <a
 href="https://en.wikipedia.org/wiki/List_of_command-line_interpreters">many
 shell programs</a>. We’re unfortunately not going to spend time talking
 about shells. Most people don’t even think about shells and just use the
@@ -437,7 +457,7 @@ connect to a remote computer.</p>
 similar choice to choosing a text editor.</p>
 </div>
 </div>
-<h3 id="finding-an-exact-file-name">Finding an exact file name</h3>
+<h2 id="finding-an-exact-file-name">Finding an exact file name</h2>
 <p>Let’s imagine that we know the exact name of a file. I’m going to
 tell it to you. The file name that you want to find is
 “<code>bananas.md</code>”.</p>
@@ -446,11 +466,13 @@ tell it to you. The file name that you want to find is
 (<code>cd</code>).</p>
 <p>We can use the <code>-name</code> option on <code>find</code> to look
 for a file by name when we know the exact name of the file:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
 </div>
-<h3 id="finding-a-file-name-matching-a-pattern">Finding a file name
-matching a pattern</h3>
+</div>
+<h2 id="finding-a-file-name-matching-a-pattern">Finding a file name
+matching a pattern</h2>
 <p>Finding a file using a name that we know is straightforward.</p>
 <p>Sometimes (maybe more frequently), we only know what the file name
 <em>looks like</em>. Examples of situations like this might be:</p>
@@ -479,19 +501,21 @@ can be any character.</li>
 going to be looking for files that match some specific patterns.</p>
 <p>You can find the same file that we saw before
 (<code>bananas.md</code>) using patterns:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*nanas.md&quot;</span>  <span class="co"># anything ending with &quot;nanas.md&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span>       <span class="co"># anything ending with &quot;.md&quot;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;?ananas.md&quot;</span> <span class="co"># anything that has exactly one character, then</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># ananas.md</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*bananas*&quot;</span>  <span class="co"># anything that contains &quot;bananas&quot;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;banana*&quot;</span>    <span class="co"># anything that starts with &quot;banana&quot;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[AbC]ananas.md&quot;</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># files named &quot;bananas.md&quot;, &quot;Aananas.md&quot;, or</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># &quot;Cananas.md&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*nanas.md&quot;</span>  <span class="co"># anything ending with &quot;nanas.md&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span>       <span class="co"># anything ending with &quot;.md&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;?ananas.md&quot;</span> <span class="co"># anything that has exactly one character, then</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># ananas.md</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*bananas*&quot;</span>  <span class="co"># anything that contains &quot;bananas&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;banana*&quot;</span>    <span class="co"># anything that starts with &quot;banana&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[AbC]ananas.md&quot;</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># files named &quot;bananas.md&quot;, &quot;Aananas.md&quot;, or</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># &quot;Cananas.md&quot;</span></span></code></pre></div>
 </div>
-<h3 id="finding-a-file-names-with-unknown-case">Finding a file names
-with unknown case</h3>
+</div>
+<h2 id="finding-a-file-names-with-unknown-case">Finding a file names
+with unknown case</h2>
 <p>You may have encountered this before while working on the command
 line, especially if you’re moving between Windows on your personal
 computer and Aviary: file names on Unix or Unix-like systems (Linux or
@@ -501,8 +525,10 @@ different file names that could be completely unique on Linux or
 macOS.</p>
 <p>We <em>could</em> use the character class pattern to find files that
 have any case, but typing this out would be extraordinarily tedious:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[Bb][Aa][Nn][Aa][[Nn][Aa][Ss].md&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;[Bb][Aa][Nn][Aa][[Nn][Aa][Ss].md&quot;</span></span></code></pre></div>
+</div>
 <p>Thankfully, there’s another option for <code>find</code>:
 <code>-iname</code>.</p>
 <div class="example">
@@ -510,14 +536,16 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="
 but you don’t know what case the file name uses, you can use the
 <code>-iname</code> option; the <code>i</code> in <code>-iname</code>
 stands for “ignore case”.</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-iname</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-iname</span> <span class="st">&quot;bananas.md&quot;</span></span></code></pre></div>
+</div>
 <p>You can use any of the special characters (<code>*</code>,
 <code>?</code>, or <code>[]</code>) with the <code>-iname</code>
 option.</p>
 </div>
-<h2 id="running-programs-on-the-files-you-find">Running programs on the
-files you find</h2>
+<h1 id="running-programs-on-the-files-you-find-with-find">Running
+programs on the files you find (with <code>find</code>)</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Execute commands on the
@@ -530,7 +558,7 @@ or …”). Sometimes you actually want to <em>do something</em> with the
 files that you find. Let’s first explore some of the things that we
 might want to <em>do</em> to files, and then look at the way we would
 use <code>find</code> to do those things on our behalf.</p>
-<h3 id="what-would-we-want-to-do">What would we want to do?</h3>
+<h2 id="what-would-we-want-to-do">What would we want to do?</h2>
 <p>What kinds of things might you want to do with the files that you
 find on the command line using <code>find</code>?</p>
 <ul>
@@ -547,11 +575,11 @@ to also have smaller versions of, or “thumbnails”).</li>
 <li>Deleting files (e.g., you have many <code>.class</code> files, and
 you want to delete them all).</li>
 </ul>
-<h3 id="using-find-to-accomplish-our-goal">Using <code>find</code> to
-accomplish our goal</h3>
+<h2 id="using-find-to-accomplish-our-goal">Using <code>find</code> to
+accomplish our goal</h2>
 <p>We’re going to use two options on <code>find</code> to accomplish our
 goal: <code>-exec</code> and <code>-delete</code>.</p>
-<h4 id="delete"><code>-delete</code></h4>
+<h3 id="delete"><code>-delete</code></h3>
 <p>Deleting files is pretty straightforward using the
 <code>-delete</code> option.</p>
 <div class="warning">
@@ -563,15 +591,17 @@ command line</strong>. When you delete something using either with
 <div class="example">
 <p>Let’s delete the file with the exact file name
 <code>bananas.md</code>:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span> <span class="at">-delete</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;bananas.md&quot;</span> <span class="at">-delete</span></span></code></pre></div>
+</div>
 <p>The <code>-delete</code> option on <code>find</code> deletes any file
 that has a name matching the pattern that you’ve described to
 <code>find</code>. That means that if multiple files match the pattern,
 then all of those files would be deleted with the <code>-delete</code>
 option.</p>
 </div>
-<h4 id="exec"><code>-exec</code></h4>
+<h3 id="exec"><code>-exec</code></h3>
 <p>More often than deleting stuff, you’re going to want to run a program
 on the things that you find.</p>
 <p>Similar to the way that the <code>-delete</code> option works (it
@@ -584,33 +614,37 @@ but the best way to describe this is by example.</p>
 <div class="example">
 <p>Let’s start by finding all Markdown files in the
 <code>crazy-directories</code> directory:</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+</div>
 <p>There are a few more than expected!</p>
 <p>We want to convert all of these Markdown files to Word files
 (<code>.docx</code>). Doing this manually is possible, but tedious, so
 we’ll let <code>find</code> to the work for us:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="at">-exec</span> pandoc <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="at">-exec</span> pandoc <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div>
+</div>
 <p>There’s some weird looking stuff in there, so let’s break it
 down:</p>
 <ul>
-<li><div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+<li><div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
 This is the same as what we’ve seen before: find all files with names
 that match the pattern.</li>
-<li><div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-exec</span></span></code></pre></div>
+<li><div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-exec</span></span></code></pre></div>
 Here’s the start of our new option for <code>find</code>. Everything
 that follows the <code>-exec</code> option is another complete
 command.</li>
-<li><div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">pandoc</span> <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>         <span class="co"># run pandoc on the name of the file</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote it in case there are spaces;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="co"># The output file is the same file name</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># with a .docx extension (Word), and the</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># command is terminated with \;</span></span></code></pre></div>
+<li><div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">pandoc</span> <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>         <span class="co"># run pandoc on the name of the file</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote it in case there are spaces;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="co"># The output file is the same file name</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># with a .docx extension (Word), and the</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># command is terminated with \;</span></span></code></pre></div>
 <ul>
 <li>We’ve seen <code>pandoc</code> before lots of times.</li>
 <li>One new thing here is the <code>'{}'</code> (twice).
@@ -621,8 +655,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href=
 the name of the file that <code>find</code> found contains spaces. In
 our example, one of the files <code>find</code> finds is
 <code>bAnAnAs.md</code>, and this would make the command look like:</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;b/5/s/bAnAnAs.md&#39;</span>.docx <span class="dt">\;</span></span></code></pre></div></li>
 </ul></li>
 <li>The <code>-f markdown+emoji</code> is an option to
 <code>pandoc</code> to say that we want it to actually render emoji
@@ -635,8 +669,10 @@ ends.</li>
 <p>If everything works out, we shouldn’t see any output
 (<code>pandoc</code> is pretty quiet).</p>
 <p>Now check out the new files you have in your directory:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span></span></code></pre></div>
+</div>
 </div>
 <p>The <code>-exec</code> option sure looks <em>weird</em>, but it’s a
 pretty powerful option: we can find files that have a name matching a

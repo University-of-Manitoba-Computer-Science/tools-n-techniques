@@ -103,7 +103,7 @@ Advanced shell usage
 <ul>
 <li><a href="topic-1.html">Introduction</a></li>
 <li><a href="topic-2.html">Finding files</a></li>
-<li><a href="topic-3.html">Filtering lines</a></li>
+<li><a href="topic-3.html">Filter lines from large text files</a></li>
 <li><a href="topic-4.html">Reading and changing permissions</a></li>
 <li><a href="topic-5.html">Comparing plain text files</a></li>
 <li><strong>Summary</strong></li>
@@ -237,17 +237,11 @@ server</a></li>
 <h1 class="title">Summary</h1>
 <p class="author">Franklin Bristow</p>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#summary" id="toc-summary">Summary</a></li>
-</ul>
-</nav>
-<h1 id="summary">Summary</h1>
 <p>OK, so we’ve actually really only looked at 3 or 4 tools and called
 that “advanced shell usage”; what gives?</p>
-<p>It turns out that there are a few different implicit learning
-outcomes that you met by going through this exercise of learning these
-tools:</p>
+<p>It turns out that there are a few different <em>implicit</em>
+learning outcomes that you met by going through this exercise of
+learning these tools:</p>
 <ul>
 <li><p>You had a sense that command-line programs had “options” (like
 <code>ls -a</code>), but now you’re beginning to see that almost all
@@ -266,7 +260,9 @@ automata (sort of like graphs).</p></li>
 commands</em> on your behalf. This is something that you’ll actually see
 in two other courses implicitly and explicitly: implicitly in COMP 3350
 as a “design pattern” and explicitly in COMP 3430 as… well, the
-mechanical API for how programs launch other programs.</p></li>
+mechanical API for how programs launch other programs (your shell <span
+class="emoji" data-emoji="shell">🐚</span> <em>is</em> a program, it’s
+job is to start <em>other</em> programs).</p></li>
 <li><p>You’ve learned a little bit more about how Git works in terms of
 how to compare different text files to one another (Git uses something
 like <code>diff</code> internally).</p></li>
@@ -288,8 +284,6 @@ permissions on files.</label></li>
 files.</label></li>
 </ul>
 </div>
-<p>Now you should be ready to start working on the assignment this
-week!</p>
 
 </div> <!-- article-content -->
 
