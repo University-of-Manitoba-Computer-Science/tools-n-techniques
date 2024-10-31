@@ -152,7 +152,7 @@ User, group, and other have different uses in different places, and we'll see an
 example of this later in an assignment.
 
 Changing permissions
---------------------
+====================
 
 Seeing permissions is an important part of knowing what we need to change, when
 we need to change it.
