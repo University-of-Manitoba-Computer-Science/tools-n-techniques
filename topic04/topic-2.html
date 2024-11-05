@@ -323,6 +323,8 @@ branches</a></li>
 id="toc-pushing-branches-to-remote">Pushing branches to remote</a></li>
 <li><a href="#merging-branches" id="toc-merging-branches">Merging
 branches</a></li>
+<li><a href="#deleting-branches" id="toc-deleting-branches">Deleting
+branches</a></li>
 </ul></li>
 <li><a href="#synchronizing-projects-between-computers"
 id="toc-synchronizing-projects-between-computers">Synchronizing projects
@@ -707,6 +709,22 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href=
 <p><span class="emoji" data-emoji="tada">🎉</span>! You just resolved a
 merge conflict!</p>
 </div>
+<h2 id="deleting-branches">Deleting branches</h2>
+<p>Now that our branch is merged, its commits are a part of
+<code>main</code>, so we don’t need the original branch anymore. We
+should delete it so it doesn’t clutter up our <code>git branch</code>
+output.</p>
+<div class="example">
+<p>We can delete a branch using the <code>git branch</code> subcommand
+with the <code>-d</code> option:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> my-new-branch</span></code></pre></div>
+<p>This will delete the branch from our local repository, but not the
+remote repository. To delete it from the remote, use
+<code>git push</code> with <code>-d origin</code>:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> origin my-new-branch</span></code></pre></div>
+</div>
 <h1 id="synchronizing-projects-between-computers">Synchronizing projects
 between computers</h1>
 <p>Doing <code>scp</code> is, honestly, a little tedious. Even using
@@ -782,15 +800,15 @@ history.</p>
 <p>Now you should also <code>push</code> to your remote repository
 occasionally:</p>
 <div class="input">
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div>
 </div>
 <p>You <em>don’t</em> need to do <code>-u origin</code>.</p>
 <p>To get the changes on your other computer, you should use
 <code>git pull</code>:</p>
 <div class="input">
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div>
 </div>
 <p>Depending on what you’ve done with your repositories, you may get
 merge conflicts when you pull (if you edited a file on your local
