@@ -505,6 +505,27 @@ git commit -m "Merge with my-other-new-branch"
 
 [Things may not go smoothly]: https://www.youtube.com/watch?v=yJxCdh1Ps48
 
+Deleting branches
+-----------------
+
+Now that our branch is merged, its commits are a part of `main`, so we don't need the original branch anymore. We should delete it so it doesn't clutter up our `git branch` output.
+
+::: example
+
+We can delete a branch using the `git branch` subcommand with the `-d` option:
+
+```bash
+git branch -d my-new-branch
+```
+
+This will delete the branch from our local repository, but not the remote repository. To delete it from the remote, use `git push` with `-d origin`:
+
+```bash
+git push -d origin my-new-branch
+```
+
+:::
+
 Synchronizing projects between computers
 ========================================
 
