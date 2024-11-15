@@ -252,7 +252,7 @@ typing this out would be extraordinarily tedious:
 ::: input
 
 ```bash
-find . -name "[Bb][Aa][Nn][Aa][[Nn][Aa][Ss].md"
+find . -name "[Bb][Aa][Nn][Aa][Nn][Aa][Ss].md"
 ```
 
 :::
