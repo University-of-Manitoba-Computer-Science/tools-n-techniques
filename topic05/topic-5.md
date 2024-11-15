@@ -3,6 +3,12 @@ title: "Comparing plain text files"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/UTgHI7wmDg8?si=4j_wfo5U2Rk2APdo"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Compare plain text files.
