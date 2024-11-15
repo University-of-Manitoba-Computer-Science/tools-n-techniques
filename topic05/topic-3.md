@@ -3,6 +3,12 @@ title: "Filter lines from large text files"
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/K8XM9PLuU1c?si=_nh6d7f13Lg6sL5E"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Filter lines from large text files using patterns.
@@ -105,11 +111,11 @@ GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
 ```
 
-The file you just downloaded is about 600KB in size (there are about 200 thousand
+The file you just downloaded is about 600KB in size (there are about 600 thousand
 characters in this file), so doing things like counting records is not something
 we want to do by hand.
 
-[FASTA-formatted file]: https://en.wikipedia.org/wiki/FASTQ_format
+[FASTQ-formatted file]: https://en.wikipedia.org/wiki/FASTQ_format
 [gnu]: https://www.gnu.org/philosophy/free-sw.html
 
 Basic use
