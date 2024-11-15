@@ -93,7 +93,7 @@ Start by [downloading this file] (on the command line; either use `wget` or
 download to your local computer then transfer with `scp`), but make sure that
 you **do not** download it into your repository:
 
-<https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar>
+<https://toolsntechniques.ca/topic05/crazy-directories.tar>
 
 [downloading this file]: ../topic03/topic-2.html#downloading-files-from-the-internet
 
