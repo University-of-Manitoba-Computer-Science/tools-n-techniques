@@ -184,8 +184,10 @@ Digital notebooks and getting help
 <li><a href="topic-1.html">Introduction</a></li>
 <li><strong>Getting help</strong></li>
 <li><a href="topic-3.html">Getting help — Examples</a></li>
-<li><a href="topic-4.html">Academic misconduct</a></li>
-<li><a href="topic-5.html">Digital notebooks</a></li>
+<li><a href="topic-4.html">Academic misconduct (or: “is this kind of
+help appropriate?”)</a></li>
+<li><a href="topic-5.html">Web-based digital interactive
+notebooks</a></li>
 <li><a href="topic-6.html">Summary</a></li>
 </ul>
 </details>
@@ -306,8 +308,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#getting-help" id="toc-getting-help">Getting help</a>
-<ul>
 <li><a href="#getting-help-by-running-the-command"
 id="toc-getting-help-by-running-the-command">Getting help by running the
 command</a></li>
@@ -328,12 +328,14 @@ id="toc-how-to-ask-the-question">How to ask the question</a></li>
 <li><a href="#places-to-look" id="toc-places-to-look">Places to
 look</a></li>
 <li><a href="#assessing-what-you-find"
-id="toc-assessing-what-you-find">Assessing what you find</a></li>
+id="toc-assessing-what-you-find">Assessing what you find</a>
+<ul>
+<li><a href="#general-approach" id="toc-general-approach">General
+approach</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="getting-help">Getting help</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Get help about a command
@@ -348,12 +350,13 @@ quality of help online.</label></li>
 assignment, something for work, something for myself) and I just don’t
 know how. Even worse, sometimes we don’t even know what words to use to
 ask for help — how would I even know to ask for help with a tool called
-<code>grep</code>?!.</p>
+<code>grep</code> let alone figure out what the name of the program
+is?!.</p>
 <p>We’re going to be primarily looking at getting help with command line
 tools, but we’re also going to take a look at how we can find and assess
 the quality of help online.</p>
-<h2 id="getting-help-by-running-the-command">Getting help by running the
-command</h2>
+<h1 id="getting-help-by-running-the-command">Getting help by running the
+command</h1>
 <p>So far in this course you’ve been told the names of commands that you
 should run, you’ve been told how you should run those commands, and
 you’ve been told about some new options on the commands you knew that
@@ -373,7 +376,7 @@ stuff, but it’s, uh, pretty cryptic or entirely not helpful:</p>
 <li><p>Your shell on Aviary (The <a
 href="https://en.wikipedia.org/wiki/Tcsh">TENEX C shell</a>, or
 <code>tcsh</code>) very unhelpfully tells you “You should have someone
-show you some things”. Thanks.</p></li>
+show you some things”. <em>Thanks</em>.</p></li>
 <li><p><a
 href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> (another
 shell) immediately tells you</p>
@@ -399,19 +402,20 @@ a little while now: <code>git</code>.</p>
 <div class="example">
 <p>Enter the <code>git</code> command in your terminal and press
 <kbd>Enter</kbd>:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git <span class="pp">[--</span><span class="ss">version</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">help</span><span class="pp">]</span> [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] <span class="pp">[--</span><span class="ss">html</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">man</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">info</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> <span class="pp">[--</span><span class="ss">no</span><span class="pp">-</span><span class="ss">replace</span><span class="pp">-</span><span class="ss">objects</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">bare</span><span class="pp">]</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--git-dir=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>] [--work-tree=<span class="op">&lt;</span>path<span class="op">&gt;</span>] [--namespace=<span class="op">&lt;</span>name<span class="op">&gt;</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> <span class="ex">[</span><span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">These</span> are common Git commands used in various situations:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">start</span> a working area <span class="er">(</span><span class="ex">see</span> also: git help tutorial<span class="kw">)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   <span class="ex">clone</span>             Clone a repository into a new directory</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">init</span>              Create an empty Git repository or reinitialize an existing one</span></code></pre></div>
+<div class="output">
+<pre><code>usage: git [--version] [--help] [-C &lt;path&gt;] [-c &lt;name&gt;=&lt;value&gt;]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+           &lt;command&gt; [&lt;args&gt;]
+
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone             Clone a repository into a new directory
+   init              Create an empty Git repository or reinitialize an existing one</code></pre>
+</div>
 <p>When you run <code>git</code> without any arguments or options, it
 doesn’t know what you want it to do, and the most helpful response when
 a command can’t do anything without options or arguments is to print out
@@ -431,8 +435,9 @@ like <code>ls</code>:</p>
 <div class="example">
 <p>Enter the <code>ls</code> command in your terminal and press
 <kbd>Enter</kbd>:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls</span></code></pre></div>
+<div class="output">
+<pre><code>bin Mail hello comp-1002</code></pre>
+</div>
 <p>We knew about that!</p>
 <div class="aside">
 <p>Why is <code>ls</code> different from <code>git</code>? Why does it
@@ -446,27 +451,34 @@ directory):</p>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> . <span class="co"># is the same as just ls</span></span></code></pre></div>
 <p>We use <code>ls</code> <strong>so often in our current
 directory</strong> that not typing in the extra <kbd>Space</kbd> then
-<kbd>.</kbd> will actually save us time and frustration, so the current
-working directory is the “default” argument to <code>ls</code>.</p>
+<kbd>.</kbd> will actually save us a real amount of time over our
+lifetimes (literally entire minutes!), so the current working directory
+is the “default” argument to <code>ls</code>.</p>
 </div>
 <p>Now add the options <code>-a</code> for “all” and <code>-l</code> for
 “long”:</p>
+<div class="input">
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">-al</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code></pre></div>
+</div>
 <p>We knew about that, too!</p>
 <p>Well… what else can <code>ls</code> do?</p>
 <p>Let’s try running <code>ls</code> with a new option:
 <code>--help</code>:</p>
+<div class="input">
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> ls <span class="at">--help</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> ls <span class="pp">[</span><span class="ss">OPTION</span><span class="pp">]</span>... <span class="pp">[</span><span class="ss">FILE</span><span class="pp">]</span>...                                            </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">List</span> information about the FILEs <span class="er">(</span><span class="ex">the</span> current directory by default<span class="kw">)</span><span class="bu">.</span>       </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Sort</span> entries alphabetically if none of <span class="at">-cftuvSUX</span> nor <span class="at">--sort</span> is specified.  </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                                                           </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Mandatory</span> arguments to long options are mandatory for short options too.   </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-a,</span> <span class="at">--all</span>                  do not ignore entries starting with .         </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-A,</span> <span class="at">--almost-all</span>           do not list implied . and ..                  </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">--author</span>               with <span class="at">-l,</span> print the author of each file        </span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">--help</span></span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>Usage: ls [OPTION]... [FILE]...                                            
+List information about the FILEs (the current directory by default).       
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.  
+                                                                           
+Mandatory arguments to long options are mandatory for short options too.   
+  -a, --all                  do not ignore entries starting with .         
+  -A, --almost-all           do not list implied . and ..                  
+      --author               with -l, print the author of each file        </code></pre>
+</div>
 <p>OK, cool! Overwhelming! But <em>cool</em>!</p>
 <p>We can see some of the options that we’ve been told about with an
 explanation of what they do, so:</p>
@@ -486,15 +498,15 @@ printing out millions of bytes).</p>
 options or arguments (file names) like <code>ls</code> and
 <code>find</code>, and some that require us to pass either options or
 “subcommands” like <code>git</code>.</p>
-<p>One program we saw last week was <code>find</code>. Try running
+<p>One program we saw previously is <code>find</code>. Try running
 <code>find</code> with a <code>--help</code> option right now, I’ll
 wait.</p>
 <p>…</p>
 <p>The output here isn’t <em>not</em> helpful. But it’s… not exactly
 super helpful, either. Let’s move on to finding a little bit better help
 for <code>find</code>.</p>
-<h2 id="getting-help-by-reading-manual-pages">Getting help by reading
-manual pages</h2>
+<h1 id="getting-help-by-reading-manual-pages">Getting help by reading
+manual pages</h1>
 <p>Getting help from the command itself is useful, but a very common
 place to find additional help for programs on the command line are the
 “manual pages”. This is very often shortened to the “man pages” because
@@ -556,8 +568,8 @@ related to each other, telling people about code and programs.</p>
 take a look at the manual page for <code>find</code>.</p>
 <div class="example">
 <p>Open the manual page for <code>find</code>:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> find</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> find</span></code></pre></div>
 <p>This opens documentation for <code>find</code> that is
 <strong>comprehensive</strong>.</p>
 <p>The manual page opens in something called a “pager”. You can use your
@@ -607,8 +619,8 @@ users)</li>
 </ol>
 <p>You can learn more about this (and other stuff!) by looking at the
 manual page for <code>man</code>, run</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> man <span class="co"># ha ha</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> man <span class="co"># ha ha</span></span></code></pre></div>
 </div>
 <p>Next is the <code>NAME</code> section:</p>
 <pre><code>NAME
@@ -689,8 +701,8 @@ online because of how good the manual page for <code>find</code> is.</p>
 <p>Try looking at the manual pages for some of the other commands that
 you’ve used (<code>ls</code>, <code>grep</code>). How do these manual
 pages compare to <code>find</code>?</p>
-<h3 id="what-if-i-dont-know-the-name">What if I don’t know the
-name?</h3>
+<h2 id="what-if-i-dont-know-the-name">What if I don’t know the
+name?</h2>
 <p>Running the command with no arguments, with <code>--help</code>, or
 using the manual pages is great when you know the name of the command
 that you’re trying to get help with, but what if you don’t know the name
@@ -701,8 +713,8 @@ use the manual pages to help us with this!</p>
 <p>The manual page command <code>man</code> has an option
 <code>-k</code> that we can pass to ask it to find manual pages for us
 that contain keywords. This can sometimes help us find commands.</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> <span class="at">-k</span> search <span class="co"># I&#39;m looking for something</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> <span class="at">-k</span> search <span class="co"># I&#39;m looking for something</span></span></code></pre></div>
 <p>The <code>-k</code> option searches through all sections of the
 manual pages, and you can see which section the match is from in the
 parenthesis <code>()</code> immediately after the name of the
@@ -719,8 +731,8 @@ find (1)             - search for files in a directory hierarchy</code></pre>
 <p><code>apropos</code> is in section 1, <code>apt-patterns</code> is in
 section 7, … <code>find</code> is in section 1.</p>
 </div>
-<h2 id="find-and-assess-the-quality-of-help-online">Find and assess the
-quality of help online</h2>
+<h1 id="find-and-assess-the-quality-of-help-online">Find and assess the
+quality of help online</h1>
 <p>While we can find help using manual pages, not all manual pages are
 created equally. Not all commands even have manual pages. When the
 manual page isn’t great or doesn’t exist, we sometimes have to resort to
@@ -736,7 +748,7 @@ href="http://www.h-online.com/security/news/item/Old-tricks-are-new-again-Danger
 dangerous</a> — what you see in your web browser might not actually be
 the same as what gets copied, then pasted.</p>
 </div>
-<h3 id="how-to-ask-the-question">How to ask the question</h3>
+<h2 id="how-to-ask-the-question">How to ask the question</h2>
 <p>The first part of finding help online is knowing what question to
 ask, and sometimes that’s one of the hardest parts of getting help.</p>
 <p>Asking the right question depends heavily on context, but we’re going
@@ -752,7 +764,7 @@ necessary).</li>
 <li>Add the context where you’re trying to accomplish that (on the
 command line; in Linux; on Ubuntu).</li>
 </ul>
-<h3 id="places-to-look">Places to look</h3>
+<h2 id="places-to-look">Places to look</h2>
 <p>Your main starting point is a search engine (<a
 href="https://google.com">Google</a>, <a
 href="https://bing.com">Bing</a>, <a
@@ -785,7 +797,7 @@ with <code>find</code>:</p>
 <p>find directory by name “modified time” linux</p>
 </blockquote>
 </div>
-<h3 id="assessing-what-you-find">Assessing what you find</h3>
+<h2 id="assessing-what-you-find">Assessing what you find</h2>
 <p>Once you’ve got your question asked, you’re gonna find a bunch of
 stuff. Sometimes the resources you find are high quality (blog posts by
 real people who know their stuff), sometimes it’s good (user-generated
@@ -794,7 +806,7 @@ content on websites like StackOverflow), sometimes it’s bad
 all of the above. Sometimes you’re going to find things like the entire
 contents of manual pages copied and pasted onto a random “blog” that
 does little more than show ads.</p>
-<h4 id="general-approach">General approach</h4>
+<h3 id="general-approach">General approach</h3>
 <p>We of course can’t give comprehensive advice for every specific
 situation, but we can give some general advice.</p>
 <ol type="1">

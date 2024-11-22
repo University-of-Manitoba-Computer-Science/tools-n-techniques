@@ -184,8 +184,10 @@ Digital notebooks and getting help
 <li><a href="topic-1.html">Introduction</a></li>
 <li><a href="topic-2.html">Getting help</a></li>
 <li><strong>Getting help — Examples</strong></li>
-<li><a href="topic-4.html">Academic misconduct</a></li>
-<li><a href="topic-5.html">Digital notebooks</a></li>
+<li><a href="topic-4.html">Academic misconduct (or: “is this kind of
+help appropriate?”)</a></li>
+<li><a href="topic-5.html">Web-based digital interactive
+notebooks</a></li>
 <li><a href="topic-6.html">Summary</a></li>
 </ul>
 </details>
@@ -319,7 +321,7 @@ approach getting help on the command line through getting and assessing
 the quality of help online.</p>
 <h1 id="example-using-find-to-match-multiple-patterns">Example: using
 <code>find</code> to match multiple patterns</h1>
-<p>Last week we used <code>find</code> for a few different reasons: to
+<p>We previously used <code>find</code> for a few different reasons: to
 help us find all files matching a pattern, to delete those files, and to
 run commands on those files.</p>
 <p>In one situation we wanted to delete both <code>docx</code> and
@@ -411,9 +413,10 @@ around <code>-or</code>. Let’s try that:</p>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="at">-name</span> <span class="st">&quot;*.pdf&quot;</span></span></code></pre></div>
 <p>It works! Or at least it doesn’t give us an error. We deleted all
 those files last time, so it’s hard to say if it works.</p>
-<p>Re-generate those files using what you learned last week
-(<code>-exec</code>), and confirm if this command does indeed find those
-files.</p>
+<p>Re-generate those files using <a
+href="../topic05/topic-2.html#running-programs-on-the-files-you-find-with-find">what
+you learned in the previous topic (<code>-exec</code>)</a>, and confirm
+if this command does indeed find those files.</p>
 <p>Now let’s try delete those files using the same approach:</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.docx&quot;</span> <span class="at">-or</span> <span class="at">-name</span> <span class="st">&quot;*.pdf&quot;</span> <span class="at">-delete</span></span></code></pre></div>
