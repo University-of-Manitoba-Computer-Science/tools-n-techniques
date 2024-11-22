@@ -3,17 +3,13 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
-The bulk of what we've looked at this week is about getting help, and
-in terms of the way that you as a student spend your time, emphasizing this
-topic seems like the right choice. While you still might default to using web
-searching to find answers to the questions that you have, hopefully you've both
-learned some new skills for how to do web searching (like limiting results to
-certain sites with the `site:` option), but also realized just how much the help
-you can get on the command line in the manual pages, even if they are hard to
-parse.
+The bulk of what we've looked at is about getting help, and in terms of the way
+that you as a student spend your time, emphasizing this topic seems like the
+right choice. While you still might default to using web searching to find
+answers to the questions that you have, hopefully you've both learned some new
+skills for how to do web searching (like limiting results to certain sites with
+the `site:` option), but also realized just how much the help you can get on the
+command line in the manual pages, even if they are hard to parse.
 
 You've probably been told about academic misconduct in the past. Hopefully
 seeing some examples of situations tailored to your experience in computer
@@ -32,5 +28,3 @@ You should now be able to:
   notebook.
 
 :::
-
-Now you should be ready to start working on the assignment this week!

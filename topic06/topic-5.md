@@ -1,10 +1,7 @@
 ---
-title: Digital notebooks
+title: Web-based digital interactive notebooks
 author: Franklin Bristow
 ---
-
-Web-based digital interactive notebooks
-=======================================
 
 ::: outcomes
 
@@ -27,19 +24,13 @@ chance to see another approach to documenting your work.
 
 Let's start a new notebook here: <https://jupyter.org/try-jupyter/lab/>
 
-When you first open this work space, you're going to be greeted by an
-introductory notebook:
+When you first open this work space, you're going to be greeted by launcher:
 
 ![An introduction to Jupyter.](intro.png)
 
-The introduction is great, but let's get our hands dirty. Click on the + icon
-just above the toolbar to create a new notebook:
-
-![The toolbar.](toolbar.png)
-
-You'll have a list of options to choose from for the type of notebook to create.
-You should choose "Python (Pyodide)" under "Notebook". Clicking on that will
-give you a blank slate:
+We're going to create a "Notebook". You have a list of options to choose from
+for the type of notebook to create.  You should choose "Python (Pyodide)" under
+"Notebook". Clicking on that will give you a blank slate:
 
 ![An empty notebook.](empty-notebook.png)
 

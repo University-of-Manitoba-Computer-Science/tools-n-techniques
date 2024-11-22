@@ -3,9 +3,6 @@ title: Getting help
 author: Franklin Bristow
 ---
 
-Getting help
-============
-
 ::: outcomes
 
 * [X] Get help about a command by running the command.
@@ -17,14 +14,15 @@ Getting help
 We've all been here: I need to do something (something for an assignment,
 something for work, something for myself) and I just don't know how. Even worse,
 sometimes we don't even know what words to use to ask for help --- how would I
-even know to ask for help with a tool called `grep`?!.
+even know to ask for help with a tool called `grep` let alone figure out what
+the name of the program is?!.
 
 We're going to be primarily looking at getting help with command line tools, but
 we're also going to take a look at how we can find and assess the quality of
 help online.
 
 Getting help by running the command
------------------------------------
+===================================
 
 So far in this course you've been told the names of commands that you should
 run, you've been told how you should run those commands, and you've been told
@@ -46,7 +44,7 @@ Depending on the shell you're using, it *might* tell you some stuff, but it's,
 uh, pretty cryptic or entirely not helpful:
 
 * Your shell on Aviary (The [TENEX C shell], or `tcsh`) very unhelpfully tells
-  you "You should have someone show you some things". Thanks.
+  you "You should have someone show you some things". *Thanks*.
 * [Bash] (another shell) immediately tells you 
 
   > `These shell commands are defined internally.`
@@ -76,13 +74,15 @@ Let's take a look at a command we've been working with for a little while now:
 
 Enter the `git` command in your terminal and press <kbd>Enter</kbd>:
 
-```bash
-[you@bird ~]> git
+::: output
+
+```
 usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
            [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
+
 
 These are common Git commands used in various situations:
 
@@ -90,6 +90,7 @@ start a working area (see also: git help tutorial)
    clone             Clone a repository into a new directory
    init              Create an empty Git repository or reinitialize an existing one
 ```
+:::
 
 When you run `git` without any arguments or options, it doesn't know what you
 want it to do, and the most helpful response when a command can't do anything
@@ -116,9 +117,13 @@ Some commands just do what they're supposed to do what we run them, like `ls`:
 
 Enter the `ls` command in your terminal and press <kbd>Enter</kbd>:
 
-```bash
-[you@bird ~]> ls
+::: output
+
 ```
+bin Mail hello comp-1002
+```
+
+:::
 
 We knew about that!
 
@@ -136,16 +141,21 @@ ls . # is the same as just ls
 ```
 
 We use `ls` **so often in our current directory** that not typing in the extra
-<kbd>Space</kbd> then <kbd>.</kbd> will actually save us time and frustration,
-so the current working directory is the "default" argument to `ls`.
+<kbd>Space</kbd> then <kbd>.</kbd> will actually save us a real amount of time
+over our lifetimes (literally entire minutes!), so the current working directory
+is the "default" argument to `ls`.
 
 :::
 
 Now add the options `-a` for "all" and `-l` for "long":
 
+::: input
+
 ```bash
-[you@bird ~]> ls -al
+ls -al
 ```
+
+:::
 
 We knew about that, too!
 
@@ -153,8 +163,16 @@ Well... what else can `ls` do?
 
 Let's try running `ls` with a new option: `--help`:
 
+::: input
+
 ```bash
-[you@bird ~]> ls --help
+ls --help
+```
+:::
+
+::: output
+
+```
 Usage: ls [OPTION]... [FILE]...                                            
 List information about the FILEs (the current directory by default).       
 Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.  
@@ -164,6 +182,8 @@ Mandatory arguments to long options are mandatory for short options too.
   -A, --almost-all           do not list implied . and ..                  
       --author               with -l, print the author of each file        
 ```
+
+:::
 
 OK, cool! Overwhelming! But *cool*!
 
@@ -190,7 +210,7 @@ We've seen several commands that run without requiring us to pass any options or
 arguments (file names) like `ls` and `find`, and some that require us to pass
 either options or "subcommands" like `git`.
 
-One program we saw last week was `find`. Try running `find` with a `--help`
+One program we saw previously is `find`. Try running `find` with a `--help`
 option right now, I'll wait.
 
 ...
@@ -199,7 +219,7 @@ The output here isn't *not* helpful. But it's... not exactly super helpful,
 either. Let's move on to finding a little bit better help for `find`.
 
 Getting help by reading manual pages
-------------------------------------
+====================================
 
 Getting help from the command itself is useful, but a very common place to find
 additional help for programs on the command line are the "manual pages". This is
@@ -413,7 +433,8 @@ page for `find` is.
 Try looking at the manual pages for some of the other commands that you've used
 (`ls`, `grep`). How do these manual pages compare to `find`?
 
-### What if I don't know the name?
+What if I don't know the name?
+------------------------------
 
 Running the command with no arguments, with `--help`, or using the manual pages
 is great when you know the name of the command that you're trying to get help
@@ -453,7 +474,7 @@ section 1.
 :::
 
 Find and assess the quality of help online
-------------------------------------------
+==========================================
 
 While we can find help using manual pages, not all manual pages are created
 equally. Not all commands even have manual pages. When the manual page isn't
@@ -475,7 +496,8 @@ http://www.h-online.com/security/news/item/Old-tricks-are-new-again-Dangerous-co
 
 :::
 
-### How to ask the question
+How to ask the question
+-----------------------
 
 The first part of finding help online is knowing what question to ask, and
 sometimes that's one of the hardest parts of getting help.
@@ -492,7 +514,8 @@ question:
 * Add the context where you're trying to accomplish that (on the command line;
   in Linux; on Ubuntu).
 
-### Places to look
+Places to look
+--------------
 
 Your main starting point is a search engine ([Google], [Bing], [DuckDuckGo]).
 
@@ -533,7 +556,8 @@ to find directories based on when they were modified with `find`:
 [Bing]: https://bing.com
 [DuckDuckGo]: https://duckduckgo.com
 
-### Assessing what you find
+Assessing what you find
+-----------------------
 
 Once you've got your question asked, you're gonna find a bunch of stuff.
 Sometimes the resources you find are high quality (blog posts by real people who
@@ -543,7 +567,7 @@ StackOverflow). Sometimes it's all of the above. Sometimes you're going to find
 things like the entire contents of manual pages copied and pasted onto a random
 "blog" that does little more than show ads.
 
-#### General approach
+### General approach
 
 We of course can't give comprehensive advice for every specific situation, but
 we can give some general advice.

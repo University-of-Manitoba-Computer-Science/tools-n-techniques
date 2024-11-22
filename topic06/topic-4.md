@@ -1,10 +1,7 @@
 ---
-title: "Academic misconduct"
+title: "Academic misconduct (or: 'is this kind of help appropriate?')"
 author: Franklin Bristow
 ---
-
-Academic misconduct (or is this inappropriate help?)
-===================
 
 ::: outcomes
 
@@ -12,11 +9,8 @@ Academic misconduct (or is this inappropriate help?)
 
 :::
 
-We have looked at using version control locally (i.e., using it on the
-command-line on your own computer or in your own personal folders on a shared
-computer system like the ones in Aviary). This week we're going to be spending
-some time looking at using version control software with your web browser using
-GitHub or GitLab.
+We have looked at using version control (i.e., using it on the command-line and
+using web interfaces like GitLab).
 
 One of the things that you're going to quickly find out is that there's a lot of
 source code that's published publicly on the internet. Sometimes that source
@@ -75,9 +69,10 @@ https://github.com/TheAlgorithms
 [GitLab]: https://gitlab.com
 
 Situations
-----------
+==========
 
-### Situation 1
+Situation 1
+-----------
 
 Michael and Rob are both working on their assignment for COMP 1020. Rob is
 having a bit of trouble, so asks Michael if they can talk for a while on Discord
@@ -99,7 +94,8 @@ misconduct.
 
 </details>
 
-### Situation 2
+Situation 2
+-----------
 
 John and Franklin are both working on their assignment for COMP 2140. Franklin
 is really struggling with the assignment and asks John if they can meet over
@@ -125,7 +121,8 @@ https://umanitoba.ca/student-supports/academic-supports/academic-integrity#inapp
 </details>
 
 
-### Situation 3
+Situation 3
+-----------
 
 Franklin and Heather are both working on their assignment for COMP 2160.
 Franklin is really stuck trying to figure out how the first part of the
@@ -144,7 +141,7 @@ tool you're using) is more tangible and permanent than screen sharing.
 
 </details>
 
-#### Situation 3 (a)
+### Situation 3 (a)
 
 Franklin copies and pastes some of the code that Heather shared with him, but he
 doesn't tell Heather. Franklin submits that code as part of his own assignment.
@@ -158,7 +155,8 @@ they are participating in [inappropriate collaboration] together.
 
 </details>
 
-### Situation 4
+Situation 4
+-----------
 
 Franklin is getting really desperate. He just can't figure out how to find the
 length of an array in C. While Franklin is looking for help on the internet, he
@@ -181,7 +179,7 @@ person who originally posted the sample solution on the internet. They're
 
 </details>
 
-#### Situation 4 (a)
+### Situation 4 (a)
 
 Franklin copies and pastes a small fragment of the code that was in the file he
 found (maybe a single function).
@@ -197,7 +195,7 @@ https://umanitoba.ca/student-supports/academic-supports/academic-integrity#plagi
 
 </details>
 
-#### Situation 4 (b)
+### Situation 4 (b)
 
 Franklin submits the entire file he found with enough modifications to satisfy
 the current assignment description.
@@ -209,7 +207,8 @@ committing [plagiarism].
 
 </details>
 
-### Situation 5
+Situation 5
+-----------
 
 Franklin managed to get the assignment done for COMP 3430 (barely), and he
 handed it in at the very last second. In his rush to hand in the assignment, he
@@ -263,7 +262,7 @@ Some additional scenarios to consider:
 :::
 
 Further reading
----------------
+===============
 
 You've seen some specific examples, but academic integrity is a pretty big
 topic.
