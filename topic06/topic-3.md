@@ -10,7 +10,7 @@ help online.
 Example: using `find` to match multiple patterns
 ================================================
 
-Last week we used `find` for a few different reasons: to help us find all files
+We previously used `find` for a few different reasons: to help us find all files
 matching a pattern, to delete those files, and to run commands on those files.
 
 In one situation we wanted to delete both `docx` and `pdf` files from our
@@ -124,8 +124,10 @@ find . -name "*.docx" -or -name "*.pdf"
 It works! Or at least it doesn't give us an error. We deleted all those files
 last time, so it's hard to say if it works.
 
-Re-generate those files using what you learned last week (`-exec`), and confirm
-if this command does indeed find those files.
+Re-generate those files using [what you learned in the previous topic (`-exec`)],
+and confirm if this command does indeed find those files.
+
+[what you learned in the previous topic (`-exec`)]: ../topic05/topic-2.html#running-programs-on-the-files-you-find-with-find
 
 Now let's try delete those files using the same approach:
 
