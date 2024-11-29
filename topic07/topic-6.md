@@ -3,10 +3,6 @@ title: Command-line Debuggers
 author: Franklin Bristow
 ---
 
-
-Command-line debuggers
-======================
-
 ::: outcomes
 
 * [X] Use a command-line debugger to set breakpoints, inspect values, step
@@ -34,16 +30,15 @@ You may or may not know C, but we're not concerned with the program itself, more
 about how we interact with a command-line debugger.
 
 Getting started
----------------
+===============
 
 Connect to Aviary with SSH, download and extract this package:
-
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz
+<https://toolsntechniques.ca/topic07/hello.tar.gz>
 
 This program has a `Makefile`, so you can compile it using the `make` command.
 
 ```bash
-[you@bird hello]> make
+make
 ```
 
 ::: aside
@@ -73,7 +68,7 @@ Once you've compiled the code, run the program:
 This C program works in exactly the same way as the Java program we looked at.
 
 Launching the debugger
-----------------------
+======================
 
 The debugger we're going to use is `lldb`. `lldb` is a program that you run on
 the command line, and the argument that you pass to it is the program that you
@@ -95,7 +90,7 @@ Similar to your shell, `lldb` is patiently waiting for you to give it some
 commands.
 
 Setting breakpoints and running
--------------------------------
+===============================
 
 You can set a breakpoint in `lldb` using the `b` command. Break points can
 either be set by line number or by function name. Let's set a break point to
@@ -128,9 +123,11 @@ Process 4425 stopped
 ::: aside
 
 You may want to run your process by passing arguments or by passing a file that
-your program is supposed to read on "standard input" (more on this next week,
-but if you normally run your program with something like `./prog < file.txt`,
-then you're replacing standard input)).
+your program is supposed to read on "standard input" (more on this in [the next
+topic], but if you normally run your program with something like `./prog <
+file.txt`, then you're replacing standard input)).
+
+[the next topic]: ../topic08/topic-1.html
 
 You can pass the name of a file that should be read as standard input using an
 `lldb` command `process launch -i` instead of using `r`:
@@ -202,7 +199,7 @@ print:
 ```
 
 Stepping over
--------------
+=============
 
 We just stepped over several lines of code using the `c` command for continue.
 Continuing will let the program run until the next break point is encountered,
@@ -230,7 +227,7 @@ Now line of code we were on (line 17) has been executed and the arrow is
 pointing at the next line where we call `sum`.
 
 Stepping into
--------------
+=============
 
 Let's step into this function using the `s` command for step.
 
@@ -301,7 +298,7 @@ frame #0: 0x000000000040122e hello`add(left=12, right=20) at hello.c:29:5
 ```
 
 Stepping out
-------------
+============
 
 Get back to stack frame #0 using your `up` or `down` commands, your arrow should
 be pointing at line 29 right now.
@@ -332,14 +329,14 @@ Return value: (int) $0 = 50
 ```
 
 Finishing
----------
+=========
 
 At this point you can use the `c` command for continue to allow the program to
 finish running then the `q` command to quit `lldb`, or you can immediately use
 the `q` command to end the program without finishing.
 
 Catching crashes
-----------------
+================
 
 `lldb` will, by default, catch all crashes. That's not entirely true. C
 programs, by default, will end when they crash, and they don't print out
@@ -389,7 +386,7 @@ number?
 :::
 
 Further reading
----------------
+===============
 
 These are the basics for using `lldb` as a command-line debugger for a C
 program, and there's lots more we didn't get into. You can read more on the

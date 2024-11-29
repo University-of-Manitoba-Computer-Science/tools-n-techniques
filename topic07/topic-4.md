@@ -3,14 +3,14 @@ title: Debuggers
 author: Franklin Bristow
 ---
 
-Debuggers
-=========
-
-Pencil and paper debugging is tedious and painful, but effective. Log-based
+Pencil and paper debugging is tedious and painful, but **effective**. Log-based
 debugging is less tedious (maybe) and less painful (no risk of poking yourself
-with a pencil when you're not using a pencil), and while easy, don't always work
-(for example, a `printf` in a C program that's before a line that crashes won't
-always print before the program crashes). 
+with a pencil when you're not using a pencil), and while easy, doesn't always
+work (for example, [a `printf` in a C program that's before a line that crashes
+won't always print before the program crashes]). 
+
+[a `printf` in a C program that's before a line that crashes won't always print before the program crashes]:
+https://stackoverflow.com/questions/1716296/why-does-printf-not-flush-after-the-call-unless-a-newline-is-in-the-format-strin
 
 Despite being tedious, painful, and not always working, these strategies for
 debugging are approachable because they use tools that you have to know about to

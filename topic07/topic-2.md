@@ -3,9 +3,6 @@ title: What even is debugging?
 author: Franklin Bristow
 ---
 
-What even is debugging?
-=======================
-
 ::: outcomes
 
 * [X] Describe what debugging allows you to observe about a running program.
@@ -49,7 +46,7 @@ Two different things can help us better understand our program and our problem:
    program run and how those values change, and
 
 The flow of our program
------------------------
+=======================
 
 In debugging, one goal is to figure out how our program got to the place in the
 code where it crashed in the first place.
@@ -79,7 +76,7 @@ by making observations about how our program proceeds through our program:
 * How many times does our method or function recurse on itself?
 
 The state of our program
-------------------------
+========================
 
 Another goal in debugging is to figure out what values our variables have, and
 how their values change as the program flows through execution.

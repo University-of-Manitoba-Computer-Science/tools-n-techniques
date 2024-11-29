@@ -3,12 +3,8 @@ title: Debugging strategies
 author: Franklin Bristow
 ---
 
-
-Debugging strategies
-====================
-
 Pencil-and-paper debugging
---------------------------
+==========================
 
 Pencil-and-paper debugging is the most primitive form of debugging and uses the
 simplest tools: a pencil (or pen) and a piece (or two) of paper.
@@ -52,7 +48,7 @@ This strategy makes you [become the computer].
 [become the computer]: https://en.wikipedia.org/wiki/Computer#Etymology
 
 Log-based debugging
--------------------
+===================
 
 ::: outcomes
 
@@ -80,7 +76,8 @@ messages your programming language produces:
 * Some programming language do not produce meaningful errors. Like C, I'm
   specifically looking at you, C. We're not bitter about C at all.
 
-### Languages with meaningful error messages
+Languages with meaningful error messages
+----------------------------------------
 
 If your language produces meaningful error messages that include the file and
 line number that your program crashed on, then that's the best place to start
@@ -113,7 +110,8 @@ their values changed to something unexpected.
 
 [call stack]: https://en.wikipedia.org/wiki/Call_stack
 
-### Languages without meaningful error messages
+Languages *without* meaningful error messages
+---------------------------------------------
 
 If your language does not produce meaningful error messages, then we need to
 follow a strategy that resembles pencil-and-paper debugging: Start printing out
@@ -136,7 +134,8 @@ to that function call and start adding similar print messages until you find a
 single statement that you wrote that causes your program to flow incorrectly, or
 that changes the value of a variable in a way you weren't expecting.
 
-### General advice for log-based debugging
+General advice for log-based debugging
+--------------------------------------
 
 Here are some very general tips for log-based debugging:
 
@@ -171,3 +170,39 @@ Here are some very general tips for log-based debugging:
   ```
 
   This is particularly helpful in C when you're working with strings.
+
+Advocating for pencil-and-paper and log-based debugging
+=======================================================
+
+Both pencil-and-paper and log-based debugging can be pretty painful and tedious,
+but they have some major advantages:
+
+1. Both pencils and paper are ubiquitous commodities. You can go to the store
+   and buy heaps of them for a few dollars if you don't already have lots of
+   them both.
+2. Pencil and paper work exactly the same *regardless of the language or
+   environment you're using*. Wanting to debug a program with pencil and paper
+   in Java? You take the pointy end of the pencil and scrape it on the paper, it
+   leaves these cool marks to help remember stuff. Wanting to do it with C? Same
+   thing: pointy end to paper and scrape. Wanting to do it with Scheme? You may
+   need to add some slight complexity by flipping the pencil over and rubbing
+   the soft part on the paper to remove the scrapings you left before.
+3. *Log-based debugging also basically works exactly the same for all languages
+   and environments*. Sure, the print statement itself changes from language to
+   language, but printing it just printing!
+4. You do not need to learn anything new to be able to use pencil-and-paper or
+   log-based debugging! [Debugging with debuggers] really is a powerful way to
+   do debugging, but all debuggers require you to learn a new way of interacting
+   with your program **and** require you to learn how to use a new program.
+   Humanity as a whole generally knows how to use a pencil and paper. In
+   introductory programming lessons [the first lesson is almost universally using
+   the print statement] in whatever language you're using.
+
+Martijn Faasen gives some more credible reasons for log-based debugging in
+[Don't Look Down on Print Debugging].
+
+[Debugging with debuggers]: topic-4.html
+[the first lesson is almost universally using the print statement]:
+https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
+[Don't Look Down on Print Debugging]:
+https://blog.startifact.com/posts/print-debugging/
