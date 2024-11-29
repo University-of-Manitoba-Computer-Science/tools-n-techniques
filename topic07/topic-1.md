@@ -3,9 +3,6 @@ title: Introduction
 author: Franklin Bristow
 ---
 
-Introduction
-============
-
 You've been writing code, and hopefully doing OK.
 
 But, uh, yeah. Gosh. Our code crashes a lot. Like a lot a lot. Sometimes this is
@@ -16,14 +13,12 @@ isn't right. Sometimes it's because we inverted a conditional statement.
 Regardless of the reason, trying to figure out *why* your code is crashing is an
 important part of fixing your code.
 
-This week we're going to take a look at what we're trying to accomplish when
-we're doing debugging and different strategies for doing debugging. We'll also
-take a look at a couple of specific tools, and try to get a handle on the
-keywords that are used to describe how the tools are used.
+We're going to take a look at what we're trying to accomplish when we're doing
+debugging and different strategies for doing debugging. We'll also take a look
+at a couple of specific tools, and try to get a handle on the keywords that are
+used to describe how the tools are used.
 
 ::: outcomes
-
-By the end of this week you should be able to:
 
 * [ ] Describe what debugging allows you to observe about a running program.
 * [ ] Use log-based debugging to identify a problem with code.

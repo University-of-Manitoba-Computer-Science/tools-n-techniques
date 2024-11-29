@@ -3,9 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 Programs crash. They crash all the time. *Sometimes* it's easy to figure out
 why a program is crashing, but your programs will quickly get too big for 
 someone to glance at and definitively say "That's where the problem is!" (even
@@ -29,4 +26,3 @@ You should now be able to:
 
 :::
 
-Now you should be ready to start working on the assignment this week!

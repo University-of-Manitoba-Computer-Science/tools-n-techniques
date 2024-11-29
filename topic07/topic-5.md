@@ -3,10 +3,6 @@ title: Visual Debuggers
 author: Franklin Bristow
 ---
 
-
-Visual debuggers
-================
-
 Almost all languages have a visual debugger built into the integrated
 development environment (IDE) that you use for that language: [IntelliJ] has a
 debugger for Java, [Visual Studio] has a debugger for C# (and other languages),
@@ -24,7 +20,7 @@ for Visual Studio Code.
 [Spyder]: https://www.spyder-ide.org/
 
 Getting started
----------------
+===============
 
 You've already got VS Code installed on your machine. We're going to be
 debugging some Java code and VS Code doesn't have support for Java by default.
@@ -32,8 +28,8 @@ Thankfully, though, we can install an extension to help us get support for the
 language.
 
 [Microsoft recommends] that you install the [Extension Pack for Java]. The
-[Extensions Pack for Java] page lists install instructions, and you should
-follow those instructions.
+Extensions Pack for Java page lists install instructions, and you should follow
+those instructions.
 
 Once the extension pack has finished installing a "Get Started" document should
 open:
@@ -102,7 +98,7 @@ You should now be ready to run and debug Java programs!
 [Microsoft recommends]: https://code.visualstudio.com/docs/languages/java#_install-visual-studio-code-for-java
 
 Running Java in VS Code
------------------------
+=======================
 
 Once you're set up, you can start debugging!
 
@@ -153,7 +149,10 @@ compiles your code and stuff. While VS Code is thinking, you'll see some
 indication that it's doing something in the form of a spinner in the bottom
 right side of the window.
 
-![Compiling progress in VS Code.](progress-trim.webm)
+<figure>
+    <video src=progress-trim.webm loop=true autoplay=true></video>
+    <figcaption aria-hidden="true">Compiling progress in VS Code.</figcaption>
+</figure>
 
 Eventually you'll be able to run the program in VS Code when you see the options
 to Run or Debug just above the `main` method:
@@ -165,7 +164,7 @@ correctly. If your environment is working correctly, the program should start
 running in a terminal pane in VS Code.
 
 Debugging in VS Code
---------------------
+====================
 
 Click on the Debug button now:
 
@@ -214,21 +213,31 @@ some numbers in your terminal and the program will finish running. Other than
 briefly changing the layout, debugging hasn't given us any new tools for
 learning about the flow and state of our program...
 
-### Setting breakpoints
+Setting breakpoints
+-------------------
 
 One of the main things you'll do with a debugger is set breakpoints. As before,
 breakpoints are the places and/or conditions where you want the debugger to stop
 running your code so you can *look around*.
 
+:::::: columns
+::: {.column width=70%}
+
 You can set a breakpoint in VS Code by moving your mouse to where the line
 numbers are, then clicking on the red circle that shows up just to the left of
-the line number:
-
-![The place where we can set a breakpoint.](breakpoint-location.png)
+the line number.
 
 Pick a line in the code where you would like the program to stop when the
 debugger is running. I'm going to suggest you set a breakpoint on line 17, just
 after the `Scanner`-based input is done.
+
+:::
+::: {.column width=30%}
+
+![The place where we can set a breakpoint.](breakpoint-location.png)
+
+:::
+::::::
 
 Once you've set your breakpoint (the red circle should be brighter and stay
 there when you move your mouse away), click the Debug button again. You're going
@@ -244,7 +253,8 @@ our `Scanner`, `left`, and `right`; `sum` doesn't show up because it hasn't been
 initialized with a value yet). You can also see these values on lines in the
 editor area where they are used.
 
-### Stepping over
+Stepping over
+-------------
 
 Click on the **Step over** button. This will run the line that was highlighted,
 then move to the next line. If you set your breakpoint on line 17, then the
@@ -252,7 +262,8 @@ then move to the next line. If you set your breakpoint on line 17, then the
 
 Now the *next* line of code is highlighted (where we call `sum`).
 
-### Stepping into
+Stepping into
+-------------
 
 Let's step into this method, click on the **Step into** button. This changes
 the location of the highlighted line to be *in* the `sum` method:
@@ -271,7 +282,8 @@ method that got you here. Click on the `HelloWorld.main` entry and you'll be
 taken back to the place where we called `sum` in `main`, and you can review the
 state of the variables in the **Variables** pane again.
 
-### Stepping out 
+Stepping out 
+------------
 
 Click back on `HelloWorld.add` in the **Call Stack** pane. You should be
 highlighting line 30 right now.
@@ -282,13 +294,15 @@ another time to run the `sum = left + right`.
 Now click on the **Step out** button. Stepping out runs the remaining lines in
 the method, then returns you to where you were before.
 
-### Finishing
+Finishing
+---------
 
 At this point you can click on either the **Pause/Play** button to finish
 running the program, or click on the **Stop** button to end the program without
 finishing.
 
-### Catching crashes
+Catching crashes
+----------------
 
 Debuggers can also help when your code crashes. Disable the breakpoint you set
 by clicking on the red circle, then click the Debug button again to restart
@@ -310,7 +324,7 @@ for the JDK. When this is in a call stack for your own program, you can click on
 the methods and see the state your code was in just before the crash happened.
 
 Further reading
----------------
+===============
 
 These are the basics for using the debugger in VS Code, and there's a lot we
 didn't go into. You can read a lot more on the [Running and debugging Java] page
