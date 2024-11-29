@@ -308,9 +308,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#visual-debuggers" id="toc-visual-debuggers">Visual
-debuggers</a>
-<ul>
 <li><a href="#getting-started" id="toc-getting-started">Getting
 started</a></li>
 <li><a href="#running-java-in-vs-code"
@@ -331,10 +328,8 @@ crashes</a></li>
 </ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="visual-debuggers">Visual debuggers</h1>
 <p>Almost all languages have a visual debugger built into the integrated
 development environment (IDE) that you use for that language: <a
 href="https://www.jetbrains.com/idea/">IntelliJ</a> has a debugger for
@@ -347,7 +342,7 @@ most of the skills you’re going to learn about the debugger you’re using
 will transfer to other visual debuggers.</p>
 <p>We’re going to be using a visual debugger for Java that comes as an
 extension for Visual Studio Code.</p>
-<h2 id="getting-started">Getting started</h2>
+<h1 id="getting-started">Getting started</h1>
 <p>You’ve already got VS Code installed on your machine. We’re going to
 be debugging some Java code and VS Code doesn’t have support for Java by
 default. Thankfully, though, we can install an extension to help us get
@@ -356,7 +351,7 @@ support for the language.</p>
 href="https://code.visualstudio.com/docs/languages/java#_install-visual-studio-code-for-java">Microsoft
 recommends</a> that you install the <a
 href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension
-Pack for Java</a>. The [Extensions Pack for Java] page lists install
+Pack for Java</a>. The Extensions Pack for Java page lists install
 instructions, and you should follow those instructions.</p>
 <p>Once the extension pack has finished installing a “Get Started”
 document should open:</p>
@@ -417,7 +412,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 JDK” button in VS Code, then click on the “Reload Window” button.</p>
 <p>You should now be ready to run and debug Java programs!</p>
 </details>
-<h2 id="running-java-in-vs-code">Running Java in VS Code</h2>
+<h1 id="running-java-in-vs-code">Running Java in VS Code</h1>
 <p>Once you’re set up, you can start debugging!</p>
 <p>Here’s a <strong>very small</strong> Java program (you can copy and
 paste this into a new file in VS Code, save it as
@@ -464,10 +459,11 @@ bit while it compiles your code and stuff. While VS Code is thinking,
 you’ll see some indication that it’s doing something in the form of a
 spinner in the bottom right side of the window.</p>
 <figure>
-<video src="progress-trim.webm" controls=""><a
-href="progress-trim.webm">Compiling progress in VS Code.</a></video>
-<figcaption aria-hidden="true">Compiling progress in VS
-Code.</figcaption>
+<video src="progress-trim.webm" loop="true" autoplay="true">
+</video>
+<figcaption aria-hidden="true">
+Compiling progress in VS Code.
+</figcaption>
 </figure>
 <p>Eventually you’ll be able to run the program in VS Code when you see
 the options to Run or Debug just above the <code>main</code> method:</p>
@@ -479,7 +475,7 @@ the options to Run or Debug just above the <code>main</code> method:</p>
 <p>Click on the Run button for now, just to verify that your environment
 works correctly. If your environment is working correctly, the program
 should start running in a terminal pane in VS Code.</p>
-<h2 id="debugging-in-vs-code">Debugging in VS Code</h2>
+<h1 id="debugging-in-vs-code">Debugging in VS Code</h1>
 <p>Click on the Debug button now:</p>
 <figure>
 <img src="run-button.png" alt="Run or Debug, just above main." />
@@ -530,23 +526,28 @@ in. Type in some numbers in your terminal and the program will finish
 running. Other than briefly changing the layout, debugging hasn’t given
 us any new tools for learning about the flow and state of our
 program…</p>
-<h3 id="setting-breakpoints">Setting breakpoints</h3>
+<h2 id="setting-breakpoints">Setting breakpoints</h2>
 <p>One of the main things you’ll do with a debugger is set breakpoints.
 As before, breakpoints are the places and/or conditions where you want
 the debugger to stop running your code so you can <em>look
 around</em>.</p>
+<div class="columns">
+<div class="column" style="width:70%;">
 <p>You can set a breakpoint in VS Code by moving your mouse to where the
 line numbers are, then clicking on the red circle that shows up just to
-the left of the line number:</p>
+the left of the line number.</p>
+<p>Pick a line in the code where you would like the program to stop when
+the debugger is running. I’m going to suggest you set a breakpoint on
+line 17, just after the <code>Scanner</code>-based input is done.</p>
+</div><div class="column" style="width:30%;">
 <figure>
 <img src="breakpoint-location.png"
 alt="The place where we can set a breakpoint." />
 <figcaption aria-hidden="true">The place where we can set a
 breakpoint.</figcaption>
 </figure>
-<p>Pick a line in the code where you would like the program to stop when
-the debugger is running. I’m going to suggest you set a breakpoint on
-line 17, just after the <code>Scanner</code>-based input is done.</p>
+</div>
+</div>
 <p>Once you’ve set your breakpoint (the red circle should be brighter
 and stay there when you move your mouse away), click the Debug button
 again. You’re going to have to enter the numbers again, but just after
@@ -564,14 +565,14 @@ on the command line, <code>sc</code> our <code>Scanner</code>,
 <code>left</code>, and <code>right</code>; <code>sum</code> doesn’t show
 up because it hasn’t been initialized with a value yet). You can also
 see these values on lines in the editor area where they are used.</p>
-<h3 id="stepping-over">Stepping over</h3>
+<h2 id="stepping-over">Stepping over</h2>
 <p>Click on the <strong>Step over</strong> button. This will run the
 line that was highlighted, then move to the next line. If you set your
 breakpoint on line 17, then the <code>System.out.println</code> was run,
 and you can see the output in your terminal.</p>
 <p>Now the <em>next</em> line of code is highlighted (where we call
 <code>sum</code>).</p>
-<h3 id="stepping-into">Stepping into</h3>
+<h2 id="stepping-into">Stepping into</h2>
 <p>Let’s step into this method, click on the <strong>Step into</strong>
 button. This changes the location of the highlighted line to be
 <em>in</em> the <code>sum</code> method:</p>
@@ -593,7 +594,7 @@ like in the method that got you here. Click on the
 where we called <code>sum</code> in <code>main</code>, and you can
 review the state of the variables in the <strong>Variables</strong> pane
 again.</p>
-<h3 id="stepping-out">Stepping out</h3>
+<h2 id="stepping-out">Stepping out</h2>
 <p>Click back on <code>HelloWorld.add</code> in the <strong>Call
 Stack</strong> pane. You should be highlighting line 30 right now.</p>
 <p>Click the <strong>Step over</strong> button twice, once to run the
@@ -602,11 +603,11 @@ Stack</strong> pane. You should be highlighting line 30 right now.</p>
 <p>Now click on the <strong>Step out</strong> button. Stepping out runs
 the remaining lines in the method, then returns you to where you were
 before.</p>
-<h3 id="finishing">Finishing</h3>
+<h2 id="finishing">Finishing</h2>
 <p>At this point you can click on either the <strong>Pause/Play</strong>
 button to finish running the program, or click on the
 <strong>Stop</strong> button to end the program without finishing.</p>
-<h3 id="catching-crashes">Catching crashes</h3>
+<h2 id="catching-crashes">Catching crashes</h2>
 <p>Debuggers can also help when your code crashes. Disable the
 breakpoint you set by clicking on the red circle, then click the Debug
 button again to restart debugging.</p>
@@ -629,7 +630,7 @@ click on the stack entries for <code>Scanner</code> if you have
 installed the source code for the JDK. When this is in a call stack for
 your own program, you can click on the methods and see the state your
 code was in just before the crash happened.</p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>These are the basics for using the debugger in VS Code, and there’s a
 lot we didn’t go into. You can read a lot more on the <a
 href="https://code.visualstudio.com/docs/java/java-debugging">Running

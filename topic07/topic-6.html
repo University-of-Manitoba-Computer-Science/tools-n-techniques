@@ -308,9 +308,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#command-line-debuggers"
-id="toc-command-line-debuggers">Command-line debuggers</a>
-<ul>
 <li><a href="#getting-started" id="toc-getting-started">Getting
 started</a></li>
 <li><a href="#launching-the-debugger"
@@ -328,10 +325,8 @@ into</a></li>
 crashes</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="command-line-debuggers">Command-line debuggers</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Use a command-line
@@ -354,13 +349,14 @@ programs on remote computers.</p>
 the <code>clang</code> compiler and the <code>lldb</code> debugger.</p>
 <p>You may or may not know C, but we’re not concerned with the program
 itself, more about how we interact with a command-line debugger.</p>
-<h2 id="getting-started">Getting started</h2>
-<p>Connect to Aviary with SSH, download and extract this package:</p>
-<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz</code></pre>
+<h1 id="getting-started">Getting started</h1>
+<p>Connect to Aviary with SSH, download and extract this package: <a
+href="https://toolsntechniques.ca/topic07/hello.tar.gz"
+class="uri">https://toolsntechniques.ca/topic07/hello.tar.gz</a></p>
 <p>This program has a <code>Makefile</code>, so you can compile it using
 the <code>make</code> command.</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> make</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
 <div class="aside">
 <p>Open the <code>Makefile</code> with your text editor. There’s a lot
 going on in there, but one important addition or difference from the way
@@ -371,28 +367,28 @@ program <em>in</em> the compiled file so that we can see the source code
 when we’re debugging the program.</p>
 <p>If you’re planning to debug a C program, you must add this option to
 your compile command:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-g</span> myprogram.c <span class="at">-o</span> myprogram</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-g</span> myprogram.c <span class="at">-o</span> myprogram</span></code></pre></div>
 </div>
 <p>Once you’ve compiled the code, run the program:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div>
 <p>This C program works in exactly the same way as the Java program we
 looked at.</p>
-<h2 id="launching-the-debugger">Launching the debugger</h2>
+<h1 id="launching-the-debugger">Launching the debugger</h1>
 <p>The debugger we’re going to use is <code>lldb</code>.
 <code>lldb</code> is a program that you run on the command line, and the
 argument that you pass to it is the program that you want to debug:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ./hello</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ./hello</span></code></pre></div>
 <p>There’s not much going on when you launch <code>lldb</code>:</p>
 <pre><code>(lldb) target create &quot;./hello&quot;
 Current executable set to &#39;/yourdir/hello&#39; (x86_64).
 (lldb)</code></pre>
 <p>Similar to your shell, <code>lldb</code> is patiently waiting for you
 to give it some commands.</p>
-<h2 id="setting-breakpoints-and-running">Setting breakpoints and
-running</h2>
+<h1 id="setting-breakpoints-and-running">Setting breakpoints and
+running</h1>
 <p>You can set a breakpoint in <code>lldb</code> using the
 <code>b</code> command. Break points can either be set by line number or
 by function name. Let’s set a break point to pause running when we enter
@@ -417,20 +413,21 @@ Process 4425 stopped
 <div class="aside">
 <p>You may want to run your process by passing arguments or by passing a
 file that your program is supposed to read on “standard input” (more on
-this next week, but if you normally run your program with something like
+this in <a href="../topic08/topic-1.html">the next topic</a>, but if you
+normally run your program with something like
 <code>./prog &lt; file.txt</code>, then you’re replacing standard
 input)).</p>
 <p>You can pass the name of a file that should be read as standard input
 using an <code>lldb</code> command <code>process launch -i</code>
 instead of using <code>r</code>:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">-i</span> file.txt</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">-i</span> file.txt</span></code></pre></div>
 <p>If your program takes arguments on the command line (you need to pass
 things like <code>-o output.txt</code> or <code>-i input.txt</code>),
 you can pass arguments to the process using
 <code>process launch --</code>:</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">--</span> <span class="at">-o</span> output.txt <span class="at">-i</span> input.txt</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> launch <span class="at">--</span> <span class="at">-o</span> output.txt <span class="at">-i</span> input.txt</span></code></pre></div>
 </div>
 <p>Let’s set another breakpoint on line 17, just before we call the
 <code>add</code> function, then we’ll “continue” to the next break point
@@ -470,7 +467,7 @@ different.</p>
 <code>p</code> command for print:</p>
 <pre><code>(lldb) p left
 (int) $0 = 12</code></pre>
-<h2 id="stepping-over">Stepping over</h2>
+<h1 id="stepping-over">Stepping over</h1>
 <p>We just stepped over several lines of code using the <code>c</code>
 command for continue. Continuing will let the program run until the next
 break point is encountered, the program crashes, or the program
@@ -492,7 +489,7 @@ Process 9196 stopped
 (lldb)</code></pre>
 <p>Now line of code we were on (line 17) has been executed and the arrow
 is pointing at the next line where we call <code>sum</code>.</p>
-<h2 id="stepping-into">Stepping into</h2>
+<h1 id="stepping-into">Stepping into</h1>
 <p>Let’s step into this function using the <code>s</code> command for
 step.</p>
 <pre><code>(lldb) s
@@ -551,7 +548,7 @@ frame #0: 0x000000000040122e hello`add(left=12, right=20) at hello.c:29:5
 (const int) right = 20
 (int) sum = 0
 (lldb)</code></pre>
-<h2 id="stepping-out">Stepping out</h2>
+<h1 id="stepping-out">Stepping out</h1>
 <p>Get back to stack frame #0 using your <code>up</code> or
 <code>down</code> commands, your arrow should be pointing at line 29
 right now.</p>
@@ -576,12 +573,12 @@ Return value: (int) $0 = 50
    20       printf(&quot;Thanks for letting me calculate for you!&quot;);
    21  
 (lldb)</code></pre>
-<h2 id="finishing">Finishing</h2>
+<h1 id="finishing">Finishing</h1>
 <p>At this point you can use the <code>c</code> command for continue to
 allow the program to finish running then the <code>q</code> command to
 quit <code>lldb</code>, or you can immediately use the <code>q</code>
 command to end the program without finishing.</p>
-<h2 id="catching-crashes">Catching crashes</h2>
+<h1 id="catching-crashes">Catching crashes</h1>
 <p><code>lldb</code> will, by default, catch all crashes. That’s not
 entirely true. C programs, by default, will end when they crash, and
 they don’t print out friendly(-ish) error messages about why they
@@ -590,8 +587,8 @@ crashed, they just crash and maybe print out
 <p>There’s another program in the package you downloaded call
 <code>ccrash.c</code>.</p>
 <p>Run <code>lldb</code> and pass it <code>ccrash</code>:</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ccrash</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lldb</span> ccrash</span></code></pre></div>
 <p>Now run the program with the <code>r</code> command, and enter some
 text when prompted:</p>
 <pre><code>(lldb) r
@@ -620,7 +617,7 @@ with Java and <code>Scanner</code> crashing on non-number input?</p>
 <p>Well… try it. What happens when you enter a string into
 <code>hello.c</code> instead of a number?</p>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>These are the basics for using <code>lldb</code> as a command-line
 debugger for a C program, and there’s lots more we didn’t get into. You
 can read more on the <a
