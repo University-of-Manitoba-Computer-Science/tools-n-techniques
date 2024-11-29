@@ -3,6 +3,12 @@ title: Getting help
 author: Franklin Bristow
 ---
 
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/videoseries?si=g2Q9BKrJstDwA5t3&amp;list=PLGqzRfI3gmje0kvN5I6PYpuw2j-3h-wGw"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ::: outcomes
 
 * [X] Get help about a command by running the command.
