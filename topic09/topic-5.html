@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -308,8 +309,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#globs" id="toc-globs">Globs</a>
-<ul>
 <li><a href="#simple-globs" id="toc-simple-globs">Simple globs</a></li>
 <li><a href="#advanced-globs" id="toc-advanced-globs">Advanced globs</a>
 <ul>
@@ -322,10 +321,8 @@ globs</a></li>
 <li><a href="#further-reading-about-globs"
 id="toc-further-reading-about-globs">Further reading about
 globs</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="globs">Globs</h1>
 <p>More often than not, the loops that you would want to write in the
 shell are intended to apply an operation to many files, and those files
 can be all in the same directory, or scattered throughout many
@@ -348,21 +345,33 @@ href="https://en.wikipedia.org/wiki/Glob_(programming)#Origin">it’s
 short for “global”</a>. I definitely don’t pronounce “glob” as “globe”
 (as in “global”), I pronounce it as in “glob” like a glob of jam.</p>
 </div>
-<h2 id="simple-globs">Simple globs</h2>
+<h1 id="simple-globs">Simple globs</h1>
 <p>The simplest glob in a shell is the <code>*</code> character. This
 glob “expands” to all files in the current directory that are not
 hidden.</p>
 <div class="example">
 <p>If you have the following files in your current directory:</p>
-<pre><code>[you@bird fortnight8]&gt; ls -a
-. .. .gitignore hello.md hello.docx script.sh</code></pre>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>. .. .gitignore hello.md hello.docx script.sh</code></pre>
+</div>
+</div>
 <p>Then the <code>*</code> glob would “expand” to
 <code>hello.md hello.docx script.sh</code>:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> echo <span class="pp">*</span> <span class="co"># prints out the names of all files and folders in this directory</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello.md</span> hello.docx script.sh</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="pp">*</span> <span class="co"># prints out the names of all</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># files and folders in this directory</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello.md hello.docx script.sh</code></pre>
+</div>
+</div>
 <p>This actually means that the <code>echo</code> program was run with
-<em>two arguments</em>, not just one. Before the shell launches the
+<em>three arguments</em>, not just one. Before the shell launches the
 <code>echo</code> program, it effectively replaces the <code>*</code> in
 the command line with <code>hello.md hello.docx script.sh</code>.</p>
 </div>
@@ -371,7 +380,7 @@ the command line with <code>hello.md hello.docx script.sh</code>.</p>
 using the numbered argument variables (<code>$1 $2 $3</code>…) to see
 how a simple glob expands in different directories.</p>
 </div>
-<h2 id="advanced-globs">Advanced globs</h2>
+<h1 id="advanced-globs">Advanced globs</h1>
 <p>Simple globs are the ones you will use most often because you
 <em>usually</em> want to do something to everything in the current
 directory. But simple globs are not the only kind of globs. Let’s look
@@ -380,62 +389,73 @@ at two other kinds of globs:</p>
 <li>Begins-with, ends-with, or contains globs</li>
 <li>Directory globs</li>
 </ol>
-<h3 id="begins-with-ends-with-or-contains-globs">Begins-with, ends-with,
-or contains globs</h3>
+<h2 id="begins-with-ends-with-or-contains-globs">Begins-with, ends-with,
+or contains globs</h2>
 <p>If you remember <em>way back</em> to <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-3.html">fortnight
-5 in COMP 1002</a>, you learned about a program named <code>grep</code>
-that could be used to filter lines from a file based on a pattern that
-you provided. The patterns that you gave to <code>grep</code>
-<em>also</em> use the <code>*</code> symbol to indicate “anything”, but
-we saw that you could put the <code>*</code> anywhere within a
-string.</p>
+href="https://toolsntechniques.ca/topic05/topic-3.html">fortnight 5 in
+COMP 1002</a>, you learned about a program named <code>grep</code> that
+could be used to filter lines from a file based on a pattern that you
+provided. The patterns that you gave to <code>grep</code> <em>also</em>
+use the <code>*</code> symbol to indicate “anything”, but we saw that
+you could put the <code>*</code> anywhere within a string.</p>
 <p>We can do the same thing with globs!</p>
 <div class="example">
 <p>We can match all file names that begin with <code>hello</code> using
 a glob <code>hello*</code>:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> echo hello<span class="pp">*</span> <span class="co"># assuming the same directory as above</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello.md</span> hello.docx</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assuming the same directory as above</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> hello<span class="pp">*</span> </span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>hello.md hello.docx</code></pre>
+</div>
+</div>
 <p>Or we can match all file names that end with <code>.md</code> using a
 glob <code>*.md</code>:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> pandoc <span class="pp">*</span>.md <span class="at">-o</span> all.docx <span class="co"># run pandoc, passing *all* of</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># the markdown files in the </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># current directory, and convert</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># them all into a single Word</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># document</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="pp">*</span>.md <span class="at">-o</span> all.docx <span class="co"># run pandoc, passing *all* of</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># the markdown files in the </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># current directory, and convert</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># them all into a single Word</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># document</span></span></code></pre></div>
+</div>
 <p>Or you can match file names that contain the letters <code>ll</code>
 using a glob <code>*ll*</code>:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> fortnight8]<span class="op">&gt;</span> cat <span class="pp">*</span>ll<span class="pp">*</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.docx get printed out (which is a bunch of garbage!)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.md get printed out</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>ll<span class="pp">*</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.docx get printed out (which is a bunch of garbage!)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of hello.md get printed out</span></span></code></pre></div>
 </div>
-<h3 id="directory-globs">Directory globs</h3>
+</div>
+<h2 id="directory-globs">Directory globs</h2>
 <p>Globs are helpful for matching many files in a directory, but <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic01/topic-5.html">we
-don’t keep all of our files in one directory</a>, right? (Right?!)</p>
+href="../topic01/topic-5.html">we don’t keep all of our files in one
+directory</a>, right? (Right?!)</p>
 <p>We can also use globs to help us find files that are in
 subdirectories, but we have to change the way we’re writing out glob:
 instead of using one <code>*</code>, we use <em>two</em>
 <code>**</code>:</p>
 <div class="example">
 <p>Download (or find) <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar">crazy-directories.tar</a>
-(use <code>wget</code>!). We previously used <code>find</code> to, uh,
-find the Markdown files in this massive blob of directories. We can also
-use globs to help us.</p>
+href="../topic05/crazy-directories.tar">crazy-directories.tar</a> (use
+<code>wget</code>!). We previously used <code>find</code> to, uh, find
+the Markdown files in this massive blob of directories. We can also use
+globs to help us.</p>
 <p>Extract <code>crazy-directories.tar</code> (if you just downloaded
 it), then change into the directory. We can use globs to find all
 Markdown files in this directory:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> crazy-directories]<span class="op">&gt;</span> ls <span class="pp">**</span>/<span class="pp">*</span>.md <span class="co"># find files with names ending with .md</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                         <span class="co"># in any subdirectory</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">**</span>/<span class="pp">*</span>.md <span class="co"># find files with names ending with .md</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># in any subdirectory</span></span></code></pre></div>
+</div>
 </div>
 <p>The technical Bash name for this feature is not “directory glob”, but
 is instead called “globstar”.</p>
-<h2 id="further-reading-about-globs">Further reading about globs</h2>
+<h1 id="further-reading-about-globs">Further reading about globs</h1>
 <p>You can read more about globs in a few places:</p>
 <ul>
 <li>The manual pages: use <code>man 7 glob</code> (or <a

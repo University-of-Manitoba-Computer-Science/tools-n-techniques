@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -306,9 +307,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#create-a-new-software-project"
-id="toc-create-a-new-software-project">Create a new software project</a>
-<ul>
 <li><a href="#maven" id="toc-maven">Maven</a></li>
 <li><a href="#create-a-project-in-vs-code"
 id="toc-create-a-project-in-vs-code">Create a project in VS
@@ -324,11 +322,8 @@ id="toc-add-the-dependency-to-pom.xml">Add the dependency to
 </ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="create-a-new-software-project">Create a new software
-project</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Create a new empty
@@ -343,7 +338,7 @@ dependency in a software project.</label></li>
 <p>We’ve previously installed the extension pack for Java in VS Code.
 This actually comes with “Maven for Java”. Let’s learn how to use that
 to create a new project with Maven.</p>
-<h2 id="maven">Maven</h2>
+<h1 id="maven">Maven</h1>
 <p>So far we’ve talked about dependency management (with Python’s
 <code>pip</code>) and build management (with <code>make</code>).</p>
 <p><a href="https://maven.apache.org/">Maven</a> is both a dependency
@@ -377,7 +372,7 @@ build and use all projects that use Maven (in theory), and</li>
 <li>You can do pretty complex things with very little configuration (in
 theory).</li>
 </ol>
-<h2 id="create-a-project-in-vs-code">Create a project in VS Code</h2>
+<h1 id="create-a-project-in-vs-code">Create a project in VS Code</h1>
 <p>Let’s dive in. Start by opening VS Code. Normally you would create a
 new file in VS Code using something like <kbd>Control</kbd> or
 <kbd>Command</kbd> and <kbd>N</kbd>, or you would use the File → New
@@ -467,18 +462,22 @@ problems in computer science</a>:</p>
 <ol>
 <li value="1">
 Naming things.
+</li>
 <li value="3">
 Cache invalidation.
+</li>
 <li value="2">
 Off-by-one errors.
+</li>
 <li value="4">
 Guaranteed order of message delivery.
+</li>
 <li value="5" type="i">
 Versioning.
+</li>
 </ol>
 <p>One popular way to version your code is to use <a
 href="https://semver.org/">semantic versioning</a>.</p>
-</div>
 </div></li>
 <li><p>Finally, (finally!), you can confirm the group and artifact Ids
 and the version number that you selected by pressing
@@ -500,7 +499,7 @@ files:</p>
 prefix of your package names in your project now), and open
 <code>App</code>. <span class="emoji" data-emoji="tada">🎉</span>, you
 just created a new Java project with Maven support.</p>
-<h2 id="adding-dependencies">Adding dependencies</h2>
+<h1 id="adding-dependencies">Adding dependencies</h1>
 <p>Ok? Awesome? This was a lot of work to not have to type in a “Hello,
 world!” project in Java.</p>
 <p>Yeah, OK, so you not having to type in
@@ -548,7 +547,7 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="
 href="https://en.wikipedia.org/wiki/JSON">JSON</a> object; it’s not
 exactly important what the code is doing, just that it requires a
 dependency (<code>org.json</code>).</p>
-<h3 id="finding-dependencies">Finding dependencies</h3>
+<h2 id="finding-dependencies">Finding dependencies</h2>
 <p>Some projects will straight-up give you the information that you need
 to add them as a dependency to your <code>pom.xml</code>, but we’ll look
 at a way to find a dependency.</p>
@@ -571,8 +570,8 @@ There’s a text area here where you can select some text. This is XML,
 the same format as <code>pom.xml</code>. Click on the text area and it
 <em>should</em> automatically copy this to your clipboard. If it
 doesn’t, highlight the text and copy it.</p>
-<h3 id="add-the-dependency-to-pom.xml">Add the dependency to
-<code>pom.xml</code></h3>
+<h2 id="add-the-dependency-to-pom.xml">Add the dependency to
+<code>pom.xml</code></h2>
 <p>Now switch back to VS Code, open <code>pom.xml</code>, and add this
 dependency below the <code>&lt;/dependency&gt;</code> for
 <code>junit</code>:</p>
@@ -602,7 +601,7 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#c
 the way you did when you were debugging!</p>
 <p>You just added a dependency to a Java project and used that
 dependency <span class="emoji" data-emoji="tada">🎉</span>!</p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>We’ve done the bare minimum here with Maven, but it’s enough to get
 us started.</p>
 <p>You can read more about this in a few places:</p>

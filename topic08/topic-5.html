@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -305,9 +306,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#choose-a-backup-strategy"
-id="toc-choose-a-backup-strategy">Choose a backup strategy</a>
-<ul>
 <li><a href="#things-to-consider" id="toc-things-to-consider">Things to
 consider</a>
 <ul>
@@ -339,12 +337,16 @@ id="toc-file-based-restore-and-verify">File-based restore and
 verify</a></li>
 <li><a href="#image-based-restore-and-verify"
 id="toc-image-based-restore-and-verify">Image-based restore and
-verify</a></li>
+verify</a>
+<ul>
+<li><a href="#mount-the-images" id="toc-mount-the-images">Mount the
+images</a></li>
+<li><a href="#write-the-images" id="toc-write-the-images">Write the
+images</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="choose-a-backup-strategy">Choose a backup strategy</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Choose an appropriate
@@ -364,9 +366,9 @@ need the data back if it was gone, where you’re backing up to, how much
 you’re backing up, how much you’re willing to pay.</p>
 <p>Let’s look at each of these, then look at some strategies you can use
 to backup your files.</p>
-<h2 id="things-to-consider">Things to consider</h2>
-<h3 id="what-kind-of-data-are-you-backing-up">What kind of data are you
-backing up?</h3>
+<h1 id="things-to-consider">Things to consider</h1>
+<h2 id="what-kind-of-data-are-you-backing-up">What kind of data are you
+backing up?</h2>
 <p>Not just what kind of data are you backing up, but:</p>
 <details>
 <summary>
@@ -487,7 +489,7 @@ mean bigger problems if it’s missing (failed hardware).</td>
 </tr>
 </tbody>
 </table>
-<h3 id="where-are-you-backing-up-to">Where are you backing up to?</h3>
+<h2 id="where-are-you-backing-up-to">Where are you backing up to?</h2>
 <p>Once you’ve thought about the data that you want or need to back up,
 you should start thinking about where you’re going to back up that
 data.</p>
@@ -555,8 +557,8 @@ on the company running the service.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="how-are-you-actually-going-to-back-up-your-data">How are you
-actually going to back up your data?</h3>
+<h2 id="how-are-you-actually-going-to-back-up-your-data">How are you
+actually going to back up your data?</h2>
 <p>When you’ve decided where you’re backing up to, then you can think
 about how you’re going to make the back ups. There are two approaches to
 backing up data from a computer:</p>
@@ -590,10 +592,10 @@ all).</p>
 to back up. You also can’t (or shouldn’t) back up an entire operating
 system this way.</p></li>
 </ol>
-<h2 id="software">Software</h2>
+<h1 id="software">Software</h1>
 <p>Let’s look at a few examples of software for backing up your files
 and evaluate them.</p>
-<h3 id="copy-and-paste">Copy and paste</h3>
+<h2 id="copy-and-paste">Copy and paste</h2>
 <p>This is… copy and paste.</p>
 <figure>
 <img src="windows-copy.png" alt="Windows file transfer dialog." />
@@ -628,7 +630,7 @@ metadata (unless you’re using something like <code>rsync</code>).</li>
 don’t have the current version and old versions in your back up, just
 the current version).</li>
 </ul>
-<h3 id="live-synchronizing-folders">Live-synchronizing folders</h3>
+<h2 id="live-synchronizing-folders">Live-synchronizing folders</h2>
 <p>Some examples of software enabling live-synchronizing of folders
 include:</p>
 <ul>
@@ -656,7 +658,7 @@ href="https://www.vice.com/en/article/pkb4ng/meet-the-self-hosters-taking-back-t
 see <a href="https://manual.seafile.com/">the Seafile manual</a> for
 more information).</li>
 </ul>
-<h3 id="disk-imaging">Disk imaging</h3>
+<h2 id="disk-imaging">Disk imaging</h2>
 <p>Some examples of software for disk imaging are:</p>
 <ul>
 <li><a href="https://clonezilla.org/">CloneZilla</a></li>
@@ -680,7 +682,7 @@ you copy an entire disk or partition.</li>
 <li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> You’re
 generally in control of your data.</li>
 </ul>
-<h2 id="section">3-2-1</h2>
+<h1 id="section">3-2-1</h1>
 <p>Software enables you to actually copy or back up software, but
 there’s still strategy for <em>how</em> you manage your back ups.</p>
 <p>One strategy is called “3-2-1”, and it’s summed up as:</p>
@@ -714,8 +716,8 @@ readable later).</li>
 likelihood of one failure happening is moderate, the likelihood of two
 failures happening is lower.</li>
 </ul>
-<h2 id="restoring-and-verifying-backups">Restoring and verifying
-backups</h2>
+<h1 id="restoring-and-verifying-backups">Restoring and verifying
+backups</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Restore and verify your
@@ -728,8 +730,8 @@ demonstrated that you can restore the back up (you can actually get the
 data back you thought you were backing up).</p>
 <p>How you restore and verify your backups depends on whether you’re
 doing file-based backup or image-based backup.</p>
-<h3 id="file-based-restore-and-verify">File-based restore and
-verify</h3>
+<h2 id="file-based-restore-and-verify">File-based restore and
+verify</h2>
 <p>Verifying that your files are backed up can be as straightforward as
 opening your file explorer or web browser, navigating to the location
 where your files are backed up to, and then just manually inspecting if
@@ -782,8 +784,8 @@ or more differences.</figcaption>
 </figure>
 <p>Ideally, you should see no differences between what you got from your
 backup and what you have locally.</p>
-<h3 id="image-based-restore-and-verify">Image-based restore and
-verify</h3>
+<h2 id="image-based-restore-and-verify">Image-based restore and
+verify</h2>
 <p>When you back up your data using an image-based approach you wind up
 with a single, very large file (many GBs).</p>
 <p>This file contains all the bytes that are either on your entire
@@ -797,7 +799,7 @@ verify</a>.</li>
 <li>Write your image(s) back to the same machine or a different
 machine.</li>
 </ol>
-<h4 id="mount-the-images">Mount the images</h4>
+<h3 id="mount-the-images">Mount the images</h3>
 <p>This approach is primarily limited to Linux or macOS. On Linux, you
 can treat an individual file as a complete drive by using a <a
 href="https://en.wikipedia.org/wiki/Loop_device">“loop” device</a>. You
@@ -817,7 +819,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 approach described in <a
 href="#file-based-restore-and-verify">File-based restore and
 verify</a>.</p>
-<h4 id="write-the-images">Write the images</h4>
+<h3 id="write-the-images">Write the images</h3>
 <p>The other option is to use the same software that you used to create
 the images in the first place (CloneZilla, Redo Rescue, Acronis, etc) to
 write them back to either the same device (dangerous!) or a different

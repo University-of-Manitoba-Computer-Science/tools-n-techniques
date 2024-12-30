@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -305,9 +306,6 @@ Running your own Linux system
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#install-packages" id="toc-install-packages">Install
-packages</a>
-<ul>
 <li><a href="#administrative-users-root"
 id="toc-administrative-users-root">Administrative users
 (<code>root</code>)</a></li>
@@ -329,17 +327,22 @@ id="toc-updating-packages-on-the-command-line">Updating packages on the
 command line</a></li>
 <li><a href="#installing-new-packages-on-the-command-line"
 id="toc-installing-new-packages-on-the-command-line">Installing new
-packages on the command line</a></li>
+packages on the command line</a>
+<ul>
+<li><a href="#figuring-out-package-names"
+id="toc-figuring-out-package-names">Figuring out package names</a></li>
+<li><a href="#installing-a-package-by-name"
+id="toc-installing-a-package-by-name">Installing a package by
+name</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#installing-a-packages-outside-of-repositories"
 id="toc-installing-a-packages-outside-of-repositories">Installing a
 packages <em>outside</em> of repositories</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="install-packages">Install packages</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Install packages using a
@@ -370,8 +373,8 @@ of</em> the same thing as a <code>.msi</code> file on Windows or a
 <code>.pkg</code> or <code>.app</code> on macOS.</p>
 <p>There are two ways we’re going to install and update packages in
 Ubuntu: on the command-line and using a GUI.</p>
-<h2 id="administrative-users-root">Administrative users
-(<code>root</code>)</h2>
+<h1 id="administrative-users-root">Administrative users
+(<code>root</code>)</h1>
 <p>Installing software is an administrative task, and only users that
 have permissions can install software on a system. Since this is your
 Linux installation, <em>you</em> are the administrative user and you can
@@ -382,24 +385,24 @@ users, but there isn’t really a “main” administrator account name.</p>
 <p>You may be prompted for an administrative password when managing
 software on your Linux system. On Ubuntu, the password you should be
 entering is the same as your user account’s password.</p>
-<h2 id="using-the-software-center">Using the Software Center</h2>
+<h1 id="using-the-software-center">Using the Software Center</h1>
 <p>Ubuntu has separate GUI apps for updating and installing new
 packages.</p>
-<h3 id="updating-packages-with-a-gui">Updating packages with a GUI</h3>
+<h2 id="updating-packages-with-a-gui">Updating packages with a GUI</h2>
 <p><a
 href="https://ubuntu.com/tutorials/upgrading-ubuntu-desktop#2-launch-the-software-updater">Start
 the program called “Software updater”</a> and follow the on-screen
 instructions.</p>
 <p>Make sure that your install is completely up to date by installing
 new packages.</p>
-<h3 id="installing-new-packages-with-a-gui">Installing new packages with
-a GUI</h3>
+<h2 id="installing-new-packages-with-a-gui">Installing new packages with
+a GUI</h2>
 <p>You can install new software using the <a
 href="https://help.ubuntu.com/stable/ubuntu-help/addremove-install.html.en">“Ubuntu
 Software”</a> app.</p>
 <p>Install Meld Merge using the Ubuntu Software app by searching for it,
 then installing it.</p>
-<h2 id="on-the-command-line">On the command line</h2>
+<h1 id="on-the-command-line">On the command line</h1>
 <p>Installing packages with a GUI is great, but you don’t always have
 access to a GUI (like when you’re connecting to a remote server with SSH
 that doesn’t even have a GUI installed), and some packages aren’t listed
@@ -407,8 +410,8 @@ in the GUI app (notably packages that contain command-line programs).
 You can also install packages on the command line.</p>
 <p>On Ubuntu (and Debian) the command line package manager is
 <code>apt</code>.</p>
-<h3 id="updating-packages-on-the-command-line">Updating packages on the
-command line</h3>
+<h2 id="updating-packages-on-the-command-line">Updating packages on the
+command line</h2>
 <p>Updating packages on the command line actually consists of two
 separate steps:</p>
 <ol type="1">
@@ -463,8 +466,8 @@ systems like Aviary, so don’t try using <code>sudo</code> on those
 systems (its use is logged and reported to the administrators who will
 probably politely ask you to stop).</p>
 </div>
-<h3 id="installing-new-packages-on-the-command-line">Installing new
-packages on the command line</h3>
+<h2 id="installing-new-packages-on-the-command-line">Installing new
+packages on the command line</h2>
 <p>You will almost certainly also want to install new packages on the
 command line. Installing a package on the command line usually consists
 of two steps:</p>
@@ -473,7 +476,7 @@ of two steps:</p>
 install.</li>
 <li>Install the package.</li>
 </ol>
-<h4 id="figuring-out-package-names">Figuring out package names</h4>
+<h3 id="figuring-out-package-names">Figuring out package names</h3>
 <p>Sometimes you already know the name of the package that you want to
 install and you can proceed immediately to step 2, but more often than
 not you don’t know the name of the package.</p>
@@ -482,27 +485,38 @@ that you want to install:</p>
 <ul>
 <li><p>Try running the command you want to use on the command line, and
 your terminal may helpfully tell you what to install:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@your-linux</span> ~]<span class="op">&gt;</span> pandoc</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Command</span> <span class="st">&#39;pandoc&#39;</span> is not found, but can be installed with:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pandoc</span></code></pre></div></li>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>Command &#39;pandoc&#39; is not found, but can be installed with:
+sudo apt install pandoc</code></pre>
+</div>
+</div></li>
 <li><p>Search for the name of the program or words related to the
 program’s name with <code>apt search</code> (you don’t need to use
 <code>sudo</code> to do this, <code>apt search</code> is not installing
 new files):</p>
-<pre><code>[you@your-linux ~]&gt; apt search tmux
-Sorting... Done
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search tmux</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>Sorting... Done
 Full Text Search... Done
-aerc/jammy 0.8.2-1 amd64
+aerc/plucky 0.8.2-1 amd64
   World&#39;s Best Email Client
 // LOTS MORE
-tmux/jammy 3.2a-4build1 amd64
+tmux/plucky 3.2a-4build1 amd64
   terminal multiplexer</code></pre>
+</div>
+</div>
 <p>You can decode the results above as:</p>
 <ul>
 <li><code>tmux</code> is the name of the program</li>
-<li><code>jammy</code> is the name of the Ubuntu release this package
-was made for (Jammy Jellyfish)</li>
+<li><code>plucky</code> is the name of the Ubuntu release this package
+was made for (Plucky Puffin)</li>
 <li><code>3.2a-4build1</code> is the version of this package.</li>
 <li><code>amd64</code> is the architecture that this package was built
 for.</li>
@@ -510,19 +524,19 @@ for.</li>
 <li><p>Search for what you’re looking for online and have the website
 tell you what to install.</p></li>
 </ul>
-<h4 id="installing-a-package-by-name">Installing a package by name</h4>
+<h3 id="installing-a-package-by-name">Installing a package by name</h3>
 <p>Once you know the name of the package, you can use <code>apt</code>
 to install it:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tmux</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tmux</span></code></pre></div>
 <p><span class="emoji" data-emoji="tada">🎉</span>, you just installed a
 package!</p>
 <p>Here are some other packages you can install:</p>
 <pre><code>fish # a different shell
 make # it&#39;s make!
 build-essentials # a meta-package including a C compiler</code></pre>
-<h2 id="installing-a-packages-outside-of-repositories">Installing a
-packages <em>outside</em> of repositories</h2>
+<h1 id="installing-a-packages-outside-of-repositories">Installing a
+packages <em>outside</em> of repositories</h1>
 <p>When you’re installing packages with <code>apt</code> or Ubuntu
 Software, you’re downloading and installing packages that are hosted in
 the official “<a
@@ -550,12 +564,12 @@ everyone else).</p>
 <code>Downloads</code> folder. You can then either double-click the
 package and install the package with your GUI, or open your terminal and
 install the package with <code>apt</code>:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `./` is important; you must include the full filename.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your full filename for pandoc might be different from this one!</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./pandoc-2.19.2-1-amd64.deb</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `./` is important; you must include the full filename.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your full filename for pandoc might be different from this one!</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./pandoc-2.19.2-1-amd64.deb</span></code></pre></div>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>As with most topics in this course, we’re barely scratching the
 surface here, especially because we’re focusing on Ubuntu. There are
 <strong>many</strong> Linux distributions. While Debian has a lot of

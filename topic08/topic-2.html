@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -305,31 +306,41 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#input-and-output-on-the-command-line"
-id="toc-input-and-output-on-the-command-line">Input and output on the
-command line</a>
+<li><a href="#standard-input-output-and-error-in-other-languages"
+id="toc-standard-input-output-and-error-in-other-languages">Standard
+input, output, and error in <em>other</em> languages</a>
 <ul>
+<li><a href="#standard-input-output-and-error-in-c"
+id="toc-standard-input-output-and-error-in-c">Standard input, output,
+and error in C</a></li>
+<li><a href="#standard-input-output-and-error-in-python"
+id="toc-standard-input-output-and-error-in-python">Standard input,
+output, and error in Python</a></li>
+<li><a href="#files" id="toc-files">Files (????!!!!?!??!?!?!)</a></li>
+</ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="input-and-output-on-the-command-line">Input and output on the
-command line</h1>
 <p>I think that we can all agree: programs generally read information
 from somewhere (like a file) and print out information to somewhere
 (like your terminal or a different file).</p>
 <p>When we were first getting to know our terminals at the beginning of
 this course we ran <code>pandoc</code> and we just started typing stuff
 in:</p>
+<div class="columns">
+<div class="column input" style="width:50%;">
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> pandoc</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> pandoc! ^D</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>p<span class="op">&gt;</span>Hello, <span class="ex">pandoc!</span><span class="op">&lt;</span>/p<span class="op">&gt;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> pandoc! ^D</span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>&lt;p&gt;Hello, pandoc!&lt;/p&gt;</code></pre>
+</div>
+</div>
 <p>We only did that once, then we quickly switched to passing file names
 as arguments to <code>pandoc</code>:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> my.md <span class="at">-o</span> my.docx</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> my.md <span class="at">-o</span> my.docx</span></code></pre></div>
 <p>But… what was going on with Pandoc when we just typed stuff in? This
 is actually something you already know about (!), even if it doesn’t
 quite look like it: <code>pandoc</code> was reading from a “data stream”
@@ -339,9 +350,9 @@ writing to a data stream called “standard output”. Standard output is
 where you see information printed in your terminal.</p>
 <p>You’ve almost certainly used this in programs you’ve written
 before:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// maybe you didn&#39;t call this &quot;keyboard&quot;, but...</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="bu">Scanner</span> keyboard <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// maybe you didn&#39;t call this &quot;keyboard&quot;, but...</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="bu">Scanner</span> keyboard <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span></code></pre></div>
 <p>In Java, <code>System.in</code> is:</p>
 <ul>
 <li>The <code>System</code> part is the <a
@@ -358,8 +369,8 @@ to <strong>standard input</strong>.</li>
 <p>We use code like this to get input from our keyboard, and, as far as
 we are concerned right now, standard input <em>is</em> our keyboard.</p>
 <p>You’ve <strong>definitely</strong> seen this code before:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span></code></pre></div>
 <p>In Java, <code>System.out</code> is:</p>
 <ul>
 <li><code>System</code> is the same <code>System</code> as above,
@@ -378,9 +389,11 @@ terminal).</p>
 <code>grep</code>, for example, writes to standard output by default,
 but it can also read from standard input by default. Go ahead, try
 it:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> ~]<span class="op">&gt;</span> grep <span class="st">&#39;hello&#39;</span> <span class="co"># now type stuff in, some lines with hello, some</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># without, what&#39;s printed?</span></span></code></pre></div>
+<div class="input">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&#39;hello&#39;</span> <span class="co"># now type stuff in, some lines with hello, some</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>             <span class="co"># without, what&#39;s printed?</span></span></code></pre></div>
+</div>
 <p>You can quit <code>grep</code> by pressing
 <kbd>Control</kbd>+<kbd>C</kbd> or <kbd>Control</kbd>+<kbd>D</kbd>.</p>
 <p>So we’ve got two data streams:</p>
@@ -390,16 +403,18 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="
 </ul>
 <p>There’s actually a <em>third</em> data stream called standard error.
 You probably haven’t written this in Java before, but:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// dangerous stuff</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="dt">final</span> <span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">err</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Oh no, something terrible happened!&quot;</span><span class="op">);</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// dangerous stuff</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="dt">final</span> <span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">err</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Oh no, something terrible happened!&quot;</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Standard error (<code>System.err</code>) is another output stream,
 and the main purpose of standard error is for printing out errors to
 your terminal.</p>
-<div class="aside">
+<section id="standard-input-output-and-error-in-other-languages"
+class="aside">
+<h1>Standard input, output, and error in <em>other</em> languages</h1>
 <p>We’ve seen standard input, standard output, and standard error in
 Java, but what about some other languages we’ve seen or used?</p>
 <p>This is not a programming course, and you won’t be assessed on this
@@ -419,25 +434,25 @@ from <code>fopen</code> (<code>fgets</code>, <code>fprintf</code>).</p>
 use to to read and write standard input, output, and error:
 <code>stdin</code>, <code>stdout</code>, and <code>stderr</code>:</p>
 <p>(Wait a minute, file pointers??? They’re <em>files</em>???)</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span><span class="pp"> </span><span class="co">// for EXIT_SUCCESS</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> h<span class="op">;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MAX_LEN </span><span class="dv">100</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> message<span class="op">[</span>MAX_LEN<span class="op">];</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard output</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>stdout<span class="op">,</span> <span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard output</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>message<span class="op">,</span> MAX_LEN<span class="op">,</span> stdin<span class="op">);</span> <span class="co">// standard input</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> getchar<span class="op">();</span> <span class="co">// standard input</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>stderr<span class="op">,</span> <span class="st">&quot;Oh no! Errors!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard error</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span><span class="pp"> </span><span class="co">// for EXIT_SUCCESS</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> h<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MAX_LEN </span><span class="dv">100</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> message<span class="op">[</span>MAX_LEN<span class="op">];</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard output</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>stdout<span class="op">,</span> <span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard output</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>message<span class="op">,</span> MAX_LEN<span class="op">,</span> stdin<span class="op">);</span> <span class="co">// standard input</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> getchar<span class="op">();</span> <span class="co">// standard input</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>stderr<span class="op">,</span> <span class="st">&quot;Oh no! Errors!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// standard error</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> EXIT_SUCCESS<span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h2 id="standard-input-output-and-error-in-python">Standard input,
 output, and error in Python</h2>
 <p>There are a few different ways to get input or produce output in
@@ -451,25 +466,25 @@ default.</li>
 <p>Similar to C, Python’s <code>sys</code> module provides three file
 objects that refer to standard input, output, and error.</p>
 <p>(<strong><em>FILES????</em></strong>)</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;Please enter a message: &quot;</span>) <span class="co"># standard input</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>) <span class="co"># standard output</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>, <span class="bu">file</span><span class="op">=</span>sys.stdout) <span class="co"># standard output</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Oh no! Errors!&quot;</span>, <span class="bu">file</span><span class="op">=</span>sys.stderr) <span class="co"># standard error</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sys.stdin.read() <span class="co"># standard input</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>sys.stdout.write(data)  <span class="co"># standard output</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>sys.stderr.write(data)  <span class="co"># standard error</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;Please enter a message: &quot;</span>) <span class="co"># standard input</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>) <span class="co"># standard output</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>, <span class="bu">file</span><span class="op">=</span>sys.stdout) <span class="co"># standard output</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Oh no! Errors!&quot;</span>, <span class="bu">file</span><span class="op">=</span>sys.stderr) <span class="co"># standard error</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sys.stdin.read() <span class="co"># standard input</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>sys.stdout.write(data)  <span class="co"># standard output</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>sys.stderr.write(data)  <span class="co"># standard error</span></span></code></pre></div>
 <h2 id="files">Files (????!!!!?!??!?!?!)</h2>
 <p>OK, so yeah. They are file-like-things™ in various languages and
 environments. Unfortunately we can’t get much more into it than that in
 this course. Be patient! You will learn a little bit more about this
 later in your academic career when you’re looking at how operating
 systems are implemented.</p>
-</div>
+</section>
 <h2 id="further-reading">Further reading</h2>
 <p>You can read a more about the concepts and history of standard input,
 output, and error on <a

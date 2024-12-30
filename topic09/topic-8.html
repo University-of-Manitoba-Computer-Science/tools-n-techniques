@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -308,9 +309,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#practice-questions" id="toc-practice-questions">Practice
-Questions</a>
-<ul>
 <li><a href="#question-1" id="toc-question-1">Question 1</a></li>
 <li><a href="#question-2" id="toc-question-2">Question 2</a>
 <ul>
@@ -318,19 +316,16 @@ Questions</a>
 id="toc-input-error-prevention">Input Error Prevention</a></li>
 </ul></li>
 <li><a href="#question-3" id="toc-question-3">Question 3</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="practice-questions">Practice Questions</h1>
-<h2 id="question-1">Question 1</h2>
+<h1 id="question-1">Question 1</h1>
 <p>In COMP 1002, you have successfully built your personal webpage when
-you learned about <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-4.html">Reading
-and Changing Permissions</a> of files. We are now going to automate a
-few of those processes in building (or updating) your personal webpage.
-For this, we are going to write a shell script to automate the
-conversion from markdown to HTML and also to change the permissions of
-the generated HTML file.</p>
+you learned about <a href="../topic05/topic-4.html">Reading and Changing
+Permissions</a> of files. We are now going to automate a few of those
+processes in building (or updating) your personal webpage. For this, we
+are going to write a shell script to automate the conversion from
+markdown to HTML and also to change the permissions of the generated
+HTML file.</p>
 <ol type="1">
 <li><p>Let us convert the file from markdown to HTML. Name your script
 as <code>publish_webpage</code>. The script should take the name of the
@@ -350,10 +345,10 @@ file <code>index.html</code>. Recall that the permissions are:</p>
 </ul></li>
 </ul></li>
 </ol>
-<h2 id="question-2">Question 2</h2>
+<h1 id="question-2">Question 2</h1>
 <p>Now, we improve the shell script <code>publish_webpage</code> from
 Question 1.</p>
-<h3 id="input-error-prevention">Input Error Prevention</h3>
+<h2 id="input-error-prevention">Input Error Prevention</h2>
 <p>Imagine that you shared your script with a friend but they did not
 check your implementation. The idea here is to prevent that your friend
 type an incorrect name as the argument of <code>publish_webpage</code>.
@@ -362,10 +357,10 @@ For this, before performing any action in the script
 line by the user actually exists. If the file do not exist, print to
 standard output “File not found!” using <code>echo</code> command.
 Otherwise, print “File found!” and execute the rest of the script. If
-you need to recal the file operators you can check the section on <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic09/topic-4.html">Structures:
-conditional statements and loops</a>.</p>
-<h2 id="question-3">Question 3</h2>
+you need to recall the file operators you can check the section on <a
+href="../topic09/topic-4.html">Structures: conditional statements and
+loops</a>.</p>
+<h1 id="question-3">Question 3</h1>
 <p>Using a glob to find all the <code>zip</code> files in a directory,
 write a shell script called <code>unzipall</code> that uses a
 <code>for</code> loop to iterate over all the <code>zip</code> files,
@@ -374,15 +369,15 @@ format.</p>
 <p>Let’s test the <code>unzipall</code> script. For this, we need a few
 <code>zip</code> files to extract. Download the following file using the
 <code>wget</code> command:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic09/to_extract.zip</span></span></code></pre></div>
+<p><a href="https://toolsntechniques.ca/topic09/to_extract.zip"
+class="uri">https://toolsntechniques.ca/topic09/to_extract.zip</a></p>
 <p>Extract the downloaded <code>to_extract.zip</code> file. Then, you
 will have five other <code>zip</code> files. Use the script
 <code>unzipall</code> you have written to extract all the compressed
 files. If you need help, the section on <a
-href="https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/topic-2.html">Compiling
-and running code</a> shows how to use <code>wget</code> and how to use
-<code>unzip</code> to extract compressed <code>zip</code> files.</p>
+href="../topic03/topic-2.html">Compiling and running code</a> shows how
+to use <code>wget</code> and how to use <code>unzip</code> to extract
+compressed <code>zip</code> files.</p>
 <div class="challenge">
 <p>The use of glob can remove the need of loops in many actions on a
 shell script. Globs are meant to make our life easier. Can you write the

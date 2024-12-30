@@ -243,23 +243,19 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#download-and-use-a-pre-installed-os-in-vm-software-utm"
-id="toc-download-and-use-a-pre-installed-os-in-vm-software-utm">Download
-and use a pre-installed OS in VM software (UTM)</a>
-<ul>
 <li><a href="#download-an-image" id="toc-download-an-image">Download an
 image</a></li>
-<li><a href="#run-the-vm" id="toc-run-the-vm">Run the VM</a>
-<ul>
+<li><a href="#run-the-vm" id="toc-run-the-vm">Run the VM</a></li>
 <li><a href="#cloning-and-running-without-changes"
 id="toc-cloning-and-running-without-changes">Cloning and running without
-changes</a></li>
-</ul></li>
+changes</a>
+<ul>
+<li><a href="#cloning" id="toc-cloning">Cloning</a></li>
+<li><a href="#running-without-changes"
+id="toc-running-without-changes">Running without changes</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="download-and-use-a-pre-installed-os-in-vm-software-utm">Download
-and use a pre-installed OS in VM software (UTM)</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Download and use a
@@ -290,7 +286,7 @@ href="https://www.youtube.com/c/AndreasKling">live-streaming coding on
 YouTube</a>.</p>
 </div>
 </div>
-<h2 id="download-an-image">Download an image</h2>
+<h1 id="download-an-image">Download an image</h1>
 <p>UTM makes getting pre-made OS images fairly straightforward. When you
 first start UTM, you should see a button labelled “Browse UTM
 Gallery”:</p>
@@ -322,11 +318,11 @@ image</a> page, or</li>
 </ol>
 <p>For now we’re content with running the new operating system in a
 virtual, so click on the “Open in UTM” button and try it out!</p>
-<h2 id="run-the-vm">Run the VM</h2>
+<h1 id="run-the-vm">Run the VM</h1>
 <p>Once you’ve got ReactOS in your UTM window, you can click on the Play
 button and start playing with ReactOS!</p>
-<h3 id="cloning-and-running-without-changes">Cloning and running without
-changes</h3>
+<h1 id="cloning-and-running-without-changes">Cloning and running without
+changes</h1>
 <p>Virtual machines are entire operating systems running on your
 computer in <em>software</em>. Because this isn’t a complete actual
 physical computer, we can do a couple of interesting things that we
@@ -337,7 +333,7 @@ can’t do with real hardware:</p>
 changes made to the OS (sort of like being able to revert a commit with
 <code>git</code>).</li>
 </ol>
-<h4 id="cloning">Cloning</h4>
+<h2 id="cloning">Cloning</h2>
 <p>Right click on the ReactOS virtual machine in UTM and select
 “Clone…”. This will ask if you want to duplicate the entire virtual
 machine and will make… an entire copy of the virtual machine. You should
@@ -349,7 +345,7 @@ figuring out what dependencies are required when installing your
 application on a new operating system, you can run that operating system
 in a virtual machine, clone it, make changes, and get back to the
 original state very quickly.</p>
-<h4 id="running-without-changes">Running without changes</h4>
+<h2 id="running-without-changes">Running without changes</h2>
 <p>UTM also has the ability to run a virtual machine and discard any
 changes that you make while the VM is running.</p>
 <p>Right click on the ReactOS virtual machine (one of the two you have

@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -305,21 +306,14 @@ Running your own Linux system
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#configure-and-run-a-web-server"
-id="toc-configure-and-run-a-web-server">Configure and run a web
-server</a>
-<ul>
 <li><a href="#installing-caddy" id="toc-installing-caddy">Installing
 Caddy</a></li>
 <li><a href="#configuring-caddy" id="toc-configuring-caddy">Configuring
 Caddy</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="configure-and-run-a-web-server">Configure and run a web
-server</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Configure and run a web
@@ -338,7 +332,7 @@ popular web servers:</p>
 “engine-X”)</li>
 <li><a href="https://caddyserver.com/">Caddy</a></li>
 </ol>
-<h2 id="installing-caddy">Installing Caddy</h2>
+<h1 id="installing-caddy">Installing Caddy</h1>
 <p>Caddy can be installed using <code>apt</code>, but you need to do a
 little bit of extra set up — Caddy’s packages are <em>not</em> in the
 Ubuntu repositories. Instead, Caddy hosts its own repositories, and you
@@ -355,7 +349,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 <p>After you’ve followed the steps in the documentation, Caddy should be
 running! Open the web browser in your Linux system and browse to <a
 href="http://localhost" class="uri">http://localhost</a>.</p>
-<h2 id="configuring-caddy">Configuring Caddy</h2>
+<h1 id="configuring-caddy">Configuring Caddy</h1>
 <p>Now that Caddy’s installed, let’s get it set up so that the server is
 serving what we want instead of the default.</p>
 <div class="aside">
@@ -388,15 +382,16 @@ href="http://localhost" class="uri">http://localhost</a></p></li>
 <li><p>Restart caddy.</p></li>
 <li><p>Replace <code>/usr/share/caddy/index.html</code> with your own
 <code>index.html</code> (maybe by converting a Markdown file to HTML,
-you did this in week 6). Your user account does not have permissions to
-write to this directory, so you can <code>mv</code> or <code>cp</code>
-the file with <code>sudo</code>:</p>
+you did this in <a href="../topic05/topic-4.html">reading and changing
+permissions</a>). Your user account does not have permissions to write
+to this directory, so you can <code>mv</code> or <code>cp</code> the
+file with <code>sudo</code>:</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv index.html /usr/share/caddy/</span></code></pre></div></li>
 <li><p>Refresh your web browser.</p></li>
 <li><p><span class="emoji" data-emoji="tada">🎉</span></p></li>
 </ul>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>Installing a web server inside your Linux install is great, but its
 use for now is limited to the web browser inside your Linux install.</p>
 <p>Your next steps are to install Caddy on (for example) a virtual

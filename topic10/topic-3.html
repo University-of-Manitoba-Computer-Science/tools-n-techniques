@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -324,9 +325,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#create-a-makefile" id="toc-create-a-makefile">Create a
-<code>Makefile</code></a>
-<ul>
 <li><a href="#what-even-is-make" id="toc-what-even-is-make">What even is
 <code>make</code>?</a></li>
 <li><a href="#running-make" id="toc-running-make">Running
@@ -347,10 +345,8 @@ id="toc-running-make-concurrently">Running <code>make</code>
 concurrently</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="create-a-makefile">Create a <code>Makefile</code></h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Create a
@@ -391,7 +387,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> my-app.c list.o set.o <span class="at">-o</span> my-app</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">### Did I remember to re-compile everything?</span></span></code></pre></div>
-<h2 id="what-even-is-make">What even is <code>make</code>?</h2>
+<h1 id="what-even-is-make">What even is <code>make</code>?</h1>
 <p><a
 href="https://en.wikipedia.org/wiki/Make_(software)"><code>make</code></a>
 is a program that can help you with situations like this: You tell it
@@ -423,18 +419,19 @@ create this graph. Instead, we list out “targets” (the things we’re
 trying to build), their dependencies (what this unit depends on), and
 the commands <code>make</code> should use to create that target. This
 all goes into a special file named <code>Makefile</code>.</p>
-<h2 id="running-make">Running <code>make</code></h2>
-<p>Re-download or copy <code>hello.tar.gz</code>:</p>
-<pre><code>https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz</code></pre>
+<h1 id="running-make">Running <code>make</code></h1>
+<p>Re-download or copy <code>hello.tar.gz</code>: <a
+href="https://toolsntechniques.ca/topic07/hello.tar.gz"
+class="uri">https://toolsntechniques.ca/topic07/hello.tar.gz</a></p>
 <p>If you’re downloading this file again, you should extract it:</p>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> hello.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> hello.tar.gz</span></code></pre></div>
 <p>The folder <code>hello</code> has a file named <code>Makefile</code>.
 You can run the command <code>make</code> in this directory to build the
 targets:</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
 <p><code>make</code> works by looking for a file in the current working
 directory that has a special name, <a
 href="https://www.gnu.org/software/make/manual/html_node/Makefile-Names.html">usually
@@ -443,8 +440,8 @@ href="https://www.gnu.org/software/make/manual/html_node/Makefile-Names.html">us
 thing that appears on the left side of a colon <code>:</code>). In
 <code>hello</code>, the first line in the <code>Makefile</code> that
 matches this looks like:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> HelloWorld.class hello ccrash</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> HelloWorld.class hello ccrash</span></span></code></pre></div>
 <p>Our first “target” here is listing out all of the things we want to
 build in this <code>Makefile</code> as a “dependency”. This target is
 often called <code>all</code>, but this is also a “de facto” standard,
@@ -452,11 +449,16 @@ you can also call this first target <code>cats</code> and
 <code>make</code> will behave the same way.</p>
 <p>Assuming that everything’s working, you should see output similar to
 the following:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[you@bird</span> hello]<span class="op">&gt;</span> make</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> HelloWorld.java</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-Wpedantic</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-g</span>    hello.c   <span class="at">-o</span> hello</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> <span class="at">-Wall</span> <span class="at">-Wpedantic</span> <span class="at">-Wextra</span> <span class="at">-Werror</span> <span class="at">-g</span>    ccrash.c   <span class="at">-o</span> ccrash</span></code></pre></div>
+<div class="columns">
+<div class="column input" style="width:50%;">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+</div><div class="column output" style="width:50%;">
+<pre><code>javac HelloWorld.java
+clang -Wall -Wpedantic -Wextra -Werror -g    hello.c   -o hello
+clang -Wall -Wpedantic -Wextra -Werror -g    ccrash.c   -o ccrash</code></pre>
+</div>
+</div>
 <p>This <code>Makefile</code> has a <code>clean</code> target, this is
 another “de facto” standard for a target name that doesn’t create
 anything new but deletes outputs from compilers:</p>
@@ -466,7 +468,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="
 specifying the target name after <code>make</code>:</p>
 <div class="sourceCode" id="cb9"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> hello</span></code></pre></div>
-<h2 id="format-of-a-makefile">Format of a <code>Makefile</code></h2>
+<h1 id="format-of-a-makefile">Format of a <code>Makefile</code></h1>
 <p>Let’s take a look at what <code>Makefile</code>s look like in more
 detail. The <code>Makefile</code> in <code>hello</code> is slightly more
 complicated and we’ll see all of it soon, but the simplest format for a
@@ -511,7 +513,7 @@ going to be what your compiler produces as output (<code>.class</code>,
 <li>The commands should take as input the dependencies, and produce as
 output the target.</li>
 </ul>
-<h3 id="variables">Variables</h3>
+<h2 id="variables">Variables</h2>
 <p>Similar to shell scripts, <code>Makefile</code>s can also use <a
 href="https://www.gnu.org/software/make/manual/html_node/Using-Variables.html">variables</a>.
 We’re going to look at a specific kind of variable that can be used in
@@ -569,8 +571,8 @@ variables</a>.</p>
 <p>There’s only one target specified (<code>HelloWorld.class</code>), so
 that’s the only one to change.</p>
 </div>
-<h2 id="using-gnu-make-to-build-c-programs">Using GNU Make to build C
-programs</h2>
+<h1 id="using-gnu-make-to-build-c-programs">Using GNU Make to build C
+programs</h1>
 <p>You might have noticed that the <code>Makefile</code> in
 <code>hello</code> looks, uh, a little weird:</p>
 <ul>
@@ -617,7 +619,7 @@ class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1">
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dv">%:</span><span class="dt"> %.c</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="er">    </span><span class="ch">$(</span><span class="dt">LINK.c</span><span class="ch">)</span> <span class="ch">$^</span> <span class="ch">$(</span><span class="dt">LOADLIBES</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDLIBS</span><span class="ch">)</span> -o <span class="ch">$@</span></span></code></pre></div>
 </div><div class="column" style="width:45%;">
-<h3 id="our-makefile">Our <code>Makefile</code></h3>
+<h2 id="our-makefile">Our <code>Makefile</code></h2>
 <div class="sourceCode" id="cb15"><pre
 class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> clang</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Wall -Wpedantic -Wextra -Werror -g</span></span>
@@ -670,8 +672,8 @@ are from the empty variables between <code>$^</code> and
 <code>-o</code>).</p></li>
 </ol>
 <p>Neat <span class="emoji" data-emoji="camera">📷</span>.</p>
-<h2 id="using-make-to-build-stuff">Using <code>make</code> to build…
-stuff</h2>
+<h1 id="using-make-to-build-stuff">Using <code>make</code> to build…
+stuff</h1>
 <p><code>make</code> is great at building code, but <code>make</code>
 isn’t just about building code, it’s about identifying
 <strong>targets</strong> and satisfying their
@@ -773,8 +775,8 @@ extensions, or by <a
 href="https://www.gnu.org/software/make/manual/html_node/Overriding.html">accepting
 variable arguments to <code>make</code></a>).</p>
 </div>
-<h2 id="running-make-concurrently">Running <code>make</code>
-concurrently</h2>
+<h1 id="running-make-concurrently">Running <code>make</code>
+concurrently</h1>
 <p>One final and minor thing to add is that <code>make</code> can try to
 build targets that are unrelated <em>concurrently</em>. Your computer
 has a processor with more than one core, and each core can be used by
@@ -812,7 +814,7 @@ use that in conjunction with <code>make</code>:</p>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span><span class="va">$(</span><span class="fu">nproc</span><span class="va">)</span></span></code></pre></div>
 </div>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>There’s a lot here, and we’re just barely scratching the surface. You
 can find more information about <code>make</code> in a few different
 places:</p>

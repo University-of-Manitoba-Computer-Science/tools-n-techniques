@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -305,10 +306,6 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#initialize-a-server-in-a-public-cloud"
-id="toc-initialize-a-server-in-a-public-cloud">Initialize a server in a
-public cloud</a>
-<ul>
 <li><a href="#what-even-is-a-cloud" id="toc-what-even-is-a-cloud">What
 even is a cloud?</a></li>
 <li><a href="#what-cloud-are-we-using"
@@ -326,11 +323,8 @@ SSH</a></li>
 </ul></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="initialize-a-server-in-a-public-cloud">Initialize a server in a
-public cloud</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Initialize a server in a
@@ -346,7 +340,7 @@ to do stuff on our own machine that we couldn’t do before.</p>
 href="https://pixabay.com/photos/clouds-nature-sky-cumulus-weather-4215608/">Pixabay
 License</a>)</figcaption>
 </figure>
-<h2 id="what-even-is-a-cloud">What even is a cloud?</h2>
+<h1 id="what-even-is-a-cloud">What even is a cloud?</h1>
 <blockquote>
 <p>A visible cluster of water droplets and/or ice particles in the
 atmosphere. (<a
@@ -401,7 +395,7 @@ is trivial compared to buying a new physical server. These companies
 also created their own suite of web applications and web sites for
 managing access to these virtual machines, and this is effectively what
 “the cloud” is: renting virtual machines in someone’s data center.</p>
-<h2 id="what-cloud-are-we-using">What cloud are we using?</h2>
+<h1 id="what-cloud-are-we-using">What cloud are we using?</h1>
 <p>There are three major cloud providers:</p>
 <ol type="1">
 <li><a href="https://aws.amazon.com/">Amazon AWS</a>.</li>
@@ -418,17 +412,17 @@ if or when you go beyond what’s being provided for free.</p>
 Students get free access to Azure without needing to provide a credit
 card; there are no other technical or other reasons for choosing
 Microsoft over the other cloud providers.</p>
-<h2 id="running-your-own-server-in-the-cloud">Running your own server in
-the cloud</h2>
+<h1 id="running-your-own-server-in-the-cloud">Running your own server in
+the cloud</h1>
 <p>With that out of the way, let’s get started on getting a server
 running on a cloud provider!</p>
-<h3 id="sign-up">Sign up</h3>
+<h2 id="sign-up">Sign up</h2>
 <p>Sign up for <a
 href="https://azure.microsoft.com/en-ca/free/students/">Azure for
 Students</a> using your <code>@myumanitoba.ca</code> e-mail address. You
 must use your U of M e-mail address because it’s proof that you’re a
 current student at the U of M.</p>
-<h3 id="spin-up-your-server">Spin up your server</h3>
+<h2 id="spin-up-your-server">Spin up your server</h2>
 <p>Once you’ve set up your account we can start working on setting up a
 server.</p>
 <p>Begin by going to <a href="https://portal.azure.com/#home">your main
@@ -529,7 +523,7 @@ message reporting something like “Your deployment is complete”.</p>
 to see the details of your machine.</p>
 <p>There’s a lot, but you’ve just started a virtual machine in the cloud
 <span class="emoji" data-emoji="tada">🎉</span>!</p>
-<h3 id="connect-with-ssh">Connect with SSH</h3>
+<h2 id="connect-with-ssh">Connect with SSH</h2>
 <p>The main thing we’re interested in right now is the virtual machine’s
 address. Remember: our goal is to connect to our virtual machine with
 SSH, and the three pieces of information we need to connect to a server
@@ -550,13 +544,13 @@ connecting with SSH:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> you@10.10.3.4</span></code></pre></div>
 <p>Connect to your server with SSH!</p>
-<h3 id="shut-it-down">Shut it down!</h3>
+<h2 id="shut-it-down">Shut it down!</h2>
 <p>OK awesome! You’re welcome to start playing with this virtual machine
 (it’s just another Linux server, similar to Aviary), but at this point
 we’re done, we’ve accomplished what we set out to do.</p>
 <p>Back in your Azure portal you should click on the Stop button at the
 top of the page.</p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>Initializing a new server feels like just scratching the surface, and
 it really is. We’ll soon look at managing a Linux installation, but for
 now we’re going to stop at initializing the server.</p>

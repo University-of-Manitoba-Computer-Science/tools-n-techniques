@@ -22,8 +22,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -324,22 +325,15 @@ server</a></li>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#run-a-command-within-a-container"
-id="toc-run-a-command-within-a-container">Run a command within a
-container</a>
-<ul>
 <li><a href="#install-docker-desktop"
 id="toc-install-docker-desktop">Install Docker Desktop</a></li>
-<li><a href="#run-a-command-within-a-container-1"
-id="toc-run-a-command-within-a-container-1">Run a command within a
+<li><a href="#run-a-command-within-a-container"
+id="toc-run-a-command-within-a-container">Run a command within a
 container</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="run-a-command-within-a-container">Run a command within a
-container</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Run a command within a
@@ -362,7 +356,7 @@ basically an archive of an operating system’s folder structure.</p>
 foundations of containers (that would be an <em>amazing</em> systems
 course), but in this course our goal is simple: install enough software
 to get a command running in a container.</p>
-<h2 id="install-docker-desktop">Install Docker Desktop</h2>
+<h1 id="install-docker-desktop">Install Docker Desktop</h1>
 <p>Undoubtedly the most popular container management software is <a
 href="https://www.docker.com">Docker</a>.</p>
 <p>Docker has a highly polished visual environment for managing
@@ -379,8 +373,8 @@ documentation, but for completeness, you can find <a
 href="https://learn.microsoft.com/en-us/windows/wsl/install">documentation
 about how to install WSL on Microsoft’s web site</a>.</p>
 </div>
-<h2 id="run-a-command-within-a-container-1">Run a command within a
-container</h2>
+<h1 id="run-a-command-within-a-container">Run a command within a
+container</h1>
 <p>The simplest container command to run is “hello world”, so let’s
 start with that, then move on to something a little more complex.</p>
 <div class="example">
@@ -413,8 +407,12 @@ was modified by Docker Desktop when you installed it.</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
 <p>You should see some output from Docker:</p>
-<pre><code>PS C:\Users\you&gt; docker run hello-world
-Unable to find image &#39;hello-world:latest&#39; locally
+<div class="input">
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>Unable to find image &#39;hello-world:latest&#39; locally
 latest: Pulling from library/hello-world
 2db29710123e: Pull complete
 Digest: sha256:faa03e786c97f07ef34423fccceeec2398ec8a5759259f94d99078f264e9d7af
@@ -439,9 +437,8 @@ Share images, automate workflows, and more with a free Docker ID:
  https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-
-PS C:\Users\you&gt;</code></pre>
+ https://docs.docker.com/get-started/</code></pre>
+</div>
 <p><span class="emoji" data-emoji="tada">🎉</span> you just started and
 ran a container on your computer!</p>
 <p>When you go back to Docker Desktop, you’ll be able to see that in the
@@ -466,8 +463,8 @@ complicated.</p>
 <div class="example">
 <p>Let’s follow the advice of Docker Desktop and “Run a Sample
 Container”. Run the following in your terminal:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 80:80 docker/getting-started</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 80:80 docker/getting-started</span></code></pre></div>
 <p>Docker does some stuff to download an image and then… nothing?</p>
 <p>Let’s step through what each of these options mean:</p>
 <ul>
@@ -528,8 +525,8 @@ can’t do with the base <code>pandoc</code> install:</p>
 <p>You should use this file to:</p>
 <ul>
 <li><p>Create a PDF on Aviary with <code>pandoc</code></p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> myfile.md <span class="at">-o</span> myfile.pdf <span class="at">--toc</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> myfile.md <span class="at">-o</span> myfile.pdf <span class="at">--toc</span></span></code></pre></div>
 <p>Then transfer the PDF back to your own computer so you can see what
 it looks like.</p></li>
 <li><p>Create a PDF on your own machine with Pandocker using the
@@ -538,29 +535,29 @@ following command:</p>
 <summary>
 <p>macOS or Linux</p>
 </summary>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc dalibo/pandocker:stable <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="at">--filter</span> pandoc-latex-admonition <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc dalibo/pandocker:stable <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="at">--filter</span> pandoc-latex-admonition <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
 </details>
 <details>
 <summary>
 <p>macOS with Apple Silicon</p>
 </summary>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--platform</span><span class="op">=</span>linux/amd64 <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc <span class="dt">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dalibo/pandocker:stable <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="dt">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="dt">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--platform</span><span class="op">=</span>linux/amd64 <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  dalibo/pandocker:stable <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
 </details>
 <details>
 <summary>
 <p>Windows with PowerShell</p>
 </summary>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="va">${PWD}</span>:/pandoc dalibo/pandocker:stable lecture.md <span class="at">-o</span> <span class="kw">`</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">lecture.pdf</span> <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="kw">`</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--pdf-engine=xelatex</span> <span class="at">--listings</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-v</span> <span class="va">${PWD}</span>:/pandoc dalibo/pandocker:stable lecture.md <span class="at">-o</span> <span class="kw">`</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">lecture.pdf</span> <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="kw">`</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--pdf-engine=xelatex</span> <span class="at">--listings</span></span></code></pre></div>
 </details></li>
 </ul>
 <p>These two outputs are pretty different! As it is, you
@@ -587,7 +584,7 @@ directory) is shared inside the container at <code>/pandoc</code>.</li>
 <p><span class="emoji" data-emoji="tada">🎉</span> You just ran
 <code>pandoc</code> in a container!</p>
 </div>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>You’ve seen two examples of how to use containers, but you might want
 to know more about how to create your own containers.</p>
 <ul>

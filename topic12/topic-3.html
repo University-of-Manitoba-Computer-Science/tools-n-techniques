@@ -241,9 +241,6 @@ Running your own Linux system
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#install-a-linux-distribution"
-id="toc-install-a-linux-distribution">Install a Linux distribution</a>
-<ul>
 <li><a href="#where-are-you-installing-to"
 id="toc-where-are-you-installing-to">Where are you installing
 <em>to</em>?</a></li>
@@ -253,17 +250,19 @@ ISO</a></li>
 your machine</a>
 <ul>
 <li><a href="#virtual-machines" id="toc-virtual-machines">Virtual
-machines</a></li>
+machines</a>
+<ul>
+<li><a href="#virtualbox" id="toc-virtualbox">VirtualBox</a></li>
+<li><a href="#utm" id="toc-utm">UTM</a></li>
+</ul></li>
 <li><a href="#real-hardware" id="toc-real-hardware">Real
 hardware</a></li>
 </ul></li>
 <li><a href="#boot" id="toc-boot">Boot</a></li>
 <li><a href="#further-reading" id="toc-further-reading">Further
 reading</a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="install-a-linux-distribution">Install a Linux distribution</h1>
 <div class="outcomes">
 <ul class="task-list">
 <li><label><input type="checkbox" checked="" />Install the Linux
@@ -280,8 +279,8 @@ you’re on your own for getting it installed.</p>
 </ul>
 <p>At a certain points these paths start together, diverge, then
 converge again.</p>
-<h2 id="where-are-you-installing-to">Where are you installing
-<em>to</em>?</h2>
+<h1 id="where-are-you-installing-to">Where are you installing
+<em>to</em>?</h1>
 <p>Before you start, decide where you’re going to install it:</p>
 <ul>
 <li>Real hardware. Maybe you’ve got an old laptop. Maybe you’re using
@@ -292,7 +291,7 @@ going forward (we take no responsibility for lost data or lost use of
 your machine).</li>
 <li>A virtual machine.</li>
 </ul>
-<h2 id="download-the-iso">Download the ISO</h2>
+<h1 id="download-the-iso">Download the ISO</h1>
 <p>Once you’ve decided where you’re going to install, we’ve got to
 actually get our Linux distribution. Most Linux distributions are
 distributed as disk images, but the kind of disk image here is a CD or
@@ -306,18 +305,19 @@ called “ISO 9660”. <a href="https://en.wikipedia.org/wiki/ISO_9660">ISO
 system</a>”, it’s a binary data structure that’s used to represent
 files, folders, and metadata on a disk or other hardware.</p>
 </div>
-<p>Here’s a link to download <code>.iso</code> files:</p>
-<pre><code>https://cdimage.ubuntu.com/jammy/daily-live/current/</code></pre>
+<p>Here’s a link to download <code>.iso</code> files: <a
+href="https://cdimage.ubuntu.com/daily-live/current/"
+class="uri">https://cdimage.ubuntu.com/daily-live/current/</a></p>
 <p>If you’re using Windows or a Mac with an Intel processor, download
-<code>jammy-desktop-amd64.iso</code>. If you’re using a Mac with Apple
-Silicon, download <code>jammy-desktop-arm64.iso</code>.</p>
-<h2 id="set-up-your-machine">Set up your machine</h2>
+<code>plucky-desktop-amd64.iso</code>. If you’re using a Mac with Apple
+Silicon, download <code>plucky-desktop-arm64.iso</code>.</p>
+<h1 id="set-up-your-machine">Set up your machine</h1>
 <p>Here’s where our instructions diverge for a while: if you’re using a
 Virtual Machine, read below about either <a
 href="#virtualbox">VirtualBox</a> or <a href="#utm">UTM</a>. If you’re
 planning on installing Linux onto an actual machine, read more in <a
 href="#real-hardware">Real hardware</a>.</p>
-<h3 id="virtual-machines">Virtual machines</h3>
+<h2 id="virtual-machines">Virtual machines</h2>
 <p>If you don’t want to commit to installing Linux on a real machine,
 that’s totally OK. Thankfully, it’s straightforward to install Linux in
 a VM.</p>
@@ -326,7 +326,7 @@ automate the installation of Linux from a disk image. We don’t actually
 want to do that, we want to go through the install process so that we
 can see what it looks like. The goal here is to make sure we’re setting
 up our VM to allow us to go through the install process.</p>
-<h4 id="virtualbox">VirtualBox</h4>
+<h3 id="virtualbox">VirtualBox</h3>
 <p>Open VirtualBox and start creating a new virtual machine by either
 clicking on the “New” button in the toolbar at the top, using the
 <strong>Machine</strong> menu and selecting <strong>New…</strong>, or by
@@ -401,7 +401,7 @@ virtual disk and you’ve got a 250GB physical disk).</li>
 <p>Finally, click “Next”, optionally review the details of your VM, then
 click “Finish”. Hooray :tada;! You just created another VM!</p>
 <p>Now it’s time to <a href="#boot">Boot</a> your VM.</p>
-<h4 id="utm">UTM</h4>
+<h3 id="utm">UTM</h3>
 <p>UTM actually has pretty good documentation on <a
 href="https://docs.getutm.app/guides/ubuntu/">how to get Ubuntu set
 up</a>.</p>
@@ -430,7 +430,7 @@ finding the “CD/DVD” drop-down and choosing “Clear”.</li>
 </ul>
 <p>Once you’ve got the VM set up, you can move on to the <a
 href="#boot">Boot</a> section.</p>
-<h3 id="real-hardware">Real hardware</h3>
+<h2 id="real-hardware">Real hardware</h2>
 <p>If you’re planning to run this on real hardware, then you’ve got to
 prepare your boot media. Boot media is either a USB drive or an actual
 DVD.</p>
@@ -443,7 +443,7 @@ href="https://www.ventoy.net/en/index.html">Ventoy</a>.</p>
 the computer’s coming up, you can usually keep hitting the
 <kbd>Escape</kbd> key on your keyboard to select which device to use to
 boot.</p>
-<h2 id="boot">Boot</h2>
+<h1 id="boot">Boot</h1>
 <p>Start your VM or your machine (we’re converging here again).</p>
 <p>Follow the guide here: <a
 href="https://ubuntu.com/tutorials/install-ubuntu-desktop#4-boot-from-usb-flash-drive"
@@ -458,7 +458,7 @@ you can double-click on.</p>
 </div>
 <p>After you reboot, you should have a working Linux install <span
 class="emoji" data-emoji="tada">🎉</span>.</p>
-<h2 id="further-reading">Further reading</h2>
+<h1 id="further-reading">Further reading</h1>
 <p>Getting Linux installed can be straightforward. Ubuntu and Debian
 make most of the choices for you (choices that you probably don’t even
 care exist), but other Linux distributions give you <em>all</em> the
