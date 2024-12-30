@@ -3,9 +3,6 @@ title: Build and dependency management
 author: Franklin Bristow
 ---
 
-Create a new software project
-=============================
-
 ::: outcomes
 
 * [X] Create a new empty software project that includes a build and dependency
@@ -19,7 +16,7 @@ comes with "Maven for Java". Let's learn how to use that to create a new project
 with Maven.
 
 Maven
------
+=====
 
 So far we've talked about dependency management (with Python's `pip`) and build
 management (with `make`).
@@ -54,7 +51,7 @@ Ideally this gets you two things:
 [Maven]: https://maven.apache.org/
 
 Create a project in VS Code
----------------------------
+===========================
 
 Let's dive in. Start by opening VS Code. Normally you would create a new file in
 VS Code using something like <kbd>Control</kbd> or <kbd>Command</kbd> and
@@ -128,20 +125,19 @@ suggestions. Let's create a new Maven Java project:
    There are [two hard problems in computer science]:
 
    <ol>
-   <li value="1"> Naming things.
-   <li value="3"> Cache invalidation.
-   <li value="2"> Off-by-one errors.
-   <li value="4"> Guaranteed order of message delivery.
-   <li value="5" type="i"> Versioning.
+   <li value="1"> Naming things.</li>
+   <li value="3"> Cache invalidation.</li>
+   <li value="2"> Off-by-one errors.</li>
+   <li value="4"> Guaranteed order of message delivery.</li>
+   <li value="5" type="i"> Versioning.</li>
    </ol>
 
    One popular way to version your code is to use [semantic versioning].
 
+   </div>
    [two hard problems in computer science]:
    https://www.martinfowler.com/bliki/TwoHardThings.html
    [semantic versioning]: https://semver.org/
-
-   </div>
 8. Finally, (finally!), you can confirm the group and artifact Ids and the
    version number that you selected by pressing <kbd>Enter</kbd>:
 
@@ -158,7 +154,7 @@ project now), and open `App`. :tada:, you just created a new Java project with
 Maven support.
 
 Adding dependencies
--------------------
+===================
 
 Ok? Awesome? This was a lot of work to not have to type in a "Hello, world!"
 project in Java.
@@ -212,7 +208,8 @@ This is a small chunk of code that will create a [JSON] object; it's not exactly
 important what the code is doing, just that it requires a dependency
 (`org.json`).
 
-### Finding dependencies
+Finding dependencies
+--------------------
 
 Some projects will straight-up give you the information that you need to add
 them as a dependency to your `pom.xml`, but we'll look at a way to find a
@@ -235,7 +232,8 @@ area here where you can select some text. This is XML, the same format as
 `pom.xml`. Click on the text area and it *should* automatically copy this to
 your clipboard. If it doesn't, highlight the text and copy it.
 
-### Add the dependency to `pom.xml`
+Add the dependency to `pom.xml`
+-------------------------------
 
 Now switch back to VS Code, open `pom.xml`, and add this dependency below the
 `</dependency>` for `junit`:
@@ -273,7 +271,7 @@ You just added a dependency to a Java project and used that dependency :tada:!
 [JSON]: https://en.wikipedia.org/wiki/JSON
 
 Further reading
----------------
+===============
 
 We've done the bare minimum here with Maven, but it's enough to get us started.
 

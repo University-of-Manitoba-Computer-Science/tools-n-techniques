@@ -3,18 +3,15 @@ title: Introduction
 author: Franklin Bristow
 ---
 
-Introduction
-============
-
 Right now building a program doesn't really seem like a hard problem: you hit
 the Compile and/or Run buttons (whatever they look like for you), your program
 runs and does *stuff* :tada:.
 
 When your program consists of a single file, it can and should be that easy to
 build your code. But as the size of your code grows beyond one single file,
-building your program can become difficult and tedious. This week we're going to
-spend some time looking at tools for building software from source code, and
-look at building source code for different programming languages.
+building your program can become difficult and tedious. We're going to spend
+some time looking at tools for building software from source code, and look at
+building source code for different programming languages.
 
 As your programs grow in complexity, you're also going to want to rely on source
 code and programs that have been developed by *other people*. We'll take a look
@@ -23,8 +20,6 @@ aren't included as part of the language itself (I'm looking at you incredibly
 huge JDK!).
 
 ::: outcomes
-
-By the end of this week you should be able to:
 
 * [ ] Download and run a program that requires you to install dependencies.
 * [ ] Create a `Makefile` to accomplish a task (building software, running
@@ -36,12 +31,12 @@ By the end of this week you should be able to:
 :::
 
 Languages
----------
+=========
 
 This isn't a programming course&trade;.
 
-While this isn't a programming course, we're kind of required to look at the
-topics we're looking at this week in the context of programming languages:
+While this isn't a programming course, we're kind of required to look at these
+topics in the context of programming languages:
 
 * Installing dependencies with Python.
 * Using `make` with C (but also other stuff).

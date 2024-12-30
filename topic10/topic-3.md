@@ -3,10 +3,6 @@ title: Create a `Makefile`
 author: Franklin Bristow
 ---
 
-
-Create a `Makefile`
-===================
-
 ::: outcomes
 
 * [X] Create a `Makefile` to accomplish a task (building software, running
@@ -59,7 +55,7 @@ clang my-app.c list.o set.o -o my-app
 [decomposing]: https://en.wikipedia.org/wiki/Decomposition_(computer_science)
 
 What even is `make`?
---------------------
+====================
 
 [`make`] is a program that can help you with situations like this: You tell it
 what things you're trying to compile, how to compile those things, and what each
@@ -90,11 +86,10 @@ create that target. This all goes into a special file named `Makefile`.
 [`make`]: https://en.wikipedia.org/wiki/Make_(software)
 
 Running `make`
---------------
+==============
 
 Re-download or copy `hello.tar.gz`:
-
-    https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/hello.tar.gz
+<https://toolsntechniques.ca/topic07/hello.tar.gz>
 
 If you're downloading this file again, you should extract it:
 
@@ -128,12 +123,23 @@ is also a "de facto" standard, you can also call this first target `cats` and
 Assuming that everything's working, you should see output similar to the
 following:
 
+
+:::::: columns
+::: {.column width=50% .input}
+
 ```bash
-[you@bird hello]> make
+make
+```
+
+:::
+::: {.column width=50% .output}
+```
 javac HelloWorld.java
 clang -Wall -Wpedantic -Wextra -Werror -g    hello.c   -o hello
 clang -Wall -Wpedantic -Wextra -Werror -g    ccrash.c   -o ccrash
 ```
+:::
+::::::
 
 This `Makefile` has a `clean` target, this is another "de facto" standard for a
 target name that doesn't create anything new but deletes outputs from compilers:
@@ -153,7 +159,7 @@ make hello
 https://www.gnu.org/software/make/manual/html_node/Makefile-Names.html
 
 Format of a `Makefile`
-----------------------
+======================
 
 Let's take a look at what `Makefile`s look like in more detail. The `Makefile`
 in `hello` is slightly more complicated and we'll see all of it soon, but the
@@ -204,7 +210,8 @@ Here are some general [rules of thumb]:
 https://softwareengineering.stackexchange.com/questions/57/tabs-versus-spaces-what-is-the-proper-indentation-character-for-everything-in-e
 [rules of thumb]: https://en.wikipedia.org/wiki/Rule_of_thumb
 
-### Variables
+Variables
+---------
 
 Similar to shell scripts, `Makefile`s can also use [variables]. We're going to
 look at a specific kind of variable that can be used in rules to help make sure
@@ -257,7 +264,7 @@ https://www.gnu.org/software/make/manual/html_node/Using-Variables.html
 https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 
 Using GNU Make to build C programs
-----------------------------------
+==================================
 
 You might have noticed that the `Makefile` in `hello` looks, uh, a little weird:
 
@@ -305,7 +312,8 @@ LINK.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
 :::
 ::: {.column width=45%}
 
-### Our `Makefile`
+Our `Makefile`
+--------------
 
 ```makefile
 CC = clang
@@ -366,7 +374,7 @@ Neat :camera:.
 https://www.gnu.org/software/make/manual/make.html#Catalogue-of-Rules
 
 Using `make` to build... stuff
-------------------------------
+==============================
 
 `make` is great at building code, but `make` isn't just about building code,
 it's about identifying **targets** and satisfying their **dependencies** by
@@ -489,7 +497,7 @@ https://www.gnu.org/software/make/manual/html_node/Overriding.html
 https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html
 
 Running `make` concurrently
----------------------------
+===========================
 
 One final and minor thing to add is that `make` can try to build targets that
 are unrelated *concurrently*. Your computer has a processor with more than one
@@ -535,7 +543,7 @@ make -j$(nproc)
 :::
 
 Further reading
----------------
+===============
 
 There's a lot here, and we're just barely scratching the surface. You can find
 more information about `make` in a few different places:

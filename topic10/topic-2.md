@@ -3,10 +3,6 @@ title: Programs requiring dependencies
 author: Franklin Bristow
 ---
 
-
-Programs requiring dependencies
-===============================
-
 ::: outcomes
 
 * [X] Download and run a program that requires to you to install dependencies.
@@ -33,14 +29,13 @@ https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/doc-files
 
 
 Downloading the program
------------------------
+=======================
 
 The program you're going to be using as an example is actually something that
 extends [Pandoc]: a "filter" for Pandoc.
 
 You can find the repository here:
-
-    https://code.cs.umanitoba.ca/cs-lab-course/suppress-notes
+<https://code.cs.umanitoba.ca/cs-lab-course/suppress-notes>
 
 You're going to want to get this into your user directory on Aviary (Download a
 zip from GitLab and `unzip`, `git clone`, whatever works best for you).
@@ -61,7 +56,7 @@ you're going to need to install Python ([on Windows] or [on macOS]).
 [Pandoc]: https://pandoc.org
 
 Dependency management in Python
--------------------------------
+================================
 
 Dependency management in Python is... [not exactly a solved problem].
 
@@ -112,7 +107,8 @@ https://stackoverflow.com/questions/54475042/python-dependency-hell-a-compromise
 [*real shiny*]: https://www.youtube.com/watch?v=93lrosBEW-Q
 [`rich`]: https://pypi.org/project/rich/
 
-### Listing project dependencies
+Listing project dependencies
+----------------------------
 
 Installing individual dependencies on the command line is fine, and is a good
 way for us to very quickly get to work when we're trying to build something
@@ -228,13 +224,13 @@ of "one package and version per line".
 ::: 
 
 Installing the dependencies
----------------------------
+===========================
 
 The repository that you downloaded/cloned/whatever has a list of requirements as
 `requirements.txt`. You should install those requirements for this project.
 
 Running the program
--------------------
+===================
 
 The repository that you downloaded/cloned/whatever has a `README.md` that
 describes how to run the software. You should read the `README.md` to see how to
@@ -247,8 +243,16 @@ when you don't install dependencies for a Python project.
 
 Let's start by uninstalling dependencies with `pip`:
 
+:::::: columns
+::: {.column width=50% .input}
+
 ```bash
-[you@bird suppress-notes]> pip uninstall -r requirements.txt
+pip uninstall -r requirements.txt
+```
+
+:::
+::: {.column width=50% .output}
+```
 Found existing installation: panflute 1.12.5
 Uninstalling panflute-1.12.5:
   Would remove:
@@ -260,10 +264,15 @@ Proceed (Y/n)? Y
   Successfully uninstalled panflute-1.12.5
 ```
 
+:::
+::::::
+
 Now try running the software using the instructions again (through Pandoc, but
 don't pipe to `lynx`); what kind of output do you see now?
 
 Python is helpful enough to tell you the name of the missing package:
+
+::: output
 
 ```
 Traceback (most recent call last):
@@ -274,8 +283,12 @@ Error running filter suppress-notes:
 Filter returned error status 1
 ```
 
+:::
+
 If you're planning on using this filter again, you should reinstall the
 dependencies with `pip`:
+
+::: input
 
 ```bash
 pip install -r requirements.txt
@@ -283,8 +296,10 @@ pip install -r requirements.txt
 
 :::
 
+:::
+
 Further reading
----------------
+===============
 
 Dependency management in Python is... [not exactly a solved problem].
 
