@@ -3,9 +3,6 @@ title: Debugging shell scripts
 author: Franklin Bristow
 ---
 
-Debugging shell scripts
-=======================
-
 ::: outcomes
 
 * [X] Apply strategies to debug shell scripts.
@@ -21,7 +18,7 @@ Shell scripting languages do not come with an IDE and they do not come with a
 debugger. You can, however, do *something* to debug shell scripts.
 
 Log-based debugging
--------------------
+===================
 
 Re-read (or read) [log-based debugging].
 
@@ -53,7 +50,7 @@ to find out more about how to use `printf` by running `man 1 printf`.
 [log-based debugging]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/topic-3.html#log-based-debugging
 
 Changing Bash Behaviour
------------------------
+=======================
 
 Bash is not a good general purpose programming language. For many reasons. But
 two reasons that are relevant right now are:
@@ -89,7 +86,7 @@ Go ahead. I'll wait.
 
 Nice.
 
-[make it executable]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-4.html
+[make it executable]: ../topic05/topic-4.html
 
 :::
 
@@ -116,7 +113,7 @@ set -x    # print out all commands that are run
 :::
 
 Further reading
----------------
+===============
 
 Shell scripting isn't... it isn't a great language for general purpose
 programming, but maybe that's because nobody has built up the kind of tooling we

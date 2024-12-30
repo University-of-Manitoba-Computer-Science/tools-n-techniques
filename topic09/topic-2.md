@@ -3,9 +3,6 @@ title: Shell scripts
 author: Franklin Bristow
 ---
 
-Shell scripts
-=============
-
 ::: outcomes
 
 * [X] Write and run shell scripts to repeat complex tasks.
@@ -60,7 +57,7 @@ then run the sequence of commands like it's a program.
 [wait a minute]: https://youtu.be/g3YiPC91QUk?t=58
 
 Shells and languages
---------------------
+====================
 
 Similar to different programming languages, different shells use different
 syntax to express similar ideas. Deciding which shell program to use defines
@@ -78,12 +75,13 @@ common enough that we'll treat it like a "[lingua franca]".
 [lingua franca]: https://en.wikipedia.org/wiki/Lingua_franca
 
 Basic scripting
----------------
+===============
 
 Let's start with the basics: the general structure of a shell script and some
 very simple shell scripts.
 
-### General structure
+General structure
+-----------------
 
 Shell scripts all start with a "[shebang]" line --- a line that starts with the
 symbols `#!`. The first line indicates which program is going to be run to
@@ -98,7 +96,8 @@ sequence of commands to be executed.
 
 [shebang]: https://en.wikipedia.org/wiki/Shebang_(Unix)
 
-### Simple scripts
+Simple scripts
+--------------
 
 Here's an example of a very simple script:
 
@@ -189,7 +188,7 @@ find . -name "*.md"
 :::
 
 Environment variables and the `$PATH`
-------------------------------------
+=====================================
 
 Shell languages, like other programming languages, support variables.
 
