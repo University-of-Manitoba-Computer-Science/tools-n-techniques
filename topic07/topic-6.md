@@ -125,7 +125,7 @@ Process 4425 stopped
 You may want to run your process by passing arguments or by passing a file that
 your program is supposed to read on "standard input" (more on this in [the next
 topic], but if you normally run your program with something like `./prog <
-file.txt`, then you're replacing standard input)).
+file.txt`, then you're replacing standard input).
 
 [the next topic]: ../topic08/topic-1.html
 
