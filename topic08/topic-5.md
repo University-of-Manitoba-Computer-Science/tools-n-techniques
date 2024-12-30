@@ -3,10 +3,6 @@ title: Choose a backup strategy
 author: Franklin Bristow
 ---
 
-
-Choose a backup strategy
-=========================
-
 ::: outcomes
 
 * [X] Choose an appropriate backup strategy for protecting your files.
@@ -25,9 +21,10 @@ Let's look at each of these, then look at some strategies you can use to backup
 your files.
 
 Things to consider
--------------------
+==================
 
-### What kind of data are you backing up?
+What kind of data are you backing up?
+-------------------------------------
 
 Not just what kind of data are you backing up, but:
 
@@ -125,7 +122,8 @@ some answers to the questions above:
 |                  |                 |                | hardware).              |
 +------------------+-----------------+----------------+-------------------------+
 
-### Where are you backing up to?
+Where are you backing up to?
+----------------------------
 
 Once you've thought about the data that you want or need to back up, you should
 start thinking about where you're going to back up that data.
@@ -187,7 +185,8 @@ Here are some examples of where you could back up to:
 https://en.wikipedia.org/wiki/Disc_rot
 [tapes]: https://en.wikipedia.org/wiki/Tape_drive
 
-### How are you actually going to back up your data?
+How are you actually going to back up your data?
+------------------------------------------------
 
 When you've decided where you're backing up to, then you can think about how
 you're going to make the back ups. There are two approaches to backing up data
@@ -228,12 +227,13 @@ from a computer:
 [granular]: https://en.wikipedia.org/wiki/Granularity
 
 Software
---------
+========
 
 Let's look at a few examples of software for backing up your files and evaluate
 them.
 
-### Copy and paste
+Copy and paste
+--------------
 
 This is... copy and paste.
 
@@ -262,7 +262,8 @@ Evaluation:
 
 [`rsync`]: https://rsync.samba.org/
 
-### Live-synchronizing folders
+Live-synchronizing folders
+--------------------------
 
 Some examples of software enabling live-synchronizing of folders include:
 
@@ -295,7 +296,8 @@ https://www.vice.com/en/article/pkb4ng/meet-the-self-hosters-taking-back-the-int
 [the Seafile manual]: https://manual.seafile.com/
 [Backblaze]: https://www.backblaze.com/
 
-### Disk imaging
+Disk imaging
+------------
 
 Some examples of software for disk imaging are:
 
@@ -320,7 +322,7 @@ https://www.acronis.com/en-us/products/true-image/
 [Redo Rescue]: http://redorescue.com/
 
 3-2-1
------
+=====
 
 Software enables you to actually copy or back up software, but there's still
 strategy for *how* you manage your back ups.
@@ -357,7 +359,7 @@ https://www.carbonite.com/blog/article/2016/01/what-is-3-2-1-backup/
 [Veeam]: https://www.veeam.com/blog/321-backup-rule.html
 
 Restoring and verifying backups
--------------------------------
+===============================
 
 ::: outcomes
 
@@ -373,7 +375,8 @@ you were backing up).
 How you restore and verify your backups depends on whether you're doing
 file-based backup or image-based backup.
 
-### File-based restore and verify
+File-based restore and verify
+-----------------------------
 
 Verifying that your files are backed up can be as straightforward as opening
 your file explorer or web browser, navigating to the location where your files
@@ -424,7 +427,8 @@ what you have locally.
 [KDiff3]: https://invent.kde.org/sdk/kdiff3
 [FileMerge]: https://developer.apple.com/xcode/features/
 
-### Image-based restore and verify
+Image-based restore and verify
+------------------------------
 
 When you back up your data using an image-based approach you wind up with a
 single, very large file (many GBs).
@@ -438,7 +442,7 @@ There are two ways to verify the contents of these files:
    verify].
 2. Write your image(s) back to the same machine or a different machine.
 
-#### Mount the images
+### Mount the images
 
 This approach is primarily limited to Linux or macOS. On Linux, you can treat an
 individual file as a complete drive by using a ["loop" device]. You can take an
@@ -462,7 +466,7 @@ described in [File-based restore and verify].
 ["loop" device]: https://en.wikipedia.org/wiki/Loop_device
 [everything is a file]: https://en.wikipedia.org/wiki/Everything_is_a_file
 
-#### Write the images
+### Write the images
 
 The other option is to use the same software that you used to create the images
 in the first place (CloneZilla, Redo Rescue, Acronis, etc) to write them back

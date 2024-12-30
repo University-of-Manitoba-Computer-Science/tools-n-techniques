@@ -3,10 +3,6 @@ title: Install and configure back up software
 author: Franklin Bristow
 ---
 
-
-Install and configure back up software
-======================================
-
 ::: outcomes
 
 * [X] Install and configure software to back up your files to a remote server.

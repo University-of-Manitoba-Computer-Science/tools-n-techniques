@@ -3,9 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 This has been a bit of a whirlwind through some topics related to running
 programs on Linux or UNIX-like systems, with us learning a little bit about
 things that apply to *all* programs (how and where they get input, and how and
@@ -20,7 +17,7 @@ file-like-things&trade;; neat :camera:).
 
 But let's be honest: backing up stuff is boring. Well, it's boring right up until
 you actually need the back up. And sometimes we don't *think* about backups
-right up until we need them. This week is an opportunity to consider what you're
+right up until we need them. This is an opportunity to consider what you're
 doing for back ups, and to give you an opportunity to *back up your stuff*.
 
 Backing up isn't just making sure that you've got a copy of your files, it's
@@ -45,5 +42,3 @@ You should now be able to:
 * [X] Restore and verify your back up from the remote server.
 
 :::
-
-Now you should be ready to start working on the assignment this week!

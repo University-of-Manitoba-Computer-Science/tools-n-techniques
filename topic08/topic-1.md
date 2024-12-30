@@ -3,9 +3,6 @@ title: Introduction
 author: Franklin Bristow
 ---
 
-Introduction
-============
-
 We've been *using* the command line, at least a little bit, throughout the
 course. Despite its simple appearance, the command line is an incredibly rich
 and diverse environment, and lets you compose really complex commands that would
@@ -34,8 +31,6 @@ that we're able to quickly back up our assignments to aviary.
 
 
 ::: outcomes
-
-By the end of this week you should be able to:
 
 * [ ] Redirect the output from a program to a file.
 * [ ] Redirect a file to be the input for a program.

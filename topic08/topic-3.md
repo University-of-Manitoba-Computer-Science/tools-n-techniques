@@ -3,9 +3,6 @@ title: Redirecting input and output
 author: Franklin Bristow
 ---
 
-Redirecting input and output
-============================
-
 ::: outcomes
 
 * [X] Redirect the output from a program to a file.
@@ -23,7 +20,7 @@ We can "redirect" input and output streams:
 We can do this using a little bit of help from our shell :shell:.
 
 Redirecting standard output
----------------------------
+===========================
 
 Redirecting standard output can be useful when you need to save what a program
 prints for output and the program doesn't support options for writing directly
@@ -66,7 +63,7 @@ find . -name "*.md" >> all-mds.txt
 :::
 
 Redirecting standard error
---------------------------
+==========================
 
 Redirecting standard error is... uncommon to want to do. The usefulness of
 redirecting standard error is similar to redirecting standard output: when you
@@ -155,7 +152,7 @@ special file called `/dev/null`:
 <https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells>
 
 Redirecting standard input
---------------------------
+==========================
 
 Both standard output and standard error are places where output is written. We
 can also replace where standard input gets its input from. This can be useful
