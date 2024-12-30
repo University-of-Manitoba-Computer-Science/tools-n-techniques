@@ -3,9 +3,6 @@ title: Run a command within a container
 author: Franklin Bristow
 ---
 
-Run a command within a container
-================================
-
 ::: outcomes
 
 * [X] Run a command within a container.
@@ -31,7 +28,7 @@ goal is simple: install enough software to get a command running in a container.
 [Containers]: https://en.wikipedia.org/wiki/OS-level_virtualization
 
 Install Docker Desktop
-----------------------
+======================
 
 Undoubtedly the most popular container management software is [Docker].
 
@@ -57,7 +54,7 @@ Microsoft's web site].
 https://learn.microsoft.com/en-us/windows/wsl/install
 
 Run a command within a container
---------------------------------
+================================
 
 The simplest container command to run is "hello world", so let's start with
 that, then move on to something a little more complex.
@@ -94,8 +91,15 @@ docker run hello-world
 
 You should see some output from Docker:
 
+::: input
+
+```bash
+docker run hello-world
 ```
-PS C:\Users\you> docker run hello-world
+
+:::
+::: output
+```
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 2db29710123e: Pull complete
@@ -122,9 +126,8 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-
-PS C:\Users\you>
 ```
+:::
 
 :tada: you just started and ran a container on your computer!
 
@@ -277,7 +280,7 @@ about in the documentation for `pandoc`.
 :::
 
 Further reading
----------------
+===============
 
 You've seen two examples of how to use containers, but you might want to know
 more about how to create your own containers.

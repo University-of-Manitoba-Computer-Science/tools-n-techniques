@@ -3,9 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 At this point you should be able to create shell scripts to help you when you
 run into repetitive tasks on the command line.
 
@@ -29,7 +26,7 @@ files, other programming languages are *usually* going to be better for
 actually doing stuff *to* the files.
 
 Further reading
----------------
+===============
 
 Just like programming (and anything, really), shell scripting goes way beyond 
 what you've been introduced to here. You've got a good start, but as you keep

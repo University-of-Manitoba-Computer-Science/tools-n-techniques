@@ -3,10 +3,6 @@ title: Install packages
 author: Franklin Bristow
 ---
 
-
-Install packages
-================
-
 ::: outcomes
 
 * [X] Install packages using a package manager on the command line.
@@ -37,7 +33,7 @@ command-line and using a GUI.
 [upstream]: https://en.wikipedia.org/wiki/Upstream_(software_development)
 
 Administrative users (`root`)
------------------------------
+=============================
 
 Installing software is an administrative task, and only users that have
 permissions can install software on a system. Since this is your Linux
@@ -53,11 +49,12 @@ your Linux system. On Ubuntu, the password you should be entering is the same as
 your user account's password.
 
 Using the Software Center
--------------------------
+=========================
 
 Ubuntu has separate GUI apps for updating and installing new packages.
 
-### Updating packages with a GUI
+Updating packages with a GUI
+----------------------------
 
 [Start the program called "Software updater"] and follow the on-screen
 instructions.
@@ -67,7 +64,8 @@ Make sure that your install is completely up to date by installing new packages.
 [Start the program called "Software updater"]:
 https://ubuntu.com/tutorials/upgrading-ubuntu-desktop#2-launch-the-software-updater
 
-### Installing new packages with a GUI
+Installing new packages with a GUI
+----------------------------------
 
 You can install new software using the ["Ubuntu Software"] app.
 
@@ -78,7 +76,7 @@ installing it.
 https://help.ubuntu.com/stable/ubuntu-help/addremove-install.html.en
 
 On the command line
--------------------
+===================
 
 Installing packages with a GUI is great, but you don't always have access to a
 GUI (like when you're connecting to a remote server with SSH that doesn't even
@@ -88,7 +86,8 @@ the command line.
 
 On Ubuntu (and Debian) the command line package manager is `apt`.
 
-### Updating packages on the command line
+Updating packages on the command line
+-------------------------------------
 
 Updating packages on the command line actually consists of two separate steps:
 
@@ -159,7 +158,8 @@ administrators who will probably politely ask you to stop).
 
 :::
 
-### Installing new packages on the command line
+Installing new packages on the command line
+-------------------------------------------
 
 You will almost certainly also want to install new packages on the command line.
 Installing a package on the command line usually consists of two steps:
@@ -167,7 +167,7 @@ Installing a package on the command line usually consists of two steps:
 1. Figure out what the name of the package is that you want to install.
 2. Install the package.
 
-#### Figuring out package names
+### Figuring out package names
 
 Sometimes you already know the name of the package that you want to install and
 you can proceed immediately to step 2, but more often than not you don't know
@@ -179,37 +179,54 @@ to install:
 * Try running the command you want to use on the command line, and your terminal
   may helpfully tell you what to install:
 
+  :::::: columns
+  ::: {.column width=50% .input}
   ```bash
-  [you@your-linux ~]> pandoc
+  pandoc
+  ```
+  :::
+  ::: {.column width=50% .output}
+  ```
   Command 'pandoc' is not found, but can be installed with:
   sudo apt install pandoc
   ```
+  :::
+  ::::::
 * Search for the name of the program or words related to the program's name with
   `apt search` (you don't need to use `sudo` to do this, `apt search` is not
   installing new files):
 
+  :::::: columns
+  ::: {.column width=50% .input}
+
+  ```bash
+  apt search tmux
   ```
-  [you@your-linux ~]> apt search tmux
+  :::
+  ::: {.column width=50% .output}
+  ```
   Sorting... Done
   Full Text Search... Done
-  aerc/jammy 0.8.2-1 amd64
+  aerc/plucky 0.8.2-1 amd64
     World's Best Email Client
   // LOTS MORE
-  tmux/jammy 3.2a-4build1 amd64
+  tmux/plucky 3.2a-4build1 amd64
     terminal multiplexer
   ```
+  :::
+  ::::::
 
   You can decode the results above as:
 
   * `tmux` is the name of the program
-  * `jammy` is the name of the Ubuntu release this package was made for (Jammy
-    Jellyfish)
+  * `plucky` is the name of the Ubuntu release this package was made for (Plucky
+    Puffin)
   * `3.2a-4build1` is the version of this package.
   * `amd64` is the architecture that this package was built for.
 * Search for what you're looking for online and have the website tell you what
   to install.
 
-#### Installing a package by name
+### Installing a package by name
 
 Once you know the name of the package, you can use `apt` to install it:
 
@@ -228,7 +245,7 @@ build-essentials # a meta-package including a C compiler
 ```
 
 Installing a packages *outside* of repositories
------------------------------------------------
+===============================================
 
 When you're installing packages with `apt` or Ubuntu Software, you're
 downloading and installing packages that are hosted in the official
@@ -269,7 +286,7 @@ sudo apt install ./pandoc-2.19.2-1-amd64.deb
 [repository]: https://help.ubuntu.com/community/Repositories/Ubuntu
 
 Further reading
----------------
+===============
 
 As with most topics in this course, we're barely scratching the surface here,
 especially because we're focusing on Ubuntu. There are **many** Linux

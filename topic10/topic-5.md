@@ -3,9 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 When you're developing code outside of your academic career (and even within
 your academic career), you're going to be writing code that goes beyond a single
 file. Different languages prefer to use different tools for handling building
@@ -25,4 +22,3 @@ You should now be able to:
 
 :::
 
-Now you should be ready to start working on the assignment this week!

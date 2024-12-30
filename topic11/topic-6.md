@@ -3,9 +3,6 @@ title: Initialize a server in a public cloud
 author: Franklin Bristow
 ---
 
-Initialize a server in a public cloud
-=====================================
-
 ::: outcomes
 
 * [X] Initialize a server in a publicly available cloud computing environment
@@ -22,7 +19,7 @@ Let's move off of our machine into the cloud.
 License](https://pixabay.com/photos/clouds-nature-sky-cumulus-weather-4215608/))](clouds.jpg)
 
 What even is a cloud?
----------------------
+=====================
 
 > A visible cluster of water droplets and/or ice particles in the
 > atmosphere. ([Weather and meteorology glossary])
@@ -79,7 +76,7 @@ in someone's data center.
 [NIST]: https://www.nist.gov/publications/nist-definition-cloud-computing
 
 What cloud are we using?
-------------------------
+========================
 
 There are three major cloud providers:
 
@@ -103,12 +100,13 @@ providers.
 [Microsoft Azure]: https://azure.microsoft.com/en-us/
 
 Running your own server in the cloud
-------------------------------------
+====================================
 
 With that out of the way, let's get started on getting a server running on a
 cloud provider!
 
-### Sign up
+Sign up
+-------
 
 Sign up for [Azure for Students] using your `@myumanitoba.ca` e-mail address.
 You must use your U of M e-mail address because it's proof that you're a current
@@ -116,7 +114,8 @@ student at the U of M.
 
 [Azure for Students]: https://azure.microsoft.com/en-ca/free/students/
 
-### Spin up your server
+Spin up your server
+-------------------
 
 Once you've set up your account we can start working on setting up a server.
 
@@ -217,7 +216,8 @@ There's a lot, but you've just started a virtual machine in the cloud :tada:!
 [Centre of Canada]: https://en.wikipedia.org/wiki/Centre_of_Canada
 [your main Azure page]: https://portal.azure.com/#home
 
-### Connect with SSH
+Connect with SSH
+----------------
 
 The main thing we're interested in right now is the virtual machine's address.
 Remember: our goal is to connect to our virtual machine with SSH, and the three
@@ -243,7 +243,8 @@ Connect to your server with SSH!
 
 [IP address]: https://en.wikipedia.org/wiki/IP_address
 
-### Shut it down!
+Shut it down!
+-------------
 
 OK awesome! You're welcome to start playing with this virtual machine (it's just
 another Linux server, similar to Aviary), but at this point we're done, we've
@@ -253,7 +254,7 @@ Back in your Azure portal you should click on the Stop button at the top of the
 page.
 
 Further reading
----------------
+===============
 
 Initializing a new server feels like just scratching the surface, and it really
 is. We'll soon look at managing a Linux installation, but for now we're going to

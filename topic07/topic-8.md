@@ -3,11 +3,8 @@ title: Practice Questions
 author: Ikaro Costa
 ---
 
-Practice Questions
-==================
-
 Question 1
-----------
+==========
 
 The following C code is supposed to calculate the sum of the first $n$ integers.
 However, there are bugs in this code. Using the pencil-and-paper method, find the
@@ -30,7 +27,7 @@ int sum_first_n_integers(int n)
 ```
 
 Question 2
-----------
+==========
 
 Another method to debug the code in the previous question would be to use a log-based
 method. Recall that the C command to print to *standard output* (spoiler of one
@@ -89,7 +86,7 @@ And run the executable:
     
 
 Question 3
-----------
+==========
 
 Regarding debuggers, define in your own words the meaning of the following key terms:
 

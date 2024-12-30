@@ -3,9 +3,6 @@ title: Choose a Linux distribution
 author: Franklin Bristow
 ---
 
-Choose a Linux distribution
-===========================
-
 ::: outcomes
 
 * [X] Choose a Linux distribution.
@@ -18,7 +15,7 @@ Linux. Before we can make those decisions, we've got to get on the same page
 about some terminology.
 
 What even is Linux?
--------------------
+===================
 
 Linux is an [overloaded] word, it can mean at least two different things:
 
@@ -56,7 +53,7 @@ https://www.gnu.org/gnu/linux-and-gnu.html
 [kernel]: https://en.wikipedia.org/wiki/Kernel_(operating_system)
 
 What is a distribution?
------------------------
+=======================
 
 Linux can be minimally distributed as the kernel plus the GNU suite of
 utilities, but it would be *really* minimal. Installing new software would be
@@ -106,7 +103,7 @@ https://en.wikipedia.org/wiki/Free_and_open-source_software
 https://en.wikipedia.org/wiki/Devuan
 
 How should I choose one?
-------------------------
+========================
 
 OK, so there are a lot. Like a lot a lot. But that's overwhelming. How do I
 choose?
@@ -139,10 +136,10 @@ some popular distributions:
 * [Debian] (user friendly-ish; easy to ask for help; focus primarily on
   stability).
 
-For the purposes of this course (and the rest of the topics this week), we
-recommend that you choose [Ubuntu]. Ubuntu is easy to use, has a very large
-community of users to get support from, and has a company backing it
-([Canonical]) that you can pay for support you, if you need it.
+For the purposes of this course , we recommend that you choose [Ubuntu]. Ubuntu
+is easy to use, has a very large community of users to get support from, and has
+a company backing it ([Canonical]) that you can pay for support you, if you need
+it.
 
 That said: if you're interested in trying something new, or you want to go
 through the process of making your own choice, you can use a tool like
@@ -159,7 +156,7 @@ https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
 [Canonical]: https://canonical.com/
 
 Why use Linux at all?
----------------------
+=====================
 
 "My computer came with an operating system (Windows, macOS). Why would I want to
 use a different operating system at all?"

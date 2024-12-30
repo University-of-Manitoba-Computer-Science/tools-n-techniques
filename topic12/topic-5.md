@@ -3,10 +3,6 @@ title: Configure and run a web server
 author: Franklin Bristow
 ---
 
-
-Configure and run a web server
-==============================
-
 ::: outcomes
 
 * [X] Configure and run a web server.
@@ -30,7 +26,7 @@ servers:
 [Caddy]: https://caddyserver.com/
 
 Installing Caddy
-----------------
+================
 
 Caddy can be installed using `apt`, but you need to do a little bit of extra set
 up --- Caddy's packages are *not* in the Ubuntu repositories. Instead, Caddy
@@ -53,7 +49,7 @@ Open the web browser in your Linux system and browse to <http://localhost>.
 https://caddyserver.com/docs/install#debian-ubuntu-raspbian
 
 Configuring Caddy
------------------
+=================
 
 Now that Caddy's installed, let's get it set up so that the server is serving
 what we want instead of the default.
@@ -89,17 +85,19 @@ Serve a static file:
 * Comment out the `respond` line you added.
 * Restart caddy.
 * Replace `/usr/share/caddy/index.html` with your own `index.html` (maybe by
-  converting a Markdown file to HTML, you did this in week 6). Your user account
-  does not have permissions to write to this directory, so you can `mv` or `cp`
-  the file with `sudo`:
+  converting a Markdown file to HTML, you did this in [reading and changing
+  permissions]). Your user account does not have permissions to write to this
+  directory, so you can `mv` or `cp` the file with `sudo`:
   ```bash
   sudo mv index.html /usr/share/caddy/
   ```
 * Refresh your web browser.
 * :tada:
 
+[reading and changing permissions]: ../topic05/topic-4.html
+
 Further reading
----------------
+===============
 
 Installing a web server inside your Linux install is great, but its use for now
 is limited to the web browser inside your Linux install.

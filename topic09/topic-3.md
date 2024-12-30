@@ -3,9 +3,6 @@ title: Arguments
 author: Franklin Bristow
 ---
 
-Arguments
-=========
-
 ::: outcomes
 
 * [X] Use command-line arguments in a shell script.

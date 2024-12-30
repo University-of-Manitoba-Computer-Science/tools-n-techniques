@@ -3,9 +3,6 @@ title: Piping
 author: Franklin Bristow
 ---
 
-Piping
-======
-
 ::: outcomes
 
 * [X] Send data between programs using a pipe.

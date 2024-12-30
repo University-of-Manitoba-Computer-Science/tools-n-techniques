@@ -3,9 +3,6 @@ title: Input and output on the command line
 author: Franklin Bristow
 ---
 
-Input and output on the command line
-====================================
-
 I think that we can all agree: programs generally read information from
 somewhere (like a file) and print out information to somewhere (like your
 terminal or a different file).
@@ -13,11 +10,23 @@ terminal or a different file).
 When we were first getting to know our terminals at the beginning of this course
 we ran `pandoc` and we just started typing stuff in:
 
+:::::: columns
+::: {.column width=50% .input}
+
 ```bash
-[you@bird ~]> pandoc
+pandoc
 Hello, pandoc! ^D
+```
+
+:::
+::: {.column width=50% .output}
+
+```
 <p>Hello, pandoc!</p>
 ```
+
+:::
+::::::
 
 We only did that once, then we quickly switched to passing file names as
 arguments to `pandoc`:
@@ -73,10 +82,14 @@ This is actually pretty normal behaviour for programs: `grep`, for example,
 writes to standard output by default, but it can also read from standard input
 by default. Go ahead, try it:
 
+::: input
+
 ```bash
-[you@bird ~]> grep 'hello' # now type stuff in, some lines with hello, some
-                           # without, what's printed?
+grep 'hello' # now type stuff in, some lines with hello, some
+             # without, what's printed?
 ```
+
+:::
 
 You can quit `grep` by pressing <kbd>Control</kbd>+<kbd>C</kbd> or
 <kbd>Control</kbd>+<kbd>D</kbd>.
@@ -108,6 +121,9 @@ https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.ht
 https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.html#out
 
 ::: aside
+
+Standard input, output, and error in *other* languages
+======================================================
 
 We've seen standard input, standard output, and standard error in Java, but what
 about some other languages we've seen or used?

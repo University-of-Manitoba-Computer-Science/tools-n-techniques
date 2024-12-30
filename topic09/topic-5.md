@@ -3,9 +3,6 @@ title: "Globs"
 author: Franklin Bristow
 ---
 
-Globs
-=====
-
 More often than not, the loops that you would want to write in the shell are
 intended to apply an operation to many files, and those files can be all in the
 same directory, or scattered throughout many directories.
@@ -28,7 +25,7 @@ Apparently [it's short for "global"]. I definitely don't pronounce "glob" as
 :::
 
 Simple globs
-------------
+============
 
 The simplest glob in a shell is the `*` character. This glob "expands" to all
 files in the current directory that are not hidden.
@@ -37,19 +34,45 @@ files in the current directory that are not hidden.
 
 If you have the following files in your current directory:
 
+:::::: columns
+::: {.column width=50% .input}
+
+```bash
+ls -a
 ```
-[you@bird fortnight8]> ls -a
+
+:::
+::: {.column width=50% .output}
+
+```
 . .. .gitignore hello.md hello.docx script.sh
 ```
 
+:::
+::::::
+
 Then the `*` glob would "expand" to `hello.md hello.docx script.sh`:
 
+:::::: columns
+::: {.column width=50% .input}
+
 ```bash
-[you@bird fortnight8]> echo * # prints out the names of all files and folders in this directory
+echo * # prints out the names of all
+       # files and folders in this directory
+
+```
+
+:::
+::: {.column width=50% .output}
+
+```
 hello.md hello.docx script.sh
 ```
 
-This actually means that the `echo` program was run with *two arguments*, not
+:::
+::::::
+
+This actually means that the `echo` program was run with *three arguments*, not
 just one. Before the shell launches the `echo` program, it effectively replaces
 the `*` in the command line with `hello.md hello.docx script.sh`.
 
@@ -64,7 +87,7 @@ in different directories.
 :::
 
 Advanced globs
---------------
+==============
 
 Simple globs are the ones you will use most often because you *usually* want to
 do something to everything in the current directory. But simple globs are not
@@ -73,7 +96,8 @@ the only kind of globs. Let's look at two other kinds of globs:
 1. Begins-with, ends-with, or contains globs
 2. Directory globs
 
-### Begins-with, ends-with, or contains globs
+Begins-with, ends-with, or contains globs
+-----------------------------------------
 
 If you remember *way back* to [fortnight 5 in COMP 1002], you learned about a 
 program named `grep` that could be used to filter lines from a file based on a
@@ -87,34 +111,54 @@ We can do the same thing with globs!
 
 We can match all file names that begin with `hello` using a glob `hello*`:
 
+:::::: columns
+::: {.column width=50% .input}
+
 ```bash
-[you@bird fortnight8]> echo hello* # assuming the same directory as above
+# assuming the same directory as above
+echo hello* 
+```
+
+:::
+::: {.column width=50% .output}
+```
 hello.md hello.docx
 ```
+:::
+::::::
 
 Or we can match all file names that end with `.md` using a glob `*.md`:
 
+::: input
+
 ```bash
-[you@bird fortnight8]> pandoc *.md -o all.docx # run pandoc, passing *all* of
-                                               # the markdown files in the 
-                                               # current directory, and convert
-                                               # them all into a single Word
-                                               # document
+pandoc *.md -o all.docx # run pandoc, passing *all* of
+                        # the markdown files in the 
+                        # current directory, and convert
+                        # them all into a single Word
+                        # document
 ```
+
+:::
 
 Or you can match file names that contain the letters `ll` using a glob `*ll*`:
 
+::: input
+
 ```bash
-[you@bird fortnight8]> cat *ll*
+cat *ll*
 # contents of hello.docx get printed out (which is a bunch of garbage!)
 # contents of hello.md get printed out
 ```
 
 :::
 
-[fortnight 5 in COMP 1002]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/topic-3.html
+:::
 
-### Directory globs
+[fortnight 5 in COMP 1002]: https://toolsntechniques.ca/topic05/topic-3.html
+
+Directory globs
+---------------
 
 Globs are helpful for matching many files in a directory, but [we don't keep all
 of our files in one directory], right? (Right?!)
@@ -132,22 +176,27 @@ can also use globs to help us.
 Extract `crazy-directories.tar` (if you just downloaded it), then change into
 the directory. We can use globs to find all Markdown files in this directory:
 
+
+::: input
+
 ```bash
-[you@bird crazy-directories]> ls **/*.md # find files with names ending with .md
-                                         # in any subdirectory
+ls **/*.md # find files with names ending with .md
+           # in any subdirectory
 ```
 
-[crazy-directories.tar]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic05/crazy-directories.tar
+:::
+
+[crazy-directories.tar]: ../topic05/crazy-directories.tar
 
 :::
 
 The technical Bash name for this feature is not "directory glob", but is instead
 called "globstar".
 
-[we don't keep all of our files in one directory]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic01/topic-5.html
+[we don't keep all of our files in one directory]: ../topic01/topic-5.html
 
 Further reading about globs
----------------------------
+===========================
 
 You can read more about globs in a few places:
 

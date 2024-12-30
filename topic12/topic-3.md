@@ -3,10 +3,6 @@ title: Install a Linux distribution
 author: Franklin Bristow
 ---
 
-
-Install a Linux distribution
-============================
-
 ::: outcomes
 
 * [X] Install the Linux distribution either on your laptop or in a virtual machine.
@@ -25,7 +21,7 @@ You've got two choices here in terms of where you install Ubuntu:
 At a certain points these paths start together, diverge, then converge again.
 
 Where are you installing *to*?
-------------------------------
+==============================
 
 Before you start, decide where you're going to install it:
 
@@ -37,7 +33,7 @@ Before you start, decide where you're going to install it:
 * A virtual machine.
 
 Download the ISO
-----------------
+================
 
 Once you've decided where you're going to install, we've got to actually get our
 Linux distribution. Most Linux distributions are distributed as disk images, but
@@ -58,21 +54,21 @@ to represent files, folders, and metadata on a disk or other hardware.
 :::
 
 Here's a link to download `.iso` files:
-
-    https://cdimage.ubuntu.com/jammy/daily-live/current/
+<https://cdimage.ubuntu.com/daily-live/current/>
 
 If you're using Windows or a Mac with an Intel processor, download
-`jammy-desktop-amd64.iso`. If you're using a Mac with Apple Silicon, download
-`jammy-desktop-arm64.iso`.
+`plucky-desktop-amd64.iso`. If you're using a Mac with Apple Silicon, download
+`plucky-desktop-arm64.iso`.
 
 Set up your machine
--------------------
+===================
 
 Here's where our instructions diverge for a while: if you're using a Virtual
 Machine, read below about either [VirtualBox] or [UTM]. If you're planning on
 installing Linux onto an actual machine, read more in [Real hardware].
 
-### Virtual machines
+Virtual machines
+----------------
 
 If you don't want to commit to installing Linux on a real machine, that's
 totally OK. Thankfully, it's straightforward to install Linux in a VM.
@@ -83,7 +79,7 @@ we want to go through the install process so that we can see what it looks like.
 The goal here is to make sure we're setting up our VM to allow us to go through
 the install process.
 
-#### VirtualBox
+### VirtualBox
 
 Open VirtualBox and start creating a new virtual machine by either clicking on
 the "New" button in the toolbar at the top, using the **Machine** menu and
@@ -162,7 +158,7 @@ Finally, click "Next", optionally review the details of your VM, then click
 
 Now it's time to [Boot] your VM.
 
-#### UTM
+### UTM
 
 UTM actually has pretty good documentation on [how to get Ubuntu set up].
 
@@ -189,7 +185,8 @@ Some (minor) differences and explanation:
 
 Once you've got the VM set up, you can move on to the [Boot] section.
 
-### Real hardware
+Real hardware
+-------------
 
 If you're planning to run this on real hardware, then you've got to prepare your
 boot media. Boot media is either a USB drive or an actual DVD.
@@ -207,7 +204,7 @@ your keyboard to select which device to use to boot.
 [Ventoy]: https://www.ventoy.net/en/index.html
 
 Boot
-----
+====
 
 Start your VM or your machine (we're converging here again).
 
@@ -228,7 +225,7 @@ double-click on.
 After you reboot, you should have a working Linux install :tada:.
 
 Further reading
----------------
+===============
 
 Getting Linux installed can be straightforward. Ubuntu and Debian make most of
 the choices for you (choices that you probably don't even care exist), but other

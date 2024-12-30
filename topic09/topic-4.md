@@ -3,9 +3,6 @@ title: "Structures: conditional statements and loops"
 author: Franklin Bristow
 ---
 
-Structures: conditional statements and loops
-============================================
-
 ::: outcomes
 
 * [X] Use loops, conditional statements, and variables in a shell script.
@@ -19,7 +16,7 @@ structures like conditional statements and loops. They contain other structures,
 too, but let's stick to the basics.
 
 Conditional statements
-----------------------
+======================
 
 Conditional statements in `bash` use the familiar `if` keyword and *resemble*
 the expressions you've seen in other languages.
@@ -95,7 +92,7 @@ EXPRESSIONS` section of its manual page, but here are some examples:
 +----------------------+----------------------------------------------------+
 
 Loops
------
+=====
 
 We can't talk about conditional statements without at least saying something
 about loops!
