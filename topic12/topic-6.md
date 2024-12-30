@@ -3,9 +3,6 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
 I (me, Franklin) think this is pretty cool! You should hopefully have a full 
 Linux installation running in either a VM or on some real hardware. You should
 have a better sense of what it takes to install a Linux distribution, and the 
@@ -22,5 +19,3 @@ a web server up and running on your system.
 * [X] Configure and run a web server.
 
 :::
-
-You should now be able to start working on your assignment!
