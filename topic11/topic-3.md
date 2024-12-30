@@ -3,9 +3,6 @@ title: Download and use a pre-installed OS in VM software (VirtualBox)
 author: Franklin Bristow
 ---
 
-Download and use a pre-installed OS in VM software (VirtualBox)
-==================================================
-
 ::: outcomes
 
 * [X] Download and use a pre-installed operating system in a virtual machine
@@ -35,7 +32,7 @@ entirely in the open, including [live-streaming coding on YouTube].
 [SerenityOS]: https://serenityos.org
 
 Download an image
------------------
+=================
 
 We're going to download an "image". The full name for this thing is "disk
 image", this is a bit for bit copy of a hard drive or disk. Everything else that
@@ -88,7 +85,7 @@ you downloaded and decompress it.
 </details>
 
 Create a new VM
----------------
+===============
 
 We're going to be creating a new VM from an existing image. You should actually
 follow the instructions in [the SerenityOS documentation for VirtualBox].
@@ -97,7 +94,7 @@ follow the instructions in [the SerenityOS documentation for VirtualBox].
 https://github.com/SerenityOS/serenity/blob/master/Documentation/VirtualBox.md#creating-the-virtual-machine
 
 Run the VM
-----------
+==========
 
 Once you've got the VM configured, it's time to [start it]!
 
@@ -105,7 +102,8 @@ If everything worked out, you should see SerenityOS starting up :tada:!
 
 [start it]: https://www.virtualbox.org/manual/ch01.html#intro-running
 
-### Snapshots
+Snapshots
+---------
 
 One thing we can do with running virtual machines that we can't do with physical
 hardware is *take snapshots* :camera:. Taking a snapshot of a virtual machine

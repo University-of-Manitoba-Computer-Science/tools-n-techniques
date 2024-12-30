@@ -3,9 +3,6 @@ title: Introduction
 author: Franklin Bristow
 ---
 
-Introduction
-============
-
 The ideal way to give your program to someone else to use is either as source
 code that they can download and compile (with a build tool!), then install on
 their system.
@@ -30,8 +27,8 @@ environment.
 
 "The Cloud"&trade; makes extensive use of containers and virtual machines.
 
-This week we're going to spend some time setting up virtual machine software on
-our computers, running a pre-installed operating system in the virtual machine
+We're going to spend some time setting up virtual machine software on our
+computers, running a pre-installed operating system in the virtual machine
 software, running commands in a container, configuring a container, and setting
 up servers in "The Cloud"&trade;
 

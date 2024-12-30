@@ -3,21 +3,18 @@ title: Install and configure a virtual machine
 author: Franklin Bristow
 ---
 
-Install and configure a virtual machine
-=======================================
-
 ::: outcomes
 
 * [X] Install and configure virtual machine software.
 
 :::
 
-All of the topics this week are interrelated (everything's going to be running a
-"virtual machine" of some kind), so let's start by getting ourselves set up with
-some virtual machine software on our own computers.
+Most of the topics in this unit are interrelated (everything's going to be
+running a "virtual machine" of some kind), so let's start by getting ourselves
+set up with some virtual machine software on our own computers.
 
 What even is a virtual machine?
--------------------------------
+===============================
 
 ... yeah, what the heck even is a "virtual machine"?
 
@@ -74,7 +71,7 @@ https://jakec007.github.io/2020-06-28-how-we-trick-rocks-to-think/
 [made of silicon]: https://en.wikipedia.org/wiki/Solid-state_drive
 
 Choosing your VM software
--------------------------
+=========================
 
 There are many different choices for Virtual Machine software. Which one you
 choose depends on a few different things:
@@ -209,10 +206,8 @@ laptop is less than 15 years old.
 [instruction set architecture]: https://en.wikipedia.org/wiki/Instruction_set_architecture
 :::
 
-
-
 Install VirtualBox
-------------------
+==================
 
 [Download VirtualBox for your platform] (you should download the
 7.0.X series) and [install it].
@@ -231,7 +226,7 @@ https://www.virtualbox.org/wiki/Downloads
 [Download and use a pre-installed OS in VM software (VirtualBox)]: topic-3.html
 
 Install UTM
------------
+===========
 
 As above, [UTM for macOS] is a front-end for QEMU for macOS. You should
 [download and install UTM].

@@ -3,9 +3,6 @@ title: Download and use a pre-installed OS in VM software (UTM)
 author: Franklin Bristow
 ---
 
-Download and use a pre-installed OS in VM software (UTM)
-==================================================
-
 ::: outcomes
 
 * [X] Download and use a pre-installed operating system in a virtual machine
@@ -46,7 +43,7 @@ entirely in the open, including [live-streaming coding on YouTube].
 :::
 
 Download an image
------------------
+=================
 
 UTM makes getting pre-made OS images fairly straightforward. When you first
 start UTM, you should see a button labelled "Browse UTM Gallery":
@@ -82,12 +79,13 @@ For now we're content with running the new operating system in a virtual,
 so click on the "Open in UTM" button and try it out!
 
 Run the VM
-----------
+==========
 
 Once you've got ReactOS in your UTM window, you can click on the Play button and
 start playing with ReactOS!
 
-### Cloning and running without changes
+Cloning and running without changes
+===================================
 
 Virtual machines are entire operating systems running on your computer in
 *software*. Because this isn't a complete actual physical computer, we can do a
@@ -97,7 +95,8 @@ couple of interesting things that we can't do with real hardware:
 2. We can temporarily run the virtual machine without persisting any changes
    made to the OS (sort of like being able to revert a commit with `git`).
 
-#### Cloning
+Cloning
+-------
 
 Right click on the ReactOS virtual machine in UTM and select "Clone...". This
 will ask if you want to duplicate the entire virtual machine and will make... an
@@ -111,7 +110,8 @@ are required when installing your application on a new operating system, you can
 run that operating system in a virtual machine, clone it, make changes, and get
 back to the original state very quickly.
 
-#### Running without changes
+Running without changes
+-----------------------
 
 UTM also has the ability to run a virtual machine and discard any changes that
 you make while the VM is running.

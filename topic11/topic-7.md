@@ -3,12 +3,9 @@ title: Summary
 author: Franklin Bristow
 ---
 
-Summary
-=======
-
-This week we've been focusing on getting operating systems and tools running in
-virtual environments, and we've found a pretty reasonable use case for
-containers (we got a fully configured `pandoc` on our own machines!).
+We've been focusing on getting operating systems and tools running in virtual
+environments, and we've found a pretty reasonable use case for containers (we
+got a fully configured `pandoc` on our own machines!).
 
 You should now be able to:
 
@@ -23,4 +20,3 @@ You should now be able to:
 
 :::
 
-You should now be ready to start working on the assignment!
