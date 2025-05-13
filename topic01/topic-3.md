@@ -788,6 +788,8 @@ here are some resources that are particularly good or helpful:
   specifically on Pandoc.
 * [Overleaf's documentation] is a comprehensive overview of $\LaTeX$, well
   beyond anything you would need for this course.
+* Matt Kline's [Modern $\LaTeX$] (and its [source code]!) is another excellent
+  overview of $\LaTeX$, but focuses on "modern" practices with $\LaTeX$.
 
   ::: aside
 
@@ -804,3 +806,5 @@ https://guides.github.com/features/mastering-markdown/
 https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting
 [Overleaf's documentation]: https://www.overleaf.com/learn
 [Pandoc's Markdown]: https://pandoc.org/MANUAL.html#pandocs-markdown
+[Modern $\LaTeX$]: https://assets.bitbashing.io/modern-latex.pdf
+[source code]: https://github.com/mrkline/modern-latex
