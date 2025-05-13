@@ -635,21 +635,21 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href=
 down:</p>
 <ul>
 <li><div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.md&quot;</span> <span class="co"># find all files with the extension .md</span></span></code></pre></div>
 This is the same as what we’ve seen before: find all files with names
 that match the pattern.</li>
 <li><div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-exec</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-exec</span></span></code></pre></div>
 Here’s the start of our new option for <code>find</code>. Everything
 that follows the <code>-exec</code> option is another complete
 command.</li>
 <li><div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">pandoc</span> <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>         <span class="co"># run pandoc on the name of the file</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote it in case there are spaces;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="co"># The output file is the same file name</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># with a .docx extension (Word), and the</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># command is terminated with \;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="st">&#39;{}&#39;</span> <span class="at">-f</span> markdown+emoji <span class="at">-o</span> <span class="st">&#39;{}&#39;</span>.docx <span class="dt">\;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># run pandoc on the name of the file</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>       <span class="co"># quote it in case there are spaces;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># The output file is the same file name</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="co"># with a .docx extension (Word), and the</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>       <span class="co"># command is terminated with \;</span></span></code></pre></div>
 <ul>
 <li>We’ve seen <code>pandoc</code> before lots of times.</li>
 <li>One new thing here is the <code>'{}'</code> (twice).
