@@ -51,31 +51,36 @@ repository.
 [stuff `git` needs]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
 
 
-Sign up for GitLab
-------------------
+Sign in to GitLab
+-----------------
 
-Before we can do *anything* with this instance of GitLab, you're going to need
-to sign up for a new account. You can skip this step if you've previously signed
-up for a GitLab account here.
+The instance of GitLab hosted by the U of M CS Department has been configured to
+use the same account information as what you used to [connect to a remote
+computer], so you should be able to go directly to [the log in page] and use the
+same user name and password you used when you connected to Aviary. Remember: you
+changed your password the very first time you connected to Aviary!
 
-On [the log in page], click on the "Register now" link, it's just below the big
-blue "Sign in" button.
+::: tip
 
-When you sign up, you can enter whatever you want for your "First name", "Last
-name", and "Username" (this is not audited by our tech staff), but you **must**
-use your `@myumanitoba.ca` e-mail address, no other e-mail addresses are
-permitted to sign up.
+If you are unable to log in to GitLab because you have forgotten your password
+(don't worry, it happens to everyone at some point!), you may need to change
+your password.
+
+You can coordinate [changing your password for CS resources] by e-mailing our
+tech staff at <mailto:cs-support@lists.umanitoba.ca>.
+
+[changing your password for CS resources]: https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
+
+:::
 
 ::: aside
 
-The account you're creating here is not at all connected to your account on
-Aviary, you don't (and shouldn't) use the same password for both of these
-systems.
-
-This is a real aside: consider starting to use a [password manager] to generate
-and securely store your passwords. I can personally recommend [KeePassXC], but
-some people like [1password]. Others prefer to manage their passwords on the
-command line and can use tools like [pass].
+While the two accounts are effectively tied together by the department, using
+the same credentials (username and password) for different services isn't a best
+practice. Consider starting to use a [password manager] to generate and securely
+store your passwords. I can personally recommend [KeePassXC], but some people
+like [1password]. Others prefer to manage their passwords on the command line
+and can use tools like [pass].
 
 Main advice: don't use the same password for everything; don't write your
 password on your hand.
@@ -84,10 +89,11 @@ password on your hand.
 [1password]: https://1password.com/
 [KeePassXC]: https://keepassxc.org/
 [password manager]: https://en.wikipedia.org/wiki/Password_manager
+[connect to a remote computer]: ../topic02/topic-1.html
 
 :::
 
-Congrats! You just signed up for a version control repository service! :tada:
+Congrats! You just signed in to a version control repository service! :tada:
 
 [the log in page]: https://code.cs.umanitoba.ca/users/sign_in
 
