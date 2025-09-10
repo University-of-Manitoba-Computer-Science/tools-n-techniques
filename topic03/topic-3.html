@@ -311,8 +311,8 @@ server</a></li>
 <li><a href="#initializing-a-repository"
 id="toc-initializing-a-repository">Initializing a repository</a>
 <ul>
-<li><a href="#sign-up-for-gitlab" id="toc-sign-up-for-gitlab">Sign up
-for GitLab</a></li>
+<li><a href="#sign-in-to-gitlab" id="toc-sign-in-to-gitlab">Sign in to
+GitLab</a></li>
 <li><a href="#create-a-new-repository"
 id="toc-create-a-new-repository">Create a new repository</a></li>
 </ul></li>
@@ -380,23 +380,29 @@ href="https://code.cs.umanitoba.ca"
 class="uri">https://code.cs.umanitoba.ca</a></p>
 <p>Open that link, then we’re going to go through a few things to create
 a new repository.</p>
-<h2 id="sign-up-for-gitlab">Sign up for GitLab</h2>
-<p>Before we can do <em>anything</em> with this instance of GitLab,
-you’re going to need to sign up for a new account. You can skip this
-step if you’ve previously signed up for a GitLab account here.</p>
-<p>On <a href="https://code.cs.umanitoba.ca/users/sign_in">the log in
-page</a>, click on the “Register now” link, it’s just below the big blue
-“Sign in” button.</p>
-<p>When you sign up, you can enter whatever you want for your “First
-name”, “Last name”, and “Username” (this is not audited by our tech
-staff), but you <strong>must</strong> use your
-<code>@myumanitoba.ca</code> e-mail address, no other e-mail addresses
-are permitted to sign up.</p>
+<h2 id="sign-in-to-gitlab">Sign in to GitLab</h2>
+<p>The instance of GitLab hosted by the U of M CS Department has been
+configured to use the same account information as what you used to <a
+href="../topic02/topic-1.html">connect to a remote computer</a>, so you
+should be able to go directly to <a
+href="https://code.cs.umanitoba.ca/users/sign_in">the log in page</a>
+and use the same user name and password you used when you connected to
+Aviary. Remember: you changed your password the very first time you
+connected to Aviary!</p>
+<div class="tip">
+<p>If you are unable to log in to GitLab because you have forgotten your
+password (don’t worry, it happens to everyone at some point!), you may
+need to change your password.</p>
+<p>You can coordinate <a
+href="https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes">changing
+your password for CS resources</a> by e-mailing our tech staff at <a
+href="mailto:cs-support@lists.umanitoba.ca"
+class="uri">mailto:cs-support@lists.umanitoba.ca</a>.</p>
+</div>
 <div class="aside">
-<p>The account you’re creating here is not at all connected to your
-account on Aviary, you don’t (and shouldn’t) use the same password for
-both of these systems.</p>
-<p>This is a real aside: consider starting to use a <a
+<p>While the two accounts are effectively tied together by the
+department, using the same credentials (username and password) for
+different services isn’t a best practice. Consider starting to use a <a
 href="https://en.wikipedia.org/wiki/Password_manager">password
 manager</a> to generate and securely store your passwords. I can
 personally recommend <a href="https://keepassxc.org/">KeePassXC</a>, but
@@ -406,8 +412,8 @@ like <a href="https://www.passwordstore.org/">pass</a>.</p>
 <p>Main advice: don’t use the same password for everything; don’t write
 your password on your hand.</p>
 </div>
-<p>Congrats! You just signed up for a version control repository
-service! <span class="emoji" data-emoji="tada">🎉</span></p>
+<p>Congrats! You just signed in to a version control repository service!
+<span class="emoji" data-emoji="tada">🎉</span></p>
 <h2 id="create-a-new-repository">Create a new repository</h2>
 <p>Now we get to the part that we’re really interested in: actually
 creating a remote repository to upload our code to.</p>
