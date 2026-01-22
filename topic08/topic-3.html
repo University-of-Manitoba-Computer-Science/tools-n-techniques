@@ -7,6 +7,9 @@
   <meta name="author" content="Franklin Bristow" />
   <title>Redirecting input and output</title>
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -398,20 +401,24 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <div class="aside">
 <p>What on earth is going on here?</p>
 <p>The parenthesis <code>()</code> creates a “subshell”, but we can
-<em>sort of</em> conceptually like parenthesis in expressions in a
-programming language: when we run <code>./error-program</code> and put
-the <code>&gt;</code> operator in the parenthesis, it’s saying that the
+<em>sort of</em> conceptually think of these as similar to parenthesis
+in expressions in a programming language for precedence:</p>
+<ul>
+<li><p>When we run <code>./error-program</code> and put the
+<code>&gt;</code> operator in the parenthesis, it’s saying that the
 standard input from this program will be redirected to a special file
-named <code>/dev/tty</code>. That special file is a file that represents
-your terminal.</p>
+named <code>/dev/tty</code> <em>first</em> (<code>/dev/tty</code> is
+special file that represents your terminal).</p>
 <p>(a <strong>file</strong>?! WHAT IS GOING ON?!)</p>
 <p>This is a longhand way of saying “I’d like you to print standard
-output to my terminal, please”.</p>
-<p>The <code>&gt;&amp;</code> operator in Tcsh and csh represents
+output to my terminal, please”.</p></li>
+<li><p>The <code>&gt;&amp;</code> operator (outside the parenthesis) is
+run <em>second</em>. In Tcsh and csh, <code>&gt;&amp;</code> represents
 standard output and standard error combined, but since standard output
 was already redirected to <code>/dev/tty</code> in the parenthesis, all
 that’s left to redirect to the file is what’s getting printed on
-standard error.</p>
+standard error.</p></li>
+</ul>
 </div>
 </div></li>
 </ul>

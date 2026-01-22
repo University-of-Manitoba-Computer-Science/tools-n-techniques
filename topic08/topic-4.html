@@ -7,6 +7,9 @@
   <meta name="author" content="Franklin Bristow" />
   <title>Piping</title>
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -428,7 +431,7 @@ standard input. We can actually chain more than two programs together
 using pipes to build complex “pipelines” of data.</p>
 <div class="example">
 <p>Here’s a still contrived, but slightly more complex pipeline
-consisting of four separate commands:</p>
+consisting of three separate commands:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-R</span> /usr/share/dict/words <span class="kw">|</span> <span class="fu">head</span> <span class="at">-5</span> <span class="kw">|</span> <span class="fu">less</span></span></code></pre></div>
 <p>Here’s what this does:</p>
