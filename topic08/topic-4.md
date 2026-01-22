@@ -123,7 +123,7 @@ build complex "pipelines" of data.
 
 ::: example
 
-Here's a still contrived, but slightly more complex pipeline consisting of four
+Here's a still contrived, but slightly more complex pipeline consisting of three 
 separate commands:
 
 ```bash
