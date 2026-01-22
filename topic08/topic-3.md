@@ -101,20 +101,24 @@ Different shells use different operators to redirect standard error:
   What on earth is going on here?
 
   The parenthesis `()` creates a "subshell", but we can *sort of* conceptually
-  like parenthesis in expressions in a programming language: when we run
-  `./error-program` and put the `>` operator in the parenthesis, it's saying
-  that the standard input from this program will be redirected to a special file
-  named `/dev/tty`. That special file is a file that represents your terminal. 
+  think of these as similar to parenthesis in expressions in a programming
+  language for precedence: 
 
-  (a **file**?! WHAT IS GOING ON?!)
+  * When we run `./error-program` and put the `>` operator in the parenthesis,
+    it's saying that the standard input from this program will be redirected to
+    a special file named `/dev/tty` *first* (`/dev/tty` is special file that
+    represents your terminal).
 
-  This is a longhand way of saying "I'd like you to print standard output to my
-  terminal, please".
+    (a **file**?! WHAT IS GOING ON?!)
 
-  The `>&` operator in Tcsh and csh represents standard output and standard
-  error combined, but since standard output was already redirected to `/dev/tty`
-  in the parenthesis, all that's left to redirect to the file is what's getting
-  printed on standard error.
+    This is a longhand way of saying "I'd like you to print standard output to
+    my terminal, please".
+
+  * The `>&` operator (outside the parenthesis) is run *second*. In Tcsh and
+    csh, `>&` represents standard output and standard error combined, but since
+    standard output was already redirected to `/dev/tty` in the parenthesis, all
+    that's left to redirect to the file is what's getting printed on standard
+    error.
 
   :::
 
