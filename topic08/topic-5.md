@@ -163,6 +163,10 @@ Here are some examples of where you could back up to:
 |                   |                      |                 | different        |
 |                   |                      |                 | physical         |
 |                   |                      |                 | location.        |
+|                   |                      |                 | [Unpowered flash |
+|                   |                      |                 | storage is not   |
+|                   |                      |                 | long-term        |
+|                   |                      |                 | reliable].       |
 +-------------------+----------------------+-----------------+------------------+
 | Other kinds of    | Straightforward to   | Can be          | [CDs and DVDs    |
 | physical media    | use, but you might   | expensive; CDs  | are not          |
@@ -181,6 +185,8 @@ Here are some examples of where you could back up to:
 |                   |                      |                 | service.         |
 +-------------------+----------------------+-----------------+------------------+
 
+[Unpowered flash storage is not long-term reliable]:
+https://en.wikipedia.org/wiki/Data_degradation#Solid-state_media
 [CDs and DVDs are not long-term reliable]:
 https://en.wikipedia.org/wiki/Disc_rot
 [tapes]: https://en.wikipedia.org/wiki/Tape_drive
