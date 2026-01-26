@@ -19,7 +19,7 @@ If you haven't installed one of those tools already, then you should do it now!
 * [OneDrive]
     * OneDrive only works on macOS or Windows (or Android or iOS). If you're
       running Linux, you're out of luck.
-    * OneDrive with your UManitoba student account gets you 1TB of space for
+    * OneDrive with your UManitoba student account gets you 25GB of space for
       free.
 * [Dropbox]
     * Dropbox works on all platforms (Windows, macOS, Linux)
