@@ -186,27 +186,53 @@ ls **/*.md # find files with names ending with .md
 
 :::
 
-If the above command on aviary or it doesn't work it may be due to the shell option 
-for globs being disabled. You can check this by running the following command in the 
-`bash` shell. `shopt | grep "globstar"` You will either get three outputs
-
-* No output
-* `globstar        on`
-* `globstar        off`
-    * If you do find that "globstar" toggled off you will have to toggle it on using
-      the command `shopt -s globstar`. If you run the above command to check again you 
-      should see the that "globstar" is on now. This will only last for your current 
-      session and you will need to set this every time you want to use globs in bash scripts.
-      If you want it to persist across sessions here is a [guide on editing your .bashrc file],
-      just add `shopt -s globstar` somewhere in the `.bashrc` file.
-
 [crazy-directories.tar]: ../topic05/crazy-directories.tar
-[guide on editing your .bashrc file]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
 
 :::
 
 The technical Bash name for this feature is not "directory glob", but is instead
 called "globstar".
+
+::: warning
+
+Some systems (like aviary) may have different shell settings toggled for various reasons that
+can disable some functions like globs. You can check to see if your current shell has globs 
+disabled by running the command below in a `bash` shell.
+
+::: input
+
+```bash
+shopt | grep "globstar"
+
+# A potential output looks like this
+globstar        off
+```
+
+:::
+
+You should get no output if the settings have not been changed, but if they have
+you may get an output with the "globstar" option set to either on or off.
+
+If you do find that "globstar" toggled off you will have to toggle it on using
+the command
+
+::: input
+
+```bash
+shopt -s globstar
+```
+
+:::
+
+Upon checking to see if it is enabled, you should now see that it is toggled to "on" now.
+
+This will only last for your current session and you will need to set this every time you 
+want to use globs in bash scripts. If you want it to persist across sessions check out this 
+[guide on editing your .bashrc file], where you can add `shopt -s globstar` to a new line in your `.bashrc` file.
+
+[guide on editing your .bashrc file]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
+
+:::
 
 [we don't keep all of our files in one directory]: ../topic01/topic-5.html
 
