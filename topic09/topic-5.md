@@ -186,7 +186,22 @@ ls **/*.md # find files with names ending with .md
 
 :::
 
+If the above command on aviary or it doesn't work it may be due to the shell option 
+for globs being disabled. You can check this by running the following command in the 
+`bash` shell. `shopt | grep "globstar"` You will either get three outputs
+
+* No output
+* `globstar        on`
+* `globstar        off`
+    * If you do find that "globstar" toggled off you will have to toggle it on using
+      the command `shopt -s globstar`. If you run the above command to check again you 
+      should see the that "globstar" is on now. This will only last for your current 
+      session and you will need to set this every time you want to use globs in bash scripts.
+      If you want it to persist across sessions here is a [guide on editing your .bashrc file],
+      just add `shopt -s globstar` somewhere in the `.bashrc` file.
+
 [crazy-directories.tar]: ../topic05/crazy-directories.tar
+[guide on editing your .bashrc file]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
 
 :::
 
