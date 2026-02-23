@@ -233,19 +233,19 @@ want to use globs in bash scripts. If you want to have this option get automatic
 a file called `.bashrc` which is a file that automatically runs the commands in it when you open a 
 bash session or run a shell script using bash. (Like an automatically executed shell script!)
 
-The `.bashrc` file is found in your user's home director, and can be edited using vim by running `vim ~/.bashrc`.
+The `.bashrc` file is found in your user's home directory, and can be edited using vim by running `vim ~/.bashrc`.
 You can add the option by placing the above command in this file and saving. The changes should be reflected the next
 time you run a shell script or open a bash shell.
 
-If you have other shells you will find a similar file for your respective shell like `.tcshrc` or `.cshrc` on aviary
-or `.zshrc` on the Zsh or `config.fish` for the fish shell.
+If you have other shells you will find a similar file for your respective shell like `.tcshrc` or `.cshrc` on Aviary,
+or `.zshrc` with Zsh, or `config.fish` for fish.
 
 If you want to read more about about `.bashrc` files you can check out these resources:
 
 * The manual pages: use `man bash` (or [manual pages online]).
-* This [.bashrc overview] by Digital Ocean.
+* This [`.bashrc` overview] by Digital Ocean.
 
-[.bashrc overview]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
+[`.bashrc` overview]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
 
 :::
 
