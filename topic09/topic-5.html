@@ -458,6 +458,52 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="
 </div>
 <p>The technical Bash name for this feature is not “directory glob”, but
 is instead called “globstar”.</p>
+<div class="warning">
+<p>Some systems (like aviary) may have different shell settings toggled
+for various reasons that can disable some functions like globs. You can
+check to see if your current shell has globs disabled by running the
+command below in a <code>bash</code> shell.</p>
+<div class="input">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;globstar&quot;</span></span></code></pre></div>
+</div>
+<div class="output">
+<pre><code>globstar        off</code></pre>
+</div>
+<p>If you do find that “globstar” toggled off you will have to toggle it
+on using the command</p>
+<div class="input">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> <span class="at">-s</span> globstar</span></code></pre></div>
+</div>
+<p>Upon checking to see if it is enabled, you should now see that it is
+toggled to “on” now.</p>
+<p>This will only last for your current session and you will need to set
+this every time you want to use globs in bash scripts. If you want to
+have this option get automatically you can edit a file called
+<code>.bashrc</code> which is a file that automatically runs the
+commands in it when you open a bash session or run a shell script using
+bash. (Like an automatically executed shell script!)</p>
+<p>The <code>.bashrc</code> file is found in your user’s home directory,
+and can be edited using vim by running <code>vim ~/.bashrc</code>. You
+can add the option by placing the above command in this file and saving.
+The changes should be reflected the next time you run a shell script or
+open a bash shell.</p>
+<p>If you have other shells you will find a similar file for your
+respective shell like <code>.tcshrc</code> or <code>.cshrc</code> on
+Aviary, or <code>.zshrc</code> with Zsh, or <code>config.fish</code> for
+fish.</p>
+<p>If you want to read more about about <code>.bashrc</code> files you
+can check out these resources:</p>
+<ul>
+<li>The manual pages: use <code>man bash</code> (or <a
+href="https://www.man7.org/linux/man-pages/man7/glob.7.html">manual
+pages online</a>).</li>
+<li>This <a
+href="https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc"><code>.bashrc</code>
+overview</a> by Digital Ocean.</li>
+</ul>
+</div>
 <h1 id="further-reading-about-globs">Further reading about globs</h1>
 <p>You can read more about globs in a few places:</p>
 <ul>
