@@ -193,6 +193,62 @@ ls **/*.md # find files with names ending with .md
 The technical Bash name for this feature is not "directory glob", but is instead
 called "globstar".
 
+::: warning
+
+Some systems (like aviary) may have different shell settings toggled for various reasons that
+can disable some functions like globs. You can check to see if your current shell has globs 
+disabled by running the command below in a `bash` shell.
+
+::: input
+
+```bash
+shopt | grep "globstar"
+```
+
+:::
+
+::: output
+
+```
+globstar        off
+```
+
+:::
+
+If you do find that "globstar" toggled off you will have to toggle it on using
+the command
+
+::: input
+
+```bash
+shopt -s globstar
+```
+
+:::
+
+Upon checking to see if it is enabled, you should now see that it is toggled to "on" now.
+
+This will only last for your current session and you will need to set this every time you
+want to use globs in bash scripts. If you want to have this option get automatically you can edit
+a file called `.bashrc` which is a file that automatically runs the commands in it when you open a 
+bash session or run a shell script using bash. (Like an automatically executed shell script!)
+
+The `.bashrc` file is found in your user's home directory, and can be edited using vim by running `vim ~/.bashrc`.
+You can add the option by placing the above command in this file and saving. The changes should be reflected the next
+time you run a shell script or open a bash shell.
+
+If you have other shells you will find a similar file for your respective shell like `.tcshrc` or `.cshrc` on Aviary,
+or `.zshrc` with Zsh, or `config.fish` for fish.
+
+If you want to read more about about `.bashrc` files you can check out these resources:
+
+* The manual pages: use `man bash` (or [manual pages online]).
+* This [`.bashrc` overview] by Digital Ocean.
+
+[`.bashrc` overview]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
+
+:::
+
 [we don't keep all of our files in one directory]: ../topic01/topic-5.html
 
 Further reading about globs

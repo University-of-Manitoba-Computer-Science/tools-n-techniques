@@ -400,7 +400,8 @@ differences.
 Here are some tools that will allow you to compare entire folder structures for
 differences:
 
-* [Meld] (Meld works on all of Linux, macOS, and Windows)
+* [Meld] (Meld works on all of Linux, Windows, and third-party versions for macOS)
+* [VisualDiffer] (VisualDiffer only works on macOS and looks similar to Meld)
 * [WinMerge] (WinMerge only works on Windows)
 * [KDiff3] (KDiff3 works on all of Linux, macOS, and Windows)
 * [FileMerge] (FileMerge is only for macOS with Xcode)
@@ -429,6 +430,7 @@ Ideally, you should see no differences between what you got from your backup and
 what you have locally.
 
 [Meld]: https://meldmerge.org/
+[VisualDiffer]: https://visualdiffer.com/
 [WinMerge]: https://winmerge.org/
 [KDiff3]: https://invent.kde.org/sdk/kdiff3
 [FileMerge]: https://developer.apple.com/xcode/features/
