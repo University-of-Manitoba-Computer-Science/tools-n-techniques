@@ -203,15 +203,17 @@ disabled by running the command below in a `bash` shell.
 
 ```bash
 shopt | grep "globstar"
-
-# A potential output looks like this
-globstar        off
 ```
 
 :::
 
-You should get no output if the settings have not been changed, but if they have
-you may get an output with the "globstar" option set to either on or off.
+::: output
+
+```
+globstar        off
+```
+
+:::
 
 If you do find that "globstar" toggled off you will have to toggle it on using
 the command
@@ -226,11 +228,24 @@ shopt -s globstar
 
 Upon checking to see if it is enabled, you should now see that it is toggled to "on" now.
 
-This will only last for your current session and you will need to set this every time you 
-want to use globs in bash scripts. If you want it to persist across sessions check out this 
-[guide on editing your .bashrc file], where you can add `shopt -s globstar` to a new line in your `.bashrc` file.
+This will only last for your current session and you will need to set this every time you
+want to use globs in bash scripts. If you want to have this option get automatically you can edit
+a file called `.bashrc` which is a file that automatically runs the commands in it when you open a 
+bash session or run a shell script using bash. (Like an automatically executed shell script!)
 
-[guide on editing your .bashrc file]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
+The `.bashrc` file is found in your user's home director, and can be edited using vim by running `vim ~/.bashrc`.
+You can add the option by placing the above command in this file and saving. The changes should be reflected the next
+time you run a shell script or open a bash shell.
+
+If you have other shells you will find a similar file for your respective shell like `.tcshrc` or `.cshrc` on aviary
+or `.zshrc` on the Zsh or `config.fish` for the fish shell.
+
+If you want to read more about about `.bashrc` files you can check out these resources:
+
+* The manual pages: use `man bash` (or [manual pages online]).
+* This [.bashrc overview] by Digital Ocean.
+
+[.bashrc overview]: https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux#how-to-safely-edit-bashrc
 
 :::
 
