@@ -100,8 +100,7 @@ Here are some options:
 |              | generally quite user-friendly.                                 |
 |              | * Is extremely popular.                                        |
 +--------------+----------------------------------------------------------------+
-| [VirtualBox] | * Works on most hardware (it **does not** run on Apple         |
-|              | Silicon).                                                      |
+| [VirtualBox] | * Works on most hardware                                       |
 |              | * Works on all platforms                                       |
 |              | * Is user friendly; is mostly free and open source.            |
 |              | * Is moderately popular.                                       |
