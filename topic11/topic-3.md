@@ -68,7 +68,7 @@ The latest image of Fedora can be found here:
 <https://fedoraproject.org/workstation/download/>
 
 The images that we provided have already been installed and setup for this
-class. The images that we have provided is a "Virtual Machine Disk" file, this
+class. The images that we have provided is a "Virtual Machine Disk" or a "Virtual Disk Image" file depending on if you have the x86_64 or the ARM image, this
 contains the hard drive for the virtual machine.
 
 The image that you download is compressed using GZip, so you're going to need to
