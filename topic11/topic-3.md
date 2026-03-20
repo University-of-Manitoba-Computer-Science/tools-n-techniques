@@ -45,22 +45,13 @@ we need to set up is going to be done in VirtualBox itself.
 ::: warning
 
 For our virtual machine, we are going to use one specific version from March 2026.
-Download the Fedora image from the following links
+Download the Fedora image from the following links:
 
-<details><summary>On x86_64 (Windows/Linux)</summary>
+* [x86_64] (Intel or AMD; typically Windows, some older Apple computers)
+* [ARM] (Apple Silicon or, e.g., Snapdragon; typically macOS, but can be some Windows machines)
 
-[x86_64 download link]
-
-</details>
-
-<details><summary>On ARM (macOS)</summary>
-
-[ARM download link]
-
-</details>
-
-[x86_64 download link]: https://travisfriesen.ca/fedora-43-1.6.x86_64.vdi.gz
-[ARM download link]: https://travisfriesen.ca/fedora-43-1.6.aarch64.tar.gz
+[x86_64]: https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.x86_64.vdi.gz?ref_type=heads&inline=false
+[ARM]: https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.aarch64.tar.gz?ref_type=heads&inline=false
 
 :::
 
