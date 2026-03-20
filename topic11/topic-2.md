@@ -121,8 +121,8 @@ but you're welcome to choose whichever VM software you want.
 If you are using Windows or Linux, you should [Install VirtualBox]. 
 
 If you are using macOS with an Intel processor, you can [Install VirtualBox] or
-[Install UTM]. If you are using macOS with Apple Silicon, you 
-[**must**]{.underline} [Install UTM].
+[Install UTM]. If you are using macOS with Apple Silicon, you can *optionally*
+[Install UTM].
 
 [QEMU]: https://www.qemu.org/
 [VirtualBox]: https://www.virtualbox.org/
@@ -141,10 +141,11 @@ architecture]".
 
 <details><summary>On Windows</summary>
 
-The answer in 2024 is almost guaranteed to be an Intel or AMD processor. The
-architecture that your processor uses is called (interchangeably) "x86_64" or
-"amd64". If you have a _really_ old computer it might just be "x86", but that's
-highly unlikely if your laptop is less than 15 years old.
+The answer in ~~2024~~ 2026 is still almost guaranteed to be an Intel or AMD
+processor. The architecture that your processor uses is called (interchangeably)
+"x86_64" or "amd64". If you have a _really_ old computer it might just be "x86",
+but that's highly unlikely if your laptop is less than 15 years old. Newer
+machines, including Microsoft's Surface line, are using ARM processors.
 
 This is changing, but Windows on other kinds of processors is not yet common.
 
@@ -157,10 +158,11 @@ by [opening the task manager].
 
 <details><summary>On macOS</summary>
 
-The answer in 2024 could be either Intel or Apple. You can find out what kind of
-processor your mac has by [opening the "About This Mac" dialog].
+The answer in ~~2024~~ 2026 could be either Intel or Apple, but at this point is
+almost certainly Apple. You can find out what kind of processor your mac has by
+[opening the "About This Mac" dialog].
 
-If you bought your Mac as any of "M1", "M2", or "M3" (after 2021), then your 
+If you bought your Mac as any of "M1", "M2", "M3", "M4", or "M5", then your
 computer is using Apple Silicon. The instruction set architecture of Apple
 Silicon is called "ARM".
 
@@ -208,8 +210,7 @@ laptop is less than 15 years old.
 Install VirtualBox
 ==================
 
-[Download VirtualBox for your platform] (you should download the
-7.0.X series) and [install it].
+[Download VirtualBox for your platform] and [install it].
 
 You can also install the VirtualBox Extension Pack, but we don't need the
 extension pack for the work we're doing in this course right now. You *don't*
@@ -227,8 +228,9 @@ https://www.virtualbox.org/wiki/Downloads
 Install UTM
 ===========
 
-As above, [UTM for macOS] is a front-end for QEMU for macOS. You should
-[download and install UTM].
+As above, [UTM for macOS] is a front-end for QEMU for macOS. You can
+*optionally* [download and install UTM] as an alternative to VirtualBox if you
+are running macOS.
 
 [UTM for macOS]: https://mac.getutm.app/
 [download and install UTM]: https://docs.getutm.app/installation/macos/
