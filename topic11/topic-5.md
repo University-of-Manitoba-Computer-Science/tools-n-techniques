@@ -17,7 +17,7 @@ resources because it doesn't carry all the extra baggage of a complete operating
 system.
 
 One fairly common use of containers is to distribute complex software and its
-dependencies as a single "image", similar to what you downloaded for SerenityOS
+dependencies as a single "image", similar to what you downloaded for Fedora
 when you were setting up a virtual machine. An image is basically an archive of
 an operating system's folder structure.
 

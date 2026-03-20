@@ -13,10 +13,13 @@ author: Franklin Bristow
 You've been using Windows or macOS (or maybe Linux!) on your personal computer
 and you're using Linux when you connect to Aviary.
 
-We're going to try something a little different here and use a brand new
-experimental operating system called [SerenityOS].
+We're going to try something a little different here and use a different
+distribution of Linux called [Fedora].
 
 ::: aside
+
+This course used to use [SerenityOS], but switched images as they had no native
+ARM support.
 
 SerenityOS is a fascinating project: it's a brand new, from scratch operating
 system and environment that was started by one person that's grown into a pretty
@@ -25,11 +28,12 @@ big community.
 The main author of SerenityOS (Andreas Kling) has been developing SerenityOS
 entirely in the open, including [live-streaming coding on YouTube].
 
+[SerenityOS]: https://serenityos.org/
 [live-streaming coding on YouTube]: https://www.youtube.com/c/AndreasKling
 
 :::
 
-[SerenityOS]: https://serenityos.org
+[Fedora]: https://fedoraproject.org
 
 Download an image
 =================
@@ -40,18 +44,23 @@ we need to set up is going to be done in VirtualBox itself.
 
 ::: warning
 
-For our virtual machine, we are going to use one specific version from January 2023.
-Download the SerenityOS from the following link:
-<https://serenity-builds.halves.dev/builds/2023-01-03/>
+For our virtual machine, we are going to use one specific version from March 2026.
+Download the Fedora image from the following links:
+
+* [x86_64] (Intel or AMD; typically Windows, some older Apple computers)
+* [ARM] (Apple Silicon or, e.g., Snapdragon; typically macOS, but can be some Windows machines)
+
+[x86_64]: https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.x86_64.vdi.gz?ref_type=heads&inline=false
+[ARM]: https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.aarch64.tar.gz?ref_type=heads&inline=false
 
 :::
 
-The latest image of SerenityOS can be found here:
-<https://serenity-builds.halves.dev/>
+The latest image of Fedora can be found here:
+<https://fedoraproject.org/workstation/download/>
 
-There are two options: a "Raw image" or "VirtualBox VDI". The raw image can be
-used in software like qemu or can be converted to work with other VM software.
-We're using VirtualBox, so let's just download the VirtualBox VDI.
+The images that we provided have already been installed and setup for this
+class. The images that we have provided is a "Virtual Machine Disk" or a "Virtual Disk Image" file depending on if you have the x86_64 or the ARM image, this
+contains the hard drive for the virtual machine.
 
 The image that you download is compressed using GZip, so you're going to need to
 decompress the image before you can use it with VirtualBox.
@@ -87,18 +96,26 @@ you downloaded and decompress it.
 Create a new VM
 ===============
 
-We're going to be creating a new VM from an existing image. You should actually
-follow the instructions in [the SerenityOS documentation for VirtualBox].
+We're going to be creating a new VM from an existing image. You'll need to
+enable Expert Mode.
 
-[the SerenityOS documentation for VirtualBox]:
-https://github.com/SerenityOS/serenity/blob/master/Documentation/VirtualBox.md#creating-the-virtual-machine
+Then configure your VM following these settings, specifying the downloaded image
+under "Specify virtual hard disk > Use an Existing Virtual Hard Disk File"
+
+![VirtualBox's main window.](vb-home.png)
+
+![VirtualBox's VM config window.](vb-config.png)
+
+![VirtualBox's VM Disk Select window.](vb-disk.png)
+
+
 
 Run the VM
 ==========
 
 Once you've got the VM configured, it's time to [start it]!
 
-If everything worked out, you should see SerenityOS starting up :tada:!
+If everything worked out, you should see Fedora starting up :tada:!
 
 [start it]: https://www.virtualbox.org/manual/ch01.html#intro-running
 
