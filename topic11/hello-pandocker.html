@@ -321,6 +321,9 @@ id="toc-making-a-pdf-from-this-file">Making a PDF from this file</a>
 <li><a href="#on-windows" id="toc-on-windows">On Windows</a></li>
 <li><a href="#on-linux-or-macos" id="toc-on-linux-or-macos">On Linux or
 macOS</a></li>
+<li><a href="#on-macos-with-apple-silicon"
+id="toc-on-macos-with-apple-silicon">On macOS with Apple
+Silicon</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -358,6 +361,12 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    hello-pandocker.md <span class="at">-o</span> hello-pandocker.pdf <span class="dt">\</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="dt">\</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--toc</span> <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
+<h2 id="on-macos-with-apple-silicon">On macOS with Apple Silicon</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--platform</span><span class="op">=</span>linux/amd64 <span class="at">--rm</span> <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/pandoc <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dalibo/pandocker:stable <span class="va">$YOUR_FILE</span>.md <span class="at">-o</span> <span class="va">$YOUR_FILE</span>.pdf <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter</span> pandoc-latex-admonition <span class="at">--template</span> eisvogel <span class="at">--toc</span> <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--listings</span></span></code></pre></div>
 
 </div> <!-- article-content -->
 
