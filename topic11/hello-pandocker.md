@@ -66,3 +66,13 @@ docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
     --filter pandoc-latex-admonition --template eisvogel \
     --toc --pdf-engine=xelatex --listings
 ```
+
+On macOS with Apple Silicon
+---------------------------
+
+```bash
+docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
+  dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
+  --filter pandoc-latex-admonition --template eisvogel --toc \
+  --pdf-engine=xelatex --listings
+```
