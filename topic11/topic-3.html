@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -330,10 +330,13 @@ software.</label></li>
 </div>
 <p>You’ve been using Windows or macOS (or maybe Linux!) on your personal
 computer and you’re using Linux when you connect to Aviary.</p>
-<p>We’re going to try something a little different here and use a brand
-new experimental operating system called <a
-href="https://serenityos.org">SerenityOS</a>.</p>
+<p>We’re going to try something a little different here and use a
+different distribution of Linux called <a
+href="https://fedoraproject.org">Fedora</a>.</p>
 <div class="aside">
+<p>This course used to use <a
+href="https://serenityos.org/">SerenityOS</a>, but switched images as
+they had no native ARM support.</p>
 <p>SerenityOS is a fascinating project: it’s a brand new, from scratch
 operating system and environment that was started by one person that’s
 grown into a pretty big community.</p>
@@ -349,17 +352,24 @@ Everything else that we need to set up is going to be done in VirtualBox
 itself.</p>
 <div class="warning">
 <p>For our virtual machine, we are going to use one specific version
-from January 2023. Download the SerenityOS from the following link: <a
-href="https://serenity-builds.halves.dev/builds/2023-01-03/"
-class="uri">https://serenity-builds.halves.dev/builds/2023-01-03/</a></p>
+from March 2026. Download the Fedora image from the following links:</p>
+<ul>
+<li><a
+href="https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.x86_64.vdi.gz?ref_type=heads&amp;inline=false">x86_64</a>
+(Intel or AMD; typically Windows, some older Apple computers)</li>
+<li><a
+href="https://code.cs.umanitoba.ca/cs-lab-course/virtual-machines/-/raw/main/fedora-43-1.6.aarch64.tar.gz?ref_type=heads&amp;inline=false">ARM</a>
+(Apple Silicon or, e.g., Snapdragon; typically macOS, but can be some
+Windows machines)</li>
+</ul>
 </div>
-<p>The latest image of SerenityOS can be found here: <a
-href="https://serenity-builds.halves.dev/"
-class="uri">https://serenity-builds.halves.dev/</a></p>
-<p>There are two options: a “Raw image” or “VirtualBox VDI”. The raw
-image can be used in software like qemu or can be converted to work with
-other VM software. We’re using VirtualBox, so let’s just download the
-VirtualBox VDI.</p>
+<p>The latest image of Fedora can be found here: <a
+href="https://fedoraproject.org/workstation/download/"
+class="uri">https://fedoraproject.org/workstation/download/</a></p>
+<p>The images that we provided have already been installed and setup for
+this class. The images that we have provided is a “Virtual Machine Disk”
+or a “Virtual Disk Image” file depending on if you have the x86_64 or
+the ARM image, this contains the hard drive for the virtual machine.</p>
 <p>The image that you download is compressed using GZip, so you’re going
 to need to decompress the image before you can use it with
 VirtualBox.</p>
@@ -387,15 +397,30 @@ formats, and is fast.</p>
 on the file you downloaded and decompress it.</p>
 </details>
 <h1 id="create-a-new-vm">Create a new VM</h1>
-<p>We’re going to be creating a new VM from an existing image. You
-should actually follow the instructions in <a
-href="https://github.com/SerenityOS/serenity/blob/master/Documentation/VirtualBox.md#creating-the-virtual-machine">the
-SerenityOS documentation for VirtualBox</a>.</p>
+<p>We’re going to be creating a new VM from an existing image. You’ll
+need to enable Expert Mode.</p>
+<p>Then configure your VM following these settings, specifying the
+downloaded image under “Specify virtual hard disk &gt; Use an Existing
+Virtual Hard Disk File”</p>
+<figure>
+<img src="vb-home.png" alt="VirtualBox’s main window." />
+<figcaption aria-hidden="true">VirtualBox’s main window.</figcaption>
+</figure>
+<figure>
+<img src="vb-config.png" alt="VirtualBox’s VM config window." />
+<figcaption aria-hidden="true">VirtualBox’s VM config
+window.</figcaption>
+</figure>
+<figure>
+<img src="vb-disk.png" alt="VirtualBox’s VM Disk Select window." />
+<figcaption aria-hidden="true">VirtualBox’s VM Disk Select
+window.</figcaption>
+</figure>
 <h1 id="run-the-vm">Run the VM</h1>
 <p>Once you’ve got the VM configured, it’s time to <a
 href="https://www.virtualbox.org/manual/ch01.html#intro-running">start
 it</a>!</p>
-<p>If everything worked out, you should see SerenityOS starting up <span
+<p>If everything worked out, you should see Fedora starting up <span
 class="emoji" data-emoji="tada">🎉</span>!</p>
 <h2 id="snapshots">Snapshots</h2>
 <p>One thing we can do with running virtual machines that we can’t do
@@ -418,7 +443,7 @@ VirtualBox documentation about snapshots</a>, then try it out!</p>
 </div> <!-- trunk-box -->
 
 <div id="my-footer">
-&copy; Franklin Bristow and <a href="https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/graphs/contributors">others</a> (2022, 2023, 2024) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+&copy; Franklin Bristow and <a href="https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/graphs/contributors">others</a> (2022, 2023, 2024, 2026) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
 <a href="topic-3.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)

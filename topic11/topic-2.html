@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -359,8 +359,7 @@ user-friendly.</li>
 <tr>
 <td><a href="https://www.virtualbox.org/">VirtualBox</a></td>
 <td><ul>
-<li>Works on most hardware (it <strong>does not</strong> run on Apple
-Silicon).</li>
+<li>Works on most hardware</li>
 <li>Works on all platforms</li>
 <li>Is user friendly; is mostly free and open source.</li>
 <li>Is moderately popular.</li>
@@ -389,7 +388,7 @@ href="#install-virtualbox">Install VirtualBox</a>.</p>
 <p>If you are using macOS with an Intel processor, you can <a
 href="#install-virtualbox">Install VirtualBox</a> or <a
 href="#install-utm">Install UTM</a>. If you are using macOS with Apple
-Silicon, you <u><strong>must</strong></u> <a href="#install-utm">Install
+Silicon, you can <em>optionally</em> <a href="#install-utm">Install
 UTM</a>.</p>
 <div class="aside">
 <p>How do I find out what kind of processor I’m using? There are two
@@ -402,11 +401,12 @@ set architecture</a>”.</p>
 <summary>
 On Windows
 </summary>
-<p>The answer in 2024 is almost guaranteed to be an Intel or AMD
-processor. The architecture that your processor uses is called
-(interchangeably) “x86_64” or “amd64”. If you have a <em>really</em> old
-computer it might just be “x86”, but that’s highly unlikely if your
-laptop is less than 15 years old.</p>
+<p>The answer in <del>2024</del> 2026 is still almost guaranteed to be
+an Intel or AMD processor. The architecture that your processor uses is
+called (interchangeably) “x86_64” or “amd64”. If you have a
+<em>really</em> old computer it might just be “x86”, but that’s highly
+unlikely if your laptop is less than 15 years old. Newer machines,
+including Microsoft’s Surface line, are using ARM processors.</p>
 <p>This is changing, but Windows on other kinds of processors is not yet
 common.</p>
 <p>You can find out what brand and model of processor you have installed
@@ -418,11 +418,12 @@ the task manager</a>.</p>
 <summary>
 On macOS
 </summary>
-<p>The answer in 2024 could be either Intel or Apple. You can find out
-what kind of processor your mac has by <a
+<p>The answer in <del>2024</del> 2026 could be either Intel or Apple,
+but at this point is almost certainly Apple. You can find out what kind
+of processor your mac has by <a
 href="https://support.apple.com/en-us/102767">opening the “About This
 Mac” dialog</a>.</p>
-<p>If you bought your Mac as any of “M1”, “M2”, or “M3” (after 2021),
+<p>If you bought your Mac as any of “M1”, “M2”, “M3”, “M4”, or “M5”,
 then your computer is using Apple Silicon. The instruction set
 architecture of Apple Silicon is called “ARM”.</p>
 <p>If you your Mac was made before 2021 (or you have built a <a
@@ -462,8 +463,7 @@ years old.</p>
 </div>
 <h1 id="install-virtualbox">Install VirtualBox</h1>
 <p><a href="https://www.virtualbox.org/wiki/Downloads">Download
-VirtualBox for your platform</a> (you should download the 7.0.X series)
-and <a
+VirtualBox for your platform</a> and <a
 href="https://www.virtualbox.org/manual/UserManual.html#installation">install
 it</a>.</p>
 <p>You can also install the VirtualBox Extension Pack, but we don’t need
@@ -476,9 +476,9 @@ href="topic-3.html">Download and use a pre-installed OS in VM software
 (VirtualBox)</a></p>
 <h1 id="install-utm">Install UTM</h1>
 <p>As above, <a href="https://mac.getutm.app/">UTM for macOS</a> is a
-front-end for QEMU for macOS. You should <a
+front-end for QEMU for macOS. You can <em>optionally</em> <a
 href="https://docs.getutm.app/installation/macos/">download and install
-UTM</a>.</p>
+UTM</a> as an alternative to VirtualBox if you are running macOS.</p>
 <div class="aside">
 <p>UTM is free and <a
 href="https://en.wikipedia.org/wiki/Open-source_software">open
@@ -506,7 +506,7 @@ href="topic-4.html">Download and use a pre-installed OS in VM software
 </div> <!-- trunk-box -->
 
 <div id="my-footer">
-&copy; Franklin Bristow and <a href="https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/graphs/contributors">others</a> (2022, 2023, 2024) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
+&copy; Franklin Bristow and <a href="https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/graphs/contributors">others</a> (2022, 2023, 2024, 2026) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>
 <a href="topic-2.md">Pandoc-Markdown source for this page</a><br/>
 (Docs processed by
 <a href="http://www.unexpected-vortices.com/sw/rippledoc/index.html">Rippledoc</a>.)
