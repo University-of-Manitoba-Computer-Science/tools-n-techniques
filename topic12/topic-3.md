@@ -10,10 +10,10 @@ author: Franklin Bristow
 :::
 
 We're going to move forward here with the assumption that you've selected
-Ubuntu. You're more than welcome to try other distros, but you're on your own
+Debian. You're more than welcome to try other distros, but you're on your own
 for getting it installed.
 
-You've got two choices here in terms of where you install Ubuntu:
+You've got two choices here in terms of where you install Debian:
 
 * A virtual machine.
 * Real hardware.
@@ -25,11 +25,10 @@ Where are you installing *to*?
 
 Before you start, decide where you're going to install it:
 
-* Real hardware. Maybe you've got an old laptop. Maybe you're using the lab
-  computer. Maybe you're feeling **very** confident that you can get Linux
-  working on your laptop with zero issues just before your final exams. Do this
-  only if you know you're going to be OK going forward (we take no
-  responsibility for lost data or lost use of your machine).
+* Real hardware. Maybe you've got an old laptop. Maybe you're feeling **very**
+  confident that you can get Linux working on your laptop with zero issues just
+  before your final exams. Do this only if you know you're going to be OK going
+  forward (we take no responsibility for lost data or lost use of your machine!).
 * A virtual machine.
 
 Download the ISO
@@ -53,19 +52,27 @@ to represent files, folders, and metadata on a disk or other hardware.
 
 :::
 
-Here's a link to download `.iso` files:
-<https://cdimage.ubuntu.com/daily-live/current/>
+The [Download Debian page] has a variety of images you can download. You can go
+directly to the [Downloading Debian USB/CD/DVD images via HTTP/FTP page], then find the image that's right for you:
 
-If you're using Windows or a Mac with an Intel processor, download
-`plucky-desktop-amd64.iso`. If you're using a Mac with Apple Silicon, download
-`plucky-desktop-arm64.iso`.
+* If you're using Windows (or a Mac) with an Intel processor, follow [the
+  download links for amd64]. If you're installing in a virtual machine, you
+  almost certainly want to download `debian-*-amd64-netinst.iso`.
+* If you're using Windows on a Snapdragon or a Mac with Apple Silicon, follow
+  [the download links for arm64]. There's only one ISO file you can download, so
+  download it!
+
+[Download Debian page]: https://www.debian.org/distrib/
+[Downlkoading Debian USB/CD/DVD images via HTTP/FTP page]: https://www.debian.org/CD/http-ftp/
+[the download links for amd64]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
+[the download links for arm64]: https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/
 
 Set up your machine
 ===================
 
 Here's where our instructions diverge for a while: if you're using a Virtual
-Machine, read below about either [VirtualBox] or [UTM]. If you're planning on
-installing Linux onto an actual machine, read more in [Real hardware].
+Machine, read below about [VirtualBox]. If you're planning on installing Linux
+onto an actual machine, read more in [Real hardware].
 
 Virtual machines
 ----------------
@@ -99,9 +106,8 @@ You should fill in the details here:
   select "Other...". Now find the ISO you downloaded and select it.
 
 Once you select the ISO, VirtualBox is going to change its interface a little
-bit and helpfully let you know that the OS can be "unattendedly" installed (I
-guess if you write it into a program is becomes a word). You should check off
-"Skip Unattended Installation", then click "Next".
+bit and helpfully let you know that the OS can be "unattendedly" installed. You
+should check off "Skip Unattended Installation", then click "Next".
 
 On the next screen you'll get a chance to choose some options for hardware.
 VirtualBox has selected sane defaults here, but you can do things like giving
@@ -158,33 +164,6 @@ Finally, click "Next", optionally review the details of your VM, then click
 
 Now it's time to [Boot] your VM.
 
-### UTM
-
-UTM actually has pretty good documentation on [how to get Ubuntu set up].
-
-Some (minor) differences and explanation:
-
-* You're going to be using a Desktop ISO for Ubuntu, so you don't need to
-  install `ubuntu-desktop` after you've finished.
-* Similar to VirtualBox above: UTM picks pretty reasonable values for the amount
-  of memory and disk space that the virtual machine is going to get.
-* Similar to VirtualBox above: The virtual hard drive you create here will
-  literally be a file on your file system. UTM gives the guest OS the
-  idea that there's a real hard drive, and any reads or writes that the guest OS
-  makes will be forwarded to this file.
-* UTM makes folder sharing (a folder on your host will be made available in your
-  guest) a little easier in that it's a set up option.
-* The last step in the UTM docs (step 9) is important:
-    * The reboot will almost certainly fail. You should power off the machine
-      yourself.
-    * After you power off the machine, "unmount the installer ISO" by looking at
-      the details of the machine on the right, scrolling down and finding the
-      "CD/DVD" drop-down and choosing "Clear".
-
-[how to get Ubuntu set up]: https://docs.getutm.app/guides/ubuntu/
-
-Once you've got the VM set up, you can move on to the [Boot] section.
-
 Real hardware
 -------------
 
@@ -206,30 +185,22 @@ your keyboard to select which device to use to boot.
 Boot
 ====
 
-Start your VM or your machine (we're converging here again).
+Start your VM or your machine (we're converging here again). The Debian
+installer has *straightforward* install instructions throughout the installation
+process. If you're unsure how to proceed, either ask your instructor or TA, or
+[get some help from online].
 
-Follow the guide here:
-<https://ubuntu.com/tutorials/install-ubuntu-desktop#4-boot-from-usb-flash-drive>
+The very last step of the install should be to reboot. After you reboot, you
+should have a working Linux install :tada:.
 
-::: aside
-
-If you're asked to log in once the image starts up, the username is `ubuntu`
-with no password (just press <kbd>Enter</kbd> when you're asked for a password).
-
-If you're asked to log in once the image starts up, you may need to launch the
-installer manually, it should be an icon on the desktop that you can
-double-click on.
-
-:::
-
-After you reboot, you should have a working Linux install :tada:.
+[get some help from online]: ../topic06/topic-2.html
 
 Further reading
 ===============
 
-Getting Linux installed can be straightforward. Ubuntu and Debian make most of
-the choices for you (choices that you probably don't even care exist), but other
-Linux distributions give you *all* the choices.
+Getting Linux installed can be straightforward. Debian makes most of the choices
+for you (choices that you probably don't even care exist), but other Linux
+distributions give you *all* the choices.
 
 The most complete way to install Linux is from scratch (going through the
 process of bootstrapping your system by compiling your compiler, then the

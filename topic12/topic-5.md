@@ -29,9 +29,9 @@ Installing Caddy
 ================
 
 Caddy can be installed using `apt`, but you need to do a little bit of extra set
-up --- Caddy's packages are *not* in the Ubuntu repositories. Instead, Caddy
-hosts its own repositories, and you can add that repository to the set of
-repositories `apt` can download from on your system.
+up --- while Caddy's packages are in the Debian repositories, they are out of
+date! Instead, Caddy hosts its own repositories, and you can add that repository
+to the set of repositories `apt` can download from on your system.
 
 The [Caddy documentation] describes what commands you should run, you can run
 these commands in your terminal in your Linux system. One addition to the Caddy

@@ -78,7 +78,7 @@ is a complete package that usually consists of the following:
 
 There are *a lot* of distributions to choose from: 
 
-![Timeline of Linux distributions ([&copy; FabioLolix, CC BY-SA 3.0](https://en.wikipedia.org/wiki/Linux_distribution#/media/File:Linux_Distribution_Timeline_21_10_2021.svg))](distros.svg)
+![Timeline of Linux distributions ([&copy; Andreas Lundqvist (initially), Muhammad Herdiansyah (continued), Fabio Loli (continued) - <http://futurist.se/gldt/>, GFDL 1.3](https://en.wikipedia.org/wiki/List_of_Linux_distributions#/media/File:Linux_Distribution_Timeline.svg))](distros.svg)
 
 Like a lot a lot. Seriously. [Open this image in a new tab] and just scroll.
 
@@ -95,8 +95,7 @@ of the software that come packaged in distributions are [free and open-source].
 [package manager]: https://en.wikipedia.org/wiki/Package_manager
 [LibreOffice]: https://www.libreoffice.org/
 [Firefox]: https://www.mozilla.org/en-US/firefox/
-[Open this image in a new tab]:
-https://upload.wikimedia.org/wikipedia/commons/b/b5/Linux_Distribution_Timeline_21_10_2021.svg
+[Open this image in a new tab]: https://en.wikipedia.org/wiki/List_of_Linux_distributions
 [free and open-source]:
 https://en.wikipedia.org/wiki/Free_and_open-source_software
 [*just annoyed enough* to make something new]:
@@ -133,13 +132,12 @@ some popular distributions:
 * [ArchLinux] (not user friendly, most things are done on the command-line; easy
   to ask for help; trying to keep up with the latest and greatest sometimes at
   the expense of stability).
-* [Debian] (user friendly-ish; easy to ask for help; focus primarily on
-  stability).
+* [Debian] (user friendly; easy to ask for help; focus primarily on stability so
+  packages can be slightly older).
 
-For the purposes of this course , we recommend that you choose [Ubuntu]. Ubuntu
+For the purposes of this course, we recommend that you choose [Debian]. Debian 
 is easy to use, has a very large community of users to get support from, and has
-a company backing it ([Canonical]) that you can pay for support you, if you need
-it.
+fewer resource requirements than other distributions like [Ubuntu].
 
 That said: if you're interested in trying something new, or you want to go
 through the process of making your own choice, you can use a tool like
@@ -175,7 +173,7 @@ Here's why I (me, Franklin) use Linux on my computers:
    and republish its source code).
 
    I consider both of these to be important.
-2. (Get ready to put on your [tin foil hats]) Windows is slowly  *becoming* free
+2. (Get ready to put on your [tin foil hats]) Windows is slowly *becoming* free
    as in beer (you don't pay anything for it), but the reality is that Microsoft
    is making money from users by showing ads ([[1]], [[2]], [[3]]) and Microsoft
    [collects a lot of data about your usage].
@@ -188,12 +186,12 @@ Here's why I (me, Franklin) use Linux on my computers:
    Microsoft is making it *easier* to do that (I do spend a lot of time using
    the Windows subsystem for Linux), and tools like [Homebrew] make it easier
    for me to do that in macOS, but why use systems where it's just now being
-   made easier when it's already easy in another system?
+   made easier when it's already easy in Linux?
 4. Linux distributions give me choices about a lot of things. Even when I'm
-   picking a distribution like Ubuntu that's made a lot of choices for me, I can
+   picking a distribution like Debian that's made a lot of choices for me, I can
    still make decisions about what I want later on:
 
-   * I can use different terminal software ([Terminator], [kitty], [Hyper]).
+   * I can use different terminal software ([Ghostty], [Terminator], [kitty], [Hyper]).
    * I can trivially change [icon themes].
    * I can completely switch [desktop environments] ([Gnome], [KDE],
      [Elementary]).
@@ -204,9 +202,9 @@ Of course, these are idealistic reasons to use Linux. Why *shouldn't* you use
 Linux?
 
 1. There are still issues with some (generally the newest) hardware. Linux is
-   *barely* running on [Apple Silicon]. Sleep doesn't always work on the newest
-   laptops, or it does with tinkering. That said, Linux works surprisingly well
-   on older hardware.
+   running on [Apple Silicon], but it's not at the same level as macOS running
+   on Apple Silicon. Sleep doesn't always work on the newest laptops, or it does
+   with tinkering. That said, Linux works surprisingly well on older hardware.
 2. Microsoft Office, Adobe Photoshop, many (but fewer than before) commercial
    games do not work on Linux at all. Yes, there's [Wine]; yes, there are web
    versions of Office; yes, Steam and Proton are amazing; but they aren't
@@ -232,6 +230,7 @@ https://privacy.microsoft.com/en-us/data-collection-windows
 [Terminator]: https://gnome-terminator.org/
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [Hyper]: https://hyper.is/
+[Ghostty]: https://ghostty.org/
 [icon themes]: https://www.omgubuntu.co.uk/best-icon-themes-ubuntu
 [desktop environments]: https://en.wikipedia.org/wiki/Desktop_environment
 [GNOME]: https://www.gnome.org/

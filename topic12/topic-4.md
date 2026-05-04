@@ -22,11 +22,10 @@ A package manager is a program that downloads, installs, and manages "packages".
 A package is just another word to describe an application or a piece of software
 that's going to be installed on the system.
 
-On Ubuntu (and its [upstream] source Debian) use "Debian packages". Debian
-packages are files with an extension of `.deb`. A `.deb` package is *kind of*
-the same thing as a `.msi` file on Windows or a `.pkg` or `.app` on macOS.
+Debian packages are files with an extension of `.deb`. A `.deb` package is *kind
+of* the same thing as a `.msi` file on Windows or a `.pkg` or `.app` on macOS.
 
-There are two ways we're going to install and update packages in Ubuntu: on the
+There are two ways we're going to install and update packages in Debian: on the
 command-line and using a GUI.
 
 [package manager]: https://en.wikipedia.org/wiki/Package_manager
@@ -45,35 +44,20 @@ called `root`. Windows users can be administrative users, but there isn't really
 a "main" administrator account name.
 
 You may be prompted for an administrative password when managing software on
-your Linux system. On Ubuntu, the password you should be entering is the same as
-your user account's password.
+your Linux system. On Debian, the password you should be entering is either the
+root password you entered during setup, or the same as your user account's
+password, depending on which options you selected during install.
 
 Using the Software Center
 =========================
 
-Ubuntu has separate GUI apps for updating and installing new packages.
+If you chose Gnome as your desktop environment, Debian has one GUI apps for
+updating and installing new packages called "[Software]".
 
-Updating packages with a GUI
-----------------------------
+Make sure that your installation of Debian is completely up to date by
+installing new updates using Software, then install "Meld Merge".
 
-[Start the program called "Software updater"] and follow the on-screen
-instructions.
-
-Make sure that your install is completely up to date by installing new packages.
-
-[Start the program called "Software updater"]:
-https://ubuntu.com/tutorials/upgrading-ubuntu-desktop#2-launch-the-software-updater
-
-Installing new packages with a GUI
-----------------------------------
-
-You can install new software using the ["Ubuntu Software"] app.
-
-Install Meld Merge using the Ubuntu Software app by searching for it, then
-installing it.
-
-["Ubuntu Software"]:
-https://help.ubuntu.com/stable/ubuntu-help/addremove-install.html.en
+[Software]: https://apps.gnome.org//Software/
 
 On the command line
 ===================
@@ -84,7 +68,7 @@ have a GUI installed), and some packages aren't listed in the GUI app (notably
 packages that contain command-line programs). You can also install packages on
 the command line.
 
-On Ubuntu (and Debian) the command line package manager is `apt`.
+On Debian the command line package manager is `apt`.
 
 Updating packages on the command line
 -------------------------------------
@@ -207,10 +191,10 @@ to install:
   ```
   Sorting... Done
   Full Text Search... Done
-  aerc/plucky 0.8.2-1 amd64
+  aerc/stable 0.8.2-1 amd64
     World's Best Email Client
   // LOTS MORE
-  tmux/plucky 3.2a-4build1 amd64
+  tmux/stable,now 3.5a-3 amd64
     terminal multiplexer
   ```
   :::
@@ -219,9 +203,8 @@ to install:
   You can decode the results above as:
 
   * `tmux` is the name of the program
-  * `plucky` is the name of the Ubuntu release this package was made for (Plucky
-    Puffin)
-  * `3.2a-4build1` is the version of this package.
+  * `stable` is the name of the Debian release this package was made for.
+  * `3.5a-3` is the version of this package.
   * `amd64` is the architecture that this package was built for.
 * Search for what you're looking for online and have the website tell you what
   to install.
@@ -245,12 +228,12 @@ build-essentials # a meta-package including a C compiler
 ```
 
 Installing a packages *outside* of repositories
-===============================================
+=============================================
 
-When you're installing packages with `apt` or Ubuntu Software, you're
-downloading and installing packages that are hosted in the official
-"[repository]". The Ubuntu and Debian repositories are... comprehensive. There's
-a huge amount of software packaged for Ubuntu and Debian in the repositories.
+When you're installing packages with `apt` or the GUI, you're downloading and
+installing packages that are hosted in the official "[repository]". The Debian
+repositories are... comprehensive. There's a huge amount of software packaged
+for Debian in the repositories.
 
 Despite the huge amount of software in the repositories, some software *isn't*
 in the repositories (including some popular software like Google's Chrome or VS
@@ -262,7 +245,7 @@ yourself (e.g., from a project's web site).
 
 ::: example
 
-Let's install a more current version of Pandoc than what's in Ubuntu's
+Let's install a more current version of Pandoc than what's in Debian's
 repositories.
 
 In your Linux system, open your web browser (Firefox is installed by default),
@@ -283,13 +266,13 @@ sudo apt install ./pandoc-2.19.2-1-amd64.deb
 
 :::
 
-[repository]: https://help.ubuntu.com/community/Repositories/Ubuntu
+[repository]: https://wiki.debian.org/DebianRepository
 
 Further reading
 ===============
 
 As with most topics in this course, we're barely scratching the surface here,
-especially because we're focusing on Ubuntu. There are **many** Linux
+especially because we're focusing on Debian. There are **many** Linux
 distributions. While Debian has a lot of descendants (and thus lots of other
 distros using `apt` and `deb` packages), there are just as many other
 distributions that do not use `deb` or `apt`. If you're using this as an
