@@ -10,7 +10,6 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
@@ -337,10 +336,10 @@ popular web servers:</p>
 </ol>
 <h1 id="installing-caddy">Installing Caddy</h1>
 <p>Caddy can be installed using <code>apt</code>, but you need to do a
-little bit of extra set up — Caddy’s packages are <em>not</em> in the
-Ubuntu repositories. Instead, Caddy hosts its own repositories, and you
-can add that repository to the set of repositories <code>apt</code> can
-download from on your system.</p>
+little bit of extra set up — while Caddy’s packages are in the Debian
+repositories, they are out of date! Instead, Caddy hosts its own
+repositories, and you can add that repository to the set of repositories
+<code>apt</code> can download from on your system.</p>
 <p>The <a
 href="https://caddyserver.com/docs/install#debian-ubuntu-raspbian">Caddy
 documentation</a> describes what commands you should run, you can run

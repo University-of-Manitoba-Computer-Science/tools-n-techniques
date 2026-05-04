@@ -10,7 +10,6 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
@@ -313,15 +312,7 @@ Running your own Linux system
 id="toc-administrative-users-root">Administrative users
 (<code>root</code>)</a></li>
 <li><a href="#using-the-software-center"
-id="toc-using-the-software-center">Using the Software Center</a>
-<ul>
-<li><a href="#updating-packages-with-a-gui"
-id="toc-updating-packages-with-a-gui">Updating packages with a
-GUI</a></li>
-<li><a href="#installing-new-packages-with-a-gui"
-id="toc-installing-new-packages-with-a-gui">Installing new packages with
-a GUI</a></li>
-</ul></li>
+id="toc-using-the-software-center">Using the Software Center</a></li>
 <li><a href="#on-the-command-line" id="toc-on-the-command-line">On the
 command line</a>
 <ul>
@@ -368,14 +359,12 @@ manager</a>.</p>
 <p>A package manager is a program that downloads, installs, and manages
 “packages”. A package is just another word to describe an application or
 a piece of software that’s going to be installed on the system.</p>
-<p>On Ubuntu (and its <a
-href="https://en.wikipedia.org/wiki/Upstream_(software_development)">upstream</a>
-source Debian) use “Debian packages”. Debian packages are files with an
-extension of <code>.deb</code>. A <code>.deb</code> package is <em>kind
-of</em> the same thing as a <code>.msi</code> file on Windows or a
-<code>.pkg</code> or <code>.app</code> on macOS.</p>
+<p>Debian packages are files with an extension of <code>.deb</code>. A
+<code>.deb</code> package is <em>kind of</em> the same thing as a
+<code>.msi</code> file on Windows or a <code>.pkg</code> or
+<code>.app</code> on macOS.</p>
 <p>There are two ways we’re going to install and update packages in
-Ubuntu: on the command-line and using a GUI.</p>
+Debian: on the command-line and using a GUI.</p>
 <h1 id="administrative-users-root">Administrative users
 (<code>root</code>)</h1>
 <p>Installing software is an administrative task, and only users that
@@ -386,33 +375,23 @@ install new software.</p>
 macOS!) is called <code>root</code>. Windows users can be administrative
 users, but there isn’t really a “main” administrator account name.</p>
 <p>You may be prompted for an administrative password when managing
-software on your Linux system. On Ubuntu, the password you should be
-entering is the same as your user account’s password.</p>
+software on your Linux system. On Debian, the password you should be
+entering is either the root password you entered during setup, or the
+same as your user account’s password, depending on which options you
+selected during install.</p>
 <h1 id="using-the-software-center">Using the Software Center</h1>
-<p>Ubuntu has separate GUI apps for updating and installing new
-packages.</p>
-<h2 id="updating-packages-with-a-gui">Updating packages with a GUI</h2>
-<p><a
-href="https://ubuntu.com/tutorials/upgrading-ubuntu-desktop#2-launch-the-software-updater">Start
-the program called “Software updater”</a> and follow the on-screen
-instructions.</p>
-<p>Make sure that your install is completely up to date by installing
-new packages.</p>
-<h2 id="installing-new-packages-with-a-gui">Installing new packages with
-a GUI</h2>
-<p>You can install new software using the <a
-href="https://help.ubuntu.com/stable/ubuntu-help/addremove-install.html.en">“Ubuntu
-Software”</a> app.</p>
-<p>Install Meld Merge using the Ubuntu Software app by searching for it,
-then installing it.</p>
+<p>If you chose Gnome as your desktop environment, Debian has one GUI
+apps for updating and installing new packages called “<a
+href="https://apps.gnome.org//Software/">Software</a>”.</p>
+<p>Make sure that your installation of Debian is completely up to date
+by installing new updates using Software, then install “Meld Merge”.</p>
 <h1 id="on-the-command-line">On the command line</h1>
 <p>Installing packages with a GUI is great, but you don’t always have
 access to a GUI (like when you’re connecting to a remote server with SSH
 that doesn’t even have a GUI installed), and some packages aren’t listed
 in the GUI app (notably packages that contain command-line programs).
 You can also install packages on the command line.</p>
-<p>On Ubuntu (and Debian) the command line package manager is
-<code>apt</code>.</p>
+<p>On Debian the command line package manager is <code>apt</code>.</p>
 <h2 id="updating-packages-on-the-command-line">Updating packages on the
 command line</h2>
 <p>Updating packages on the command line actually consists of two
@@ -508,19 +487,19 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 </div><div class="column output" style="width:50%;">
 <pre><code>Sorting... Done
 Full Text Search... Done
-aerc/plucky 0.8.2-1 amd64
+aerc/stable 0.8.2-1 amd64
   World&#39;s Best Email Client
 // LOTS MORE
-tmux/plucky 3.2a-4build1 amd64
+tmux/stable,now 3.5a-3 amd64
   terminal multiplexer</code></pre>
 </div>
 </div>
 <p>You can decode the results above as:</p>
 <ul>
 <li><code>tmux</code> is the name of the program</li>
-<li><code>plucky</code> is the name of the Ubuntu release this package
-was made for (Plucky Puffin)</li>
-<li><code>3.2a-4build1</code> is the version of this package.</li>
+<li><code>stable</code> is the name of the Debian release this package
+was made for.</li>
+<li><code>3.5a-3</code> is the version of this package.</li>
 <li><code>amd64</code> is the architecture that this package was built
 for.</li>
 </ul></li>
@@ -540,13 +519,12 @@ make # it&#39;s make!
 build-essentials # a meta-package including a C compiler</code></pre>
 <h1 id="installing-a-packages-outside-of-repositories">Installing a
 packages <em>outside</em> of repositories</h1>
-<p>When you’re installing packages with <code>apt</code> or Ubuntu
-Software, you’re downloading and installing packages that are hosted in
-the official “<a
-href="https://help.ubuntu.com/community/Repositories/Ubuntu">repository</a>”.
-The Ubuntu and Debian repositories are… comprehensive. There’s a huge
-amount of software packaged for Ubuntu and Debian in the
-repositories.</p>
+<p>When you’re installing packages with <code>apt</code> or the GUI,
+you’re downloading and installing packages that are hosted in the
+official “<a
+href="https://wiki.debian.org/DebianRepository">repository</a>”. The
+Debian repositories are… comprehensive. There’s a huge amount of
+software packaged for Debian in the repositories.</p>
 <p>Despite the huge amount of software in the repositories, some
 software <em>isn’t</em> in the repositories (including some popular
 software like Google’s Chrome or VS Code). Some software in the
@@ -556,7 +534,7 @@ install.</p>
 downloading a package yourself (e.g., from a project’s web site).</p>
 <div class="example">
 <p>Let’s install a more current version of Pandoc than what’s in
-Ubuntu’s repositories.</p>
+Debian’s repositories.</p>
 <p>In your Linux system, open your web browser (Firefox is installed by
 default), navigate to Pandoc’s home page, go to the “Installing” tab,
 then click on the bug “Download the latest installer” button. This will
@@ -574,7 +552,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="
 </div>
 <h1 id="further-reading">Further reading</h1>
 <p>As with most topics in this course, we’re barely scratching the
-surface here, especially because we’re focusing on Ubuntu. There are
+surface here, especially because we’re focusing on Debian. There are
 <strong>many</strong> Linux distributions. While Debian has a lot of
 descendants (and thus lots of other distros using <code>apt</code> and
 <code>deb</code> packages), there are just as many other distributions

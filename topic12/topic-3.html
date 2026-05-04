@@ -10,7 +10,6 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
@@ -256,7 +255,6 @@ your machine</a>
 machines</a>
 <ul>
 <li><a href="#virtualbox" id="toc-virtualbox">VirtualBox</a></li>
-<li><a href="#utm" id="toc-utm">UTM</a></li>
 </ul></li>
 <li><a href="#real-hardware" id="toc-real-hardware">Real
 hardware</a></li>
@@ -273,9 +271,9 @@ distribution either on your laptop or in a virtual machine.</label></li>
 </ul>
 </div>
 <p>We’re going to move forward here with the assumption that you’ve
-selected Ubuntu. You’re more than welcome to try other distros, but
+selected Debian. You’re more than welcome to try other distros, but
 you’re on your own for getting it installed.</p>
-<p>You’ve got two choices here in terms of where you install Ubuntu:</p>
+<p>You’ve got two choices here in terms of where you install Debian:</p>
 <ul>
 <li>A virtual machine.</li>
 <li>Real hardware.</li>
@@ -286,12 +284,11 @@ converge again.</p>
 <em>to</em>?</h1>
 <p>Before you start, decide where you’re going to install it:</p>
 <ul>
-<li>Real hardware. Maybe you’ve got an old laptop. Maybe you’re using
-the lab computer. Maybe you’re feeling <strong>very</strong> confident
-that you can get Linux working on your laptop with zero issues just
-before your final exams. Do this only if you know you’re going to be OK
-going forward (we take no responsibility for lost data or lost use of
-your machine).</li>
+<li>Real hardware. Maybe you’ve got an old laptop. Maybe you’re feeling
+<strong>very</strong> confident that you can get Linux working on your
+laptop with zero issues just before your final exams. Do this only if
+you know you’re going to be OK going forward (we take no responsibility
+for lost data or lost use of your machine!).</li>
 <li>A virtual machine.</li>
 </ul>
 <h1 id="download-the-iso">Download the ISO</h1>
@@ -308,18 +305,27 @@ called “ISO 9660”. <a href="https://en.wikipedia.org/wiki/ISO_9660">ISO
 system</a>”, it’s a binary data structure that’s used to represent
 files, folders, and metadata on a disk or other hardware.</p>
 </div>
-<p>Here’s a link to download <code>.iso</code> files: <a
-href="https://cdimage.ubuntu.com/daily-live/current/"
-class="uri">https://cdimage.ubuntu.com/daily-live/current/</a></p>
-<p>If you’re using Windows or a Mac with an Intel processor, download
-<code>plucky-desktop-amd64.iso</code>. If you’re using a Mac with Apple
-Silicon, download <code>plucky-desktop-arm64.iso</code>.</p>
+<p>The <a href="https://www.debian.org/distrib/">Download Debian
+page</a> has a variety of images you can download. You can go directly
+to the [Downloading Debian USB/CD/DVD images via HTTP/FTP page], then
+find the image that’s right for you:</p>
+<ul>
+<li>If you’re using Windows (or a Mac) with an Intel processor, follow
+<a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/">the
+download links for amd64</a>. If you’re installing in a virtual machine,
+you almost certainly want to download
+<code>debian-*-amd64-netinst.iso</code>.</li>
+<li>If you’re using Windows on a Snapdragon or a Mac with Apple Silicon,
+follow <a
+href="https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/">the
+download links for arm64</a>. There’s only one ISO file you can
+download, so download it!</li>
+</ul>
 <h1 id="set-up-your-machine">Set up your machine</h1>
 <p>Here’s where our instructions diverge for a while: if you’re using a
-Virtual Machine, read below about either <a
-href="#virtualbox">VirtualBox</a> or <a href="#utm">UTM</a>. If you’re
-planning on installing Linux onto an actual machine, read more in <a
-href="#real-hardware">Real hardware</a>.</p>
+Virtual Machine, read below about <a href="#virtualbox">VirtualBox</a>.
+If you’re planning on installing Linux onto an actual machine, read more
+in <a href="#real-hardware">Real hardware</a>.</p>
 <h2 id="virtual-machines">Virtual machines</h2>
 <p>If you don’t want to commit to installing Linux on a real machine,
 that’s totally OK. Thankfully, it’s straightforward to install Linux in
@@ -353,9 +359,8 @@ select it.</li>
 </ul>
 <p>Once you select the ISO, VirtualBox is going to change its interface
 a little bit and helpfully let you know that the OS can be
-“unattendedly” installed (I guess if you write it into a program is
-becomes a word). You should check off “Skip Unattended Installation”,
-then click “Next”.</p>
+“unattendedly” installed. You should check off “Skip Unattended
+Installation”, then click “Next”.</p>
 <p>On the next screen you’ll get a chance to choose some options for
 hardware. VirtualBox has selected sane defaults here, but you can do
 things like giving your virtual machine more RAM, or more CPU cores to
@@ -404,35 +409,6 @@ virtual disk and you’ve got a 250GB physical disk).</li>
 <p>Finally, click “Next”, optionally review the details of your VM, then
 click “Finish”. Hooray :tada;! You just created another VM!</p>
 <p>Now it’s time to <a href="#boot">Boot</a> your VM.</p>
-<h3 id="utm">UTM</h3>
-<p>UTM actually has pretty good documentation on <a
-href="https://docs.getutm.app/guides/ubuntu/">how to get Ubuntu set
-up</a>.</p>
-<p>Some (minor) differences and explanation:</p>
-<ul>
-<li>You’re going to be using a Desktop ISO for Ubuntu, so you don’t need
-to install <code>ubuntu-desktop</code> after you’ve finished.</li>
-<li>Similar to VirtualBox above: UTM picks pretty reasonable values for
-the amount of memory and disk space that the virtual machine is going to
-get.</li>
-<li>Similar to VirtualBox above: The virtual hard drive you create here
-will literally be a file on your file system. UTM gives the guest OS the
-idea that there’s a real hard drive, and any reads or writes that the
-guest OS makes will be forwarded to this file.</li>
-<li>UTM makes folder sharing (a folder on your host will be made
-available in your guest) a little easier in that it’s a set up
-option.</li>
-<li>The last step in the UTM docs (step 9) is important:
-<ul>
-<li>The reboot will almost certainly fail. You should power off the
-machine yourself.</li>
-<li>After you power off the machine, “unmount the installer ISO” by
-looking at the details of the machine on the right, scrolling down and
-finding the “CD/DVD” drop-down and choosing “Clear”.</li>
-</ul></li>
-</ul>
-<p>Once you’ve got the VM set up, you can move on to the <a
-href="#boot">Boot</a> section.</p>
 <h2 id="real-hardware">Real hardware</h2>
 <p>If you’re planning to run this on real hardware, then you’ve got to
 prepare your boot media. Boot media is either a USB drive or an actual
@@ -447,25 +423,18 @@ the computer’s coming up, you can usually keep hitting the
 <kbd>Escape</kbd> key on your keyboard to select which device to use to
 boot.</p>
 <h1 id="boot">Boot</h1>
-<p>Start your VM or your machine (we’re converging here again).</p>
-<p>Follow the guide here: <a
-href="https://ubuntu.com/tutorials/install-ubuntu-desktop#4-boot-from-usb-flash-drive"
-class="uri">https://ubuntu.com/tutorials/install-ubuntu-desktop#4-boot-from-usb-flash-drive</a></p>
-<div class="aside">
-<p>If you’re asked to log in once the image starts up, the username is
-<code>ubuntu</code> with no password (just press <kbd>Enter</kbd> when
-you’re asked for a password).</p>
-<p>If you’re asked to log in once the image starts up, you may need to
-launch the installer manually, it should be an icon on the desktop that
-you can double-click on.</p>
-</div>
-<p>After you reboot, you should have a working Linux install <span
-class="emoji" data-emoji="tada">🎉</span>.</p>
+<p>Start your VM or your machine (we’re converging here again). The
+Debian installer has <em>straightforward</em> install instructions
+throughout the installation process. If you’re unsure how to proceed,
+either ask your instructor or TA, or <a
+href="../topic06/topic-2.html">get some help from online</a>.</p>
+<p>The very last step of the install should be to reboot. After you
+reboot, you should have a working Linux install <span class="emoji"
+data-emoji="tada">🎉</span>.</p>
 <h1 id="further-reading">Further reading</h1>
-<p>Getting Linux installed can be straightforward. Ubuntu and Debian
-make most of the choices for you (choices that you probably don’t even
-care exist), but other Linux distributions give you <em>all</em> the
-choices.</p>
+<p>Getting Linux installed can be straightforward. Debian makes most of
+the choices for you (choices that you probably don’t even care exist),
+but other Linux distributions give you <em>all</em> the choices.</p>
 <p>The most complete way to install Linux is from scratch (going through
 the process of bootstrapping your system by compiling your compiler,
 then the kernel, then all software). There’s a very good guide in <a
