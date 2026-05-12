@@ -1,5 +1,6 @@
 ---
 title: Introduction to Tools and Techniques in Computer Science
+subtitle: COMP 1002 and COMP 1006
 author: Franklin Bristow
 ---
 

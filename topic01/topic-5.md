@@ -47,10 +47,11 @@ the top of the tree structure.
 
 ::: example
 
-I am an instructor in the Department of Computer Science at the University of
-Manitoba. My academic life revolves around academic years, terms, and courses. I
-usually want to be able to find information about a specific course very
-quickly, so course numbers are the highest level in my organizational structure.
+I (me, Franklin) am an instructor in the Department of Computer Science at the
+University of Manitoba. My academic life revolves around academic years, terms,
+and courses. I usually want to be able to find information about a specific
+course very quickly, so course numbers are the highest level in my
+organizational structure.
 
 My general strategy for organizing my files looks like this:
 
@@ -113,7 +114,7 @@ your academic life:
 * Faculty course is offered in (e.g., Arts, Science, Business, Engineering).
 * Course number and name (e.g., comp1010, "SCI 2000", "HIST 1350 An Introduction
   to the History of Western Civilization to 1500").
-* Academic year and/or term (e.g., 2022, Fall 2022, Winter).
+* Academic year and/or term (e.g., 2022, "Fall 2022"", Winter).
 * Types of homework that you need to work on for a course (e.g., labs,
   assignments, projects).
 * Actual deliverable for the type of homework (e.g., "Lab 1", assignment4,

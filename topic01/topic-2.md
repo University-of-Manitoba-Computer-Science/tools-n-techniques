@@ -128,12 +128,8 @@ Downloading Pandoc
 ------------------
 
 Open your web browser and navigate to <https://pandoc.org>. Click on the
-"Installing" link at the top of the page.
-
-The Pandoc website is *sometimes* smart enough to figure out which operating
-system you're running and links you directly to the right type of file to
-download on this page. You can still also go directly to [the latest release
-page on GitHub].
+"Installing" link at the top of the page, then click on the blue "Download the
+latest installer" button.
 
 The latest releases page has [a lot] of choices, I recommend that you pick:
 
@@ -143,8 +139,6 @@ The latest releases page has [a lot] of choices, I recommend that you pick:
   Ubuntu or Pop!\_OS. If you're using something else and need help, ask for help
   now.
 
-[the latest release page on GitHub]:
-https://github.com/jgm/pandoc/releases/latest
 [a lot]:
 http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
 
@@ -176,7 +170,7 @@ software manager will prompt you to install it.
 
 Depending on your experience with Linux-based operating systems, you might be
 asking "Why aren't you using a package manager for this?". The answer to that
-question is "[Hold your horses] :race_horse:! We're going to use package
+question is "[Hold your horses] :racehorse:! We're going to use package
 managers in COMP 1006." If you feel comfortable using your package manager right
 now, feel free to install `pandoc` using your package manager instead of using
 the `.deb` package.

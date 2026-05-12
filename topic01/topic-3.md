@@ -103,8 +103,9 @@ When you save the file, make sure that the file name ends with `.md` for
 :::
 
 After you save the file with the `.md` extension, VS Code *should* add a new
-button to the top right side of its interface, a preview button: ![The preview
-button in VS Code](vscode-md-preview.png){style='height: 1em'}.
+button to the top right side of its interface, a preview button: 
+
+![The preview button in VS Code](vscode-md-preview.png).
 
 :::
 
@@ -128,8 +129,8 @@ Titles
 ------
 
 Most documents have a title, or headings and subheadings (and subsubheadings
-(and subsubsubheadings (...and sub&times;6-headings (but not
-sub&times;7-headings, that's just madness)))).
+(and subsubsubheadings (...and sub&times;6-headings (but *not*
+sub&times;7-headings, that's asking too much)))).
 
 You've got two options for making headings in Markdown:
 
@@ -216,9 +217,7 @@ heading.
 :::
 ::::::
 
-Pick whichever style you want and stick with it. I prefer to use underlines
-because I think it's more obvious, but has the downside of being limited to
-two levels of heading and subheading.
+Pick whichever style you want and stick with it.
 
 :::
 
@@ -239,7 +238,9 @@ The word emphasis has *emphasis*.
 
 :::
 ::: {.column .output width=50%}
+
 The word emphasis has *emphasis*.
+
 :::
 
 ::::::
@@ -255,14 +256,14 @@ If you want to add emphasis (**bold**) to text in Markdown, you put *two* asteri
 ::: {.column .input width=50%}
 
 ```markdown
-Some text doesn't need emphasis,
-**some text needs to be bold**.
+Some text doesn't need *emphasis*,
+some text needs to be **bold**.
 ```
 
 :::
 ::: {.column .output width=50%}
-Some text doesn't need emphasis,
-**some text needs to be bold**.
+Some text doesn't need *emphasis*,
+some text needs to be **bold**.
 :::
 ::::::
 
@@ -383,6 +384,8 @@ formats] like PDF or `docx`.
 Referring to an image in Markdown uses a "link": some text that will appear as
 the caption or description of the image and the file name for the image (e.g.,
 `jpg`, `gif`, `png`):
+
+[converting documents to different formats]: topic-4.html
 
 ::: example
 
@@ -597,6 +600,13 @@ $$
 
 :::
 ::::::
+
+::: aside
+
+The curly braces aren't *strictly* necessary for single values (e.g., `x_1`), but
+are necessary for values that are expressions themselves (e.g., `x_{y+1}`).
+
+:::
 
 :::
 

@@ -18,4 +18,3 @@ this lesson. You should be able to:
 
 :::
 
-Your next step should be to start working on the assignment for this week!
