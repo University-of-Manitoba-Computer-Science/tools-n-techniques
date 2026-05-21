@@ -21,7 +21,7 @@ computer and from the remote computer) is fairly straightforward. We'll look at
 two different ways you can do it: using a graphical user interface (a GUI) and
 using command-line tools.
 
-### Using a GUI
+### Transferring files Using a GUI
 
 You're going to need to install a new program on your computer to get a GUI to
 transfer files between your computer and a remote computer. The program you use
@@ -33,7 +33,7 @@ programs you can use to transfer files between computers.
 
 You only need to install software (in Windows and macOS) if you are planning to
 use a GUI. You don't need to install anything at all if you are planning on
-[Using the command line] to transfer files.
+[using the command line] to transfer files.
 
 :::
 
@@ -45,7 +45,8 @@ Windows, including a(nother) terminal emulator.
 
 If you're planning on using MobaXterm, you should download the "Installer
 edition" &mdash; this has a `.zip` file that contains a `.msi` file, and you
-can install the `.msi` file in [the same way that you did with Pandoc].
+can install the `.msi` file in [the same way that you did with
+Pandoc][installing software on your personal computer].
 
 :::
 
@@ -72,12 +73,12 @@ display on the left of MobaXterm. MobaXterm will then start transferring the
 file or folder that you've asked it to copy to the remote computer.
 
 [MobaXterm]: https://mobaxterm.mobatek.net
-[the same way you did with Pandoc]: ../topic01/topic-2.html
 </details>
 
 <details><summary>GUIs for macOS</summary>
 [Cyberduck] is a tool designed specifically for transferring files between
-computers. Installing Cyberduck is [the same process as installing VS Code]
+computers. Installing Cyberduck is [the same process as installing VS
+Code][installing software on your personal computer]
 (download the `.zip` file, copy the app into your Applications directory).
 
 Once you've installed Cyberduck, create a new "SFTP" connection by clicking on
@@ -95,7 +96,6 @@ file explorer (e.g., drag files and folders to and from this window to transfer
 them).
 
 [Cyberduck]: https://cyberduck.io/
-[the same process as installing VS Code]: ../topic01/topic-2.html
 </details>
 
 <details><summary>GUIs for Linux</summary>
@@ -124,13 +124,14 @@ and folders to and from this window to transfer them).
 
 </details>
 
-### Using the command line
+### Transferring files using the command line
 
 Transferring files on the command line is the same regardless of which operating
 system you have on your computer.
 
-[Open your terminal], then navigate to the directory that *contains* the file or
-directory that you want to transfer from your computer to the remote computer.
+[Open your terminal][Verifying that Pandoc is installed], then navigate to the
+directory that *contains* the file or directory that you want to transfer from
+your computer to the remote computer.
 
 ::: aside
 
@@ -157,16 +158,13 @@ When we're copying files or folders with `scp`, we need to tell `scp` what we
 want to copy (the **source**) and where we want to copy it to (the
 **destination**).
 
-Just like [when using SSH], any time we want to use a remote computer as a source
-or a destination, we need to provide `scp` with our username and the address of
-the remote computer. But since we're trying to *send something*, we also need to
-tell `scp` where we want to put the file (a **destination** on the remote
-computer).
+Just like [when using SSH][connect to a remote computer], any time we want to
+use a remote computer as a source or a destination, we need to provide `scp`
+with our username and the address of the remote computer. But since we're trying
+to *send something*, we also need to tell `scp` where we want to put the file (a
+**destination** on the remote computer).
 
-[Open your terminal]: ../topic01/topic-2.html#verifying-that-pandoc-is-installed
-[when using SSH]: ../topic02/topic-1.html#connect-to-a-remote-computer
-
-#### Copying single files
+#### Transferring single files
 
 ::: example
 
@@ -223,7 +221,7 @@ scp fbristow@aviary.cs.umanitoba.ca:hello.md .
 
 :::
 
-#### Copying directories
+#### Transferring directories
 
 We're not limited to copying individual files between computers. In fact, that
 would get really tedious if we had many files we wanted to copy, or entire

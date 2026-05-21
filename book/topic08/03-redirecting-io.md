@@ -141,11 +141,8 @@ special file called `/dev/null`:
 
 :::
 
-[Bash]: https://www.gnu.org/software/bash/
 [Dash]: http://gondor.apana.org.au/~herbert/dash/
 [Zsh]: https://www.zsh.org/
-[fish]: https://fishshell.com
-[Tcsh]: https://www.tcsh.org/
 [csh]: https://github.com/freebsd/freebsd-src/tree/main/bin/csh
 [^tcsh-stderr]:
 <https://unix.stackexchange.com/questions/197878/inconsistency-of-stderr-redirection-between-tcsh-and-other-shells>

@@ -217,7 +217,6 @@ pre-installed OS in VM software (VirtualBox)]
 [Download VirtualBox for your platform]:
 https://www.virtualbox.org/wiki/Downloads
 [install it]: https://www.virtualbox.org/manual/UserManual.html#installation
-[Download and use a pre-installed OS in VM software (VirtualBox)]: topic-3.html
 
 ### Install UTM
 
@@ -245,5 +244,3 @@ latest release and download the `.dmg` file.
 
 If you're using UTM, you should proceed to [Download and use a 
 pre-installed OS in VM software (UTM)].
-
-[Download and use a pre-installed OS in VM software (UTM)]: topic-4.html

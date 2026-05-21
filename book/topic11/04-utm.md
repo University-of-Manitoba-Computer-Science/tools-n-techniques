@@ -31,7 +31,6 @@ The main author of SerenityOS (Andreas Kling) has been developing SerenityOS
 entirely in the open, including [live-streaming coding on YouTube].
 
 [live-streaming coding on YouTube]: https://www.youtube.com/c/AndreasKling
-[SerenityOS]: https://serenityos.org
 [Build Instructions for macOS]: https://github.com/SerenityOS/serenity/blob/master/Documentation/BuildInstructionsMacOS.md
 [Homebrew]: https://brew.sh/
 

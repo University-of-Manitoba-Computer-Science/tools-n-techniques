@@ -182,17 +182,16 @@ but they have some major advantages:
    and environments*. Sure, the print statement itself changes from language to
    language, but printing it just printing!
 4. You do not need to learn anything new to be able to use pencil-and-paper or
-   log-based debugging! [Debugging with debuggers] really is a powerful way to
-   do debugging, but all debuggers require you to learn a new way of interacting
-   with your program **and** require you to learn how to use a new program.
-   Humanity as a whole generally knows how to use a pencil and paper. In
-   introductory programming lessons [the first lesson is almost universally using
-   the print statement] in whatever language you're using.
+   log-based debugging! [Debugging with debuggers][Debuggers] really is a
+   powerful way to do debugging, but all debuggers require you to learn a new
+   way of interacting with your program **and** require you to learn how to use
+   a new program.  Humanity as a whole generally knows how to use a pencil and
+   paper. In introductory programming lessons [the first lesson is almost
+   universally using the print statement] in whatever language you're using.
 
 Martijn Faasen gives some more credible reasons for log-based debugging in
 [Don't Look Down on Print Debugging].
 
-[Debugging with debuggers]: topic-4.html
 [the first lesson is almost universally using the print statement]:
 https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
 [Don't Look Down on Print Debugging]:

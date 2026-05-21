@@ -118,10 +118,8 @@ Process 4425 stopped
 
 You may want to run your process by passing arguments or by passing a file that
 your program is supposed to read on "standard input" (more on this in [the next
-topic], but if you normally run your program with something like `./prog <
-file.txt`, then you're replacing standard input).
-
-[the next topic]: ../topic08/topic-1.html
+topic][Command-line environment], but if you normally run your program with
+something like `./prog < file.txt`, then you're replacing standard input).
 
 You can pass the name of a file that should be read as standard input using an
 `lldb` command `process launch -i` instead of using `r`:

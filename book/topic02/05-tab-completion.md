@@ -29,6 +29,4 @@ complete the name of the file. [Neat :camera_flash:]!
 
 :::
 
-[a lot]:
-http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
 [Neat :camera_flash:]: https://www.youtube.com/watch?v=u6RNtjYxiNw

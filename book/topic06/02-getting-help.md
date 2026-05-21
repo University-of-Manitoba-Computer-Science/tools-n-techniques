@@ -491,7 +491,7 @@ and pasting, it could also be [potentially dangerous] --- what you see in your
 web browser might not actually be the same as what gets copied, then pasted.
 
 [potentially dangerous]:
-http://www.h-online.com/security/news/item/Old-tricks-are-new-again-Dangerous-copy-paste-1842898.html
+https://www.makeuseof.com/why-you-shouldnt-copy-paste-commands-from-internet/
 
 :::
 
@@ -548,7 +548,6 @@ to find directories based on when they were modified with `find`:
 
 [Reddit]: https://reddit.com
 [StackOverflow]: https://stackoverflow.com
-[GitHub]: https://github.com
 [Google]: https://google.com
 [Bing]: https://bing.com
 [DuckDuckGo]: https://duckduckgo.com
@@ -606,4 +605,4 @@ we can give some general advice.
 
 [CSSA]: https://umanitobacssa.ca/
 [.devClub]: https://devclub.ca/
-[WICS]: https://umwics.vercel.app/
+[WICS]: https://umwics.ca/

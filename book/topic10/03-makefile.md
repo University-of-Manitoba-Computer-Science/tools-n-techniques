@@ -68,7 +68,33 @@ one compiled output depends on the existence of another compiled output.
 In the example we had above (`list.o`, `set.o`, and `my-app`), the dependency
 graph would look something like this:
 
-![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependencies.png)
+```dot
+digraph dependencies {
+    graph [
+        label = "A dependency graph for list.o, set.o, and my-app."
+        rankdir = "LR"
+    ];
+    node [
+        fillcolor="#0044ff22"
+        color="#00000088"
+        shape=box
+        style=filled
+    ];
+
+    myapp [
+        label=<<b>my-app</b><br/>clang my-app.c list.o set.o -o my-app>
+    ];
+    seto [
+        label=<<b>set.o</b><br/>clang set.c -c -o set.o>
+    ];
+    listo [
+        label=<<b>list.o</b><br/>clang list.o -c -o list.o>
+    ];
+
+    myapp -> seto
+    myapp -> listo
+}
+```
 
 [dependency graph]: https://en.wikipedia.org/wiki/Dependency_graph
 
@@ -495,7 +521,33 @@ targets.
 
 Here's the dependency graph we had from above:
 
-![A dependency graph for `list.o`, `set.o`, and `my-app`.](dependencies.png)
+```dot
+digraph dependencies {
+    graph [
+        label = "A dependency graph for list.o, set.o, and my-app."
+        rankdir = "LR"
+    ];
+    node [
+        fillcolor="#0044ff22"
+        color="#00000088"
+        shape=box
+        style=filled
+    ];
+
+    myapp [
+        label=<<b>my-app</b><br/>clang my-app.c list.o set.o -o my-app>
+    ];
+    seto [
+        label=<<b>set.o</b><br/>clang set.c -c -o set.o>
+    ];
+    listo [
+        label=<<b>list.o</b><br/>clang list.o -c -o list.o>
+    ];
+
+    myapp -> seto
+    myapp -> listo
+}
+```
 
 When `make` builds `set.o` and `list.o`, it can build them literally at the same
 time because they don't have common dependencies.

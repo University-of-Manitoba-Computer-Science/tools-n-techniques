@@ -62,9 +62,9 @@ If you are unable to log in to GitLab because you have forgotten your password
 your password.
 
 You can coordinate [changing your password for CS resources] by e-mailing our
-tech staff at <mailto:cs-support@lists.umanitoba.ca>.
+tech staff at <cs-support@lists.umanitoba.ca>.
 
-[changing your password for CS resources]: https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
+[changing your password for CS resources]: https://home.cs.umanitoba.ca/~csupport/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
 
 :::
 
@@ -84,7 +84,6 @@ password on your hand.
 [1password]: https://1password.com/
 [KeePassXC]: https://keepassxc.org/
 [password manager]: https://en.wikipedia.org/wiki/Password_manager
-[connect to a remote computer]: ../topic02/topic-1.html
 
 :::
 
@@ -135,7 +134,6 @@ repository for each:
 * Project,
 * Publication.
 
-[organizing your files]: ../topic01/topic-5.html
 [different strategies]: https://en.wikipedia.org/wiki/Monorepo
 
 :::
@@ -183,10 +181,8 @@ machine, you will need to [install `git`].
 
 [install `git`]: https://git-scm.com/downloads
 
-[Open your terminal] and [connect to Aviary :bird:].
-
-[Open your terminal]: ../topic01/topic-2.html#verifying-that-pandoc-is-installed
-[connect to Aviary :bird:]: ../topic02/topic-1.html
+[Open your terminal][verifying that pandoc is installed] and [connect to Aviary
+:bird:][connecting to a remote computer].
 
 The main way that we get a remote repository onto our own machines is to "clone"
 the repository. We only need one piece of information to clone a remote
@@ -708,9 +704,9 @@ here are some resources that are particularly good or helpful:
   be in your repository, or maybe you accidentally forgot to include a file in a
   commit that *should* have been included in that commit. This will guide you
   through getting into the state that you want to be in.
-* If you're OK with some profane language in English, Katie Sylor-Miller's [Oh
-  Sh\*t, git!?!] is also an excellent source of solutions to "Please help me!"
-  moments that you will *definitely* encounter when you're using `git`.
+* Katie Sylor-Miller's [Oh Sh\*t, git!?!] is also an excellent source of
+  solutions to "Please help me!" moments that you will *definitely* encounter
+  when you're using `git`.
 
 [git - the simple guide]: https://rogerdudler.github.io/git-guide/
 [On undoing, fixing, or removing commits in git]: https://sethrobertson.github.io/GitFixUm/fixup.html

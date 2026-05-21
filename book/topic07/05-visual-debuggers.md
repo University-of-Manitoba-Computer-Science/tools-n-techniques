@@ -79,7 +79,7 @@ it's a pain to configure. I recommend you use your package manager instead. On
 Debian or Ubuntu-based distributions you can use `apt`:
 
 ```bash
-sudo apt install openjdk-17-jdk
+sudo apt install openjdk-21-jdk
 ```
 
 After the install completes, you may need to click on the "Install JDK" button

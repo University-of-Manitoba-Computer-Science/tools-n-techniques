@@ -27,12 +27,13 @@ courses or not:
   working code that I edited and then **it didn't work anymore** and I couldn't
   remember what I changed.
 * Sometimes when I am writing (and I am usually writing in [Markdown and
-  $\LaTeX$]!), I re-read what I wrote and realize that I should probably make
-  some changes (e.g., I've changed this paragraph at least 3 times). Sometimes I
-  will cut and paste paragraphs from one place to another only to realize that
-  the way that I had it originally flows a lot more nicely than ... whatever
-  this is right now, but the undo feature in my text editor doesn't go back far
-  enough to get back to the better flowing state and I just can't reproduce it.
+  $\LaTeX$][Write plain text documents]!), I re-read what I wrote and realize
+  that I should probably make some changes (e.g., I've changed this paragraph at
+  least 3 times). Sometimes I will cut and paste paragraphs from one place to
+  another only to realize that the way that I had it originally flows a lot more
+  nicely than ... whatever this is right now, but the undo feature in my text
+  editor doesn't go back far enough to get back to the better flowing state and
+  I just can't reproduce it.
 
   ("You can [track changes in Word]!" I can hear you saying through my screen,
   and, yes, I definitely can track changes in Word, but then I would have to
@@ -63,5 +64,4 @@ GitLab to help us.
 :::
 
 [version control]: https://en.wikipedia.org/wiki/Version_control
-[Markdown and $\LaTeX$]: ../topic01/topic-3.html
 [track changes in Word]: https://support.microsoft.com/en-us/office/track-changes-in-word-197ba630-0f5f-4a8e-9a77-3712475e806a

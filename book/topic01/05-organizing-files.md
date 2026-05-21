@@ -25,9 +25,6 @@ Organizing your files isn't super hard. You need a simple plan about *how* you
 want to organize your files so that when you're saving a new file for the first
 time you know where to put it.
 
-[a lot]:
-https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
-
 ### Planning your organization
 
 Try to come up with a high-level structure that uses information about the

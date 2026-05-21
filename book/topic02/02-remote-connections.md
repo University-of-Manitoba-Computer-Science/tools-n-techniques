@@ -34,7 +34,6 @@ If you're on campus connected to U of M WiFi or you're off campus but you've
 installed the VPN and connected to it, let's open up our terminals and get
 connected to a different computer.
 
-[installing software on your personal computer]: ../topic01/topic-2.html
 [IST's Virtual Private Network (VPN) page]:
 https://umanitoba.ca/information-services-technology/my-security/vpn-support
 
@@ -43,10 +42,8 @@ https://umanitoba.ca/information-services-technology/my-security/vpn-support
 Open your terminal!
 
 If you forget how to open your terminal (and it's totally OK if you do!), we
-previously opened our terminal to [verify that Pandoc is installed].
-
-[verify that Pandoc is installed]:
-../topic01/topic-2.html#verifying-that-pandoc-is-installed
+previously opened our terminal to [verify that Pandoc is installed][verifying
+that pandoc is installed].
 
 ### Connect to a remote computer
 
@@ -124,14 +121,14 @@ Here's what you need to know to connect to the U of M CS computer systems.
 [number sign/hash/hashtag/hex/octothorpe/sharp/...]:
 https://en.wikipedia.org/wiki/Number_sign#Names
 [initial default **password**]:
-https://home.cs.umanitoba.ca/~gedetil/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
+https://home.cs.umanitoba.ca/~csupport/facilities-guide/#!unix/access.md#Initial_Password_and_Password_Changes
 
 Now that you've got that information we can actually start connecting to a
 remote computer. When we're connecting to remote computers, we're going to use
-the `ssh` command and tell `ssh` how to connect to the remote computer. Connecting
-to a remote computer will always look like this:
+the `ssh` command and tell `ssh` how to connect to the remote computer. 
 
-::: example
+Connecting to a remote computer will always look like this:
+
 
 ```bash
 ssh you@name.remote.ca
@@ -148,7 +145,10 @@ If I want to connect to Aviary, my username is `fbristow` and the address is
 ssh fbristow@aviary.cs.umanitoba.ca
 ```
 
-:::
+Next, `ssh` is going to ask you to enter your password. Type in your password,
+but **note that you won't see any feedback as you're typing** (you won't see any
+`*` or dots), but type in your password, then press <kbd>Enter</kbd> on your
+keyboard again. 
 
 When you press <kbd>Enter</kbd> on your keyboard, the very first time you
 connect to a system, `ssh` is going to ask you if it's safe to connect:
@@ -166,11 +166,9 @@ When you're connecting to Aviary, you *may* see this warning more than once. You
 can safely enter `yes` (and you must enter `yes`, not just `y`) and press
 <kbd>Enter</kbd>.
 
-Next, `ssh` is going to ask you to enter your password. Type in your password,
-but note that you won't see any feedback as you're typing (you won't see any `*`
-or dots), but type in your password, then press <kbd>Enter</kbd> on your
-keyboard again. If everything's worked out, you should be connected to the
+If everything's worked out, you should be connected to the
 remote computer :tada:!
+
 
 ::: example
 

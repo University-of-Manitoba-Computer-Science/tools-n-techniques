@@ -264,14 +264,29 @@ codes]:
 [short codes]: https://www.unicode.org/emoji/charts/full-emoji-list.html
 
 We can use `grep` recursively to find all files that contain one or more lines
-matching the pattern `:*:` (a colon, followed by any number of characters,
-followed by another colon).
+matching the pattern `:.*:` (a colon, followed by any number of any other
+characters, followed by another colon).
 
 ::: input
 
 ```bash
-grep -r ":*:" # note no filename!
+grep -r ":.*:" # note no filename!
 ```
+
+:::
+
+::: aside
+
+The expression we have here could find more than we're expecting. This
+expression says:
+
+* Exactly one colon followed by
+* Zero or more of any characters followed by
+* Exactly one colon.
+
+This expression finds emoji, but also anything where there are two colons on a
+line, including things like links (e.g., "this is cool: https://...) or lines
+that have multiple colons right beside each other (e.g., ":::").
 
 :::
 

@@ -23,7 +23,6 @@ Installing software is generally straightforward. The first thing you're going
 to need to do is download the software from it's source.
 
 [Visual Studio Code]: https://code.visualstudio.com/
-[Pandoc]: https://pandoc.org/
 
 ### VS Code
 

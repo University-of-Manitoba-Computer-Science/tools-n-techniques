@@ -179,12 +179,10 @@ your keyboard to select which device to use to boot.
 Start your VM or your machine (we're converging here again). The Debian
 installer has *straightforward* install instructions throughout the installation
 process. If you're unsure how to proceed, either ask your instructor or TA, or
-[get some help from online].
+[get some help from online][Getting help].
 
 The very last step of the install should be to reboot. After you reboot, you
 should have a working Linux install :tada:.
-
-[get some help from online]: ../topic06/topic-2.html
 
 ### Further reading
 

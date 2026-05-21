@@ -89,8 +89,6 @@ Serve a static file:
 * Refresh your web browser.
 * :tada:
 
-[reading and changing permissions]: ../topic05/topic-4.html
-
 ### Further reading
 
 Installing a web server inside your Linux install is great, but its use for now

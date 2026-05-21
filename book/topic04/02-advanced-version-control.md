@@ -30,11 +30,8 @@ wild :national_park:.
 Let's clone a specific repository. The specific repository contains the source
 code that you previously downloaded on the command-line (the hello project).
 
-Start by [opening your terminal] and [connecting to Aviary], then run:
-
-[opening your terminal]:
-../topic01/topic-2.html#verifying-that-pandoc-is-installed
-[connecting to Aviary]: ../topic02/topic-1.html
+Start by [opening your terminal][verifying that pandoc is installed] and
+[connecting to Aviary][connecting to a remote computer], then run:
 
 ::: input
 
@@ -128,7 +125,21 @@ https://github.com/standardebooks/daniel-defoe_the-life-and-adventures-of-robins
 So far we've been using the basic features of Git to track changes to files that
 we have in a repository. We can visualize these changes as a linear list:
 
-![A linear sequence of commits.](linear-commits.jpg)
+```dot
+digraph commits {
+    graph [
+        label = "Linear list of commits"
+        rankdir = "LR"
+    ];
+    node [
+		fillcolor="#0044ff22"
+		color="#00000088"
+        shape=box
+        style=filled
+    ];
+    "Initial commit" -> "Add README.md" -> "Implemented main()" -> "..."
+}
+```
 
 We can literally see this if we use the `git log` subcommand, and we can also
 get back to previous commits using the `git checkout` subcommand.
@@ -209,7 +220,23 @@ something that we can use to track multiple independent sequences of commits to
 a repository simultaneously. When a repository has multiple branches, its commit
 history can look something like this:
 
-![Branches in a repository.](commits-with-branches.png)
+```dot
+digraph commits {
+    graph [
+        label = "Branches in a repository"
+        rankdir = "LR"
+    ];
+    node [
+		fillcolor="#0044ff22"
+		color="#00000088"
+        shape=box
+        style=filled
+    ];
+    "Initial commit" -> "Add README.md" -> "Implemented main()" -> "Merge branches"
+    "Add README.md" -> "Franklin implements a list" -> "Merge branches"
+    "Merge branches" -> "..."
+}
+```
 
 Branches are very useful when you're working in a team of people, who are each
 independently working on (for example) a feature in a bigger project. All of

@@ -62,8 +62,6 @@ tell you about why or why not something is considered academic misconduct.
 https://github.com/TheAlgorithms
 [source code for Python]: https://github.com/python/cpython
 [source code for the JDK]: https://github.com/openjdk/jdk
-[GitHub]: https://github.com
-[GitLab]: https://gitlab.com
 
 ### Situations
 
@@ -265,8 +263,8 @@ You can find more information about academic integrity:
 * On the U of M's [Student support on academic integrity page].
 
 [Expectations for individual work in Computer Science page]:
-https://sci.umanitoba.ca/cs/expectations/
+https://umanitoba.ca/science/computer-science/expectations-for-individual-work
 [Student support on academic integrity page]:
 https://umanitoba.ca/student-supports/academic-supports/academic-integrity
 [academic integrity page]:
-https://sci.umanitoba.ca/students/undergraduate-students/academic-integrity/
+https://umanitoba.ca/science/student-experience/academic-integrity

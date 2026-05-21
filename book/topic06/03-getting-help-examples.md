@@ -120,10 +120,10 @@ find . -name "*.docx" -or -name "*.pdf"
 It works! Or at least it doesn't give us an error. We deleted all those files
 last time, so it's hard to say if it works.
 
-Re-generate those files using [what you learned in the previous topic (`-exec`)],
-and confirm if this command does indeed find those files.
+Re-generate those files using [`find` and the (`-exec`) option][running programs
+on the files you find (with `find`)], and confirm if this command does indeed
+find those files.
 
-[what you learned in the previous topic (`-exec`)]: ../topic05/topic-2.html#running-programs-on-the-files-you-find-with-find
 
 Now let's try delete those files using the same approach:
 

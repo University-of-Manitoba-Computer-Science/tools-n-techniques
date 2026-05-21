@@ -35,8 +35,11 @@ is:
 printf("The variable result is %d\n", var);
 ```
 
-This will replace the `%d` by the current value of `var` when the this line is reached.
-Rewrite the previous code including a log-based debugging and find the bugs in the code. You can edit, compile and run the following code snippet for this purpose. In case you do not recall how to compile C code, revisit the section on [compiling and running code](https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic03/topic-2.html).
+This will replace the `%d` by the current value of `var` when the this line is
+reached.  Rewrite the previous code including a log-based debugging and find the
+bugs in the code. You can edit, compile and run the following code snippet for
+this purpose. In case you do not recall how to compile C code, revisit the
+section on [compiling and running code].
 
 ```C
 #include <stdio.h>

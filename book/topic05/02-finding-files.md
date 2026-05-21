@@ -20,13 +20,13 @@ appropriate folder structure for your courses! It should be pretty easy to find
 a file in that nice folder structure!"
 
 But then I'd also say: "You're not always going to be working with folder
-structures that you made. You're not always going to be working with files
+structures that *you* made. You're not always going to be working with files
 that you've created. Sometimes you'll know what the name of a file is (or
 something like what the file name should look like), but not where it is within
 a deeply nested or complex folder structure."
 
 So here I am saying it: You're not always going to be working with folder
-structures that you made. You're not always going to be working with files
+structures that *you* made. You're not always going to be working with files
 that you've created. Sometimes you'll know what the name of a file is (or
 something like what the file name should look like), but not where it is within
 a deeply nested or complex folder structure.
@@ -45,7 +45,8 @@ Somewhat annoyingly, some of the examples that we'll look at will work
 *differently* between macOS and Linux. We will try to use examples that work on
 both the same way, but...
 
-Please connect to Aviary before you try to run any of these examples.
+Please [connect to Aviary][connecting to a remote computer] before you try to
+run any of these examples.
 
 :::
 
@@ -91,13 +92,11 @@ anything about and is too deep and complex for you to manually search through.
 (I really hope the directories you see in your job or your academic life don't
 look anything like this!)
 
-Start by [downloading this file] (on the command line; either use `wget` or
-download to your local computer then transfer with `scp`), but make sure that
-you **do not** download it into your repository:
+Start by [downloading this file][downloading files from the internet] (on the
+command line; either use `wget` or download to your local computer then transfer
+with `scp`), but make sure that you **do not** download it into your repository:
 
 <https://toolsntechniques.ca/topic05/crazy-directories.tar>
-
-[downloading this file]: ../topic03/topic-2.html#downloading-files-from-the-internet
 
 ::: warning
 
@@ -123,8 +122,8 @@ tar -xf crazy-directories.tar
 ::: warning
 
 <mark>**Note**</mark>: **There are over 7000 directories in this folder
-structure**. Extracting the entire directory structure on Aviary will probably
-take 5 or more minutes to complete.
+structure**. Extracting the entire directory structure on Aviary will possibly
+take several minutes to complete.
 
 :::
 

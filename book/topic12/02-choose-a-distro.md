@@ -139,7 +139,6 @@ through the process of making your own choice, you can use a tool like
 
 [Distrochooser]: https://distrochooser.de/
 [Ubuntu]: https://ubuntu.com/
-[Fedora]: https://getfedora.org/
 [OpenSUSE]: https://www.opensuse.org/
 [Red Hat Enterprise Linux]:
 https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
@@ -226,7 +225,6 @@ https://privacy.microsoft.com/en-us/data-collection-windows
 [Ghostty]: https://ghostty.org/
 [icon themes]: https://www.omgubuntu.co.uk/best-icon-themes-ubuntu
 [desktop environments]: https://en.wikipedia.org/wiki/Desktop_environment
-[GNOME]: https://www.gnome.org/
 [KDE]: https://kde.org/
 [Elementary]: https://elementary.io/
 [window managers]: https://en.wikipedia.org/wiki/Window_manager

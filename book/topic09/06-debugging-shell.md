@@ -43,8 +43,6 @@ printf "%d\n" $PI
 `printf(3)` in the C programming language, but you can refer to the manual pages
 to find out more about how to use `printf` by running `man 1 printf`.
 
-[log-based debugging]: https://university-of-manitoba-computer-science.github.io/tools-n-techniques/topic07/topic-3.html#log-based-debugging
-
 ### Changing Bash Behaviour
 
 Bash is not a good general purpose programming language. For many reasons. But
@@ -69,7 +67,8 @@ echo "Your name is $YOUR_NAME"
 echo "Hi $YOUR_NAME!"
 ```
 
-Try creating this script and running it (don't forget to [make it executable]!).
+Try creating this script and running it (don't forget to [make it
+executable][reading and changing permissions]!).
 
 Go ahead. I'll wait.
 
@@ -80,8 +79,6 @@ Go ahead. I'll wait.
 ...
 
 Nice.
-
-[make it executable]: ../topic05/topic-4.html
 
 :::
 

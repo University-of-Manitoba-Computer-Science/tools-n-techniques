@@ -93,11 +93,11 @@ the only kind of globs. Let's look at two other kinds of globs:
 
 #### Begins-with, ends-with, or contains globs
 
-If you remember *way back* to [fortnight 5 in COMP 1002], you learned about a 
-program named `grep` that could be used to filter lines from a file based on a
-pattern that you provided. The patterns that you gave to `grep` *also* use the 
-`*` symbol to indicate "anything", but we saw that you could put the `*`
-anywhere within a string.
+If you remember *way back* to [filtering lines from large text files][Filter
+lines from large text files], you learned about a program named `grep` that
+could be used to filter lines from a file based on a pattern that you provided.
+The patterns that you gave to `grep` *also* use the `*` symbol to indicate
+"anything", but we saw that you could put the `*` anywhere within a string.
 
 We can do the same thing with globs!
 
@@ -149,12 +149,10 @@ cat *ll*
 
 :::
 
-[fortnight 5 in COMP 1002]: https://toolsntechniques.ca/topic05/topic-3.html
-
 #### Directory globs
 
 Globs are helpful for matching many files in a directory, but [we don't keep all
-of our files in one directory], right? (Right?!)
+of our files in one directory][organizing your files], right? (Right?!)
 
 We can also use globs to help us find files that are in subdirectories, but we 
 have to change the way we're writing out glob: instead of using one `*`, we use
@@ -242,18 +240,16 @@ If you want to read more about about `.bashrc` files you can check out these res
 
 :::
 
-[we don't keep all of our files in one directory]: ../topic01/topic-5.html
-
 ### Further reading about globs
 
 You can read more about globs in a few places:
 
 * The manual pages: use `man 7 glob` (or [manual pages online]).
-* The [Advanced Bash-Scripting Guide] has even more kinds of globbing (using 
+* The [Chapter 18 of the Advanced Bash-Scripting Guide] has even more kinds of globbing (using 
   curly braces `{}` and question marks `?`).
     * [Chapter 37] of the Advanced Bash-Scripting Guide has more examples of how
       to use directory globs.
 
 [manual pages online]: https://www.man7.org/linux/man-pages/man7/glob.7.html
-[Advanced Bash-Scripting Guide]: https://tldp.org/LDP/abs/html/globbingref.html
+[Chapter 18 of the Advanced Bash-Scripting Guide]: https://tldp.org/LDP/abs/html/globbingref.html
 [Chapter 37]: https://tldp.org/LDP/abs/html/bashver4.html#GLOBSTARREF

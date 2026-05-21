@@ -4,12 +4,11 @@ Author: Ikaro Costa
 
 ### Question 1
 
-In COMP 1002, you have successfully built your personal webpage when
-you learned about [Reading and Changing Permissions](../topic05/topic-4.html) of files. We are now
-going to automate a few of those processes in building (or updating) your personal
-webpage. For this, we are going to write a shell script to automate the conversion
-from markdown to HTML and also to change the permissions of the generated HTML
-file.
+In COMP 1002, you have successfully built your personal webpage when you learned
+about [reading and changing permissions] of files. We are now going to automate
+a few of those processes in building (or updating) your personal webpage. For
+this, we are going to write a shell script to automate the conversion from
+markdown to HTML and also to change the permissions of the generated HTML file.
 
 1. Let us convert the file from markdown to HTML. Name your script as
    `publish_webpage`. The script should take the name of the markdown file as
@@ -42,7 +41,7 @@ line by the user actually exists. If the file do not exist, print to standard
 output "File not found!" using `echo` command. Otherwise, print "File found!"
 and execute the rest of the script.  If you need to recall the file operators
 you can check the section on [Structures: conditional statements and
-loops](../topic09/topic-4.html).
+loops].
 
 ### Question 3
 
@@ -58,7 +57,7 @@ Download the following file using the `wget` command:
 Extract the downloaded `to_extract.zip` file. Then, you will have five other
 `zip` files. Use the script `unzipall` you have written to extract all the
 compressed files. If you need help, the section on [Compiling and running
-code](../topic03/topic-2.html) shows how to use `wget` and how to use `unzip` to
+code] shows how to use `wget` and how to use `unzip` to
 extract compressed `zip` files.
 
 ::: challenge

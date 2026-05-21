@@ -22,8 +22,6 @@ terminal in this module. So: open your terminal and connect to Aviary. If you fo
 how to connect to a remote computer (and it's totally OK if you do!), refer back
 to the notes on connecting to a remote computer.
 
-[Remote connections and command-line file management]: ../topic02/topic-0.html
-
 ### Downloading files from the internet
 
 Sometimes you need to download files from the internet so that you can work with
@@ -39,11 +37,10 @@ them on the command line:
 In all of these cases it's possible for you to open your web browser (e.g.,
 Microsoft Edge, Google Chrome, Mozilla Firefox), go to the page with the URL,
 click the URL, download the file to your Downloads folder, then [transfer the
-file to the remote computer with something like `scp`], but doing that is tedious
-and time consuming (you have to download the file to your computer, then
-transfer it *again* to another computer).
-
-[transfer the file to the remote computer with something like `scp`]: ../topic02/topic-5.html
+file to the remote computer with something like `scp`][Transferring files using
+the command line], but doing that is tedious and time consuming (you have to
+download the file to your computer, then transfer it *again* to another
+computer).
 
 Thankfully it's straightforward to download files from the internet directly to
 the remote computer using a command-line program `wget`.
@@ -101,10 +98,7 @@ program called `unzip` to unzip a zip file.
 
 Find the file that you just downloaded (you put it into an appropriate location
 in your folder structure, right? If not: [`mv` the file you downloaded into the
-right place]!).
-
-[`mv` the file you downloaded into the right place]:
-../topic02/topic-2.html#moving-and-renaming-directories
+right place][Moving and renaming directories]!).
 
 In the **same directory** as the zip file (i.e., if you type `ls`, you should
 see the zip file in the directory), you can use `unzip` and tell `unzip` the
@@ -146,8 +140,6 @@ You will revisit building programs in COMP 1006 when you look at the
 [command-line environment], when we actually go through the process of building
 more complex applications with build systems and dependency management, but for
 now we're just going to get programs compiled and run them.
-
-[command-line environment]: ../topic08/topic-1.html
 
 :::
 

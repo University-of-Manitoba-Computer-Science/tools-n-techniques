@@ -15,13 +15,12 @@ referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Being connected to a remote computer is nice, but we really want to be able to
 actually *do* stuff on that remote computer. The very first thing we're going to
-do is to re-do something that we did in the [last unit] --- we're going to
-navigate around folder structures and create new folders, ultimately to
-re-create the folder structure you created in the last unit.
+do is to re-do something that we did when [organizing our files][organizing your
+files]: we're going to navigate around folder structures and create new folders,
+ultimately to re-create the folder structure you created in the last unit.
 
-[last unit]: ../topic01/topic-5.html
 
-### :eyes: Looking around
+### Looking around
 
 When you connect to a remote computer you're interacting with a program called a
 "shell". When you see something that looks like
@@ -67,7 +66,7 @@ is shown here.
 
 :::
 
-### :hammer_and_wrench: Making a directory
+### Making a directory
 
 While `bin` and `Mail` are good directories to have, they don't represent what
 we want to actually keep on our remote computer, so let's start making some of
@@ -159,7 +158,7 @@ all?
 
 :::
 
-### :compass: Navigating directories
+### Navigating directories
 
 Now that we've made a directory, we need to be able to "open" the directory.
 When we used visual file explorers, we "opened" the directory (either in a new
@@ -282,7 +281,7 @@ pwd
 
 [tilde]: https://en.wikipedia.org/wiki/Tilde
 
-### :pencil2: Moving and renaming directories
+### Moving and renaming directories
 
 Sometimes when making a directory you realize that you made the directory in the
 wrong place, or you gave it the wrong name (or misspelled the name). 
@@ -413,7 +412,7 @@ hello
 
 :::
 
-### :wastebasket: Removing directories
+### Removing directories
 
 Sometimes you don't need a directory anymore and you want to remove it. You can
 remove directories using two different commands: `rm` and `rmdir`.
@@ -482,8 +481,6 @@ and get the file back, restoring it to its original location.
 
 When you remove a file or folder on the command line (using `rm` or `rmdir`),
 the file or folder is removed and you **can't** get it back, unless you've
-[backed it up somewhere].
-
-[backed it up somewhere]: ../topic11/topic-1.html
+[backed it up somewhere][Backups].
 
 :::

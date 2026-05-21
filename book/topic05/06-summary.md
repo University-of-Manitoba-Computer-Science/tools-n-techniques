@@ -12,16 +12,16 @@ you met by going through this exercise of learning these tools:
   we looked at `.gitignore`: "I don't want files that end with `.class` to be in
   my repository, so I add the 'pattern' `*.class`".
 
-  Patterns are something that you'll see treated formally if you take [COMP 3030:
-  Automata Theory and Formal Languages] where you'll learn about "regular
+  Patterns are something that you'll see treated formally if you take a course
+  introducing automata and state machines where you'll learn about "regular
   expressions" and their corresponding abstract representation as automata (sort
   of like graphs).
 * You've learned that some commands can launch *other commands* on your behalf.
   This is something that you'll actually see in two other courses implicitly and
-  explicitly: implicitly in COMP 3350 as a "design pattern" and explicitly in
-  COMP 3430 as... well, the mechanical API for how programs launch other
-  programs (your shell :shell: *is* a program, it's job is to start *other*
-  programs).
+  explicitly: implicitly a software engineering course as a "design pattern" and
+  explicitly in an operating systems course as... well, the mechanical API for
+  how programs launch other programs (your shell :shell: *is* a program, it's
+  job is to start *other* programs).
 * You've learned a little bit more about how Git works in terms of how to
   compare different text files to one another (Git uses something like `diff`
   internally).
@@ -38,5 +38,3 @@ You should now be able to:
 
 :::
 
-[COMP 3030: Automata Theory and Formal Languages]:
-https://sci.umanitoba.ca/cs/wp-content/uploads/sites/3/2022/05/comp3030.pdf

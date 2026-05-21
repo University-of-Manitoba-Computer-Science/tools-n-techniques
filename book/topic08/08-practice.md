@@ -30,7 +30,7 @@ e. Redirect standard input to be from a file
 ### Question 2
 
 What is stored in `file.txt` after the following commands are run? Think about
-what each command does, and think back to [Fortnight 6 of COMP 1002] to figure out
+what each command does, and think back about [getting help] to figure out
 how you'd learn more about each. You may need to log on to Aviary to see the
 contents of `/usr/share/dict/words`.
 
@@ -39,5 +39,3 @@ echo "hello " > file.txt
 head -10 /usr/share/dict/words | grep 's$' | wc -l >> file.txt
 ```
 
-[Fortnight 6 of COMP 1002]:
-https://toolsntechniques.ca/topic06/topic-2.html

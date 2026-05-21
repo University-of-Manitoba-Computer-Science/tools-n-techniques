@@ -278,6 +278,5 @@ and official package managers:
 * Another package manager for Windows is [Chocolatey].
 
 [Homebrew]: https://brew.sh/
-[winget]: https://learn.microsoft.com/en-us/windows/package-manager/
 [Chocolatey]: https://chocolatey.org/
 [MacPorts]: https://www.macports.org/

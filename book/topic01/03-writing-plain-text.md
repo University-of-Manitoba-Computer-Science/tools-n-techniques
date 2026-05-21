@@ -70,9 +70,7 @@ to write plain text, but write the plain text such that we're following
 structured text standards: Markdown and $\LaTeX$.
 
 [plain text]: https://en.wikipedia.org/wiki/Plain_text
-[a plain text document]: topic-3.md
-[A lot]:
-https://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html
+[a plain text document]: 03-writing-plain-text.md 
 [syntax highlighting]: https://en.wikipedia.org/wiki/Syntax_highlighting
 
 ### Writing in Markdown
@@ -375,8 +373,6 @@ formats] like PDF or `docx`.
 Referring to an image in Markdown uses a "link": some text that will appear as
 the caption or description of the image and the file name for the image (e.g.,
 `jpg`, `gif`, `png`):
-
-[converting documents to different formats]: topic-4.html
 
 ::: example
 
