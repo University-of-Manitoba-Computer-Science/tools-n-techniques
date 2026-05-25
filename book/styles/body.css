@@ -1,11 +1,12 @@
-body {
-    max-width: 50em;
-}
-
 dt {
     font-weight: bold;
 }
 
 dt::before {
     content: "\1f4dd "; 
+}
+
+body {
+  display: grid;
+  grid-template-columns: 400px 4fr 1fr;
 }

@@ -109,7 +109,7 @@ Here's what you need to know to connect to the U of M CS computer systems.
 
    :::
 2. [X] Your **username** on this remote computer is your UMNetID (the part of
-   your @myumanitoba.ca e-mail address before @myumanitoba.ca).
+   your \@myumanitoba.ca e-mail address before \@myumanitoba.ca).
 3. [X] Your [initial default **password**] is the letters `Cs#` (this is
    upper-case C, lower-case S, and the [number
    sign/hash/hashtag/hex/octothorpe/sharp/...]) followed by your

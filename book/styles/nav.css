@@ -1,0 +1,25 @@
+nav#TOC {
+  padding-right: 1em;
+  overflow: scroll;
+}
+
+nav#TOC .github {
+  height: 34px;
+  width: 34px;
+  transition: background 0.15s
+  vertical-align: bottom;
+}
+
+nav#TOC .github:hover { 
+  background-color: lightgray;
+}
+
+nav#TOC .navtitle {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+nav#sitenav {
+  
+}
+
