@@ -1,11 +1,16 @@
 nav#TOC {
-  padding-right: 1em;
+  padding: 1em;
+  margin-right: 1em;
   overflow: scroll;
+  background-color: aliceblue;
+  height: 93vh;
+  position: sticky;
+  top: 8px;
 }
 
 nav#TOC .github {
-  height: 34px;
-  width: 34px;
+  height: 31px;
+  width: 31px;
   transition: background 0.15s
   vertical-align: bottom;
 }
