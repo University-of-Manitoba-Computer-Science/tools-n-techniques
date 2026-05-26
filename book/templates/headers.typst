@@ -3,7 +3,7 @@
 // is there to prevent the example top-level headings in the markdown chapter
 // from being included (they are not outlined, they are {.unnumbered
 // .unlisted}).
-#show heading.where(level: 1).and(heading.where(outlined: true)): it => pagebreak(weak: true) + it
+#show heading.where(outlined: true).and(heading.where(level: 1).or(heading.where(level: 2))): it => pagebreak(weak: true) + it
 
-// this sets
+// this sets numbering on chapters and sections within chapters.
 #show heading.where(outlined: true).and(heading.where(level: 1).or(heading.where(level: 2))): set heading(numbering: "1.1")
