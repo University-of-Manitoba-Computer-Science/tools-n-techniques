@@ -174,35 +174,36 @@ heading.
 
 :::
 ::: {.column .output width=50%}
-Top level heading
+
+Top level heading {.unnumbered .unlisted}
 =================
 
 Here's some text under the top level
 heading.
 
-Second level heading
+Second level heading {.unnumbered .unlisted}
 --------------------
 
 Here's some text under the second 
 level heading.
 
-### Third level heading
+### Third level heading {.unnumbered .unlisted}
 
 There's only so many levels of 
 underlines, so you have to switch 
 to using number signs if you want 
 3+-level headings.
 
-# Top
+# Top {.unnumbered .unlisted}
 
 More text under a top level heading.
 
-## Second
+## Second {.unnumbered .unlisted}
 
 Some text under a different kind 
 of second level heading.
 
-### Third
+### Third {.unnumbered .unlisted}
 
 More text under a third level 
 heading.
