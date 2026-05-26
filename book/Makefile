@@ -13,7 +13,8 @@ book-typst:
 	pandoc index.md **/*.md -t pdf --pdf-engine=typst -f markdown+emoji -o book.pdf \
 		--resource-path=topic01:topic02:topic03:topic04:topic05:topic06:topic07:topic08:topic09:topic10:topic11:topic12:. \
 		--toc --lua-filter=filters/diagram.lua --lua-filter=filters/toc.lua --lua-filter=filters/typst-latex-logo.lua \
-		-V header-includes='#import "@preview/metalogo:1.2.0": TeX, LaTeX'
+		-V header-includes='#import "@preview/metalogo:1.2.0": TeX, LaTeX' -V linkcolor='0000ff' \
+		-V header-includes='#show outline.entry: set text(fill: rgb("#0000ff"))'
 
 styles.css:
 	cat styles/*.css > styles.css
