@@ -12,7 +12,8 @@ book-html: clean styles.css
 book-typst: 
 	pandoc index.md **/*.md -t pdf --pdf-engine=typst -f markdown+emoji -o book.pdf \
 		--resource-path=topic01:topic02:topic03:topic04:topic05:topic06:topic07:topic08:topic09:topic10:topic11:topic12:. \
-		--toc --lua-filter=filters/diagram.lua --lua-filter=filters/toc.lua
+		--toc --lua-filter=filters/diagram.lua --lua-filter=filters/toc.lua --lua-filter=filters/typst-latex-logo.lua \
+		-V header-includes='#import "@preview/metalogo:1.2.0": TeX, LaTeX'
 
 styles.css:
 	cat styles/*.css > styles.css
