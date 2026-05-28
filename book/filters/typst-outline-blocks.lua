@@ -23,6 +23,12 @@ function Div(elem)
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 
+	if elem.classes:find("aside") then
+		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.star'))
+		openings:insert(pandoc.Strong(pandoc.Str("Aside")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
 	if elem.classes:find("columns") then
 		openings:insert(pandoc.RawBlock("typst", "#columns(2)["))
 		closings:insert(pandoc.RawBlock("typst", "]"))
