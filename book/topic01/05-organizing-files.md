@@ -89,8 +89,7 @@ comp3430/
         │   └── assignment1
         ├── schedule
         └── tests
-            ├── test1
-            └── test2
+            └── test1
 ```
 
 :::

@@ -53,7 +53,7 @@ All that said, plain text documents are, well, plain.
 
   with [syntax highlighting].
 * You certainly can't include ![A picture of the word
-  "images".](images.png){style='height: 1em'}.
+  "images".](images.png){height=1em}.
 * You **definitely** can't include fancy formulas:
 
   $$
@@ -70,7 +70,7 @@ to write plain text, but write the plain text such that we're following
 structured text standards: Markdown and $\LaTeX$.
 
 [plain text]: https://en.wikipedia.org/wiki/Plain_text
-[a plain text document]: 03-writing-plain-text.md 
+[a plain text document]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/blob/main/book/topic01/03-writing-plain-text.md?plain=1#L63
 [syntax highlighting]: https://en.wikipedia.org/wiki/Syntax_highlighting
 
 ### Writing in Markdown
@@ -310,7 +310,7 @@ by writing the language name in lower case letters just after the first fence:
 
 :::::: columns
 ::: {.column .input width=50%}
-<pre><code>
+~~~plain
 Plain text:
 
 ```
@@ -333,7 +333,7 @@ Some Python:
 # how much shorter this is
 print("Hi")
 ```
-</code></pre>
+~~~
 :::
 ::: {.column .output width=50%}
 Plain text:
