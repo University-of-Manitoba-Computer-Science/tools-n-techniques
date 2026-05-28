@@ -1,35 +1,40 @@
 function Div(elem)
+	local openings = pandoc.List()
+	local closings = pandoc.List()
 	if elem.classes:find("outcomes") then
-		return {
-			pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.checkmark.box'),
-			pandoc.Strong({ pandoc.Str("Learning outcomes") }),
-			elem,
-			pandoc.RawBlock("typst", "]"),
-		}
+		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.checkmark.box'))
+		openings:insert(pandoc.Strong(pandoc.Str("Learning outcomes")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 
 	if elem.classes:find("input") then
-		return {
-			pandoc.RawBlock("typst", "#emoji.keyboard"),
-			pandoc.Strong({ pandoc.Str("Input") }),
-			elem,
-		}
+		openings:insert(pandoc.RawBlock("typst", "#emoji.keyboard"))
+		openings:insert(pandoc.Strong(pandoc.Str("Input")))
 	end
 
 	if elem.classes:find("output") then
-		return {
-			pandoc.RawBlock("typst", "#emoji.printer"),
-			pandoc.Strong({ pandoc.Str("Output") }),
-			elem,
-		}
+		openings:insert(pandoc.RawBlock("typst", "#emoji.printer"))
+		openings:insert(pandoc.Strong(pandoc.Str("Output")))
 	end
 
 	if elem.classes:find("example") then
-		return {
-			pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.rocket'),
-			pandoc.Strong({ pandoc.Str("Example") }),
-			elem,
-			pandoc.RawBlock("typst", "]"),
-		}
+		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.rocket'))
+		openings:insert(pandoc.Strong(pandoc.Str("Example")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
+
+	if elem.classes:find("columns") then
+		openings:insert(pandoc.RawBlock("typst", "#columns(2)["))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
+	if elem.classes:find("column") then
+		-- blindly add a column break after every column.
+		closings:insert(pandoc.RawBlock("typst", "#colbreak()"))
+	end
+
+	openings:insert(elem)
+	openings:extend(closings)
+
+	return openings
 end
