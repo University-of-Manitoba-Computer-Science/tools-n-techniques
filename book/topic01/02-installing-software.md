@@ -51,12 +51,13 @@ you're running Linux).
 
 How you install VS Code depends on the operating system you're using.
 
-<details><summary>Installing VS Code on Windows</summary>
+
+::: {.expandable title='Installing VS Code on Windows'}
 
 Find the file that you downloaded (a `.exe` file) and double-click on it. Follow
 the prompts.
 
-</details>
+:::
 
 <details><summary>Installing VS Code on macOS</summary>
 
