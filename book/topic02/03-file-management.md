@@ -433,7 +433,8 @@ If you try to remove a directory that has other stuff in it (files or folders),
 ::: {.column .input width=50%}
 ```bash
 mkdir hello
-# makes a directory in hello named world
+# makes a directory in hello 
+# named world
 mkdir hello/world 
 rmdir hello
 ```

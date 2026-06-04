@@ -2,7 +2,9 @@ function Div(elem)
 	local openings = pandoc.List()
 	local closings = pandoc.List()
 	if elem.classes:find("outcomes") then
-		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.checkmark.box'))
+		openings:insert(
+			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.checkmark.box')
+		)
 		openings:insert(pandoc.Strong(pandoc.Str("Learning outcomes")))
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
@@ -18,13 +20,49 @@ function Div(elem)
 	end
 
 	if elem.classes:find("example") then
-		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.rocket'))
+		openings:insert(
+			pandoc.RawBlock("typst", '#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.rocket')
+		)
 		openings:insert(pandoc.Strong(pandoc.Str("Example")))
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 
+	if elem.classes:find("tip") then
+		openings:insert(
+			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.person.sassy')
+		)
+		openings:insert(pandoc.Strong(pandoc.Str("Tip")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
+	if elem.classes:find("important") then
+		openings:insert(
+			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.excl.double')
+		)
+		openings:insert(pandoc.Strong(pandoc.Str("Important!")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
+	if elem.classes:find("warning") then
+		openings:insert(
+			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.warning')
+		)
+		openings:insert(pandoc.Strong(pandoc.Str("Warning")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
+	if elem.classes:find("checklist") then
+		openings:insert(
+			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.checkmark.box')
+		)
+		openings:insert(pandoc.Strong(pandoc.Str("Checklist")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
 	if elem.classes:find("aside") then
-		openings:insert(pandoc.RawBlock("typst", '#rect(width: 100%, stroke: (dash: "dashed"))[#emoji.star'))
+		openings:insert(
+			pandoc.RawBlock("typst", '#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.star ')
+		)
 		openings:insert(pandoc.Strong(pandoc.Str("Aside")))
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end

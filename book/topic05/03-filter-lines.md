@@ -313,8 +313,8 @@ There are going to be a bunch of new files in the directory that are mostly
 `.xml` files. XML is a "markup" language, sort of like Markdown.
 
 Try running `grep` again recursively on this again and you'll see that we're not
-just matching emoji short codes anymore, but a bunch of weird looking XML. Neat
-:camera:.
+just matching emoji short codes anymore, but a bunch of weird looking XML.
+[Neat :camera_flash:].
 
 :::
 
@@ -337,11 +337,11 @@ Let's find all files that contain the pattern `:*:` again, but we'll ask for
 ::: input
 
 ```bash
-grep -rn ":*:"
+grep -rn ":.*:"
 
 # OR
 
-grep -r -n ":*:"
+grep -r -n ":.*:"
 ```
 
 :::

@@ -75,7 +75,7 @@ Michael and Rob work together on the assignment for a while, but Michael never
 shows Rob any of his code. Michael and Rob only talk about the assignment,
 make general design suggestions, or suggestions on which data structures to use.
 
-<details><summary>Have Michael and Rob committed academic misconduct?</summary>
+::: {.expandable title='Have Michael and Rob committed academic misconduct?'}
 
 No, Michael and Rob have not committed academic misconduct. Students are
 permitted to generally discuss assignments that they are working on.
@@ -85,7 +85,7 @@ on what kind of data structure to use, but if this were a general programming
 assignment, discussing data structures in and of itself is not academic
 misconduct.
 
-</details>
+:::
 
 #### Situation 2
 
@@ -98,8 +98,7 @@ John suggests that he share his code by screen sharing so that Franklin can
 have a better idea about how to link together two nodes in Java. Franklin agrees
 and reads John's code. Franklin then writes his own implementation.
 
-<details><summary>Have John and Franklin committed academic
-misconduct?</summary>
+::: {.expandable title='Have John and Franklin committed academic misconduct?'}
 
 Yes, John and Franklin have committed academic misconduct. When John showed
 Franklin his source code, even though the intent wasn't for Franklin to copy the
@@ -110,8 +109,7 @@ his source code.
 [inappropriate collaboration]:
 https://umanitoba.ca/student-supports/academic-supports/academic-integrity#inappropriate-collaboration
 
-</details>
-
+:::
 
 #### Situation 3
 
@@ -121,8 +119,7 @@ assignment works. He asks Heather if they can meet on Discord, but Heather is
 not available to help. Instead, she e-mails Franklin her partial implementation
 that includes how she set up the assignment.
 
-<details><summary>Have Franklin and Heather committed academic
-misconduct?</summary>
+::: {.expandable title='Have Franklin and Heather committed academic misconduct?'}
 
 Yes, just like John and Franklin, Heather and Franklin are participating in
 [inappropriate collaboration]. In this case, since Heather is physically sending
@@ -130,21 +127,20 @@ Franklin a file, it feels a little bit more clear than just screen sharing
 because sending a file by e-mail (or as an attachment in whatever communication
 tool you're using) is more tangible and permanent than screen sharing.
 
-</details>
+:::
 
 #### Situation 3 (a)
 
 Franklin copies and pastes some of the code that Heather shared with him, but he
 doesn't tell Heather. Franklin submits that code as part of his own assignment.
 
-<details><summary>Have Franklin and Heather committed academic
-misconduct?</summary>
+::: {.expandable title='Have Franklin and Heather committed academic misconduct?'}
 
 Yes. In fact, even though Franklin seems to be the only one doing something
 wrong here, unfortunately Heather is also guilty of academic misconduct because
 they are participating in [inappropriate collaboration] together.
 
-</details>
+:::
 
 #### Situation 4
 
@@ -157,7 +153,7 @@ by the instructor in previous terms..
 Franklin reads the code and it helps him figure out how to find the length of an
 array in C. He doesn't copy any code.
 
-<details><summary>Has Franklin committed academic misconduct?</summary>
+::: {.expandable title='Has Franklin committed academic misconduct?'}
 
 Yes. Similar to our first case with John, Franklin is participating in
 [inappropriate collaboration], but that seems less obvious because there's no
@@ -167,14 +163,14 @@ That said, there is technically another person who is participating here: the
 person who originally posted the sample solution on the internet. They're
 *passively* involved in this misconduct, but they are involved.
 
-</details>
+:::
 
 ##### Situation 4 (a)
 
 Franklin copies and pastes a small fragment of the code that was in the file he
 found (maybe a single function).
 
-<details><summary>Has Franklin committed academic misconduct?</summary>
+::: {.expandable title='Has Franklin committed academic misconduct?'}
 
 Yes, this is definitely misconduct and it's significantly clearer than the last
 couple of cases because Franklin is explicitly using and submitting work that he
@@ -183,19 +179,19 @@ did not create for assessment. This is an example of [plagiarism].
 [plagiarism]:
 https://umanitoba.ca/student-supports/academic-supports/academic-integrity#plagiarism
 
-</details>
+:::
 
 ##### Situation 4 (b)
 
 Franklin submits the entire file he found with enough modifications to satisfy
 the current assignment description.
 
-<details><summary>Has Franklin committed academic misconduct?</summary>
+::: {.expandable title='Has Franklin committed academic misconduct?'}
 
 Just like the last example, by submitting work that is not his own and he is
 committing [plagiarism].
 
-</details>
+:::
 
 #### Situation 5
 
@@ -206,7 +202,7 @@ requirements section. This part of the report isn't itself essential for the
 code to work, but is essential to help confirm the results/conclusions that
 Franklin is writing about in the report.
 
-<details><summary>Has Franklin committed academic misconduct?</summary>
+::: {.expandable title='Has Franklin committed academic misconduct?'}
 
 No, Franklin has not committed academic misconduct. Franklin has not plagiarized
 any work, has not collaborated inappropriately with any of his peers, and did
@@ -215,9 +211,9 @@ not commit [academic fraud] (he did not make up the results).
 [academic fraud]:
 https://umanitoba.ca/student-supports/academic-supports/academic-integrity#academic-fraud
 
-</details>
+:::
 
-<details><summary>Would Franklin be at risk of being accused of academic misconduct?</summary>
+::: {.expandable title='Would Franklin be at risk of being accused of academic misconduct?'}
 
 Maybe. In this specific case, Franklin appears at first glance to have committed
 academic fraud, and it might be reasonable for Franklin's instructor to assume
@@ -236,9 +232,7 @@ an opportunity to discuss the situation. The AH would render a decision about
 the situation (this is or is not a case of academic misconduct), and share that
 decision with both Franklin and Franklin's instructor.
 
-</details>
-
-::: notes
+:::
 
 Some additional scenarios to consider:
 
@@ -247,8 +241,6 @@ Some additional scenarios to consider:
 * Franklin posts his code on GitHub (privately).
     * Nobody finds it.
     * Somebody finds it and uses it.
-
-:::
 
 ### Further reading
 

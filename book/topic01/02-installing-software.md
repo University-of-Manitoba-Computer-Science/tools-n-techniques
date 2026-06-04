@@ -59,27 +59,27 @@ the prompts.
 
 :::
 
-<details><summary>Installing VS Code on macOS</summary>
+::: {.expandable title='Installing VS Code on macOS'}
 
 Find the file that you downloaded (a `.zip` file) and double-click on it. Copy
 and paste the folder into your "Applications" directory to install it.
 
-</details>
+:::
 
-<details><summary>Installing VS Code on Linux</summary>
+::: {.expandable title='Installing VS Code on Linux'}
 
 Find the file that you downloaded (a `.deb` or `.rpm` file) and double-click on
 it. Your software manager should then prompt you to install the package, follow
 the prompts.
 
-</details>
+:::
 
 #### Verifying that VS Code is installed
 
 Once you've gone through the install process, you should check that VS Code is
 actually installed on your computer by running VS Code.
 
-<details><summary>Running VS Code on Windows</summary>
+::: {.expandable title='Running VS Code on Windows'}
 
 VS Code *may* have added an icon to your desktop, depending on whether or not
 you allowed it to when it was installing. If you can find an icon on your
@@ -90,18 +90,18 @@ it in the Start menu. Either click on the Microsoft logo in the corner of your
 screen, or press the Microsoft key (the "super" key) on your keyboard, then
 start typing "VS Code". When you see VS Code appear, click on it.
 
-</details>
+:::
 
-<details><summary>Running VS Code on macOS</summary>
+::: {.expandable title='Running VS Code on macOS'}
 
 Find the VS Code folder in your Applications folder and double-click on it.
 
 Optionally drag the VS Code icon from your Applications folder to your dock so
 that opening VS Code later is easier.
 
-</details>
+:::
 
-<details><summary>Running VS Code on Linux</summary>
+::: {.expandable title='Running VS Code on Linux'}
 
 VS Code *may* have added an icon to your desktop. If you can find an icon on
 your desktop for VS Code, double-click on it.
@@ -112,7 +112,7 @@ menu in the corner of your screen, or press the Microsoft key (the "super" key)
 on your keyboard, then start typing "VS Code". When you see VS Code appear,
 click on it.
 
-</details>
+:::
 
 ### Pandoc
 
@@ -137,21 +137,21 @@ http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everyth
 
 How you install Pandoc depends on the operating system you're using.
 
-<details><summary>Installing Pandoc on Windows</summary>
+::: {.expandable title='Installing Pandoc on Windows'}
 
 Find the file that you downloaded (a `.msi` file) and double-click on it. Follow
 the prompts.
 
-</details>
+:::
 
-<details><summary>Installing Pandoc on macOS</summary>
+::: {.expandable title='Installing Pandoc on macOS'}
 
 Find the file that you downloaded (a `.pkg` file) and double-click on it. Follow
 the prompts.
 
-</details>
+:::
 
-<details><summary>Installing Pandoc on Linux</summary>
+::: {.expandable title='Installing Pandoc on Linux'}
 
 Find the file that you downloaded (a `.deb`) and double-click on it and your
 software manager will prompt you to install it.
@@ -171,7 +171,7 @@ If you don't know what a "package manager" is: don't worry! We'll get there!
 
 :::
 
-</details>
+:::
 
 #### Verifying that Pandoc is installed
 
@@ -182,7 +182,7 @@ installed.
 Instead, Pandoc is a program that runs in your **terminal**. To check if Pandoc
 has been installed, you're going to need to open your terminal program.
 
-<details><summary>Opening your terminal on Windows</summary>
+::: {.expandable title='Opening your terminal on Windows'}
 
 You have a few different options for terminals on Windows. The one that's built
 in is called the "Command Prompt". You can alternatively install another one
@@ -198,9 +198,9 @@ Prompt or Terminal appear, click on it.
 [Windows Terminal]:
 https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-ca&gl=CA
 
-</details>
+:::
 
-<details><summary>Opening your terminal on macOS</summary>
+::: {.expandable title='Opening your terminal on macOS'}
 
 macOS has a built-in terminal called "Terminal.app". Apple has [good
 documentation about how to open Terminal], but the short version is that you
@@ -213,16 +213,16 @@ launch later (you're going to have to do this every class!).
 [good documentation about how to open Terminal]:
 https://support.apple.com/en-ca/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac
 
-</details>
+:::
 
-<details><summary>Opening your terminal on Linux</summary>
+::: {.expandable title='Opening your terminal on Linux'}
 
 Your terminal program **does not** have a desktop icon, so either click on the
 application launcher menu in the corner of your screen, or press the Microsoft
 key (the "super" key) on your keyboard, then start typing "terminal". When you
 see a terminal application appear, click on it.
 
-</details>
+:::
 
 #### Running Pandoc
 

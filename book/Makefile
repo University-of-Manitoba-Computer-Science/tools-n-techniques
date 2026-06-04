@@ -22,7 +22,8 @@ book-typst-src:
 		--resource-path=topic01:topic02:topic03:topic04:topic05:topic06:topic07:topic08:topic09:topic10:topic11:topic12:. \
 		--toc --lua-filter=filters/diagram.lua --lua-filter=filters/toc.lua --lua-filter=filters/typst-latex-logo.lua \
 		-V header-includes='#import "@preview/metalogo:1.2.0": TeX, LaTeX' -V linkcolor='0000ff' \
-		-H templates/headers.typst --toc-depth 2
+		-H templates/headers.typst --toc-depth 2 --lua-filter=filters/typst-outline-blocks.lua \
+		--lua-filter=filters/expandable-blocks.lua
 
 styles.css:
 	cat styles/*.css > styles.css

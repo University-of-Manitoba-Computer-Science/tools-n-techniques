@@ -128,7 +128,7 @@ Making folders with your file explorer (Finder in macOS, Explorer in Windows,
 varies in Linux) is generally straightforward. You'll find that you can create
 folders in several ways (some we'll see later).
 
-<details><summary>Making new folders in Windows</summary>
+::: {.expandable title='Making new folders in Windows'}
 
 Open Windows Explorer by doing one of the following:
 
@@ -159,9 +159,9 @@ this new folder to be the name of the folder that you're currently creating.
 Try creating a new folder using each of the above options and decide which one
 you like the best.
 
-</details>
+:::
 
-<details><summary>Making new folders in macOS</summary>
+::: {.expandable title='Making new folders in macOS'}
 
 Open Finder by clicking on the Finder icon in your dock.
 
@@ -188,9 +188,9 @@ name of this folder to be the name of the folder that you're currently creating.
 Try creating a new folder using each of the above options and decide which one
 you like the best.
 
-</details>
+:::
 
-<details><summary>Making new folders in Linux</summary>
+::: {.expandable title='Making new folders in Linux'}
 
 Open your file explorer (e.g., Files in Ubuntu/Gnome) by clicking on the folder
 icon in your dock, or by pressing the "super" key and starting to type "Files".
@@ -220,4 +220,4 @@ want to create.
 Try creating a new folder using each of the above options and decide which one
 you like the best.
 
-</details>
+:::

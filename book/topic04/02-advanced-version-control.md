@@ -560,7 +560,7 @@ Git is originally a command-line tool (how you've been using it). You can
 install `git` on all of Windows, macOS, and Linux. How you install it depends on
 which of those that you're using.
 
-<details><summary>Installing Git on macOS</summary>
+::: {.expandable title='Installing Git on macOS'}
 
 You can install Git in several ways on macOS, but probably the most
 straightforward way is to install [Xcode]. This honestly feels a bit like
@@ -579,9 +579,9 @@ install page on Git's website], but you're otherwise on your own.
 [Homebrew]: https://brew.sh/
 [macOS install page on Git's website]: https://git-scm.com/download/mac
 
-</details>
+:::
 
-<details><summary>Installing Git on Windows</summary>
+::: {.expandable title='Installing Git on Windows'}
 
 You can install Git for Windows by downloading the installer on [Git's "Download
 for Windows" page]. You almost certainly want to download the **Standalone
@@ -598,9 +598,9 @@ choose to take this approach, you're on your own.
 [winget]: https://learn.microsoft.com/en-us/windows/package-manager/winget/
 [Chocolatey]: https://chocolatey.org/
 
-</details>
+:::
 
-<details><summary>Installing Git on Linux</summary>
+::: {.expandable title='Installing Git on Linux'}
 
 The best way to install Git on your Linux machine is from the command line,
 using your package manager. We're not going to talk much about package managers
@@ -614,7 +614,7 @@ what to do here, you should ask for help.
 
 [Git's "Download for Linux and Unix" page]: https://git-scm.com/download/linux
 
-</details>
+:::
 
 #### Workflow
 

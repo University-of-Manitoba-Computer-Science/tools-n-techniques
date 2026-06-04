@@ -314,15 +314,17 @@ by writing the language name in lower case letters just after the first fence:
 Plain text:
 
 ```
-Here's some plain-text that's not formatted.
+Here's some plain-text that's not 
+formatted.
 ```
 
 Some Java:
 
 ```java
-public static void main(String... args)
-{
-  System.out.println("Hello, world!");
+public static 
+  void main(String... args) {
+  System.
+    out.println("Hello, world!");
 }
 ```
 
@@ -339,15 +341,17 @@ print("Hi")
 Plain text:
 
 ```
-Here's some plain-text that's not formatted.
+Here's some plain-text that's not
+formatted.
 ```
 
 Some Java:
 
 ```java
-public static void main(String... args)
-{
-  System.out.println("Hello, world!");
+public static 
+  void main(String... args) {
+  System.
+    out.println("Hello, world!");
 }
 ```
 
@@ -415,14 +419,15 @@ leading `!`:
 ::: {.column .input width=50%}
 
 ```markdown
-You can get to UM Learn by clicking this
-[link to UM Learn](https://umlearn.ca),
-and it will open in your web browser.
+You can get to UM Learn by clicking
+[UM Learn](https://umlearn.ca),
+and it will open in your web
+browser.
 ```
 
 :::
 ::: {.column .output width=50%}
-You can get to UM Learn by clicking this [link to UM Learn](https://umlearn.ca),
+You can get to UM Learn by clicking [UM Learn](https://umlearn.ca),
 and it will open in your web browser.
 
 :::
@@ -439,19 +444,19 @@ the text you want displayed:
 ::: {.column .input width=50%}
 
 ```markdown
-You can get to UM Learn by clicking this
-[link to UM Learn], and it will open in
-your web browser.
+You can get to UM Learn by clicking
+[UM Learn], and it will open in your
+web browser.
 
-[link to UM Learn]: https://umlearn.ca
+[UM Learn]: https://umlearn.ca
 ```
 
 :::
 ::: {.column .output width=50%}
-You can get to UM Learn by clicking this [link to UM Learn], and it will open in
+You can get to UM Learn by clicking [UM Learn], and it will open in
 your web browser.
 
-[link to UM Learn]: https://umlearn.ca
+[UM Learn]: https://umlearn.ca
 
 :::
 ::::::

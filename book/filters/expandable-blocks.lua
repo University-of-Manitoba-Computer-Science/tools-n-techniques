@@ -9,8 +9,10 @@ function Div(elem)
 			}
 		elseif FORMAT:match("typst") then
 			return {
-				pandoc.RawBlock("typst", string.format("#strong[#smallcaps[%s]]", title)),
+				pandoc.RawBlock("typst", string.format("#block[#emph[%s] #emoji.arrow.b.curve", title)),
+				pandoc.RawBlock("typst", "#block(inset: (left: 10%))["),
 				elem,
+				pandoc.RawBlock("typst", "]]"),
 			}
 		end
 	end

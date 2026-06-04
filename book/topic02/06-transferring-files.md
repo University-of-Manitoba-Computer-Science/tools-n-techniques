@@ -33,11 +33,12 @@ programs you can use to transfer files between computers.
 
 You only need to install software (in Windows and macOS) if you are planning to
 use a GUI. You don't need to install anything at all if you are planning on
-[using the command line] to transfer files.
+[using the command line to transfer files][Transferring files using the command line].
 
 :::
 
-<details><summary>GUIs for Windows</summary>
+::: {.expandable title='GUIs for Windows'}
+
 [MobaXterm] is a full software suite for working with remote computers on
 Windows, including a(nother) terminal emulator.
 
@@ -73,9 +74,10 @@ display on the left of MobaXterm. MobaXterm will then start transferring the
 file or folder that you've asked it to copy to the remote computer.
 
 [MobaXterm]: https://mobaxterm.mobatek.net
-</details>
 
-<details><summary>GUIs for macOS</summary>
+:::
+
+::: {.expandable title='GUIs for macOS'}
 [Cyberduck] is a tool designed specifically for transferring files between
 computers. Installing Cyberduck is [the same process as installing VS
 Code][installing software on your personal computer]
@@ -96,9 +98,10 @@ file explorer (e.g., drag files and folders to and from this window to transfer
 them).
 
 [Cyberduck]: https://cyberduck.io/
-</details>
 
-<details><summary>GUIs for Linux</summary>
+:::
+
+::: {.expandable title='GUIs for Linux'}
 Depending on the distribution that you have installed, you may just be able to
 use your file explorer to connect to a remote computer with a GUI.
 
@@ -122,7 +125,7 @@ terminal in your regular file explorer window :tada:! You can interact with this
 window in the same way you do with other file explorer windows (e.g., drag files
 and folders to and from this window to transfer them).
 
-</details>
+:::
 
 ### Transferring files using the command line
 
