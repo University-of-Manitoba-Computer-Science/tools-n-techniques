@@ -131,12 +131,16 @@ Maybe this looks sort of familiar. Maybe this looks like what we were doing with
 `find` and `-exec`. They do accomplish similar results!
 
 Both work, and both are effective. One way to think about this matching of ideas
-is that `find` and `-exec` are more of a functional programming paradigm (this
-is a `map` operation), `for` loops are more of a procedural paradigm.
+is that `find` and `-exec` are more of a [functional programming paradigm] (this
+is a `map` operation), `for` loops are more of a [procedural paradigm] or an [imperative paradigm].
 
 Some people may find that a loop is more readable than `find` and `-exec`, 
 though, especially if you're going to do *several* operations on a file or item
 in a loop.
+
+[functional programming paradigm]: https://en.wikipedia.org/wiki/Functional_programming
+[procedural paradigm]: https://en.wikipedia.org/wiki/Procedural_programming
+[imperative paradigm]: https://en.wikipedia.org/wiki/Imperative_programming
 
 :::
 

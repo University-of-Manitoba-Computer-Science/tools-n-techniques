@@ -10,7 +10,7 @@ underlying mechanisms of how this all works (maybe) in an operating systems
 course, specifically about how an operating system (OS) represents "processes"
 (running programs) as a data structure, and how the OS keeps track of files that
 a process has open (`STDIN`, `STDOUT`, and `STDERR` are all special
-file-like-things&trade;; neat :camera:).
+file-like-things&trade;; [Neat :camera_flash:]).
 
 But let's be honest: backing up stuff is boring. Well, it's boring right up until
 you actually need the back up. And sometimes we don't *think* about backups

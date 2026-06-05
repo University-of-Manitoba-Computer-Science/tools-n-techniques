@@ -6,11 +6,13 @@
 
 :::
 
-::: {style='float: left;width: 300px'}
+:::::: columns
+::: {.column width=30%}
 
-![A script.](script.png)
+![A script.](script.png){width=100%}
 
 :::
+::: column
 
 At this point you're pretty familiar with using the command line; you should be
 able to do a variety of things:
@@ -29,6 +31,9 @@ While there's a whole world of things you can still learn about using the
 command line, and more command line tools than you can imagine to learn about
 (which sometimes themselves contain entire programming languages!), you've
 learned and demonstrated a lot! :tada:
+
+:::
+::::::
 
 As you're getting more used to using the command line, you may find yourself
 repeating similar, complex commands over and over again. Or maybe you find

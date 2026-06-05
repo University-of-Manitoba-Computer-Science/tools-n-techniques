@@ -61,7 +61,7 @@ contains the hard drive for the virtual machine.
 The image that you download is compressed using GZip, so you're going to need to
 decompress the image before you can use it with VirtualBox.
 
-<details><summary>Decompressing with macOS or Linux</summary>
+::: {.expandable title='Decompressing with macOS or Linux'}
 
 Open your terminal and change directory to where the image was downloaded
 (probably your Downloads) folder.
@@ -72,9 +72,9 @@ Once you're there, you can decompress it with `gunzip`:
 gunzip *.gz
 ```
 
-</details>
+:::
 
-<details><summary>Decompressing with Windows</summary>
+::: {.expandable title='Decompressing with Windows'}
 
 Windows doesn't support decompressing GZipped files by default, so you're going
 to need to install a new decompression tool that does.
@@ -87,7 +87,7 @@ you downloaded and decompress it.
 
 [7-zip]: https://7-zip.org/
 
-</details>
+:::
 
 ### Create a new VM
 

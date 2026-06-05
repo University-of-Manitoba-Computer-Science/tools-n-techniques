@@ -134,7 +134,7 @@ that manufactures the processor) and the "architecture" or "[instruction set
 architecture]".
 
 
-<details><summary>On Windows</summary>
+::: {.expandable title='On Windows'}
 
 The answer in ~~2024~~ 2026 is still almost guaranteed to be an Intel or AMD
 processor. The architecture that your processor uses is called (interchangeably)
@@ -149,9 +149,9 @@ by [opening the task manager].
 
 [opening the task manager]: https://support.microsoft.com/en-us/windows/find-out-how-many-cores-your-processor-has-3126ef99-0247-33b3-81fc-065e9fb0c35b
 
-</details>
+:::
 
-<details><summary>On macOS</summary>
+::: {.expandable title='On macOS'}
 
 The answer in ~~2024~~ 2026 could be either Intel or Apple, but at this point is
 almost certainly Apple. You can find out what kind of processor your mac has by
@@ -169,9 +169,9 @@ old, it may use the "x86" instruction set architecture.
 [opening the "About This Mac" dialog]: https://support.apple.com/en-us/102767
 ["Hackintosh"]: https://en.wikipedia.org/wiki/Hackintosh
 
-</details>
+:::
 
-<details><summary>On Linux</summary>
+::: {.expandable title='On Linux'}
 
 As with most things Linux, how you accomplish this visually depends on the
 [desktop environment] that you have installed.
@@ -197,7 +197,7 @@ laptop is less than 15 years old.
 [discover information about your system hardware]: https://help.ubuntu.com/stable/ubuntu-help/about-hardware.html.en
 [`neofetch`]: https://github.com/dylanaraps/neofetch
 
-</details>
+:::
 
 [instruction set architecture]: https://en.wikipedia.org/wiki/Instruction_set_architecture
 :::

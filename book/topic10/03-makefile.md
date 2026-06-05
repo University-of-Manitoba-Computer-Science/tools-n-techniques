@@ -384,7 +384,7 @@ Let's step through this:
    `LINK.c` between the other variables, the spaces between `hello.c` and `-o`
    are from the empty variables between `$^` and `-o`).
 
-Neat :camera:.
+[Neat :camera_flash:].
 
 [GNU Make]: https://www.gnu.org/software/make/
 [implicit rules]:
@@ -459,7 +459,7 @@ detect changes in the file (the modified date in the dependency is newer than
 the created date on the target) and will automatically figure out which
 dependencies need to be rebuilt.
 
-Neat :camera:.
+[Neat :camera_flash:].
 
 Let's use what we've learned to try and turn this into something that can do
 what we did with shell scripting:

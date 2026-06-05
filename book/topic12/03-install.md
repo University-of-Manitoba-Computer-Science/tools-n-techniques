@@ -58,7 +58,7 @@ directly to the [Downloading Debian USB/CD/DVD images via HTTP/FTP page], then f
   download it!
 
 [Download Debian page]: https://www.debian.org/distrib/
-[Downlkoading Debian USB/CD/DVD images via HTTP/FTP page]: https://www.debian.org/CD/http-ftp/
+[Downloading Debian USB/CD/DVD images via HTTP/FTP page]: https://www.debian.org/CD/http-ftp/
 [the download links for amd64]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [the download links for arm64]: https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/
 

@@ -8,14 +8,16 @@ Shell languages (like Bash) have a feature called "globbing" that can help with
 quickly getting a list of files to operate on in something like a loop in a
 more reliable (and arguably easier!) way than using `find`.
 
-![Files covered in globs of jam. (Prompt: "a desk drawer with many files, all covered in blueberry jam")](globs.png)
+!["Mr Blobby", arguably not a glob at all. (&copy; [Kerryn Parkinson](https://en.wikipedia.org/wiki/Mr_Blobby_(fish)#/media/File:Mr_Blobby_(fish),_2003.jpg), fair
+use)](blob.jpg)
 
 ::: aside
 
 Why "*glob*"?
 
 Apparently [it's short for "global"]. I definitely don't pronounce "glob" as 
-"globe" (as in "global"), I pronounce it as in "glob" like a glob of jam.
+"globe" (as in "global"), I pronounce it as in "glob" like a blob of fish (poor
+Mr Globby).
 
 [it's short for "global"]: https://en.wikipedia.org/wiki/Glob_(programming)#Origin
 

@@ -115,21 +115,21 @@ suggestions. Let's create a new Maven Java project:
    You can safely accept the default by pressing <kbd>Enter</kbd>, or you can
    enter something different.
 
-   <div class="aside">
+   ::: aside
 
    There are [two hard problems in computer science]:
 
-   <ol>
-   <li value="1"> Naming things.</li>
-   <li value="3"> Cache invalidation.</li>
-   <li value="2"> Off-by-one errors.</li>
-   <li value="4"> Guaranteed order of message delivery.</li>
-   <li value="5" type="i"> Versioning.</li>
-   </ol>
+   ```
+   1. Naming things.
+   3. Cache invalidation.
+   2. Off-by-one errors.
+   4. Guaranteed order of message delivery.
+   v. Versioning.
+   ```
 
    One popular way to version your code is to use [semantic versioning].
 
-   </div>
+   :::
    [two hard problems in computer science]:
    https://www.martinfowler.com/bliki/TwoHardThings.html
    [semantic versioning]: https://semver.org/

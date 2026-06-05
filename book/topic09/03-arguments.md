@@ -59,7 +59,7 @@ Now run `la` again, but pass it an argument:
 la .
 ```
 
-Neat.
+[Neat :camera_flash:].
 
 ::: aside
 

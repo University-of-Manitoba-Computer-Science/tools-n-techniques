@@ -23,17 +23,16 @@ your files.
 
 Not just what kind of data are you backing up, but:
 
-<details><summary>How important is that data?</summary>
+::: {.expandable title='How important is that data?'}
 
 * Not very important (I know what this data is, but I don't really care about
   it).
 * Somewhat important (This is useful but not *that* important).
 * Very important (I would be devastated if I lost this data).
 
-</details>
+:::
 
-<details><summary>How replaceable is that data if it were suddenly
-gone?</summary>
+::: {.expandable title='How replaceable is that data if it were suddenly gone?'}
 
 * Trivially replaceable (I know exactly how to replace it, and I can do it in a
   few minutes).
@@ -41,10 +40,9 @@ gone?</summary>
   take hours or days).
 * Irreplaceable (I can't replace this at all).
 
-</details>
+:::
 
-<details><summary>How often do you use this data or how urgently do you need it
-back if it were gone?</summary>
+::: {.expandable title='How often do you use this data or how urgently do you need it back if it were gone?'}
 
 * Not frequently used and not urgent (you have this data, but you very
   rarely need to open it; when you need to open it, it wouldn't be big deal
@@ -55,7 +53,7 @@ back if it were gone?</summary>
 * Very frequently used or very urgent (you use this data frequently and you
   need it back within minutes or hours if it were gone).
 
-</details>
+:::
 
 Here are some examples of the kinds of data you could consider backing up, and
 some answers to the questions above:
@@ -305,7 +303,7 @@ Evaluation:
 
 * :heavy_check_mark: :x: Some are easy to use (Redo Rescue, Acronis), some are
   not (CloneZilla, `dd`).
-* :heavy_check_mark: :x: some a free to use (`dd`, Redo Rescue, CloneZilla),
+* :heavy_check_mark: :x: Some are free to use (`dd`, Redo Rescue, CloneZilla),
   some are not (Acronis).
 * :x: Not at all granular, you copy an entire disk or partition.
 * :x: Not versioned.

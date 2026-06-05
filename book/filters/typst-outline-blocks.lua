@@ -21,9 +21,11 @@ function Div(elem)
 
 	if elem.classes:find("example") then
 		openings:insert(
-			pandoc.RawBlock("typst", '#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.rocket')
+			pandoc.RawBlock(
+				"typst",
+				'#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#heading(outlined: false, level: blockHeaderLevel)[#emoji.rocket Example]'
+			)
 		)
-		openings:insert(pandoc.Strong(pandoc.Str("Example")))
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 
@@ -32,6 +34,16 @@ function Div(elem)
 			pandoc.RawBlock("typst", '#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.person.sassy')
 		)
 		openings:insert(pandoc.Strong(pandoc.Str("Tip")))
+		closings:insert(pandoc.RawBlock("typst", "]"))
+	end
+
+	if elem.classes:find("challenge") then
+		openings:insert(
+			pandoc.RawBlock(
+				"typst",
+				'#rect(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.trophy #strong[Challenge]'
+			)
+		)
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 
@@ -61,9 +73,11 @@ function Div(elem)
 
 	if elem.classes:find("aside") then
 		openings:insert(
-			pandoc.RawBlock("typst", '#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#emoji.star ')
+			pandoc.RawBlock(
+				"typst",
+				'#block(width: 100%, inset: 12pt, stroke: (dash: "dashed"))[#heading(outlined: false, level: blockHeaderLevel)[#emoji.star Aside]'
+			)
 		)
-		openings:insert(pandoc.Strong(pandoc.Str("Aside")))
 		closings:insert(pandoc.RawBlock("typst", "]"))
 	end
 

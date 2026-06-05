@@ -224,30 +224,31 @@ You should use this file to:
   like.
 * Create a PDF on your own machine with Pandocker using the following command:
 
-  <details><summary>macOS or Linux</summary>
+  ::: {.expandable title='macOS or Linux'}
+
   ```bash
   docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
     $YOUR_FILE.md -o $YOUR_FILE.pdf --filter pandoc-latex-admonition \
     --template eisvogel --toc --pdf-engine=xelatex --listings
   ```
-  </details>
+  :::
 
-  <details><summary>macOS with Apple Silicon</summary>
+  ::: {.expandable title='macOS with Apple Silicon'}
   ```bash
   docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
     dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
     --filter pandoc-latex-admonition --template eisvogel --toc \
     --pdf-engine=xelatex --listings
   ```
-  </details>
+  :::
 
-  <details><summary>Windows with PowerShell</summary>
+  ::: {.expandable title='Windows with PowerShell'}
   ```bash
   docker run --rm -v ${PWD}:/pandoc dalibo/pandocker:stable lecture.md -o `
     lecture.pdf --filter pandoc-latex-admonition --template eisvogel --toc `
     --pdf-engine=xelatex --listings
   ```
-  </details>
+  :::
 
 These two outputs are pretty different! As it is, you **can't** generate the
 same output on Aviary as you could with Docker and pandocker on your own

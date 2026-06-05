@@ -1,4 +1,6 @@
+// this sets the links in the table of contents to be blue (so they look clickable!)
 #show outline.entry: set text(fill: rgb("#0000ff")) 
+
 // this puts each chapter (top-level heading) on a new page. the "and" part
 // is there to prevent the example top-level headings in the markdown chapter
 // from being included (they are not outlined, they are {.unnumbered
@@ -7,3 +9,6 @@
 
 // this sets numbering on chapters and sections within chapters.
 #show heading.where(outlined: true).and(heading.where(level: 1).or(heading.where(level: 2))): set heading(numbering: "1.1")
+#let blockHeaderLevel = 100
+// using headings for blocks where the level is set to an arbitrarily high number
+#show heading.where(outlined: false).and(heading.where(level: blockHeaderLevel)): set text(size: 10pt)
