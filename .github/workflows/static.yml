@@ -30,11 +30,11 @@ jobs:
       - name: install dependencies
         run: |
           wget https://github.com/jgm/pandoc/releases/download/3.10/pandoc-3.10-1-amd64.deb
-          apt install ./pandoc-3.10-1-amd64.deb
+          sudo apt install ./pandoc-3.10-1-amd64.deb
           wget https://github.com/typst/typst/releases/download/v0.14.2/typst-x86_64-unknown-linux-musl.tar.xz
           tar xf typst-x86_64-unknown-linux-musl.tar.xz
-          mv typst-x86_64-unknown-linux-musl/typst /bin
-          apt install graphviz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /bin
+          sudo apt install graphviz
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: build book
