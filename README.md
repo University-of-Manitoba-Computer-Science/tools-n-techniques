@@ -1,8 +1,3 @@
----
-title: About this book
-author: Franklin Bristow
----
-
 Introduction to Tools and Techniques in Computer Science
 ========================================================
 
@@ -24,31 +19,11 @@ design, develop, analyze, and maintain software.
 Building the book
 -----------------
 
-This book was originally written with [Pandoc]'s Markdown in mind. A tool that
-can use Pandoc to render something like a book is [Rippledoc]. We're using [a
-fork of Rippledoc] that uses Pandoc to get metadata instead of blindly trying to
-use the first line as the title.
+This book was originally written with [Pandoc]'s Markdown in mind, and we're
+using Pandoc to build the book. A `Makefile` is in the `book` directory, you can
+build the book by running `make`.
 
 [The repository is hosted on Github] and is open for contributions.
 
-Here's the strategy for building this book:
-
-1. Switch to the `main` branch from whatever branch you're currently on.
-2. Make changes to the Markdown files you want to make changes to.
-3. Commit your changes and optionally push them to remote `main`.
-4. Switch to the `book` branch, and merge `main` into `book`:
-   ```bash
-   git merge main
-   ```
-5. Run `rippledoc.py` to regenerate HTML sources. These `.html` files are
-   committed to the `book` branch. We don't *usually* want that because we
-   generally wouldn't commit something we can generate, but is required for the
-   Github Pages to work. This has some interesting side-effects, such as having
-   different `.gitignore` files for the two branches: `main` disallows `.html`
-   files, and `book` allows them!
-6. Commit the changes and push to remote to redeploy.
-
 [Pandoc]: https://pandoc.org
-[Rippledoc]: https://gitlab.com/uvtc/rippledoc/
-[a fork of Rippledoc]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques/blob/main/rippledoc.py
 [The repository is hosted on Github]: https://github.com/University-of-Manitoba-Computer-Science/tools-n-techniques

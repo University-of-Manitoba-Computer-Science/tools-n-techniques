@@ -1,10 +1,10 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy content to Pages
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["book"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,23 +22,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  build:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: install dependencies
+        run: |
+          wget https://github.com/jgm/pandoc/releases/download/3.10/pandoc-3.10-1-amd64.deb
+          apt install ./pandoc-3.10-1-amd64.deb
+          wget https://github.com/typst/typst/releases/download/v0.14.2/typst-x86_64-unknown-linux-musl.tar.xz
+          tar xf typst-x86_64-unknown-linux-musl.tar.xz
+          mv typst-x86_64-unknown-linux-musl/typst /bin
+          apt install graphviz
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+      - name: build book
+        run: make -C book
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: './book/toolsntechniques/'
+
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
+      - name: Deploy to github pages
         id: deployment
-        uses: actions/deploy-pages@v2
-
+        uses: actions/deploy-pages@v6
