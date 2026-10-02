@@ -224,7 +224,7 @@ You should use this file to:
   like.
 * Create a PDF on your own machine with Pandocker using the following command:
 
-  ::: {.expandable title='macOS or Linux'}
+  ::: {.expandable title='Linux (or macOS with x86)' group='run-docker'}
 
   ```bash
   docker run --rm -v `pwd`:/pandoc dalibo/pandocker:stable \
@@ -233,7 +233,7 @@ You should use this file to:
   ```
   :::
 
-  ::: {.expandable title='macOS with Apple Silicon'}
+  ::: {.expandable title='macOS with Apple Silicon' group='run-docker'}
   ```bash
   docker run --platform=linux/amd64 --rm -v `pwd`:/pandoc \
     dalibo/pandocker:stable $YOUR_FILE.md -o $YOUR_FILE.pdf \
@@ -242,7 +242,7 @@ You should use this file to:
   ```
   :::
 
-  ::: {.expandable title='Windows with PowerShell'}
+  ::: {.expandable title='Windows with PowerShell' group='run-docker'}
   ```bash
   docker run --rm -v ${PWD}:/pandoc dalibo/pandocker:stable lecture.md -o `
     lecture.pdf --filter pandoc-latex-admonition --template eisvogel --toc `

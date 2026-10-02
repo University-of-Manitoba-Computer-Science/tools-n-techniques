@@ -42,7 +42,7 @@ instructions in the "Get Started" document (open a terminal and run `java
 found", then you've already got a JDK installed and configured and you can
 safely skip this step.
 
-::: {.expandable title='Installing a JDK in Windows'}
+::: {.expandable title='Installing a JDK in Windows' group='installing-jdk'}
 
 Click on the "Install JDK" button. The defaults that VS Code suggests are good
 defaults that you can accept: Adoptium's Temurin, version 17 (LTS), and JVM is
@@ -57,7 +57,7 @@ You should now be ready to run and debug Java programs!
 
 :::
 
-::: {.expandable title='Installing a JDK in macOS'}
+::: {.expandable title='Installing a JDK in macOS' group='installing-jdk'}
 
 Click on the "Install JDK" button. The defaults that VS Code suggests are good
 defaults that you can accept: Adoptium's Temurin, version 17 (LTS), and JVM is
@@ -72,7 +72,7 @@ You should now be ready to run and debug Java programs!
 
 :::
 
-::: {.expandable title='Installing a JDK in Linux'}
+::: {.expandable title='Installing a JDK in Linux' group='installing-jdk'}
 
 The installer that VS Code offers to help you by downloading is... fine, but
 it's a pain to configure. I recommend you use your package manager instead. On

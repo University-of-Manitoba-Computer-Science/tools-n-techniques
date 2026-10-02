@@ -23,7 +23,7 @@ your files.
 
 Not just what kind of data are you backing up, but:
 
-::: {.expandable title='How important is that data?'}
+::: {.expandable title='How important is that data?' group='what-kind'}
 
 * Not very important (I know what this data is, but I don't really care about
   it).
@@ -32,7 +32,7 @@ Not just what kind of data are you backing up, but:
 
 :::
 
-::: {.expandable title='How replaceable is that data if it were suddenly gone?'}
+::: {.expandable title='How replaceable is that data if it were suddenly gone?' group='what-kind'}
 
 * Trivially replaceable (I know exactly how to replace it, and I can do it in a
   few minutes).
@@ -42,7 +42,7 @@ Not just what kind of data are you backing up, but:
 
 :::
 
-::: {.expandable title='How often do you use this data or how urgently do you need it back if it were gone?'}
+::: {.expandable title='How often do you use this data or how urgently do you need it back if it were gone?' group='what-kind'}
 
 * Not frequently used and not urgent (you have this data, but you very
   rarely need to open it; when you need to open it, it wouldn't be big deal

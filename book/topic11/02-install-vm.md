@@ -134,7 +134,7 @@ that manufactures the processor) and the "architecture" or "[instruction set
 architecture]".
 
 
-::: {.expandable title='On Windows'}
+::: {.expandable title='On Windows' group='architecture'}
 
 The answer in ~~2024~~ 2026 is still almost guaranteed to be an Intel or AMD
 processor. The architecture that your processor uses is called (interchangeably)
@@ -151,7 +151,7 @@ by [opening the task manager].
 
 :::
 
-::: {.expandable title='On macOS'}
+::: {.expandable title='On macOS' group='architecture'}
 
 The answer in ~~2024~~ 2026 could be either Intel or Apple, but at this point is
 almost certainly Apple. You can find out what kind of processor your mac has by
@@ -171,7 +171,7 @@ old, it may use the "x86" instruction set architecture.
 
 :::
 
-::: {.expandable title='On Linux'}
+::: {.expandable title='On Linux' group='architecture'}
 
 As with most things Linux, how you accomplish this visually depends on the
 [desktop environment] that you have installed.

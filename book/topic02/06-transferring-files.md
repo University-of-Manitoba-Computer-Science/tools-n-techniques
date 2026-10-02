@@ -37,7 +37,7 @@ use a GUI. You don't need to install anything at all if you are planning on
 
 :::
 
-::: {.expandable title='GUIs for Windows'}
+::: {.expandable title='GUIs for Windows' group='transfer-gui'}
 
 [MobaXterm] is a full software suite for working with remote computers on
 Windows, including a(nother) terminal emulator.
@@ -77,7 +77,8 @@ file or folder that you've asked it to copy to the remote computer.
 
 :::
 
-::: {.expandable title='GUIs for macOS'}
+::: {.expandable title='GUIs for macOS' group='transfer-gui'}
+
 [Cyberduck] is a tool designed specifically for transferring files between
 computers. Installing Cyberduck is [the same process as installing VS
 Code][installing software on your personal computer]
@@ -101,7 +102,8 @@ them).
 
 :::
 
-::: {.expandable title='GUIs for Linux'}
+::: {.expandable title='GUIs for Linux' group='transfer-gui'}
+
 Depending on the distribution that you have installed, you may just be able to
 use your file explorer to connect to a remote computer with a GUI.
 

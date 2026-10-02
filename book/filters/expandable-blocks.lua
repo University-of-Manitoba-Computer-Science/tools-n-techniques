@@ -1,9 +1,10 @@
 function Div(elem)
 	if elem.classes:find("expandable") then
 		local title = elem.attributes["title"]
+        local group = elem.attributes["group"]
 		if FORMAT:match("html") then
 			return {
-				pandoc.RawBlock("html", string.format("<details><summary>%s</summary>", title)),
+				pandoc.RawBlock("html", string.format("<details name='%s'><summary>%s</summary>", group, title)),
 				elem,
 				pandoc.RawBlock("html", "</details>"),
 			}

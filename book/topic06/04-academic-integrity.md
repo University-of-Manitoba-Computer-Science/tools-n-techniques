@@ -75,7 +75,7 @@ Michael and Rob work together on the assignment for a while, but Michael never
 shows Rob any of his code. Michael and Rob only talk about the assignment,
 make general design suggestions, or suggestions on which data structures to use.
 
-::: {.expandable title='Have Michael and Rob committed academic misconduct?'}
+::: {.expandable title='Have Michael and Rob committed academic misconduct?' group='situation-1'}
 
 No, Michael and Rob have not committed academic misconduct. Students are
 permitted to generally discuss assignments that they are working on.
@@ -98,7 +98,7 @@ John suggests that he share his code by screen sharing so that Franklin can
 have a better idea about how to link together two nodes in Java. Franklin agrees
 and reads John's code. Franklin then writes his own implementation.
 
-::: {.expandable title='Have John and Franklin committed academic misconduct?'}
+::: {.expandable title='Have John and Franklin committed academic misconduct?' group='situation-2'}
 
 Yes, John and Franklin have committed academic misconduct. When John showed
 Franklin his source code, even though the intent wasn't for Franklin to copy the
@@ -119,7 +119,7 @@ assignment works. He asks Heather if they can meet on Discord, but Heather is
 not available to help. Instead, she e-mails Franklin her partial implementation
 that includes how she set up the assignment.
 
-::: {.expandable title='Have Franklin and Heather committed academic misconduct?'}
+::: {.expandable title='Have Franklin and Heather committed academic misconduct?' group='situation-3'}
 
 Yes, just like John and Franklin, Heather and Franklin are participating in
 [inappropriate collaboration]. In this case, since Heather is physically sending
@@ -134,7 +134,7 @@ tool you're using) is more tangible and permanent than screen sharing.
 Franklin copies and pastes some of the code that Heather shared with him, but he
 doesn't tell Heather. Franklin submits that code as part of his own assignment.
 
-::: {.expandable title='Have Franklin and Heather committed academic misconduct?'}
+::: {.expandable title='Have Franklin and Heather committed academic misconduct?' group='situation-3-a'}
 
 Yes. In fact, even though Franklin seems to be the only one doing something
 wrong here, unfortunately Heather is also guilty of academic misconduct because
@@ -153,7 +153,7 @@ by the instructor in previous terms..
 Franklin reads the code and it helps him figure out how to find the length of an
 array in C. He doesn't copy any code.
 
-::: {.expandable title='Has Franklin committed academic misconduct?'}
+::: {.expandable title='Has Franklin committed academic misconduct?' group='situation-4'}
 
 Yes. Similar to our first case with John, Franklin is participating in
 [inappropriate collaboration], but that seems less obvious because there's no
@@ -170,7 +170,7 @@ person who originally posted the sample solution on the internet. They're
 Franklin copies and pastes a small fragment of the code that was in the file he
 found (maybe a single function).
 
-::: {.expandable title='Has Franklin committed academic misconduct?'}
+::: {.expandable title='Has Franklin committed academic misconduct?' group='situation-4-a'}
 
 Yes, this is definitely misconduct and it's significantly clearer than the last
 couple of cases because Franklin is explicitly using and submitting work that he
@@ -186,7 +186,7 @@ https://umanitoba.ca/student-supports/academic-supports/academic-integrity#plagi
 Franklin submits the entire file he found with enough modifications to satisfy
 the current assignment description.
 
-::: {.expandable title='Has Franklin committed academic misconduct?'}
+::: {.expandable title='Has Franklin committed academic misconduct?' group='situation-4-b'}
 
 Just like the last example, by submitting work that is not his own and he is
 committing [plagiarism].
@@ -202,7 +202,7 @@ requirements section. This part of the report isn't itself essential for the
 code to work, but is essential to help confirm the results/conclusions that
 Franklin is writing about in the report.
 
-::: {.expandable title='Has Franklin committed academic misconduct?'}
+::: {.expandable title='Has Franklin committed academic misconduct?' group='situation-5'}
 
 No, Franklin has not committed academic misconduct. Franklin has not plagiarized
 any work, has not collaborated inappropriately with any of his peers, and did
@@ -213,7 +213,7 @@ https://umanitoba.ca/student-supports/academic-supports/academic-integrity#acade
 
 :::
 
-::: {.expandable title='Would Franklin be at risk of being accused of academic misconduct?'}
+::: {.expandable title='Would Franklin be at risk of being accused of academic misconduct?' group='situation-5'}
 
 Maybe. In this specific case, Franklin appears at first glance to have committed
 academic fraud, and it might be reasonable for Franklin's instructor to assume

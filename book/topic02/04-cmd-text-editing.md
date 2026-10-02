@@ -163,7 +163,7 @@ Finally, enter normal mode, then type `:set nopaste` and press <kbd>Enter</kbd>.
 
 OK, but how do we paste?
 
-::: {.expandable title='Copying and pasting in Windows'}
+::: {.expandable title='Copying and pasting in Windows' group='copy-paste'}
 
 You can copy in Windows by highlighting text, then either:
 
@@ -180,7 +180,7 @@ To paste text into your terminal window you can do one of two things:
 
 :::
 
-::: {.expandable title='Copying and pasting in macOS'}
+::: {.expandable title='Copying and pasting in macOS' group='copy-paste'}
 
 You can copy and paste in macOS by highlighting text, then either:
 
@@ -196,7 +196,7 @@ To paste text into your terminal window you can do one of two things:
 
 :::
 
-::: {.expandable title='Copying and pasting in Linux'}
+::: {.expandable title='Copying and pasting in Linux' group='copy-paste'}
 
 How you copy and paste may depend on the Linux distribution you're using and the
 desktop environment that you're using.

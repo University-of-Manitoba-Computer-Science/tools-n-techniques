@@ -52,21 +52,21 @@ you're running Linux).
 How you install VS Code depends on the operating system you're using.
 
 
-::: {.expandable title='Installing VS Code on Windows'}
+::: {.expandable title='Installing VS Code on Windows' group='installing-vscode'}
 
 Find the file that you downloaded (a `.exe` file) and double-click on it. Follow
 the prompts.
 
 :::
 
-::: {.expandable title='Installing VS Code on macOS'}
+::: {.expandable title='Installing VS Code on macOS' group='installing-vscode'}
 
 Find the file that you downloaded (a `.zip` file) and double-click on it. Copy
 and paste the folder into your "Applications" directory to install it.
 
 :::
 
-::: {.expandable title='Installing VS Code on Linux'}
+::: {.expandable title='Installing VS Code on Linux' group='installing-vscode'}
 
 Find the file that you downloaded (a `.deb` or `.rpm` file) and double-click on
 it. Your software manager should then prompt you to install the package, follow
@@ -79,7 +79,7 @@ the prompts.
 Once you've gone through the install process, you should check that VS Code is
 actually installed on your computer by running VS Code.
 
-::: {.expandable title='Running VS Code on Windows'}
+::: {.expandable title='Running VS Code on Windows' group='running-vscode'}
 
 VS Code *may* have added an icon to your desktop, depending on whether or not
 you allowed it to when it was installing. If you can find an icon on your
@@ -92,7 +92,7 @@ start typing "VS Code". When you see VS Code appear, click on it.
 
 :::
 
-::: {.expandable title='Running VS Code on macOS'}
+::: {.expandable title='Running VS Code on macOS' group='running-vscode'}
 
 Find the VS Code folder in your Applications folder and double-click on it.
 
@@ -101,7 +101,7 @@ that opening VS Code later is easier.
 
 :::
 
-::: {.expandable title='Running VS Code on Linux'}
+::: {.expandable title='Running VS Code on Linux' group='running-vscode'}
 
 VS Code *may* have added an icon to your desktop. If you can find an icon on
 your desktop for VS Code, double-click on it.
@@ -137,21 +137,21 @@ http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everyth
 
 How you install Pandoc depends on the operating system you're using.
 
-::: {.expandable title='Installing Pandoc on Windows'}
+::: {.expandable title='Installing Pandoc on Windows' group='installing-pandoc'}
 
 Find the file that you downloaded (a `.msi` file) and double-click on it. Follow
 the prompts.
 
 :::
 
-::: {.expandable title='Installing Pandoc on macOS'}
+::: {.expandable title='Installing Pandoc on macOS' group='installing-pandoc'}
 
 Find the file that you downloaded (a `.pkg` file) and double-click on it. Follow
 the prompts.
 
 :::
 
-::: {.expandable title='Installing Pandoc on Linux'}
+::: {.expandable title='Installing Pandoc on Linux' group='installing-pandoc'}
 
 Find the file that you downloaded (a `.deb`) and double-click on it and your
 software manager will prompt you to install it.
@@ -182,7 +182,7 @@ installed.
 Instead, Pandoc is a program that runs in your **terminal**. To check if Pandoc
 has been installed, you're going to need to open your terminal program.
 
-::: {.expandable title='Opening your terminal on Windows'}
+::: {.expandable title='Opening your terminal on Windows' group='terminal'}
 
 You have a few different options for terminals on Windows. The one that's built
 in is called the "Command Prompt". You can alternatively install another one
@@ -200,7 +200,7 @@ https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-ca&g
 
 :::
 
-::: {.expandable title='Opening your terminal on macOS'}
+::: {.expandable title='Opening your terminal on macOS' group='terminal'}
 
 macOS has a built-in terminal called "Terminal.app". Apple has [good
 documentation about how to open Terminal], but the short version is that you
@@ -215,7 +215,7 @@ https://support.apple.com/en-ca/guide/terminal/apd5265185d-f365-44cb-8b09-71a064
 
 :::
 
-::: {.expandable title='Opening your terminal on Linux'}
+::: {.expandable title='Opening your terminal on Linux' group='terminal'}
 
 Your terminal program **does not** have a desktop icon, so either click on the
 application launcher menu in the corner of your screen, or press the Microsoft
