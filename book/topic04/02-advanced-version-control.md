@@ -109,7 +109,7 @@ should look when it's cloning the repository.
 Now you can paste this link into your terminal as part of a `git clone` command:
 
 ```bash
-git clone git@github.com:standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git
+git clone https://github.com/standardebooks/daniel-defoe_the-life-and-adventures-of-robinson-crusoe.git
 ```
 
 Now you've cloned a repository made by someone else! :tada:
